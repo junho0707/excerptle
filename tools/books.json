@@ -1,0 +1,705 @@
+[
+  {
+    "slug": "b01",
+    "gutenberg": 1342,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "coffees": 1,
+    "aliases": [
+      "pride and prejudice",
+      "pride & prejudice"
+    ],
+    "anchor": "It is a truth universally acknowledged"
+  },
+  {
+    "slug": "b02",
+    "gutenberg": 84,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "year": 1818,
+    "coffees": 1,
+    "aliases": [
+      "frankenstein",
+      "frankenstein or the modern prometheus",
+      "the modern prometheus"
+    ],
+    "anchor": "You will rejoice to hear that no disaster"
+  },
+  {
+    "slug": "b03",
+    "gutenberg": 345,
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "year": 1897,
+    "coffees": 1,
+    "aliases": [
+      "dracula"
+    ],
+    "anchor": "Left Munich at 8:35"
+  },
+  {
+    "slug": "b04",
+    "gutenberg": 2701,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "year": 1851,
+    "coffees": 1,
+    "aliases": [
+      "moby dick",
+      "moby-dick",
+      "moby dick or the whale",
+      "moby-dick or the whale"
+    ],
+    "anchor": "Call me Ishmael",
+    "anchors": [
+      "Call me Ishmael."
+    ]
+  },
+  {
+    "slug": "b05",
+    "gutenberg": 64317,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "coffees": 1,
+    "aliases": [
+      "great gatsby",
+      "the great gatsby"
+    ],
+    "anchor": "In my younger and more vulnerable years"
+  },
+  {
+    "slug": "b06",
+    "gutenberg": 11,
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "year": 1865,
+    "coffees": 1,
+    "aliases": [
+      "alice in wonderland",
+      "alices adventures in wonderland",
+      "alice's adventures in wonderland"
+    ],
+    "anchor": "Alice was beginning to get very tired"
+  },
+  {
+    "slug": "b07",
+    "gutenberg": 1260,
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "year": 1847,
+    "coffees": 1,
+    "aliases": [
+      "jane eyre"
+    ],
+    "anchor": "There was no possibility of taking a walk that day"
+  },
+  {
+    "slug": "b08",
+    "gutenberg": 768,
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "year": 1847,
+    "coffees": 1,
+    "aliases": [
+      "wuthering heights"
+    ],
+    "anchor": "I have just returned from a visit to my landlord"
+  },
+  {
+    "slug": "b09",
+    "gutenberg": 98,
+    "title": "A Tale of Two Cities",
+    "author": "Charles Dickens",
+    "year": 1859,
+    "coffees": 1,
+    "aliases": [
+      "tale of two cities",
+      "a tale of two cities"
+    ],
+    "anchor": "It was the best of times, it was the worst of times"
+  },
+  {
+    "slug": "b10",
+    "gutenberg": 1400,
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "year": 1861,
+    "coffees": 1,
+    "aliases": [
+      "great expectations"
+    ],
+    "anchor": "My father's family name being Pirrip",
+    "anchors": [
+      "My father’s family name being Pirrip",
+      "My father's family name being Pirrip"
+    ]
+  },
+  {
+    "slug": "b11",
+    "gutenberg": 174,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "year": 1890,
+    "coffees": 1,
+    "aliases": [
+      "dorian gray",
+      "picture of dorian gray",
+      "the picture of dorian gray"
+    ],
+    "anchor": "The studio was filled with the rich odour of roses"
+  },
+  {
+    "slug": "b12",
+    "gutenberg": 76,
+    "title": "Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "year": 1884,
+    "coffees": 1,
+    "aliases": [
+      "huckleberry finn",
+      "huck finn",
+      "the adventures of huckleberry finn",
+      "adventures of huckleberry finn"
+    ],
+    "anchor": "You don't know about me without you have read a book",
+    "anchors": [
+      "You don’t know about me without you have read a book",
+      "You don't know about me without you have read a book"
+    ]
+  },
+  {
+    "slug": "b13",
+    "gutenberg": 74,
+    "title": "The Adventures of Tom Sawyer",
+    "author": "Mark Twain",
+    "year": 1876,
+    "coffees": 1,
+    "aliases": [
+      "tom sawyer",
+      "adventures of tom sawyer",
+      "the adventures of tom sawyer"
+    ],
+    "anchor": "\"TOM!\"",
+    "anchors": [
+      "“TOM!”",
+      "\"TOM!\"",
+      "TOM!"
+    ]
+  },
+  {
+    "slug": "b14",
+    "gutenberg": 46,
+    "title": "A Christmas Carol",
+    "author": "Charles Dickens",
+    "year": 1843,
+    "coffees": 1,
+    "aliases": [
+      "christmas carol",
+      "a christmas carol"
+    ],
+    "anchor": "Marley was dead: to begin with"
+  },
+  {
+    "slug": "b15",
+    "gutenberg": 43,
+    "title": "Strange Case of Dr Jekyll and Mr Hyde",
+    "author": "Robert Louis Stevenson",
+    "year": 1886,
+    "coffees": 1,
+    "aliases": [
+      "jekyll and hyde",
+      "dr jekyll and mr hyde",
+      "the strange case of dr jekyll and mr hyde",
+      "strange case of dr jekyll and mr hyde"
+    ],
+    "anchor": "Mr. Utterson the lawyer was a man of a rugged countenance"
+  },
+  {
+    "slug": "b16",
+    "gutenberg": 120,
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson",
+    "year": 1883,
+    "coffees": 1,
+    "aliases": [
+      "treasure island"
+    ],
+    "anchor": "Squire Trelawney, Dr. Livesey, and the rest of these gentlemen"
+  },
+  {
+    "slug": "b17",
+    "gutenberg": 36,
+    "title": "The War of the Worlds",
+    "author": "H. G. Wells",
+    "year": 1898,
+    "coffees": 1,
+    "aliases": [
+      "war of the worlds",
+      "the war of the worlds"
+    ],
+    "anchor": "No one would have believed in the last years of the nineteenth century"
+  },
+  {
+    "slug": "b18",
+    "gutenberg": 35,
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "year": 1895,
+    "coffees": 1,
+    "aliases": [
+      "time machine",
+      "the time machine"
+    ],
+    "anchor": "The Time Traveller (for so it will be convenient to speak of him)"
+  },
+  {
+    "slug": "b19",
+    "gutenberg": 219,
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad",
+    "year": 1899,
+    "coffees": 2,
+    "aliases": [
+      "heart of darkness"
+    ],
+    "anchor": "The Nellie, a cruising yawl, swung to her anchor"
+  },
+  {
+    "slug": "b20",
+    "gutenberg": 215,
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "year": 1903,
+    "coffees": 1,
+    "aliases": [
+      "call of the wild",
+      "the call of the wild"
+    ],
+    "anchor": "Buck did not read the newspapers"
+  },
+  {
+    "slug": "b21",
+    "gutenberg": 55,
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum",
+    "year": 1900,
+    "coffees": 1,
+    "aliases": [
+      "wizard of oz",
+      "the wizard of oz",
+      "the wonderful wizard of oz",
+      "wonderful wizard of oz"
+    ],
+    "anchor": "Dorothy lived in the midst of the great Kansas prairies"
+  },
+  {
+    "slug": "b22",
+    "gutenberg": 45,
+    "title": "Anne of Green Gables",
+    "author": "Lucy Maud Montgomery",
+    "year": 1908,
+    "coffees": 1,
+    "aliases": [
+      "anne of green gables"
+    ],
+    "anchor": "Mrs. Rachel Lynde lived just where the Avonlea main road"
+  },
+  {
+    "slug": "b23",
+    "gutenberg": 113,
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett",
+    "year": 1911,
+    "coffees": 1,
+    "aliases": [
+      "secret garden",
+      "the secret garden"
+    ],
+    "anchor": "When Mary Lennox was sent to Misselthwaite Manor"
+  },
+  {
+    "slug": "b24",
+    "gutenberg": 16,
+    "title": "Peter Pan",
+    "author": "J. M. Barrie",
+    "year": 1911,
+    "coffees": 1,
+    "aliases": [
+      "peter pan",
+      "peter and wendy"
+    ],
+    "anchor": "All children, except one, grow up",
+    "anchors": [
+      "All children, except one, grow up."
+    ]
+  },
+  {
+    "slug": "b25",
+    "gutenberg": 33,
+    "title": "The Scarlet Letter",
+    "author": "Nathaniel Hawthorne",
+    "year": 1850,
+    "coffees": 1,
+    "aliases": [
+      "scarlet letter",
+      "the scarlet letter"
+    ],
+    "anchor": "A throng of bearded men, in sad-coloured garments"
+  },
+  {
+    "slug": "b26",
+    "gutenberg": 205,
+    "title": "Walden",
+    "author": "Henry David Thoreau",
+    "year": 1854,
+    "coffees": 2,
+    "aliases": [
+      "walden",
+      "walden or life in the woods",
+      "life in the woods"
+    ],
+    "anchor": "When I wrote the following pages, or rather the bulk of them"
+  },
+  {
+    "slug": "b27",
+    "gutenberg": 5200,
+    "title": "The Metamorphosis",
+    "author": "Franz Kafka",
+    "year": 1915,
+    "coffees": 1,
+    "aliases": [
+      "metamorphosis",
+      "the metamorphosis",
+      "die verwandlung"
+    ],
+    "anchor": "One morning, when Gregor Samsa woke from troubled dreams"
+  },
+  {
+    "slug": "b28",
+    "gutenberg": 244,
+    "title": "A Study in Scarlet",
+    "author": "Arthur Conan Doyle",
+    "year": 1887,
+    "coffees": 2,
+    "aliases": [
+      "study in scarlet",
+      "a study in scarlet"
+    ],
+    "anchor": "In the year 1878 I took my degree of Doctor of Medicine"
+  },
+  {
+    "slug": "b29",
+    "gutenberg": 1661,
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "year": 1892,
+    "coffees": 1,
+    "aliases": [
+      "adventures of sherlock holmes",
+      "the adventures of sherlock holmes",
+      "sherlock holmes"
+    ],
+    "anchor": "To Sherlock Holmes she is always",
+    "anchors": [
+      "To Sherlock Holmes she is always the woman",
+      "To Sherlock Holmes she is always THE woman"
+    ]
+  },
+  {
+    "slug": "b30",
+    "gutenberg": 2852,
+    "title": "The Hound of the Baskervilles",
+    "author": "Arthur Conan Doyle",
+    "year": 1902,
+    "coffees": 1,
+    "aliases": [
+      "hound of the baskervilles",
+      "the hound of the baskervilles"
+    ],
+    "anchor": "Mr. Sherlock Holmes, who was usually very late in the mornings"
+  },
+  {
+    "slug": "b31",
+    "gutenberg": 2554,
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "year": 1866,
+    "coffees": 2,
+    "aliases": [
+      "crime and punishment"
+    ],
+    "anchor": "On an exceptionally hot evening early in July"
+  },
+  {
+    "slug": "b32",
+    "gutenberg": 1399,
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy",
+    "year": 1877,
+    "coffees": 1,
+    "aliases": [
+      "anna karenina"
+    ],
+    "anchor": "Happy families are all alike"
+  },
+  {
+    "slug": "b33",
+    "gutenberg": 1184,
+    "title": "The Count of Monte Cristo",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "coffees": 2,
+    "aliases": [
+      "count of monte cristo",
+      "the count of monte cristo",
+      "monte cristo"
+    ],
+    "anchor": "On the 24th of February, 1815, the look-out at Notre-Dame de la Garde"
+  },
+  {
+    "slug": "b34",
+    "gutenberg": 135,
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "year": 1862,
+    "coffees": 1,
+    "aliases": [
+      "les miserables",
+      "les misérables",
+      "les mis"
+    ],
+    "anchor": "In 1815, M. Charles-François-Bienvenu Myriel was Bishop of Digne",
+    "anchors": [
+      "In 1815, M. Charles-Francois-Bienvenu Myriel",
+      "In 1815, M. Charles-François-Bienvenu Myriel",
+      "In 1815, M. Charles-Francois-Bienvenu Myriel was Bishop"
+    ]
+  },
+  {
+    "slug": "b35",
+    "gutenberg": 103,
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne",
+    "year": 1873,
+    "coffees": 1,
+    "aliases": [
+      "around the world in 80 days",
+      "around the world in eighty days"
+    ],
+    "anchor": "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row"
+  },
+  {
+    "slug": "b36",
+    "gutenberg": 164,
+    "title": "Twenty Thousand Leagues under the Seas",
+    "author": "Jules Verne",
+    "year": 1870,
+    "coffees": 2,
+    "aliases": [
+      "twenty thousand leagues under the sea",
+      "20000 leagues under the sea",
+      "20 000 leagues under the sea",
+      "twenty thousand leagues under the seas"
+    ],
+    "anchor": "The year 1866 was signalised by a remarkable incident"
+  },
+  {
+    "slug": "b37",
+    "gutenberg": 12,
+    "title": "Through the Looking-Glass",
+    "author": "Lewis Carroll",
+    "year": 1871,
+    "coffees": 2,
+    "aliases": [
+      "through the looking glass",
+      "through the looking-glass",
+      "alice through the looking glass"
+    ],
+    "anchor": "One thing was certain, that the"
+  },
+  {
+    "slug": "b38",
+    "gutenberg": 514,
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "year": 1868,
+    "coffees": 1,
+    "aliases": [
+      "little women"
+    ],
+    "anchor": "Christmas won't be Christmas without any presents",
+    "anchors": [
+      "“Christmas won’t be Christmas without any presents",
+      "\"Christmas won't be Christmas without any presents",
+      "Christmas won't be Christmas without any presents"
+    ]
+  },
+  {
+    "slug": "b39",
+    "gutenberg": 289,
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame",
+    "year": 1908,
+    "coffees": 2,
+    "aliases": [
+      "wind in the willows",
+      "the wind in the willows"
+    ],
+    "anchor": "The Mole had been working very hard all the morning"
+  },
+  {
+    "slug": "b40",
+    "gutenberg": 236,
+    "title": "The Jungle Book",
+    "author": "Rudyard Kipling",
+    "year": 1894,
+    "coffees": 2,
+    "aliases": [
+      "jungle book",
+      "the jungle book"
+    ],
+    "anchor": "It was seven o'clock of a very warm evening"
+  },
+  {
+    "slug": "b41",
+    "gutenberg": 829,
+    "title": "Gulliver's Travels",
+    "author": "Jonathan Swift",
+    "year": 1726,
+    "coffees": 2,
+    "aliases": [
+      "gullivers travels",
+      "gulliver's travels",
+      "gulliver"
+    ],
+    "anchor": "My father had a small estate in Nottinghamshire; I was the third of five sons"
+  },
+  {
+    "slug": "b42",
+    "gutenberg": 521,
+    "title": "Robinson Crusoe",
+    "author": "Daniel Defoe",
+    "year": 1719,
+    "coffees": 2,
+    "aliases": [
+      "robinson crusoe",
+      "the life and adventures of robinson crusoe"
+    ],
+    "anchor": "I was born in the year 1632, in the city of York"
+  },
+  {
+    "slug": "b43",
+    "gutenberg": 996,
+    "title": "Don Quixote",
+    "author": "Miguel de Cervantes",
+    "year": 1605,
+    "coffees": 2,
+    "aliases": [
+      "don quixote",
+      "don quijote",
+      "the ingenious gentleman don quixote of la mancha"
+    ],
+    "anchor": "In a village of La Mancha, the name of which I have no desire to call to mind",
+    "anchors": [
+      "In a village of La Mancha"
+    ]
+  },
+  {
+    "slug": "b44",
+    "gutenberg": 1524,
+    "title": "Hamlet",
+    "author": "William Shakespeare",
+    "year": 1603,
+    "coffees": 1,
+    "aliases": [
+      "hamlet",
+      "the tragedy of hamlet",
+      "hamlet prince of denmark"
+    ],
+    "anchor": "Who's there?",
+    "anchors": [
+      "Who’s there?",
+      "Who's there?"
+    ]
+  },
+  {
+    "slug": "b45",
+    "gutenberg": 1513,
+    "title": "Romeo and Juliet",
+    "author": "William Shakespeare",
+    "year": 1597,
+    "coffees": 1,
+    "aliases": [
+      "romeo and juliet",
+      "romeo & juliet"
+    ],
+    "anchor": "Two households, both alike in dignity",
+    "anchors": [
+      "Two households, both alike in dignity"
+    ]
+  },
+  {
+    "slug": "b46",
+    "gutenberg": 1533,
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "year": 1606,
+    "coffees": 1,
+    "aliases": [
+      "macbeth",
+      "the tragedy of macbeth"
+    ],
+    "anchor": "When shall we three meet again"
+  },
+  {
+    "slug": "b47",
+    "gutenberg": 844,
+    "title": "The Importance of Being Earnest",
+    "author": "Oscar Wilde",
+    "year": 1895,
+    "coffees": 2,
+    "aliases": [
+      "importance of being earnest",
+      "the importance of being earnest"
+    ],
+    "anchor": "Did you hear what I was playing, Lane?"
+  },
+  {
+    "slug": "b48",
+    "gutenberg": 158,
+    "title": "Emma",
+    "author": "Jane Austen",
+    "year": 1815,
+    "coffees": 2,
+    "aliases": [
+      "emma"
+    ],
+    "anchor": "Emma Woodhouse, handsome, clever, and rich"
+  },
+  {
+    "slug": "b49",
+    "gutenberg": 161,
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "year": 1811,
+    "coffees": 2,
+    "aliases": [
+      "sense and sensibility"
+    ],
+    "anchor": "The family of Dashwood had long been settled in Sussex"
+  },
+  {
+    "slug": "b50",
+    "gutenberg": 105,
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "year": 1817,
+    "coffees": 2,
+    "aliases": [
+      "persuasion"
+    ],
+    "anchor": "Sir Walter Elliot, of Kellynch Hall, in Somersetshire"
+  }
+]

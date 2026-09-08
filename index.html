@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Excerptle — guess the public-domain book</title>
+  <meta name="description" content="Excerptle is a daily literary guessing game. Read a public-domain opening, take hints, and name the book. Play the book bank, climb per-puzzle leaderboards, or battle a friend.">
+  <link rel="canonical" href="https://excerptle.io/">
+  <meta name="theme-color" content="#f4efe4">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Excerptle">
+  <meta property="og:title" content="Excerptle — guess the book">
+  <meta property="og:description" content="Six guesses. Hints on demand. Public-domain canon. Challenge a friend.">
+  <meta property="og:url" content="https://excerptle.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Excerptle — guess the book">
+  <meta name="twitter:description" content="Guess the public-domain book. Hints on demand. Battle a friend on the same puzzle.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%237a1f2b' width='32' height='32'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='%23f4efe4' font-family='Georgia,serif'%3EE%3C/text%3E%3C/svg%3E">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Excerptle","url":"https://excerptle.io/","applicationCategory":"GameApplication","genre":"Word game","description":"Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <a class="brand" href="#/" aria-label="Excerptle home">
+        <strong>EXCERPTLE</strong>
+        <span>Guess the book</span>
+      </a>
+      <nav class="tabs" aria-label="Main">
+        <button type="button" class="tab" data-act="open-play">New game</button>
+        <button type="button" class="tab" data-act="open-how">How to play</button>
+        <a class="tab" href="#/bank">All books</a>
+        <a class="tab" href="#/ranks">Leaderboard</a>
+        <button type="button" class="tab" id="auth-tab" data-act="open-auth">Sign in</button>
+        <a class="tab icon" href="#/settings" title="Settings" aria-label="Settings">⚙</a>
+      </nav>
+    </header>
+
+    <main id="game">
+      <div class="meta">
+        <span id="meta-left">Daily</span>
+        <span id="meta-right">0/6 · 0 hints</span>
+      </div>
+      <div id="story-nav" class="story-nav hidden">
+        <button type="button" class="btn ghost" data-act="play-random">Next random book</button>
+        <button type="button" class="btn ghost" data-act="open-play">Choose by ID</button>
+      </div>
+      <div class="excerpt-wrap">
+        <div id="tier-label" class="tier-label">First sentence</div>
+        <article id="excerpt" class="excerpt drop">Loading…</article>
+      </div>
+      <ul id="guesses" class="guesses"></ul>
+      <p id="msg" class="msg" role="status"></p>
+      <form id="form" class="form" autocomplete="off">
+        <label class="sr-only" for="guess-input">Book title</label>
+        <input id="guess-input" name="guess" type="text" enterkeyhint="go" placeholder="Guess the title" maxlength="120">
+        <button type="button" class="btn ghost" data-act="hint" id="hint-btn">Hint</button>
+        <button type="submit">Guess</button>
+      </form>
+      <div id="result" class="result hidden"></div>
+      <div id="ad" class="ad hidden">
+        Advertisement
+        <div class="slot">Post-game only</div>
+      </div>
+    </main>
+
+    <section id="screen-bank" class="screen hidden">
+      <h1>All books</h1>
+      <p class="lede">Choose by ID. Books #1–#<span id="preset-max">1000</span>. Dailies start at #1001. Titles stay hidden until you finish.</p>
+      <div class="filters">
+        <label>Show
+          <select id="bank-filter">
+            <option value="preset">Presets</option>
+            <option value="daily">Dailies</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>Jump
+          <input id="bank-jump" type="number" min="1" placeholder="#">
+        </label>
+      </div>
+      <div id="bank-grid" class="bank-grid"></div>
+      <p id="bank-pager" class="pager"></p>
+    </section>
+
+    <section id="screen-ranks" class="screen hidden">
+      <h1>Leaderboard</h1>
+      <p class="lede">Every puzzle has its own board. Sort: fewer hints, then faster, then fewer guesses.</p>
+      <div class="filters">
+        <label>Puzzle #
+          <input id="lb-index" type="number" min="1">
+        </label>
+        <label>Hints
+          <select id="lb-hints">
+            <option value="any">Any</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <label>Scope
+          <select id="lb-scope">
+            <option value="this">This #</option>
+            <option value="daily">All dailies</option>
+            <option value="preset">All presets</option>
+          </select>
+        </label>
+      </div>
+      <div id="lb-body"></div>
+    </section>
+
+    <section id="screen-settings" class="screen hidden">
+      <h1>Settings</h1>
+      <p id="auth-status" class="lede"></p>
+      <p><button class="btn ghost" type="button" data-act="open-auth" id="settings-auth-btn">Sign in</button></p>
+      <label class="row">Display name
+        <input id="display-name" type="text" maxlength="24" placeholder="Anonymous">
+      </label>
+      <label class="row">Theme
+        <select id="theme">
+          <option value="paper">Paper</option>
+          <option value="night">Night</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="screen-news" class="screen hidden">
+      <h1>News</h1>
+      <article class="card">
+        <strong>Hints, bank, battle</strong>
+        <p>Guesses no longer unlock text. Take a hint when you’re stuck. Gamebank + per-puzzle ranks + friend battles.</p>
+      </article>
+    </section>
+
+    <section id="screen-support" class="screen hidden">
+      <h1>Support</h1>
+      <p>Texts from <a href="https://www.gutenberg.org/">Project Gutenberg</a>. At most one chapter hosted per puzzle.</p>
+    </section>
+
+    <section id="screen-battle" class="screen hidden">
+      <h1>Battle</h1>
+      <div id="battle-body"></div>
+    </section>
+
+    <footer>
+      <a href="#/news">News</a> ·
+      <a href="#/support">Support</a><br>
+      Public-domain excerpts · not affiliated with Project Gutenberg
+    </footer>
+  </div>
+
+  <div id="modal" class="modal-back hidden" role="dialog" aria-modal="true">
+    <div class="modal" id="modal-inner"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/match.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
