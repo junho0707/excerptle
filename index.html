@@ -82,6 +82,7 @@
       <section class="daily-card" aria-label="Today’s puzzle">
         <div id="story-bar" class="story-bar">
           <span id="meta-left" class="story-id">Daily</span>
+          <span class="story-time" aria-label="Elapsed time">Time <time id="elapsed-time" datetime="PT0S">0:00</time></span>
         </div>
         <div class="excerpt-wrap">
           <div id="tier-label" class="tier-label">First sentence</div>
@@ -109,17 +110,17 @@
 
     <section id="screen-bank" class="screen hidden">
       <h1>All books</h1>
-      <p class="lede">Choose by ID. Titles stay hidden until you finish. Numbers from #1001 are past daily puzzles.</p>
+      <p class="lede">Choose by ID. Titles stay hidden until you finish. Book bank is #0–#599; #600 and up are past daily puzzles.</p>
       <div class="filters">
         <label>Show
           <select id="bank-filter">
             <option value="all">All</option>
             <option value="preset">Book bank</option>
-            <option value="daily">Daily</option>
+            <option value="daily">Past dailies (#600+)</option>
           </select>
         </label>
         <label>Choose by ID
-          <input id="bank-jump" type="number" min="1" placeholder="#">
+          <input id="bank-jump" type="number" min="0" placeholder="#">
         </label>
       </div>
       <div id="bank-grid" class="bank-grid"></div>
@@ -130,7 +131,7 @@
       <h1>Leaderboard</h1>
       <div class="filters">
         <label>Book #
-          <input id="lb-index" type="number" min="1">
+          <input id="lb-index" type="number" min="0">
           <select id="lb-pick" class="hidden"></select>
         </label>
         <label class="filter-check">
@@ -221,13 +222,16 @@
     </section>
 
     <footer>
-      <nav class="footer-links">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Play</a>
+        <a href="/how-to-play">How to play</a>
+        <a href="/faq">FAQ</a>
         <a href="/about">About</a>
-        <a href="#/news">News</a>
+        <a href="/#/news">News</a>
         <a href="/support">Support</a>
         <a href="/privacy">Privacy &amp; terms</a>
       </nav>
-      <p class="footer-note">Public-domain excerpts · not affiliated with Project Gutenberg</p>
+      <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
   </div>
 

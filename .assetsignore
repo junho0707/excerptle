@@ -11,6 +11,7 @@ node_modules/
 .wrangler/
 .gitignore
 .assetsignore
+wrangler.*
 .dev.vars*
 .env*
 *.md

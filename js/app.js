@@ -184,9 +184,10 @@
   function progressMap() {
     return loadJSON(K.progress, {});
   }
-  function saveProgress() {
+  function saveProgress({ remote = true } = {}) {
     const all = progressMap();
-    all[String(state.playIndex)] = {
+    const key = String(state.playIndex);
+    const row = {
       status: state.status,
       guesses: state.guesses,
       hints: state.hints,
@@ -195,22 +196,49 @@
       timeMs: Date.now() - state.startedAt,
       at: Date.now(),
     };
+    all[key] = row;
     localStorage.setItem(K.progress, JSON.stringify(all));
-    syncProgress();
+    if (remote) syncProgressEntry({ [key]: row });
   }
 
   // The browser remains the fast, offline-first copy.  On sign-in we merge by
   // each row's timestamp, then send the union; this also lets a player finish
   // a round on one device and resume it on another.
   let progressSyncing = null;
-  async function syncProgress() {
+  let pendingProgress = {};
+  function progressConnection() {
     const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
     const auth = window.BookleAuth?.session?.();
-    if (!api || !auth?.token || progressSyncing) return progressSyncing;
+    return api && auth?.token ? { api, headers: { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" } } : null;
+  }
+  function syncProgressEntry(entries) {
+    pendingProgress = { ...pendingProgress, ...entries };
+    return flushProgressEntries();
+  }
+  async function flushProgressEntries() {
+    const connection = progressConnection();
+    if (!connection || progressSyncing) return progressSyncing;
     progressSyncing = (async () => {
       try {
-        const headers = { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" };
-        const res = await fetch(`${api}/me/progress`, { headers });
+        while (Object.keys(pendingProgress).length) {
+          const batch = pendingProgress;
+          pendingProgress = {};
+          await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: batch }) });
+        }
+      } catch { /* The browser copy remains authoritative until the next retry. */ }
+      finally {
+        progressSyncing = null;
+        if (Object.keys(pendingProgress).length) flushProgressEntries();
+      }
+    })();
+    return progressSyncing;
+  }
+  async function syncProgress() {
+    const connection = progressConnection();
+    if (!connection || progressSyncing) return progressSyncing;
+    progressSyncing = (async () => {
+      try {
+        const res = await fetch(`${connection.api}/me/progress`, { headers: connection.headers });
         if (!res.ok) return;
         const remote = (await res.json()).progress || {};
         const merged = { ...remote };
@@ -218,9 +246,12 @@
           if (!merged[index] || Number(row?.at || 0) >= Number(merged[index]?.at || 0)) merged[index] = row;
         }
         localStorage.setItem(K.progress, JSON.stringify(merged));
-        await fetch(`${api}/me/progress`, { method: "PUT", headers, body: JSON.stringify({ progress: merged }) });
+        await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: merged }) });
       } catch { /* Sync is opportunistic; local progress remains intact. */ }
-      finally { progressSyncing = null; }
+      finally {
+        progressSyncing = null;
+        if (Object.keys(pendingProgress).length) flushProgressEntries();
+      }
     })();
     return progressSyncing;
   }
@@ -377,9 +408,20 @@
     if (el) el.textContent = t || "";
   }
 
+  let awaitingInstructions = false;
   function closeModal() {
     $("#modal").classList.add("hidden");
     $("#modal-inner").innerHTML = "";
+    if (awaitingInstructions) {
+      awaitingInstructions = false;
+      localStorage.setItem(K.seen, "1");
+      // Reading the instructions is not part of the round.
+      state.startedAt = Date.now();
+      if (state.puzzle && state.status === "playing") {
+        saveProgress();
+        startElapsedTimer();
+      }
+    }
   }
   function setNav(open) {
     document.body.classList.toggle("nav-open", open);
@@ -397,6 +439,48 @@
     el.classList.remove("bump");
     void el.offsetWidth;
     el.classList.add("bump");
+  }
+
+  let elapsedTimer = null;
+  let progressCheckpointTimer = null;
+  let accountProgressSyncTimer = null;
+  function formatElapsed(ms) {
+    const seconds = Math.max(0, Math.floor(ms / 1000));
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const remainder = String(seconds % 60).padStart(2, "0");
+    return hours ? `${hours}:${String(minutes % 60).padStart(2, "0")}:${remainder}` : `${minutes}:${remainder}`;
+  }
+  function renderElapsed() {
+    const time = $("#elapsed-time");
+    if (!time || !state.puzzle) return;
+    const elapsed = Date.now() - state.startedAt;
+    time.textContent = formatElapsed(elapsed);
+    time.dateTime = `PT${Math.max(0, Math.floor(elapsed / 1000))}S`;
+  }
+  function startElapsedTimer() {
+    clearInterval(elapsedTimer);
+    clearInterval(progressCheckpointTimer);
+    clearInterval(accountProgressSyncTimer);
+    renderElapsed();
+    if (state.status === "playing") {
+      elapsedTimer = setInterval(renderElapsed, 1000);
+      // Persist time even before the player makes a guess, so a refresh or a
+      // device switch resumes the same round instead of starting at zero.
+      progressCheckpointTimer = setInterval(() => saveProgress({ remote: false }), 10000);
+      // Account syncs are incremental, but do not need to happen every ten
+      // seconds; page exit and game actions sync immediately.
+      accountProgressSyncTimer = setInterval(() => saveProgress(), 5 * 60 * 1000);
+    }
+  }
+  function stopElapsedTimer() {
+    clearInterval(elapsedTimer);
+    clearInterval(progressCheckpointTimer);
+    clearInterval(accountProgressSyncTimer);
+    elapsedTimer = null;
+    progressCheckpointTimer = null;
+    accountProgressSyncTimer = null;
+    renderElapsed();
   }
 
   function renderExcerpt() {
@@ -610,6 +694,7 @@
 
   function recordFinish() {
     const timeMs = Date.now() - state.startedAt;
+    stopElapsedTimer();
     saveProgress();
     if (state.status === "won") {
       pushLb({
@@ -711,6 +796,12 @@
   }
 
   async function startPlay({ playIndex, mode, resume = true, fresh = false, showHow = true }) {
+    clearInterval(elapsedTimer);
+    clearInterval(progressCheckpointTimer);
+    clearInterval(accountProgressSyncTimer);
+    elapsedTimer = null;
+    progressCheckpointTimer = null;
+    accountProgressSyncTimer = null;
     await loadIndex();
     show("game");
     state.mode = mode || (playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset");
@@ -747,8 +838,12 @@
     renderGuesses();
     renderResult();
     if (showHow && !localStorage.getItem(K.seen)) {
-      localStorage.setItem(K.seen, "1");
+      awaitingInstructions = true;
       openHow();
+    } else {
+      // This first checkpoint covers a refresh immediately after the round opens.
+      if (state.status === "playing") saveProgress();
+      startElapsedTimer();
     }
   }
 
@@ -951,24 +1046,20 @@
   function openAccount() {
     const s = window.BookleAuth.session();
     if (!s) return openAuth();
+    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
+    const proStatus = v.phase === "active" ? "Active" :
+      v.phase === "canceling" ? "Active — ending at period end" :
+      v.phase === "past_due" ? "Payment issue" :
+      v.phase === "loading" ? "Checking…" :
+      v.phase === "error" ? "Status unavailable" : "Free";
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>Account</h2>
-      <p>${escapeHtml(s.email)}</p>
-      <p class="lede">${s.provider === "google" ? "Signed in with Google." : "Signed in with email."}</p>
-      <p><button class="btn" type="button" data-act="open-pro">Excerptle Pro</button>
-         <button class="btn ghost" type="button" data-act="open-password">Set password</button>
-         <button class="btn ghost" type="button" data-act="sign-out">Sign out</button></p>
+      <p><strong>Email</strong><br>${escapeHtml(s.email)}</p>
+      <p><strong>Sign-in method</strong><br>${s.provider === "google" ? "Google" : "Email code"}</p>
+      <p><strong>Excerptle Pro</strong><br><span id="account-pro">${proStatus}</span></p>
+      <p><button class="btn ghost" type="button" data-act="sign-out">Sign out</button></p>
     `);
-  }
-  function openPassword() {
-    openModal(`
-      <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
-      <h2>Set password</h2>
-      <p class="lede">Your email has already been verified. A password is optional.</p>
-      <div class="auth-stack"><input id="account-password" type="password" placeholder="Password (8+ characters)" autocomplete="new-password">
-      <button class="btn full" type="button" data-act="save-password">Save password</button></div>
-      <p class="auth-err" id="auth-err"></p>`);
   }
   function openHow() {
     openModal(`
@@ -1012,7 +1103,7 @@
       for (let i = state.index.dailyStartIndex; i <= today; i++) items.push(i);
     }
     const jump = parseInt($("#bank-jump").value, 10);
-    if (jump) {
+    if (Number.isInteger(jump)) {
       const idx = items.indexOf(jump);
       if (idx >= 0) page = Math.floor(idx / pageSize) + 1;
     }
@@ -1085,7 +1176,9 @@
         $("#lb-index").value = chosen;
       }
     }
-    const idx = parseInt($("#lb-index").value, 10) || fallback;
+    // Book #0 is a real book, so a plain || would send it to today's daily.
+    const typed = parseInt($("#lb-index").value, 10);
+    const idx = Number.isInteger(typed) && typed >= 0 ? typed : fallback;
     const hintF = $("#lb-hints").value;
     const all = loadJSON(K.lb, {});
     const me = playerId();
@@ -1185,7 +1278,6 @@
           ${tile(books.wins, "Completed")}
           ${tile(books.played, "Played")}
           ${tile(pct(books.wins, books.played), "Win rate")}
-          ${tile(presetCount(), "In the bank")}
         </div>
         ${rows(["Avg guesses", avg(books.guesses, books.played)],
                ["Avg hints", avg(books.hints, books.played)],
@@ -1543,10 +1635,6 @@
       e.preventDefault();
       document.querySelector('[data-act="auth-code"]')?.click();
     }
-    if (e.key === "Enter" && e.target?.id === "account-password") {
-      e.preventDefault();
-      document.querySelector('[data-act="save-password"]')?.click();
-    }
   });
 
   document.addEventListener("click", async (e) => {
@@ -1633,18 +1721,6 @@
         await window.BookleAuth.verifyCode(window._bookleEmail, $("#auth-code")?.value);
         closeModal();
         paintAuth();
-      } catch (err) {
-        authError(err.message || String(err));
-      }
-    }
-    if (act === "open-password") {
-      openPassword();
-    }
-    if (act === "save-password") {
-      try {
-        await window.BookleAuth.setPassword($("#account-password")?.value);
-        closeModal();
-        openAccount();
       } catch (err) {
         authError(err.message || String(err));
       }
@@ -1740,6 +1816,14 @@
     setNav(false);
     go();
   });
+  // Browsers may suspend timers in a background tab. Save the exact elapsed
+  // time at that boundary instead of relying solely on the 10-second check.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden" && state.puzzle && state.status === "playing") saveProgress();
+  });
+  window.addEventListener("pagehide", () => {
+    if (state.puzzle && state.status === "playing") saveProgress();
+  });
   document.addEventListener("bookle-auth", () => {
     paintAuth();
     syncProgress();
@@ -1749,6 +1833,7 @@
   document.addEventListener("excerptle-pro", () => {
     paintPro();
     if ($("#pro-body")) repaintProModal();
+    if ($("#account-pro")) openAccount();
   });
   // Returning with the browser Back button restores the page from its cache;
   // reset the temporary “Opening Stripe…” button state and refresh billing.

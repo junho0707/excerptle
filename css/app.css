@@ -637,6 +637,25 @@ footer a { color: inherit; }
 #screen-stats .pg-stats { margin-bottom: 0.2rem; }
 @media (max-width: 560px) {
   .s-block { --tile: 1.6rem; }
+  /* On phones, filter labels use one fixed column so each control starts at
+     the same edge instead of drifting after its differently sized label. */
+  #screen-bank .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+  #screen-bank .filters > label {
+    display: grid;
+    grid-template-columns: 7.4rem minmax(0, 1fr);
+    align-items: center;
+    text-align: left;
+  }
+  #screen-bank .filters input,
+  #screen-bank .filters select {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
 }
 .linkish {
   background: none;
@@ -827,6 +846,13 @@ footer a { color: inherit; }
   margin: 0 0 var(--sp-2);
 }
 .story-id {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.story-time {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1122,25 +1148,26 @@ footer a { color: inherit; }
 .prose .lede { font-size: 1.02rem; }
 .prose-cta { margin-top: 2rem; }
 .prose-cta .btn { text-decoration: none; display: inline-block; }
-@media (max-width: 1024px) {
-  /* No hamburger on these pages, so the nav has to stay a visible row. */
-  .prose ~ * .tabs, body:not(:has(#game)) .tabs {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    min-width: 0;
-    margin-left: auto;
-    padding: 0;
-    gap: 0.1rem;
-    background: none;
-    border: 0;
-    box-shadow: none;
-  }
-  body:not(:has(#game)) .tab { border-top: 0; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
+/* The static pages (about, faq, how-to-play, privacy, support) don't load
+   js/app.js, so nothing exists to toggle .nav-open and the app's dropdown would
+   stay shut forever. They get a plain visible row instead — at every width, not
+   just narrow ones, or the nav vanishes on desktop. */
+.prose ~ * .tabs, body:not(:has(#game)) .tabs {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+  margin-left: auto;
+  padding: 0;
+  gap: 0.1rem;
+  background: none;
+  border: 0;
+  box-shadow: none;
 }
+body:not(:has(#game)) .tab { border-top: 0; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
 @media (max-width: 640px) {
   /* Too narrow to sit beside the brand — give the row its own line instead of
      letting it wrap ragged against the right edge. */
