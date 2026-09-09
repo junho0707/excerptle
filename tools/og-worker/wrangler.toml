@@ -1,0 +1,14 @@
+name = "excerptle-og"
+main = "worker.js"
+compatibility_date = "2026-09-08"
+
+[vars]
+# Where the static site really lives (GitHub Pages).
+ORIGIN = "https://junho0707.github.io/excerptle"
+# Swap for a generated card once an image renderer is in place.
+OG_IMAGE = "/assets/og.png"
+
+# Point excerptle.io at the Worker so shares unfurl.
+# [[routes]]
+# pattern = "excerptle.io/*"
+# zone_name = "excerptle.io"

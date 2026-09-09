@@ -1,0 +1,21 @@
+name = "excerptle-api"
+main = "src/worker.js"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[vars]
+SITE_URL = "https://excerptle.io"
+ALLOWED_ORIGINS = "https://excerptle.io,https://www.excerptle.io,http://localhost:8765,http://127.0.0.1:8765"
+GOOGLE_CLIENT_ID = "1084292631320-lat25fml3s4n627i4c9aur7a4752cmrm.apps.googleusercontent.com"
+STRIPE_LIVE = "true"
+MAIL_FROM = "Excerptle <signin@excerptle.io>"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "excerptle"
+database_id = "e8cf45cb-62dc-433a-8f7b-b382369cc108"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["17 3 * * *"]

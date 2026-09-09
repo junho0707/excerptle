@@ -1,0 +1,13 @@
+{
+  "name": "excerptle-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --config wrangler.toml",
+    "test": "node --test test/*.test.js",
+    "deploy": "wrangler deploy --config wrangler.toml",
+    "db:local": "wrangler d1 migrations apply DB --local --config wrangler.toml"
+  },
+  "dependencies": { "stripe": "^18.5.0" },
+  "devDependencies": { "wrangler": "^4.0.0", "miniflare": "^4.0.0" }
+}

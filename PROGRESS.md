@@ -22,15 +22,19 @@ Hard-refresh after JS/HTML changes.
 | Area | Status |
 |---|---|
 | Name / domain | Excerptle, `CNAME` = `excerptle.io`. Share URLs `https://excerptle.io/?p=N`. |
-| Core game | 6 guesses. **Hints** expand text (sentence → paragraph → two paras → a few pages → chapter 1). Guesses do **not** reveal text. |
-| Matching | Generous typos / “The…” / `by Author`. Not one-word stabs (`great`). Distinctive last tokens (`gatsby`) OK. `js/match.js`. |
-| Nav | New game (modal) · How to play (modal) · All books · Leaderboard · Sign in · Settings. |
-| New game modal | Today’s daily, random book, choose by ID, battle. |
-| After a game | Next random book, choose by ID, share (🟨 + 💡), challenge, leaderboard CTA, post-game ad **slot** (no network). |
+| Core game | 6 guesses. **Hints** expand text (sentence → opening paragraphs → a page → a few pages → chapter 1). Each tier must clear a word target *and* grow ~1.4-2x over the one before, so no two hints ever show the same screen. Guesses do **not** reveal text. |
+| Matching | Generous typos / “The…” / `by Author`. Not one-word stabs (`great`). Distinctive last tokens (`gatsby`) OK. **Titles are expanded into variants at match time** (`variants()` in `js/match.js`), so Gutenberg packaging is optional to type — “Richard Carvel” solves *Richard Carvel — Complete*, “The Adventures of Tom Sawyer” solves *…, Part 4.*, “Moby Dick” solves *Moby-Dick; or, The Whale*. Fragments still lose: “The Adventures”, “The Red Badge”, “Tom Swift”, “tom sawyer” are all rejected, because every variant is matched **whole**. Edition words (`complete`, `volume`, `romance`, …) are barred from the one-word shortcut. `by <author>` is stripped from the **guess only** — stripping it from titles used to reduce “Won By the Sword” to `won`. |
+| Nav | New game (modal) · How to play (modal) · All books · Leaderboard · Sign in · Settings. Tabs sit inline in the header at ≥1025px; the hamburger takes over from iPad width (≤1024px) down. |
+| New game modal | One modal, no second step. A **Battle mode switch** at the top changes what the picks below it do: off, they start a solo round; on, the pick opens a battle room directly. Three rows — Today’s daily, Random book, Choose by ID — each with its **Guess** button on the right. Today’s daily is disabled while battle is on (battle needs a book both players can be handed). Bad IDs report inside the modal (`#choice-err`), not on the covered game screen. Acts are `pick-today` / `pick-random` / `pick-id`, distinct from the `#more` row's `play-random` so the switch can't leak out of the modal. |
+| After a game | Next random book, choose by ID, share, leaderboard CTA, post-game ad **slot** (no network). The reveal prints `stripEdition(title)`, so the answer reads “Richard Carvel”, not “Richard Carvel — Complete”. Standings show **both** — `#n of N at h hints` and `#n of N overall`. |
+| Share | **Share copies a bare URL, nothing else** — the card is what the link previews as. The whole result rides in `?p=<index>&s=<base64url JSON>` (`sharePayload()`), so both the recipient's page and a crawler can render it with no lookup. Opening the link shows the sharer's card — grid, score, time, both standings — over the puzzle, then plays it. **The payload never carries the title**; a share must not spoil the book. `?p`/`?s`/`?b` are stripped from the URL after the first route. |
+| Share unfurls | Needs a server — see `tools/og-worker/`. GitHub Pages returns the same `index.html` for every URL, and crawlers don't run JS, so per-share `<meta>` is impossible from the client. The Worker proxies the origin and rewrites OG/Twitter title + description from `?s=`. **Not deployed yet.** `og:image` is still static; the README says how to add a rendered card. |
 | Daily | UTC. `puzzles/index.json`: `startDate` `2026-09-08`, `dailyStartIndex` **1001**. Today = `#1001 + daysSince(start)`. |
-| Book bank | Presets `#1…#863` (`presetCount`). Aim was 1000; extras filtered. Curated `b01`–`b50` are high quality; `g*.json` extras are mixed (Gutenberg front matter). |
-| Battle | PeerJS P2P. Same index, shared hints, first correct title wins. `?b=CODE&p=INDEX`. Needs network. |
-| Leaderboard UI | Per-index, filter by hints, sort win → fewer hints → faster → fewer guesses. **Local `localStorage` only** until API exists. |
+| All books page | Show = **All** (default) / **Book bank** / **Daily**; “All” lists the bank then the dailies at the end. Pager reads Prev · Page n / m · Next, centred and stable across pages. Play labels and the in-game meta bar read **Book bank #n**. |
+| Book bank | **824 distinct books.** Gutenberg ships the same work many times over (Tom Sawyer alone was 9 puzzles: the curated `b13` plus `g7193`–`g7200` “Part 1..8”), so `dedupe_books()` keeps one slot per book — curated `b*` winning over the `g*` dump — dropping 15. Split in `puzzles/index.json`: **`#1…#600`** is the browsable bank (`presetCount`), the remaining **224** are held back as the daily pool (`dailyPoolCount`). No book is in both, so a daily is never something you could already browse; dailies repeat only after 224 days. `order` is scrambled by `sha256(ORDER_SALT + slug)`, so ids track neither the catalogue nor Gutenberg numbering. The 15 deduped `g*.json` files stay on disk, just unreferenced. |
+| Battle | PeerJS P2P. Same index, shared hints, first correct title wins. `?b=CODE&p=INDEX`. Needs network. **Books only — dailies are not offered or accepted in battle.** Losing the race reads “<name> got there first”, not “Out of guesses” (`state.beatenBy`). |
+| Stats (`#/stats`) | Three peer sections — **Daily → Book bank → Battle mode** — on one flat type scale, under a ruled page title. No tiering, no Overall block, no guess-distribution graph: they were noise. Battle numbers are **explicit counters** in `bookle.stats.battle` (a battle writes its book's `progress` row, so it cannot be counted back out of `progress` afterwards); everything else is derived live by `summarize()` from `bookle.progress`, so it stays true if rows are edited or cleared. |
+| Leaderboard UI | One board per puzzle. Filters: Puzzle # and Hints used (0–5). No scope selector, and an empty board renders nothing rather than a placeholder. Sort win → fewer hints → faster → fewer guesses. **Local `localStorage` only** until API exists. |
 | Auth UI | Google + email-first, then **code or password**. **No passkeys.** |
 | Removed | Motion setting, coffee/give-up stats bar, More games. |
 
@@ -88,7 +92,41 @@ Sort: `win` desc, `hints` asc, `timeMs` asc, `guesses` asc.
 
 **Progress (logged-in)** — not synced yet. Local only: `bookle.progress` map `{ [index]: { status, guesses, hints, puzzleId, mode, timeMs, at } }`. Backend should add `GET/PUT /me/progress` and merge on sign-in.
 
+**Billing (Excerptle Pro)** — `js/pro.js`. Stripe is entirely server-side; the browser only ever
+calls our API and follows the Stripe-hosted URL it hands back. All three need the session's bearer
+token, which `/auth/verify`, `/auth/password` and Google verification must start returning as
+`session.token` — until they do, `js/pro.js` sends no `Authorization` header and every call 401s.
+
+```
+GET  /billing/status    -> { pro, status, currentPeriodEnd, cancelAtPeriodEnd, price }
+POST /billing/checkout  { returnUrl } -> { url }   Stripe Checkout session
+POST /billing/portal    { returnUrl } -> { url }   Stripe Billing Portal session
+```
+
+`status` is Stripe's own subscription status (`active` | `trialing` | `past_due` | `unpaid` |
+`canceled` | `none`); `pro` is the single boolean the client acts on. Entitlement must come from the
+**`customer.subscription.*` and `invoice.*` webhooks**, not from the Checkout redirect — the redirect
+is only a hint that something happened. The one privilege today is ad-free, so a client that fails to
+reach `/billing/status` keeps its cached answer for 24h rather than showing ads to a subscriber.
+
 **Leaderboard “global”** is a product requirement. Local boards are a stub.
+
+---
+
+## Static pages (SEO)
+
+`about.html`, `how-to-play.html`, `faq.html` are plain documents — no JS, sharing `css/app.css` and
+the app's header/footer. They exist because the game is a hash-routed SPA, so Google sees exactly
+one URL, and because an AdSense reviewer judging "sufficient content" would otherwise land on an
+empty game board. Each carries its own title/description/canonical, and `how-to-play` / `faq` carry
+HowTo / FAQPage JSON-LD. Linked from the footer and listed in `sitemap.xml`.
+
+They are served at **extensionless paths** (`/about`), which relies on Cloudflare Workers assets
+`html_handling` resolving `/about` → `about.html` (the default). Verify after the next deploy; if it
+404s, either set `html_handling` explicitly or change the links and canonicals to `.html`.
+
+Hash routes are deliberately **not** in the sitemap — search engines drop fragments, so listing
+`/#/bank` was listing `/` three times.
 
 ---
 
@@ -101,7 +139,7 @@ js/config.js        Google client ID + API origin (no secrets)
 js/auth.js          GIS + email API client + demo fallback
 js/match.js         title matching
 js/app.js           game, bank, ranks, battle, share
-puzzles/index.json  startDate, dailyStartIndex 1001, order[], presetCount 863
+puzzles/index.json  startDate, dailyStartIndex 1001, order[] (deduped + scrambled), presetCount 600, dailyPoolCount 224
 puzzles/bXX.json    curated (good openings)
 puzzles/g{id}.json  Gutenberg extras (quality varies)
 tools/build_puzzles.py

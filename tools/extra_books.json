@@ -3,7 +3,7 @@
     "slug": "g95",
     "gutenberg": 95,
     "title": "The prisoner of Zenda",
-    "author": "Hope",
+    "author": "Anthony Hope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -16,7 +16,7 @@
     "slug": "g286",
     "gutenberg": 286,
     "title": "Laddie: A True Blue Story",
-    "author": "Stratton-Porter",
+    "author": "Gene Stratton-Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -28,7 +28,7 @@
     "slug": "g388",
     "gutenberg": 388,
     "title": "The Crossing",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -41,7 +41,7 @@
     "slug": "g1027",
     "gutenberg": 1027,
     "title": "The Lone Star Ranger: A Romance of the Border",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -54,7 +54,7 @@
     "slug": "g1033",
     "gutenberg": 1033,
     "title": "Rose o' the River",
-    "author": "Wiggin",
+    "author": "Kate Douglas Smith Wiggin",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -66,7 +66,7 @@
     "slug": "g1298",
     "gutenberg": 1298,
     "title": "The Virginian: A Horseman of the Plains",
-    "author": "Wister",
+    "author": "Owen Wister",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -79,7 +79,7 @@
     "slug": "g1869",
     "gutenberg": 1869,
     "title": "The Man in Lower Ten",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -92,7 +92,7 @@
     "slug": "g2059",
     "gutenberg": 2059,
     "title": "The Little Shepherd of Kingdom Come",
-    "author": "Fox",
+    "author": "Jr. John Fox",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -105,7 +105,7 @@
     "slug": "g2066",
     "gutenberg": 2066,
     "title": "Wildfire",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -117,7 +117,7 @@
     "slug": "g2799",
     "gutenberg": 2799,
     "title": "Eben Holden: A Tale of the North Country",
-    "author": "Bacheller",
+    "author": "Irving Bacheller",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -129,7 +129,7 @@
     "slug": "g2807",
     "gutenberg": 2807,
     "title": "To Have and to Hold",
-    "author": "Johnston",
+    "author": "Mary Johnston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -141,7 +141,7 @@
     "slug": "g3457",
     "gutenberg": 3457,
     "title": "The Man of the Forest",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -154,7 +154,7 @@
     "slug": "g4097",
     "gutenberg": 4097,
     "title": "Alice of Old Vincennes",
-    "author": "Thompson",
+    "author": "Maurice Thompson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -166,7 +166,7 @@
     "slug": "g4684",
     "gutenberg": 4684,
     "title": "The U. P. Trail",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -179,7 +179,7 @@
     "slug": "g5076",
     "gutenberg": 5076,
     "title": "The Spoilers",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -192,20 +192,22 @@
     "slug": "g5257",
     "gutenberg": 5257,
     "title": "The Broad Highway",
-    "author": "Farnol",
+    "author": "Jeffery Farnol",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Broad Highway",
       "Broad Highway"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the dedication and ANTE SCRIPTUM heading"
   },
   {
     "slug": "g5815",
     "gutenberg": 5815,
     "title": "The Great Impersonation",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -218,7 +220,7 @@
     "slug": "g6017",
     "gutenberg": 6017,
     "title": "The Silver Horde",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -231,7 +233,7 @@
     "slug": "g6801",
     "gutenberg": 6801,
     "title": "Beverly of Graustark",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -243,7 +245,7 @@
     "slug": "g6997",
     "gutenberg": 6997,
     "title": "The Winning of Barbara Worth",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -256,7 +258,7 @@
     "slug": "g7031",
     "gutenberg": 7031,
     "title": "The Sheik: A Novel",
-    "author": "Hull",
+    "author": "E. M. Hull",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -269,7 +271,7 @@
     "slug": "g8741",
     "gutenberg": 8741,
     "title": "The Brass Bowl",
-    "author": "Vance",
+    "author": "Louis Joseph Vance",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -282,7 +284,7 @@
     "slug": "g9836",
     "gutenberg": 9836,
     "title": "The Pawns Count",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -295,7 +297,7 @@
     "slug": "g9879",
     "gutenberg": 9879,
     "title": "The Amateur Gentleman",
-    "author": "Farnol",
+    "author": "Jeffery Farnol",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -308,7 +310,7 @@
     "slug": "g11572",
     "gutenberg": 11572,
     "title": "The Man from Brodney's",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -321,7 +323,7 @@
     "slug": "g12440",
     "gutenberg": 12440,
     "title": "D'Ri and I: A Tale of Daring Deeds in the Second War with the British.",
-    "author": "Bacheller",
+    "author": "Irving Bacheller",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -333,7 +335,7 @@
     "slug": "g12441",
     "gutenberg": 12441,
     "title": "The House of a Thousand Candles",
-    "author": "Nicholson",
+    "author": "Meredith Nicholson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -346,7 +348,7 @@
     "slug": "g13812",
     "gutenberg": 13812,
     "title": "Sir Mortimer: A Novel",
-    "author": "Johnston",
+    "author": "Mary Johnston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -358,7 +360,7 @@
     "slug": "g14001",
     "gutenberg": 14001,
     "title": "The Mississippi Bubble",
-    "author": "Hough",
+    "author": "Emerson Hough",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -371,7 +373,7 @@
     "slug": "g14079",
     "gutenberg": 14079,
     "title": "Sandy",
-    "author": "Rice",
+    "author": "Alice Caldwell Hegan Rice",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -383,7 +385,7 @@
     "slug": "g14219",
     "gutenberg": 14219,
     "title": "The Helmet of Navarre",
-    "author": "Runkle",
+    "author": "Bertha Runkle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -396,7 +398,7 @@
     "slug": "g14513",
     "gutenberg": 14513,
     "title": "Audrey",
-    "author": "Johnston",
+    "author": "Mary Johnston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -408,7 +410,7 @@
     "slug": "g14740",
     "gutenberg": 14740,
     "title": "The Princess Passes",
-    "author": "Williamson",
+    "author": "C. N. Williamson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -421,7 +423,7 @@
     "slug": "g14818",
     "gutenberg": 14818,
     "title": "The Daughter of Anderson Crow",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -434,7 +436,7 @@
     "slug": "g16101",
     "gutenberg": 16101,
     "title": "Diane of the Green Van",
-    "author": "Dalrymple",
+    "author": "Leona Dalrymple",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -446,20 +448,22 @@
     "slug": "g17237",
     "gutenberg": 17237,
     "title": "A Man for the Ages: A Story of the Builders of Democracy",
-    "author": "Bacheller",
+    "author": "Irving Bacheller",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "A Man for the Ages: A Story of the Builders of Democracy",
       "Man for the Ages: A Story of the Builders of Democracy"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g22158",
     "gutenberg": 22158,
     "title": "The Lure of the Mask",
-    "author": "MacGrath",
+    "author": "Harold MacGrath",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -472,7 +476,7 @@
     "slug": "g28877",
     "gutenberg": 28877,
     "title": "Penelope's Progress",
-    "author": "Wiggin",
+    "author": "Kate Douglas Smith Wiggin",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -484,7 +488,7 @@
     "slug": "g29571",
     "gutenberg": 29571,
     "title": "Nan of Music Mountain",
-    "author": "Spearman",
+    "author": "Frank H. Spearman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -496,7 +500,7 @@
     "slug": "g34020",
     "gutenberg": 34020,
     "title": "The Window at the White Cat",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -509,7 +513,7 @@
     "slug": "g41822",
     "gutenberg": 41822,
     "title": "Phroso: A Romance",
-    "author": "Hope",
+    "author": "Anthony Hope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -521,7 +525,7 @@
     "slug": "g42362",
     "gutenberg": 42362,
     "title": "Caleb West, Master Diver",
-    "author": "Smith",
+    "author": "Francis Hopkinson Smith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -533,20 +537,22 @@
     "slug": "g43241",
     "gutenberg": 43241,
     "title": "The Adventures of François",
-    "author": "Mitchell",
+    "author": "S. Weir Mitchell",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Adventures of François",
       "Adventures of François"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on a chapter summary"
   },
   {
     "slug": "g73",
     "gutenberg": 73,
     "title": "The Red Badge of Courage: An Episode of the American Civil War",
-    "author": "Crane",
+    "author": "Stephen Crane",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -559,7 +565,7 @@
     "slug": "g133",
     "gutenberg": 133,
     "title": "The Damnation of Theron Ware",
-    "author": "Frederic",
+    "author": "Harold Frederic",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -572,7 +578,7 @@
     "slug": "g140",
     "gutenberg": 140,
     "title": "The Jungle",
-    "author": "Sinclair",
+    "author": "Upton Sinclair",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -585,7 +591,7 @@
     "slug": "g238",
     "gutenberg": 238,
     "title": "Dear Enemy",
-    "author": "Webster",
+    "author": "Jean Webster",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -597,7 +603,7 @@
     "slug": "g284",
     "gutenberg": 284,
     "title": "The House of Mirth",
-    "author": "Wharton",
+    "author": "Edith Wharton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -610,7 +616,7 @@
     "slug": "g298",
     "gutenberg": 298,
     "title": "The Market-Place",
-    "author": "Frederic",
+    "author": "Harold Frederic",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -623,7 +629,7 @@
     "slug": "g327",
     "gutenberg": 327,
     "title": "The Princess Aline",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -636,7 +642,7 @@
     "slug": "g349",
     "gutenberg": 349,
     "title": "The Harvester",
-    "author": "Stratton-Porter",
+    "author": "Gene Stratton-Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -649,7 +655,7 @@
     "slug": "g402",
     "gutenberg": 402,
     "title": "Penrod",
-    "author": "Tarkington",
+    "author": "Booth Tarkington",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -661,7 +667,7 @@
     "slug": "g403",
     "gutenberg": 403,
     "title": "Soldiers of Fortune",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -673,7 +679,7 @@
     "slug": "g405",
     "gutenberg": 405,
     "title": "Adventures and Letters of Richard Harding Davis",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -685,7 +691,7 @@
     "slug": "g440",
     "gutenberg": 440,
     "title": "Just David",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -697,7 +703,7 @@
     "slug": "g481",
     "gutenberg": 481,
     "title": "In the Bishop's Carriage",
-    "author": "Michelson",
+    "author": "Miriam Michelson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -709,7 +715,7 @@
     "slug": "g498",
     "gutenberg": 498,
     "title": "Rebecca of Sunnybrook Farm",
-    "author": "Wiggin",
+    "author": "Kate Douglas Smith Wiggin",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -721,7 +727,7 @@
     "slug": "g506",
     "gutenberg": 506,
     "title": "The Shuttle",
-    "author": "Burnett",
+    "author": "Frances Hodgson Burnett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -734,7 +740,7 @@
     "slug": "g541",
     "gutenberg": 541,
     "title": "The Age of Innocence",
-    "author": "Wharton",
+    "author": "Edith Wharton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -747,7 +753,7 @@
     "slug": "g543",
     "gutenberg": 543,
     "title": "Main Street",
-    "author": "Lewis",
+    "author": "Sinclair Lewis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -759,7 +765,7 @@
     "slug": "g617",
     "gutenberg": 617,
     "title": "Poems",
-    "author": "Seeger",
+    "author": "Alan Seeger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -771,7 +777,7 @@
     "slug": "g850",
     "gutenberg": 850,
     "title": "Tom Grogan",
-    "author": "Smith",
+    "author": "Francis Hopkinson Smith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -783,19 +789,21 @@
     "slug": "g904",
     "gutenberg": 904,
     "title": "Her Father's Daughter",
-    "author": "Stratton-Porter",
+    "author": "Gene Stratton-Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Her Father's Daughter"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the character list"
   },
   {
     "slug": "g1083",
     "gutenberg": 1083,
     "title": "The Arrow of Gold: A Story Between Two Notes",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -808,7 +816,7 @@
     "slug": "g1098",
     "gutenberg": 1098,
     "title": "The Turmoil: A Novel",
-    "author": "Tarkington",
+    "author": "Booth Tarkington",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -821,7 +829,7 @@
     "slug": "g1156",
     "gutenberg": 1156,
     "title": "Babbitt",
-    "author": "Lewis",
+    "author": "Sinclair Lewis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -833,7 +841,7 @@
     "slug": "g1386",
     "gutenberg": 1386,
     "title": "Lady Baltimore",
-    "author": "Wister",
+    "author": "Owen Wister",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -845,7 +853,7 @@
     "slug": "g1450",
     "gutenberg": 1450,
     "title": "Pollyanna",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -857,7 +865,7 @@
     "slug": "g1550",
     "gutenberg": 1550,
     "title": "A Lady of Quality",
-    "author": "Burnett",
+    "author": "Frances Hodgson Burnett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -870,7 +878,7 @@
     "slug": "g1590",
     "gutenberg": 1590,
     "title": "The Amazing Interlude",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -883,7 +891,7 @@
     "slug": "g1601",
     "gutenberg": 1601,
     "title": "The Breaking Point",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -896,7 +904,7 @@
     "slug": "g1603",
     "gutenberg": 1603,
     "title": "The Blue Flower",
-    "author": "Van Dyke",
+    "author": "Henry Van Dyke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -909,7 +917,7 @@
     "slug": "g1611",
     "gutenberg": 1611,
     "title": "Seventeen",
-    "author": "Tarkington",
+    "author": "Booth Tarkington",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -921,7 +929,7 @@
     "slug": "g1671",
     "gutenberg": 1671,
     "title": "When a Man Marries",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -933,7 +941,7 @@
     "slug": "g1693",
     "gutenberg": 1693,
     "title": "Dangerous Days",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -945,7 +953,7 @@
     "slug": "g1970",
     "gutenberg": 1970,
     "title": "A Poor Wise Man",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -958,7 +966,7 @@
     "slug": "g2070",
     "gutenberg": 2070,
     "title": "To the Last Man",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -970,7 +978,7 @@
     "slug": "g2138",
     "gutenberg": 2138,
     "title": "The Day's Work - Part 1",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -983,7 +991,7 @@
     "slug": "g2316",
     "gutenberg": 2316,
     "title": "The Choir Invisible",
-    "author": "Allen",
+    "author": "James Lane Allen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -996,7 +1004,7 @@
     "slug": "g2384",
     "gutenberg": 2384,
     "title": "The Deliverance: A Romance of the Virginia Tobacco Fields",
-    "author": "Glasgow",
+    "author": "Ellen Anderson Gholson Glasgow",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1009,7 +1017,7 @@
     "slug": "g2514",
     "gutenberg": 2514,
     "title": "T. Tembarom",
-    "author": "Burnett",
+    "author": "Frances Hodgson Burnett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1021,7 +1029,7 @@
     "slug": "g2569",
     "gutenberg": 2569,
     "title": "The Day's Work",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1034,7 +1042,7 @@
     "slug": "g2853",
     "gutenberg": 2853,
     "title": "Quo Vadis: A Narrative of the Time of Nero",
-    "author": "Sienkiewicz",
+    "author": "Henryk Sienkiewicz",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1046,7 +1054,7 @@
     "slug": "g2988",
     "gutenberg": 2988,
     "title": "Mark Twain: A Biography. Complete",
-    "author": "Paine",
+    "author": "Albert Bigelow Paine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1058,20 +1066,22 @@
     "slug": "g3169",
     "gutenberg": 3169,
     "title": "The Pursuit of the House-Boat",
-    "author": "Bangs",
+    "author": "John Kendrick Bangs",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Pursuit of the House-Boat",
       "Pursuit of the House-Boat"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the list of illustrations"
   },
   {
     "slug": "g3199",
     "gutenberg": 3199,
     "title": "Mark Twain's Letters — Complete (1853-1910)",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1083,7 +1093,7 @@
     "slug": "g3249",
     "gutenberg": 3249,
     "title": "The Major",
-    "author": "Connor",
+    "author": "Ralph Connor",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1096,7 +1106,7 @@
     "slug": "g3263",
     "gutenberg": 3263,
     "title": "The Portygee",
-    "author": "Lincoln",
+    "author": "Joseph Crosby Lincoln",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1109,7 +1119,7 @@
     "slug": "g3265",
     "gutenberg": 3265,
     "title": "The Re-Creation of Brian Kent",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1122,7 +1132,7 @@
     "slug": "g3428",
     "gutenberg": 3428,
     "title": "The Two Vanrevels",
-    "author": "Tarkington",
+    "author": "Booth Tarkington",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1135,7 +1145,7 @@
     "slug": "g3538",
     "gutenberg": 3538,
     "title": "The Americanization of Edward Bok",
-    "author": "Bok",
+    "author": "Edward William Bok",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1148,7 +1158,7 @@
     "slug": "g3637",
     "gutenberg": 3637,
     "title": "The Garden of Allah",
-    "author": "Hichens",
+    "author": "Robert Hichens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1161,7 +1171,7 @@
     "slug": "g3659",
     "gutenberg": 3659,
     "title": "The Rosary",
-    "author": "Barclay",
+    "author": "Florence L. Barclay",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1174,7 +1184,7 @@
     "slug": "g3684",
     "gutenberg": 3684,
     "title": "Mr. Crewe's Career — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1186,7 +1196,7 @@
     "slug": "g3722",
     "gutenberg": 3722,
     "title": "A Daughter of the Land",
-    "author": "Stratton-Porter",
+    "author": "Gene Stratton-Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1199,7 +1209,7 @@
     "slug": "g3739",
     "gutenberg": 3739,
     "title": "A Far Country — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1212,7 +1222,7 @@
     "slug": "g3766",
     "gutenberg": 3766,
     "title": "Coniston — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1224,7 +1234,7 @@
     "slug": "g3791",
     "gutenberg": 3791,
     "title": "The Reign of Law; a tale of the Kentucky hemp fields",
-    "author": "Allen",
+    "author": "James Lane Allen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1237,7 +1247,7 @@
     "slug": "g3828",
     "gutenberg": 3828,
     "title": "Simon the Jester",
-    "author": "Locke",
+    "author": "William John Locke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1249,7 +1259,7 @@
     "slug": "g4287",
     "gutenberg": 4287,
     "title": "The Red Planet",
-    "author": "Locke",
+    "author": "William John Locke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1262,7 +1272,7 @@
     "slug": "g4377",
     "gutenberg": 4377,
     "title": "Mrs. Wiggs of the Cabbage Patch",
-    "author": "Rice",
+    "author": "Alice Caldwell Hegan Rice",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1274,7 +1284,7 @@
     "slug": "g4379",
     "gutenberg": 4379,
     "title": "The Fortunate Youth",
-    "author": "Locke",
+    "author": "William John Locke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1287,7 +1297,7 @@
     "slug": "g4380",
     "gutenberg": 4380,
     "title": "Under Fire: The Story of a Squad",
-    "author": "Barbusse",
+    "author": "Henri Barbusse",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1299,7 +1309,7 @@
     "slug": "g4382",
     "gutenberg": 4382,
     "title": "The pit",
-    "author": "Norris",
+    "author": "Frank Norris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1312,7 +1322,7 @@
     "slug": "g4383",
     "gutenberg": 4383,
     "title": "Maria Chapdelaine: A Tale of the Lake St. John Country",
-    "author": "Hémon",
+    "author": "Louis Hémon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1324,7 +1334,7 @@
     "slug": "g4516",
     "gutenberg": 4516,
     "title": "Peter: A Novel of Which He is Not the Hero",
-    "author": "Smith",
+    "author": "Francis Hopkinson Smith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1336,7 +1346,7 @@
     "slug": "g4603",
     "gutenberg": 4603,
     "title": "In the Wilderness",
-    "author": "Hichens",
+    "author": "Robert Hichens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1348,7 +1358,7 @@
     "slug": "g4790",
     "gutenberg": 4790,
     "title": "Half a Rogue",
-    "author": "MacGrath",
+    "author": "Harold MacGrath",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1360,7 +1370,7 @@
     "slug": "g4915",
     "gutenberg": 4915,
     "title": "The Heart of Rachael",
-    "author": "Norris",
+    "author": "Kathleen Thompson Norris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1373,7 +1383,7 @@
     "slug": "g5006",
     "gutenberg": 5006,
     "title": "Harriet and the Piper",
-    "author": "Norris",
+    "author": "Kathleen Thompson Norris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1385,7 +1395,7 @@
     "slug": "g5122",
     "gutenberg": 5122,
     "title": "The Trail of the Lonesome Pine",
-    "author": "Fox",
+    "author": "Jr. John Fox",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1398,7 +1408,7 @@
     "slug": "g5129",
     "gutenberg": 5129,
     "title": "The Prodigal Judge",
-    "author": "Kester",
+    "author": "Vaughan Kester",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1411,7 +1421,7 @@
     "slug": "g5145",
     "gutenberg": 5145,
     "title": "The Heart of the Hills",
-    "author": "Fox",
+    "author": "Jr. John Fox",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1424,7 +1434,7 @@
     "slug": "g5229",
     "gutenberg": 5229,
     "title": "Felix O'Day",
-    "author": "Smith",
+    "author": "Francis Hopkinson Smith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1436,7 +1446,7 @@
     "slug": "g5364",
     "gutenberg": 5364,
     "title": "The Inside of the Cup — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1449,7 +1459,7 @@
     "slug": "g5373",
     "gutenberg": 5373,
     "title": "Richard Carvel — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1461,7 +1471,7 @@
     "slug": "g5382",
     "gutenberg": 5382,
     "title": "A Modern Chronicle — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1474,7 +1484,7 @@
     "slug": "g5396",
     "gutenberg": 5396,
     "title": "The Crisis — Complete",
-    "author": "Churchill",
+    "author": "Winston Churchill",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1487,7 +1497,7 @@
     "slug": "g5422",
     "gutenberg": 5422,
     "title": "The Masquerader",
-    "author": "Thurston",
+    "author": "Katherine Cecil Thurston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1500,7 +1510,7 @@
     "slug": "g5719",
     "gutenberg": 5719,
     "title": "Janice Meredith: A Story of the American Revolution",
-    "author": "Ford",
+    "author": "Paul Leicester Ford",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1512,7 +1522,7 @@
     "slug": "g5962",
     "gutenberg": 5962,
     "title": "Oh, Money! Money! A Novel",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1524,7 +1534,7 @@
     "slug": "g5970",
     "gutenberg": 5970,
     "title": "Lovey Mary",
-    "author": "Rice",
+    "author": "Alice Caldwell Hegan Rice",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1536,7 +1546,7 @@
     "slug": "g5971",
     "gutenberg": 5971,
     "title": "Jane Cable",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1548,7 +1558,7 @@
     "slug": "g6037",
     "gutenberg": 6037,
     "title": "The One Woman: A Story of Modern Utopia",
-    "author": "Dixon",
+    "author": "Jr. Thomas Dixon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1561,19 +1571,21 @@
     "slug": "g6100",
     "gutenberg": 6100,
     "title": "Pollyanna Grows Up",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Pollyanna Grows Up"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the list of illustrations"
   },
   {
     "slug": "g6105",
     "gutenberg": 6105,
     "title": "Their Yesterdays",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1585,7 +1597,7 @@
     "slug": "g6267",
     "gutenberg": 6267,
     "title": "The Weavers: a tale of England and Egypt of fifty years ago - Complete",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1598,7 +1610,7 @@
     "slug": "g6315",
     "gutenberg": 6315,
     "title": "The Awakening of Helena Richie",
-    "author": "Deland",
+    "author": "Margaret Wade Campbell Deland",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1611,7 +1623,7 @@
     "slug": "g6415",
     "gutenberg": 6415,
     "title": "This Freedom",
-    "author": "Hutchinson",
+    "author": "A. S. M. Hutchinson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1623,7 +1635,7 @@
     "slug": "g6474",
     "gutenberg": 6474,
     "title": "The Iron Woman",
-    "author": "Deland",
+    "author": "Margaret Wade Campbell Deland",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1636,7 +1648,7 @@
     "slug": "g6485",
     "gutenberg": 6485,
     "title": "Hugh Wynne, Free Quaker",
-    "author": "Mitchell",
+    "author": "S. Weir Mitchell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1648,7 +1660,7 @@
     "slug": "g6491",
     "gutenberg": 6491,
     "title": "The Head of the House of Coombe",
-    "author": "Burnett",
+    "author": "Frances Hodgson Burnett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1661,7 +1673,7 @@
     "slug": "g7179",
     "gutenberg": 7179,
     "title": "Beside the Bonnie Brier Bush",
-    "author": "Maclaren",
+    "author": "Ian Maclaren",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1673,7 +1685,7 @@
     "slug": "g7523",
     "gutenberg": 7523,
     "title": "The Lady of the Decoration",
-    "author": "Little",
+    "author": "Frances Little",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1686,7 +1698,7 @@
     "slug": "g8407",
     "gutenberg": 8407,
     "title": "The Christian: A Story",
-    "author": "Caine",
+    "author": "Sir Hall Caine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1699,7 +1711,7 @@
     "slug": "g8535",
     "gutenberg": 8535,
     "title": "The Sisters-In-Law: A Novel of Our Time",
-    "author": "Atherton",
+    "author": "Gertrude Franklin Horn Atherton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1712,7 +1724,7 @@
     "slug": "g9410",
     "gutenberg": 9410,
     "title": "Helen of the Old House",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1724,7 +1736,7 @@
     "slug": "g9441",
     "gutenberg": 9441,
     "title": "Helbeck of Bannisdale — Volume I",
-    "author": "Ward",
+    "author": "Mrs. Humphry Ward",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1736,7 +1748,7 @@
     "slug": "g9489",
     "gutenberg": 9489,
     "title": "Michael O'Halloran",
-    "author": "Stratton-Porter",
+    "author": "Gene Stratton-Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1748,7 +1760,7 @@
     "slug": "g10201",
     "gutenberg": 10201,
     "title": "The Desert of Wheat",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1761,7 +1773,7 @@
     "slug": "g10509",
     "gutenberg": 10509,
     "title": "The Bars of Iron",
-    "author": "Dell",
+    "author": "Ethel M. Dell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1774,7 +1786,7 @@
     "slug": "g10959",
     "gutenberg": 10959,
     "title": "The Visits of Elizabeth",
-    "author": "Glyn",
+    "author": "Elinor Glyn",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1787,7 +1799,7 @@
     "slug": "g11143",
     "gutenberg": 11143,
     "title": "Mary Marie",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1799,7 +1811,7 @@
     "slug": "g11715",
     "gutenberg": 11715,
     "title": "The Eyes of the World",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1812,7 +1824,7 @@
     "slug": "g12482",
     "gutenberg": 12482,
     "title": "The Mettle of the Pasture",
-    "author": "Allen",
+    "author": "James Lane Allen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1825,7 +1837,7 @@
     "slug": "g13454",
     "gutenberg": 13454,
     "title": "Aylwin",
-    "author": "Watts-Dunton",
+    "author": "Theodore Watts-Dunton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1837,7 +1849,7 @@
     "slug": "g13497",
     "gutenberg": 13497,
     "title": "Greatheart",
-    "author": "Dell",
+    "author": "Ethel M. Dell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1849,7 +1861,7 @@
     "slug": "g13532",
     "gutenberg": 13532,
     "title": "Kindred of the Dust",
-    "author": "Kyne",
+    "author": "Peter B. Kyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1861,7 +1873,7 @@
     "slug": "g13763",
     "gutenberg": 13763,
     "title": "The Lamp in the Desert",
-    "author": "Dell",
+    "author": "Ethel M. Dell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1874,7 +1886,7 @@
     "slug": "g13782",
     "gutenberg": 13782,
     "title": "Lady Rose's Daughter",
-    "author": "Ward",
+    "author": "Mrs. Humphry Ward",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1886,7 +1898,7 @@
     "slug": "g13813",
     "gutenberg": 13813,
     "title": "The Common Law",
-    "author": "Chambers",
+    "author": "Robert W. Chambers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1899,7 +1911,7 @@
     "slug": "g13883",
     "gutenberg": 13883,
     "title": "The Tree of Heaven",
-    "author": "Sinclair",
+    "author": "May Sinclair",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1912,20 +1924,22 @@
     "slug": "g13937",
     "gutenberg": 13937,
     "title": "The Mysterious Rider",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Mysterious Rider",
       "Mysterious Rider"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on an illustration caption and title page"
   },
   {
     "slug": "g13967",
     "gutenberg": 13967,
     "title": "Nedra",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1937,7 +1951,7 @@
     "slug": "g13985",
     "gutenberg": 13985,
     "title": "V. V.'s Eyes",
-    "author": "Harrison",
+    "author": "Henry Sydnor Harrison",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1949,7 +1963,7 @@
     "slug": "g14060",
     "gutenberg": 14060,
     "title": "Mr. Britling Sees It Through",
-    "author": "Wells",
+    "author": "H. G. Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1961,19 +1975,21 @@
     "slug": "g14068",
     "gutenberg": 14068,
     "title": "Gordon Keith",
-    "author": "Page",
+    "author": "Thomas Nelson Page",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Gordon Keith"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the list of illustrations"
   },
   {
     "slug": "g14126",
     "gutenberg": 14126,
     "title": "The Marriage of William Ashe",
-    "author": "Ward",
+    "author": "Mrs. Humphry Ward",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1986,7 +2002,7 @@
     "slug": "g14145",
     "gutenberg": 14145,
     "title": "If Winter Comes",
-    "author": "Hutchinson",
+    "author": "A. S. M. Hutchinson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -1998,7 +2014,7 @@
     "slug": "g14263",
     "gutenberg": 14263,
     "title": "Katrine: A Novel",
-    "author": "Lane",
+    "author": "Elinor Macartney Lane",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2010,7 +2026,7 @@
     "slug": "g14303",
     "gutenberg": 14303,
     "title": "Queed: A Novel",
-    "author": "Harrison",
+    "author": "Henry Sydnor Harrison",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2022,7 +2038,7 @@
     "slug": "g14355",
     "gutenberg": 14355,
     "title": "54-40 or Fight",
-    "author": "Hough",
+    "author": "Emerson Hough",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2034,7 +2050,7 @@
     "slug": "g14367",
     "gutenberg": 14367,
     "title": "When a man's a man",
-    "author": "Wright",
+    "author": "Harold Bell Wright",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2046,7 +2062,7 @@
     "slug": "g14395",
     "gutenberg": 14395,
     "title": "Septimus",
-    "author": "Locke",
+    "author": "William John Locke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2058,7 +2074,7 @@
     "slug": "g14396",
     "gutenberg": 14396,
     "title": "His Family",
-    "author": "Poole",
+    "author": "Ernest Poole",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2070,7 +2086,7 @@
     "slug": "g14532",
     "gutenberg": 14532,
     "title": "The Honorable Peter Stirling and What People Thought of Him",
-    "author": "Ford",
+    "author": "Paul Leicester Ford",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2083,7 +2099,7 @@
     "slug": "g14571",
     "gutenberg": 14571,
     "title": "Life and Gabriella: The Story of a Woman's Courage",
-    "author": "Glasgow",
+    "author": "Ellen Anderson Gholson Glasgow",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2095,7 +2111,7 @@
     "slug": "g14579",
     "gutenberg": 14579,
     "title": "Simon Called Peter",
-    "author": "Keable",
+    "author": "Robert Keable",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2107,7 +2123,7 @@
     "slug": "g14581",
     "gutenberg": 14581,
     "title": "The Just and the Unjust",
-    "author": "Kester",
+    "author": "Vaughan Kester",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2120,7 +2136,7 @@
     "slug": "g14605",
     "gutenberg": 14605,
     "title": "The Devil's Garden",
-    "author": "Maxwell",
+    "author": "W. B. Maxwell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2133,7 +2149,7 @@
     "slug": "g14645",
     "gutenberg": 14645,
     "title": "Unleavened Bread",
-    "author": "Grant",
+    "author": "Robert Grant",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2145,7 +2161,7 @@
     "slug": "g14646",
     "gutenberg": 14646,
     "title": "Christopher and Columbus",
-    "author": "Von Arnim",
+    "author": "Elizabeth Von Arnim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2157,7 +2173,7 @@
     "slug": "g14669",
     "gutenberg": 14669,
     "title": "Jaffery",
-    "author": "Locke",
+    "author": "William John Locke",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2169,7 +2185,7 @@
     "slug": "g14671",
     "gutenberg": 14671,
     "title": "Dorothy Vernon of Haddon Hall",
-    "author": "Major",
+    "author": "Charles Major",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2181,7 +2197,7 @@
     "slug": "g14682",
     "gutenberg": 14682,
     "title": "My Friend Prospero",
-    "author": "Harland",
+    "author": "Henry Harland",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2193,7 +2209,7 @@
     "slug": "g14696",
     "gutenberg": 14696,
     "title": "The Wheel of Life",
-    "author": "Glasgow",
+    "author": "Ellen Anderson Gholson Glasgow",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2206,7 +2222,7 @@
     "slug": "g14697",
     "gutenberg": 14697,
     "title": "Lewis Rand",
-    "author": "Johnston",
+    "author": "Mary Johnston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2218,7 +2234,7 @@
     "slug": "g14730",
     "gutenberg": 14730,
     "title": "The Redemption of David Corson",
-    "author": "Goss",
+    "author": "Charles Frederic Goss",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2231,20 +2247,22 @@
     "slug": "g14813",
     "gutenberg": 14813,
     "title": "The Life and Death of Richard Yea-and-Nay",
-    "author": "Hewlett",
+    "author": "Maurice Hewlett",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Life and Death of Richard Yea-and-Nay",
       "Life and Death of Richard Yea-and-Nay"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g14852",
     "gutenberg": 14852,
     "title": "The Younger Set",
-    "author": "Chambers",
+    "author": "Robert W. Chambers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2257,7 +2275,7 @@
     "slug": "g14885",
     "gutenberg": 14885,
     "title": "Red Pottage",
-    "author": "Cholmondeley",
+    "author": "Mary Cholmondeley",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2269,7 +2287,7 @@
     "slug": "g14957",
     "gutenberg": 14957,
     "title": "The Brimming Cup",
-    "author": "Fisher",
+    "author": "Dorothy Canfield Fisher",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2282,7 +2300,7 @@
     "slug": "g14961",
     "gutenberg": 14961,
     "title": "Sentimental Tommy",
-    "author": "Barrie",
+    "author": "J. M. Barrie",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2294,7 +2312,7 @@
     "slug": "g15138",
     "gutenberg": 15138,
     "title": "A Hoosier Chronicle",
-    "author": "Nicholson",
+    "author": "Meredith Nicholson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2307,7 +2325,7 @@
     "slug": "g15384",
     "gutenberg": 15384,
     "title": "The Real Adventure",
-    "author": "Webster",
+    "author": "Henry Kitchell Webster",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2320,7 +2338,7 @@
     "slug": "g15817",
     "gutenberg": 15817,
     "title": "The Melting of Molly",
-    "author": "Daviess",
+    "author": "Maria Thompson Daviess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2333,7 +2351,7 @@
     "slug": "g16074",
     "gutenberg": 16074,
     "title": "The Definite Object: A Romance of New York",
-    "author": "Farnol",
+    "author": "Jeffery Farnol",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2346,20 +2364,22 @@
     "slug": "g16389",
     "gutenberg": 16389,
     "title": "The Enchanted April",
-    "author": "Von Arnim",
+    "author": "Elizabeth Von Arnim",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Enchanted April",
       "Enchanted April"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens mid-sentence, front matter split the first line"
   },
   {
     "slug": "g16632",
     "gutenberg": 16632,
     "title": "Over Here",
-    "author": "Guest",
+    "author": "Edgar A. Guest",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2371,7 +2391,7 @@
     "slug": "g17498",
     "gutenberg": 17498,
     "title": "When Knighthood Was in Flower",
-    "author": "Major",
+    "author": "Charles Major",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2383,7 +2403,7 @@
     "slug": "g17617",
     "gutenberg": 17617,
     "title": "David Harum",
-    "author": "Westcott",
+    "author": "Edward Noyes Westcott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2395,7 +2415,7 @@
     "slug": "g18056",
     "gutenberg": 18056,
     "title": "The Tin Soldier",
-    "author": "Bailey",
+    "author": "Temple Bailey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2408,7 +2428,7 @@
     "slug": "g18259",
     "gutenberg": 18259,
     "title": "Gentle Julia",
-    "author": "Tarkington",
+    "author": "Booth Tarkington",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2420,7 +2440,7 @@
     "slug": "g18665",
     "gutenberg": 18665,
     "title": "Molly Make-Believe",
-    "author": "Abbott",
+    "author": "Eleanor Hallowell Abbott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2432,7 +2452,7 @@
     "slug": "g20072",
     "gutenberg": 20072,
     "title": "With the Colors",
-    "author": "Appleton",
+    "author": "Everard Jack Appleton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2444,7 +2464,7 @@
     "slug": "g20328",
     "gutenberg": 20328,
     "title": "Simon Dale",
-    "author": "Hope",
+    "author": "Anthony Hope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2456,7 +2476,7 @@
     "slug": "g20399",
     "gutenberg": 20399,
     "title": "Kate Carnegie and Those Ministers",
-    "author": "Maclaren",
+    "author": "Ian Maclaren",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2468,32 +2488,36 @@
     "slug": "g21777",
     "gutenberg": 21777,
     "title": "The Years Between",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Years Between",
       "Years Between"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the index of poems"
   },
   {
     "slug": "g21959",
     "gutenberg": 21959,
     "title": "Letters from a Self-Made Merchant to His Son",
-    "author": "Lorimer",
+    "author": "George Horace Lorimer",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Letters from a Self-Made Merchant to His Son"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on a caption tail and title page"
   },
   {
     "slug": "g22066",
     "gutenberg": 22066,
     "title": "The Long Roll",
-    "author": "Johnston",
+    "author": "Mary Johnston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2506,7 +2530,7 @@
     "slug": "g22537",
     "gutenberg": 22537,
     "title": "Mr. Dooley in Peace and in War",
-    "author": "Dunne",
+    "author": "Finley Peter Dunne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2518,20 +2542,22 @@
     "slug": "g23784",
     "gutenberg": 23784,
     "title": "The History of Sir Richard Calmady: A Romance",
-    "author": "Malet",
+    "author": "Lucas Malet",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The History of Sir Richard Calmady: A Romance",
       "History of Sir Richard Calmady: A Romance"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g25542",
     "gutenberg": 25542,
     "title": "Black Oxen",
-    "author": "Atherton",
+    "author": "Gertrude Franklin Horn Atherton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2543,7 +2569,7 @@
     "slug": "g25570",
     "gutenberg": 25570,
     "title": "The Manxman : a novel",
-    "author": "Caine",
+    "author": "Sir Hall Caine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2556,7 +2582,7 @@
     "slug": "g25702",
     "gutenberg": 25702,
     "title": "The Kingdom Round the Corner: A Novel",
-    "author": "Dawson",
+    "author": "Coningsby Dawson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2569,7 +2595,7 @@
     "slug": "g29932",
     "gutenberg": 29932,
     "title": "The Harbor",
-    "author": "Poole",
+    "author": "Ernest Poole",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2582,7 +2608,7 @@
     "slug": "g30115",
     "gutenberg": 30115,
     "title": "Tante",
-    "author": "Sedgwick",
+    "author": "Anne Douglas Sedgwick",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2594,7 +2620,7 @@
     "slug": "g33490",
     "gutenberg": 33490,
     "title": "The Gambler: A Novel",
-    "author": "Thurston",
+    "author": "Katherine Cecil Thurston",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2607,7 +2633,7 @@
     "slug": "g33963",
     "gutenberg": 33963,
     "title": "The Valiants of Virginia",
-    "author": "Rives",
+    "author": "Hallie Erminie Rives",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2620,7 +2646,7 @@
     "slug": "g34297",
     "gutenberg": 34297,
     "title": "Angela's Business",
-    "author": "Harrison",
+    "author": "Henry Sydnor Harrison",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2632,7 +2658,7 @@
     "slug": "g35093",
     "gutenberg": 35093,
     "title": "The Road to Understanding",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2645,7 +2671,7 @@
     "slug": "g36355",
     "gutenberg": 36355,
     "title": "The Salamander",
-    "author": "Johnson",
+    "author": "Owen Johnson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2658,7 +2684,7 @@
     "slug": "g39137",
     "gutenberg": 39137,
     "title": "Shrewsbury: A Romance",
-    "author": "Weyman",
+    "author": "Stanley John Weyman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2670,7 +2696,7 @@
     "slug": "g39689",
     "gutenberg": 39689,
     "title": "Satan Sanderson",
-    "author": "Rives",
+    "author": "Hallie Erminie Rives",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2682,7 +2708,7 @@
     "slug": "g39858",
     "gutenberg": 39858,
     "title": "Trilby",
-    "author": "Du Maurier",
+    "author": "George Du Maurier",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2694,7 +2720,7 @@
     "slug": "g39984",
     "gutenberg": 39984,
     "title": "Lord Loveland Discovers America",
-    "author": "Williamson",
+    "author": "C. N. Williamson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2706,19 +2732,21 @@
     "slug": "g40140",
     "gutenberg": 40140,
     "title": "On the Face of the Waters: A Tale of the Mutiny",
-    "author": "Steel",
+    "author": "Flora Annie Webster Steel",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "On the Face of the Waters: A Tale of the Mutiny"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the printing history"
   },
   {
     "slug": "g42797",
     "gutenberg": 42797,
     "title": "The Worn Doorstep",
-    "author": "Sherwood",
+    "author": "Margaret Pollock Sherwood",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2731,7 +2759,7 @@
     "slug": "g43069",
     "gutenberg": 43069,
     "title": "The Hundredth Chance",
-    "author": "Dell",
+    "author": "Ethel M. Dell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2744,7 +2772,7 @@
     "slug": "g43726",
     "gutenberg": 43726,
     "title": "The Days of Auld Lang Syne",
-    "author": "Maclaren",
+    "author": "Ian Maclaren",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2757,7 +2785,7 @@
     "slug": "g46046",
     "gutenberg": 46046,
     "title": "Sonia: Between Two Worlds",
-    "author": "McKenna",
+    "author": "Stephen McKenna",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2769,7 +2797,7 @@
     "slug": "g46992",
     "gutenberg": 46992,
     "title": "Three Plays by Brieux",
-    "author": "Brieux",
+    "author": "Eugène Brieux",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2781,7 +2809,7 @@
     "slug": "g3239",
     "gutenberg": 3239,
     "title": "The Puppet Crown",
-    "author": "MacGrath",
+    "author": "Harold MacGrath",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2794,7 +2822,7 @@
     "slug": "g3288",
     "gutenberg": 3288,
     "title": "The Sky Pilot in No Man's Land",
-    "author": "Connor",
+    "author": "Ralph Connor",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2807,7 +2835,7 @@
     "slug": "g3294",
     "gutenberg": 3294,
     "title": "The sea-hawk",
-    "author": "Sabatini",
+    "author": "Rafael Sabatini",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2820,7 +2848,7 @@
     "slug": "g4082",
     "gutenberg": 4082,
     "title": "The Barrier",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2833,7 +2861,7 @@
     "slug": "g4707",
     "gutenberg": 4707,
     "title": "The Valley of Silent Men: A Story of the Three River Country",
-    "author": "Curwood",
+    "author": "James Oliver Curwood",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2846,7 +2874,7 @@
     "slug": "g4747",
     "gutenberg": 4747,
     "title": "The River's End",
-    "author": "Curwood",
+    "author": "James Oliver Curwood",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2859,7 +2887,7 @@
     "slug": "g5142",
     "gutenberg": 5142,
     "title": "Graustark",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2871,7 +2899,7 @@
     "slug": "g5748",
     "gutenberg": 5748,
     "title": "In Secret",
-    "author": "Chambers",
+    "author": "Robert W. Chambers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2883,7 +2911,7 @@
     "slug": "g6236",
     "gutenberg": 6236,
     "title": "The Battle of the Strong: A Romance of Two Kingdoms — Complete",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2896,7 +2924,7 @@
     "slug": "g6379",
     "gutenberg": 6379,
     "title": "The Net",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2909,7 +2937,7 @@
     "slug": "g9779",
     "gutenberg": 9779,
     "title": "The Black Bag",
-    "author": "Vance",
+    "author": "Louis Joseph Vance",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2922,7 +2950,7 @@
     "slug": "g12190",
     "gutenberg": 12190,
     "title": "The Adventures of Captain Horn",
-    "author": "Stockton",
+    "author": "Frank R. Stockton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2935,7 +2963,7 @@
     "slug": "g13913",
     "gutenberg": 13913,
     "title": "The Port of Missing Men",
-    "author": "Nicholson",
+    "author": "Meredith Nicholson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2948,19 +2976,21 @@
     "slug": "g14284",
     "gutenberg": 14284,
     "title": "Truxton King: A Story of Graustark",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Truxton King: A Story of Graustark"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on an illustration caption fragment"
   },
   {
     "slug": "g14960",
     "gutenberg": 14960,
     "title": "The silent places",
-    "author": "White",
+    "author": "Stewart Edward White",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2973,19 +3003,21 @@
     "slug": "g15",
     "gutenberg": 15,
     "title": "Moby-Dick; or, The Whale",
-    "author": "Melville",
+    "author": "Herman Melville",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Moby-Dick; or, The Whale"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the copyright page"
   },
   {
     "slug": "g42",
     "gutenberg": 42,
     "title": "The strange case of Dr. Jekyll and Mr. Hyde",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -2998,7 +3030,7 @@
     "slug": "g60",
     "gutenberg": 60,
     "title": "The Scarlet Pimpernel",
-    "author": "Orczy",
+    "author": "Baroness Emmuska Orczy Orczy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3011,7 +3043,7 @@
     "slug": "g62",
     "gutenberg": 62,
     "title": "A princess of Mars",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3024,7 +3056,7 @@
     "slug": "g64",
     "gutenberg": 64,
     "title": "The gods of Mars",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3037,7 +3069,7 @@
     "slug": "g68",
     "gutenberg": 68,
     "title": "The warlord of Mars",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3050,7 +3082,7 @@
     "slug": "g72",
     "gutenberg": 72,
     "title": "Thuvia, maid of Mars",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3062,7 +3094,7 @@
     "slug": "g78",
     "gutenberg": 78,
     "title": "Tarzan of the Apes",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3074,7 +3106,7 @@
     "slug": "g85",
     "gutenberg": 85,
     "title": "The Beasts of Tarzan",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3087,7 +3119,7 @@
     "slug": "g91",
     "gutenberg": 91,
     "title": "Tom Sawyer Abroad",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3099,7 +3131,7 @@
     "slug": "g93",
     "gutenberg": 93,
     "title": "Tom Sawyer, Detective",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3111,7 +3143,7 @@
     "slug": "g96",
     "gutenberg": 96,
     "title": "The Monster Men",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3124,7 +3156,7 @@
     "slug": "g106",
     "gutenberg": 106,
     "title": "Jungle Tales of Tarzan",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3136,7 +3168,7 @@
     "slug": "g108",
     "gutenberg": 108,
     "title": "The Return of Sherlock Holmes",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3149,7 +3181,7 @@
     "slug": "g121",
     "gutenberg": 121,
     "title": "Northanger Abbey",
-    "author": "Austen",
+    "author": "Jane Austen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3161,7 +3193,7 @@
     "slug": "g123",
     "gutenberg": 123,
     "title": "At the Earth's Core",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3173,7 +3205,7 @@
     "slug": "g139",
     "gutenberg": 139,
     "title": "The Lost World",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3186,7 +3218,7 @@
     "slug": "g149",
     "gutenberg": 149,
     "title": "The Lost Continent",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3199,7 +3231,7 @@
     "slug": "g155",
     "gutenberg": 155,
     "title": "The Moonstone",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3212,20 +3244,22 @@
     "slug": "g169",
     "gutenberg": 169,
     "title": "The Well at the World's End: A Tale",
-    "author": "Morris",
+    "author": "William Morris",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Well at the World's End: A Tale",
       "Well at the World's End: A Tale"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g170",
     "gutenberg": 170,
     "title": "The Haunted Hotel: A Mystery of Modern Venice",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3238,7 +3272,7 @@
     "slug": "g173",
     "gutenberg": 173,
     "title": "The Insidious Dr. Fu Manchu",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3251,7 +3285,7 @@
     "slug": "g175",
     "gutenberg": 175,
     "title": "The Phantom of the Opera",
-    "author": "Leroux",
+    "author": "Gaston Leroux",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3264,7 +3298,7 @@
     "slug": "g204",
     "gutenberg": 204,
     "title": "The innocence of Father Brown",
-    "author": "Chesterton",
+    "author": "G. K. Chesterton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3277,7 +3311,7 @@
     "slug": "g209",
     "gutenberg": 209,
     "title": "The Turn of the Screw",
-    "author": "James",
+    "author": "Henry James",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3290,7 +3324,7 @@
     "slug": "g223",
     "gutenberg": 223,
     "title": "The wisdom of Father Brown",
-    "author": "Chesterton",
+    "author": "G. K. Chesterton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3303,7 +3337,7 @@
     "slug": "g293",
     "gutenberg": 293,
     "title": "Paul Prescott's Charge",
-    "author": "Alger",
+    "author": "Jr. Horatio Alger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3315,7 +3349,7 @@
     "slug": "g294",
     "gutenberg": 294,
     "title": "The Captain of the Polestar, and Other Tales",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3328,7 +3362,7 @@
     "slug": "g305",
     "gutenberg": 305,
     "title": "The Count's Millions",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3341,7 +3375,7 @@
     "slug": "g310",
     "gutenberg": 310,
     "title": "Before Adam",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3353,7 +3387,7 @@
     "slug": "g315",
     "gutenberg": 315,
     "title": "Rhymes of a Red Cross Man",
-    "author": "Service",
+    "author": "Robert W. Service",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3365,7 +3399,7 @@
     "slug": "g321",
     "gutenberg": 321,
     "title": "Moran of the Lady Letty",
-    "author": "Norris",
+    "author": "Frank Norris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3377,7 +3411,7 @@
     "slug": "g322",
     "gutenberg": 322,
     "title": "St. Ives: Being the Adventures of a French Prisoner in England",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3389,7 +3423,7 @@
     "slug": "g324",
     "gutenberg": 324,
     "title": "A Knight of the Cumberland",
-    "author": "Fox",
+    "author": "Jr. John Fox",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3402,7 +3436,7 @@
     "slug": "g331",
     "gutenberg": 331,
     "title": "The Mucker",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3415,7 +3449,7 @@
     "slug": "g353",
     "gutenberg": 353,
     "title": "In Flanders Fields, and Other Poems",
-    "author": "McCrae",
+    "author": "John McCrae",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3427,7 +3461,7 @@
     "slug": "g355",
     "gutenberg": 355,
     "title": "The Parasite: A Story",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3440,7 +3474,7 @@
     "slug": "g358",
     "gutenberg": 358,
     "title": "The Scarlet Car",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3453,7 +3487,7 @@
     "slug": "g363",
     "gutenberg": 363,
     "title": "The Oakdale Affair",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3466,7 +3500,7 @@
     "slug": "g369",
     "gutenberg": 369,
     "title": "The outlaw of Torn",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3479,7 +3513,7 @@
     "slug": "g372",
     "gutenberg": 372,
     "title": "Prince Otto, a Romance",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3491,7 +3525,7 @@
     "slug": "g378",
     "gutenberg": 378,
     "title": "The White Knight: Tirant Lo Blanc",
-    "author": "Martorell",
+    "author": "Joanot Martorell",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3504,7 +3538,7 @@
     "slug": "g384",
     "gutenberg": 384,
     "title": "The Lost Prince",
-    "author": "Burnett",
+    "author": "Frances Hodgson Burnett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3517,7 +3551,7 @@
     "slug": "g389",
     "gutenberg": 389,
     "title": "The Great God Pan",
-    "author": "Machen",
+    "author": "Arthur Machen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3530,7 +3564,7 @@
     "slug": "g393",
     "gutenberg": 393,
     "title": "The Blue Lagoon: A Romance",
-    "author": "Stacpoole",
+    "author": "H. De Vere Stacpoole",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3543,7 +3577,7 @@
     "slug": "g419",
     "gutenberg": 419,
     "title": "The Magic of Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3556,7 +3590,7 @@
     "slug": "g420",
     "gutenberg": 420,
     "title": "Dorothy and the Wizard in Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3568,7 +3602,7 @@
     "slug": "g421",
     "gutenberg": 421,
     "title": "Kidnapped",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3580,7 +3614,7 @@
     "slug": "g422",
     "gutenberg": 422,
     "title": "The Romany Rye",
-    "author": "Borrow",
+    "author": "George Borrow",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3593,7 +3627,7 @@
     "slug": "g434",
     "gutenberg": 434,
     "title": "The Circular Staircase",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3606,7 +3640,7 @@
     "slug": "g452",
     "gutenberg": 452,
     "title": "Lavengro: The Scholar, the Gypsy, the Priest",
-    "author": "Borrow",
+    "author": "George Borrow",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3618,7 +3652,7 @@
     "slug": "g485",
     "gutenberg": 485,
     "title": "The Road to Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3631,7 +3665,7 @@
     "slug": "g486",
     "gutenberg": 486,
     "title": "Ozma of Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3643,7 +3677,7 @@
     "slug": "g501",
     "gutenberg": 501,
     "title": "The Story of Doctor Dolittle",
-    "author": "Lofting",
+    "author": "Hugh Lofting",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3656,7 +3690,7 @@
     "slug": "g502",
     "gutenberg": 502,
     "title": "Desert Gold",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3668,7 +3702,7 @@
     "slug": "g503",
     "gutenberg": 503,
     "title": "The Blue Fairy Book",
-    "author": "Lang",
+    "author": "Andrew Lang",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3681,7 +3715,7 @@
     "slug": "g512",
     "gutenberg": 512,
     "title": "Mosses from an old manse",
-    "author": "Hawthorne",
+    "author": "Nathaniel Hawthorne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3693,7 +3727,7 @@
     "slug": "g518",
     "gutenberg": 518,
     "title": "The Enchanted Island of Yew",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3706,7 +3740,7 @@
     "slug": "g520",
     "gutenberg": 520,
     "title": "The Life and Adventures of Santa Claus",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3719,7 +3753,7 @@
     "slug": "g525",
     "gutenberg": 525,
     "title": "Youth, a Narrative",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3731,7 +3765,7 @@
     "slug": "g528",
     "gutenberg": 528,
     "title": "Joe the Hotel Boy; Or, Winning out by Pluck",
-    "author": "Alger",
+    "author": "Jr. Horatio Alger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3743,7 +3777,7 @@
     "slug": "g537",
     "gutenberg": 537,
     "title": "Tales of Terror and Mystery",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3755,7 +3789,7 @@
     "slug": "g538",
     "gutenberg": 538,
     "title": "Jean of the Lazy A",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3767,7 +3801,7 @@
     "slug": "g547",
     "gutenberg": 547,
     "title": "Baron Trigault's Vengeance",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3779,7 +3813,7 @@
     "slug": "g551",
     "gutenberg": 551,
     "title": "The Land That Time Forgot",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3792,7 +3826,7 @@
     "slug": "g552",
     "gutenberg": 552,
     "title": "The People That Time Forgot",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3805,7 +3839,7 @@
     "slug": "g553",
     "gutenberg": 553,
     "title": "Out of Time's Abyss",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3817,7 +3851,7 @@
     "slug": "g558",
     "gutenberg": 558,
     "title": "The Thirty-Nine Steps",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3830,7 +3864,7 @@
     "slug": "g559",
     "gutenberg": 559,
     "title": "Greenmantle",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3842,7 +3876,7 @@
     "slug": "g560",
     "gutenberg": 560,
     "title": "Mr. Standfast",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3854,7 +3888,7 @@
     "slug": "g561",
     "gutenberg": 561,
     "title": "The Further Adventures of Robinson Crusoe",
-    "author": "Defoe",
+    "author": "Daniel Defoe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3867,7 +3901,7 @@
     "slug": "g564",
     "gutenberg": 564,
     "title": "The Mystery of Edwin Drood",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3880,7 +3914,7 @@
     "slug": "g583",
     "gutenberg": 583,
     "title": "The Woman in White",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3893,7 +3927,7 @@
     "slug": "g589",
     "gutenberg": 589,
     "title": "Catriona",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3905,7 +3939,7 @@
     "slug": "g601",
     "gutenberg": 601,
     "title": "The Monk: A Romance",
-    "author": "Lewis",
+    "author": "M. G. Lewis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3918,7 +3952,7 @@
     "slug": "g604",
     "gutenberg": 604,
     "title": "Gulliver of Mars",
-    "author": "Arnold",
+    "author": "Edwin Lester Arnold",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3930,7 +3964,7 @@
     "slug": "g605",
     "gutenberg": 605,
     "title": "Pellucidar",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3942,7 +3976,7 @@
     "slug": "g611",
     "gutenberg": 611,
     "title": "Prester John",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3954,7 +3988,7 @@
     "slug": "g615",
     "gutenberg": 615,
     "title": "Orlando Furioso",
-    "author": "Ariosto",
+    "author": "Lodovico Ariosto",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3966,7 +4000,7 @@
     "slug": "g646",
     "gutenberg": 646,
     "title": "The Coral Island: A Tale of the Pacific Ocean",
-    "author": "Ballantyne",
+    "author": "R. M. Ballantyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3979,7 +4013,7 @@
     "slug": "g647",
     "gutenberg": 647,
     "title": "The Dynamiter",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -3992,7 +4026,7 @@
     "slug": "g696",
     "gutenberg": 696,
     "title": "The Castle of Otranto",
-    "author": "Walpole",
+    "author": "Horace Walpole",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4005,7 +4039,7 @@
     "slug": "g706",
     "gutenberg": 706,
     "title": "The Amateur Cracksman",
-    "author": "Hornung",
+    "author": "E. W. Hornung",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4018,7 +4052,7 @@
     "slug": "g707",
     "gutenberg": 707,
     "title": "Raffles: Further Adventures of the Amateur Cracksman",
-    "author": "Hornung",
+    "author": "E. W. Hornung",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4030,7 +4064,7 @@
     "slug": "g708",
     "gutenberg": 708,
     "title": "The Princess and the Goblin",
-    "author": "MacDonald",
+    "author": "George MacDonald",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4043,7 +4077,7 @@
     "slug": "g710",
     "gutenberg": 710,
     "title": "Love of Life, and Other Stories",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4055,7 +4089,7 @@
     "slug": "g711",
     "gutenberg": 711,
     "title": "Allan Quatermain",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4080,7 +4114,7 @@
     "slug": "g715",
     "gutenberg": 715,
     "title": "The Moon Endureth: Tales and Fancies",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4093,7 +4127,7 @@
     "slug": "g716",
     "gutenberg": 716,
     "title": "The Cruise of the Jasper B.",
-    "author": "Marquis",
+    "author": "Don Marquis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4119,7 +4153,7 @@
     "slug": "g746",
     "gutenberg": 746,
     "title": "Burning Daylight",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4131,7 +4165,7 @@
     "slug": "g753",
     "gutenberg": 753,
     "title": "Arizona nights",
-    "author": "White",
+    "author": "Stewart Edward White",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4156,7 +4190,7 @@
     "slug": "g765",
     "gutenberg": 765,
     "title": "The Moon Pool",
-    "author": "Merritt",
+    "author": "Abraham Merritt",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4169,7 +4203,7 @@
     "slug": "g770",
     "gutenberg": 770,
     "title": "The Story of the Treasure Seekers",
-    "author": "Nesbit",
+    "author": "E. Nesbit",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4182,7 +4216,7 @@
     "slug": "g783",
     "gutenberg": 783,
     "title": "The Lost City",
-    "author": "Badger",
+    "author": "Jos. E. Badger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4195,7 +4229,7 @@
     "slug": "g788",
     "gutenberg": 788,
     "title": "The Red One",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4208,7 +4242,7 @@
     "slug": "g792",
     "gutenberg": 792,
     "title": "Wieland; Or, The Transformation: An American Tale",
-    "author": "Brown",
+    "author": "Charles Brockden Brown",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4220,7 +4254,7 @@
     "slug": "g794",
     "gutenberg": 794,
     "title": "The Wouldbegoods: Being the Further Adventures of the Treasure Seekers",
-    "author": "Nesbit",
+    "author": "E. Nesbit",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4233,7 +4267,7 @@
     "slug": "g807",
     "gutenberg": 807,
     "title": "Hunted Down: The Detective Stories of Charles Dickens",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4245,7 +4279,7 @@
     "slug": "g831",
     "gutenberg": 831,
     "title": "Four Arthurian Romances",
-    "author": "Chrétien",
+    "author": "Chrétien de Troyes",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4257,7 +4291,7 @@
     "slug": "g832",
     "gutenberg": 832,
     "title": "Robin Hood",
-    "author": "McSpadden",
+    "author": "J. Walker McSpadden",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4269,7 +4303,7 @@
     "slug": "g834",
     "gutenberg": 834,
     "title": "The Memoirs of Sherlock Holmes",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4282,7 +4316,7 @@
     "slug": "g837",
     "gutenberg": 837,
     "title": "The Story of the Amulet",
-    "author": "Nesbit",
+    "author": "E. Nesbit",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4295,7 +4329,7 @@
     "slug": "g839",
     "gutenberg": 839,
     "title": "New Arabian Nights",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4307,7 +4341,7 @@
     "slug": "g848",
     "gutenberg": 848,
     "title": "The Black Arrow: A Tale of the Two Roses",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4320,7 +4354,7 @@
     "slug": "g863",
     "gutenberg": 863,
     "title": "The Mysterious Affair at Styles",
-    "author": "Christie",
+    "author": "Agatha Christie",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4333,7 +4367,7 @@
     "slug": "g864",
     "gutenberg": 864,
     "title": "The Master of Ballantrae: A Winter's Tale",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4346,20 +4380,22 @@
     "slug": "g903",
     "gutenberg": 903,
     "title": "The White Company",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The White Company",
       "White Company"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g910",
     "gutenberg": 910,
     "title": "White Fang",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4371,7 +4407,7 @@
     "slug": "g911",
     "gutenberg": 911,
     "title": "Tales of the Fish Patrol",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4383,19 +4419,21 @@
     "slug": "g924",
     "gutenberg": 924,
     "title": "To Be Read at Dusk",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "To Be Read at Dusk"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on Project Gutenberg transcriber text"
   },
   {
     "slug": "g940",
     "gutenberg": 940,
     "title": "The Last of the Mohicans; A narrative of 1757",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4456,7 +4494,7 @@
     "slug": "g958",
     "gutenberg": 958,
     "title": "Rinkitink in Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4468,7 +4506,7 @@
     "slug": "g959",
     "gutenberg": 959,
     "title": "The Lost Princess of Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4481,7 +4519,7 @@
     "slug": "g960",
     "gutenberg": 960,
     "title": "The Tin Woodman of Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4494,19 +4532,21 @@
     "slug": "g961",
     "gutenberg": 961,
     "title": "Glinda of Oz",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Glinda of Oz"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on a chapter summary"
   },
   {
     "slug": "g964",
     "gutenberg": 964,
     "title": "The Merry Adventures of Robin Hood",
-    "author": "Pyle",
+    "author": "Howard Pyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4519,7 +4559,7 @@
     "slug": "g966",
     "gutenberg": 966,
     "title": "Maid Marian",
-    "author": "Peacock",
+    "author": "Thomas Love Peacock",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4531,7 +4571,7 @@
     "slug": "g974",
     "gutenberg": 974,
     "title": "The Secret Agent: A Simple Tale",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4544,7 +4584,7 @@
     "slug": "g1014",
     "gutenberg": 1014,
     "title": "The Lure of the Dim Trails",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4557,7 +4597,7 @@
     "slug": "g1024",
     "gutenberg": 1024,
     "title": "The Wrecker",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4570,7 +4610,7 @@
     "slug": "g1063",
     "gutenberg": 1063,
     "title": "The Cask of Amontillado",
-    "author": "Poe",
+    "author": "Edgar Allan Poe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4583,7 +4623,7 @@
     "slug": "g1074",
     "gutenberg": 1074,
     "title": "The Sea-Wolf",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4596,7 +4636,7 @@
     "slug": "g1078",
     "gutenberg": 1078,
     "title": "The Scouts of the Valley",
-    "author": "Altsheler",
+    "author": "Joseph A. Altsheler",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4609,7 +4649,7 @@
     "slug": "g1086",
     "gutenberg": 1086,
     "title": "A Horse's Tale",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4622,7 +4662,7 @@
     "slug": "g1088",
     "gutenberg": 1088,
     "title": "Rolf in the Woods",
-    "author": "Seton",
+    "author": "Ernest Thompson Seton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4634,7 +4674,7 @@
     "slug": "g1095",
     "gutenberg": 1095,
     "title": "The Light of the Western Stars",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4647,7 +4687,7 @@
     "slug": "g1096",
     "gutenberg": 1096,
     "title": "The Faith of Men",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4660,7 +4700,7 @@
     "slug": "g1099",
     "gutenberg": 1099,
     "title": "The Riverman",
-    "author": "White",
+    "author": "Stewart Edward White",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4673,7 +4713,7 @@
     "slug": "g1142",
     "gutenberg": 1142,
     "title": "Typhoon",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4685,7 +4725,7 @@
     "slug": "g1145",
     "gutenberg": 1145,
     "title": "Rupert of Hentzau: From The Memoirs of Fritz Von Tarlenheim",
-    "author": "Hope",
+    "author": "Anthony Hope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4697,7 +4737,7 @@
     "slug": "g1153",
     "gutenberg": 1153,
     "title": "The Chessmen of Mars",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4710,7 +4750,7 @@
     "slug": "g1154",
     "gutenberg": 1154,
     "title": "The Voyages of Doctor Dolittle",
-    "author": "Lofting",
+    "author": "Hugh Lofting",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4723,7 +4763,7 @@
     "slug": "g1155",
     "gutenberg": 1155,
     "title": "The Secret Adversary",
-    "author": "Christie",
+    "author": "Agatha Christie",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4736,7 +4776,7 @@
     "slug": "g1159",
     "gutenberg": 1159,
     "title": "Fire-Tongue",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4748,7 +4788,7 @@
     "slug": "g1161",
     "gutenberg": 1161,
     "title": "Jerry of the Islands",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4760,7 +4800,7 @@
     "slug": "g1163",
     "gutenberg": 1163,
     "title": "Adventure",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4772,7 +4812,7 @@
     "slug": "g1167",
     "gutenberg": 1167,
     "title": "A Strange Disappearance",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4785,7 +4825,7 @@
     "slug": "g1182",
     "gutenberg": 1182,
     "title": "Dope",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4797,7 +4837,7 @@
     "slug": "g1183",
     "gutenberg": 1183,
     "title": "The Return of Dr. Fu-Manchu",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4810,7 +4850,7 @@
     "slug": "g1188",
     "gutenberg": 1188,
     "title": "The Lair of the White Worm",
-    "author": "Stoker",
+    "author": "Bram Stoker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4823,7 +4863,7 @@
     "slug": "g1208",
     "gutenberg": 1208,
     "title": "South Sea Tales",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4835,7 +4875,7 @@
     "slug": "g1235",
     "gutenberg": 1235,
     "title": "Captain Fracasse",
-    "author": "Gautier",
+    "author": "Théophile Gautier",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4847,7 +4887,7 @@
     "slug": "g1239",
     "gutenberg": 1239,
     "title": "The Spirit of the Border: A Romance of the Early Settlers in the Ohio Valley",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4860,7 +4900,7 @@
     "slug": "g1257",
     "gutenberg": 1257,
     "title": "The three musketeers",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4873,7 +4913,7 @@
     "slug": "g1258",
     "gutenberg": 1258,
     "title": "Ten Years Later",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4885,7 +4925,7 @@
     "slug": "g1259",
     "gutenberg": 1259,
     "title": "Twenty years after",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4897,7 +4937,7 @@
     "slug": "g1262",
     "gutenberg": 1262,
     "title": "The Heritage of the Desert: A Novel",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4910,7 +4950,7 @@
     "slug": "g1264",
     "gutenberg": 1264,
     "title": "The Wheels of Chance: A Bicycling Idyll",
-    "author": "Wells",
+    "author": "H. G. Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4923,7 +4963,7 @@
     "slug": "g1268",
     "gutenberg": 1268,
     "title": "The Mysterious Island",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4936,7 +4976,7 @@
     "slug": "g1274",
     "gutenberg": 1274,
     "title": "Martin Hyde, the Duke's Messenger",
-    "author": "Masefield",
+    "author": "John Masefield",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4984,7 +5024,7 @@
     "slug": "g1300",
     "gutenberg": 1300,
     "title": "Riders of the Purple Sage",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -4996,7 +5036,7 @@
     "slug": "g1314",
     "gutenberg": 1314,
     "title": "The Malefactor",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5009,7 +5049,7 @@
     "slug": "g1353",
     "gutenberg": 1353,
     "title": "Off on a Comet! a Journey through Planetary Space",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5021,7 +5061,7 @@
     "slug": "g1355",
     "gutenberg": 1355,
     "title": "The Underground City; Or, The Black Indies",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5058,7 +5098,7 @@
     "slug": "g1368",
     "gutenberg": 1368,
     "title": "When the World Shook",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5070,7 +5110,7 @@
     "slug": "g1377",
     "gutenberg": 1377,
     "title": "The Talisman",
-    "author": "Scott",
+    "author": "Walter Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5083,7 +5123,7 @@
     "slug": "g1385",
     "gutenberg": 1385,
     "title": "Lin McLean",
-    "author": "Wister",
+    "author": "Owen Wister",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5095,20 +5135,22 @@
     "slug": "g1390",
     "gutenberg": 1390,
     "title": "The Jimmyjohn Boss, and Other Stories",
-    "author": "Wister",
+    "author": "Owen Wister",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Jimmyjohn Boss, and Other Stories",
       "Jimmyjohn Boss, and Other Stories"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the dedication"
   },
   {
     "slug": "g1406",
     "gutenberg": 1406,
     "title": "The Perils of Certain English Prisoners",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5121,7 +5163,7 @@
     "slug": "g1412",
     "gutenberg": 1412,
     "title": "Masterman Ready",
-    "author": "Marryat",
+    "author": "Frederick Marryat",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5133,7 +5175,7 @@
     "slug": "g1423",
     "gutenberg": 1423,
     "title": "No Thoroughfare",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5145,7 +5187,7 @@
     "slug": "g1433",
     "gutenberg": 1433,
     "title": "The Red Inn",
-    "author": "Balzac",
+    "author": "Honoré de Balzac",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5158,7 +5200,7 @@
     "slug": "g1442",
     "gutenberg": 1442,
     "title": "The Kingdom of the Blind",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5171,7 +5213,7 @@
     "slug": "g1447",
     "gutenberg": 1447,
     "title": "The Illustrious Prince",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5184,7 +5226,7 @@
     "slug": "g1465",
     "gutenberg": 1465,
     "title": "The Wreck of the Golden Mary",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5197,7 +5239,7 @@
     "slug": "g1478",
     "gutenberg": 1478,
     "title": "A Parody Outline of History",
-    "author": "Stewart",
+    "author": "Donald Ogden Stewart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5210,7 +5252,7 @@
     "slug": "g1484",
     "gutenberg": 1484,
     "title": "The Four Horsemen of the Apocalypse",
-    "author": "Blasco Ibáñez",
+    "author": "Vicente Blasco Ibáñez",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5223,7 +5265,7 @@
     "slug": "g1557",
     "gutenberg": 1557,
     "title": "Men of Iron",
-    "author": "Pyle",
+    "author": "Howard Pyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5235,7 +5277,7 @@
     "slug": "g1563",
     "gutenberg": 1563,
     "title": "The Crystal Stopper",
-    "author": "Leblanc",
+    "author": "Maurice Leblanc",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5248,7 +5290,7 @@
     "slug": "g1577",
     "gutenberg": 1577,
     "title": "The Grey Room",
-    "author": "Phillpotts",
+    "author": "Eden Phillpotts",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5261,7 +5303,7 @@
     "slug": "g1587",
     "gutenberg": 1587,
     "title": "The Black Robe",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5274,7 +5316,7 @@
     "slug": "g1596",
     "gutenberg": 1596,
     "title": "Smoke Bellew",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5286,7 +5328,7 @@
     "slug": "g1604",
     "gutenberg": 1604,
     "title": "The Ebb-Tide: A Trio And Quartette",
-    "author": "Stevenson",
+    "author": "Robert Louis Stevenson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5299,7 +5341,7 @@
     "slug": "g1607",
     "gutenberg": 1607,
     "title": "A Journey in Other Worlds: A Romance of the Future",
-    "author": "Astor",
+    "author": "John Jacob Astor",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5312,7 +5354,7 @@
     "slug": "g1614",
     "gutenberg": 1614,
     "title": "The Golden Fleece: A Romance",
-    "author": "Hawthorne",
+    "author": "Julian Hawthorne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5325,7 +5367,7 @@
     "slug": "g1622",
     "gutenberg": 1622,
     "title": "The Law and the Lady",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5338,7 +5380,7 @@
     "slug": "g1625",
     "gutenberg": 1625,
     "title": "The frozen deep",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5351,7 +5393,7 @@
     "slug": "g1627",
     "gutenberg": 1627,
     "title": "The Evil Genius: A Domestic Story",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5364,7 +5406,7 @@
     "slug": "g1628",
     "gutenberg": 1628,
     "title": "My Lady's Money",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5376,7 +5418,7 @@
     "slug": "g1644",
     "gutenberg": 1644,
     "title": "The Adventures of Gerard",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5389,7 +5431,7 @@
     "slug": "g1651",
     "gutenberg": 1651,
     "title": "The Mystery of Orcival",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5402,7 +5444,7 @@
     "slug": "g1678",
     "gutenberg": 1678,
     "title": "An Historical Mystery (The Gondreville Mystery)",
-    "author": "Balzac",
+    "author": "Honoré de Balzac",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5426,7 +5468,7 @@
     "slug": "g1685",
     "gutenberg": 1685,
     "title": "The Mystery of the Yellow Room",
-    "author": "Leroux",
+    "author": "Gaston Leroux",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5439,7 +5481,7 @@
     "slug": "g1686",
     "gutenberg": 1686,
     "title": "The Secret of the Night",
-    "author": "Leroux",
+    "author": "Gaston Leroux",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5452,7 +5494,7 @@
     "slug": "g1690",
     "gutenberg": 1690,
     "title": "Marie: An Episode in the Life of the Late Allan Quatermain",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5464,7 +5506,7 @@
     "slug": "g1695",
     "gutenberg": 1695,
     "title": "The Man Who Was Thursday: A Nightmare",
-    "author": "Chesterton",
+    "author": "G. K. Chesterton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5477,7 +5519,7 @@
     "slug": "g1699",
     "gutenberg": 1699,
     "title": "The Vanished Messenger",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5490,7 +5532,7 @@
     "slug": "g1703",
     "gutenberg": 1703,
     "title": "Dead Men Tell No Tales",
-    "author": "Hornung",
+    "author": "E. W. Hornung",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5502,7 +5544,7 @@
     "slug": "g1712",
     "gutenberg": 1712,
     "title": "The Rescue: A Romance of the Shallows",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5515,7 +5557,7 @@
     "slug": "g1720",
     "gutenberg": 1720,
     "title": "The Man Who Knew Too Much",
-    "author": "Chesterton",
+    "author": "G. K. Chesterton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5528,7 +5570,7 @@
     "slug": "g1721",
     "gutenberg": 1721,
     "title": "The Trees of Pride",
-    "author": "Chesterton",
+    "author": "G. K. Chesterton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5541,7 +5583,7 @@
     "slug": "g1723",
     "gutenberg": 1723,
     "title": "Cow-Country",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5553,7 +5595,7 @@
     "slug": "g1728",
     "gutenberg": 1728,
     "title": "The Odyssey of Homer",
-    "author": "751? BCE-651? BCE Homer",
+    "author": "Homer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5566,7 +5608,7 @@
     "slug": "g1730",
     "gutenberg": 1730,
     "title": "Michael, Brother of Jerry",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5578,7 +5620,7 @@
     "slug": "g1741",
     "gutenberg": 1741,
     "title": "The White Moll",
-    "author": "Packard",
+    "author": "Frank L. Packard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5591,7 +5633,7 @@
     "slug": "g1748",
     "gutenberg": 1748,
     "title": "Other People's Money",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5603,7 +5645,7 @@
     "slug": "g1752",
     "gutenberg": 1752,
     "title": "El Dorado: An Adventure of the Scarlet Pimpernel",
-    "author": "Orczy",
+    "author": "Baroness Emmuska Orczy Orczy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5615,7 +5657,7 @@
     "slug": "g1757",
     "gutenberg": 1757,
     "title": "The Cruise of the Dolphin",
-    "author": "Aldrich",
+    "author": "Thomas Bailey Aldrich",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5628,7 +5670,7 @@
     "slug": "g1803",
     "gutenberg": 1803,
     "title": "Wyoming: A Story of the Outdoor West",
-    "author": "Raine",
+    "author": "William MacLeod Raine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5640,7 +5682,7 @@
     "slug": "g1806",
     "gutenberg": 1806,
     "title": "The Frame Up",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5653,7 +5695,7 @@
     "slug": "g1807",
     "gutenberg": 1807,
     "title": "The Lost House",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5666,7 +5708,7 @@
     "slug": "g1809",
     "gutenberg": 1809,
     "title": "Bucky O'Connor: A Tale of the Unfenced Border",
-    "author": "Raine",
+    "author": "William MacLeod Raine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5678,7 +5720,7 @@
     "slug": "g1814",
     "gutenberg": 1814,
     "title": "The Agony Column",
-    "author": "Biggers",
+    "author": "Earl Derr Biggers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5691,7 +5733,7 @@
     "slug": "g1822",
     "gutenberg": 1822,
     "title": "The Amateur",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5704,7 +5746,7 @@
     "slug": "g1823",
     "gutenberg": 1823,
     "title": "The Make-Believe Man",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5717,7 +5759,7 @@
     "slug": "g1824",
     "gutenberg": 1824,
     "title": "Peace Manoeuvres",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5729,7 +5771,7 @@
     "slug": "g1825",
     "gutenberg": 1825,
     "title": "The Adventures of Reddy Fox",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5754,7 +5796,7 @@
     "slug": "g1848",
     "gutenberg": 1848,
     "title": "Montezuma's Daughter",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5766,7 +5808,7 @@
     "slug": "g1851",
     "gutenberg": 1851,
     "title": "The Woman in the Alcove",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5779,7 +5821,7 @@
     "slug": "g1872",
     "gutenberg": 1872,
     "title": "The Red House Mystery",
-    "author": "Milne",
+    "author": "A. A. Milne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5792,7 +5834,7 @@
     "slug": "g1874",
     "gutenberg": 1874,
     "title": "The Railway Children",
-    "author": "Nesbit",
+    "author": "E. Nesbit",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5805,7 +5847,7 @@
     "slug": "g1880",
     "gutenberg": 1880,
     "title": "The Pathfinder; Or, The Inland Sea",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5818,7 +5860,7 @@
     "slug": "g1882",
     "gutenberg": 1882,
     "title": "The Young Forester",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5831,7 +5873,7 @@
     "slug": "g1895",
     "gutenberg": 1895,
     "title": "Armadale",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5843,7 +5885,7 @@
     "slug": "g1896",
     "gutenberg": 1896,
     "title": "Under the red robe",
-    "author": "Weyman",
+    "author": "Stanley John Weyman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5855,7 +5897,7 @@
     "slug": "g1900",
     "gutenberg": 1900,
     "title": "Typee: A Romance of the South Seas",
-    "author": "Melville",
+    "author": "Herman Melville",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5867,7 +5909,7 @@
     "slug": "g1907",
     "gutenberg": 1907,
     "title": "Rowdy of the Cross L",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5879,7 +5921,7 @@
     "slug": "g1908",
     "gutenberg": 1908,
     "title": "Her Prairie Knight",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5891,7 +5933,7 @@
     "slug": "g1913",
     "gutenberg": 1913,
     "title": "The Drums of Jeopardy",
-    "author": "MacGrath",
+    "author": "Harold MacGrath",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5904,7 +5946,7 @@
     "slug": "g1923",
     "gutenberg": 1923,
     "title": "The Poisoned Pen",
-    "author": "Reeve",
+    "author": "Arthur B. Reeve",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5917,7 +5959,7 @@
     "slug": "g1931",
     "gutenberg": 1931,
     "title": "The Zeppelin's Passenger",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5930,7 +5972,7 @@
     "slug": "g1937",
     "gutenberg": 1937,
     "title": "The Second Jungle Book",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5943,7 +5985,7 @@
     "slug": "g1939",
     "gutenberg": 1939,
     "title": "A Gentleman of France: Being the Memoirs of Gaston de Bonne Sieur de Marsac",
-    "author": "Weyman",
+    "author": "Stanley John Weyman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5956,7 +5998,7 @@
     "slug": "g1947",
     "gutenberg": 1947,
     "title": "Scaramouche: A Romance of the French Revolution",
-    "author": "Sabatini",
+    "author": "Rafael Sabatini",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5968,7 +6010,7 @@
     "slug": "g1951",
     "gutenberg": 1951,
     "title": "The Coming Race",
-    "author": "Lytton",
+    "author": "Baron Edward Bulwer Lytton Lytton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5981,7 +6023,7 @@
     "slug": "g1952",
     "gutenberg": 1952,
     "title": "The Yellow Wallpaper",
-    "author": "Gilman",
+    "author": "Charlotte Perkins Gilman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -5994,7 +6036,7 @@
     "slug": "g1960",
     "gutenberg": 1960,
     "title": "Sight Unseen",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6006,7 +6048,7 @@
     "slug": "g1963",
     "gutenberg": 1963,
     "title": "The Confession",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6019,7 +6061,7 @@
     "slug": "g1975",
     "gutenberg": 1975,
     "title": "The Legacy of Cain",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6032,7 +6074,7 @@
     "slug": "g1976",
     "gutenberg": 1976,
     "title": "Peter Ruff and the Double Four",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6044,7 +6086,7 @@
     "slug": "g1980",
     "gutenberg": 1980,
     "title": "Stories by English Authors: Africa (Selected by Scribners)",
-    "author": "Doyle",
+    "author": "Various",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6056,7 +6098,7 @@
     "slug": "g1987",
     "gutenberg": 1987,
     "title": "The Outlet",
-    "author": "Adams",
+    "author": "Andy Adams",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6069,7 +6111,7 @@
     "slug": "g2014",
     "gutenberg": 2014,
     "title": "The Lodger",
-    "author": "Lowndes",
+    "author": "Marie Belloc Lowndes",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6082,7 +6124,7 @@
     "slug": "g2019",
     "gutenberg": 2019,
     "title": "The Bat",
-    "author": "Benét",
+    "author": "Stephen Vincent Benét",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6095,7 +6137,7 @@
     "slug": "g2020",
     "gutenberg": 2020,
     "title": "Tarzan the Terrible",
-    "author": "Burroughs",
+    "author": "Edgar Rice Burroughs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6107,7 +6149,7 @@
     "slug": "g2028",
     "gutenberg": 2028,
     "title": "The Yellow Claw",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6120,7 +6162,7 @@
     "slug": "g2029",
     "gutenberg": 2029,
     "title": "Lahoma",
-    "author": "Ellis",
+    "author": "J. Breckenridge Ellis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6132,7 +6174,7 @@
     "slug": "g2035",
     "gutenberg": 2035,
     "title": "Stories by English Authors: The Orient (Selected by Scribners)",
-    "author": "Kipling",
+    "author": "Various",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6144,7 +6186,7 @@
     "slug": "g2038",
     "gutenberg": 2038,
     "title": "The Lock and Key Library: Classic Mystery and Detective Stories: Modern English",
-    "author": "Hawthorne",
+    "author": "Various",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6157,7 +6199,7 @@
     "slug": "g2040",
     "gutenberg": 2040,
     "title": "Confessions of an English Opium-Eater",
-    "author": "De Quincey",
+    "author": "Thomas De Quincey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6169,7 +6211,7 @@
     "slug": "g2041",
     "gutenberg": 2041,
     "title": "The House of the Wolf: A Romance",
-    "author": "Weyman",
+    "author": "Stanley John Weyman",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6182,7 +6224,7 @@
     "slug": "g2043",
     "gutenberg": 2043,
     "title": "The Lock and Key Library: The most interesting stories of all nations: American",
-    "author": "Hawthorne",
+    "author": "Various",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6195,7 +6237,7 @@
     "slug": "g2057",
     "gutenberg": 2057,
     "title": "The Last of the Plainsmen",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6208,7 +6250,7 @@
     "slug": "g2060",
     "gutenberg": 2060,
     "title": "The History of Caliph Vathek",
-    "author": "Beckford",
+    "author": "William Beckford",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6221,7 +6263,7 @@
     "slug": "g2063",
     "gutenberg": 2063,
     "title": "The Trail of the White Mule",
-    "author": "Bower",
+    "author": "B. M. Bower",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6234,7 +6276,7 @@
     "slug": "g2097",
     "gutenberg": 2097,
     "title": "The Sign of the Four",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6247,7 +6289,7 @@
     "slug": "g2098",
     "gutenberg": 2098,
     "title": "A Thief in the Night: A Book of Raffles' Adventures",
-    "author": "Hornung",
+    "author": "E. W. Hornung",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6260,7 +6302,7 @@
     "slug": "g2126",
     "gutenberg": 2126,
     "title": "The Quest of the Sacred Slipper",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6273,7 +6315,7 @@
     "slug": "g2154",
     "gutenberg": 2154,
     "title": "Around the World in Eighty Days. Junior Deluxe Edition",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6285,7 +6327,7 @@
     "slug": "g2166",
     "gutenberg": 2166,
     "title": "King Solomon's Mines",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6297,7 +6339,7 @@
     "slug": "g2180",
     "gutenberg": 2180,
     "title": "In a Hollow of the Hills",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6309,7 +6351,7 @@
     "slug": "g2186",
     "gutenberg": 2186,
     "title": "\"Captains Courageous\": A Story of the Grand Banks",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6321,7 +6363,7 @@
     "slug": "g2276",
     "gutenberg": 2276,
     "title": "The Private Memoirs and Confessions of a Justified Sinner",
-    "author": "Hogg",
+    "author": "James Hogg",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6334,7 +6376,7 @@
     "slug": "g2279",
     "gutenberg": 2279,
     "title": "A Waif of the Plains",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6347,7 +6389,7 @@
     "slug": "g2297",
     "gutenberg": 2297,
     "title": "Snow-Bound at Eagle's",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6359,7 +6401,7 @@
     "slug": "g2324",
     "gutenberg": 2324,
     "title": "A House to Let",
-    "author": "Dickens",
+    "author": "Charles Dickens",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6372,7 +6414,7 @@
     "slug": "g2325",
     "gutenberg": 2325,
     "title": "The Iceberg Express",
-    "author": "Cory",
+    "author": "David Cory",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6385,7 +6427,7 @@
     "slug": "g2343",
     "gutenberg": 2343,
     "title": "The Adventure of Wisteria Lodge",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6398,7 +6440,7 @@
     "slug": "g2344",
     "gutenberg": 2344,
     "title": "The Adventure of the Cardboard Box",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6411,7 +6453,7 @@
     "slug": "g2345",
     "gutenberg": 2345,
     "title": "The Adventure of the Red Circle",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6424,7 +6466,7 @@
     "slug": "g2346",
     "gutenberg": 2346,
     "title": "The Adventure of the Bruce-Partington Plans",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6437,7 +6479,7 @@
     "slug": "g2347",
     "gutenberg": 2347,
     "title": "The Adventure of the Dying Detective",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6450,7 +6492,7 @@
     "slug": "g2348",
     "gutenberg": 2348,
     "title": "The Disappearance of Lady Frances Carfax",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6463,7 +6505,7 @@
     "slug": "g2349",
     "gutenberg": 2349,
     "title": "The Adventure of the Devil's Foot",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6476,7 +6518,7 @@
     "slug": "g2350",
     "gutenberg": 2350,
     "title": "His last bow",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6488,7 +6530,7 @@
     "slug": "g2358",
     "gutenberg": 2358,
     "title": "The After House",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6501,7 +6543,7 @@
     "slug": "g2360",
     "gutenberg": 2360,
     "title": "The Riddle of the Sands",
-    "author": "Childers",
+    "author": "Erskine Childers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6514,7 +6556,7 @@
     "slug": "g2371",
     "gutenberg": 2371,
     "title": "The Filigree Ball",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6527,7 +6569,7 @@
     "slug": "g2377",
     "gutenberg": 2377,
     "title": "The Son of the Wolf",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6540,7 +6582,7 @@
     "slug": "g2389",
     "gutenberg": 2389,
     "title": "Bardelys the Magnificent",
-    "author": "Sabatini",
+    "author": "Rafael Sabatini",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6552,7 +6594,7 @@
     "slug": "g2391",
     "gutenberg": 2391,
     "title": "Bruce",
-    "author": "Terhune",
+    "author": "Albert Payson Terhune",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6564,7 +6606,7 @@
     "slug": "g2392",
     "gutenberg": 2392,
     "title": "Further Adventures of Lad",
-    "author": "Terhune",
+    "author": "Albert Payson Terhune",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6576,7 +6618,7 @@
     "slug": "g2415",
     "gutenberg": 2415,
     "title": "The Mutiny of the Elsinore",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6589,7 +6631,7 @@
     "slug": "g2465",
     "gutenberg": 2465,
     "title": "Carmen",
-    "author": "Mérimée",
+    "author": "Prosper Mérimée",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6601,7 +6643,7 @@
     "slug": "g2471",
     "gutenberg": 2471,
     "title": "The Crusade of the Excelsior",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6614,7 +6656,7 @@
     "slug": "g2488",
     "gutenberg": 2488,
     "title": "Twenty Thousand Leagues Under the Seas: An Underwater Tour of the World",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6626,7 +6668,7 @@
     "slug": "g2489",
     "gutenberg": 2489,
     "title": "Moby Dick; Or, The Whale",
-    "author": "Melville",
+    "author": "Herman Melville",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6638,7 +6680,7 @@
     "slug": "g2493",
     "gutenberg": 2493,
     "title": "The Adventures of Paddy the Beaver",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6651,7 +6693,7 @@
     "slug": "g2512",
     "gutenberg": 2512,
     "title": "The cruise of the Snark",
-    "author": "London",
+    "author": "Jack London",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6664,7 +6706,7 @@
     "slug": "g2544",
     "gutenberg": 2544,
     "title": "From Sand Hill to Pine",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6676,7 +6718,7 @@
     "slug": "g2546",
     "gutenberg": 2546,
     "title": "Hopalong Cassidy's Rustler Round-Up; Or, Bar-20",
-    "author": "Mulford",
+    "author": "Clarence Edward Mulford",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6688,7 +6730,7 @@
     "slug": "g2565",
     "gutenberg": 2565,
     "title": "The Story of the Glittering Plain",
-    "author": "Morris",
+    "author": "William Morris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6701,7 +6743,7 @@
     "slug": "g2568",
     "gutenberg": 2568,
     "title": "Trent's Last Case",
-    "author": "Bentley",
+    "author": "E. C. Bentley",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6713,7 +6755,7 @@
     "slug": "g2607",
     "gutenberg": 2607,
     "title": "Psmith, Journalist",
-    "author": "Wodehouse",
+    "author": "P. G. Wodehouse",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6725,7 +6767,7 @@
     "slug": "g2609",
     "gutenberg": 2609,
     "title": "The Vicomte de Bragelonne",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6738,7 +6780,7 @@
     "slug": "g2618",
     "gutenberg": 2618,
     "title": "A House-Boat on the Styx",
-    "author": "Bangs",
+    "author": "John Kendrick Bangs",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6751,7 +6793,7 @@
     "slug": "g2688",
     "gutenberg": 2688,
     "title": "The Clue of the Twisted Candle",
-    "author": "Wallace",
+    "author": "Edgar Wallace",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6764,7 +6806,7 @@
     "slug": "g2710",
     "gutenberg": 2710,
     "title": "Louise de la Vallière",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6776,7 +6818,7 @@
     "slug": "g2713",
     "gutenberg": 2713,
     "title": "Maiwa's Revenge; Or, The War of the Little Hand",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6788,7 +6830,7 @@
     "slug": "g2727",
     "gutenberg": 2727,
     "title": "Allan's Wife",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6800,7 +6842,7 @@
     "slug": "g2728",
     "gutenberg": 2728,
     "title": "Hunter Quatermain's Story",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6812,7 +6854,7 @@
     "slug": "g2729",
     "gutenberg": 2729,
     "title": "A Tale of Three Lions",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6825,7 +6867,7 @@
     "slug": "g2730",
     "gutenberg": 2730,
     "title": "Long Odds",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6837,7 +6879,7 @@
     "slug": "g2736",
     "gutenberg": 2736,
     "title": "The Champdoce Mystery",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6850,7 +6892,7 @@
     "slug": "g2759",
     "gutenberg": 2759,
     "title": "The Man in the Iron Mask",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6863,7 +6905,7 @@
     "slug": "g2761",
     "gutenberg": 2761,
     "title": "Benita, an African romance",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6875,7 +6917,7 @@
     "slug": "g2767",
     "gutenberg": 2767,
     "title": "The Devil's Paw",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6888,7 +6930,7 @@
     "slug": "g2785",
     "gutenberg": 2785,
     "title": "The Elusive Pimpernel",
-    "author": "Orczy",
+    "author": "Baroness Emmuska Orczy Orczy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6914,7 +6956,7 @@
     "slug": "g2793",
     "gutenberg": 2793,
     "title": "Flip: A California Romance",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6926,7 +6968,7 @@
     "slug": "g2794",
     "gutenberg": 2794,
     "title": "Found at Blazing Star",
-    "author": "Harte",
+    "author": "Bret Harte",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6938,7 +6980,7 @@
     "slug": "g2805",
     "gutenberg": 2805,
     "title": "With Lee in Virginia: A Story of the American Civil War",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6950,7 +6992,7 @@
     "slug": "g2806",
     "gutenberg": 2806,
     "title": "The Phantom 'Rickshaw, and Other Ghost Stories",
-    "author": "Kipling",
+    "author": "Rudyard Kipling",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6963,7 +7005,7 @@
     "slug": "g2813",
     "gutenberg": 2813,
     "title": "The Grand Babylon Hôtel",
-    "author": "Bennett",
+    "author": "Arnold Bennett",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6976,7 +7018,7 @@
     "slug": "g2841",
     "gutenberg": 2841,
     "title": "The Ivory Child",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -6989,7 +7031,7 @@
     "slug": "g2845",
     "gutenberg": 2845,
     "title": "Sir Nigel",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7001,7 +7043,7 @@
     "slug": "g2861",
     "gutenberg": 2861,
     "title": "The Sleuth of St. James's Square",
-    "author": "Post",
+    "author": "Melville Davisson Post",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7014,7 +7056,7 @@
     "slug": "g2883",
     "gutenberg": 2883,
     "title": "The Gold Bag",
-    "author": "Wells",
+    "author": "Carolyn Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7027,7 +7069,7 @@
     "slug": "g2982",
     "gutenberg": 2982,
     "title": "Mark Twain: A Biography. Volume I, Part 1: 1835-1866",
-    "author": "Paine",
+    "author": "Albert Bigelow Paine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7039,7 +7081,7 @@
     "slug": "g3007",
     "gutenberg": 3007,
     "title": "The Smoky God; Or, A Voyage to the Inner World",
-    "author": "Emerson",
+    "author": "Willis George Emerson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7052,7 +7094,7 @@
     "slug": "g3011",
     "gutenberg": 3011,
     "title": "The Lady of the Lake",
-    "author": "Scott",
+    "author": "Walter Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7065,7 +7107,7 @@
     "slug": "g3025",
     "gutenberg": 3025,
     "title": "A Mountain Europa",
-    "author": "Fox",
+    "author": "Jr. John Fox",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7078,7 +7120,7 @@
     "slug": "g3030",
     "gutenberg": 3030,
     "title": "The tavern knight",
-    "author": "Sabatini",
+    "author": "Rafael Sabatini",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7091,7 +7133,7 @@
     "slug": "g3046",
     "gutenberg": 3046,
     "title": "The Land of the Changing Sun",
-    "author": "Harben",
+    "author": "Will N. Harben",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7104,7 +7146,7 @@
     "slug": "g3055",
     "gutenberg": 3055,
     "title": "The Wood Beyond the World",
-    "author": "Morris",
+    "author": "William Morris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7117,7 +7159,7 @@
     "slug": "g3071",
     "gutenberg": 3071,
     "title": "The Golden Slipper, and Other Problems for Violet Strange",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7130,7 +7172,7 @@
     "slug": "g3091",
     "gutenberg": 3091,
     "title": "The Giant Raft",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7143,7 +7185,7 @@
     "slug": "g3154",
     "gutenberg": 3154,
     "title": "The Surprising Adventures of Baron Munchausen",
-    "author": "Raspe",
+    "author": "Rudolf Erich Raspe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7156,7 +7198,7 @@
     "slug": "g3180",
     "gutenberg": 3180,
     "title": "A Double Barrelled Detective Story",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7169,7 +7211,7 @@
     "slug": "g3181",
     "gutenberg": 3181,
     "title": "The Stolen White Elephant",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7182,7 +7224,7 @@
     "slug": "g3242",
     "gutenberg": 3242,
     "title": "The Doctor : A Tale of the Rockies",
-    "author": "Connor",
+    "author": "Ralph Connor",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7195,7 +7237,7 @@
     "slug": "g3268",
     "gutenberg": 3268,
     "title": "The Mysteries of Udolpho",
-    "author": "Radcliffe",
+    "author": "Ann Ward Radcliffe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7208,7 +7250,7 @@
     "slug": "g3285",
     "gutenberg": 3285,
     "title": "The Deerslayer",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7221,7 +7263,7 @@
     "slug": "g3289",
     "gutenberg": 3289,
     "title": "The Valley of Fear",
-    "author": "Doyle",
+    "author": "Arthur Conan Doyle",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7234,7 +7276,7 @@
     "slug": "g3321",
     "gutenberg": 3321,
     "title": "Children of the Whirlwind",
-    "author": "Scott",
+    "author": "Leroy Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7246,7 +7288,7 @@
     "slug": "g3336",
     "gutenberg": 3336,
     "title": "Within an Inch of His Life",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7258,7 +7300,7 @@
     "slug": "g3350",
     "gutenberg": 3350,
     "title": "The Wandering Jew — Complete",
-    "author": "Sue",
+    "author": "Eugène Sue",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7271,7 +7313,7 @@
     "slug": "g3413",
     "gutenberg": 3413,
     "title": "The Blazed Trail",
-    "author": "White",
+    "author": "Stewart Edward White",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7284,7 +7326,7 @@
     "slug": "g3429",
     "gutenberg": 3429,
     "title": "St. George for England",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7296,7 +7338,7 @@
     "slug": "g3464",
     "gutenberg": 3464,
     "title": "Tish",
-    "author": "Rinehart",
+    "author": "Mary Roberts Rinehart",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7320,7 +7362,7 @@
     "slug": "g3479",
     "gutenberg": 3479,
     "title": "The Metal Monster",
-    "author": "Merritt",
+    "author": "Abraham Merritt",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7333,7 +7375,7 @@
     "slug": "g3526",
     "gutenberg": 3526,
     "title": "Five Weeks in a Balloon",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7345,7 +7387,7 @@
     "slug": "g3536",
     "gutenberg": 3536,
     "title": "The Enchanted Castle",
-    "author": "Nesbit",
+    "author": "E. Nesbit",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7358,7 +7400,7 @@
     "slug": "g3634",
     "gutenberg": 3634,
     "title": "The Guilty River",
-    "author": "Collins",
+    "author": "Wilkie Collins",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7371,7 +7413,7 @@
     "slug": "g3674",
     "gutenberg": 3674,
     "title": "The Dragon and the Raven; Or, The Days of King Alfred",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7384,7 +7426,7 @@
     "slug": "g3705",
     "gutenberg": 3705,
     "title": "Happy Hawkins",
-    "author": "Wason",
+    "author": "Robert Alexander Wason",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7396,7 +7438,7 @@
     "slug": "g3706",
     "gutenberg": 3706,
     "title": "The Valiant Runaways",
-    "author": "Atherton",
+    "author": "Gertrude Franklin Horn Atherton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7409,7 +7451,7 @@
     "slug": "g3710",
     "gutenberg": 3710,
     "title": "An Unprotected Female at the Pyramids",
-    "author": "Trollope",
+    "author": "Anthony Trollope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7421,7 +7463,7 @@
     "slug": "g3713",
     "gutenberg": 3713,
     "title": "Aaron Trow",
-    "author": "Trollope",
+    "author": "Anthony Trollope",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7433,7 +7475,7 @@
     "slug": "g3715",
     "gutenberg": 3715,
     "title": "The Parenticide Club",
-    "author": "Bierce",
+    "author": "Ambrose Bierce",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7446,7 +7488,7 @@
     "slug": "g3746",
     "gutenberg": 3746,
     "title": "The Judgment House",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7459,7 +7501,7 @@
     "slug": "g3748",
     "gutenberg": 3748,
     "title": "A Journey into the Interior of the Earth",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7484,7 +7526,7 @@
     "slug": "g3782",
     "gutenberg": 3782,
     "title": "Huntingtower",
-    "author": "Buchan",
+    "author": "John Buchan",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7496,7 +7538,7 @@
     "slug": "g3785",
     "gutenberg": 3785,
     "title": "In the Reign of Terror: The Adventures of a Westminster Boy",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7508,7 +7550,7 @@
     "slug": "g3795",
     "gutenberg": 3795,
     "title": "Under the Lilacs",
-    "author": "Alcott",
+    "author": "Louisa May Alcott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7520,7 +7562,7 @@
     "slug": "g3802",
     "gutenberg": 3802,
     "title": "The Lerouge Case",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7533,7 +7575,7 @@
     "slug": "g3803",
     "gutenberg": 3803,
     "title": "File No. 113",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7545,7 +7587,7 @@
     "slug": "g3808",
     "gutenberg": 3808,
     "title": "Robur the Conqueror",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7557,7 +7599,7 @@
     "slug": "g3809",
     "gutenberg": 3809,
     "title": "The Master of the World",
-    "author": "Verne",
+    "author": "Jules Verne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7570,7 +7612,7 @@
     "slug": "g4014",
     "gutenberg": 4014,
     "title": "Arsène Lupin",
-    "author": "Leblanc",
+    "author": "Maurice Leblanc",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7582,7 +7624,7 @@
     "slug": "g4017",
     "gutenberg": 4017,
     "title": "The Hollow Needle; Further adventures of Arsène Lupin",
-    "author": "Leblanc",
+    "author": "Maurice Leblanc",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7595,7 +7637,7 @@
     "slug": "g4045",
     "gutenberg": 4045,
     "title": "Omoo: Adventures in the South Seas",
-    "author": "Melville",
+    "author": "Herman Melville",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7607,7 +7649,7 @@
     "slug": "g4047",
     "gutenberg": 4047,
     "title": "The Leavenworth Case",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7620,7 +7662,7 @@
     "slug": "g4071",
     "gutenberg": 4071,
     "title": "Monsieur Lecoq, v. 1",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7632,7 +7674,7 @@
     "slug": "g4074",
     "gutenberg": 4074,
     "title": "Swallow: A Tale of the Great Trek",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7644,7 +7686,7 @@
     "slug": "g4215",
     "gutenberg": 4215,
     "title": "Oak Openings",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7680,7 +7722,7 @@
     "slug": "g4282",
     "gutenberg": 4282,
     "title": "Don Rodriguez; Chronicles of Shadow Valley",
-    "author": "Dunsany",
+    "author": "Lord Dunsany",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7692,7 +7734,7 @@
     "slug": "g4353",
     "gutenberg": 4353,
     "title": "Five Thousand an Hour: How Johnny Gamble Won the Heiress",
-    "author": "Chester",
+    "author": "George Randolph Chester",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7704,7 +7746,7 @@
     "slug": "g4358",
     "gutenberg": 4358,
     "title": "The Sea Fairies",
-    "author": "Baum",
+    "author": "L. Frank Baum",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7717,7 +7759,7 @@
     "slug": "g4387",
     "gutenberg": 4387,
     "title": "Present at a Hanging and Other Ghost Stories",
-    "author": "Bierce",
+    "author": "Ambrose Bierce",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7729,7 +7771,7 @@
     "slug": "g4393",
     "gutenberg": 4393,
     "title": "Wakulla: a story of adventure in Florida",
-    "author": "Munroe",
+    "author": "Kirk Munroe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7741,7 +7783,7 @@
     "slug": "g4405",
     "gutenberg": 4405,
     "title": "The Shaving of Shagpat; an Arabian entertainment — Complete",
-    "author": "Meredith",
+    "author": "George Meredith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7754,7 +7796,7 @@
     "slug": "g4499",
     "gutenberg": 4499,
     "title": "Complete Short Works of George Meredith",
-    "author": "Meredith",
+    "author": "George Meredith",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7778,7 +7820,7 @@
     "slug": "g4552",
     "gutenberg": 4552,
     "title": "The Border Legion",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7791,7 +7833,7 @@
     "slug": "g4588",
     "gutenberg": 4588,
     "title": "The Allen House; Or, Twenty Years Ago and Now",
-    "author": "Arthur",
+    "author": "T. S. Arthur",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7804,7 +7846,7 @@
     "slug": "g4604",
     "gutenberg": 4604,
     "title": "The Clique of Gold",
-    "author": "Gaboriau",
+    "author": "Emile Gaboriau",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7829,7 +7871,7 @@
     "slug": "g4712",
     "gutenberg": 4712,
     "title": "The Landloper: The Romance of a Man on Foot",
-    "author": "Day",
+    "author": "Holman Day",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7842,7 +7884,7 @@
     "slug": "g4715",
     "gutenberg": 4715,
     "title": "An African Millionaire: Episodes in the Life of the Illustrious Colonel Clay",
-    "author": "Allen",
+    "author": "Grant Allen",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7854,7 +7896,7 @@
     "slug": "g4745",
     "gutenberg": 4745,
     "title": "At the Villa Rose",
-    "author": "Mason",
+    "author": "A. E. W. Mason",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7866,7 +7908,7 @@
     "slug": "g4767",
     "gutenberg": 4767,
     "title": "The Mayor's Wife",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7879,7 +7921,7 @@
     "slug": "g4789",
     "gutenberg": 4789,
     "title": "Black Caesar's Clan : A Florida Mystery Story",
-    "author": "Terhune",
+    "author": "Albert Payson Terhune",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7891,7 +7933,7 @@
     "slug": "g4792",
     "gutenberg": 4792,
     "title": "In Freedom's Cause : A Story of Wallace and Bruce",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7903,7 +7945,7 @@
     "slug": "g4796",
     "gutenberg": 4796,
     "title": "Jack Tier; Or, The Florida Reef",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7915,7 +7957,7 @@
     "slug": "g4912",
     "gutenberg": 4912,
     "title": "Wacousta : a tale of the Pontiac conspiracy (Complete)",
-    "author": "Richardson",
+    "author": "Major Richardson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7940,7 +7982,7 @@
     "slug": "g4931",
     "gutenberg": 4931,
     "title": "Won By the Sword : a tale of the Thirty Years' War",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7952,7 +7994,7 @@
     "slug": "g4932",
     "gutenberg": 4932,
     "title": "A Knight of the White Cross: A Tale of the Siege of Rhodes",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7965,7 +8007,7 @@
     "slug": "g4941",
     "gutenberg": 4941,
     "title": "The House Boat Boys; Or, Drifting Down to the Sunny South",
-    "author": "Rathborne",
+    "author": "St. George Rathborne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7978,7 +8020,7 @@
     "slug": "g4966",
     "gutenberg": 4966,
     "title": "Waverley; or, 'Tis sixty years since — Complete",
-    "author": "Scott",
+    "author": "Walter Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -7990,7 +8032,7 @@
     "slug": "g4982",
     "gutenberg": 4982,
     "title": "A Rock in the Baltic",
-    "author": "Barr",
+    "author": "Robert Barr",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8041,7 +8083,7 @@
     "slug": "g4990",
     "gutenberg": 4990,
     "title": "The Adventures of a Boy Reporter",
-    "author": "Morrison",
+    "author": "Harry Steele Morrison",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8054,7 +8096,7 @@
     "slug": "g4993",
     "gutenberg": 4993,
     "title": "A Texas Ranger",
-    "author": "Raine",
+    "author": "William MacLeod Raine",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8079,7 +8121,7 @@
     "slug": "g4995",
     "gutenberg": 4995,
     "title": "True to Himself; Or, Roger Strong's Struggle for Place",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8091,7 +8133,7 @@
     "slug": "g5003",
     "gutenberg": 5003,
     "title": "The Rover Boys in New York; Or, Saving Their Father's Honor",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8104,7 +8146,7 @@
     "slug": "g5009",
     "gutenberg": 5009,
     "title": "The Unspeakable Perk",
-    "author": "Adams",
+    "author": "Samuel Hopkins Adams",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8117,7 +8159,7 @@
     "slug": "g5054",
     "gutenberg": 5054,
     "title": "The Dream Doctor",
-    "author": "Reeve",
+    "author": "Arthur B. Reeve",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8130,7 +8172,7 @@
     "slug": "g5062",
     "gutenberg": 5062,
     "title": "The Winds of Chance",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8143,7 +8185,7 @@
     "slug": "g5064",
     "gutenberg": 5064,
     "title": "The Voyage of the Hoppergrass",
-    "author": "Pearson",
+    "author": "Edmund Lester Pearson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8156,7 +8198,7 @@
     "slug": "g5067",
     "gutenberg": 5067,
     "title": "The Rainbow Trail",
-    "author": "Grey",
+    "author": "Zane Grey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8169,7 +8211,7 @@
     "slug": "g5073",
     "gutenberg": 5073,
     "title": "The War Terror",
-    "author": "Reeve",
+    "author": "Arthur B. Reeve",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8182,7 +8224,7 @@
     "slug": "g5075",
     "gutenberg": 5075,
     "title": "The Lion of the North: A Tale of the Times of Gustavus Adolphus",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8195,7 +8237,7 @@
     "slug": "g5087",
     "gutenberg": 5087,
     "title": "The Treasure-Train",
-    "author": "Reeve",
+    "author": "Arthur B. Reeve",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8208,7 +8250,7 @@
     "slug": "g5110",
     "gutenberg": 5110,
     "title": "The Adventures of Jerry Muskrat",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8221,7 +8263,7 @@
     "slug": "g5121",
     "gutenberg": 5121,
     "title": "Dark Hollow",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8233,7 +8275,7 @@
     "slug": "g5128",
     "gutenberg": 5128,
     "title": "The Young Carthaginian: A Story of The Times of Hannibal",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8246,7 +8288,7 @@
     "slug": "g5150",
     "gutenberg": 5150,
     "title": "The Ear in the Wall",
-    "author": "Reeve",
+    "author": "Arthur B. Reeve",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8259,7 +8301,7 @@
     "slug": "g5160",
     "gutenberg": 5160,
     "title": "The Mabinogion",
-    "author": "Schreiber",
+    "author": "Anonymous",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8272,7 +8314,7 @@
     "slug": "g5164",
     "gutenberg": 5164,
     "title": "The Beetle: A Mystery",
-    "author": "Marsh",
+    "author": "Richard Marsh",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8285,7 +8327,7 @@
     "slug": "g5172",
     "gutenberg": 5172,
     "title": "Aladdin O'Brien",
-    "author": "Morris",
+    "author": "Gouverneur Morris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8297,7 +8339,7 @@
     "slug": "g5191",
     "gutenberg": 5191,
     "title": "The Case of Summerfield",
-    "author": "Rhodes",
+    "author": "W. H. Rhodes",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8310,7 +8352,7 @@
     "slug": "g5228",
     "gutenberg": 5228,
     "title": "Ayesha, the Return of She",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8322,7 +8364,7 @@
     "slug": "g5233",
     "gutenberg": 5233,
     "title": "The Iron Trail",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8335,7 +8377,7 @@
     "slug": "g5240",
     "gutenberg": 5240,
     "title": "The Confessions of Harry Lorrequer — Complete",
-    "author": "Lever",
+    "author": "Charles Lever",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8361,7 +8403,7 @@
     "slug": "g5271",
     "gutenberg": 5271,
     "title": "Marjorie's Vacation",
-    "author": "Wells",
+    "author": "Carolyn Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8373,7 +8415,7 @@
     "slug": "g5306",
     "gutenberg": 5306,
     "title": "Down the Ravine",
-    "author": "Craddock",
+    "author": "Charles Egbert Craddock",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8385,7 +8427,7 @@
     "slug": "g5308",
     "gutenberg": 5308,
     "title": "The Paradise Mystery",
-    "author": "Fletcher",
+    "author": "J. S. Fletcher",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8398,7 +8440,7 @@
     "slug": "g5311",
     "gutenberg": 5311,
     "title": "Parnassus on Wheels",
-    "author": "Morley",
+    "author": "Christopher Morley",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8410,7 +8452,7 @@
     "slug": "g5315",
     "gutenberg": 5315,
     "title": "Told in the East",
-    "author": "Mundy",
+    "author": "Talbot Mundy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8422,7 +8464,7 @@
     "slug": "g5320",
     "gutenberg": 5320,
     "title": "Taken Alive",
-    "author": "Roe",
+    "author": "Edward Payson Roe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8434,7 +8476,7 @@
     "slug": "g5342",
     "gutenberg": 5342,
     "title": "The Story Girl",
-    "author": "Montgomery",
+    "author": "L. M. Montgomery",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8447,7 +8489,7 @@
     "slug": "g5404",
     "gutenberg": 5404,
     "title": "Grace Harlowe's Overland Riders on the Great American Desert",
-    "author": "Chase",
+    "author": "Josephine Chase",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8459,7 +8501,7 @@
     "slug": "g5435",
     "gutenberg": 5435,
     "title": "The Stillwater Tragedy",
-    "author": "Aldrich",
+    "author": "Thomas Bailey Aldrich",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8472,7 +8514,7 @@
     "slug": "g5449",
     "gutenberg": 5449,
     "title": "Uarda : a Romance of Ancient Egypt — Complete",
-    "author": "Ebers",
+    "author": "Georg Ebers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8484,7 +8526,7 @@
     "slug": "g5623",
     "gutenberg": 5623,
     "title": "The Young Explorer; Or, Claiming His Fortune",
-    "author": "Alger",
+    "author": "Jr. Horatio Alger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8497,7 +8539,7 @@
     "slug": "g5643",
     "gutenberg": 5643,
     "title": "Ranson's Folly",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8509,7 +8551,7 @@
     "slug": "g5658",
     "gutenberg": 5658,
     "title": "Lord Jim",
-    "author": "Conrad",
+    "author": "Joseph Conrad",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8521,7 +8563,7 @@
     "slug": "g5697",
     "gutenberg": 5697,
     "title": "Tales of Chinatown",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8533,7 +8575,7 @@
     "slug": "g5703",
     "gutenberg": 5703,
     "title": "The Lord of Death and the Queen of Life",
-    "author": "Flint",
+    "author": "Homer Eon Flint",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8546,7 +8588,7 @@
     "slug": "g5705",
     "gutenberg": 5705,
     "title": "The Queen of Sheba, and My Cousin the Colonel",
-    "author": "Aldrich",
+    "author": "Thomas Bailey Aldrich",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8559,7 +8601,7 @@
     "slug": "g5735",
     "gutenberg": 5735,
     "title": "The Valley of the Giants",
-    "author": "Kyne",
+    "author": "Peter B. Kyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8572,7 +8614,7 @@
     "slug": "g5738",
     "gutenberg": 5738,
     "title": "Cappy Ricks; Or, the Subjugation of Matt Peasley",
-    "author": "Kyne",
+    "author": "Peter B. Kyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8584,7 +8626,7 @@
     "slug": "g5743",
     "gutenberg": 5743,
     "title": "The Evil Shepherd",
-    "author": "Oppenheim",
+    "author": "E. Phillips Oppenheim",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8597,7 +8639,7 @@
     "slug": "g5745",
     "gutenberg": 5745,
     "title": "She and Allan",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8609,7 +8651,7 @@
     "slug": "g5747",
     "gutenberg": 5747,
     "title": "Do and Dare — a Brave Boy's Fight for Fortune",
-    "author": "Alger",
+    "author": "Jr. Horatio Alger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8621,7 +8663,7 @@
     "slug": "g5791",
     "gutenberg": 5791,
     "title": "Mrs. Peter Rabbit",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8633,7 +8675,7 @@
     "slug": "g5805",
     "gutenberg": 5805,
     "title": "The League of the Scarlet Pimpernel",
-    "author": "Orczy",
+    "author": "Baroness Emmuska Orczy Orczy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8646,7 +8688,7 @@
     "slug": "g5828",
     "gutenberg": 5828,
     "title": "In the Pecos Country",
-    "author": "Ellis",
+    "author": "Edward Sylvester Ellis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8670,7 +8712,7 @@
     "slug": "g5844",
     "gutenberg": 5844,
     "title": "The Adventures of Johnny Chuck",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8683,7 +8725,7 @@
     "slug": "g5846",
     "gutenberg": 5846,
     "title": "The Adventures of Poor Mrs. Quack",
-    "author": "Burgess",
+    "author": "Thornton W. Burgess",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8696,7 +8738,7 @@
     "slug": "g5866",
     "gutenberg": 5866,
     "title": "Yollop",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8708,7 +8750,7 @@
     "slug": "g5871",
     "gutenberg": 5871,
     "title": "Green Fancy",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8720,7 +8762,7 @@
     "slug": "g5874",
     "gutenberg": 5874,
     "title": "Dawn",
-    "author": "Porter",
+    "author": "Eleanor H. Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8732,7 +8774,7 @@
     "slug": "g5875",
     "gutenberg": 5875,
     "title": "The Rover Boys on the Ocean; Or, A chase for a fortune",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8745,7 +8787,7 @@
     "slug": "g5882",
     "gutenberg": 5882,
     "title": "A District Messenger Boy, and A Necktie Party",
-    "author": "Otis",
+    "author": "James Otis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8758,7 +8800,7 @@
     "slug": "g5893",
     "gutenberg": 5893,
     "title": "Two Little Women on a Holiday",
-    "author": "Wells",
+    "author": "Carolyn Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8782,7 +8824,7 @@
     "slug": "g5956",
     "gutenberg": 5956,
     "title": "Gallegher and Other Stories",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8794,7 +8836,7 @@
     "slug": "g5961",
     "gutenberg": 5961,
     "title": "Samuel the Seeker",
-    "author": "Sinclair",
+    "author": "Upton Sinclair",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8806,7 +8848,7 @@
     "slug": "g5972",
     "gutenberg": 5972,
     "title": "A Fascinating Traitor: An Anglo-Indian Story",
-    "author": "Savage",
+    "author": "Richard Savage",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8819,7 +8861,7 @@
     "slug": "g5988",
     "gutenberg": 5988,
     "title": "Old French Romances, Done into English",
-    "author": "Morris",
+    "author": "William Morris",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8831,7 +8873,7 @@
     "slug": "g6008",
     "gutenberg": 6008,
     "title": "The Midnight Passenger : A Novel",
-    "author": "Savage",
+    "author": "Richard Savage",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8844,7 +8886,7 @@
     "slug": "g6015",
     "gutenberg": 6015,
     "title": "Captain Macklin: His Memoirs",
-    "author": "Davis",
+    "author": "Richard Harding Davis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8856,7 +8898,7 @@
     "slug": "g6030",
     "gutenberg": 6030,
     "title": "The Iron Star — And What It Saw on Its Journey Through the Ages",
-    "author": "True",
+    "author": "John Preston True",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8869,7 +8911,7 @@
     "slug": "g6041",
     "gutenberg": 6041,
     "title": "Stories by English Authors: The Sea",
-    "author": "Russell",
+    "author": "Various",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8881,7 +8923,7 @@
     "slug": "g6057",
     "gutenberg": 6057,
     "title": "Fran",
-    "author": "Ellis",
+    "author": "J. Breckenridge Ellis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8893,7 +8935,7 @@
     "slug": "g6066",
     "gutenberg": 6066,
     "title": "King--of the Khyber Rifles: A Romance of Adventure",
-    "author": "Mundy",
+    "author": "Talbot Mundy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8905,7 +8947,7 @@
     "slug": "g6071",
     "gutenberg": 6071,
     "title": "The Rover Boys out West; Or, The Search for a Lost Mine",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8918,7 +8960,7 @@
     "slug": "g6073",
     "gutenberg": 6073,
     "title": "Smith and the Pharaohs, and other Tales",
-    "author": "Haggard",
+    "author": "H. Rider Haggard",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8930,7 +8972,7 @@
     "slug": "g6086",
     "gutenberg": 6086,
     "title": "The Scottish Chiefs",
-    "author": "Porter",
+    "author": "Jane Porter",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8943,7 +8985,7 @@
     "slug": "g6087",
     "gutenberg": 6087,
     "title": "The Vampyre; a Tale",
-    "author": "Polidori",
+    "author": "John William Polidori",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8956,7 +8998,7 @@
     "slug": "g6094",
     "gutenberg": 6094,
     "title": "The Scouts of Stonewall: The Story of the Great Valley Campaign",
-    "author": "Altsheler",
+    "author": "Joseph A. Altsheler",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8982,7 +9024,7 @@
     "slug": "g6115",
     "gutenberg": 6115,
     "title": "The Long Chance",
-    "author": "Kyne",
+    "author": "Peter B. Kyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -8995,7 +9037,7 @@
     "slug": "g6118",
     "gutenberg": 6118,
     "title": "The Rose in the Ring",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9008,7 +9050,7 @@
     "slug": "g6133",
     "gutenberg": 6133,
     "title": "The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar",
-    "author": "Leblanc",
+    "author": "Maurice Leblanc",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9033,7 +9075,7 @@
     "slug": "g6141",
     "gutenberg": 6141,
     "title": "Peck's Bad Boy with the Cowboys",
-    "author": "Peck",
+    "author": "George W. Peck",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9045,7 +9087,7 @@
     "slug": "g6159",
     "gutenberg": 6159,
     "title": "Vicky Van",
-    "author": "Wells",
+    "author": "Carolyn Wells",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9069,7 +9111,7 @@
     "slug": "g6210",
     "gutenberg": 6210,
     "title": "The Trail of the Sword, Complete",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9082,7 +9124,7 @@
     "slug": "g6229",
     "gutenberg": 6229,
     "title": "The Seats of the Mighty, Complete",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9095,7 +9137,7 @@
     "slug": "g6249",
     "gutenberg": 6249,
     "title": "The Right of Way — Complete",
-    "author": "Parker",
+    "author": "Gilbert Parker",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9108,7 +9150,7 @@
     "slug": "g6337",
     "gutenberg": 6337,
     "title": "The Boy Allies under Two Flags",
-    "author": "Hayes",
+    "author": "Clair W. Hayes",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9121,7 +9163,7 @@
     "slug": "g6353",
     "gutenberg": 6353,
     "title": "The Prince of Graustark",
-    "author": "McCutcheon",
+    "author": "George Barr McCutcheon",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9134,19 +9176,21 @@
     "slug": "g6357",
     "gutenberg": 6357,
     "title": "Snowflakes and Sunbeams; Or, The Young Fur-traders: A Tale of the Far North",
-    "author": "Ballantyne",
+    "author": "R. M. Ballantyne",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Snowflakes and Sunbeams; Or, The Young Fur-traders: A Tale of the Far North"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on a chapter summary"
   },
   {
     "slug": "g6365",
     "gutenberg": 6365,
     "title": "Richard Dare's Venture; Or, Striking Out for Himself",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9158,7 +9202,7 @@
     "slug": "g6370",
     "gutenberg": 6370,
     "title": "The Story of the Odyssey",
-    "author": "Church",
+    "author": "Alfred John Church",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9171,7 +9215,7 @@
     "slug": "g6382",
     "gutenberg": 6382,
     "title": "Bat Wing",
-    "author": "Rohmer",
+    "author": "Sax Rohmer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9183,7 +9227,7 @@
     "slug": "g6422",
     "gutenberg": 6422,
     "title": "The Life, Adventures & Piracies of the Famous Captain Singleton",
-    "author": "Defoe",
+    "author": "Daniel Defoe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9196,7 +9240,7 @@
     "slug": "g6425",
     "gutenberg": 6425,
     "title": "Flowing Gold",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9208,7 +9252,7 @@
     "slug": "g6426",
     "gutenberg": 6426,
     "title": "Dick Prescott's First Year at West Point; Or, Two Chums in the Cadet Gray",
-    "author": "Hancock",
+    "author": "H. Irving Hancock",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9220,7 +9264,7 @@
     "slug": "g6433",
     "gutenberg": 6433,
     "title": "On the Trail of Pontiac; Or, The Pioneer Boys of the Ohio",
-    "author": "Stratemeyer",
+    "author": "Edward Stratemeyer",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9232,7 +9276,7 @@
     "slug": "g6436",
     "gutenberg": 6436,
     "title": "Castle Nowhere",
-    "author": "Woolson",
+    "author": "Constance Fenimore Woolson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9244,7 +9288,7 @@
     "slug": "g6437",
     "gutenberg": 6437,
     "title": "The Splendid Spur",
-    "author": "Quiller-Couch",
+    "author": "Arthur Quiller-Couch",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9257,7 +9301,7 @@
     "slug": "g6450",
     "gutenberg": 6450,
     "title": "The Prairie",
-    "author": "Cooper",
+    "author": "James Fenimore Cooper",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9282,7 +9326,7 @@
     "slug": "g6461",
     "gutenberg": 6461,
     "title": "Facing the World",
-    "author": "Alger",
+    "author": "Jr. Horatio Alger",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9306,7 +9350,7 @@
     "slug": "g6472",
     "gutenberg": 6472,
     "title": "On the Pampas; Or, The Young Settlers",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9318,7 +9362,7 @@
     "slug": "g6488",
     "gutenberg": 6488,
     "title": "Going Some",
-    "author": "Beach",
+    "author": "Rex Beach",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9330,7 +9374,7 @@
     "slug": "g6572",
     "gutenberg": 6572,
     "title": "Haste and Waste; Or, the Young Pilot of Lake Champlain. A Story for Young People",
-    "author": "Optic",
+    "author": "Oliver Optic",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9355,7 +9399,7 @@
     "slug": "g6655",
     "gutenberg": 6655,
     "title": "Tom Slade : Boy Scout of the Moving Pictures",
-    "author": "Fitzhugh",
+    "author": "Percy Keese Fitzhugh",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9379,7 +9423,7 @@
     "slug": "g6715",
     "gutenberg": 6715,
     "title": "Isobel : A Romance of the Northern Trail",
-    "author": "Curwood",
+    "author": "James Oliver Curwood",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9403,7 +9447,7 @@
     "slug": "g6751",
     "gutenberg": 6751,
     "title": "The Winds of the World",
-    "author": "Mundy",
+    "author": "Talbot Mundy",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9416,20 +9460,22 @@
     "slug": "g6758",
     "gutenberg": 6758,
     "title": "The Adventures of Sir Launcelot Greaves",
-    "author": "Smollett",
+    "author": "T. Smollett",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "The Adventures of Sir Launcelot Greaves",
       "Adventures of Sir Launcelot Greaves"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the table of contents"
   },
   {
     "slug": "g6781",
     "gutenberg": 6781,
     "title": "The Ghost-Seer; or the Apparitionist; and Sport of Destiny",
-    "author": "Schiller",
+    "author": "Friedrich Schiller",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9442,7 +9488,7 @@
     "slug": "g6805",
     "gutenberg": 6805,
     "title": "The Mill Mystery",
-    "author": "Green",
+    "author": "Anna Katharine Green",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9455,7 +9501,7 @@
     "slug": "g6846",
     "gutenberg": 6846,
     "title": "My Lady of the North",
-    "author": "Parrish",
+    "author": "Randall Parrish",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9467,7 +9513,7 @@
     "slug": "g6864",
     "gutenberg": 6864,
     "title": "Average Jones",
-    "author": "Adams",
+    "author": "Samuel Hopkins Adams",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9479,7 +9525,7 @@
     "slug": "g6881",
     "gutenberg": 6881,
     "title": "Note Book of an English Opium-Eater",
-    "author": "De Quincey",
+    "author": "Thomas De Quincey",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9491,7 +9537,7 @@
     "slug": "g6897",
     "gutenberg": 6897,
     "title": "The Little Savage",
-    "author": "Marryat",
+    "author": "Frederick Marryat",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9504,7 +9550,7 @@
     "slug": "g6901",
     "gutenberg": 6901,
     "title": "The Happy Adventurers",
-    "author": "Middleton",
+    "author": "Lydia Miller Middleton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9517,7 +9563,7 @@
     "slug": "g6906",
     "gutenberg": 6906,
     "title": "The Lost Trail",
-    "author": "Ellis",
+    "author": "Edward Sylvester Ellis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9530,7 +9576,7 @@
     "slug": "g6914",
     "gutenberg": 6914,
     "title": "The Last of the Huggermuggers",
-    "author": "Cranch",
+    "author": "Christopher Pearse Cranch",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9543,7 +9589,7 @@
     "slug": "g6936",
     "gutenberg": 6936,
     "title": "Robinson Crusoe — in Words of One Syllable",
-    "author": "Defoe",
+    "author": "Daniel Defoe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9568,7 +9614,7 @@
     "slug": "g6952",
     "gutenberg": 6952,
     "title": "By Pike and Dyke: a Tale of the Rise of the Dutch Republic",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9580,7 +9626,7 @@
     "slug": "g6953",
     "gutenberg": 6953,
     "title": "By England's Aid; or, the Freeing of the Netherlands (1585-1604)",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9592,7 +9638,7 @@
     "slug": "g6987",
     "gutenberg": 6987,
     "title": "Five Little Peppers Abroad",
-    "author": "Sidney",
+    "author": "Margaret Sidney",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9604,7 +9650,7 @@
     "slug": "g7006",
     "gutenberg": 7006,
     "title": "Bonnie Prince Charlie : a Tale of Fontenoy and Culloden",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9616,19 +9662,21 @@
     "slug": "g7025",
     "gutenberg": 7025,
     "title": "Rob Roy — Complete",
-    "author": "Scott",
+    "author": "Walter Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
       "Rob Roy — Complete"
     ],
-    "anchor": ""
+    "anchor": "",
+    "exclude": true,
+    "exclude_reason": "opens on the author's introduction, not the novel"
   },
   {
     "slug": "g7037",
     "gutenberg": 7037,
     "title": "Beric the Briton : a Story of the Roman Invasion",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9640,7 +9688,7 @@
     "slug": "g7059",
     "gutenberg": 7059,
     "title": "Peregrine's Progress",
-    "author": "Farnol",
+    "author": "Jeffery Farnol",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9652,7 +9700,7 @@
     "slug": "g7060",
     "gutenberg": 7060,
     "title": "At Agincourt",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9664,7 +9712,7 @@
     "slug": "g7070",
     "gutenberg": 7070,
     "title": "The Treasure of the Incas: A Story of Adventure in Peru",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9677,7 +9725,7 @@
     "slug": "g7071",
     "gutenberg": 7071,
     "title": "In Times of Peril: A Tale of India",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9689,7 +9737,7 @@
     "slug": "g7079",
     "gutenberg": 7079,
     "title": "The Companions of Jehu",
-    "author": "Dumas",
+    "author": "Alexandre Dumas",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9702,7 +9750,7 @@
     "slug": "g7100",
     "gutenberg": 7100,
     "title": "Adventures of Huckleberry Finn, Chapters 01 to 05",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9714,7 +9762,7 @@
     "slug": "g7112",
     "gutenberg": 7112,
     "title": "Erema; Or, My Father's Sin",
-    "author": "Blackmore",
+    "author": "R. D. Blackmore",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9726,7 +9774,7 @@
     "slug": "g7132",
     "gutenberg": 7132,
     "title": "The Purple Land",
-    "author": "Hudson",
+    "author": "W. H. Hudson",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9739,7 +9787,7 @@
     "slug": "g7156",
     "gutenberg": 7156,
     "title": "The Prince and the Pauper, Part 3.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9752,7 +9800,7 @@
     "slug": "g7159",
     "gutenberg": 7159,
     "title": "The Prince and the Pauper, Part 6.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9765,7 +9813,7 @@
     "slug": "g7162",
     "gutenberg": 7162,
     "title": "The Prince and the Pauper, Part 9.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9778,7 +9826,7 @@
     "slug": "g7193",
     "gutenberg": 7193,
     "title": "The Adventures of Tom Sawyer, Part 1.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9791,7 +9839,7 @@
     "slug": "g7194",
     "gutenberg": 7194,
     "title": "The Adventures of Tom Sawyer, Part 2.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9804,7 +9852,7 @@
     "slug": "g7195",
     "gutenberg": 7195,
     "title": "The Adventures of Tom Sawyer, Part 3.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9817,7 +9865,7 @@
     "slug": "g7196",
     "gutenberg": 7196,
     "title": "The Adventures of Tom Sawyer, Part 4.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9830,7 +9878,7 @@
     "slug": "g7197",
     "gutenberg": 7197,
     "title": "The Adventures of Tom Sawyer, Part 5.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9843,7 +9891,7 @@
     "slug": "g7198",
     "gutenberg": 7198,
     "title": "The Adventures of Tom Sawyer, Part 6.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9856,7 +9904,7 @@
     "slug": "g7199",
     "gutenberg": 7199,
     "title": "The Adventures of Tom Sawyer, Part 7.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9869,7 +9917,7 @@
     "slug": "g7200",
     "gutenberg": 7200,
     "title": "The Adventures of Tom Sawyer, Part 8.",
-    "author": "Twain",
+    "author": "Mark Twain",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9882,7 +9930,7 @@
     "slug": "g7229",
     "gutenberg": 7229,
     "title": "Rujub, the Juggler",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9894,7 +9942,7 @@
     "slug": "g7281",
     "gutenberg": 7281,
     "title": "Tom Cringle's Log",
-    "author": "Scott",
+    "author": "Michael Scott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9906,7 +9954,7 @@
     "slug": "g7318",
     "gutenberg": 7318,
     "title": "The Bravest of the Brave — or, with Peterborough in Spain",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9932,7 +9980,7 @@
     "slug": "g7334",
     "gutenberg": 7334,
     "title": "With Buller in Natal, Or, a Born Leader",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9944,7 +9992,7 @@
     "slug": "g7346",
     "gutenberg": 7346,
     "title": "Among Malay Pirates : a Tale of Adventure and Peril",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9956,7 +10004,7 @@
     "slug": "g7369",
     "gutenberg": 7369,
     "title": "Jim Davis",
-    "author": "Masefield",
+    "author": "John Masefield",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9968,7 +10016,7 @@
     "slug": "g7434",
     "gutenberg": 7434,
     "title": "The Adventures of Joel Pepper",
-    "author": "Sidney",
+    "author": "Margaret Sidney",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -9981,7 +10029,7 @@
     "slug": "g7465",
     "gutenberg": 7465,
     "title": "Richard of Jamestown : a Story of the Virginia Colony",
-    "author": "Otis",
+    "author": "James Otis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10005,7 +10053,7 @@
     "slug": "g7478",
     "gutenberg": 7478,
     "title": "Toby Tyler; Or, Ten Weeks with a Circus",
-    "author": "Otis",
+    "author": "James Otis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10017,7 +10065,7 @@
     "slug": "g7486",
     "gutenberg": 7486,
     "title": "The Master of Silence: A Romance",
-    "author": "Bacheller",
+    "author": "Irving Bacheller",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10030,7 +10078,7 @@
     "slug": "g7492",
     "gutenberg": 7492,
     "title": "The Fighting Chance",
-    "author": "Chambers",
+    "author": "Robert W. Chambers",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10055,7 +10103,7 @@
     "slug": "g7506",
     "gutenberg": 7506,
     "title": "The Huge Hunter; Or, The Steam Man of the Prairies",
-    "author": "Ellis",
+    "author": "Edward Sylvester Ellis",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10068,7 +10116,7 @@
     "slug": "g7510",
     "gutenberg": 7510,
     "title": "Keith of the Border: A Tale of the Plains",
-    "author": "Parrish",
+    "author": "Randall Parrish",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10080,7 +10128,7 @@
     "slug": "g7614",
     "gutenberg": 7614,
     "title": "Eugene Aram — Complete",
-    "author": "Lytton",
+    "author": "Baron Edward Bulwer Lytton Lytton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10092,7 +10140,7 @@
     "slug": "g7639",
     "gutenberg": 7639,
     "title": "The Disowned — Complete",
-    "author": "Lytton",
+    "author": "Baron Edward Bulwer Lytton Lytton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10105,7 +10153,7 @@
     "slug": "g7735",
     "gutenberg": 7735,
     "title": "Paul Clifford — Complete",
-    "author": "Lytton",
+    "author": "Baron Edward Bulwer Lytton Lytton",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10117,7 +10165,7 @@
     "slug": "g7765",
     "gutenberg": 7765,
     "title": "Night Must Fall : a Play in Three Acts",
-    "author": "Williams",
+    "author": "Emlyn Williams",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10129,7 +10177,7 @@
     "slug": "g7776",
     "gutenberg": 7776,
     "title": "The Call of the Cumberlands",
-    "author": "Buck",
+    "author": "Charles Neville Buck",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10142,7 +10190,7 @@
     "slug": "g7779",
     "gutenberg": 7779,
     "title": "Of Captain Mission",
-    "author": "Defoe",
+    "author": "Daniel Defoe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10154,7 +10202,7 @@
     "slug": "g7788",
     "gutenberg": 7788,
     "title": "Blindfolded",
-    "author": "Walcott",
+    "author": "Earle Ashley Walcott",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10166,7 +10214,7 @@
     "slug": "g7799",
     "gutenberg": 7799,
     "title": "An American Robinson Crusoe",
-    "author": "Allison",
+    "author": "Daniel Defoe",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10178,7 +10226,7 @@
     "slug": "g7815",
     "gutenberg": 7815,
     "title": "Hereward, the Last of the English",
-    "author": "Kingsley",
+    "author": "Charles Kingsley",
     "year": 0,
     "coffees": 1,
     "aliases": [
@@ -10190,7 +10238,7 @@
     "slug": "g7831",
     "gutenberg": 7831,
     "title": "When London Burned : a Story of Restoration Times and the Great Fire",
-    "author": "Henty",
+    "author": "G. A. Henty",
     "year": 0,
     "coffees": 1,
     "aliases": [

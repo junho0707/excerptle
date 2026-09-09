@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Excerptle — guess the public-domain book</title>
+  <title>Excerptle | Guess The Book</title>
   <meta name="description" content="Excerptle is a daily literary guessing game. Read a public-domain opening, take hints, and name the book. Play the book bank, climb per-puzzle leaderboards, or battle a friend.">
   <link rel="canonical" href="https://excerptle.io/">
   <meta name="theme-color" content="#f4efe4">
@@ -13,72 +13,112 @@
   <meta property="og:title" content="Excerptle — guess the book">
   <meta property="og:description" content="Six guesses. Hints on demand. Public-domain canon. Challenge a friend.">
   <meta property="og:url" content="https://excerptle.io/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://excerptle.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Excerptle — guess the book">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://excerptle.io/assets/og.png">
   <meta name="twitter:title" content="Excerptle — guess the book">
   <meta name="twitter:description" content="Guess the public-domain book. Hints on demand. Battle a friend on the same puzzle.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%237a1f2b' width='32' height='32'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='%23f4efe4' font-family='Georgia,serif'%3EE%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Excerptle","url":"https://excerptle.io/","applicationCategory":"GameApplication","genre":"Word game","description":"Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Excerptle","url":"https://excerptle.io/","image":"https://excerptle.io/assets/og.png","applicationCategory":"GameApplication","genre":"Word game","description":"Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
+  <!-- AdSense ownership + review. Static on purpose: the reviewer's crawler
+       reads this before approval, and js/ads.js deliberately loads nothing
+       until an ad unit is configured, so gating it would leave AdSense
+       reporting "Not found" forever. The same loader serves ads later. -->
+  <meta name="google-adsense-account" content="ca-pub-2005015845685746">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2005015845685746" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <div class="app">
     <header class="top">
       <a class="brand" href="#/" aria-label="Excerptle home">
-        <strong>EXCERPTLE</strong>
-        <span>Guess the book</span>
+        <img class="brand-mark" src="/assets/icon-192.png" width="36" height="36" alt="" decoding="async">
+        <span class="brand-words">
+          <strong>EXCERPTLE</strong>
+          <span>Guess the book</span>
+        </span>
       </a>
-      <nav class="tabs" aria-label="Main">
+      <div class="nav-right">
+        <button type="button" class="pro-badge hidden" id="pro-badge" data-act="open-pro"
+                title="Excerptle Pro" aria-label="Excerptle Pro">&#10022;</button>
+        <button type="button" class="tab signin" id="auth-tab" data-act="open-auth">Sign in</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" data-act="toggle-nav"
+                aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+          <span class="nav-bars" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav class="tabs" id="main-nav" aria-label="Main">
         <button type="button" class="tab" data-act="open-play">New game</button>
         <button type="button" class="tab" data-act="open-how">How to play</button>
         <a class="tab" href="#/bank">All books</a>
         <a class="tab" href="#/ranks">Leaderboard</a>
-        <button type="button" class="tab" id="auth-tab" data-act="open-auth">Sign in</button>
-        <a class="tab icon" href="#/settings" title="Settings" aria-label="Settings">⚙</a>
+        <a class="tab" href="#/stats">Stats</a>
+        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support</a>
+        <a class="tab" href="#/settings">Settings</a>
       </nav>
     </header>
 
     <main id="game">
-      <div class="meta">
-        <span id="meta-left">Daily</span>
-        <span id="meta-right">0/6 · 0 hints</span>
-      </div>
-      <div id="story-nav" class="story-nav hidden">
-        <button type="button" class="btn ghost" data-act="play-random">Next random book</button>
-        <button type="button" class="btn ghost" data-act="open-play">Choose by ID</button>
-      </div>
-      <div class="excerpt-wrap">
-        <div id="tier-label" class="tier-label">First sentence</div>
-        <article id="excerpt" class="excerpt drop">Loading…</article>
-      </div>
-      <ul id="guesses" class="guesses"></ul>
-      <p id="msg" class="msg" role="status"></p>
-      <form id="form" class="form" autocomplete="off">
-        <label class="sr-only" for="guess-input">Book title</label>
-        <input id="guess-input" name="guess" type="text" enterkeyhint="go" placeholder="Guess the title" maxlength="120">
-        <button type="button" class="btn ghost" data-act="hint" id="hint-btn">Hint</button>
-        <button type="submit">Guess</button>
-      </form>
-      <div id="result" class="result hidden"></div>
-      <div id="ad" class="ad hidden">
-        Advertisement
-        <div class="slot">Post-game only</div>
-      </div>
+      <section id="more" class="more" aria-label="Play another book">
+        <p class="more-q">Want to guess more?</p>
+        <div id="story-nav" class="story-nav">
+          <button type="button" class="btn ghost sm" data-act="play-random">🎲 Random book</button>
+          <form id="jump-form" class="jump">
+            <label class="sr-only" for="jump-input">Choose by ID</label>
+            <input id="jump-input" type="number" min="1" inputmode="numeric" placeholder="Book #">
+            <button type="submit" class="btn ghost sm">Go</button>
+          </form>
+        </div>
+      </section>
+      <section class="daily-card" aria-label="Today’s puzzle">
+        <div id="story-bar" class="story-bar">
+          <span id="meta-left" class="story-id">Daily</span>
+        </div>
+        <div class="excerpt-wrap">
+          <div id="tier-label" class="tier-label">First sentence</div>
+          <article id="excerpt" class="excerpt drop">Loading…</article>
+          <div id="author-reveal" class="author-reveal" hidden></div>
+        </div>
+        <ul id="guesses" class="guesses"></ul>
+        <p id="msg" class="msg" role="status"></p>
+        <form id="form" class="form" autocomplete="off">
+          <label class="sr-only" for="guess-input">Book title</label>
+          <input id="guess-input" name="guess" type="text" enterkeyhint="go" placeholder="Guess the title" maxlength="120">
+          <div class="actions">
+            <button type="button" class="btn ghost" data-act="hint" id="hint-btn">
+              Hint <span id="count-hints" class="pill">0/5</span>
+            </button>
+            <button type="submit" class="btn">
+              Guess <span id="count-guesses" class="pill">0/6</span>
+            </button>
+          </div>
+        </form>
+        <div id="result" class="result hidden"></div>
+      </section>
+      <div id="ad" class="ad hidden" aria-label="Advertisement"></div>
     </main>
 
     <section id="screen-bank" class="screen hidden">
       <h1>All books</h1>
-      <p class="lede">Choose by ID. Books #1–#<span id="preset-max">1000</span>. Dailies start at #1001. Titles stay hidden until you finish.</p>
+      <p class="lede">Choose by ID. Titles stay hidden until you finish. Numbers from #1001 are past daily puzzles.</p>
       <div class="filters">
         <label>Show
           <select id="bank-filter">
-            <option value="preset">Presets</option>
-            <option value="daily">Dailies</option>
             <option value="all">All</option>
+            <option value="preset">Book bank</option>
+            <option value="daily">Daily</option>
           </select>
         </label>
-        <label>Jump
+        <label>Choose by ID
           <input id="bank-jump" type="number" min="1" placeholder="#">
         </label>
       </div>
@@ -88,12 +128,16 @@
 
     <section id="screen-ranks" class="screen hidden">
       <h1>Leaderboard</h1>
-      <p class="lede">Every puzzle has its own board. Sort: fewer hints, then faster, then fewer guesses.</p>
       <div class="filters">
-        <label>Puzzle #
+        <label>Book #
           <input id="lb-index" type="number" min="1">
+          <select id="lb-pick" class="hidden"></select>
         </label>
-        <label>Hints
+        <label class="filter-check">
+          <input id="lb-mine" type="checkbox">
+          Only books I&rsquo;ve finished
+        </label>
+        <label>Hints used
           <select id="lb-hints">
             <option value="any">Any</option>
             <option value="0">0</option>
@@ -101,23 +145,21 @@
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-          </select>
-        </label>
-        <label>Scope
-          <select id="lb-scope">
-            <option value="this">This #</option>
-            <option value="daily">All dailies</option>
-            <option value="preset">All presets</option>
+            <option value="5">5</option>
           </select>
         </label>
       </div>
       <div id="lb-body"></div>
     </section>
 
+    <section id="screen-stats" class="screen hidden">
+      <h1 class="screen-title">Stats</h1>
+      <div id="stats-body"></div>
+    </section>
+
     <section id="screen-settings" class="screen hidden">
-      <h1>Settings</h1>
+      <h1 class="screen-title">Settings</h1>
       <p id="auth-status" class="lede"></p>
-      <p><button class="btn ghost" type="button" data-act="open-auth" id="settings-auth-btn">Sign in</button></p>
       <label class="row">Display name
         <input id="display-name" type="text" maxlength="24" placeholder="Anonymous">
       </label>
@@ -132,14 +174,23 @@
     <section id="screen-news" class="screen hidden">
       <h1>News</h1>
       <article class="card">
-        <strong>Hints, bank, battle</strong>
-        <p>Guesses no longer unlock text. Take a hint when you’re stuck. Gamebank + per-puzzle ranks + friend battles.</p>
+        <strong>Excerptle launches</strong>
+        <p class="news-date">9 September 2026</p>
+        <p>Official launch. A daily puzzle, a bank of 600 books to work through, five hints when you need them, and battle mode for racing a friend to the same title.</p>
       </article>
     </section>
 
     <section id="screen-support" class="screen hidden">
-      <h1>Support</h1>
-      <p>Texts from <a href="https://www.gutenberg.org/">Project Gutenberg</a>. At most one chapter hosted per puzzle.</p>
+      <h1>Support Excerptle</h1>
+      <p class="lede">Excerptle is free, has no paywall, and is made by one person. If it&rsquo;s part of your morning, you can throw a few dollars at it.</p>
+      <p class="support-cta">
+        <a class="btn kofi" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">
+          &#9749; Tip on Ko-fi
+        </a>
+      </p>
+      <p class="support-alt">Prefer something ongoing? <button type="button" class="linkish" data-act="open-pro">Excerptle Pro</button> is $3/month and turns off the ads.</p>
+      <h2>Credits</h2>
+      <p>Texts from <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a>. At most one chapter hosted per puzzle. Excerptle is not affiliated with Project Gutenberg.</p>
     </section>
 
     <section id="screen-battle" class="screen hidden">
@@ -147,10 +198,36 @@
       <div id="battle-body"></div>
     </section>
 
+    <section id="screen-legal" class="screen hidden">
+      <h1>Privacy &amp; terms</h1>
+      <p class="lede">Excerptle · last updated 8 September 2026</p>
+
+      <h2>Privacy</h2>
+      <p><strong>What stays on your device.</strong> Your progress, guesses, hint counts, scores and settings are kept in your browser’s <code>localStorage</code>. Clearing site data erases them. Nothing here is sent anywhere unless you sign in.</p>
+      <p><strong>If you sign in.</strong> Signing in with Google gives us the name and email address in your Google account, so your streaks and scores can follow you between devices. Signing in with email gives us that address and a sign-in code or password. We do not receive your Google password.</p>
+      <p><strong>What we don’t do.</strong> We don’t sell your data, and we don’t use it to build advertising profiles.</p>
+      <p><strong>Ads.</strong> A single ad slot sits on the post-game screen, and there are no ads anywhere else in the game. It is filled by <strong>Google AdSense</strong>, which may set cookies or read a device identifier to choose and measure ads; Google&rsquo;s use of that data is described in its <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">partner sites policy</a>. In the EEA, UK and Switzerland you are asked for consent first, and you can change that answer at any time from the consent link in the ad. Google&rsquo;s script is loaded on every page of the site so the slot can be filled when you reach it. <strong>With Excerptle Pro, no ad is ever requested or shown.</strong></p>
+      <p><strong>Payments.</strong> Excerptle Pro is billed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a>. Card details go to Stripe and never reach us or your browser&rsquo;s storage &mdash; we keep only a customer reference and whether your subscription is active. Tips go through <a href="https://more.ko-fi.com/privacy" target="_blank" rel="noopener noreferrer">Ko-fi</a>, which is entirely off this site.</p>
+      <p><strong>Book texts.</strong> Excerpts are public-domain works from <a href="https://www.gutenberg.org/">Project Gutenberg</a>, served as static files from this site. Reading a puzzle sends nothing to Gutenberg.</p>
+      <p><strong>Battles.</strong> Battle mode connects the two browsers directly (WebRTC, via PeerJS for signalling). Your display name, guesses and hint count go to your opponent for the length of the match, and are not stored on our side.</p>
+      <p><strong>Your choices.</strong> To delete a signed-in account and its scores, or to ask what we hold, email <a href="mailto:privacy@excerptle.io">privacy@excerptle.io</a>. To wipe local data, clear site data for excerptle.io in your browser.</p>
+
+      <h2>Terms</h2>
+      <p>Excerptle is free to play, provided as is, with no warranty and no guarantee that it stays available or bug-free.</p>
+      <p>The book excerpts are in the public domain. The site’s own design, code and puzzle selection are ours; don’t scrape or republish them wholesale.</p>
+      <p>Play fair: no automating guesses, no faking leaderboard entries, no abusing other players in battle mode or in display names. We can remove scores or accounts that do.</p>
+      <p>These terms may change. Continuing to play after a change means you accept it.</p>
+      <p>Excerptle is not affiliated with Project Gutenberg, Google, or Wordle.</p>
+    </section>
+
     <footer>
-      <a href="#/news">News</a> ·
-      <a href="#/support">Support</a><br>
-      Public-domain excerpts · not affiliated with Project Gutenberg
+      <nav class="footer-links">
+        <a href="/about">About</a>
+        <a href="#/news">News</a>
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy &amp; terms</a>
+      </nav>
+      <p class="footer-note">Public-domain excerpts · not affiliated with Project Gutenberg</p>
     </footer>
   </div>
 
@@ -161,6 +238,8 @@
   <script src="js/config.js"></script>
   <script src="js/match.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/pro.js"></script>
+  <script src="js/ads.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

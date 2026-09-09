@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- The game itself is one crawlable URL: every in-app route is a #hash, which
+     search engines drop, and every ?p=N share link canonicalises back to "/".
+     The static trust pages below are real documents and are listed as such. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://excerptle.io/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://excerptle.io/#/bank</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://excerptle.io/#/ranks</loc><changefreq>daily</changefreq></url>
+  <url>
+    <loc>https://excerptle.io/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://excerptle.io/about</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://excerptle.io/support</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://excerptle.io/privacy</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

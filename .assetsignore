@@ -1,0 +1,17 @@
+# Files in the repo root that must NOT be published as part of the site.
+# Wrangler reads this at deploy time; a manual dashboard folder upload does
+# not, so exclude these by hand there too.
+backend/
+tools/
+dist/
+node_modules/
+.git/
+.codex/
+.agents/
+.wrangler/
+.gitignore
+.assetsignore
+.dev.vars*
+.env*
+*.md
+*:Zone.Identifier

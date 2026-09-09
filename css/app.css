@@ -14,6 +14,13 @@
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, monospace;
   --max: 52rem;
+
+  /* Vertical rhythm. Anything that stacks picks one of these instead of a
+     one-off number, so the gaps line up between screens and game states. */
+  --sp-1: 0.35rem;  /* inside a group */
+  --sp-2: 0.6rem;   /* between related lines */
+  --sp-3: 1rem;     /* between blocks in a card */
+  --sp-4: 1.5rem;   /* between sections, and the air on each side of a rule */
 }
 
 [data-theme="night"] {
@@ -55,6 +62,7 @@ a { color: var(--wine); }
 }
 
 .top {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,9 +78,20 @@ a { color: var(--wine); }
 
 .brand {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
   color: inherit;
+  min-width: 0;
+}
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  flex: none;
+}
+.brand-words {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
 }
 .brand strong {
@@ -81,7 +100,7 @@ a { color: var(--wine); }
   letter-spacing: 0.12em;
   font-weight: 700;
 }
-.brand span {
+.brand-words > span {
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -101,6 +120,8 @@ a { color: var(--wine); }
 }
 .icon-btn:hover, .icon-btn:focus-visible { background: var(--paper-2); }
 .icon-btn svg { width: 1.15rem; height: 1.15rem; }
+
+#game { padding-top: var(--sp-4); }
 
 .stats-bar {
   margin: 0.85rem 0 0.4rem;
@@ -128,8 +149,8 @@ a { color: var(--wine); }
   background: color-mix(in srgb, var(--paper) 70%, white);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow);
-  padding: 1.25rem 1.15rem 1.5rem;
-  min-height: 12rem;
+  padding: 1.15rem 1.15rem 1.25rem;
+  min-height: 7rem;
   max-height: min(58dvh, 28rem);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -162,11 +183,24 @@ a { color: var(--wine); }
 }
 .excerpt.fade { animation: fade 0.45s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* A counter or tier label that just changed rolls in — this is the hint
+   feedback, so there is no "Hint unlocked." line to read. */
+@keyframes bump {
+  0% { opacity: 0; transform: translateY(-0.5em); }
+  60% { opacity: 1; transform: translateY(0.08em); }
+  100% { opacity: 1; transform: none; }
+}
+.bump { animation: bump 0.34s cubic-bezier(0.2, 0.9, 0.3, 1.4); }
+.pill.bump { display: inline-block; }
+.tier-label.bump { color: var(--wine); }
 @media (prefers-reduced-motion: reduce) {
   .excerpt.fade { animation: none; }
+  .bump { animation: none; }
 }
 
 .guesses { list-style: none; margin: 0.8rem 0 0; padding: 0; }
+.guesses:empty { margin: 0; }
 .guesses li {
   display: flex;
   gap: 0.5rem;
@@ -185,13 +219,36 @@ a { color: var(--wine); }
 
 .form {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  margin-top: 0.9rem;
+  margin-top: 0.55rem;
   position: sticky;
   bottom: 0;
   padding: 0.6rem 0 0;
   background: linear-gradient(to top, var(--paper) 70%, transparent);
 }
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.actions .btn {
+  min-width: 7.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  padding: 0.6rem 1rem;
+  line-height: 1.15;
+}
+.pill {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  opacity: 0.75;
+}
+.btn.ghost .pill.spent, .btn .pill.spent { opacity: 1; font-weight: 700; }
 .form input {
   flex: 1;
   min-width: 0;
@@ -221,9 +278,11 @@ a { color: var(--wine); }
 .btn.ghost:hover { background: var(--paper-2); }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 
+.msg:empty { min-height: 0; margin: 0; }
 .msg {
   min-height: 1.3rem;
   margin-top: 0.45rem;
+  margin-bottom: 0;
   font-size: 0.88rem;
   color: var(--wine);
 }
@@ -258,6 +317,8 @@ a { color: var(--wine); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
+.ad .adsbygoogle { display: block; min-height: 5.5rem; }
+.ad-label { display: block; }
 .ad .slot {
   margin-top: 0.45rem;
   height: 5.5rem;
@@ -296,12 +357,6 @@ a { color: var(--wine); }
   padding: 0.35rem 0.5rem;
 }
 
-.dist { display: grid; gap: 0.35rem; margin: 0.8rem 0 1.2rem; }
-.dist .line { display: grid; grid-template-columns: 1.2rem 1fr 2.4rem; gap: 0.4rem; align-items: center; font-size: 0.85rem; }
-.dist .bar { background: var(--paper-2); height: 1.15rem; }
-.dist .bar > span { display: block; height: 100%; background: var(--wine); min-width: 0; }
-.dist .bar > span.win { background: var(--hit); }
-
 .archive { list-style: none; padding: 0; margin: 0.6rem 0; }
 .archive li { border-bottom: 1px solid var(--rule); }
 .archive a, .archive span {
@@ -332,35 +387,75 @@ a { color: var(--wine); }
 
 footer {
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding: 2.75rem 0 1.75rem;
+  border-top: 1px solid var(--rule);
   font-size: 0.75rem;
+  line-height: 1.6;
   color: var(--ink-soft);
   text-align: center;
 }
 footer a { color: inherit; }
 
-.tabs {
+.footer-links {
   display: flex;
-  gap: 0;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  min-width: 0;
+  gap: 0.5rem 1.4rem;
 }
+.footer-links a {
+  padding: 0.2rem 0.1rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.footer-links a:hover { border-bottom-color: var(--rule); }
+
+.footer-note {
+  margin: 1.5rem 0 0;
+  opacity: 0.8;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.tabs {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 12rem;
+  padding: 0.3rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  z-index: 6;
+}
+.nav-open .tabs { display: flex; }
 .tab {
   background: transparent;
   border: 0;
   color: inherit;
   text-decoration: none;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   letter-spacing: 0;
   text-transform: none;
-  padding: 0.35rem 0.45rem;
-  border-radius: 4px;
+  padding: 0.6rem 0.7rem;
+  text-align: left;
   white-space: nowrap;
 }
+.tab + .tab { border-top: 1px solid var(--rule); }
 .tab:hover, .tab:focus-visible { background: var(--paper-2); }
-.tab.icon { font-size: 1rem; padding: 0.3rem 0.4rem; }
+.tab.signin {
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
 
 .filters {
   display: flex;
@@ -369,6 +464,9 @@ footer a { color: inherit; }
   margin: 0.6rem 0 1rem;
   font-size: 0.85rem;
 }
+#screen-bank { text-align: center; }
+#screen-bank .filters { justify-content: center; align-items: center; }
+#screen-bank .pager { justify-content: center; align-items: center; }
 .filters input, .filters select {
   background: var(--paper);
   border: 1px solid var(--rule);
@@ -376,6 +474,18 @@ footer a { color: inherit; }
   margin-left: 0.35rem;
   max-width: 8rem;
 }
+
+/* A tick box is not a text field: undo the .filters input framing for it. */
+.filter-check { display: flex; align-items: center; gap: 0.4rem; }
+.filter-check input {
+  margin-left: 0;
+  padding: 0;
+  width: auto;
+  max-width: none;
+  border: 0;
+  background: none;
+}
+#lb-pick { max-width: 10rem; }
 
 .bank-grid {
   display: grid;
@@ -396,7 +506,12 @@ footer a { color: inherit; }
 .bank-cell.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
 .bank-cell.lost { opacity: 0.55; }
 .bank-cell.play { outline: 1px dashed var(--wine); }
-.pager { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.pager { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+/* Prev and Next sit either side of the position, and hold their place when
+   one end runs out so "Page 3 / 6" doesn't slide about between pages. */
+.pager-at { min-width: 6.5rem; text-align: center; color: var(--ink-soft); }
+.pager-gap { display: block; min-width: 4.4rem; }
+#screen-bank .pager { margin-top: 1.4rem; }
 
 .lb table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
 .lb th, .lb td { text-align: left; padding: 0.4rem 0.3rem; border-bottom: 1px solid var(--rule); }
@@ -427,7 +542,10 @@ footer a { color: inherit; }
   margin: 0 0 0.7rem;
 }
 .choice {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
   width: 100%;
   text-align: left;
   background: var(--paper-2);
@@ -437,8 +555,97 @@ footer a { color: inherit; }
   color: inherit;
   text-decoration: none;
 }
+.choice-text { min-width: 0; }
 .choice b { display: block; font-family: var(--serif); font-size: 1.05rem; }
 .choice span { font-size: 0.8rem; color: var(--ink-soft); }
+.choice-go {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: none;
+}
+.choice-go input {
+  width: 5.5rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 0.45rem 0.5rem;
+}
+.choice-go .btn { white-space: nowrap; }
+.choice.off { opacity: 0.5; }
+.choice.off .btn { cursor: not-allowed; }
+
+/* Battle mode is a mode, not a fourth thing to pick — so it's a switch. */
+/* The card a shared link opens on — and the layout the OG image mirrors. */
+.share-card {
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+  padding: 1.1rem 1rem 1rem;
+  text-align: center;
+  margin: 0.2rem 0 0.9rem;
+}
+.sc-who { font-size: 0.9rem; color: var(--ink-soft); margin: 0 0 0.5rem; }
+.sc-who b { color: var(--ink); }
+.sc-score {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  line-height: 1;
+  margin: 0 0 0.9rem;
+}
+/* Labelled rows are left-aligned, but the group centres inside the card. */
+.sc-stats {
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+}
+.sc-stats .stat-row:last-child { margin-bottom: 0; }
+.sc-rank {
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+.sc-rank b { color: var(--ink); font-size: 0.95rem; }
+.sc-cta { text-align: center; margin: 0 0 0.7rem; }
+.btn.full { width: 100%; }
+/* Both standings sit side by side under the result. */
+.rank-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
+.rank-line span { white-space: nowrap; }
+
+/* Stats — Daily, Book bank and Battle mode are peers, so they share one scale.
+   The page title is the only level above them. */
+.s-block {
+  --tile: 2rem;
+  --head: 1.25rem;
+  --cap: 0.68rem;
+  margin: 0 0 2rem;
+}
+
+.s-block h2 {
+  font-family: var(--serif);
+  font-size: var(--head);
+  line-height: 1.2;
+  margin: 0 0 0.55rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.s-block .stat-grid { margin: 0.7rem 0 0.6rem; }
+.s-block .stat-grid b { font-size: var(--tile); line-height: 1.1; }
+.s-block .stat-grid span { font-size: var(--cap); }
+.s-block .stat-grid div { padding: 0.7rem 0.2rem; }
+
+#screen-stats .pg-stats { margin-bottom: 0.2rem; }
+@media (max-width: 560px) {
+  .s-block { --tile: 1.6rem; }
+}
+.linkish {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--wine);
+  text-decoration: underline;
+  font: inherit;
+}
 .or-line {
   display: flex;
   align-items: center;
@@ -513,14 +720,507 @@ footer a { color: inherit; }
   text-align: center;
 }
 
-@media (max-width: 640px) {
-  .tab { font-size: 0.72rem; padding: 0.3rem 0.38rem; }
+@media (max-width: 720px) {
+  .story-bar { flex-wrap: wrap; }
+  .jump-input, .jump input { width: 4.2rem; }
 }
 @media (max-width: 420px) {
-  .brand span { display: none; }
+  .brand-words span { display: none; }
+  .brand-mark { width: 30px; height: 30px; }
   .excerpt { font-size: 1.02rem; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
-  .form { flex-wrap: wrap; }
-  .form input { flex: 1 1 100%; }
-  .tabs { flex-wrap: wrap; }
+  .jump input { width: 4.6rem; }
+}
+
+/* Header hamburger */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  color: inherit;
+  cursor: pointer;
+  flex: none;
+}
+.nav-toggle:hover, .nav-toggle:focus-visible { background: var(--paper-2); }
+.nav-bars, .nav-bars::before, .nav-bars::after {
+  display: block;
+  width: 1.05rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.nav-bars { position: relative; }
+.nav-bars::before, .nav-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav-bars::before { top: -6px; }
+.nav-bars::after { top: 6px; }
+.nav-open .nav-bars { background: transparent; }
+.nav-open .nav-bars::before { top: 0; transform: rotate(45deg); }
+.nav-open .nav-bars::after { top: 0; transform: rotate(-45deg); }
+
+/* Desktop has room for the whole nav in the bar. The hamburger starts at
+   iPad width, where the tabs plus the brand stop fitting. Seven tabs no longer
+   fit the 52rem reading column, so the bar alone breaks out of it and centres
+   on the viewport; the game below keeps its measure. */
+@media (min-width: 1025px) {
+  .nav-toggle { display: none; }
+  .top {
+    /* The column is 800px inside .app; pull the bar back out and centre it on
+       the viewport instead. */
+    width: min(57rem, calc(100vw - 2rem));
+    margin-left: calc(400px - min(28.5rem, (100vw - 2rem) / 2));
+  }
+  .tabs {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+    margin-left: auto;
+    padding: 0;
+    gap: 0.1rem;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    order: 1;
+  }
+  .nav-right { order: 2; }
+  .tab {
+    padding: 0.45rem 0.55rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.87rem;
+  }
+  .tab + .tab { border-top: 0; }
+}
+
+.daily-card {
+  display: flex;
+  flex-direction: column;
+}
+/* The puzzle and the "want to guess more" row are two different things, so
+   the same hairline the header uses goes between them — with air on both
+   sides. #more swaps sides when the round ends (below while playing, above
+   once it's done), so the rule follows whichever one comes second. */
+.daily-card + #more,
+#more + .daily-card {
+  border-top: 1px solid var(--rule);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+}
+
+/* Story bar: which book you're on */
+.story-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 var(--sp-2);
+}
+.story-id {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.jump {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+.jump input {
+  width: 5rem;
+  padding: 0.32rem 0.45rem;
+  font: inherit;
+  font-size: 0.82rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+[data-theme="night"] .jump input { background: var(--paper-2); }
+.jump input:focus { outline: 2px solid var(--wine); outline-offset: -1px; }
+.btn.sm { font-size: 0.8rem; padding: 0.32rem 0.55rem; }
+
+/* "Want to guess more?" — the way off today's puzzle */
+.more {
+  margin: 0 0 var(--sp-4);
+  text-align: center;
+}
+/* Finished: the result card jumps above the excerpt, which stays visible
+   at whatever hint tier the player had unlocked. */
+.daily-card.done .story-bar { order: -2; }
+.daily-card.done #result { order: -1; margin-top: 0; margin-bottom: var(--sp-3); }
+.more-q {
+  margin: 0 0 var(--sp-2);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.more .story-nav { margin: 0; justify-content: center; }
+.result .more-q { margin-top: var(--sp-2); }
+
+/* Post-game: verdict → the book → your round → your standing → actions.
+   The excerpt you unlocked stays below, in the puzzle card. */
+.verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+}
+.verdict.ok { color: var(--hit); }
+.verdict.no { color: var(--wine); }
+.verdict-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+.pg-sec { margin: 0 0 1.1rem; }
+.pg-sec + .pg-sec { border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+.pg-sec h3 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.5rem;
+}
+.pg-book h2 { margin: 0 0 0.15rem; }
+.pg-book .by { margin: 0 0 0.7rem; }
+.pg-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  margin: 0 0 0.7rem;
+}
+.pg-stats dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pg-stats dd {
+  margin: 0.1rem 0 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+}
+/* Squares stand in for the counts: wine = spent, empty = still yours. */
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 0.5rem;
+}
+.stat-k {
+  width: 5rem;
+  flex: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.stat-v { font-family: var(--serif); font-size: 1.05rem; }
+.sq-row { display: flex; gap: 0.28rem; }
+.sq {
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 2px;
+}
+.sq.on { background: var(--wine); border-color: var(--wine); }
+
+.rank-line { margin: 0 0 0.55rem; }
+.rank-line b { font-family: var(--serif); font-size: 1.1rem; }
+.pg-actions {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.9rem;
+  margin-top: 1.1rem;
+}
+
+/* Top of the board, shown with the post-game panel */
+.mini-lb {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.2rem 0 0.9rem;
+  font-size: 0.85rem;
+}
+.mini-lb th {
+  padding: 0.2rem 0.4rem;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+}
+.mini-lb td {
+  padding: 0.3rem 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.mini-lb tr:last-child td { border-bottom: 0; }
+.mini-lb tr.you td { color: var(--wine); font-weight: 700; }
+
+/* How to play */
+.how-intro { margin: 0 0 0.5rem; }
+.how-sub { margin: 0 0 0.55rem; color: var(--ink-soft); }
+.how-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
+}
+.how-table th,
+.how-table td {
+  text-align: left;
+  padding: 0.42rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: baseline;
+}
+.how-table tr:last-child th,
+.how-table tr:last-child td { border-bottom: 0; }
+.how-table th {
+  width: 5.4rem;
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--wine);
+  font-weight: 700;
+}
+.how-table tr:first-child th { color: var(--ink-soft); }
+.how-notes { margin: 0 0 0.9rem; padding-left: 1.05rem; }
+.how-notes li { margin-bottom: 0.4rem; }
+.how-notes li:last-child { margin-bottom: 0; }
+
+/* Hint 5: author reveal */
+.author-reveal {
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--paper-2);
+  border-left: 3px solid var(--gold);
+  font-family: var(--serif);
+  color: var(--ink);
+}
+
+
+/* ---- Excerptle Pro ---- */
+
+.pro-badge {
+  background: transparent;
+  border: 1px solid var(--wine);
+  border-radius: 999px;
+  color: var(--wine);
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.pro-badge:hover, .pro-badge:focus-visible { background: var(--paper-2); color: var(--wine); }
+.pro-badge.on {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: var(--paper);
+}
+.pro-badge.warn { border-color: var(--wine); color: var(--wine); }
+.pro-badge.hidden { display: none; }
+/* On a 375px screen the badge crowds the wordmark. Pro is still one tap away
+   inside the account modal, so drop it from the header instead. */
+@media (max-width: 420px) {
+  .pro-badge { display: none; }
+}
+
+.pro-list {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.pro-list li + li { margin-top: 0.35rem; }
+.pro-status {
+  margin: 0 0 0.6rem;
+  font-size: 0.92rem;
+}
+.pro-status.ok { color: var(--hit); }
+.pro-status.warn { color: var(--wine); }
+.pro-note {
+  margin: 0.6rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* ---- Support ---- */
+
+.support-cta { margin: 1.1rem 0 0.9rem; }
+.btn.kofi {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--wine);
+  color: var(--paper);
+}
+.btn.kofi:hover { background: var(--wine-deep); }
+.support-alt { font-size: 0.9rem; color: var(--ink-soft); }
+
+
+/* A page title is a level above what follows it, so give it room to say so.
+   Matches the specificity of `.screen h1`, which sets a tighter margin. */
+.screen h1.screen-title, h1.screen-title {
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+#screen-settings .row:first-of-type { margin-top: 1.2rem; }
+#screen-settings #auth-status { margin: 0; }
+.news-date {
+  margin: 0.15rem 0 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+
+/* Static trust pages (/about, /support, /privacy). They share the app shell
+   but have no JS behind them, so the nav is plain links and always inline. */
+.prose { padding-bottom: 2rem; }
+.prose h2 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin: 1.8rem 0 0.4rem;
+}
+.prose p, .prose li { line-height: 1.6; }
+.prose ul, .prose ol { padding-left: 1.2rem; }
+.prose li { margin-bottom: 0.35rem; }
+.prose .lede { font-size: 1.02rem; }
+.prose-cta { margin-top: 2rem; }
+.prose-cta .btn { text-decoration: none; display: inline-block; }
+@media (max-width: 1024px) {
+  /* No hamburger on these pages, so the nav has to stay a visible row. */
+  .prose ~ * .tabs, body:not(:has(#game)) .tabs {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 0;
+    margin-left: auto;
+    padding: 0;
+    gap: 0.1rem;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  body:not(:has(#game)) .tab { border-top: 0; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
+}
+@media (max-width: 640px) {
+  /* Too narrow to sit beside the brand — give the row its own line instead of
+     letting it wrap ragged against the right edge. */
+  body:not(:has(#game)) .top { flex-wrap: wrap; row-gap: 0.2rem; }
+  body:not(:has(#game)) .tabs {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+    padding-bottom: 0.25rem;
+  }
+}
+
+
+/* ---- New game modal: the battle half ---- */
+
+.modal-sep {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.1rem 0 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.modal-sep::before, .modal-sep::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ---- Battle lobby ---- */
+
+.b-sec {
+  border-top: 1px solid var(--rule);
+  padding: 1rem 0 0.2rem;
+  margin: 0 0 0.6rem;
+}
+.b-sec:first-child { border-top: 0; padding-top: 0.2rem; }
+.b-sec h2 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  margin: 0 0 0.6rem;
+}
+.b-sec .story-bar { margin-bottom: 0.5rem; }
+.b-rules { font-size: 0.82rem; margin-bottom: 0.2rem; }
+.b-actions { text-align: center; }
+
+.who { list-style: none; padding: 0; margin: 0 0 0.9rem; }
+.who-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.who-row.waiting { color: var(--ink-soft); }
+.who-dot {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: transparent;
+}
+.who-dot.on { background: var(--hit); border-color: var(--hit); }
+.who-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.who-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.45rem;
+  font-size: 0.9rem;
+}
+.who-tag {
+  flex: none;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }

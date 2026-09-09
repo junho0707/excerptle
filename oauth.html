@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signing in…</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    body {
+      margin: 0; height: 100dvh; display: grid; place-items: center;
+      background: #f4efe4; color: #2b2118;
+      font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+      text-align: center; padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <p id="note">Finishing sign-in…</p>
+  <script>
+    /* Google sends the token back here in the URL fragment. Hand it to the
+       window that opened us and close; nothing is stored on this page. */
+    (function () {
+      var h = new URLSearchParams(location.hash.replace(/^#/, ""));
+      var q = new URLSearchParams(location.search);
+      var msg = {
+        source: "excerptle-oauth",
+        state: h.get("state") || q.get("state") || "",
+        accessToken: h.get("access_token") || "",
+        error: h.get("error") || q.get("error") || "",
+      };
+      try {
+        if (window.opener) {
+          window.opener.postMessage(msg, location.origin);
+          window.close();
+          return;
+        }
+      } catch (e) { /* fall through to the message below */ }
+      document.getElementById("note").textContent =
+        msg.error ? "Sign-in failed. You can close this window."
+                  : "Sign-in finished. You can close this window.";
+    })();
+  </script>
+</body>
+</html>

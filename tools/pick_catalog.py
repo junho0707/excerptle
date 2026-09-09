@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import gzip
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -30,6 +31,21 @@ def ok_title(t: str) -> bool:
     if len(t) < 4 or len(t) > 80:
         return False
     return not any(s in low for s in SKIP_TITLE)
+
+
+def catalog_author(authors: str) -> str:
+    """Gutenberg gives "Last, First, 1863-1933" — often with a second comma
+    before the life dates. Splitting on the first comma and keeping [0] leaves
+    a bare surname, so strip the dates first, then invert on the one comma
+    that actually separates the name."""
+    name = (authors or "").split(";")[0].strip()
+    name = re.sub(r",?\s*\d{3,4}\??\s*-\s*\d{0,4}\??\s*$", "", name).strip(" ,")
+    if not name:
+        return "Unknown"
+    if name.lower().startswith("anonymous") or "," not in name:
+        return name
+    last, first = (x.strip() for x in name.split(",", 1))
+    return f"{first} {last}".strip() if first else last
 
 
 def main() -> None:
@@ -80,17 +96,7 @@ def main() -> None:
             continue
         seen_titles.add(key)
         slug = f"g{gid}"
-        author = authors.split(",")[0].strip() if authors else "Unknown"
-        # invert last-name, first-name if needed
-        if authors.count(",") == 1 and not authors.lower().startswith("anonymous"):
-            last, first = [x.strip() for x in authors.split(",", 1)]
-            first = first.split(",")[0]
-            # drop years
-            import re
-            first = re.sub(r"\d{4}.*", "", first).strip(" ,")
-            last = re.sub(r"\d{4}.*", "", last).strip(" ,")
-            if first:
-                author = f"{first} {last}".strip()
+        author = catalog_author(authors)
         aliases = [title]
         if title.lower().startswith("the "):
             aliases.append(title[4:])
