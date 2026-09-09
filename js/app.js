@@ -301,9 +301,15 @@
 
   async function loadIndex() {
     if (state.index) return state.index;
-    const res = await fetch("puzzles/index.json");
-    if (!res.ok) throw new Error("index");
-    state.index = await res.json();
+    // index.html starts this fetch in <head> so it overlaps with loading the
+    // scripts. Fall back to a fresh request if that head start is missing
+    // (another page, or the pre-fetch failed).
+    state.index = (await window.__excerptleIndex) || null;
+    if (!state.index) {
+      const res = await fetch("puzzles/index.json");
+      if (!res.ok) throw new Error("index");
+      state.index = await res.json();
+    }
     return state.index;
   }
   async function loadPuzzle(id) {
@@ -325,8 +331,7 @@
     return TIER_LABELS;
   }
 
-  // The emoji grid now lives only in tools/og-worker/share.js — a link
-  // preview is text, so it can't draw the squares the card uses.
+  // The Worker renders the shared result as both metadata and a PNG card.
   function kindOf(mode) {
     return mode === "daily" ? "Daily" : mode === "battle" ? "Battle" : "Book";
   }
@@ -364,14 +369,18 @@
 
   function sharePayload() {
     const r = ranksFor(state.playIndex, state.hints);
+    const finished = state.status === "won" || state.status === "lost";
+    const saved = finished ? progressMap()[String(state.playIndex)] : null;
+    const elapsed = saved?.timeMs ?? (Date.now() - state.startedAt);
     return b64u.enc(JSON.stringify({
-      v: 1,
+      v: 2,
+      c: finished ? 1 : 0,
       n: displayName().slice(0, 24),
       m: state.mode,
       w: state.status === "won" ? 1 : 0,
       g: state.guesses.length,
       h: state.hints,
-      t: Math.max(1, Math.round((Date.now() - state.startedAt) / 1000)),
+      t: Math.max(1, Math.round(elapsed / 1000)),
       br: r.bracket, bn: r.bracketOf,
       or: r.overall, on: r.overallOf,
     }));
@@ -380,7 +389,8 @@
   function readShare(raw) {
     try {
       const d = JSON.parse(b64u.dec(raw));
-      if (!d || d.v !== 1) return null;
+      if (!d || ![1, 2].includes(d.v)) return null;
+      d.c = d.v === 1 ? 1 : d.c === 1 ? 1 : 0;
       d.g = Math.min(Math.max(0, d.g | 0), MAX_GUESSES);
       d.h = Math.min(Math.max(0, d.h | 0), MAX_HINTS);
       d.n = String(d.n || "A player").slice(0, 24);
@@ -675,6 +685,7 @@
     const form = $("#form");
     const more = $("#more");
     const battle = state.mode === "battle";
+    $("#share-playing")?.classList.toggle("hidden", battle);
     if (state.status === "playing") {
       box.classList.add("hidden");
       form.classList.remove("hidden");
@@ -1405,7 +1416,7 @@
     const playIndex = index || randomPresetIndex();
     const code = battleCode();
     const id = "bk-" + code;
-    const link = `${origin()}?b=${code}&p=${playIndex}`;
+    const link = `${origin()}?b=${code}&p=${playIndex}&n=${encodeURIComponent(displayName().slice(0, 24))}`;
     state.battlePending = playIndex;
     renderBattleLobby(code, "Starting room…", link);
     try {
@@ -1585,12 +1596,16 @@
     if (r.page === "ranks") return renderRanks();
     if (r.page === "stats") return renderStats();
     if (r.page === "settings") return renderSettings();
-    if (r.page === "pro") {
-      // #/pro is a one-shot: it's how the nav and Stripe's return URL ask for
-      // the modal. Left in the URL it reopens on every reload, so spend it.
+    /* One-shot modal routes: #/pro is how the nav and Stripe's return URL ask
+       for the Pro modal, and the rest are how the static pages' header — which
+       carries the same tabs but no js/app.js — asks for a modal only the game
+       can open. Left in the URL any of them would reopen on every reload, so
+       spend the hash and land on the daily behind the modal. */
+    const oneShot = { pro: openPro, new: openPlay, signin: openAuth, account: openAccount };
+    if (oneShot[r.page]) {
       history.replaceState(null, "", location.pathname + "#/");
       await startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
-      openPro();
+      oneShot[r.page]();
       return;
     }
     if (screens[r.page]) return show(screens[r.page]);
@@ -1599,9 +1614,9 @@
     if (r.page === "play" && Number.isInteger(r.playIndex) && r.playIndex >= 0) {
       const mode = r.playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset";
       const shared = r.share ? readShare(r.share) : null;
-      await startPlay({ playIndex: r.playIndex, mode, showHow: !shared });
+      await startPlay({ playIndex: r.playIndex, mode, showHow: !shared?.c });
       // The friend's card lands on top of the puzzle they were beaten on.
-      if (shared) openModal(sharedResultHtml(shared, r.playIndex));
+      if (shared?.c) openModal(sharedResultHtml(shared, r.playIndex));
       return;
     }
     return startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
@@ -1737,9 +1752,20 @@
     if (act === "pick-id") pickById($("#play-id-input")?.value);
     if (act === "share") {
       const btn = e.target.closest("[data-act]");
+      const url = shareUrl();
+      // Just the link, never a pasted summary — the card is what the link
+      // previews as, and the Worker builds that from the link itself.
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: "Excerptle", url });
+          return;
+        } catch (err) {
+          // Dismissing the sheet is a decision; don't then copy it anyway.
+          if (err && err.name === "AbortError") return;
+        }
+      }
       try {
-        // Just the link — the card is what the link previews as.
-        await navigator.clipboard.writeText(shareUrl());
+        await navigator.clipboard.writeText(url);
         if (btn) {
           btn.textContent = "Copied ✓";
           setTimeout(() => { btn.textContent = "Share"; }, 2000);

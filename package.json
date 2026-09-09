@@ -1,0 +1,16 @@
+{
+  "name": "excerptle",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy:og": "wrangler deploy --config tools/og-worker/wrangler.jsonc",
+    "deploy:site": "wrangler deploy",
+    "deploy:api": "wrangler deploy --config backend/wrangler.toml",
+    "deploy": "npm run deploy:og && npm run deploy:site && npm run deploy:api",
+    "dev": "wrangler dev",
+    "dev:og": "wrangler dev --config tools/og-worker/wrangler.jsonc --port 8792"
+  },
+  "devDependencies": {
+    "wrangler": "^4.130.0"
+  }
+}

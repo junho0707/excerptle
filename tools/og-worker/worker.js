@@ -1,16 +1,12 @@
-/* Excerptle share unfurls.
- *
- * excerptle.io is a static site, so a share link has no per-link <meta> for a
- * crawler to read — every URL returns the same index.html and every preview
- * looks identical. This Worker sits in front of the origin and rewrites the
- * OG/Twitter tags from the `?s=` payload the client puts in the link.
- *
- * Deploy: see tools/og-worker/README.md. Everything except the rewrite is a
- * pass-through, so the game keeps working if this is removed.
- */
-import { readShare, unfurl } from "./share.js";
+/* Front door for excerptle.io.
 
-const ORIGIN = "https://junho0707.github.io/excerptle";
+   `run_worker_first` in wrangler.jsonc points "/" at this script, so every
+   first page load in a cold colo pays this Worker's startup cost. Keep it
+   featherweight: no WASM, no fonts, no node polyfills. The share-card
+   renderer needs all three, so it lives in its own Worker (render-worker.js)
+   reached through the OG service binding — a separate isolate that only
+   crawlers ever wake. */
+import { shareFromUrl, unfurl } from "./share.js";
 
 class Meta {
   constructor(content) { this.content = content; }
@@ -18,32 +14,33 @@ class Meta {
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const url = new URL(request.url);
-    const share = url.searchParams.get("s");
-    const idx = parseInt(url.searchParams.get("p") || "", 10);
+    if (url.pathname === "/og.png") return env.OG.fetch(request);
 
-    const upstream = new URL(url.pathname + url.search, env.ORIGIN || ORIGIN);
-    const res = await fetch(upstream, request);
+    const res = await env.ASSETS.fetch(request);
+    // The overwhelmingly common case: a person opening the site. Nothing to
+    // rewrite, so hand the static asset straight back.
+    const share = shareFromUrl(url);
+    if (!share || !["/", "/index.html"].includes(url.pathname) || !res.ok
+      || !(res.headers.get("content-type") || "").includes("text/html")) return res;
 
-    const isHtml = (res.headers.get("content-type") || "").includes("text/html");
-    if (!share || !idx || !isHtml) return res;
-
-    const d = readShare(share);
-    if (!d) return res;
-
-    const { title, description } = unfurl(d, idx);
-    const img = new URL(env.OG_IMAGE || "/assets/og.png", url.origin).toString();
-
-    return new HTMLRewriter()
-      .on('meta[property="og:title"]', new Meta(title))
-      .on('meta[name="twitter:title"]', new Meta(title))
-      .on('meta[property="og:description"]', new Meta(description))
-      .on('meta[name="twitter:description"]', new Meta(description))
-      .on('meta[name="description"]', new Meta(description))
-      .on('meta[property="og:url"]', new Meta(url.toString()))
-      .on('meta[property="og:image"]', new Meta(img))
-      .on('meta[name="twitter:image"]', new Meta(img))
-      .transform(res);
+    const { title, description } = unfurl(share.d, share.idx);
+    const img = new URL("/og.png", url.origin);
+    img.search = url.search;
+    img.searchParams.set("card", "1");
+    const rewriter = new HTMLRewriter();
+    for (const [selector, content] of [
+      ['meta[property="og:title"], meta[name="twitter:title"]', title],
+      ['meta[property="og:description"], meta[name="twitter:description"], meta[name="description"]', description],
+      ['meta[property="og:url"]', url.href],
+      ['meta[property="og:image"], meta[name="twitter:image"]', img.href],
+      ['meta[property="og:image:alt"]', title],
+      ['meta[name="robots"]', "noindex,follow"],
+    ]) rewriter.on(selector, new Meta(content));
+    const response = rewriter.transform(res);
+    response.headers.set("Cache-Control", "private, no-store");
+    response.headers.delete("etag");
+    return response;
   },
 };

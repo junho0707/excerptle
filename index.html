@@ -26,6 +26,17 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon-180.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/js/app.js" as="script">
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://excerptle-api.winter-glade-cbab.workers.dev">
+  <!-- Naming today's puzzle file needs index.json, and nothing could ask for
+       it until app.js had parsed — three round trips before a word of the
+       excerpt appeared. Start it here, in parallel with the scripts; app.js
+       picks up this promise instead of issuing its own request.
+       A <link rel=preload as=fetch> would be the tidier spelling, but its
+       CORS mode has to match the fetch() that claims it or the file is
+       downloaded twice. This always matches. -->
+  <script>window.__excerptleIndex = fetch("/puzzles/index.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"Excerptle","url":"https://excerptle.io/","image":"https://excerptle.io/assets/og.png","applicationCategory":"GameApplication","genre":"Word game","description":"Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
@@ -102,6 +113,7 @@
               Guess <span id="count-guesses" class="pill">0/6</span>
             </button>
           </div>
+          <button type="button" class="linkish" data-act="share" id="share-playing">Share</button>
         </form>
         <div id="result" class="result hidden"></div>
       </section>
@@ -239,11 +251,13 @@
     <div class="modal" id="modal-inner"></div>
   </div>
 
-  <script src="js/config.js"></script>
-  <script src="js/match.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/pro.js"></script>
-  <script src="js/ads.js"></script>
-  <script src="js/app.js"></script>
+  <!-- defer, not plain: these sit after the markup they act on, so nothing
+       here needs to block the parser, and order is still guaranteed. -->
+  <script defer src="js/config.js"></script>
+  <script defer src="js/match.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/pro.js"></script>
+  <script defer src="js/ads.js"></script>
+  <script defer src="js/app.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { quotaCheck, dailyDigest, signedUp, subscriptionChanged, slack } from './alerts.js';
 
 const now = () => Math.floor(Date.now() / 1000);
 const json = (value, status = 200) => Response.json(value, { status });
@@ -33,9 +34,12 @@ async function user(req, env) {
   if (!u) fail(401, 'Please sign in again.');
   return u;
 }
-async function session(env, email, name, provider, sub = null) {
+async function session(env, email, name, provider, sub = null, ctx = null) {
   // Google emails must be verified before linking to an existing email-code account.
-  await query(env, 'INSERT INTO users(id,email,name,google_sub,created_at) VALUES(?,?,?,?,?) ON CONFLICT(email) DO NOTHING', crypto.randomUUID(), email, name, sub, now()).run();
+  const created = await query(env, 'INSERT INTO users(id,email,name,google_sub,created_at) VALUES(?,?,?,?,?) ON CONFLICT(email) DO NOTHING', crypto.randomUUID(), email, name, sub, now()).run();
+  // meta.changes distinguishes a new account from a returning one, so the
+  // Slack ping fires once per person rather than once per sign-in.
+  if (created.meta?.changes) signedUp(env, ctx, { email, provider });
   const u = await query(env, 'SELECT * FROM users WHERE email=?', email).first();
   if (sub && u.google_sub && sub !== u.google_sub) fail(401, 'Google account does not match.');
   if (sub && !u.google_sub) await query(env, 'UPDATE users SET google_sub=? WHERE id=?', sub, u.id).run();
@@ -44,7 +48,7 @@ async function session(env, email, name, provider, sub = null) {
   await query(env, 'INSERT INTO sessions VALUES(?,?,?)', await hash(token), u.id, expiresAt).run();
   return json({ uid: u.id, email: u.email, name: u.name, provider, token, expiresAt });
 }
-async function auth(req, env, path) {
+async function auth(req, env, path, ctx) {
   const d = await body(req);
   await limit(env, `auth-ip:${req.headers.get('CF-Connecting-IP') || 'local'}`, 30, 600);
   if (path === '/auth/google') {
@@ -57,7 +61,7 @@ async function auth(req, env, path) {
     if (!res.ok) fail(401, 'Could not verify Google account.');
     const p = await res.json();
     if (!p.email_verified || !p.email || !p.sub || p.sub !== info.sub) fail(401, 'Verified Google email required.');
-    return session(env, p.email.toLowerCase(), p.name || p.email.split('@')[0], 'google', p.sub);
+    return session(env, p.email.toLowerCase(), p.name || p.email.split('@')[0], 'google', p.sub, ctx);
   }
   const email = String(d.email || '').trim().toLowerCase();
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fail(400, 'Enter a valid email.');
@@ -81,7 +85,7 @@ async function auth(req, env, path) {
     if (!row || !/^\d{6}$/.test(String(d.code)) || row.code_hash !== await hash(`${env.OTP_SECRET}:${email}:${d.code}`)) fail(401, 'Code expired or incorrect. Request a new code.');
     const deleted = await query(env, 'DELETE FROM email_codes WHERE email=? AND code_hash=? RETURNING email', email, row.code_hash).first();
     if (!deleted) fail(401, 'Code already used.');
-    return session(env, email, email.split('@')[0], 'email');
+    return session(env, email, email.split('@')[0], 'email', null, ctx);
   }
   fail(400, 'Invalid sign-in method.');
 }
@@ -201,7 +205,7 @@ async function billing(req, env, path) {
     return json({ url: checkout.url });
   } finally { await query(env, 'DELETE FROM checkout_locks WHERE user_id=?', u.id).run(); }
 }
-async function webhook(req, env) {
+async function webhook(req, env, ctx) {
   if (!env.STRIPE_SECRET_KEY || !env.STRIPE_WEBHOOK_SECRET) fail(503, 'Webhook not configured.');
   const s = stripe(env);
   let event;
@@ -229,10 +233,19 @@ async function webhook(req, env) {
       AND (subscriptions.status NOT IN ('canceled','incomplete_expired') OR excluded.status IN ('canceled','incomplete_expired'))`, sub.id, u.id, item ? sub.status : 'canceled', end, sub.cancel_at_period_end ? 1 : 0, item?.price.id || '', event.created, event.id),
     query(env, 'INSERT OR IGNORE INTO stripe_events VALUES(?,?)', event.id, now())
   ]);
+  // Money moving is worth a ping — but `customer.subscription.updated` also
+  // fires on every renewal and on changes nobody would notice. Stripe names
+  // the fields that actually moved, so ping only when one of the two a human
+  // cares about is among them.
+  const moved = event.data.previous_attributes || {};
+  if (event.type === 'customer.subscription.created' || event.type === 'customer.subscription.deleted'
+    || 'status' in moved || 'cancel_at_period_end' in moved) {
+    subscriptionChanged(env, ctx, { status: item ? sub.status : 'canceled', plan: sub.metadata?.plan, cancelAtEnd: !!sub.cancel_at_period_end });
+  }
   return json({ received: true });
 }
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const path = new URL(req.url).pathname;
     const origin = req.headers.get('Origin');
     let response;
@@ -240,8 +253,8 @@ export default {
       if (origin && !origins(env).includes(origin)) fail(403, 'Origin not allowed.');
       if (req.method === 'OPTIONS') response = new Response(null, { status: 204 });
       else if (path === '/health' && req.method === 'GET') response = json({ ok: true });
-      else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env);
-      else if (['/auth/email', '/auth/verify', '/auth/google'].includes(path) && req.method === 'POST') response = await auth(req, env, path);
+      else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env, ctx);
+      else if (['/auth/email', '/auth/verify', '/auth/google'].includes(path) && req.method === 'POST') response = await auth(req, env, path, ctx);
       else if (path === '/auth/logout' && req.method === 'POST') {
         await user(req, env);
         await query(env, 'DELETE FROM sessions WHERE token_hash=?', await hash(req.headers.get('Authorization').slice(7))).run();
@@ -265,7 +278,23 @@ export default {
     }
     return response;
   },
-  async scheduled(event, env) {
-    await env.DB.batch(['sessions', 'email_codes', 'rate_limits', 'checkout_locks'].map(table => query(env, `DELETE FROM ${table} WHERE expires_at<?`, now())));
+  /* Two schedules (see wrangler.toml [triggers]):
+       0 * * * *   hourly free-tier quota check — quiet unless something moved
+       17 3 * * *  nightly sweep + the daily Slack digest
+     Alerting is wrapped so a Slack or analytics outage can never stop the
+     expiry sweep, which is the part the service actually depends on. */
+  async scheduled(event, env, ctx) {
+    const nightly = event.cron !== '0 * * * *';
+    if (nightly) {
+      await env.DB.batch(['sessions', 'email_codes', 'rate_limits', 'checkout_locks'].map(table => query(env, `DELETE FROM ${table} WHERE expires_at<?`, now())));
+    }
+    try {
+      // Inside the try: alert_state only exists once migration 0003 is applied,
+      // and a missing table must not be able to abort the sweep above.
+      if (nightly) await query(env, 'DELETE FROM alert_state WHERE updated_at<?', now() - 7 * 86400).run();
+      await (nightly ? dailyDigest(env) : quotaCheck(env));
+    } catch (err) {
+      ctx?.waitUntil?.(slack(env, { text: `:x: Excerptle cron \`${event.cron}\` failed: ${String(err.message).slice(0, 200)}` }));
+    }
   }
 };

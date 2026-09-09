@@ -1,0 +1,18 @@
+{
+  // Share-card renderer. Deployed separately from the site Worker so its ~3.5 MB
+  // of WASM and fonts never sit in the cold-start path of a normal page load.
+  //   npx wrangler deploy --config tools/og-worker/wrangler.jsonc
+  // Deploy this one FIRST: the site Worker's OG service binding needs it to exist.
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "excerptle-og",
+  "main": "render-worker.js",
+  "compatibility_date": "2026-09-09",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "rules": [{ "type": "Data", "globs": ["**/*.ttf"], "fallthrough": true }],
+  "vars": {
+    "SITE_URL": "https://excerptle.io"
+  },
+  "observability": { "enabled": true }
+}

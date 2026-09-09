@@ -5,6 +5,25 @@
   <title>Excerptle | Privacy &amp; Terms</title><meta name="description" content="Excerptle privacy policy and terms of use.">
   <link rel="canonical" href="https://excerptle.io/privacy"><link rel="stylesheet" href="/css/app.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#f4efe4">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Excerptle">
+  <meta property="og:title" content="Excerptle | Privacy &amp; Terms">
+  <meta property="og:description" content="Excerptle privacy policy and terms of use.">
+  <meta property="og:url" content="https://excerptle.io/privacy">
+  <meta property="og:image" content="https://excerptle.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Excerptle — guess the book">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Excerptle | Privacy &amp; Terms">
+  <meta name="twitter:description" content="Excerptle privacy policy and terms of use.">
+  <meta name="twitter:image" content="https://excerptle.io/assets/og.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="google-adsense-account" content="ca-pub-2005015845685746">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2005015845685746"
+          crossorigin="anonymous"></script>
 </head>
 <body><div class="app">
     <header class="top">
@@ -15,19 +34,49 @@
           <span>Guess the book</span>
         </span>
       </a>
+      <div class="nav-right">
+        <a class="tab signin" id="auth-tab" href="/#/signin">Sign in</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" data-act="toggle-nav"
+                aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+          <span class="nav-bars" aria-hidden="true"></span>
+        </button>
+      </div>
       <nav class="tabs" id="main-nav" aria-label="Main">
-        <a class="tab" href="/">Play</a>
+        <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
-        <a class="tab" href="/faq">FAQ</a>
-        <a class="tab" href="/about">About</a>
-        <a class="tab" href="/support">Support</a>
-        <a class="tab" href="/privacy">Privacy &amp; terms</a>
+        <a class="tab" href="/#/bank">All books</a>
+        <a class="tab" href="/#/ranks">Leaderboard</a>
+        <a class="tab" href="/#/stats">Stats</a>
+        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support</a>
+        <a class="tab" href="/#/settings">Settings</a>
       </nav>
     </header>
   <main class="screen prose"><h1 class="screen-title">Privacy &amp; terms</h1><p class="lede">Last updated 9 September 2026.</p>
     <h2>Privacy</h2><p>Your local progress and settings stay in your browser. If you sign in, we store your email address, account name, synced progress, and leaderboard scores so they can follow you between devices.</p>
     <p>Email sign-in uses a one-time code. Google sign-in supplies your verified Google identity. We never receive your Google password. Optional account passwords are stored as secure hashes, not plaintext.</p>
-    <p>We do not sell personal information or build advertising profiles. Excerptle Pro payments are handled by <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a>; card details never reach Excerptle. To request account deletion or your data, email <a href="mailto:privacy@excerptle.io">privacy@excerptle.io</a>.</p>
+    <p>Excerptle does not sell your personal information and does not build advertising profiles of its own. Advertising is served by Google, which is described below. Excerptle Pro payments are handled by <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a>; card details never reach Excerptle. To request account deletion or your data, email <a href="mailto:privacy@excerptle.io">privacy@excerptle.io</a>.</p>
+    <h2>Cookies and local storage</h2>
+    <p>Excerptle keeps your progress, streaks and settings in your browser&rsquo;s local storage rather
+    than on our servers, and sets a session cookie only if you sign in. Neither is used for
+    advertising. Clearing site data clears them, and clears any progress that has not been synced to
+    an account.</p>
+    <h2>Advertising</h2>
+    <p>Excerptle shows a single advertisement after a finished game, served by
+    <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google AdSense</a>.
+    Google and its partners use cookies and similar device identifiers to serve those ads, to measure
+    them, and &mdash; where you have allowed it &mdash; to personalise them based on your activity on
+    this and other sites. That data is handled by Google under its own
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>,
+    not by us. There are no ads beside a puzzle in progress, and none anywhere for Pro subscribers.</p>
+    <p>If you are in the European Economic Area, the United Kingdom or Switzerland, a consent message
+    appears before any advertising cookie is set, and you can accept, refuse, or choose which
+    purposes you allow. Refusing is a single choice, and ads still appear &mdash; they are simply not
+    personalised. You can change your answer at any time from the privacy link in that message.</p>
+    <p>Residents of US states with privacy laws, including California, can opt out of the sharing of
+    personal information for personalised advertising through the same message. You can also review
+    or switch off ad personalisation for your Google account at
+    <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">My Ad Center</a>,
+    and <a href="/#/pro">Excerptle Pro</a> removes the advertisement entirely.</p>
     <h2>Terms</h2><p>Excerptle is provided as is, without warranty. Please do not automate guesses, falsify leaderboard scores, or abuse other players.</p>
     <p>Book excerpts are public-domain works from Project Gutenberg. Excerptle is not affiliated with Project Gutenberg, Google, or Wordle.</p>
   </main>
@@ -44,4 +93,5 @@
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
 </div>
+  <script src="/js/share-page.js" defer></script>
 </body></html>

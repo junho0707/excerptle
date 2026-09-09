@@ -75,3 +75,84 @@ Stripe's Dashboard delivery log is the operational source for webhook retries. F
 Routes: `POST /auth/google`, `/auth/email`, `/auth/verify`, `/auth/logout`, `/me/password`; `GET /scores`, `/me/progress`, `/billing/status`; `POST /scores`, `/me/progress`, `/billing/checkout`, `/billing/portal`, `/billing/webhook`.
 
 Official references: [Checkout](https://docs.stripe.com/api/checkout/sessions/create), [webhook verification](https://docs.stripe.com/webhooks/signature), [D1](https://developers.cloudflare.com/d1/worker-api/).
+
+## Slack alerting
+
+`src/alerts.js` posts to a Slack Incoming Webhook. Three things reach it:
+
+| When | What |
+| --- | --- |
+| Hourly cron | Free-tier quota check — **silent** unless a metric crosses 50 / 75 / 90 / 100 % of its daily allowance |
+| 03:17 UTC cron | Daily digest: players, solves, accounts, Pro, plus yesterday's platform usage against the free limits |
+| Live | A new account signs up; a Pro subscription starts, cancels, or is set to cancel |
+
+Everything is optional and fails soft. With no `SLACK_WEBHOOK_URL` nothing is
+sent and nothing breaks; with no `CF_API_TOKEN` the digest still goes out with
+the product numbers and skips the platform section. The nightly expiry sweep
+runs before any alerting and is never blocked by it.
+
+### Setup
+
+1. **Slack** — create an app at <https://api.slack.com/apps> → *Incoming
+   Webhooks* → *Add New Webhook to Workspace*, pick the channel, copy the
+   `https://hooks.slack.com/services/...` URL.
+
+2. **Cloudflare token** (only for quota numbers) — dash.cloudflare.com →
+   *My Profile* → *API Tokens* → *Create Token* → *Custom token*:
+
+   | Permission | Scope |
+   | --- | --- |
+   | Account · Account Analytics · Read | your account |
+
+   That single permission is enough. Everything here goes through the GraphQL
+   analytics endpoint, and the D1 datasets (`d1AnalyticsAdaptiveGroups`,
+   `d1StorageAdaptiveGroups`) live under Account Analytics — the separate "D1"
+   permission covers the D1 REST API, which this never calls.
+
+   The account ID is the hex string in the dashboard URL, or in the sidebar of
+   Workers & Pages.
+
+3. **Store them** (from `backend/`, or add `--config backend/wrangler.toml`):
+
+   ```sh
+   npx wrangler secret put SLACK_WEBHOOK_URL
+   npx wrangler secret put CF_API_TOKEN
+   npx wrangler secret put CF_ACCOUNT_ID
+   ```
+
+   `ALERT_DASH_URL` is a plain var in `wrangler.toml` — set it to the account's
+   real dashboard URL so alerts link somewhere useful.
+
+4. **Migrate and deploy** — the quota check needs the `alert_state` table:
+
+   ```sh
+   npx wrangler d1 migrations apply excerptle --remote
+   npx wrangler deploy
+   ```
+
+5. **Check it** — force a run without waiting for the cron:
+
+   ```sh
+   npx wrangler dev --test-scheduled
+   curl 'http://localhost:8787/__scheduled?cron=17+3+*+*+*'   # digest
+   curl 'http://localhost:8787/__scheduled?cron=0+*+*+*+*'    # quota check
+   ```
+
+### Limits being watched
+
+Cloudflare's free plan, as of the last check. They live in `LIMITS` at the top
+of `src/alerts.js` — edit there if a plan changes.
+
+| Metric | Free limit | Notes |
+| --- | --- | --- |
+| Workers requests | 100,000 / day | **Account-wide.** `excerptle`, `excerptle-og` and `excerptle-api` share one bucket |
+| D1 rows read | 5,000,000 / day | |
+| D1 rows written | 100,000 / day | |
+| D1 storage | 5 GB | |
+
+Static asset requests are not billed as Worker requests, which is the other
+reason the front-door Worker was put on a diet — see `tools/og-worker/README.md`.
+
+Counters reset at 00:00 UTC and so does the alert memory: `alert_state` is
+keyed by metric + UTC day, so an hourly check that keeps seeing 78 % stays
+quiet after the first message, and a genuine climb to 90 % still speaks up.

@@ -22,6 +22,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="google-adsense-account" content="ca-pub-2005015845685746">
   <link rel="stylesheet" href="/css/app.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2005015845685746"
+          crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="app">
@@ -33,13 +35,21 @@
           <span>Guess the book</span>
         </span>
       </a>
+      <div class="nav-right">
+        <a class="tab signin" id="auth-tab" href="/#/signin">Sign in</a>
+        <button type="button" class="nav-toggle" id="nav-toggle" data-act="toggle-nav"
+                aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+          <span class="nav-bars" aria-hidden="true"></span>
+        </button>
+      </div>
       <nav class="tabs" id="main-nav" aria-label="Main">
-        <a class="tab" href="/">Play</a>
+        <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
-        <a class="tab" href="/faq">FAQ</a>
-        <a class="tab" href="/about">About</a>
-        <a class="tab" href="/support">Support</a>
-        <a class="tab" href="/privacy">Privacy &amp; terms</a>
+        <a class="tab" href="/#/bank">All books</a>
+        <a class="tab" href="/#/ranks">Leaderboard</a>
+        <a class="tab" href="/#/stats">Stats</a>
+        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support</a>
+        <a class="tab" href="/#/settings">Settings</a>
       </nav>
     </header>
 
@@ -87,7 +97,11 @@
       which removes that advertisement for anyone who would rather pay than look at it.</p>
       <p>Excerptle is not affiliated with Project Gutenberg, Google, or Wordle.</p>
 
-      <p class="prose-cta"><a class="btn" href="/">Play today&rsquo;s puzzle</a></p>
+      <p class="prose-cta"><a class="btn" href="/">Play today&rsquo;s puzzle</a>
+      <button class="btn ghost" type="button" data-share
+              data-share-url="https://excerptle.io/"
+              data-share-title="Excerptle &mdash; guess the book"
+              data-share-text="Six guesses. Hints on demand. Public-domain canon.">Share Excerptle</button></p>
 
     </main>
 
@@ -104,5 +118,6 @@
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
   </div>
+  <script src="/js/share-page.js" defer></script>
 </body>
 </html>

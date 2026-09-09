@@ -1146,41 +1146,15 @@ footer a { color: inherit; }
 .prose ul, .prose ol { padding-left: 1.2rem; }
 .prose li { margin-bottom: 0.35rem; }
 .prose .lede { font-size: 1.02rem; }
-.prose-cta { margin-top: 2rem; }
-.prose-cta .btn { text-decoration: none; display: inline-block; }
-/* The static pages (about, faq, how-to-play, privacy, support) don't load
-   js/app.js, so nothing exists to toggle .nav-open and the app's dropdown would
-   stay shut forever. They get a plain visible row instead — at every width, not
-   just narrow ones, or the nav vanishes on desktop. */
-.prose ~ * .tabs, body:not(:has(#game)) .tabs {
-  position: static;
+/* One or two buttons: "play" plus, on the pages worth passing on, "share". */
+.prose-cta {
+  margin-top: 2rem;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 0.6rem;
   align-items: center;
-  min-width: 0;
-  margin-left: auto;
-  padding: 0;
-  gap: 0.1rem;
-  background: none;
-  border: 0;
-  box-shadow: none;
 }
-body:not(:has(#game)) .tab { border-top: 0; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
-@media (max-width: 640px) {
-  /* Too narrow to sit beside the brand — give the row its own line instead of
-     letting it wrap ragged against the right edge. */
-  body:not(:has(#game)) .top { flex-wrap: wrap; row-gap: 0.2rem; }
-  body:not(:has(#game)) .tabs {
-    width: 100%;
-    margin-left: 0;
-    justify-content: center;
-    padding-bottom: 0.25rem;
-  }
-}
-
-
+.prose-cta .btn { text-decoration: none; display: inline-block; }
 /* ---- New game modal: the battle half ---- */
 
 .modal-sep {

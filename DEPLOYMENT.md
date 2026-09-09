@@ -57,6 +57,32 @@ They served a public duplicate of the site on a hostname nobody should be linkin
 
 ## Shipping an update
 
+### Three Workers, and the order matters
+
+| Script | Config | What it is |
+| --- | --- | --- |
+| `excerptle` | `wrangler.jsonc` | The front door: static assets + share-link meta rewrite. ~5 KB, deliberately |
+| `excerptle-og` | `tools/og-worker/wrangler.jsonc` | Share-card PNG renderer (resvg WASM + fonts). ~3.5 MB |
+| `excerptle-api` | `backend/wrangler.toml` | Accounts, scores, billing, Slack alerts |
+
+```bash
+npx wrangler deploy --config tools/og-worker/wrangler.jsonc   # renderer FIRST
+npx wrangler deploy                                            # front door
+npx wrangler deploy --config backend/wrangler.toml             # api
+```
+
+The renderer goes first: the front door's `OG` service binding will not resolve
+against a script that does not exist yet.
+
+**Why they're split.** `run_worker_first` puts `excerptle` in front of `/`, so
+its whole bundle is loaded into an isolate before the first page load in a cold
+colo can be answered. While the card renderer lived in that bundle, every such
+load waited on 3.5 MB of WASM and fonts to serve HTML that used neither. If you
+ever add a dependency to the front door, run `npx wrangler deploy --dry-run`
+and check "Total Upload" is still single-digit KB.
+
+### History
+
 The site was deployed from the Cloudflare **dashboard** — there is no `wrangler.toml` in the repo and wrangler has never run on this machine. That leaves two possibilities, and they differ in what you have to do:
 
 **Check which one you're on:** Workers & Pages → `excerptle` → Settings. If a **Build** section shows a connected GitHub repo, it's Git-connected. If there's no build config, it's manual upload.

@@ -4,12 +4,14 @@
 
 export function readShare(raw) {
   try {
-    const b = String(raw).replace(/-/g, "+").replace(/_/g, "/");
+    if (typeof raw !== "string" || raw.length > 2048) return null;
+    const b = raw.replace(/-/g, "+").replace(/_/g, "/");
     const bin = atob(b + "=".repeat((4 - (b.length % 4)) % 4));
     const json = new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
     const d = JSON.parse(json);
-    if (!d || d.v !== 1) return null;
+    if (!d || ![1, 2].includes(d.v)) return null;
     return {
+      c: d.v === 1 ? 1 : d.c === 1 ? 1 : 0,
       n: String(d.n || "A player").slice(0, 24),
       m: d.m === "daily" || d.m === "battle" ? d.m : "preset",
       w: d.w ? 1 : 0,
@@ -24,7 +26,7 @@ export function readShare(raw) {
   }
 }
 
-const kindOf = (m) => (m === "daily" ? "Daily" : m === "battle" ? "Battle" : "Book");
+export const kindOf = (m) => (m === "daily" ? "Daily" : m === "battle" ? "Battle" : "Question bank");
 
 export function grid(d) {
   let g = "";
@@ -41,6 +43,8 @@ export function fmtTime(sec) {
 /* What the messaging app shows. Title carries the score, description carries
    the standings — deliberately never the book. */
 export function unfurl(d, idx) {
+  if (d.invite) return { title: `${d.n} invited you to an Excerptle battle`, description: "Same book. Head to head. First to guess wins. Join your friend’s room." };
+  if (!d.c) return { title: `${d.n} challenges you to Excerptle ${kindOf(d.m)} #${idx}`, description: "Can you name the book from its opening lines? Six guesses. Hints on demand. Give it a try." };
   const score = d.w ? `${d.g}/6` : `X/6`;
   const hintWord = `${d.h} hint${d.h === 1 ? "" : "s"}`;
   const title = `${d.n} — Excerptle ${kindOf(d.m)} #${idx} ${score} · ${hintWord}`;
@@ -56,4 +60,16 @@ export function unfurl(d, idx) {
     d.w ? "Can you do better?" : "Can you solve it?",
   ].filter(Boolean);
   return { title, description: parts.join("  ·  ") };
+}
+
+export function shareFromUrl(url) {
+  const raw = url.searchParams.get("p");
+  if (raw === null || !/^\d{1,8}$/.test(raw)) return null;
+  const idx = Number(raw);
+  const code = url.searchParams.get("b");
+  if (code && /^[a-z0-9-]{1,32}$/i.test(code)) {
+    return { idx, d: { invite: true, m: "battle", n: (url.searchParams.get("n") || "A friend").slice(0, 24) } };
+  }
+  const d = readShare(url.searchParams.get("s"));
+  return d ? { idx, d } : null;
 }

@@ -16,3 +16,9 @@ wrangler.*
 .env*
 *.md
 *:Zone.Identifier
+# Source images kept in the repo but never linked from the site. The shipped
+# sizes all live in assets/.
+/logo.png
+/icon.png
+assets/logo.png
+assets/logo-1200.png
