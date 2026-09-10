@@ -15,10 +15,35 @@ window.BOOKLE_API = window.EXCERPTLE_API;
                 that disagree — the failure ?demo=1 cannot see, because there
                 is no API to disagree with. */
 if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
-  const flag = new URLSearchParams(location.search);
-  if (flag.get("demo") === "1") window.EXCERPTLE_API = "";
-  else if (flag.get("api") === "local") window.EXCERPTLE_API = "http://127.0.0.1:8787";
+  const flag = new URLSearchParams(location.search).get("api")
+    || (new URLSearchParams(location.search).get("demo") === "1" ? "demo" : null);
+  // The app rewrites the URL to drop the query string on some routes, so the
+  // choice is remembered for the tab rather than read from the address bar
+  // every time — otherwise the next reload quietly returns to the deployed
+  // API and the page starts contradicting the Worker you are testing.
+  // ?api=off forgets it; closing the tab does too.
+  let mode = null;
+  try {
+    if (flag) sessionStorage.setItem("excerptle.devapi", flag);
+    mode = flag || sessionStorage.getItem("excerptle.devapi");
+    if (mode === "off") { sessionStorage.removeItem("excerptle.devapi"); mode = null; }
+  } catch { mode = flag; }
+  if (mode === "demo") window.EXCERPTLE_API = "";
+  else if (mode === "local") window.EXCERPTLE_API = "http://127.0.0.1:8787";
   window.BOOKLE_API = window.EXCERPTLE_API;
+  if (mode) {
+    // Which backend the page is talking to is the first thing you need when it
+    // misbehaves, and the address bar can no longer be trusted to say.
+    console.info(`[excerptle] dev API: ${mode === "demo" ? "none (?demo=1)" : window.EXCERPTLE_API}`);
+    addEventListener("DOMContentLoaded", () => {
+      const tag = document.createElement("div");
+      tag.textContent = mode === "demo" ? "no backend" : "local API :8787";
+      tag.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:9999;font:11px/1.6 system-ui;"
+        + "background:#7a1f2b;color:#fff;padding:2px 8px;border-radius:9px;opacity:.85";
+      tag.title = "Development mode. Add ?api=off to leave.";
+      document.body.appendChild(tag);
+    });
+  }
 }
 
 /* Ads. Nothing is requested from Google until `enabled` is true AND both IDs

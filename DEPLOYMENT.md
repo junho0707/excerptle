@@ -236,6 +236,12 @@ Two switches, both refusing to work anywhere but localhost (see `js/config.js`):
 | `localhost:8765/?api=local` | real Worker on `:8787` | the frontend and the API actually talking to each other |
 | `localhost:8765` | **deployed** API | what production does — and what a not-yet-deployed API does to it |
 
+The choice sticks to the browser tab, not the address bar: `js/app.js` rewrites
+the URL to drop the query string on some routes, so a page that read the flag
+from `location.search` every time would fall back to the deployed API on the
+next reload and start contradicting the Worker under test. A badge in the corner
+names the backend in use. `?api=off` leaves dev mode; so does closing the tab.
+
 The middle one is the one that matters before a release. `?demo=1` cannot catch
 a frontend and an API that disagree, because there is no API to disagree with:
 that is how a `/me/password` rewrite reached the browser while the deployed
