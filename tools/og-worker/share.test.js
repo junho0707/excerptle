@@ -6,10 +6,15 @@ const encode = d => Buffer.from(JSON.stringify(d)).toString("base64url");
 test("unfinished shares invite; completed losses show X/6; old links still work", () => {
   const base = {v:2,n:"Reader",m:"daily",g:2,h:1,w:0};
   const unfinished = readShare(encode({...base,c:0}));
-  assert.match(unfurl(unfinished,642).title,/challenges/);
+  assert.match(unfurl(unfinished,642).title,/is reading/);
   assert.doesNotMatch(unfurl(unfinished,642).title,/X\/6/);
   assert.match(unfurl(readShare(encode({...base,c:1})),642).title,/X\/6/);
   assert.equal(readShare(encode({...base,v:1})).c,1);
+  // Links shared before the clock was removed still carry t; it must parse and
+  // simply not appear in the unfurl.
+  const old = readShare(encode({...base,c:1,w:1,t:214}));
+  assert.equal(old.t,214);
+  assert.doesNotMatch(unfurl(old,642).description,/\d+m \d+s|\b\d+s\b/);
 });
 test("book zero and battle invitations are valid, malformed links are ignored", () => {
   const s = encode({v:2,m:"preset",c:0});

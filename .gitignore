@@ -1,4 +1,5 @@
 tools/.gutenberg-cache/
+tools/.pd-cache/
 __pycache__/
 *.pyc
 .DS_Store
@@ -10,3 +11,5 @@ dist/
 
 !.dev.vars.example
 !.env.example
+tools/.pg-meta-cache/
+*:Zone.Identifier

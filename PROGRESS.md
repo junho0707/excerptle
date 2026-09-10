@@ -29,9 +29,9 @@ Hard-refresh after JS/HTML changes.
 | After a game | Next random book, choose by ID, share, leaderboard CTA, post-game ad **slot** (no network). The reveal prints `stripEdition(title)`, so the answer reads “Richard Carvel”, not “Richard Carvel — Complete”. Standings show **both** — `#n of N at h hints` and `#n of N overall`. |
 | Share | **Share copies a bare URL, nothing else** — the card is what the link previews as. The whole result rides in `?p=<index>&s=<base64url JSON>` (`sharePayload()`), so both the recipient's page and a crawler can render it with no lookup. Opening the link shows the sharer's card — grid, score, time, both standings — over the puzzle, then plays it. **The payload never carries the title**; a share must not spoil the book. `?p`/`?s`/`?b` are stripped from the URL after the first route. |
 | Share unfurls | Needs a server — see `tools/og-worker/`. GitHub Pages returns the same `index.html` for every URL, and crawlers don't run JS, so per-share `<meta>` is impossible from the client. The Worker proxies the origin and rewrites OG/Twitter title + description from `?s=`. **Not deployed yet.** `og:image` is still static; the README says how to add a rendered card. |
-| Daily | UTC. `puzzles/index.json`: `startDate` `2026-09-08`, `dailyStartIndex` **1001**. Today = `#1001 + daysSince(start)`. |
+| Daily | UTC. `puzzles/index.json`: `startDate` `2026-09-09`, `dailyStartIndex` **600**. Today = `#600 + daysSince(start)`, so launch day is **#600, Pride and Prejudice**. The dailies run in most-famous-first order, #600–#719 (120 days). |
 | All books page | Show = **All** (default) / **Book bank** / **Daily**; “All” lists the bank then the dailies at the end. Pager reads Prev · Page n / m · Next, centred and stable across pages. Play labels and the in-game meta bar read **Book bank #n**. |
-| Book bank | **824 distinct books.** Gutenberg ships the same work many times over (Tom Sawyer alone was 9 puzzles: the curated `b13` plus `g7193`–`g7200` “Part 1..8”), so `dedupe_books()` keeps one slot per book — curated `b*` winning over the `g*` dump — dropping 15. Split in `puzzles/index.json`: **`#1…#600`** is the browsable bank (`presetCount`), the remaining **224** are held back as the daily pool (`dailyPoolCount`). No book is in both, so a daily is never something you could already browse; dailies repeat only after 224 days. `order` is scrambled by `sha256(ORDER_SALT + slug)`, so ids track neither the catalogue nor Gutenberg numbering. The 15 deduped `g*.json` files stay on disk, just unreferenced. |
+| Book bank | **600 books, indices #0–#599** (`presetCount`), scrambled by `sha256(ORDER_SALT + slug)`; the 120 dailies are #600–#719 and are in no bank slot, so a daily is never something you could already browse. Every slug is a Gutenberg id (`g1342`) — the curated `b*.json` puzzles are gone, along with the per-work dedupe they needed. See HANDOFF.md for how the 720 were cut and gated. |
 | Battle | PeerJS P2P. Same index, shared hints, first correct title wins. `?b=CODE&p=INDEX`. Needs network. **Books only — dailies are not offered or accepted in battle.** Losing the race reads “<name> got there first”, not “Out of guesses” (`state.beatenBy`). |
 | Stats (`#/stats`) | Three peer sections — **Daily → Book bank → Battle mode** — on one flat type scale, under a ruled page title. No tiering, no Overall block, no guess-distribution graph: they were noise. Battle numbers are **explicit counters** in `bookle.stats.battle` (a battle writes its book's `progress` row, so it cannot be counted back out of `progress` afterwards); everything else is derived live by `summarize()` from `bookle.progress`, so it stays true if rows are edited or cleared. |
 | Leaderboard UI | One board per puzzle. Filters: Puzzle # and Hints used (0–5). No scope selector, and an empty board renders nothing rather than a placeholder. Sort win → fewer hints → faster → fewer guesses. **Local `localStorage` only** until API exists. |
@@ -85,7 +85,7 @@ POST {API}/   (sendBeacon JSON)
 Today it beacons to the API **root**. Backend should pick a real path (e.g. `POST /scores`) and **change the client** to match. Return/list:
 
 ```
-GET /scores?puzzleIndex=1001&hints=0
+GET /scores?puzzleIndex=600&hints=0
 ```
 
 Sort: `win` desc, `hints` asc, `timeMs` asc, `guesses` asc.
@@ -139,12 +139,11 @@ js/config.js        Google client ID + API origin (no secrets)
 js/auth.js          GIS + email API client + demo fallback
 js/match.js         title matching
 js/app.js           game, bank, ranks, battle, share
-puzzles/index.json  startDate, dailyStartIndex 1001, order[] (deduped + scrambled), presetCount 600, dailyPoolCount 224
-puzzles/bXX.json    curated (good openings)
-puzzles/g{id}.json  Gutenberg extras (quality varies)
+puzzles/index.json  startDate 2026-09-09, dailyStartIndex 600, order[] (720: bank #0-599 scrambled, dailies #600-719 by fame), presetCount 600, dailyPoolCount 120
+puzzles/g{id}.json  one per book, slug = Gutenberg id
 tools/build_puzzles.py
-tools/books.json    50 curated + anchors
-tools/extra_books.json
+tools/final_bank.json / final_dailies.json   the shipped 720
+tools/anchors.json  hand-set excerpt starts
 CNAME               excerptle.io
 ```
 

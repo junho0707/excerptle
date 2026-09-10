@@ -1,0 +1,601 @@
+rank,status,gutenberg,title,author,year,downloads_30d,sitelinks,form,genre,wikipedia,slug
+1,have,1342,Pride and Prejudice,Jane Austen,1813,180357,100,novel,novel of manners;romantic fiction;psychological fiction;satirical fiction,yes,b01
+2,have,2701,Moby-Dick,Herman Melville,1851,163497,,,,no,b04
+3,have,2554,Crime and Punishment,Fyodor Dostoevsky,1866,118512,109,novel,serialized fiction;crime fiction;philosophical fiction;psychological fiction,yes,b31
+4,have,1661,The Adventures of Sherlock Holmes,Arthur Conan Doyle,1892,107734,52,short story collection,detective fiction,yes,b29
+5,have,11,Alice's Adventures in Wonderland,Lewis Carroll,1865,104420,,,,no,b06
+6,have,84,Frankenstein,Mary Shelley,1818,99964,,,,no,b02
+7,have,1513,Romeo and Juliet,William Shakespeare,1597,95206,,,,no,b45
+8,have,345,Dracula,Bram Stoker,1897,92827,75,novel,epistolary fiction;horror fiction;romantic fiction;Gothic fiction;vampire fiction,yes,b03
+9,have,43,Strange Case of Dr Jekyll and Mr Hyde,Robert Louis Stevenson,1886,90059,60,novel;novella,science fiction;sensation fiction;crime fiction;horror fiction;Gothic fiction,yes,b15
+10,new,65238,The Secret of Chimneys,Agatha Christie,1925,86601,26,novel,thriller;detective fiction;crime fiction,yes,g65238
+11,have,3268,The Mysteries of Udolpho,Ann Ward Radcliffe,1794,84458,20,novel,Gothic fiction;fantasy;thriller;horror fiction;romantic fiction,yes,g3268
+12,have,2465,Carmen,Prosper Mérimée,1847,77289,29,novella,,yes,g2465
+13,have,1260,Jane Eyre,Charlotte Brontë,1847,71908,70,novel,Bildungsroman;romance;education novel;autobiographical novel;Gothic fiction,yes,b07
+14,new,67979,The Blue Castle,Lucy Maud Montgomery,1926,71749,10,novel,romantic fiction,yes,g67979
+15,have,244,A Study in Scarlet,Arthur Conan Doyle,1887,62582,61,novel,detective fiction;crime fiction;mystery fiction,yes,b28
+16,have,564,The Mystery of Edwin Drood,Charles Dickens,,61536,,,,no,g564
+17,have,42,The strange case of Dr. Jekyll and Mr. Hyde,Robert Louis Stevenson,,61145,,,,no,g42
+18,have,2852,The Hound of the Baskervilles,Arthur Conan Doyle,1902,60959,,,,no,b30
+19,have,1695,The Man Who Was Thursday: A Nightmare,G. K. Chesterton,1908,59096,19,novel,thriller,yes,g1695
+20,have,6133,"The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar",Maurice Leblanc,,56071,,,,no,g6133
+21,have,209,The Turn of the Screw,Henry James,1898,54814,27,novella,fantasy;ghost story;horror fiction;Gothic fiction,yes,g209
+22,have,601,The Monk: A Romance,M. G. Lewis,1796,54719,18,novel,fantasy;Gothic fiction,yes,g601
+23,new,2147,The Mystery of Marie Rogêt,Edgar Allan Poe,1842,54438,29,short story,crime fiction,yes,g2147
+24,have,204,The innocence of Father Brown,G. K. Chesterton,,53344,,,,no,g204
+25,have,831,Four Arthurian Romances,Chrétien de Troyes,,53258,,,,no,g831
+26,have,1184,The Count of Monte Cristo,Alexandre Dumas,1844,53209,,,,no,b33
+27,have,863,The Mysterious Affair at Styles,Agatha Christie,1920,53161,44,novel,detective fiction;romantic fiction,yes,g863
+28,have,175,The Phantom of the Opera,Gaston Leroux,1910,53126,46,novel,fantasy;mystery fiction;horror fiction;romantic fiction;Gothic fiction,yes,g175
+29,have,2097,The Sign of the Four,Arthur Conan Doyle,1890,52332,47,novel,detective fiction;crime fiction,yes,g2097
+30,have,108,The Return of Sherlock Holmes,Arthur Conan Doyle,1905,52211,37,short story collection,detective fiction,yes,g108
+31,new,68283,The Call of Cthulhu,H. P. Lovecraft,1928,52038,34,short story,science fiction;weird fiction;horror fiction,yes,g68283
+32,have,583,The Woman in White,Wilkie Collins,,51733,,,,no,g583
+33,have,834,The Memoirs of Sherlock Holmes,Arthur Conan Doyle,,51694,,,,no,g834
+34,have,155,The Moonstone,Wilkie Collins,1868,50961,30,novel,fantasy;epistolary novel;crime fiction,yes,g155
+35,have,223,The wisdom of Father Brown,G. K. Chesterton,,50651,,,,no,g223
+36,have,1063,The Cask of Amontillado,Edgar Allan Poe,,49903,,,,no,g1063
+37,have,393,The Blue Lagoon: A Romance,H. De Vere Stacpoole,1908,49758,10,novel,romance,yes,g393
+38,new,468,Manon Lescaut,Antoine François Prévost,1731,49485,33,novel,memoir novel;romantic fiction;memoir,yes,g468
+39,have,1155,The Secret Adversary,Agatha Christie,1922,48788,27,novel,detective fiction,yes,g1155
+40,have,64317,The Great Gatsby,F. Scott Fitzgerald,1925,48709,84,novel,tragedy;Great American Novel,yes,b05
+41,have,589,Catriona,Robert Louis Stevenson,1893,48695,10,novel,historical fiction;adventure fiction,yes,g589
+42,new,10002,The House on the Borderland,William Hope Hodgson,1908,48309,9,novel,fantasy;weird fiction;horror fiction,yes,g10002
+43,new,69700,The Case-Book of Sherlock Holmes,Arthur Conan Doyle,1927,48143,32,short story collection,detective fiction;crime fiction,yes,g69700
+44,new,58866,The Murder on the Links,Agatha Christie,1923,48122,30,novel,detective fiction;crime fiction,yes,g58866
+45,have,3289,The Valley of Fear,Arthur Conan Doyle,1915,47643,39,novel,detective fiction;crime fiction,yes,g3289
+46,new,61168,The Man in the Brown Suit,Agatha Christie,1924,47569,29,novel,thriller;detective fiction;crime fiction,yes,g61168
+47,have,560,Mr. Standfast,John Buchan,1919,47388,4,novel,military fiction,yes,g560
+48,new,8954,Lady Audley's Secret,Mary Elizabeth Braddon,1862,47288,6,,sensation fiction,yes,g8954
+49,have,1259,Twenty years after,Alexandre Dumas,1845,47260,35,novel,cloak and dagger novel;adventure fiction,yes,g1259
+50,new,70114,The Big Four (novel),Agatha Christie,1927,47170,31,novel,detective fiction,yes,g70114
+51,have,558,The Thirty-Nine Steps,John Buchan,1915,47133,20,novel,mystery fiction;spy fiction,yes,g558
+52,have,2350,His last bow,Arthur Conan Doyle,1917,47063,36,short story collection,detective fiction,yes,g2350
+53,have,974,The Secret Agent: A Simple Tale,Joseph Conrad,1907,46929,22,novel,spy fiction,yes,g974
+54,have,2360,The Riddle of the Sands,Erskine Childers,,46829,,,,no,g2360
+55,new,50133,The Dunwich Horror,H. P. Lovecraft,1929,46777,19,short story,science fiction;weird fiction;horror fiction,yes,g50133
+56,have,389,The Great God Pan,Arthur Machen,1894,46720,14,novel;novella,weird fiction;horror fiction;folk horror,yes,g389
+57,have,2038,The Lock and Key Library: Classic Mystery and Detective Stories: Modern English,Various,,46309,,,,no,g2038
+58,have,537,Tales of Terror and Mystery,Arthur Conan Doyle,,46136,,,,no,g537
+59,new,8486,Ghost Stories of an Antiquary,M. R. James,1904,46088,7,short story collection,horror fiction,yes,g8486
+60,have,16389,The Enchanted April,Elizabeth Von Arnim,1923,45914,5,novel,,yes,g16389
+61,have,1685,The Mystery of the Yellow Room,Gaston Leroux,,45788,,,,no,g1685
+62,new,57669,The Problem of Cell 13,Jacques Futrelle,1905,45768,3,short story,locked room mystery,yes,g57669
+63,new,58820,Whose Body?,Dorothy L. Sayers,1923,45718,7,,detective fiction;crime literature,yes,g58820
+64,new,30340,The Passionate Friends: A Novel,H. G. Wells,1913,45708,2,novel,,yes,g30340
+65,new,28054,The Brothers Karamazov,Fyodor Dostoyevsky,1880,45630,91,novel,serialized fiction;philosophical fiction,yes,g28054
+66,have,7735,Paul Clifford — Complete,Baron Edward Bulwer Lytton Lytton,1830,45597,5,novel,,yes,g7735
+67,have,15384,The Real Adventure,Henry Kitchell Webster,,45503,,,,no,g15384
+68,have,1872,The Red House Mystery,A. A. Milne,1922,45473,5,novel,mystery fiction,yes,g1872
+69,have,173,The Insidious Dr. Fu Manchu,Sax Rohmer,1913,45339,3,novel,mystery fiction,yes,g173
+70,new,3070,The Hound of the Baskervilles,Arthur Conan Doyle,1902,45308,63,novel,detective fiction;crime fiction;mystery fiction,yes,g3070
+71,have,14818,The Daughter of Anderson Crow,George Barr McCutcheon,,44990,,,,no,g14818
+72,have,1686,The Secret of the Night,Gaston Leroux,,44948,,,,no,g1686
+73,have,2806,"The Phantom 'Rickshaw, and Other Ghost Stories",Rudyard Kipling,,44833,,,,no,g2806
+74,have,3321,Children of the Whirlwind,Leroy Scott,,44677,,,,no,g3321
+75,have,1931,The Zeppelin's Passenger,E. Phillips Oppenheim,,44607,,,,no,g1931
+76,have,2813,The Grand Babylon Hôtel,Arnold Bennett,,44318,,,,no,g2813
+77,new,6761,"The Adventures of Ferdinand, Count Fathom",Tobias Smollett,1753,43408,4,novel,,yes,g6761
+78,have,174,The Picture of Dorian Gray,Oscar Wilde,1890,43384,,,,no,b11
+79,new,2160,The Expedition of Humphry Clinker,Tobias Smollett,1771,42801,6,novel,epistolary novel,yes,g2160
+80,have,768,Wuthering Heights,Emily Brontë,1847,41958,,,,no,b08
+81,new,4085,The Adventures of Roderick Random,Tobias Smollett,1748,41938,7,novel,,yes,g4085
+82,have,98,A Tale of Two Cities,Charles Dickens,1859,40992,65,novel,historical fiction;social fiction,yes,b09
+83,have,5200,The Metamorphosis,Franz Kafka,1915,38512,84,novella;Erzählung,absurdist literature;epic literature;body horror literature,yes,b27
+84,new,42389,The Pirate (novel),Walter Scott,1822,36867,10,,historical fiction;pirate fiction,yes,g42389
+85,new,17460,Lorna Doone,Richard Doddridge Blackmore,1869,36829,14,novel,romantic fiction,yes,g17460
+86,new,224,A Pair of Blue Eyes,Thomas Hardy,1873,36459,7,novel,,yes,g224
+87,have,4499,Complete Short Works of George Meredith,George Meredith,,36006,,,,no,g4499
+88,new,3922,The Red Lily (novel),Anatole France,1894,35345,9,novel,,yes,g3922
+89,have,4712,The Landloper: The Romance of a Man on Foot,Holman Day,,35060,,,,no,g4712
+90,have,161,Sense and Sensibility,Jane Austen,1811,34708,56,novel,Bildungsroman;romantic fiction,yes,b49
+91,new,6768,The Man Upstairs (short story collection),P. G. Wodehouse,1914,33399,2,,humor,yes,g6768
+92,have,74,The Adventures of Tom Sawyer,Mark Twain,1876,33203,76,novel;narration,Bildungsroman;adventure fiction,yes,b13
+93,new,3044,Desperate Remedies,Thomas Hardy,1871,33129,4,novel,,yes,g3044
+94,have,55,The Wonderful Wizard of Oz,L. Frank Baum,1900,33071,,,,no,b21
+95,new,9911,First Love (Turgenev novella),Ivan Turgenev,1860,32730,26,novel,short novel,yes,g9911
+96,new,3146,Two on a Tower,Thomas Hardy,1882,32722,3,novel,,yes,g3146
+97,new,4300,Ulysses (novel),James Joyce,1922,32653,84,novel,autobiography;Bildungsroman;metafiction;modernist literature;serialized fiction;experimental literature;high literature,yes,g4300
+98,have,113,The Secret Garden,Frances Hodgson Burnett,1911,32404,,,,no,b23
+99,new,15399,The Interesting Narrative of the Life of Olaudah Equiano,Olaudah Equiano,1789,32350,6,,autobiography,yes,g15399
+100,have,103,Around the World in Eighty Days,Jules Verne,1873,31322,,,,no,b35
+101,have,76,Adventures of Huckleberry Finn,Mark Twain,1884,31276,,,,no,b12
+102,have,1952,The Yellow Wallpaper,Charlotte Perkins Gilman,,29497,,,,no,g1952
+103,new,18857,Journey to the Centre of the Earth,Jules Verne,1864,28830,64,novel,adventure;lost world fiction;scientific romance;subterranean fiction;adventure fiction,yes,g18857
+104,have,72,"Thuvia, maid of Mars",Edgar Rice Burroughs,,28811,,,,no,g72
+105,new,2527,The Sorrows of Young Werther,Johann Wolfgang von Goethe,1774,28159,64,epistolary novel,epistolary novel;sentimental novel;diary literature,yes,g2527
+106,new,766,David Copperfield,Charles Dickens,1850,27631,68,novel,Bildungsroman;autobiographical novel,yes,g766
+107,new,52190,Ecce Homo (book),Friedrich Nietzsche,1888,27601,40,posthumous work,autobiography;essay,yes,g52190
+108,new,921,De Profundis (letter),Oscar Wilde,1905,27237,20,,epistle,yes,g921
+109,have,45,Anne of Green Gables,Lucy Maud Montgomery,1908,27049,,,,no,b22
+110,have,7326,The Yeoman Adventurer,George W. Gough,,27016,,,,no,g7326
+111,have,1400,Great Expectations,Charles Dickens,1861,26966,69,novel,black comedy;Bildungsroman,yes,b10
+112,have,120,Treasure Island,Robert Louis Stevenson,1883,26070,85,novel,coming-of-age fiction;nautical fiction;adventure fiction;pirate fiction,yes,b16
+113,new,14838,The Tale of Peter Rabbit,Beatrix Potter,1902,25657,31,,children's literature,yes,g14838
+114,have,844,The Importance of Being Earnest,Oscar Wilde,1895,25392,,,,no,b47
+115,new,160,The Awakening (Chopin novel),Kate Chopin,1899,25199,16,novel;novella,,yes,g160
+116,have,205,Walden,Henry David Thoreau,1854,24578,,,,no,b26
+117,have,23784,The History of Sir Richard Calmady: A Romance,Lucas Malet,,24311,,,,no,g23784
+118,new,1837,The Prince and the Pauper,Mark Twain,1881,24154,43,novel,historical fiction;cloak and dagger novel;children's fiction,yes,g1837
+119,new,86,A Connecticut Yankee in King Arthur's Court,Mark Twain,1889,23834,31,novel,science fiction;fantasy;alternate history;humorous literature;satirical fiction,yes,g86
+120,have,16,Peter Pan,J. M. Barrie,1911,23507,34,novel,fantasy,yes,b24
+121,new,2383,The Canterbury Tales,Geoffrey Chaucer,1387,23168,71,short story collection;poem;collection of fairy tales,English-language literature,yes,g2383
+122,have,121,Northanger Abbey,Jane Austen,1818,23143,36,novel,romantic fiction,yes,g121
+123,new,271,Black Beauty,Anna Sewell,1877,23114,36,novel,young adult fiction,yes,g271
+124,have,46,A Christmas Carol,Charles Dickens,1843,21933,75,novella,Christmas fiction,yes,b14
+125,new,2610,The Hunchback of Notre-Dame,Q535,1831,21845,76,novel,Romanticism;historical fiction;Gothic fiction,yes,g2610
+126,new,599,Vanity Fair (novel),William Makepeace Thackeray,1848,21168,43,novel,satirical fiction,yes,g599
+127,new,580,The Pickwick Papers,Charles Dickens,1836,21049,40,novel,picaresque novel;satire,yes,g580
+128,have,73,The Red Badge of Courage: An Episode of the American Civil War,Stephen Crane,,20712,,,,no,g73
+129,new,1079,"The Life and Opinions of Tristram Shandy, Gentleman",Laurence Sterne,1759,20499,34,novel,picaresque novel;metafiction;satirical fiction,yes,g1079
+130,have,696,The Castle of Otranto,Horace Walpole,1764,20422,33,,horror fiction;Gothic fiction,yes,g696
+131,new,967,Nicholas Nickleby,Charles Dickens,1839,20227,31,novel,social criticism,yes,g967
+132,have,35,The Time Machine,H. G. Wells,1895,19811,,,,no,b18
+133,have,1399,Anna Karenina,Leo Tolstoy,1877,19677,,,,no,b32
+134,have,135,Les Misérables,Victor Hugo,1862,19395,97,novel,tragedy;historical fiction,yes,b34
+135,have,2040,Confessions of an English Opium-Eater,Thomas De Quincey,1822,19258,13,,autobiography,yes,g2040
+136,have,215,The Call of the Wild,Jack London,1903,18718,54,novel,adventure fiction,yes,b20
+137,have,158,Emma,Jane Austen,1815,18556,49,novel,romantic fiction,yes,b48
+138,new,4599,The Small House at Allington,Anthony Trollope,1862,17765,2,novel,,yes,g4599
+139,new,38703,The Black Moth,Georgette Heyer,1921,17597,4,novel,historical fiction;romantic fiction,yes,g38703
+140,have,2489,"Moby Dick; Or, The Whale",Herman Melville,,17477,,,,no,g2489
+141,new,1023,Bleak House,Charles Dickens,1853,17475,38,novel,detective fiction,yes,g1023
+142,new,34181,Irene Iddesleigh,Amanda McKittrick Ros,1897,17175,1,novel,,yes,g34181
+143,have,514,Little Women,Louisa May Alcott,1868,17140,52,novel,autobiography;Bildungsroman;family saga;realist novel;developmental novel,yes,b38
+144,new,7895,A Terrible Temptation,Charles Reade,1871,17054,3,novel,,yes,g7895
+145,have,3526,Five Weeks in a Balloon,Jules Verne,,17036,,,,no,g3526
+146,new,1680,La Maison du chat-qui-pelote,Honoré de Balzac,1829,16967,15,novella,literary realism,yes,g1680
+147,have,219,Heart of Darkness,Joseph Conrad,1899,16334,,,,no,b19
+148,have,829,Gulliver's Travels,Jonathan Swift,1726,15893,,,,no,b41
+149,have,236,The Jungle Book,Rudyard Kipling,1894,15872,69,short story collection;narration,didactic literature,yes,b40
+150,have,164,Twenty Thousand Leagues under the Seas,Jules Verne,1870,15599,,,,no,b36
+151,have,996,Don Quixote,Miguel de Cervantes,1605,15451,,,,no,b43
+152,new,730,Oliver Twist,Charles Dickens,1838,15405,83,novel,Bildungsroman,yes,g730
+153,new,67098,The House at Pooh Corner,A. A. Milne,1928,14639,13,novella,children's fiction,yes,g67098
+154,have,521,Robinson Crusoe,Daniel Defoe,1719,14621,,,,no,b42
+155,have,36,The War of the Worlds,H. G. Wells,1898,14318,,,,no,b17
+156,have,1257,The three musketeers,Alexandre Dumas,,14239,,,,no,g1257
+157,new,600,Notes from Underground,Fyodor Dostoyevsky,1864,13537,50,novella,philosophical fiction,yes,g600
+158,have,12,Through the Looking-Glass,Lewis Carroll,1871,13061,61,novel,fantasy,yes,b37
+159,new,2638,The Idiot,Fyodor Dostoyevsky,1869,12869,70,novel,,yes,g2638
+160,new,2814,Dubliners,James Joyce,1914,12784,45,short story collection,,yes,g2814
+161,have,910,White Fang,Jack London,1906,12571,48,novel,adventure fiction;young adult fiction,yes,g910
+162,new,61,The Communist Manifesto,Friedrich Engels & Karl Marx,1848,12066,143,,political manifesto,yes,g61
+163,have,105,Persuasion,Jane Austen,1817,11688,46,novel,romantic fiction,yes,b50
+164,have,62,A princess of Mars,Edgar Rice Burroughs,,11471,,,,no,g62
+165,new,1170,Anabasis (Xenophon),Xenophon,1859,11047,48,,travel book;historiography,yes,g1170
+166,new,19942,Candide,Voltaire,1759,11022,65,novella;narration,Bildungsroman,yes,g19942
+167,have,1874,The Railway Children,E. Nesbit,,10995,,,,no,g1874
+168,new,17396,The Secret Garden,Frances Hodgson Burnett,1912,10505,39,novel,serialized fiction;children's book,yes,g17396
+169,have,2488,Twenty Thousand Leagues Under the Seas: An Underwater Tour of the World,Jules Verne,,10106,,,,no,g2488
+170,have,421,Kidnapped,Robert Louis Stevenson,,9755,,,,no,g421
+171,have,1268,The Mysterious Island,Jules Verne,,9741,,,,no,g1268
+172,have,940,The Last of the Mohicans; A narrative of 1757,James Fenimore Cooper,1824,9647,52,novel,historical fiction,yes,g940
+173,have,139,The Lost World,Arthur Conan Doyle,1912,9539,33,novel,fiction;science fiction;lost world fiction;adventure fiction,yes,g139
+174,new,2500,Siddhartha (novel),Hermann Hesse,1922,9381,60,novel;Erzählung,developmental novel;philosophical novel,yes,g2500
+175,new,12342,The Nuttall Encyclopædia,,1900,9371,11,encyclopedia,encyclopedia,yes,g12342
+176,new,43936,The Wonderful Wizard of Oz,L. Frank Baum,1900,9136,67,novel,fantasy;children's story,yes,g43936
+177,have,289,The Wind in the Willows,Kenneth Grahame,1908,9111,,,,no,b39
+178,have,140,The Jungle,Upton Sinclair,1905,8892,27,novel,social fiction,yes,g140
+179,new,4217,A Portrait of the Artist as a Young Man,James Joyce,1918,8579,46,novel,Bildungsroman;Künstlerroman;autobiographical novel,yes,g4217
+180,have,1524,Hamlet,William Shakespeare,1603,8382,,,,no,b44
+181,new,66048,The Interpretation of Dreams,Sigmund Freud,1900,8264,44,,,yes,g66048
+182,new,2413,Madame Bovary,Gustave Flaubert,1857,8233,74,novel,realist novel,yes,g2413
+183,new,308,Three Men in a Boat,Jerome K. Jerome,1889,7984,29,novel,humorous fiction,yes,g308
+184,have,64,The gods of Mars,Edgar Rice Burroughs,,7938,,,,no,g64
+185,have,1533,Macbeth,William Shakespeare,1606,7903,,,,no,b46
+186,new,4517,Ethan Frome,Edith Wharton,1911,7695,18,novella,American realism,yes,g4517
+187,new,902,The Devoted Friend,Oscar Wilde,1888,7685,9,short story,parable,yes,g902
+188,new,3177,Roughing It,Mark Twain,1872,7638,10,,travel literature,yes,g3177
+189,have,68,The warlord of Mars,Edgar Rice Burroughs,1918,7441,14,novel,science fiction;fantasy,yes,g68
+190,new,141,Mansfield Park,Jane Austen,1814,7376,44,novel,romantic fiction,yes,g141
+191,new,59844,The Science of Getting Rich,Wallace Wattles,1910,7323,5,,self-help,yes,g59844
+192,new,786,Hard Times (novel),Charles Dickens,1854,7132,28,novel,serialized fiction;social fiction,yes,g786
+193,have,1153,The Chessmen of Mars,Edgar Rice Burroughs,1922,6917,12,novel,science fiction;fantasy;science fantasy,yes,g1153
+194,have,551,The Land That Time Forgot,Edgar Rice Burroughs,,6693,,,,no,g551
+195,have,3748,A Journey into the Interior of the Earth,Jules Verne,,6422,,,,no,g3748
+196,new,7849,The Trial,Franz Kafka,1925,6403,73,novel,absurdist literature;dystopian fiction,yes,g7849
+197,have,149,The Lost Continent,Edgar Rice Burroughs,,6308,,,,no,g149
+198,new,11231,"Bartleby, the Scrivener",Herman Melville,1853,6200,23,short story,social criticism,yes,g11231
+199,new,972,The Devil's Dictionary,Ambrose Bierce,1912,6172,26,,satire,yes,g972
+200,new,131,The Pilgrim's Progress,John Bunyan,1678,6126,46,,allegory,yes,g131
+201,have,1353,Off on a Comet! a Journey through Planetary Space,Jules Verne,,5864,,,,no,g1353
+202,new,8117,Demons (Dostoevsky novel),Fyodor Dostoyevsky,1871,5822,53,novel,political fiction;psychological fiction,yes,g8117
+203,have,553,Out of Time's Abyss,Edgar Rice Burroughs,,5736,,,,no,g553
+204,have,6087,The Vampyre; a Tale,John William Polidori,,5666,,,,no,g6087
+205,new,60976,Rip Van Winkle,Washington Irving,1818,5521,35,short story,time-travel fiction,yes,g60976
+206,new,375,An Occurrence at Owl Creek Bridge,Ambrose Bierce,1890,5510,14,short story,horror fiction,yes,g375
+207,have,541,The Age of Innocence,Edith Wharton,,5356,,,,no,g541
+208,new,2944,Essays: First Series,Ralph Waldo Emerson,1841,5350,2,,,yes,g2944
+209,new,82,Ivanhoe,Walter Scott,1819,5342,51,novel,historical fiction,yes,g82
+210,new,47,Anne of Avonlea,Lucy Maud Montgomery,1909,5269,28,novel,children's fiction,yes,g47
+211,new,51,Anne of the Island,Lucy Maud Montgomery,1915,5116,25,,children's fiction,yes,g51
+212,new,22452,Howards End,E. M. Forster,1910,5073,19,novel,family drama,yes,g22452
+213,have,60,The Scarlet Pimpernel,Baroness Emmuska Orczy Orczy,1905,5053,31,novel,cloak and dagger novel,yes,g60
+214,new,3178,The Gilded Age: A Tale of Today,Charles Dudley Warner & Mark Twain,1873,5038,9,novel,,yes,g3178
+215,have,1728,The Odyssey of Homer,Homer,,4767,,,,no,g1728
+216,new,883,Our Mutual Friend,Charles Dickens,1864,4745,23,novel,serialized fiction;mystery fiction,yes,g883
+217,have,503,The Blue Fairy Book,Andrew Lang,,4731,,,,no,g503
+218,new,5427,"Emile, or On Education",Jean-Jacques Rousseau,1762,4592,40,narration,fiction;essay;treatise;education novel;philosophical fiction,yes,g5427
+219,have,2853,Quo Vadis: A Narrative of the Time of Nero,Henryk Sienkiewicz,1896,4567,45,novel,historical fiction,yes,g2853
+220,have,512,Mosses from an old manse,Nathaniel Hawthorne,1835,4530,14,,speculative fiction,yes,g512
+221,have,33,The Scarlet Letter,Nathaniel Hawthorne,1850,4480,45,novel,historical fiction;romantic fiction,yes,b25
+222,new,4078,The Picture of Dorian Gray,Oscar Wilde,1890,4466,82,novel,Gothic novel,yes,g4078
+223,new,64908,What Is Art?,Leo Tolstoy,1897,4334,15,short story,essay,yes,g64908
+224,new,201,Flatland,Edwin Abbott Abbott,1884,4122,35,novella,science fiction;mathematical fiction;satirical fiction,yes,g201
+225,new,107,Far from the Madding Crowd,Thomas Hardy,1874,4112,25,novel,,yes,g107
+226,new,1056,Martin Eden,Jack London,1909,4067,49,novel,Künstlerroman,yes,g1056
+227,have,284,The House of Mirth,Edith Wharton,,4060,,,,no,g284
+228,new,73144,Lady Chatterley's Lover,D. H. Lawrence,1928,4026,46,novel,erotic literature;erotic romance novel,yes,g73144
+229,new,148,The Autobiography of Benjamin Franklin,Benjamin Franklin,1791,3999,12,,memoir,yes,g148
+230,have,1450,Pollyanna,Eleanor H. Porter,1913,3895,33,novel,children's fiction,yes,g1450
+231,have,15,"Moby-Dick; or, The Whale",Herman Melville,,3872,,,,no,g15
+232,new,805,This Side of Paradise,F. Scott Fitzgerald,1920,3638,19,novel,,yes,g805
+233,have,5658,Lord Jim,Joseph Conrad,1900,3607,39,novel,psychological fiction,yes,g5658
+234,new,3189,Sketches New and Old,Mark Twain,1875,3575,3,short story collection,,yes,g3189
+235,have,78,Tarzan of the Apes,Edgar Rice Burroughs,1912,3571,26,novel,fantasy;adventure fiction,yes,g78
+236,new,963,Little Dorrit,Charles Dickens,1857,3516,28,novel,,yes,g963
+237,new,6157,How Much Land Does a Man Need?,Leo Tolstoy,1886,3512,24,short story,,yes,g6157
+238,new,1091,"On Heroes, Hero-Worship, & the Heroic in History",Thomas Carlyle,1841,3501,4,,,yes,g1091
+239,new,700,The Old Curiosity Shop,Charles Dickens,1840,3496,25,novel,social criticism,yes,g700
+240,have,3350,The Wandering Jew — Complete,Eugène Sue,,3485,,,,no,g3350
+241,new,769,The Book of Tea,Okakura Kakuzō,1906,3466,13,,,yes,g769
+242,new,9182,Villette (novel),Charlotte Brontë,1853,3459,21,novel,Bildungsroman;Victorian literature,yes,g9182
+243,have,2166,King Solomon's Mines,H. Rider Haggard,,3424,,,,no,g2166
+244,new,550,Silas Marner,George Eliot,1861,3410,22,novel,novel of manners,yes,g550
+245,new,969,The Tenant of Wildfell Hall,Q44520,1848,3377,47,novel,epistolary fiction,yes,g969
+246,new,2885,The House of the Wolfings,William Morris,1889,3344,2,novel,fantasy,yes,g2885
+247,new,44747,The Red and the Black,Stendhal,1830,3271,51,novel,Bildungsroman;historical fiction;psychological fiction,yes,g44747
+248,new,153,Jude the Obscure,Thomas Hardy,1895,3225,19,novel,,yes,g153
+249,new,222,The Moon and Sixpence,William Somerset Maugham,1919,3211,22,novel,biographical novel,yes,g222
+250,new,2197,The Gambler (novel),Fyodor Dostoyevsky,1867,3194,49,novel,,yes,g2197
+251,new,61221,A Passage to India,E. M. Forster,1924,3136,26,novel,,yes,g61221
+252,new,32,Herland (novel),Charlotte Perkins Gilman,1915,3135,12,novel,science fiction;serialized fiction;feminist science fiction;utopian fiction,yes,g32
+253,new,821,Dombey and Son,Charles Dickens,1848,3118,19,novel,social criticism,yes,g821
+254,have,708,The Princess and the Goblin,George MacDonald,1872,3108,18,novel,fantasy;children's fiction,yes,g708
+255,new,11438,The Willows (story),Algernon Blackwood,1907,3085,6,novella,weird fiction;horror fiction,yes,g11438
+256,new,208,Daisy Miller,Henry James,1879,3066,20,novella,,yes,g208
+257,new,102,Pudd'nhead Wilson,Mark Twain,1894,3060,11,novel,comic novel;mystery fiction,yes,g102
+258,new,29021,The Ridiculous Wishes,Charles Perrault,1693,3027,10,,tale,yes,g29021
+259,new,1210,Kwaidan: Stories and Studies of Strange Things,Lafcadio Hearn,1904,3007,11,short story collection,,yes,g1210
+260,have,5160,The Mabinogion,Anonymous,,2983,,,,no,g5160
+261,new,25929,Daemonologie,James VI and I,1597,2969,13,,Socratic dialogue,yes,g25929
+262,new,60333,Selections from the Writings of Kierkegaard,Lee M. Hollander,1923,2949,1,,,yes,g60333
+263,new,9830,The Beautiful and Damned,F. Scott Fitzgerald,1922,2934,17,novel,,yes,g9830
+264,new,52521,Mary's Child,Brothers Grimm,1812,2889,26,,fairy tale,yes,g52521
+265,have,501,The Story of Doctor Dolittle,Hugh Lofting,,2875,,,,no,g501
+266,new,2434,New Atlantis,Francis Bacon,1627,2866,33,novel,science fiction;fantasy;utopian fiction;philosophical fiction,yes,g2434
+267,new,54,The Marvelous Land of Oz,L. Frank Baum,1904,2865,24,novel,fantasy;children's fiction,yes,g54
+268,new,18247,The Last Man,Mary Shelley,1826,2809,19,novel,science fiction;post-apocalyptic fiction;futuristic fiction,yes,g18247
+269,new,217,Sons and Lovers,D. H. Lawrence,1913,2769,29,novel,autobiographical novel,yes,g217
+270,have,2759,The Man in the Iron Mask,Alexandre Dumas,,2761,,,,no,g2759
+271,new,143,The Mayor of Casterbridge,Thomas Hardy,1886,2713,20,novel,,yes,g143
+272,new,10897,The Wendigo (novella),Algernon Blackwood,1910,2658,8,short story,weird fiction;horror fiction,yes,g10897
+273,new,14833,Varney the Vampire,James Malcolm Rymer,1845,2621,12,novel,Gothic fiction;vampire fiction,yes,g14833
+274,new,122,The Return of the Native,Thomas Hardy,1878,2621,10,novel,,yes,g122
+275,new,13707,Twice-Told Tales,Nathaniel Hawthorne,1837,2605,10,short story collection,,yes,g13707
+276,have,1156,Babbitt,Sinclair Lewis,1922,2599,14,novel,satire,yes,g1156
+277,new,5199,South (book),Ernest Shackleton,1919,2598,4,,,yes,g5199
+278,have,1074,The Sea-Wolf,Jack London,1904,2597,27,novel,adventure fiction,yes,g1074
+279,new,624,Looking Backward,Edward Bellamy,1888,2594,20,novel,political fiction;futuristic fiction;utopian literature,yes,g624
+280,new,144,The Voyage Out,Virginia Woolf,1915,2497,12,novel,,yes,g144
+281,new,754,The Story of Mankind,Hendrik Willem van Loon,1921,2483,6,,,yes,g754
+282,new,15263,The Underground Railroad (Still),William Still,1872,2457,5,,,yes,g15263
+283,new,2302,Poor Folk,Fyodor Dostoyevsky,1846,2426,47,novel,,yes,g2302
+284,new,1237,Père Goriot,Honoré de Balzac,1835,2421,60,novel,historical fiction,yes,g1237
+285,new,60692,The History of the Standard Oil Company,Ida Tarbell,1904,2401,7,,narrative history,yes,g60692
+286,new,3796,Rilla of Ingleside,Lucy Maud Montgomery,1921,2388,14,,war novel,yes,g3796
+287,new,968,Martin Chuzzlewit,Charles Dickens,1844,2361,22,novel,social criticism,yes,g968
+288,new,10150,Dracula's Guest,Bram Stoker,1914,2354,10,short story,horror fiction,yes,g10150
+289,new,26624,The Road to Oz,L. Frank Baum,1909,2353,11,novel,children's fiction;fantasy,yes,g26624
+290,new,689,The Kreutzer Sonata,Leo Tolstoy,1889,2328,31,novella,historical fiction;romantic fiction,yes,g689
+291,new,14872,The Tale of Squirrel Nutkin,Beatrix Potter,1903,2324,6,,fiction,yes,g14872
+292,new,220,The Secret Sharer,Joseph Conrad,1912,2322,6,novel,nautical fiction,yes,g220
+293,new,3155,She: A History of Adventure,H. Rider Haggard,1887,2317,28,novel,fantasy;lost world fiction;Gothic fiction;adventure fiction,yes,g3155
+294,new,416,"Winesburg, Ohio",Sherwood Anderson,1919,2316,19,short story collection,short story cycle,yes,g416
+295,new,134,"Maria: or, The Wrongs of Woman",Mary Wollstonecraft,1798,2306,13,,Gothic novel,yes,g134
+296,new,21816,The Confidence-Man,Herman Melville,1857,2301,7,novel,satire,yes,g21816
+297,new,917,Barnaby Rudge,Charles Dickens,1840,2281,24,novel,historical fiction,yes,g917
+298,have,543,Main Street,Sinclair Lewis,,2277,,,,no,g543
+299,new,1093,The Beast in the Jungle,Henry James,1903,2270,6,novella,fiction literature,yes,g1093
+300,have,95,The prisoner of Zenda,Anthony Hope,1894,2255,28,novel,cloak and dagger novel;romantic fiction;adventure fiction,yes,g95
+301,have,1937,The Second Jungle Book,Rudyard Kipling,1895,2255,13,,children's fiction,yes,g1937
+302,new,24,O Pioneers!,Willa Cather,1913,2234,9,,historical fiction,yes,g24
+303,new,1938,Resurrection (Tolstoy novel),Leo Tolstoy,1899,2230,44,novel,political fiction;philosophical fiction;social fiction,yes,g1938
+304,have,21959,Letters from a Self-Made Merchant to His Son,George Horace Lorimer,,2228,,,,no,g21959
+305,have,1900,Typee: A Romance of the South Seas,Herman Melville,1846,2227,17,novel,travel literature,yes,g1900
+306,new,351,Of Human Bondage,William Somerset Maugham,1915,2226,24,novel,Bildungsroman,yes,g351
+307,new,22914,The Sceptical Chymist,Robert Boyle,1661,2213,19,,,yes,g22914
+308,new,1965,Captain Blood (novel),Rafael Sabatini,1922,2188,17,novel,historical fiction;adventure fiction;pirate fiction,yes,g1965
+309,new,37536,The House of the Dead (novel),Fyodor Dostoyevsky,1862,2182,42,novel,serialized fiction,yes,g37536
+310,new,479,Little Lord Fauntleroy,Frances Hodgson Burnett,1885,2180,30,,children's fiction,yes,g479
+311,have,2988,Mark Twain: A Biography. Complete,Albert Bigelow Paine,,2152,,,,no,g2988
+312,new,61236,Emily of New Moon,Lucy Maud Montgomery,1923,2145,21,novel,children's fiction,yes,g61236
+313,new,6124,"Pamela; or, Virtue Rewarded",Samuel Richardson,1740,2143,18,novel,epistolary novel;education novel,yes,g6124
+314,have,1298,The Virginian: A Horseman of the Plains,Owen Wister,,2142,,,,no,g1298
+315,new,1164,The Iron Heel,Jack London,1908,2136,25,novel,science fiction;political fiction;dystopian fiction,yes,g1164
+316,new,30486,Shirley (novel),Charlotte Brontë,1849,2132,20,novel,social fiction,yes,g30486
+317,new,608,Areopagitica,John Milton,1644,2116,30,,polemic;pamphlet,yes,g608
+318,new,14363,The Worst Journey in the World,Apsley Cherry-Garrard,1922,2100,11,,memoir,yes,g14363
+319,new,7469,Daniel Deronda,George Eliot,1876,2085,15,novel,Bildungsroman,yes,g7469
+320,new,66887,The History of Trade Unionism,Beatrice Webb & Sidney Webb,1894,2065,1,,,yes,g66887
+321,new,2149,The Narrative of Arthur Gordon Pym of Nantucket,Edgar Allan Poe,1838,2064,29,novel,lost world fiction;nautical fiction;Gothic fiction,yes,g2149
+322,new,773,Lord Arthur Savile's Crime and Other Stories,Oscar Wilde,1891,2060,12,short story collection,children's and young adult literature,yes,g773
+323,new,172,The Haunted Bookshop,Christopher Morley,1919,2054,2,novel,thriller,yes,g172
+324,have,1300,Riders of the Purple Sage,Zane Grey,,2019,,,,no,g1300
+325,new,4240,Women in Love,D. H. Lawrence,1920,2014,14,,modernist literature;LGBT-related literature;psychological fiction,yes,g4240
+326,have,903,The White Company,Arthur Conan Doyle,,2013,,,,no,g903
+327,new,986,Master and Man (short story),Leo Tolstoy,1895,2012,13,short story;novella,,yes,g986
+328,have,22066,The Long Roll,Mary Johnston,,2010,,,,no,g22066
+329,new,5231,The Way We Live Now,Anthony Trollope,1875,2005,3,novel,satire,yes,g5231
+330,new,767,Agnes Grey,Q44520,1847,1999,29,novel,,yes,g767
+331,new,41085,La Vita Nuova,Dante Alighieri,1295,1982,32,prose,autobiography;chivalric romance,yes,g41085
+332,new,26732,Free Air,Sinclair Lewis,1919,1981,4,novel,,yes,g26732
+333,new,1245,Night and Day (Woolf novel),Virginia Woolf,1919,1980,12,novel,,yes,g1245
+334,new,1640,Lilith (novel),George MacDonald,1895,1918,6,novel,fantasy;vampire fiction,yes,g1640
+335,new,396,"The Lady, or the Tiger?",Frank R. Stockton,1882,1915,12,short story,,yes,g396
+336,new,432,The Ambassadors (novel),Henry James,1903,1914,14,novel,social novel;psychological fiction,yes,g432
+337,new,67332,The Psychopathology of Everyday Life,Sigmund Freud,1901,1909,17,,psychoanalysis,yes,g67332
+338,new,56644,Bulfinch's Mythology,Thomas Bulfinch,1855,1908,1,,,yes,g56644
+339,new,165,McTeague,Frank Norris,1899,1907,5,novel,,yes,g165
+340,new,61364,Crystallizing Public Opinion,Edward Bernays,1923,1891,4,,,yes,g61364
+341,new,8164,My Man Jeeves,P. G. Wodehouse,1919,1883,7,short story collection,comedy,yes,g8164
+342,have,1951,The Coming Race,Baron Edward Bulwer Lytton Lytton,,1878,,,,no,g1951
+343,have,2609,The Vicomte de Bragelonne,Alexandre Dumas,,1856,,,,no,g2609
+344,new,52868,Japanese Homes and Their Surroundings,Edward S. Morse,1885,1844,4,,,yes,g52868
+345,new,32338,Toilers of the Sea,Q535,1866,1838,26,novel,,yes,g32338
+346,new,2153,Mary Barton,Elizabeth Gaskell,1848,1831,10,novel,,yes,g2153
+347,have,615,Orlando Furioso,Lodovico Ariosto,,1827,,,,no,g615
+348,new,5998,Waverley (novel),Walter Scott,1814,1799,23,,picaresque novel;historical fiction;Bildungsroman,yes,g5998
+349,new,81,The Return of Tarzan,Edgar Rice Burroughs,1915,1794,13,novel,fantasy;adventure fiction,yes,g81
+350,new,28948,The Rainbow,D. H. Lawrence,1915,1794,13,novel,family saga,yes,g28948
+351,new,43711,A History of Chinese Literature,Herbert Giles,1901,1791,2,,,yes,g43711
+352,have,169,The Well at the World's End: A Tale,William Morris,1896,1773,7,novel,fantasy;high fantasy,yes,g169
+353,have,7100,"Adventures of Huckleberry Finn, Chapters 01 to 05",Mark Twain,,1763,,,,no,g7100
+354,new,28961,Heart (novel),Edmondo de Amicis,1886,1750,32,novel,children's fiction,yes,g28961
+355,new,4274,Wives and Daughters,Elizabeth Gaskell,1864,1727,11,novel,,yes,g4274
+356,new,59254,The Inimitable Jeeves,P. G. Wodehouse,1923,1723,8,short story collection,comedy,yes,g59254
+357,have,964,The Merry Adventures of Robin Hood,Howard Pyle,,1722,,,,no,g964
+358,new,61077,The King of Elfland's Daughter,"Edward Plunkett, 18th Baron of Dunsany",1924,1706,10,novel,fantasy,yes,g61077
+359,have,7025,Rob Roy — Complete,Walter Scott,,1696,,,,no,g7025
+360,new,53964,The Sins of the Cities of the Plain,,1881,1690,6,novel,erotica;LGBT-related literature,yes,g53964
+361,new,914,The Uncommercial Traveller,Charles Dickens,1875,1690,4,,,yes,g914
+362,new,66073,Death in Venice,Thomas Mann,1912,1679,46,novella,,yes,g66073
+363,new,2667,The Vicar of Wakefield,Oliver Goldsmith,1766,1664,17,novel,sentimental novel,yes,g2667
+364,new,6053,Evelina,Frances Burney,1778,1654,9,novel,epistolary novel,yes,g6053
+365,new,3020,Table-Talk,William Hazlitt,1821,1648,2,,cultural criticism;social criticism,yes,g3020
+366,have,559,Greenmantle,John Buchan,1916,1626,5,novel,adventure fiction;military fiction,yes,g559
+367,new,64365,Anne of Green Gables,Lucy Maud Montgomery,1908,1620,51,,developmental novel;children's fiction,yes,g64365
+368,new,370,Moll Flanders,Daniel Defoe,1722,1613,28,novel,picaresque novel,yes,g370
+369,new,1840,The Financier,Theodore Dreiser,1912,1613,10,novel,,yes,g1840
+370,new,1696,The Club of Queer Trades,G. K. Chesterton,1905,1612,4,short story collection,crime fiction,yes,g1696
+371,new,61085,In Our Time (short story collection),Ernest Hemingway,1925,1611,18,short story collection,fiction,yes,g61085
+372,have,106,Jungle Tales of Tarzan,Edgar Rice Burroughs,,1607,,,,no,g106
+373,have,792,"Wieland; Or, The Transformation: An American Tale",Charles Brockden Brown,,1607,,,,no,g792
+374,new,58360,The Book of the Thousand Nights and a Night,,1885,1599,4,,fantasy;Arabic literature,yes,g58360
+375,have,5342,The Story Girl,L. M. Montgomery,,1599,,,,no,g5342
+376,new,2270,First Folio,William Shakespeare,1623,1597,35,,English Renaissance theatre,yes,g2270
+377,new,15137,The Tale of Mrs. Tiggy-Winkle,Beatrix Potter,1905,1593,6,,children's literature,yes,g15137
+378,new,8118,Redburn,Herman Melville,1849,1591,7,novel,,yes,g8118
+379,new,57795,The Sacred Wood,T. S. Eliot,1920,1583,2,,,yes,g57795
+380,have,498,Rebecca of Sunnybrook Farm,Kate Douglas Smith Wiggin,1903,1577,7,novel,Bildungsroman,yes,g498
+381,have,1712,The Rescue: A Romance of the Shallows,Joseph Conrad,,1577,,,,no,g1712
+382,new,60093,Cane (novel),Jean Toomer,1923,1575,4,novel,,yes,g60093
+383,have,123,At the Earth's Core,Edgar Rice Burroughs,1914,1572,7,novel,science fiction;fantasy;adventure fiction,yes,g123
+384,have,91,Tom Sawyer Abroad,Mark Twain,,1552,,,,no,g91
+385,new,3499,Jo's Boys,Louisa May Alcott,1886,1542,13,,children's fiction,yes,g3499
+386,new,2892,Irish Fairy Tales,James Stephens,1920,1539,4,,folklore,yes,g2892
+387,new,3031,"Lobo, the King of Currumpaw",Ernest Thompson Seton,1898,1528,13,short story,,yes,g3031
+388,new,3261,News from Nowhere,William Morris,1890,1522,11,novel,social science fiction;political fiction;futuristic fiction;time-travel fiction;utopian literature,yes,g3261
+389,new,913,A Hero of Our Time,Mikhail Lermontov,1840,1515,36,novel,psychological fiction,yes,g913
+390,new,8395,The Gods of Pegāna,"Edward Plunkett, 18th Baron of Dunsany",1905,1499,8,short story,fantasy,yes,g8395
+391,have,1720,The Man Who Knew Too Much,G. K. Chesterton,1922,1495,7,short story collection,detective fiction,yes,g1720
+392,have,710,"Love of Life, and Other Stories",Jack London,,1486,,,,no,g710
+393,new,17731,"The Nigger of the ""Narcissus""",Joseph Conrad,1897,1485,15,novel;novella,,yes,g17731
+394,new,23428,The Conquest of Bread,Peter Kropotkin,1892,1483,27,,political philosophy,yes,g23428
+395,new,70841,Robinson Crusoe,Daniel Defoe,1719,1481,99,novel,robinsonade;developmental novel;adventure fiction;pirate fiction,yes,g70841
+396,new,14868,The Tailor of Gloucester,Beatrix Potter,1903,1481,7,,Christmas fiction,yes,g14868
+397,new,36483,Wilhelm Meister's Apprenticeship,Johann Wolfgang von Goethe,1790,1475,27,novel,Bildungsroman;developmental novel,yes,g36483
+398,have,646,The Coral Island: A Tale of the Pacific Ocean,R. M. Ballantyne,,1468,,,,no,g646
+399,have,525,"Youth, a Narrative",Joseph Conrad,1898,1463,13,short story,frame story,yes,g525
+400,new,5670,Jacob's Room,Virginia Woolf,1922,1462,13,novel,,yes,g5670
+401,have,770,The Story of the Treasure Seekers,E. Nesbit,1899,1454,6,novel,,yes,g770
+402,new,20657,Tales from Shakespeare,Charles Lamb & Mary Lamb,1807,1452,19,short story collection,,yes,g20657
+403,new,367,The Country of the Pointed Firs,Sarah Orne Jewett,1896,1451,3,novel,,yes,g367
+404,new,2834,The Portrait of a Lady,Henry James,1881,1450,27,novel,,yes,g2834
+405,new,1028,The Professor (novel),Charlotte Brontë,1857,1448,14,novel,,yes,g1028
+406,new,836,The Phoenix and the Carpet,Edith Nesbit,1904,1447,5,novel,fantasy,yes,g836
+407,have,2710,Louise de la Vallière,Alexandre Dumas,,1445,,,,no,g2710
+408,new,64682,The Painted Veil (novel),William Somerset Maugham,1925,1441,19,novel,,yes,g64682
+409,new,1202,Tales of Unrest,Joseph Conrad,1898,1437,7,short story collection,,yes,g1202
+410,new,5265,The Ball and the Cross,G. K. Chesterton,1909,1437,5,novel,,yes,g5265
+411,new,6695,Tales of the Jazz Age,F. Scott Fitzgerald,1922,1435,6,short story collection,,yes,g6695
+412,new,6626,Thérèse Raquin,Émile Zola,1869,1434,29,novel,psychological fiction,yes,g6626
+413,new,2804,Rose in Bloom,Louisa May Alcott,1876,1433,4,novel,,yes,g2804
+414,new,517,The Emerald City of Oz,L. Frank Baum,1910,1429,11,novel,fantasy;children's fiction,yes,g517
+415,have,3285,The Deerslayer,James Fenimore Cooper,1841,1428,15,novel,historical fiction;adventure fiction,yes,g3285
+416,new,154,The Rise of Silas Lapham,William Dean Howells,1885,1414,3,novel,,yes,g154
+417,have,1258,Ten Years Later,Alexandre Dumas,,1407,,,,no,g1258
+418,new,6406,The Monastery: A Romance,Walter Scott,1820,1395,8,novel,historical fiction,yes,g6406
+419,new,1178,Constitution of the Lacedaemonians,Xenophon,-40,1394,15,prose,treatise,yes,g1178
+420,new,1493,Legends of the Jews,Louis Ginzberg,1909,1388,3,,,yes,g1493
+421,new,1441,The Story of an African Farm,Olive Schreiner,1883,1387,4,novel,,yes,g1441
+422,new,1438,No Name (novel),Wilkie Collins,1862,1385,4,,sensation fiction;mystery fiction,yes,g1438
+423,new,3409,Barchester Towers,Anthony Trollope,1857,1384,3,novel,,yes,g3409
+424,new,9404,The Story of the Malakand Field Force,Winston Churchill,1898,1371,10,,,yes,g9404
+425,new,1290,Salammbô,Gustave Flaubert,1862,1369,34,novel,historical fiction,yes,g1290
+426,new,4368,Flappers and Philosophers,F. Scott Fitzgerald,1920,1369,5,short story collection,,yes,g4368
+427,have,832,Robin Hood,J. Walker McSpadden,,1367,,,,no,g832
+428,new,15114,The Laws of Thought,Q134661,1854,1366,4,,,yes,g15114
+429,new,1019,"Poems by Currer, Ellis, and Acton Bell",Charlotte Brontë & Emily Brontë & Q44520,1846,1364,9,,,yes,g1019
+430,new,27884,Niels Klim's Underground Travels,Ludvig Holberg,1741,1359,14,novel,science fiction;fantasy;satirical fiction,yes,g27884
+431,new,13468,The New Jerusalem (Chesterton book),G. K. Chesterton,1920,1353,1,,,yes,g13468
+432,new,20179,Ship of Fools (satire),Sebastian Brant,1494,1352,23,,satire;narrative poetry,yes,g20179
+433,new,3608,The Ragged-Trousered Philanthropists,Robert Tressell,1914,1348,4,novel,autobiographical novel,yes,g3608
+434,new,5348,Ragged Dick,Horatio Alger,1868,1346,4,novel,,yes,g5348
+435,new,268,The Octopus: A Story of California,Frank Norris,1901,1341,2,novel,,yes,g268
+436,new,1162,The Star Rover,Jack London,1915,1337,22,novel,fantasy,yes,g1162
+437,new,873,A House of Pomegranates,Oscar Wilde,1891,1337,19,short story collection,literary fairy tale,yes,g873
+438,new,965,The Black Tulip,Alexandre Dumas,1850,1332,25,novel,historical fiction,yes,g965
+439,have,85,The Beasts of Tarzan,Edgar Rice Burroughs,,1327,,,,no,g85
+440,have,837,The Story of the Amulet,E. Nesbit,1906,1303,6,novel,fantasy;children's fiction,yes,g837
+441,new,54672,The Indiscreet Jewels,Denis Diderot,1748,1293,14,novel,roman à clef;erotic literature;libertine novel,yes,g54672
+442,new,1860,Westward Ho! (novel),Charles Kingsley,1855,1288,5,novel,,yes,g1860
+443,new,1424,Castle Rackrent,Maria Edgeworth,1800,1286,8,novel,historical fiction;political fiction,yes,g1424
+444,new,1715,Eugénie Grandet,Honoré de Balzac,1833,1284,30,novel,realist novel,yes,g1715
+445,new,11323,"Things as They Are; or, The Adventures of Caleb Williams",William Godwin,1794,1282,4,novel,Jacobin novel,yes,g11323
+446,new,2081,The Blithedale Romance,Nathaniel Hawthorne,1852,1279,5,novel,fantasy;romantic fiction,yes,g2081
+447,have,2276,The Private Memoirs and Confessions of a Justified Sinner,James Hogg,,1270,,,,no,g2276
+448,new,2480,Under Western Eyes (novel),Joseph Conrad,1911,1265,8,novel,,yes,g2480
+449,new,30852,The Tin Woodman of Oz,L. Frank Baum,1918,1264,6,novel,fantasy,yes,g30852
+450,have,39858,Trilby,George Du Maurier,1894,1263,7,novel,Gothic fiction,yes,g39858
+451,new,32242,A Wonder-Book for Girls and Boys,Nathaniel Hawthorne,1851,1256,3,short story collection,,yes,g32242
+452,have,402,Penrod,Booth Tarkington,1914,1252,2,novel,,yes,g402
+453,new,126,The Poison Belt,Arthur Conan Doyle,1913,1250,17,novel,science fiction,yes,g126
+454,have,1377,The Talisman,Walter Scott,1825,1241,15,novel,historical fiction,yes,g1377
+455,new,75485,The Secret Commonwealth (folklore collection),Robert Kirk,1815,1236,1,,folklore collection,yes,g75485
+456,have,7193,"The Adventures of Tom Sawyer, Part 1.",Mark Twain,,1233,,,,no,g7193
+457,new,27690,Nobody's Girl (novel),Hector Malot,1893,1227,10,novel,Bildungsroman,yes,g27690
+458,have,1947,Scaramouche: A Romance of the French Revolution,Rafael Sabatini,,1227,,,,no,g1947
+459,have,1024,The Wrecker,Robert Louis Stevenson,1892,1225,5,novel,adventure fiction,yes,g1024
+460,new,4084,The Adventures of Peregrine Pickle,Tobias Smollett,1751,1222,5,novel,,yes,g4084
+461,have,1027,The Lone Star Ranger: A Romance of the Border,Zane Grey,,1221,,,,no,g1027
+462,new,2084,The Way of All Flesh,Samuel Butler,1903,1218,15,novel,,yes,g2084
+463,have,25702,The Kingdom Round the Corner: A Novel,Coningsby Dawson,,1213,,,,no,g25702
+464,new,61620,The Curse of Capistrano,Johnston McCulley,1919,1210,13,novel,historical fiction;cloak and dagger novel;adventure fiction,yes,g61620
+465,new,3045,The Last Chronicle of Barset,Anthony Trollope,1866,1205,2,novel,,yes,g3045
+466,have,711,Allan Quatermain,H. Rider Haggard,,1205,,,,no,g711
+467,new,19229,Anticipations,H. G. Wells,1901,1204,2,,,yes,g19229
+468,new,47501,Married Love,Marie Stopes,1918,1203,8,,sex manual,yes,g47501
+469,new,14220,The Tale of the Flopsy Bunnies,Beatrix Potter,1909,1202,7,,children's literature,yes,g14220
+470,new,60547,Studies in Classic American Literature,D. H. Lawrence,1923,1202,2,,literary criticism,yes,g60547
+471,new,13534,Past and Present (book),Thomas Carlyle,1843,1192,2,,,yes,g13534
+472,new,19500,Can You Forgive Her?,Anthony Trollope,1864,1190,2,novel,,yes,g19500
+473,have,294,"The Captain of the Polestar, and Other Tales",Arthur Conan Doyle,,1185,,,,no,g294
+474,new,60067,Leave It to Psmith,P. G. Wodehouse,1923,1184,3,novel,comedy,yes,g60067
+475,new,7381,The Eustace Diamonds,Anthony Trollope,1872,1179,2,novel,,yes,g7381
+476,new,42401,Vathek,William Beckford,1786,1175,15,novel;narration,fiction;fantasy;Gothic fiction;Oriental fantasy,yes,g42401
+477,new,35155,The Betrothed,Alessandro Manzoni,1827,1173,38,novel,historical fiction;romantic fiction,yes,g35155
+478,have,1142,Typhoon,Joseph Conrad,,1173,,,,no,g1142
+479,have,3154,The Surprising Adventures of Baron Munchausen,Rudolf Erich Raspe,,1172,,,,no,g3154
+480,new,13159,Illusions perdues,Honoré de Balzac,1837,1164,26,novel,Bildungsroman,yes,g13159
+481,new,344,The Merry Men and Other Tales and Fables,Robert Louis Stevenson,1887,1159,6,short story collection,,yes,g344
+482,new,301,The Ballad of Reading Gaol,Oscar Wilde,1898,1158,17,,narrative poetry;long poem,yes,g301
+483,new,29257,The Book of Khalid,Ameen Fares Rihani,1911,1158,3,,Bildungsroman,yes,g29257
+484,have,5164,The Beetle: A Mystery,Richard Marsh,1897,1157,3,novel,fantasy;horror fiction,yes,g5164
+485,have,1154,The Voyages of Doctor Dolittle,Hugh Lofting,1922,1153,7,novel,fantasy,yes,g1154
+486,new,13416,The Darling (short story),Anton Chekhov,1899,1149,10,short story,,yes,g13416
+487,new,21970,The Scarlet Plague,Jack London,1912,1146,25,novel,science fiction,yes,g21970
+488,new,30344,Roxana: The Fortunate Mistress,Daniel Defoe,1724,1141,6,novel,,yes,g30344
+489,new,1999,Crome Yellow,Aldous Huxley,1921,1138,7,novel,,yes,g1999
+490,have,1895,Armadale,Wilkie Collins,,1138,,,,no,g1895
+491,new,701,The King of the Golden River,John Ruskin,1842,1136,7,novel;short story;novella,fantasy,yes,g701
+492,new,1565,The Last Days of Pompeii,Edward Bulwer-Lytton,1834,1132,18,novel,historical fiction,yes,g1565
+493,have,93,"Tom Sawyer, Detective",Mark Twain,1896,1132,12,novel,mystery fiction;children's fiction,yes,g93
+494,have,2845,Sir Nigel,Arthur Conan Doyle,,1132,,,,no,g2845
+495,new,54710,The Shame of the Cities,Lincoln Steffens,1904,1128,3,,,yes,g54710
+496,new,2948,Where Angels Fear to Tread,E. M. Forster,1905,1127,6,novel,,yes,g2948
+497,new,4737,A Tale of a Tub,Jonathan Swift,1704,1126,11,novel,satire,yes,g4737
+498,new,2275,The Pioneers (novel),James Fenimore Cooper,1823,1117,14,novel,historical fiction,yes,g2275
+499,new,176,Roderick Hudson,Henry James,1875,1117,8,novel,Bildungsroman,yes,g176
+500,new,2726,Eight Cousins,Louisa May Alcott,1875,1116,9,novel,,yes,g2726
+501,new,3781,The Jewel of Seven Stars,Bram Stoker,1903,1113,14,novel,horror fiction,yes,g3781
+502,have,1622,The Law and the Lady,Wilkie Collins,,1110,,,,no,g1622
+503,new,10832,"Carnacki, the Ghost-Finder",William Hope Hodgson,1913,1107,1,short story collection,detective fiction;weird fiction;supernatural fiction;occult detective fiction;horror fiction,yes,g10832
+504,new,18640,Phineas Redux,Anthony Trollope,1874,1103,3,novel,,yes,g18640
+505,new,11052,The Custom of the Country,Edith Wharton,1913,1099,3,novel,,yes,g11052
+506,new,5247,The Old Wives' Tale,Arnold Bennett,1908,1097,5,novel,,yes,g5247
+507,new,70128,Max Havelaar,Multatuli,1860,1093,32,novel,political fiction;double novel,yes,g70128
+508,new,4313,The Odd Women,George Gissing,1893,1091,2,novel,,yes,g4313
+509,new,1307,La Peau de chagrin,Honoré de Balzac,1831,1087,32,novel,fantastique,yes,g1307
+510,have,765,The Moon Pool,Abraham Merritt,,1082,,,,no,g765
+511,new,1449,The Valley of the Moon (novel),Jack London,1913,1081,14,novel,,yes,g1449
+512,new,395,The Holy War,John Bunyan,1682,1081,5,novel,fantasy,yes,g395
+513,have,506,The Shuttle,Frances Hodgson Burnett,,1079,,,,no,g506
+514,new,9840,Vivian Grey,Benjamin Disraeli,1826,1075,3,novel,,yes,g9840
+515,new,780,The War in the Air,H. G. Wells,1908,1074,13,novel,science fiction;apocalyptic fiction,yes,g780
+516,new,7477,The Book of Wonder,"Edward Plunkett, 18th Baron of Dunsany",1912,1072,3,short story,fantasy,yes,g7477
+517,new,24020,Romola,George Eliot,1862,1071,11,novel,historical fiction,yes,g24020
+518,have,1557,Men of Iron,Howard Pyle,,1071,,,,no,g1557
+519,have,238,Dear Enemy,Jean Webster,1915,1070,7,novel,epistolary novel,yes,g238
+520,have,170,The Haunted Hotel: A Mystery of Modern Venice,Wilkie Collins,,1069,,,,no,g170
+521,have,520,The Life and Adventures of Santa Claus,L. Frank Baum,1912,1067,6,,origin story;children's fiction,yes,g520
+522,new,42455,The Mystery of the Sea,Bram Stoker,1902,1065,5,novel,political thriller,yes,g42455
+523,new,1709,New Grub Street,George Gissing,1891,1063,3,novel,,yes,g1709
+524,have,1188,The Lair of the White Worm,Bram Stoker,1911,1060,8,novel,fantasy;horror fiction,yes,g1188
+525,have,96,The Monster Men,Edgar Rice Burroughs,1929,1058,3,novel,science fiction,yes,g96
+526,have,2346,The Adventure of the Bruce-Partington Plans,Arthur Conan Doyle,1908,1057,22,novelette,detective fiction;crime fiction,yes,g2346
+527,new,10935,The Wonderful Adventures of Nils,Selma Lagerlöf,1906,1054,45,novel,fantasy,yes,g10935
+528,have,4047,The Leavenworth Case,Anna Katharine Green,,1053,,,,no,g4047
+529,new,2440,The Naturalist on the River Amazons,Henry Walter Bates,1863,1052,6,,,yes,g2440
+530,new,57819,Other People's Money and How the Bankers Use It,Louis Brandeis,1914,1052,3,,,yes,g57819
+531,new,2786,Jack and Jill: A Village Story,Louisa May Alcott,1880,1046,5,,children's fiction,yes,g2786
+532,new,25876,The House with the Green Shutters,George Douglas Brown,1901,1042,1,novel,,yes,g25876
+533,new,4540,In His Steps,Charles Monroe Sheldon,1896,1037,3,novel,,yes,g4540
+534,new,423,Round the Red Lamp,Arthur Conan Doyle,1894,1030,3,short story collection,medical fiction,yes,g423
+535,new,4090,From Ritual to Romance,Q3808161,1920,1030,1,,,yes,g4090
+536,new,211,The Aspern Papers,Henry James,1888,1028,15,novel;novella,,yes,g211
+537,new,3431,The Gadfly,Ethel Lilian Voynich,1897,1023,26,novel,romantic fiction,yes,g3431
+538,new,804,A Sentimental Journey Through France and Italy,Laurence Sterne,1768,1020,21,novel,imaginary voyage,yes,g804
+539,new,329,Island Nights' Entertainments,Robert Louis Stevenson,1893,1019,4,short story collection,,yes,g329
+540,new,6424,A Modern Utopia,H. G. Wells,1905,1015,9,novel,,yes,g6424
+541,have,4014,Arsène Lupin,Maurice Leblanc,,1014,,,,no,g4014
+542,new,7371,A Sicilian Romance,Ann Radcliffe,1790,1013,8,novel,romance novel;horror fiction;Gothic fiction,yes,g7371
+543,new,2860,Framley Parsonage,Anthony Trollope,1861,1013,3,novel,,yes,g2860
+544,have,561,The Further Adventures of Robinson Crusoe,Daniel Defoe,1719,1012,12,,historical fiction;adventure fiction,yes,g561
+545,new,1845,Zuleika Dobson,Max Beerbohm,1911,1009,6,novel,satire,yes,g1845
+546,new,1018,The Water-Babies,Charles Kingsley,1863,1005,16,novel,fantasy;children's fiction,yes,g1018
+547,new,17089,The Tale of Mrs. Tittlemouse,Beatrix Potter,1910,1002,6,,children's literature,yes,g17089
+548,have,1880,"The Pathfinder; Or, The Inland Sea",James Fenimore Cooper,1840,999,11,novel,historical fiction;adventure fiction,yes,g1880
+549,have,434,The Circular Staircase,Mary Roberts Rinehart,,997,,,,no,g434
+550,new,467,La Princesse de Clèves,Madame de Lafayette,1678,996,23,novel,historical fiction,yes,g467
+551,have,2347,The Adventure of the Dying Detective,Arthur Conan Doyle,1913,995,24,short story,detective fiction;crime fiction,yes,g2347
+552,new,15575,The Tale of Samuel Whiskers or The Roly-Poly Pudding,Beatrix Potter,1908,995,6,,children's literature,yes,g15575
+553,have,3457,The Man of the Forest,Zane Grey,,995,,,,no,g3457
+554,new,678,The Cricket on the Hearth,Charles Dickens,1845,994,16,novella,,yes,g678
+555,have,378,The White Knight: Tirant Lo Blanc,Joanot Martorell,1490,992,33,,chivalric romance;chivalric novel,yes,g378
+556,new,11696,The Food of the Gods and How It Came to Earth,H. G. Wells,1904,992,16,novel,science fiction;romantic fiction,yes,g11696
+557,have,419,The Magic of Oz,L. Frank Baum,1919,991,5,novel,fantasy,yes,g419
+558,new,285,The Lost Continent: The Story of Atlantis,C. J. Cutcliffe Hyne,1900,990,1,novel,fantasy,yes,g285
+559,new,2604,The Longest Journey (novel),E. M. Forster,1907,989,3,novel,,yes,g2604
+560,new,1190,The Jolly Corner,Henry James,1908,988,4,short story,horror fiction,yes,g1190
+561,new,3179,The American Claimant,Mark Twain,1892,986,5,novel,fantasy;alternate history;satirical fiction,yes,g3179
+562,have,6066,King--of the Khyber Rifles: A Romance of Adventure,Talbot Mundy,1916,980,1,novel,adventure fiction,yes,g6066
+563,new,718,Tono-Bungay,H. G. Wells,1909,979,12,novel,science fiction,yes,g718
+564,new,59239,The Flying Inn,G. K. Chesterton,1914,978,6,novel,science fiction;political fiction;speculative fiction,yes,g59239
+565,new,4770,Work: A Story of Experience,Louisa May Alcott,1873,977,2,novel,autobiography,yes,g4770
+566,have,1848,Montezuma's Daughter,H. Rider Haggard,1893,976,11,novel,historical fiction;adventure fiction,yes,g1848
+567,have,420,Dorothy and the Wizard in Oz,L. Frank Baum,1908,975,13,novel,fantasy,yes,g420
+568,new,7166,The Home and the World,Rabindranath Tagore,1916,974,8,novel,,yes,g7166
+569,new,5174,The Holy Flower,H. Rider Haggard,1915,974,6,novel,fantasy,yes,g5174
+570,have,605,Pellucidar,Edgar Rice Burroughs,1915,971,5,novel,science fiction;fantasy;adventure fiction,yes,g605
+571,have,2186,"""Captains Courageous"": A Story of the Grand Banks",Rudyard Kipling,1897,970,10,novel,,yes,g2186
+572,new,2158,The Prime Minister (novel),Anthony Trollope,1875,970,3,novel,,yes,g2158
+573,new,46709,Memoirs of Joseph Grimaldi,Charles Dickens,1838,969,1,novel,autobiography,yes,g46709
+574,new,24650,The Gentle Art of Making Enemies,,1890,968,3,,,yes,g24650
+575,have,4045,Omoo: Adventures in the South Seas,Herman Melville,,968,,,,no,g4045
+576,have,486,Ozma of Oz,L. Frank Baum,1907,966,18,novel,fantasy;children's fiction,yes,g486
+577,new,381,Memories and Portraits,Robert Louis Stevenson,1887,966,1,essay collection,,yes,g381
+578,have,22537,Mr. Dooley in Peace and in War,Finley Peter Dunne,,966,,,,no,g22537
+579,new,62254,Fabiola (novel),Nicholas Patrick Stephen Wiseman,1854,965,12,novel,,yes,g62254
+580,have,2020,Tarzan the Terrible,Edgar Rice Burroughs,,961,,,,no,g2020
+581,new,778,Five Children and It,Edith Nesbit,1902,960,15,novel,fantasy;children's fiction,yes,g778
+582,have,7079,The Companions of Jehu,Alexandre Dumas,,957,,,,no,g7079
+583,new,3629,The Titan (novel),Theodore Dreiser,1914,956,5,novel,,yes,g3629
+584,new,1267,Kai Lung's Golden Hours,Ernest Bramah,1922,952,1,novel,fantasy,yes,g1267
+585,new,23000,Orley Farm (novel),Anthony Trollope,1862,951,4,novel,,yes,g23000
+586,new,2721,Eric Brighteyes,H. Rider Haggard,1890,949,4,novel,fantasy,yes,g2721
+587,have,2761,"Benita, an African romance",H. Rider Haggard,,949,,,,no,g2761
+588,new,8183,Time and the Gods,"Edward Plunkett, 18th Baron of Dunsany",1906,948,2,short story collection,fantasy,yes,g8183
+589,new,9504,Micah Clarke,Arthur Conan Doyle,1888,947,9,novel,historical fiction,yes,g9504
+590,new,16457,Around the Moon,Jules Verne,1870,945,37,novel,science fiction,yes,g16457
+591,new,31873,Heinrich von Ofterdingen,Novalis,1802,944,13,novel,,yes,g31873
+592,new,7118,What Maisie Knew,Henry James,1897,944,11,novel,,yes,g7118
+593,new,2511,The History of Henry Esmond,William Makepeace Thackeray,1852,944,4,novel,historical fiction;autobiographical fiction,yes,g2511
+594,new,2305,The Duel (short story),Joseph Conrad,1908,941,7,short story,,yes,g2305
+595,have,133,The Damnation of Theron Ware,Harold Frederic,,941,,,,no,g133
+596,new,8677,Behind a Mask,Louisa May Alcott,1866,939,4,novel,,yes,g8677
+597,new,14257,The Magician (Maugham novel),William Somerset Maugham,1908,938,4,novel,fantasy,yes,g14257
+598,have,2785,The Elusive Pimpernel,Baroness Emmuska Orczy Orczy,,937,,,,no,g2785
+599,new,1749,Cousin Bette,Honoré de Balzac,1846,935,18,novel,realist novel,yes,g1749
+600,new,1626,After Dark (short story collection),Wilkie Collins,1856,932,2,,mystery fiction,yes,g1626

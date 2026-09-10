@@ -48,6 +48,25 @@ def catalog_author(authors: str) -> str:
     return f"{first} {last}".strip() if first else last
 
 
+def literature_score(locc: str, shelves: str) -> int:
+    """How much this row looks like a novel rather than a manual.
+
+    Metadata only — Gutenberg's catalogue carries no popularity signal, so this
+    cannot tell a famous book from a forgotten one. See fetch_downloads.py for
+    the download-count metric that can.
+    """
+    score = 0
+    if locc.startswith("P") or " PR" in f" {locc}" or locc.startswith("PR") or locc.startswith("PS") or locc.startswith("PZ"):
+        score += 5
+    if "Fiction" in shelves or "Literature" in shelves:
+        score += 4
+    if "Bestsellers" in shelves:
+        score += 6
+    if "Adventure" in shelves or "Gothic" in shelves or "Mystery" in shelves:
+        score += 2
+    return score
+
+
 def main() -> None:
     src = Path("/tmp/pg_catalog.csv.gz")
     rows = []
@@ -72,16 +91,7 @@ def main() -> None:
             locc = row.get("LoCC") or ""
             shelves = row.get("Bookshelves") or ""
             authors = (row.get("Authors") or "").split(";")[0].strip()
-            # prefer literature
-            score = 0
-            if locc.startswith("P") or " PR" in f" {locc}" or locc.startswith("PR") or locc.startswith("PS") or locc.startswith("PZ"):
-                score += 5
-            if "Fiction" in shelves or "Literature" in shelves:
-                score += 4
-            if "Bestsellers" in shelves:
-                score += 6
-            if "Adventure" in shelves or "Gothic" in shelves or "Mystery" in shelves:
-                score += 2
+            score = literature_score(locc, shelves)
             year = None
             issued = row.get("Issued") or ""
             rows.append((score, gid, title, authors, issued, shelves))

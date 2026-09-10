@@ -1,0 +1,261 @@
+[
+  {
+    "gutenberg": 43,
+    "action": "retitle",
+    "title_claimed": "Dr Jekyll and Mr Hyde",
+    "title_actual": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 1112,
+    "action": "retitle",
+    "title_claimed": "The Comedy of Errors",
+    "title_actual": "Romeo and Juliet",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 1120,
+    "action": "retitle",
+    "title_claimed": "The Merchant of Venice",
+    "title_actual": "Julius Caesar",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 1121,
+    "action": "retitle",
+    "title_claimed": "Julius Caesar",
+    "title_actual": "As You Like It",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 1522,
+    "action": "retitle",
+    "title_claimed": "Much Ado About Nothing",
+    "title_actual": "Julius Caesar",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 1540,
+    "action": "retitle",
+    "title_claimed": "Antony and Cleopatra",
+    "title_actual": "The Tempest",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2147,
+    "action": "drop",
+    "title_claimed": "The Mystery of Marie Rogêt",
+    "title_actual": "The Works of Edgar Allan Poe — Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 2149,
+    "action": "drop",
+    "title_claimed": "The Narrative of Arthur Gordon Pym",
+    "title_actual": "The Works of Edgar Allan Poe — Volume 3",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 2235,
+    "action": "retitle",
+    "title_claimed": "Twelfth Night",
+    "title_actual": "The Tempest",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2263,
+    "action": "retitle",
+    "title_claimed": "Richard III",
+    "title_actual": "Julius Caesar",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2264,
+    "action": "retitle",
+    "title_claimed": "The Taming of the Shrew",
+    "title_actual": "Macbeth",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2266,
+    "action": "retitle",
+    "title_claimed": "As You Like It",
+    "title_actual": "King Lear",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2267,
+    "action": "retitle",
+    "title_claimed": "A Midsummer Night's Dream",
+    "title_actual": "Othello",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 2268,
+    "action": "retitle",
+    "title_claimed": "The Winter's Tale",
+    "title_actual": "Antony and Cleopatra",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 3054,
+    "action": "drop",
+    "title_claimed": "Geological Observations on the Volcanic Islands",
+    "title_actual": "Volcanic Islands",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 3339,
+    "action": "drop",
+    "title_claimed": "The Wandering Jew (Sue novel)",
+    "title_actual": "The Wandering Jew — Volume 01",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 3736,
+    "action": "drop",
+    "title_claimed": "A Far Country (novel)",
+    "title_actual": "A Far Country — Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 3762,
+    "action": "drop",
+    "title_claimed": "Coniston (novel)",
+    "title_actual": "Coniston — Volume 01",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 4679,
+    "action": "drop",
+    "title_claimed": "Lives of the Most Eminent English Poets",
+    "title_actual": "Johnson's Lives of the Poets — Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 6095,
+    "action": "drop",
+    "title_claimed": "Amelia (novel)",
+    "title_actual": "Amelia — Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 6942,
+    "action": "drop",
+    "title_claimed": "The Heart of Midlothian",
+    "title_actual": "The Heart of Mid-Lothian, Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 7791,
+    "action": "drop",
+    "title_claimed": "Pelle the Conqueror (novel)",
+    "title_actual": "Pelle the Conqueror — Volume 01",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 8531,
+    "action": "drop",
+    "title_claimed": "Helen (novel)",
+    "title_actual": "Tales and Novels — Volume 10 Helen",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 9107,
+    "action": "drop",
+    "title_claimed": "Harrington (novel)",
+    "title_actual": "Tales and Novels — Volume 09",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 9455,
+    "action": "drop",
+    "title_claimed": "Belinda (Edgeworth novel)",
+    "title_actual": "Tales and Novels — Volume 03 Belinda",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 9629,
+    "action": "retitle",
+    "title_claimed": "More Ghost Stories of an Antiquary",
+    "title_actual": "Ghost Stories of an Antiquary Part 2: More Ghost Stories",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 10615,
+    "action": "drop",
+    "title_claimed": "An Essay Concerning Human Understanding",
+    "title_actual": "An Essay Concerning Humane Understanding, Volume 1 MDCXC, Based on the 2nd Edition, Books 1 and 2",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 12958,
+    "action": "drop",
+    "title_claimed": "Pamela in her Exalted Condition",
+    "title_actual": "Pamela, Volume II",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 13610,
+    "action": "drop",
+    "title_claimed": "Studies in the Psychology of Sex Vol. 7",
+    "title_actual": "Studies in the Psychology of Sex, Volume 1 The Evolution of Modesty; The Phenomena of Sexual Periodicity; Auto-Erotism",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 20179,
+    "action": "drop",
+    "title_claimed": "Ship of Fools (satire)",
+    "title_actual": "The Ship of Fools, Volume 1",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 25326,
+    "action": "drop",
+    "title_claimed": "Lives of the Most Excellent Painters, Sculptors, and Architects",
+    "title_actual": "Lives of the Most Eminent Painters Sculptors and Architects, Vol. 01 (of 10) Cimabue to Agnolo Gaddi",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 37005,
+    "action": "drop",
+    "title_claimed": "The Devil's Elixirs",
+    "title_actual": "The Devil's Elixir, Vol. 2 (of 2)",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 52190,
+    "action": "drop",
+    "title_claimed": "Ecce Homo (book)",
+    "title_actual": "Ecce Homo Complete Works, Volume Seventeen",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 52521,
+    "action": "retitle",
+    "title_claimed": "Mary's Child",
+    "title_actual": "Grimm's Fairy Tales",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 56347,
+    "action": "drop",
+    "title_claimed": "The Generall Historie of Virginia, New-England, and the Summer Isles",
+    "title_actual": "The General Historie of Virginia, New England & the Summer Isles  (Vol. I) Together with the True Travels, Adventures and Observations, and a Sea Grammar",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  },
+  {
+    "gutenberg": 56562,
+    "action": "retitle",
+    "title_claimed": "Kidnapped (novel)",
+    "title_actual": "Kidnapped (Illustrated) Being Memoirs of the Adventures of David Balfour in the Year 1751",
+    "reason": "mislabelled: the id is a different work by the same author"
+  },
+  {
+    "gutenberg": 63337,
+    "action": "drop",
+    "title_claimed": "Valperga (novel)",
+    "title_actual": "Valperga Volume 1 (of 3) or, The life and adventures of Castruccio, prince of Lucca",
+    "reason": "collection: the id is an omnibus or a numbered volume"
+  }
+]

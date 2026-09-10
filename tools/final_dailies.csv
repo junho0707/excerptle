@@ -1,0 +1,121 @@
+rank,tier,gutenberg,title,author,year,downloads_30d,form,source,in_old_bank,old_slug
+1,S,1342,Pride and Prejudice,Jane Austen,1813,180357,novel,curated-pool,True,b01
+2,S,2701,Moby-Dick,Herman Melville,1851,163497,novel,curated-pool,True,b04
+3,S,2554,Crime and Punishment,Fyodor Dostoevsky,1866,118512,novel,curated-pool,True,b31
+4,S,1661,The Adventures of Sherlock Holmes,Arthur Conan Doyle,1892,107734,short story collection,curated-pool,True,b29
+5,S,11,Alice's Adventures in Wonderland,Lewis Carroll,1865,104420,novel,curated-pool,True,b06
+6,S,84,Frankenstein,Mary Shelley,1818,99964,novel,curated-pool,True,b02
+7,S,1513,Romeo and Juliet,William Shakespeare,1597,95206,play,curated-pool,True,b45
+8,S,345,Dracula,Bram Stoker,1897,92827,novel,curated-pool,True,b03
+9,S,43,The strange case of Dr. Jekyll and Mr. Hyde,Robert Louis Stevenson,1886,90059,novella,curated-pool,True,b15
+10,S,2641,A Room with a View,E. M. Forster,1908,85110,novel,curated-pool,,
+11,S,145,Middlemarch,George Eliot,1871,77708,novel,curated-pool,,
+12,S,1260,Jane Eyre,Charlotte Brontë,1847,71908,novel,curated-pool,True,b07
+13,S,244,A Study in Scarlet,Arthur Conan Doyle,1887,62582,novel,curated-pool,True,b28
+14,S,2852,The Hound of the Baskervilles,Arthur Conan Doyle,1902,60959,novel,curated-pool,True,b30
+15,S,69087,The Murder of Roger Ackroyd,Agatha Christie,1926,54678,novel,curated-pool,,
+16,S,1184,The Count of Monte Cristo,Alexandre Dumas,1844,53209,novel,curated-pool,True,b33
+17,S,863,The Mysterious Affair at Styles,Agatha Christie,1920,53161,novel,curated-pool,True,g863
+18,S,175,The Phantom of the Opera,Gaston Leroux,1910,53126,novel,curated-pool,True,g175
+19,S,64317,The Great Gatsby,F. Scott Fitzgerald,1925,48709,novel,curated-pool,True,b05
+20,S,28054,The Brothers Karamazov,Fyodor Dostoevsky,1880,45630,novel,curated-pool,,
+21,S,174,The Picture of Dorian Gray,Oscar Wilde,1890,43384,novel,curated-pool,True,b11
+22,S,75201,A Farewell to Arms,Ernest Hemingway,1929,42179,novel,curated-pool,,
+23,S,768,Wuthering Heights,Emily Brontë,1847,41958,novel,curated-pool,True,b08
+24,S,98,A Tale of Two Cities,Charles Dickens,1859,40992,novel,curated-pool,True,b09
+25,S,2591,Grimms' Fairy Tales,Jacob and Wilhelm Grimm,1812,40393,fairy tales,curated-pool,,
+26,S,5200,The Metamorphosis,Franz Kafka,1915,38512,novella,curated-pool,True,b27
+27,S,2600,War and Peace,Leo Tolstoy,1869,36553,novel,curated-pool,,
+28,S,161,Sense and Sensibility,Jane Austen,1811,34708,novel,curated-pool,True,b49
+29,S,6130,The Iliad,Homer,,34076,epic,curated-pool,,
+30,S,74,The Adventures of Tom Sawyer,Mark Twain,1876,33203,novel,curated-pool,True,b13
+31,S,55,The Wonderful Wizard of Oz,L. Frank Baum,1900,33071,novel,curated-pool,True,b21
+32,S,113,The Secret Garden,Frances Hodgson Burnett,1911,32404,novel,curated-pool,True,b23
+33,S,103,Around the World in Eighty Days,Jules Verne,1873,31322,novel,curated-pool,True,b35
+34,S,76,Adventures of Huckleberry Finn,Mark Twain,1884,31276,novel,curated-pool,True,b12
+35,S,18857,Journey to the Center of the Earth,Jules Verne,1864,28830,novel,curated-pool,,
+36,S,766,David Copperfield,Charles Dickens,1850,27631,novel,curated-pool,,
+37,S,45,Anne of Green Gables,L. M. Montgomery,1908,27049,novel,curated-pool,True,b22
+38,S,1400,Great Expectations,Charles Dickens,1861,26966,novel,curated-pool,True,b10
+39,S,120,Treasure Island,Robert Louis Stevenson,1883,26070,novel,curated-pool,True,b16
+40,S,14838,The Tale of Peter Rabbit,Beatrix Potter,1902,25657,children's book,curated-pool,,
+41,S,844,The Importance of Being Earnest,Oscar Wilde,1895,25392,play,curated-pool,True,b47
+42,S,203,Uncle Tom's Cabin,Harriet Beecher Stowe,1852,23859,novel,curated-pool,,
+43,S,16,Peter Pan,J. M. Barrie,1911,23507,novel,curated-pool,True,b24
+44,S,46,A Christmas Carol,Charles Dickens,1843,21933,novella,curated-pool,True,b14
+45,S,2610,The Hunchback of Notre-Dame,Victor Hugo,1831,21845,novel,curated-pool,,
+46,S,71865,Mrs Dalloway,Virginia Woolf,1925,21670,novel,curated-pool,,
+47,S,35,The Time Machine,H. G. Wells,1895,19811,novella,curated-pool,True,b18
+48,S,1399,Anna Karenina,Leo Tolstoy,1877,19677,novel,curated-pool,True,b32
+49,S,135,Les Misérables,Victor Hugo,1862,19395,novel,curated-pool,True,b34
+50,S,215,The Call of the Wild,Jack London,1903,18718,novel,curated-pool,True,b20
+51,S,158,Emma,Jane Austen,1815,18556,novel,curated-pool,True,b48
+52,S,514,Little Women,Louisa May Alcott,1868,17140,novel,curated-pool,True,b38
+53,S,219,Heart of Darkness,Joseph Conrad,1899,16334,novella,curated-pool,True,b19
+54,S,829,Gulliver's Travels,Jonathan Swift,1726,15893,novel,curated-pool,True,b41
+55,S,236,The Jungle Book,Rudyard Kipling,1894,15872,short story collection,curated-pool,True,b40
+56,S,164,Twenty Thousand Leagues Under the Sea,Jules Verne,1870,15599,novel,curated-pool,True,b36
+57,S,996,Don Quixote,Miguel de Cervantes,1605,15451,novel,curated-pool,True,b43
+58,S,730,Oliver Twist,Charles Dickens,1838,15405,novel,curated-pool,,
+59,S,67098,Winnie-the-Pooh,A. A. Milne,1926,14639,children's book,curated-pool,,
+60,S,521,Robinson Crusoe,Daniel Defoe,1719,14621,novel,curated-pool,True,b42
+61,S,36,The War of the Worlds,H. G. Wells,1898,14318,novel,curated-pool,True,b17
+62,S,1257,The Three Musketeers,Alexandre Dumas,1844,14239,novel,curated-pool,True,g1257
+63,S,12,Through the Looking-Glass,Lewis Carroll,1871,13061,novel,curated-pool,True,b37
+64,S,19942,Candide,Voltaire,1759,11022,novella,curated-pool,,
+65,S,289,The Wind in the Willows,Kenneth Grahame,1908,9111,novel,curated-pool,True,b39
+66,S,1524,Hamlet,William Shakespeare,1603,8382,play,curated-pool,True,b44
+67,S,2413,Madame Bovary,Gustave Flaubert,1857,8233,novel,curated-pool,,
+68,S,1533,Macbeth,William Shakespeare,1606,7903,play,curated-pool,True,b46
+69,S,7849,The Trial,Franz Kafka,1925,6403,novel,curated-pool,,
+70,S,23042,The Tempest,William Shakespeare,1611,5107,play,curated-pool,,
+71,S,67138,The Sun Also Rises,Ernest Hemingway,1926,4985,novel,curated-pool,,
+72,S,75011,All Quiet on the Western Front,Erich Maria Remarque,1929,4932,novel,curated-pool,,
+73,S,1728,The Odyssey,Homer,,4767,epic,curated-pool,True,g1728
+74,S,33,The Scarlet Letter,Nathaniel Hawthorne,1850,4480,novel,curated-pool,True,b25
+75,S,1532,King Lear,William Shakespeare,1606,4082,play,curated-pool,,
+76,S,1531,Othello,William Shakespeare,1603,3013,play,curated-pool,,
+77,S,77600,The Maltese Falcon,Dashiell Hammett,1930,1881,novel,curated-pool,,
+78,A,67979,The Blue Castle,L. M. Montgomery,1926,71749,novel,curated-pool,,
+79,A,16328,Beowulf,Anonymous,,61853,epic,curated-pool,,
+80,A,1695,The Man Who Was Thursday,G. K. Chesterton,1908,59096,novel,curated-pool,True,g1695
+81,A,2680,Meditations,Marcus Aurelius,,57143,nonfiction,curated-pool,,
+82,A,6133,"Arsène Lupin, Gentleman-Burglar",Maurice Leblanc,1907,56071,short story collection,curated-pool,True,g6133
+83,A,209,The Turn of the Screw,Henry James,1898,54814,novella,curated-pool,True,g209
+84,A,204,The Innocence of Father Brown,G. K. Chesterton,1911,53344,short story collection,curated-pool,True,g204
+85,A,2097,The Sign of the Four,Arthur Conan Doyle,1890,52332,novel,curated-pool,True,g2097
+86,A,108,The Return of Sherlock Holmes,Arthur Conan Doyle,1905,52211,short story collection,curated-pool,True,g108
+87,A,68283,The Call of Cthulhu,H. P. Lovecraft,1928,52038,short story,curated-pool,,
+88,A,583,The Woman in White,Wilkie Collins,1859,51733,novel,curated-pool,True,g583
+89,A,834,The Memoirs of Sherlock Holmes,Arthur Conan Doyle,1894,51694,short story collection,curated-pool,True,g834
+90,A,155,The Moonstone,Wilkie Collins,1868,50961,novel,curated-pool,True,g155
+91,A,1063,The Cask of Amontillado,Edgar Allan Poe,1846,49903,short story,curated-pool,True,g1063
+92,A,1155,The Secret Adversary,Agatha Christie,1922,48788,novel,curated-pool,True,g1155
+93,A,558,The Thirty-Nine Steps,John Buchan,1915,47133,novel,curated-pool,True,g558
+94,A,974,The Secret Agent,Joseph Conrad,1907,46929,novel,curated-pool,True,g974
+95,A,16389,The Enchanted April,Elizabeth von Arnim,1922,45914,novel,curated-pool,True,g16389
+96,A,58820,Whose Body?,Dorothy L. Sayers,1923,45718,novel,curated-pool,,
+97,A,23,Narrative of the Life of Frederick Douglass,Frederick Douglass,1845,45104,nonfiction,curated-pool,,
+98,A,394,Cranford,Elizabeth Gaskell,1853,43623,novel,curated-pool,,
+99,A,6593,"The History of Tom Jones, a Foundling",Henry Fielding,1749,43505,novel,curated-pool,,
+100,A,4300,Ulysses,James Joyce,1922,32653,novel,curated-pool,,
+101,A,1232,The Prince,Niccolò Machiavelli,1532,31403,nonfiction,curated-pool,,
+102,A,1952,The Yellow Wallpaper,Charlotte Perkins Gilman,1892,29497,short story,curated-pool,True,g1952
+103,A,2527,The Sorrows of Young Werther,Johann Wolfgang von Goethe,1774,28159,novel,curated-pool,,
+104,A,2542,A Doll's House,Henrik Ibsen,1879,25558,play,curated-pool,,
+105,A,1080,A Modest Proposal,Jonathan Swift,1729,25484,essay,curated-pool,,
+106,A,160,The Awakening,Kate Chopin,1899,25199,novel,curated-pool,,
+107,A,205,Walden,Henry David Thoreau,1854,24578,nonfiction,curated-pool,True,b26
+108,A,1837,The Prince and the Pauper,Mark Twain,1881,24154,novel,curated-pool,,
+109,A,86,A Connecticut Yankee in King Arthur's Court,Mark Twain,1889,23834,novel,curated-pool,,
+110,A,2383,The Canterbury Tales,Geoffrey Chaucer,1400,23168,poem,curated-pool,,
+111,A,121,Northanger Abbey,Jane Austen,1818,23143,novel,curated-pool,True,g121
+112,A,271,Black Beauty,Anna Sewell,1877,23114,novel,curated-pool,,
+113,A,599,Vanity Fair,William Makepeace Thackeray,1848,21168,novel,curated-pool,,
+114,A,580,The Pickwick Papers,Charles Dickens,1836,21049,novel,curated-pool,,
+115,A,408,The Souls of Black Folk,W. E. B. Du Bois,1903,20835,nonfiction,curated-pool,,
+116,A,73,The Red Badge of Courage,Stephen Crane,1895,20712,novel,curated-pool,True,g73
+117,A,967,Nicholas Nickleby,Charles Dickens,1839,20227,novel,curated-pool,,
+118,A,8800,The Divine Comedy,Dante Alighieri,1320,18180,poem,curated-pool,,
+119,A,1023,Bleak House,Charles Dickens,1853,17475,novel,curated-pool,,
+120,A,600,Notes from Underground,Fyodor Dostoevsky,1864,13537,novella,curated-pool,,

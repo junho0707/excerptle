@@ -1,0 +1,291 @@
+===== non-narrative: 13 =====
+
+[bank] g26 Paradise Lost — John Milton  (poem,verse,epic poem)
+    Paradise Lost is an epic poem in blank verse by the English poet John Milton .
+
+[bank] g61 The Communist Manifesto — Karl Marx and Friedrich Engels  (pamphlet,manifesto)
+    The Communist Manifesto, originally the Manifesto of the Communist Party, is a political pamphlet written by Karl Marx and Friedrich Engels.
+
+[bank] g972 The Devil's Dictionary — Ambrose Bierce  (dictionary)
+    The Devil's Dictionary is a satirical dictionary written by American journalist Ambrose Bierce, consisting of common words followed by humorous and satirical definitions.
+
+[bank] g503 The Blue Fairy Book — Andrew Lang  (poem,poetry)
+    The Langs' Fairy Books are a series of 25 collections of true and fictional stories for children published between 1889 and 1913 by Andrew Lang and Leonora Blanche Lang, a married couple.
+
+[bank] g41085 La Vita Nuova — Dante Alighieri  (verse)
+    La Vita Nuova or Vita Nova is a text by Dante Alighieri published in 1294.
+
+[bank] g66829 Gentlemen Prefer Blondes — Anita Loos  (song)
+    Gentlemen Prefer Blondes may refer to: "Gentlemen Prefer Blondes", a 1922 song by Irving Berlin Gentlemen Prefer Blondes , a 1925 novel by Anita Loos Gentlemen Prefer Blondes , a 1926 play based on the novel Gentlemen Prefer Blondes , a 1928 silent film adaptation of the novel, presumed lost, starring Ruth Taylor Gentlemen Prefer Blondes , the 1949 stage musical based on the novel, starring Carol 
+
+[daily] g67098 Winnie-the-Pooh — A. A. Milne  (poem)
+    Winnie-the-Pooh is a fictional anthropomorphic teddy bear created by the English author A.
+
+[daily] g16328 Beowulf — Anonymous  (poem)
+    Beowulf is an Old English poem, an epic in the tradition of Germanic heroic legend consisting of 3,182 alliterative lines, contained in the Nowell Codex.
+
+[daily] g1232 The Prince — Niccolò Machiavelli  (treatise,guide)
+    The Prince is a 16th-century political treatise written by the Italian diplomat and political philosopher Niccolò Machiavelli in the form of an instruction guide for new princes.
+
+[daily] g1080 A Modest Proposal — Jonathan Swift  (essay)
+    A Modest Proposal for Preventing the Children of Poor People from Being a Burthen to Their Parents or Country, and for Making Them Beneficial to the Publick, commonly referred to simply as A Modest Proposal, is a 1729 satirical essay by the Anglo-Irish writer and clergyman Jonathan Swift.
+
+[daily] g205 Walden — Henry David Thoreau  (manual)
+    Walden is an 1854 book by American transcendentalist writer Henry David Thoreau.
+
+[daily] g408 The Souls of Black Folk — W. E. B. Du Bois  (essays)
+    The Souls of Black Folk: Essays and Sketches is a 1903 work of American literature by W.
+
+[daily] g8800 The Divine Comedy — Dante Alighieri  (poem)
+    The Divine Comedy is an Italian narrative poem by Dante Alighieri, begun c. 1308 and completed c. 1321, shortly before the author's death.
+
+===== unknown: 83 =====
+
+[bank] g105 Persuasion — Jane Austen  (no form word)
+    Persuasion is the act of influencing a person's beliefs, attitudes, intentions, motivations, or behavior.
+
+[bank] g421 Kidnapped — Robert Louis Stevenson  (no form word)
+    Kidnapped may refer to: subject to the crime of kidnapping
+
+[bank] g139 The Lost World — Arthur Conan Doyle  (no form word)
+    Lost World, The Lost World or Lost Worlds may refer to:
+
+[bank] g2500 Siddhartha — Hermann Hesse  (no form word)
+    Siddhārtha is a common Indian male given name.
+
+[bank] g4276 North and South — Elizabeth Gaskell  (no form word)
+    North and South may refer to:
+
+[bank] g1522 Julius Caesar — William Shakespeare  (no form word)
+    Gaius Julius Caesar was a Roman general, statesman, and author who was the dictator of the Roman Republic almost continuously from 49 BC until his assassination in 44 BC.
+
+[bank] g6157 How Much Land Does a Man Need? — Leo Tolstoy  (no form word)
+    (no extract)
+
+[bank] g1156 Babbitt — Sinclair Lewis  (no form word)
+    Babbitt may refer to:
+
+[bank] g75756 Steppenwolf — Hermann Hesse  (no form word)
+    Steppenwolf may refer to:
+
+[bank] g2262 Henry V — William Shakespeare  (no form word)
+    Henry V may refer to:
+
+[bank] g223 The Wisdom of Father Brown — G. K. Chesterton  (no form word)
+    (no extract)
+
+[bank] g393 The Blue Lagoon — H. De Vere Stacpoole  (no form word)
+    Blue Lagoon may refer to:
+
+[bank] g589 Catriona — Robert Louis Stevenson  (no form word)
+    Catriona is a feminine given name in the English language.
+
+[bank] g70114 The Big Four — Agatha Christie  (no form word)
+    Big Four or Big 4 may refer to:
+
+[bank] g173 The Insidious Dr. Fu-Manchu — Sax Rohmer  (no form word)
+    (no extract)
+
+[bank] g9911 First Love — Ivan Turgenev  (no form word)
+    First Love may refer to:
+
+[bank] g921 De Profundis — Oscar Wilde  (no form word)
+    De profundis refers to Psalm 130 , traditionally known as the De profundis from its opening words in Latin.
+
+[bank] g2040 Confessions of an English Opium-Eater — Thomas De Quincey  (no form word)
+    Confessions of an English Opium-Eater is an 1821 autobiographical account written by Thomas De Quincey, about his laudanum addiction and its effect on his life.
+
+[bank] g1170 Anabasis — Xenophon  (no form word)
+    Anabasis broadly means an ascent or advance.
+
+[bank] g786 Hard Times — Charles Dickens  (no form word)
+    Hard Times may refer to:
+
+[bank] g8117 Demons — Fyodor Dostoevsky  (no form word)
+    A demon is an evil or malevolent supernatural entity, though they can be benevolent too.
+
+[bank] g2853 Quo Vadis — Henryk Sienkiewicz  (no form word)
+    Quo vadis? is a Latin phrase meaning "Where are you going?".
+
+[bank] g9182 Villette — Charlotte Brontë  (no form word)
+    Villette or Villettes may refer to:
+
+[bank] g2197 The Gambler — Fyodor Dostoevsky  (no form word)
+    The Gambler may refer to: Gambler, a person who gambles
+
+[bank] g11438 The Willows — Algernon Blackwood  (no form word)
+    The Willows may refer to:
+
+[bank] g54 The Marvelous Land of Oz — L. Frank Baum  (no form word)
+    The Marvelous Land of Oz: Being an Account of the Further Adventures of the Scarecrow and the Tin Woodman, commonly shortened to The Land of Oz, published in July 1904, is the second book in L.
+
+[bank] g2759 The Man in the Iron Mask — Alexandre Dumas  (no form word)
+    The Man in the Iron Mask was an unidentified prisoner of state during the reign of Louis XIV of France .
+
+[bank] g3155 She — H. Rider Haggard  (no form word)
+    She or S.H.E. may refer to: She is the third person singular, feminine, nominative case pronoun in modern English.
+
+[bank] g543 Main Street — Sinclair Lewis  (no form word)
+    Main Street is a metonym used to denote a primary retail street of a village, town or small city in many parts of the world.
+
+[bank] g1938 Resurrection — Leo Tolstoy  (no form word)
+    Resurrection or anastasis is the concept of coming back to life after death.
+
+[bank] g37536 The House of the Dead — Fyodor Dostoevsky  (no form word)
+    The House of the Dead is a video game franchise created by Sega, which began with the 1997 game of the same name.
+
+[bank] g432 The Ambassadors — Henry James  (no form word)
+    Ambassador is the highest ranking diplomat who represents a nation.
+
+[bank] g5998 Waverley — Walter Scott  (no form word)
+    Waverley may refer to:
+
+[bank] g28961 Heart — Edmondo de Amicis  (no form word)
+    The heart is a muscular organ found in humans and other animals.
+
+[bank] g8118 Redburn — Herman Melville  (no form word)
+    Redburn: His First Voyage is the fourth book by the American writer Herman Melville, first published in London in 1849.
+
+[bank] g525 Youth — Joseph Conrad  (no form word)
+    Youth is the time of life when one is young.
+
+[bank] g64682 The Painted Veil — W. Somerset Maugham  (no form word)
+    The Painted Veil may refer to: The Painted Veil , by W.
+
+[bank] g268 The Octopus — Frank Norris  (no form word)
+    An octopus is a sea animal with eight limbs.
+
+[bank] g39858 Trilby — George du Maurier  (no form word)
+    A trilby is a narrow-brimmed type of hat.
+
+[bank] g1947 Scaramouche — Rafael Sabatini  (no form word)
+    Scaramouche or Scaramouch is a stock clown character of the 16th-century commedia dell'arte .
+
+[bank] g1142 Typhoon — Joseph Conrad  (no form word)
+    A typhoon is a tropical cyclone that develops between 180° and 100°E in the Northern Hemisphere and which produces sustained hurricane-force winds of at least 119 km/h .
+
+[bank] g3154 The Surprising Adventures of Baron Munchausen — Rudolf Erich Raspe  (no form word)
+    (no extract)
+
+[bank] g5164 The Beetle — Richard Marsh  (no form word)
+    A beetle is an insect belonging to the order Coleoptera.
+
+[bank] g2275 The Pioneers — James Fenimore Cooper  (no form word)
+    Pioneer commonly refers to a person who is among the first at something that is new to a community.
+
+[bank] g10935 The Wonderful Adventures of Nils — Selma Lagerlöf  (no form word)
+    The Wonderful Adventures of Nils is a work of fiction by the Swedish writer Selma Lagerlöf, the first woman to receive the Nobel Prize in Literature.
+
+[bank] g486 Ozma of Oz — L. Frank Baum  (no form word)
+    Ozma of Oz is the third book of L.
+
+[bank] g70175 The Secret of Father Brown — G. K. Chesterton  (no form word)
+    The Incredulity of Father Brown is a collection of eight stories by G.
+
+[bank] g30201 In Praise of Folly — Erasmus  (no form word)
+    In Praise of Folly, also translated as The Praise of Folly , is an oration written in Latin in 1509 by Desiderius Erasmus of Rotterdam and first printed in June 1511.
+
+[bank] g78120 The Marvellous Land of Snergs — Edward Wyke-Smith  (no form word)
+    The Marvellous Land of Snergs is a children's fantasy, written by Edward Wyke-Smith and illustrated by the Punch cartoonist George Morrow.
+
+[bank] g3177 Roughing It — Mark Twain  (no form word)
+    Roughing It is a book of semi-autobiographical travel literature by Mark Twain.
+
+[bank] g74222 Demian — Hermann Hesse  (no form word)
+    Demian: The Story of a Boyhood is a bildungsroman by Hermann Hesse, published in 1919.
+
+[bank] g1091 On Heroes, Hero-Worship, & the Heroic in History — Thomas Carlyle  (no form word)
+    On Heroes, Hero-Worship, & the Heroic in History is a book by the Scottish essayist, historian and philosopher Thomas Carlyle, published by James Fraser, London, in 1841.
+
+[bank] g29021 The Ridiculous Wishes — Charles Perrault  (no form word)
+    (no extract)
+
+[bank] g60333 Selections from the Writings of Kierkegaard — Lee M. Hollander  (no form word)
+    Selections from the Writings of Kierkegaard is a 1923 book about Søren Kierkegaard by the American scholar Lee M.
+
+[bank] g26624 The Road to Oz — L. Frank Baum  (no form word)
+    The Road to Oz is the fifth book in L.
+
+[bank] g1937 The Second Jungle Book — Rudyard Kipling  (no form word)
+    The Second Jungle Book is a sequel to The Jungle Book by Rudyard Kipling.
+
+[bank] g773 Lord Arthur Savile's Crime and Other Stories — Oscar Wilde  (no form word)
+    Lord Arthur Savile's Crime and Other Stories is a collection of short semi-comic mystery stories that were written by Oscar Wilde and published in 1891.
+
+[bank] g535 Travels with a Donkey in the Cévennes — Robert Louis Stevenson  (no form word)
+    Travels with a Donkey in the Cévennes is one of Robert Louis Stevenson's earliest published works and is considered a pioneering classic of outdoor literature.
+
+[bank] g914 The Uncommercial Traveller — Charles Dickens  (no form word)
+    The Uncommercial Traveller is a collection of literary sketches and reminiscences written by Charles Dickens, published in 1860–1861.
+
+[bank] g8395 The Gods of Pegāna — Edward Plunkett, 18th Baron of Dunsany  (no form word)
+    The Gods of Pegāna is the first book by Anglo-Irish writer Lord Dunsany, published in 1905.
+
+[bank] g367 The Country of the Pointed Firs — Sarah Orne Jewett  (no form word)
+    The Country of the Pointed Firs is an 1896 book by American writer Sarah Orne Jewett.
+
+[bank] g2710 Louise de la Vallière — Alexandre Dumas  (no form word)
+    Françoise Louise de La Baume Le Blanc, Duchess of La Vallière and Vaujours was a French noblewoman and the mistress of Louis XIV from 1661 to 1667.
+
+[bank] g517 The Emerald City of Oz — L. Frank Baum  (no form word)
+    The Emerald City of Oz is the sixth book in L.
+
+[bank] g1178 Constitution of the Lacedaemonians — Xenophon  (no form word)
+    (no extract)
+
+[bank] g832 Robin Hood — J. Walker McSpadden  (no form word)
+    Robin Hood is a legendary heroic outlaw originally depicted in English folklore and subsequently featured in literature, theatre, and cinema.
+
+[bank] g47356 Studies on Homer and the Homeric Age — William Ewart Gladstone  (no form word)
+    Studies on Homer and the Homeric Age is a book written by four-time British Prime Minister William Gladstone in 1858, discussing a range of issues in Homer including an original thesis on colour perception in Ancient Greece.
+
+[bank] g402 Penrod — Booth Tarkington  (no form word)
+    Penrod is a collection of comic sketches by Booth Tarkington that was first published in 1914.
+
+[bank] g2726 Eight Cousins — Louisa May Alcott  (no form word)
+    Eight Cousins, or The Aunt-Hill was published in 1875 by American novelist Louisa May Alcott.
+
+[bank] g68229 All the Sad Young Men — F. Scott Fitzgerald  (no form word)
+    All the Sad Young Men is a collection of short fiction by American writer F.
+
+[bank] g3457 The Man of the Forest — Zane Grey  (no form word)
+    Man of the Forest is a 1921 American silent Western film directed by Howard Hickman and starring Carl Gantvoort, Claire Adams and Robert McKim.
+
+[bank] g419 The Magic of Oz — L. Frank Baum  (no form word)
+    The Magic of Oz is the thirteenth book in the Oz series written by L.
+
+[daily] g175 The Phantom of the Opera — Gaston Leroux  (no form word)
+    The Phantom of the Opera may refer to:
+
+[daily] g158 Emma — Jane Austen  (no form word)
+    Emma may refer to: Emma
+
+[daily] g236 The Jungle Book — Rudyard Kipling  (no form word)
+    The Jungle Book is an 1894 collection of stories by the English author Rudyard Kipling.
+
+[daily] g77600 The Maltese Falcon — Dashiell Hammett  (no form word)
+    The Maltese Falcon may refer to:
+
+[daily] g1121 As You Like It — William Shakespeare  (no form word)
+    Gaius Julius Caesar was a Roman general, statesman, and author who was the dictator of the Roman Republic almost continuously from 49 BC until his assassination in 44 BC.
+
+[daily] g2680 Meditations — Marcus Aurelius  (no form word)
+    Meditations is a collection of personal writings by Marcus Aurelius, Roman Emperor from 161–180 AD, which record his private notes to himself and his reflections on Stoic philosophy.
+
+[daily] g6133 Arsène Lupin, Gentleman-Burglar — Maurice Leblanc  (no form word)
+    (no extract)
+
+[daily] g108 The Return of Sherlock Holmes — Arthur Conan Doyle  (no form word)
+    The Return of Sherlock Holmes is a 1905 collection of 13 Sherlock Holmes stories, originally published in 1903–1904, by British writer Arthur Conan Doyle.
+
+[daily] g583 The Woman in White — Wilkie Collins  (no form word)
+    The Woman in White may refer to:
+
+[daily] g4300 Ulysses — James Joyce  (no form word)
+    Ulysses commonly refers to: Odysseus, a hero in Greek mythology Ulysses , by James Joyce Ulysses may also refer to:
+
+[daily] g160 The Awakening — Kate Chopin  (no form word)
+    The Awakening may refer to:
+
+[daily] g599 Vanity Fair — William Makepeace Thackeray  (no form word)
+    Vanity Fair may refer to:

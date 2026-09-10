@@ -1,4 +1,4 @@
-import { kindOf, fmtTime } from "./share.js";
+import { kindOf } from "./share.js";
 
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" }[c]));
 const ink = "#302820", wine = "#7a1f2b", muted = "#796d60", paper = "#f4efe4";
@@ -15,6 +15,12 @@ function wrap(value, max = 54) {
   if (line) lines.push(line);
   return lines.slice(0, 3);
 }
+// The one call-to-action shape: a wine pill that sizes itself to its label.
+function cta(y, label) {
+  const w = label.length * 16 + 70;
+  return rect(64,y,w,64,wine,'rx="7"')
+    + text(64 + w/2, y+41, 22, label, paper, false, 'text-anchor="middle" letter-spacing="1"');
+}
 function squares(x,y,used,total,won=false) {
   return Array.from({length:total}, (_,i) => rect(x+i*48,y,36,36,i<used ? won && i===used-1 ? "#54765c" : wine : "none", 'rx="4" stroke="#c9beac" stroke-width="2"')).join("");
 }
@@ -25,14 +31,16 @@ export function cardSvg(d, idx, { openingSentence = "", iconHref = "" } = {}) {
   const label = d.invite ? "BATTLE INVITATION"
     : !d.c && d.m === "daily" ? "TODAY'S OPENING SENTENCE"
     : `${kindOf(d.m).toUpperCase()} · #${idx}`;
-  const nameFit = d.n.length > 16 ? 'textLength="640" lengthAdjust="spacingAndGlyphs"' : "";
+  // Long names must not run past the card edge; clamp the whole line, not the name.
+  const fit = (line) => line.length * 16 > 1072 ? 'textLength="1072" lengthAdjust="spacingAndGlyphs"' : "";
   let body = "";
   if (done) {
-    body = text(64,190,29,`${d.n} ${d.w ? "solved it." : "gave it a try."}`,ink,false,nameFit)
+    const who = `${d.n} ${d.w ? "solved it." : "gave it a try."}`;
+    body = text(64,190,29,who,ink,false,fit(who))
       + text(64,263,19,label,wine,false,'letter-spacing="2"')
       + text(58,389,116,d.w ? `${d.g}/6` : "X/6",wine,true)
-      + text(67,443,25,`${d.h} hint${d.h===1 ? "" : "s"}${d.t ? "  ·  "+fmtTime(d.t) : ""}`,muted)
-      + text(64,513,31,d.w ? "Can you do better?" : "Can you solve it?",ink,true)
+      + text(67,443,25,`${d.h} hint${d.h===1 ? "" : "s"}`,muted)
+      + cta(472,"CAN YOU ALSO GUESS THE BOOK?")
       + rect(733,242,403,286,"#ebe3d2",'rx="12"')
       + text(775,288,17,"THE RESULT",muted,false,'letter-spacing="3"')
       + text(775,335,21,"Guesses",ink)
@@ -40,7 +48,8 @@ export function cardSvg(d, idx, { openingSentence = "", iconHref = "" } = {}) {
       + text(775,438,21,"Hints",ink)
       + squares(775,458,d.h,5);
   } else if (d.invite) {
-    body = text(64,190,29,`${d.n} invited you.`,ink,false,nameFit)
+    const who = `${d.n} invited you.`;
+    body = text(64,190,29,who,ink,false,fit(who))
       + text(64,263,19,label,wine,false,'letter-spacing="2"')
       + text(61,335,61,"A battle of",wine,true)
       + text(61,402,61,"book smarts.",wine,true)
@@ -53,11 +62,11 @@ export function cardSvg(d, idx, { openingSentence = "", iconHref = "" } = {}) {
       + text(948,413,20,"VS",muted,false,'text-anchor="middle"');
   } else {
     const lines = wrap(openingSentence || "The first sentence of this book is waiting for you.");
-    body = text(64,190,29,`${d.n} challenges you.`,ink,false,nameFit)
+    const who = `${d.n} shared this book with you.`;
+    body = text(64,190,29,who,ink,false,fit(who))
       + text(64,263,19,label,wine,false,'letter-spacing="2"')
       + lines.map((line, i) => text(64,318 + i * 40,29, line, ink, true)).join("")
-      + rect(64, 464, 294, 64, wine, 'rx="7"')
-      + text(211,505,22,d.m === "daily" ? "GUESS THE BOOK" : "TRY THIS BOOK",paper,false,'text-anchor="middle" letter-spacing="1"');
+      + cta(464, d.m === "daily" ? "GUESS THE BOOK" : "GUESS THIS BOOK");
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
     ${rect(0,0,1200,630,paper)}

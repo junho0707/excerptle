@@ -460,9 +460,17 @@ footer a { color: inherit; }
 .filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem 1rem;
   margin: 0.6rem 0 1rem;
   font-size: 0.85rem;
+}
+/* Each label is its own flex row, so a label sitting next to a tall select
+   lines up with one sitting next to a checkbox instead of riding above it. */
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 #screen-bank { text-align: center; }
 #screen-bank .filters { justify-content: center; align-items: center; }
@@ -471,14 +479,12 @@ footer a { color: inherit; }
   background: var(--paper);
   border: 1px solid var(--rule);
   padding: 0.35rem 0.5rem;
-  margin-left: 0.35rem;
   max-width: 8rem;
 }
 
 /* A tick box is not a text field: undo the .filters input framing for it. */
-.filter-check { display: flex; align-items: center; gap: 0.4rem; }
+.filter-check { gap: 0.4rem; }
 .filter-check input {
-  margin-left: 0;
   padding: 0;
   width: auto;
   max-width: none;
@@ -489,12 +495,15 @@ footer a { color: inherit; }
 
 .bank-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(4.2rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
   gap: 0.4rem;
 }
 .bank-cell {
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 0.15rem;
+  padding: 0.35rem 0.4rem;
   min-height: 3.1rem;
   border: 1px solid var(--rule);
   text-decoration: none;
@@ -504,6 +513,22 @@ footer a { color: inherit; }
   background: var(--paper-2);
 }
 .bank-cell.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+/* A guessed book shows its name: the grid doubles as a record of what you
+   have read. Two lines is enough for most titles and keeps the rows even. */
+.bank-cell .bank-n { font-size: 0.68rem; color: var(--ink-soft); letter-spacing: 0.06em; }
+.bank-cell .bank-t {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+/* Fallback marker for books guessed before the title was recorded. */
+.bank-cell .bank-tick { margin-left: 0.25rem; color: var(--hit); }
 .bank-cell.lost { opacity: 0.55; }
 .bank-cell.play { outline: 1px dashed var(--wine); }
 .pager { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
@@ -852,13 +877,6 @@ footer a { color: inherit; }
   color: var(--ink-soft);
   white-space: nowrap;
 }
-.story-time {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
 .jump {
   display: flex;
   gap: 0.3rem;
@@ -977,6 +995,14 @@ footer a { color: inherit; }
   border-radius: 2px;
 }
 .sq.on { background: var(--wine); border-color: var(--wine); }
+
+/* Shown only to a signed-out winner: the one moment the offer is concrete,
+   because there is now a result on the table to lose. */
+.pg-save p {
+  margin: 0 0 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
 
 .rank-line { margin: 0 0 0.55rem; }
 .rank-line b { font-family: var(--serif); font-size: 1.1rem; }

@@ -13,10 +13,11 @@
     stats: "bookle.stats",
     settings: "bookle.settings",
     seen: "bookle.seenHowTo",
-    // The public catalogue was renumbered to bank #0–#599 / daily #600+.
-    // New keys intentionally leave pre-launch progress and local boards behind.
-    progress: "bookle.progress.v2",
-    lb: "bookle.lb.v2",
+    // The public catalogue was rebuilt on the 720-book lists (bank #0–#599,
+    // dailies #600+) and every puzzle id changed with it. New keys
+    // intentionally leave pre-launch progress and local boards behind.
+    progress: "bookle.progress.v4",
+    lb: "bookle.lb.v4",
   };
 
   const state = {
@@ -28,7 +29,6 @@
     hints: 0,
     status: "playing",
     beatenBy: null, // opponent's name, when a battle ended on their guess
-    startedAt: Date.now(),
     settings: loadSettings(),
     battle: null,
 
@@ -193,7 +193,10 @@
       hints: state.hints,
       puzzleId: state.puzzle?.id,
       mode: state.mode,
-      timeMs: Date.now() - state.startedAt,
+      // Kept once the round ends so the bank can label a book you have read
+      // and the stats can count authors, without re-fetching every puzzle.
+      title: state.status === "playing" ? undefined : state.puzzle?.title,
+      author: state.status === "playing" ? undefined : state.puzzle?.author,
       at: Date.now(),
     };
     all[key] = row;
@@ -247,6 +250,7 @@
         }
         localStorage.setItem(K.progress, JSON.stringify(merged));
         await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: merged }) });
+        await backfillScores(connection);
       } catch { /* Sync is opportunistic; local progress remains intact. */ }
       finally {
         progressSyncing = null;
@@ -254,6 +258,48 @@
       }
     })();
     return progressSyncing;
+  }
+
+  // A puzzle solved before signing in never reached /scores: that POST needs a
+  // token, and sign-in only back-fills `progress`. The board row would stay
+  // lost for good, since a finished puzzle can't be replayed to re-send it.
+  // So walk the local board on sign-in and submit whatever of ours never went
+  // up. Rows are stamped once accepted; the server keeps the better score, so
+  // re-sending one that is already there is harmless.
+  const BACKFILL_MAX = 20; // /scores allows 30 writes per 10 minutes.
+  async function backfillScores(connection) {
+    if (!connection) return;
+    const all = loadJSON(K.lb, {});
+    const me = playerId();
+    let sent = 0;
+    for (const [index, list] of Object.entries(all)) {
+      if (sent >= BACKFILL_MAX) break;
+      const mine = (list || []).filter((r) => r.win && r.id === me && !r.sent);
+      if (!mine.length) continue;
+      // Only our best row per puzzle is worth a request — the server would
+      // discard the rest on arrival anyway.
+      const best = [...mine].sort((a, b) => a.hints - b.hints || a.guesses - b.guesses || (a.at || 0) - (b.at || 0))[0];
+      try {
+        const res = await fetch(`${connection.api}/scores`, {
+          method: "POST",
+          headers: connection.headers,
+          body: JSON.stringify({ puzzleIndex: Number(index), guesses: best.guesses, hints: best.hints, win: true }),
+        });
+        // A 429 or a rejected row stays unstamped, to be retried next sign-in.
+        if (!res.ok) continue;
+        for (const r of mine) r.sent = 1;
+        sent += 1;
+      } catch { break; /* Offline. Nothing is stamped, so nothing is lost. */ }
+    }
+    if (sent) localStorage.setItem(K.lb, JSON.stringify(all));
+  }
+
+  // Sign-out has to take the play data with it. These keys are merged into
+  // whichever account signs in next, so leaving them behind would push one
+  // player's progress onto another's account on a shared browser.
+  function clearLocalPlayData() {
+    for (const key of [K.progress, K.lb, K.stats]) localStorage.removeItem(key);
+    pendingProgress = {};
   }
 
   function loadStats() {
@@ -266,7 +312,7 @@
       // counted from `progress` after the fact — they get their own tally.
       battle: {
         played: 0, wins: 0, losses: 0, streak: 0, maxStreak: 0,
-        hints: 0, guesses: 0, bestMs: null, lastAt: null,
+        hints: 0, guesses: 0, lastAt: null,
         ...(loadJSON(K.stats, {}).battle || {}),
       },
     };
@@ -370,8 +416,6 @@
   function sharePayload() {
     const r = ranksFor(state.playIndex, state.hints);
     const finished = state.status === "won" || state.status === "lost";
-    const saved = finished ? progressMap()[String(state.playIndex)] : null;
-    const elapsed = saved?.timeMs ?? (Date.now() - state.startedAt);
     return b64u.enc(JSON.stringify({
       v: 2,
       c: finished ? 1 : 0,
@@ -380,7 +424,6 @@
       w: state.status === "won" ? 1 : 0,
       g: state.guesses.length,
       h: state.hints,
-      t: Math.max(1, Math.round(elapsed / 1000)),
       br: r.bracket, bn: r.bracketOf,
       or: r.overall, on: r.overallOf,
     }));
@@ -425,11 +468,9 @@
     if (awaitingInstructions) {
       awaitingInstructions = false;
       localStorage.setItem(K.seen, "1");
-      // Reading the instructions is not part of the round.
-      state.startedAt = Date.now();
       if (state.puzzle && state.status === "playing") {
         saveProgress();
-        startElapsedTimer();
+        startRoundTimers();
       }
     }
   }
@@ -451,46 +492,26 @@
     el.classList.add("bump");
   }
 
-  let elapsedTimer = null;
   let progressCheckpointTimer = null;
   let accountProgressSyncTimer = null;
-  function formatElapsed(ms) {
-    const seconds = Math.max(0, Math.floor(ms / 1000));
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const remainder = String(seconds % 60).padStart(2, "0");
-    return hours ? `${hours}:${String(minutes % 60).padStart(2, "0")}:${remainder}` : `${minutes}:${remainder}`;
-  }
-  function renderElapsed() {
-    const time = $("#elapsed-time");
-    if (!time || !state.puzzle) return;
-    const elapsed = Date.now() - state.startedAt;
-    time.textContent = formatElapsed(elapsed);
-    time.dateTime = `PT${Math.max(0, Math.floor(elapsed / 1000))}S`;
-  }
-  function startElapsedTimer() {
-    clearInterval(elapsedTimer);
+  // No clock: a player who sits with the opening for ten minutes is doing the
+  // thing this game is for. Rounds are still checkpointed so a refresh or a
+  // device switch resumes where you left off.
+  function startRoundTimers() {
     clearInterval(progressCheckpointTimer);
     clearInterval(accountProgressSyncTimer);
-    renderElapsed();
     if (state.status === "playing") {
-      elapsedTimer = setInterval(renderElapsed, 1000);
-      // Persist time even before the player makes a guess, so a refresh or a
-      // device switch resumes the same round instead of starting at zero.
       progressCheckpointTimer = setInterval(() => saveProgress({ remote: false }), 10000);
       // Account syncs are incremental, but do not need to happen every ten
       // seconds; page exit and game actions sync immediately.
       accountProgressSyncTimer = setInterval(() => saveProgress(), 5 * 60 * 1000);
     }
   }
-  function stopElapsedTimer() {
-    clearInterval(elapsedTimer);
+  function stopRoundTimers() {
     clearInterval(progressCheckpointTimer);
     clearInterval(accountProgressSyncTimer);
-    elapsedTimer = null;
     progressCheckpointTimer = null;
     accountProgressSyncTimer = null;
-    renderElapsed();
   }
 
   function renderExcerpt() {
@@ -559,8 +580,8 @@
     mine.sort((a, b) => {
       if (a.win !== b.win) return a.win ? -1 : 1;
       if (a.hints !== b.hints) return a.hints - b.hints;
-      if (a.timeMs !== b.timeMs) return a.timeMs - b.timeMs;
-      return a.guesses - b.guesses;
+      if (a.guesses !== b.guesses) return a.guesses - b.guesses;
+      return (a.at || 0) - (b.at || 0);
     });
     all[k] = mine.slice(0, 100);
     localStorage.setItem(K.lb, JSON.stringify(all));
@@ -578,9 +599,17 @@
     }
   }
 
-  function fmtTime(ms) {
-    const t = Math.max(1, Math.round(ms / 1000));
-    return t < 60 ? `${t}s` : `${Math.floor(t / 60)}m ${String(t % 60).padStart(2, "0")}s`;
+  // Boards are ordered by who got there first, so the moment of solving is the
+  // tiebreak made visible -- to the second, because on a quiet board two people
+  // can share a day and the order still has to read as earned.
+  // Epoch seconds from the API, milliseconds from local rows.
+  function fmtWhen(at) {
+    if (!at) return "—";
+    const ms = at < 1e12 ? at * 1000 : at;
+    return new Date(ms).toLocaleString(undefined, {
+      month: "short", day: "numeric",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+    });
   }
 
   // Longest tier we hold for this book — the first chapter — gives an honest size.
@@ -600,7 +629,6 @@
 
   function postGameHtml() {
     const p = state.puzzle;
-    const timeMs = Date.now() - state.startedAt;
     const me = playerId();
     const board = lbFor(state.playIndex);
     const rank = board.findIndex((r) => r.id === me) + 1;
@@ -608,7 +636,7 @@
     const bracket = board.filter((r) => r.hints === state.hints);
     const bRank = bracket.findIndex((r) => r.id === me) + 1;
     const top = (bracket.length > 1 ? bracket.slice(0, 5) : [])
-      .map((r, i) => `<tr class="${r.id === me ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.guesses}</td><td>${fmtTime(r.timeMs)}</td></tr>`)
+      .map((r, i) => `<tr class="${r.id === me ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.guesses}</td><td>${fmtWhen(r.at)}</td></tr>`)
       .join("");
     const won = state.status === "won";
     const lostLine = state.beatenBy ? `${escapeHtml(state.beatenBy)} got there first` : "Out of guesses";
@@ -649,15 +677,17 @@
           <span class="stat-k">Hints</span>
           ${blocks(state.hints, MAX_HINTS, `${state.hints} of ${MAX_HINTS} hints used`)}
         </div>
-        <div class="stat-row">
-          <span class="stat-k">Time</span>
-          <span class="stat-v">${fmtTime(timeMs)}</span>
-        </div>
       </section>
 
       ${rankLine || top ? `<section class="pg-sec pg-rank">
         ${rankLine}
-        ${top ? `<table class="mini-lb"><thead><tr><th>#</th><th>Player</th><th>Guesses</th><th>Time</th></tr></thead><tbody>${top}</tbody></table>` : ""}
+        ${top ? `<table class="mini-lb"><thead><tr><th>#</th><th>Player</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${top}</tbody></table>` : ""}
+      </section>` : ""}
+
+      ${won && !window.BookleAuth?.session?.() ? `<section class="pg-sec pg-save">
+        <h3>Keep this result</h3>
+        <p>You solved this signed out. Sign in and it goes on the leaderboard \u2014 and your progress follows you to any device.</p>
+        <button class="btn" type="button" data-act="open-auth">Sign in to save it</button>
       </section>` : ""}
 
       <div class="row pg-actions">
@@ -704,8 +734,7 @@
   }
 
   function recordFinish() {
-    const timeMs = Date.now() - state.startedAt;
-    stopElapsedTimer();
+    stopRoundTimers();
     saveProgress();
     if (state.status === "won") {
       pushLb({
@@ -713,7 +742,6 @@
         name: displayName(),
         guesses: state.guesses.length,
         hints: state.hints,
-        timeMs,
         win: true,
         at: Date.now(),
       });
@@ -729,7 +757,6 @@
         b.wins += 1;
         b.streak += 1;
         b.maxStreak = Math.max(b.maxStreak, b.streak);
-        if (b.bestMs == null || timeMs < b.bestMs) b.bestMs = timeMs;
       } else {
         b.losses += 1;
         b.streak = 0;
@@ -807,10 +834,8 @@
   }
 
   async function startPlay({ playIndex, mode, resume = true, fresh = false, showHow = true }) {
-    clearInterval(elapsedTimer);
     clearInterval(progressCheckpointTimer);
     clearInterval(accountProgressSyncTimer);
-    elapsedTimer = null;
     progressCheckpointTimer = null;
     accountProgressSyncTimer = null;
     await loadIndex();
@@ -834,12 +859,10 @@
       state.guesses = saved.guesses || [];
       state.hints = saved.hints || 0;
       state.status = saved.status || "playing";
-      state.startedAt = Date.now() - (saved.timeMs || 0);
     } else {
       state.guesses = [];
       state.hints = 0;
       state.status = "playing";
-      state.startedAt = Date.now();
     }
     state.beatenBy = null;
     setMsg("");
@@ -854,7 +877,7 @@
     } else {
       // This first checkpoint covers a refresh immediately after the round opens.
       if (state.status === "playing") saveProgress();
-      startElapsedTimer();
+      startRoundTimers();
     }
   }
 
@@ -991,14 +1014,10 @@
             <span class="stat-k">Hints</span>
             ${blocks(d.h, MAX_HINTS, `${d.h} of ${MAX_HINTS} hints used`)}
           </div>
-          ${d.t ? `<div class="stat-row">
-            <span class="stat-k">Time</span>
-            <span class="stat-v">${fmtTime(d.t * 1000)}</span>
-          </div>` : ""}
         </div>
         ${stand.length ? `<p class="sc-rank">${stand.join(" · ")}</p>` : ""}
       </div>
-      <p class="lede sc-cta">Can you guess better?</p>
+      <p class="lede sc-cta">Check out this book.</p>
       <button class="btn full" type="button" data-act="close-modal">Play #${idx}</button>
     `;
   }
@@ -1124,9 +1143,18 @@
     const prog = progressMap();
     $("#bank-grid").innerHTML = slice
       .map((n) => {
-        const st = prog[String(n)]?.status;
+        const row = prog[String(n)];
+        const st = row?.status;
         const cls = st === "won" ? "won" : st === "lost" ? "lost" : st === "playing" ? "play" : "";
-        return `<a class="bank-cell ${cls}" href="#/play/${n}">#${n}</a>`;
+        // Naming a book you have already guessed spoils nothing and turns the
+        // grid into a record of what you have read. Rounds finished before the
+        // title was recorded fall back to a plain tick.
+        const done = st === "won";
+        const label = done && row.title
+          ? `<span class="bank-n">#${n}</span><span class="bank-t">${escapeHtml(row.title)}</span>`
+          : `#${n}${done ? '<span class="bank-tick" aria-hidden="true">\u2713</span>' : ""}`;
+        const aria = done ? ` aria-label="#${n}${row.title ? `, ${escapeHtml(row.title)}` : ""}, guessed"` : "";
+        return `<a class="bank-cell ${cls}"${aria} href="#/play/${n}">${label}</a>`;
       })
       .join("");
     $("#bank-pager").innerHTML = `
@@ -1139,19 +1167,20 @@
     return n >= (state.index?.dailyStartIndex ?? 600) ? `Daily #${n}` : `Book #${n}`;
   }
 
+  // Help taken, then guesses, then who solved it first.
   const rankSort = (a, b) => {
     if (a.hints !== b.hints) return a.hints - b.hints;
-    if (a.timeMs !== b.timeMs) return a.timeMs - b.timeMs;
-    return a.guesses - b.guesses;
+    if (a.guesses !== b.guesses) return a.guesses - b.guesses;
+    return (a.at || 0) - (b.at || 0);
   };
   // The server carries no row id, so your own remote row is recognised by the
   // values you played it with.
-  const rankKey = (r) => `${r.name}|${r.hints}|${r.guesses}|${r.timeMs}`;
+  const rankKey = (r) => `${r.name}|${r.hints}|${r.guesses}`;
   function lbTable(rows) {
     if (!rows.length) return "";
-    return `<div class="lb"><table><thead><tr><th>#</th><th>Player</th><th>Hints</th><th>Guesses</th><th>Time</th></tr></thead><tbody>${rows
+    return `<div class="lb"><table><thead><tr><th>#</th><th>Player</th><th>Hints</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${rows
       .slice(0, 50)
-      .map((r, i) => `<tr class="${r.mine ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.hints}</td><td>${r.guesses}</td><td>${Math.round(r.timeMs / 1000)}s</td></tr>`)
+      .map((r, i) => `<tr class="${r.mine ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.hints}</td><td>${r.guesses}</td><td>${fmtWhen(r.at)}</td></tr>`)
       .join("")}</tbody></table></div>`;
   }
 
@@ -1221,9 +1250,12 @@
      place a total lives. */
   function summarize() {
     const base = state.index?.dailyStartIndex ?? 600;
-    const blank = () => ({ played: 0, wins: 0, losses: 0, hints: 0, guesses: 0, bestMs: null });
+    const blank = () => ({ played: 0, wins: 0, losses: 0, hints: 0, guesses: 0 });
     const books = blank();
     const daily = blank();
+    // Rounds finished before the game recorded authors have none, so this
+    // undercounts old play rather than inventing a number for it.
+    const authors = new Set();
 
     for (const [k, r] of Object.entries(progressMap())) {
       if (!r || r.status === "playing") continue;
@@ -1233,8 +1265,7 @@
       bucket.guesses += (r.guesses || []).length;
       if (r.status === "won") {
         bucket.wins += 1;
-        const t = r.timeMs || 0;
-        if (t > 0 && (bucket.bestMs == null || t < bucket.bestMs)) bucket.bestMs = t;
+        if (r.author) authors.add(r.author);
       } else {
         bucket.losses += 1;
       }
@@ -1243,9 +1274,8 @@
     for (const b of [books, daily]) {
       all.played += b.played; all.wins += b.wins; all.losses += b.losses;
       all.hints += b.hints; all.guesses += b.guesses;
-      if (b.bestMs != null && (all.bestMs == null || b.bestMs < all.bestMs)) all.bestMs = b.bestMs;
     }
-    return { all, books, daily, stats: loadStats() };
+    return { all, books, daily, authors: authors.size, stats: loadStats() };
   }
 
   function pct(n, d) {
@@ -1260,9 +1290,8 @@
 
   function renderStats() {
     show("screen-stats");
-    const { books, daily, stats } = summarize();
+    const { all, books, daily, authors, stats } = summarize();
     const b = stats.battle;
-    const best = (ms) => (ms != null ? fmtTime(ms) : "—");
     const rows = (...pairs) =>
       `<dl class="pg-stats">${pairs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>`;
 
@@ -1270,6 +1299,15 @@
        not a ranking of them, so they share one type scale. The page title is
        the only level above them. */
     $("#stats-body").innerHTML = `
+      <section class="s-block">
+        <h2>Books discovered</h2>
+        <div class="stat-grid">
+          ${tile(all.wins, "Books")}
+          ${tile(authors || "—", "Authors")}
+          ${tile(all.played, "Openings read")}
+        </div>
+      </section>
+
       <section class="s-block">
         <h2>Daily</h2>
         <div class="stat-grid">
@@ -1279,8 +1317,7 @@
           ${tile(pct(daily.wins, daily.played), "Win rate")}
         </div>
         ${rows(["Avg guesses", avg(daily.guesses, daily.played)],
-               ["Avg hints", avg(daily.hints, daily.played)],
-               ["Fastest", best(daily.bestMs)])}
+               ["Avg hints", avg(daily.hints, daily.played)])}
       </section>
 
       <section class="s-block">
@@ -1291,8 +1328,7 @@
           ${tile(pct(books.wins, books.played), "Win rate")}
         </div>
         ${rows(["Avg guesses", avg(books.guesses, books.played)],
-               ["Avg hints", avg(books.hints, books.played)],
-               ["Fastest", best(books.bestMs)])}
+               ["Avg hints", avg(books.hints, books.played)])}
       </section>
 
       <section class="s-block">
@@ -1305,7 +1341,6 @@
             ${tile(b.streak, "Streak")}
           </div>
           ${rows(["Best streak", b.maxStreak],
-                 ["Fastest win", best(b.bestMs)],
                  ["Avg guesses", avg(b.guesses, b.played)],
                  ["Avg hints", avg(b.hints, b.played)])}`
           : `<p class="lede">No battles yet. Create a room from <button class="linkish" type="button" data-act="open-play">New game</button> and send a friend the link.</p>`}
@@ -1850,7 +1885,8 @@
   window.addEventListener("pagehide", () => {
     if (state.puzzle && state.status === "playing") saveProgress();
   });
-  document.addEventListener("bookle-auth", () => {
+  document.addEventListener("bookle-auth", (e) => {
+    if (!e.detail) clearLocalPlayData();
     paintAuth();
     syncProgress();
   });

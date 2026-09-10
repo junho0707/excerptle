@@ -1,0 +1,54 @@
+{
+  "_comment": "Hand decisions the automatic gates cannot make. drop: ids that are not one book. retitle: ids whose Gutenberg text is a real book under another name, where the catalogue title is the one to put on screen -- verify_ids.py only retitles when the true work is already in the pool, so these are the leftovers. add: an edition no automatic source offered, pinned to win its dedupe group.",
+  "drop": {
+    "2270": "Shakespeare's First Folio: a facsimile of the collected plays, not a book",
+    "58360": "the Gutenberg text is Volume 10 of 10 of Burton's Nights, not the work",
+    "13610": "Studies in the Psychology of Sex: one volume of a clinical series",
+    "51356": "The Birth of Tragedy: philosophy; the lead sentence's word 'tragedy' is the subject, not the form",
+    "27635": "The Canterbury Puzzles: a puzzle book framed as tales",
+    "54812": "A Key to Uncle Tom's Cabin: the documentary sources behind the novel, not a novel",
+    "1121": "old-spelling Shakespeare edition: the text opens on Gutenberg's own note about the spelling, so pg1523 takes As You Like It",
+    "2262": "old-spelling Shakespeare edition: opens on the editorial note; pg1521 takes Henry V",
+    "2268": "old-spelling Shakespeare edition: opens on the editorial note; pg1534 takes Antony and Cleopatra",
+    "2243": "First Folio spelling and the excerpt lands mid-line; pg1515 takes The Merchant of Venice"
+  },
+  "retitle": {
+    "70175": "The Secret of Father Brown",
+    "61620": "The Mark of Zorro",
+    "179": "The Europeans"
+  },
+  "add": {
+    "1523": {
+      "title": "As You Like It",
+      "author": "William Shakespeare",
+      "year": null,
+      "downloads_30d": 36175,
+      "form": "play",
+      "tier": "B"
+    },
+    "1521": {
+      "title": "Henry V",
+      "author": "William Shakespeare",
+      "year": null,
+      "downloads_30d": 1017,
+      "form": "play",
+      "tier": "B"
+    },
+    "1534": {
+      "title": "Antony and Cleopatra",
+      "author": "William Shakespeare",
+      "year": null,
+      "downloads_30d": 2116,
+      "form": "play",
+      "tier": "B"
+    },
+    "1515": {
+      "title": "The Merchant of Venice",
+      "author": "William Shakespeare",
+      "year": null,
+      "downloads_30d": 3823,
+      "form": "play",
+      "tier": "B"
+    }
+  }
+}

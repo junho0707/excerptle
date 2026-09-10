@@ -19,22 +19,63 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CURATED = json.loads((Path(__file__).parent / "books.json").read_text(encoding="utf-8"))
-EXTRA_PATH = Path(__file__).parent / "extra_books.json"
-BOOKS = list(CURATED)
-if EXTRA_PATH.exists():
-    BOOKS.extend(json.loads(EXTRA_PATH.read_text(encoding="utf-8")))
+HERE = Path(__file__).parent
 OUT = ROOT / "puzzles"
-CACHE = Path(__file__).parent / ".gutenberg-cache"
-# Books #1..#PRESET_COUNT are the pick-any bank; everything past that is held
-# back as the daily pool, so a daily is never a book you could already browse.
-PRESET_COUNT = 600
-# Salt for the play order. Book #1 must not be the first line of the
+CACHE = HERE / ".gutenberg-cache"
+# The two lists final_lists.py cuts. The bank is the pick-any catalogue; the
+# dailies are held back so a daily is never a book you could already browse.
+BANK_PATH = HERE / "final_bank.json"
+DAILIES_PATH = HERE / "final_dailies.json"
+# Hand-written aliases from the original 50-book bank, keyed by old slug.
+LEGACY_ALIASES = {
+    b["slug"]: b.get("aliases") or []
+    for b in json.loads((HERE / "books.json").read_text(encoding="utf-8"))
+}
+# Hand-verified opening lines, keyed by Gutenberg id. auto_start() reads a file
+# top-down and takes the first thing that looks like prose, which lands on an
+# epigraph, a chapter argument or a table of contents often enough to matter.
+# An anchor here overrides it: see tools/opening_audit.md for how each was found.
+ANCHORS = json.loads((HERE / "anchors.json").read_text(encoding="utf-8"))
+# Salt for the bank play order. Book #1 must not be the first line of the
 # catalogue, and the sequence must not track Gutenberg ids.
 ORDER_SALT = "excerptle-order-v1:"
 WORD_CAP = 3500
 PAGES_CAP = 900
 UA = "BookleFyi/1.0 (public-domain excerpts for bookle.fyi)"
+
+
+def load_books() -> list[dict]:
+    """The shipped books, bank first, in the order they will be indexed.
+
+    A book with an entry in anchors.json starts at that line; every other book
+    falls back to auto_start(). The slug is the Gutenberg id, which is the one
+    identifier that is stable across rebuilds and unique across both lists.
+    """
+    out = []
+    for kind, path in (("bank", BANK_PATH), ("daily", DAILIES_PATH)):
+        for b in json.loads(path.read_text(encoding="utf-8")):
+            gid = int(b["gutenberg"])
+            year = str(b.get("year") or "").strip()
+            out.append({
+                "slug": f"g{gid}",
+                "kind": kind,
+                "rank": int(b.get("rank") or 0),
+                "gutenberg": gid,
+                "title": b["title"],
+                "author": b.get("author") or "",
+                "year": int(year) if year.isdigit() else 0,
+                "aliases": LEGACY_ALIASES.get(b.get("old_slug") or "", []),
+                "anchor": ANCHORS.get(str(gid), ""),
+            })
+    seen = set()
+    for b in out:
+        if b["slug"] in seen:
+            raise SystemExit(f"duplicate gutenberg id across the lists: {b['slug']}")
+        seen.add(b["slug"])
+    return out
+
+
+BOOKS = load_books()
 
 START_RE = re.compile(r"\*\*\*\s*START OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
 END_RE = re.compile(r"\*\*\*\s*END OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
@@ -115,6 +156,8 @@ def fetch(gid: int) -> str:
         f"https://www.gutenberg.org/cache/epub/{gid}/pg{gid}.txt",
         f"https://www.gutenberg.org/files/{gid}/{gid}-0.txt",
         f"https://www.gutenberg.org/files/{gid}/{gid}.txt",
+        # Older postings ship the latin-1 file only (Howards End is one).
+        f"https://www.gutenberg.org/files/{gid}/{gid}-8.txt",
         f"https://www.gutenberg.org/ebooks/{gid}.txt.utf-8",
     ]
     last_err = None
@@ -174,8 +217,8 @@ BYLINE_RE = re.compile(
 ROMAN_LINE_RE = re.compile(r"^\s*[IVXLCDM]{1,7}\.?\s*$", re.I)
 # Publishing apparatus can appear anywhere in the line, not just at its start.
 FRONT_ANYWHERE_RE = re.compile(
-    r"project gutenberg|gutenberg|e-?text|etext|transcrib|proofread|"
-    r"all rights reserved|copyright|printed in|\bisbn\b|"
+    r"project gutenberg|gutenberg|e-?text|etext|transcrib|proofread|proofed|"
+    r"all rights reserved|copyright|printed in|\bisbn\b|electronic edition|"
     r"distributed proofreading|online distributed",
     re.I,
 )
@@ -215,9 +258,78 @@ def is_caption_para(p: str) -> bool:
     p = p.strip()
     if not p:
         return True
-    if re.search(r"[.!?][\"'’”)\]]?$", p):
+    # A colon is a lead-in ("...kept repeating over and over:"), not a caption.
+    if re.search(r"[.!?:][\"'’”)\]]?$", p):
         return False
     return len(p.split()) < 45
+
+
+# Headings that announce apparatus rather than the story. A candidate opening
+# sitting under one of these is a preface, not chapter one.
+FRONT_HEADING_RE = re.compile(
+    r"^\s*(?:the\s+)?(preface|introduction|introductory|foreword|"
+    r"dedication|advertisement|publisher.s note|editor.s note|editor.s preface|"
+    r"translator.s note|transcriber.s note|note to the|prefatory)\b",
+    re.I,
+)
+
+
+CHAPTER_HEADING_RE = re.compile(
+    r"""^\s*(?:
+        (?:chapter|chap\.?|book|part|stave|act|canto|letter|section|volume)
+        \s*[\s.:\-]?\s*(?:[0-9]+|[ivxlcdm]{1,7}|one|two|three|four|five|six|seven|
+                              eight|nine|ten|first|second|third|the\s+first)\b.*|
+        [0-9]{1,3}\.?|
+        [ivxlcdm]{1,7}\.?
+    )\s*$""",
+    re.I | re.X,
+)
+# Only chapter *one* ends the front matter. A bare "XLII" or "M." is either a
+# stray initial (Ulysses signs a letter "M.") or a chapter deep in the book,
+# and jumping to either lands the excerpt in the middle of the story.
+FIRST_CHAPTER_RE = re.compile(
+    r"""^\s*(?:
+        (?:chapter|chap\.?|book|part|stave|act|canto|letter|section|volume)
+        \s*[\s.:\-]?\s*(?:1|i|one|first|the\s+first)\b.*|
+        (?:1|i|one|first)\.?
+    )\s*$""",
+    re.I | re.X,
+)
+
+
+def _heading_line(s: str) -> bool:
+    """A standalone heading, not a wrapped line of prose.
+
+    Deliberately narrower than is_heading(): "Part of the reason he came..."
+    opens with "Part" and would otherwise read as a heading, and a false
+    heading here truncates the excerpt in the middle of a sentence.
+    """
+    t = s.strip()
+    if not t or len(t) > 90 or t.endswith((",", ";", ":", "-", "—", "–")):
+        return False
+    if CHAPTER_HEADING_RE.match(t) or ROMAN_LINE_RE.match(t):
+        return True
+    if len(t) < 60 and FRONT_HEADING_RE.match(t):
+        return True
+    # An all-caps line is usually a heading -- but not when it is shouted
+    # dialogue. Tom Sawyer opens on one: '"TOM!"'.
+    if t[0] in "\"'\u201c\u2018" or t.endswith(("!", "?")):
+        return False
+    letters = [c for c in t if c.isalpha()]
+    if len(letters) < 4:
+        return False
+    return sum(c.isupper() for c in letters) / len(letters) > 0.7
+
+
+def _looks_like_verse(block: list[str]) -> bool:
+    """A stanza: short lines, most of them starting on a capital. Epigraphs
+    sit between a chapter heading and the prose it belongs to."""
+    ls = [l.strip() for l in block if l.strip()]
+    if len(ls) < 3:
+        return False
+    if sum(len(l) for l in ls) / len(ls) > 58:
+        return False
+    return sum(1 for l in ls if l[:1].isupper()) / len(ls) >= 0.7
 
 
 def auto_start(body: str) -> int:
@@ -225,7 +337,11 @@ def auto_start(body: str) -> int:
 
     Scans line by line rather than paragraph by paragraph: a title page often
     collapses into one paragraph with the title, byline and opening line all
-    together, which no paragraph-level test can split.
+    together, which no paragraph-level test can split. Once a line reads as
+    prose, back up over the rest of its own block so the excerpt starts at the
+    top of the sentence and not halfway through it -- the first wrapped line of
+    a paragraph is often Title Case Enough ("Sir Walter Elliot, of Kellynch
+    Hall, in Somersetshire, was a man who,") to fail the prose test on its own.
     """
     head = body[:30000]
     low = head.lower()
@@ -235,23 +351,99 @@ def auto_start(body: str) -> int:
         if i >= 0:
             cut = max(cut, i + len(marker))
     chunk = body[cut:]
-    # A transcriber's note runs over several lines and only the first names
-    # itself, so veto on the whole paragraph the candidate line sits in.
-    paras = paragraphs_from(chunk)
-    banned = {
-        p[:60]
-        for p in paras
-        if FRONT_ANYWHERE_RE.search(p) or looks_like_front(p) or is_caption_para(p)
-    }
-    offset = 0
-    for line in chunk.split("\n"):
-        if looks_like_prose_line(line):
-            stripped = line.strip()
-            para = next((p for p in paras if stripped in p), "")
-            if para[:60] not in banned:
-                return cut + offset
-        offset += len(line) + 1
-    # Nothing looked like prose — fall back to the old paragraph filter.
+
+    lines = chunk.split("\n")
+    offsets = []
+    at = 0
+    for line in lines:
+        offsets.append(at)
+        at += len(line) + 1
+
+    # Headings arrive in runs. Two or three in a row are one compound heading
+    # ("CHAPTER ONE" / "PLAYING PILGRIMS"); a dozen in a row are a table of
+    # contents, whose "CHAPTER I" is not where chapter one starts.
+    TOC_RUN = 4
+
+    def heading_run(i: int) -> int:
+        """Index just past the run of heading lines starting at i.
+
+        Contents entries sit line under line; at most one blank separates them.
+        A wider gap ends the run, which is what keeps a table of contents from
+        swallowing the "CHAPTER ONE" printed four blank lines below it.
+        """
+        j = i
+        k = i + 1
+        blanks = 0
+        while k < len(lines):
+            if not lines[k].strip():
+                blanks += 1
+                if blanks > 1:
+                    break
+                k += 1
+                continue
+            if not _heading_line(lines[k]):
+                break
+            blanks = 0
+            j = k
+            k += 1
+        return j + 1
+
+    section = ""  # what the most recent heading says we are inside of
+    candidates = []  # (section, is_verse, offset)
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if _heading_line(line):
+            end = heading_run(i)
+            run = [l.strip() for l in lines[i:end] if l.strip()]
+            if len(run) < TOC_RUN:
+                if any(FRONT_HEADING_RE.match(t) for t in run):
+                    section = "front"
+                elif any(FIRST_CHAPTER_RE.match(t) for t in run):
+                    section = "chapter"
+                elif section == "front":
+                    # An unnamed heading ends the preface. It does not undo a
+                    # chapter number: "1" and the chapter's title sit four
+                    # blank lines apart in The Maltese Falcon, and the title
+                    # must not put us back outside the book.
+                    section = ""
+            i = end
+            continue
+        if not looks_like_prose_line(line):
+            i += 1
+            continue
+        # Widen to the block this line sits in, stopping at a blank line or at
+        # a heading -- a heading swept into the block would veto it as front
+        # matter even though the prose below it is the real opening.
+        j = i
+        while j > 0 and lines[j - 1].strip() and not _heading_line(lines[j - 1]):
+            j -= 1
+        k = i
+        while k + 1 < len(lines) and lines[k + 1].strip() and not _heading_line(lines[k + 1]):
+            k += 1
+        i = k + 1
+        # A transcriber's note runs over several lines and only the first names
+        # itself, so veto on the whole block, not on the line that matched.
+        block = " ".join(l.strip() for l in lines[j:k + 1])
+        if FRONT_ANYWHERE_RE.search(block) or looks_like_front(block) or is_caption_para(block):
+            continue
+        verse = _looks_like_verse(lines[j:k + 1])
+        candidates.append((section, verse, cut + offsets[j]))
+        # Prose under a chapter heading is the book itself; stop looking.
+        if (section == "chapter" and not verse) or offsets[j] > 400000:
+            break
+
+    # Order of preference: the first chapter, then any prose that is not
+    # explicitly under a preface, then the preface -- better a preface than
+    # the title page. Prose beats verse at every step, so a chapter epigraph
+    # gives way to the paragraph underneath it.
+    for want, allow_verse in (("chapter", False), ("", False), ("chapter", True),
+                              ("", True), ("front", False), ("front", True)):
+        for section, verse, off in candidates:
+            if section == want and (allow_verse or not verse):
+                return off
+
+    # Nothing looked like prose -- fall back to the old paragraph filter.
     paras = [p for p in paragraphs_from(chunk) if not looks_like_front(p) and len(p) >= 40]
     if not paras:
         return cut
@@ -359,24 +551,6 @@ def split_after_anchor(from_here: str) -> list[str]:
     return chapters
 
 
-def fun_for(book: dict) -> dict:
-    coffees = int(book.get("coffees") or 1)
-    gid = int(book["gutenberg"])
-    give = round(4.0 + (gid % 17) + coffees * 3.1, 1)
-    mins = 3 + (gid % 9) + coffees * 2
-    secs = (gid * 7) % 60
-    median = f"{mins}m{secs:02d}s"
-    return {
-        "coffees": coffees,
-        "giveUpPct": give,
-        "median": median,
-        "blurb": (
-            f"You’ll need {coffees} coffee{'s' if coffees != 1 else ''} to solve this — "
-            f"{give}% give-up rate, {median} median time"
-        ),
-    }
-
-
 def build_ladder(paras: list[str], sent: str) -> tuple[list[str], list[int]]:
     """Five strictly growing tiers, sliced at paragraph boundaries.
 
@@ -430,7 +604,7 @@ def build_one(book: dict) -> dict:
     if not paras:
         raise RuntimeError(f"no paragraphs after anchor: {book['title']}")
     sent = first_sentence(paras[0])
-    if book["slug"] == "b13":
+    if book["gutenberg"] == 74:  # Tom Sawyer opens mid-dialogue ("TOM!" / "No answer.")
         sent = paras[0].split("No answer")[0].strip() or '"TOM!"'
         if not sent.endswith("!") and "TOM" in paras[0].upper():
             sent = '"TOM!"'
@@ -464,106 +638,64 @@ def build_one(book: dict) -> dict:
         },
         "labels": labels,
         "texts": seq,
-        "fun": fun_for(book),
     }
 
 
 def main() -> None:
     force = "--force" in sys.argv
+    # --cached-only builds what .gutenberg-cache already holds and touches the
+    # network for nothing. Use it while prefetch_texts.py is running: two
+    # fetchers against gutenberg.org at once is exactly what not to do.
+    cached_only = "--cached-only" in sys.argv
+    only = None
+    for a in sys.argv[1:]:
+        if a.startswith("--limit="):
+            only = int(a.split("=", 1)[1])
     OUT.mkdir(parents=True, exist_ok=True)
-    order = []
+    built = set()
     failed = []
-    skipped = []
+    fresh = 0
     for i, book in enumerate(BOOKS):
         dest = OUT / f"{book['slug']}.json"
-        print(f"[{i+1}/{len(BOOKS)}] {book['title'][:50]} ({book['gutenberg']})", flush=True)
-        if book.get("exclude"):
-            # Kept in the catalogue for the record, but never served: the
-            # Gutenberg text opens on front matter we can't reliably strip.
-            skipped.append({
-                "slug": book["slug"],
-                "title": book["title"],
-                "reason": book.get("exclude_reason", "unusable opening"),
-            })
-            print(f"  EXCLUDED: {book.get('exclude_reason', 'unusable opening')}", flush=True)
-            continue
         if not force and dest.exists() and dest.stat().st_size > 400:
-            order.append(book["slug"])
-            print("  skip existing", flush=True)
+            built.add(book["slug"])
             continue
+        if only is not None and fresh >= only:
+            break
+        if cached_only:
+            src = CACHE / f"{book['gutenberg']}.txt"
+            if not (src.exists() and src.stat().st_size > 2000):
+                continue
+        print(f"[{i+1}/{len(BOOKS)}] {book['title'][:50]} ({book['gutenberg']})", flush=True)
         try:
             puzzle = build_one(book)
         except Exception as e:  # noqa: BLE001
             print(f"  FAIL: {e}", flush=True)
-            failed.append({"book": book["title"], "error": str(e)})
-            time.sleep(0.15)
+            failed.append({
+                "slug": book["slug"],
+                "book": book["title"],
+                "kind": book["kind"],
+                "error": str(e)[:200],
+            })
             continue
         dest.write_text(json.dumps(puzzle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         preview = puzzle["texts"][0].replace("\n", " ")[:80]
         print(f"  ok  {preview!r}", flush=True)
-        order.append(book["slug"])
-        write_index(order, failed, skipped)
-        time.sleep(0.12)
-    write_index(order, failed, skipped)
+        built.add(book["slug"])
+        fresh += 1
+    write_index(built, failed)
+    bank = sum(1 for b in BOOKS if b["kind"] == "bank" and b["slug"] in built)
+    daily = sum(1 for b in BOOKS if b["kind"] == "daily" and b["slug"] in built)
     print(
-        f"wrote {len(order)} puzzles, "
-        f"{len(failed)} failed, {len(skipped)} excluded",
+        f"built {len(built)}/{len(BOOKS)} puzzles "
+        f"(bank {bank}, dailies {daily}), {len(failed)} failed this run",
         flush=True,
     )
-
-
-# Mirrors stripEdition/fold in js/match.js. Gutenberg ships the same book many
-# times over ("The Adventures of Tom Sawyer, Part 1..8"); the answer is
-# identical every time, so only one of them earns a slot.
-EDITION_TAILS = [
-    re.compile(r"\s*[([](?:complete|unabridged|illustrated|annotated)[^)\]]*[)\]]\s*$", re.I),
-    re.compile(r"\s*\(\s*\d{4}\s*(?:[-–—]\s*\d{4}\s*)?\)\s*$"),
-    re.compile(r"(?:[—–,.;:]|\s-|\s)\s*(?:complete|unabridged|illustrated|annotated)\s*\.?\s*$", re.I),
-    re.compile(r"[—–,.;:]\s*[^,.;:—–]*\bedition\b\s*\.?\s*$", re.I),
-    re.compile(r"(?:[—–,.;:]|\s-)\s*(?:vol(?:ume|s?\.)?|pt\.?|parts?|chapters?)\s+[\divxlcdmIVXLCDM][\s\S]*$", re.I),
-]
-
-
-def strip_edition(title: str) -> str:
-    t = (title or "").strip()
-    for _ in range(4):
-        before = t
-        for rx in EDITION_TAILS:
-            t = rx.sub("", t).strip()
-        if t == before:
-            break
-        t = re.sub(r"[\s.,;:—–-]+$", "", t).strip()
-    return t or (title or "").strip()
-
-
-def book_key(title: str) -> str:
-    t = unicodedata.normalize("NFD", strip_edition(title).lower())
-    t = "".join(c for c in t if not unicodedata.combining(c))
-    t = re.sub(r"&", " and ", t)
-    t = re.sub(r"[^a-z0-9\s]", " ", t)
-    t = re.sub(r"\s+", " ", t).strip()
-    while True:
-        m = re.match(r"^(the|a|an)\s+", t)
-        if not m:
-            break
-        t = t[m.end():]
-    return t
-
-
-def dedupe_books(slugs):
-    """One slot per distinct book, curated edition winning."""
-    best = {}
-    for slug in slugs:
-        f = OUT / f"{slug}.json"
-        if not f.exists():
-            continue
-        key = book_key(json.loads(f.read_text(encoding="utf-8")).get("title", slug))
-        # b* files are hand-checked openings; prefer them over the g* dumps.
-        rank = (0 if slug.startswith("b") else 1, slug)
-        if key not in best or rank < best[key][0]:
-            best[key] = (rank, slug)
-    keep = {slug for _, slug in best.values()}
-    return [s for s in slugs if s in keep]
+    if failed:
+        (HERE / "build_failures.json").write_text(
+            json.dumps(failed, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        print(f"failures written to tools/build_failures.json", flush=True)
 
 
 def play_order(slugs):
@@ -576,22 +708,30 @@ def play_order(slugs):
     return sorted(slugs, key=lambda s: hashlib.sha256((ORDER_SALT + s).encode()).hexdigest())
 
 
-def write_index(order, failed, skipped=()) -> None:
-    seen = []
-    for s in order:
-        if s not in seen:
-            seen.append(s)
-    shuffled = play_order(dedupe_books(seen))
-    presets = min(PRESET_COUNT, len(shuffled))
+def write_index(built, failed) -> None:
+    """Bank first at #0..#N-1, then the dailies most-famous-first from #N.
+
+    The bank is scrambled so browsing it carries no ranking signal. The daily
+    run is deliberately *not* scrambled: day 1 should be Pride and Prejudice,
+    not whatever a hash puts first.
+    """
+    bank = play_order([b["slug"] for b in BOOKS if b["kind"] == "bank" and b["slug"] in built])
+    dailies = [
+        b["slug"]
+        for b in sorted(
+            (b for b in BOOKS if b["kind"] == "daily" and b["slug"] in built),
+            key=lambda b: b["rank"],
+        )
+    ]
+    order = bank + dailies
     index = {
         "startDate": "2026-09-09",
-        "dailyStartIndex": 600,
-        "presetCount": presets,
-        "dailyPoolCount": len(shuffled) - presets,
-        "order": shuffled,
-        "count": len(shuffled),
+        "dailyStartIndex": len(bank),
+        "presetCount": len(bank),
+        "dailyPoolCount": len(dailies),
+        "order": order,
+        "count": len(order),
         "failed": failed[:50],
-        "excluded": list(skipped),
     }
     (OUT / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
 
