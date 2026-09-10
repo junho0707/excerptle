@@ -13,6 +13,14 @@ const passwordHash = async (password, salt) => {
   const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: new TextEncoder().encode(salt), iterations: 310000, hash: 'SHA-256' }, material, 256);
   return Array.from(new Uint8Array(bits), b => b.toString(16).padStart(2, '0')).join('');
 };
+// Hex digests only, so a character-wise compare is enough: no early return on
+// the first differing byte.
+const sameSecret = (a, b) => {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+};
 const safeName = value => String(value || '').trim().replace(/\s+/g, ' ').slice(0, 24) || 'Reader';
 
 async function body(req) {
@@ -46,7 +54,7 @@ async function session(env, email, name, provider, sub = null, ctx = null) {
   const token = Array.from(crypto.getRandomValues(new Uint8Array(32)), b => b.toString(16).padStart(2, '0')).join('');
   const expiresAt = now() + 30 * 86400;
   await query(env, 'INSERT INTO sessions VALUES(?,?,?)', await hash(token), u.id, expiresAt).run();
-  return json({ uid: u.id, email: u.email, name: u.name, provider, token, expiresAt });
+  return json({ uid: u.id, email: u.email, name: u.name, provider, token, expiresAt, hasPassword: !!u.password_hash });
 }
 async function auth(req, env, path, ctx) {
   const d = await body(req);
@@ -65,6 +73,23 @@ async function auth(req, env, path, ctx) {
   }
   const email = String(d.email || '').trim().toLowerCase();
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fail(400, 'Enter a valid email.');
+  // Asked before anything is sent, so a returning account with a password is
+  // never made to wait on an email. It does tell a caller whether an address
+  // has an account here; the rate limit is what keeps that from being a list.
+  if (path === '/auth/check') {
+    await limit(env, `check:${req.headers.get('CF-Connecting-IP') || 'local'}`, 20, 600);
+    const account = await query(env, 'SELECT password_hash, google_sub FROM users WHERE email=?', email).first();
+    return json({ account: !!account, hasPassword: !!account?.password_hash, google: !!account?.google_sub });
+  }
+  if (path === '/auth/login') {
+    await limit(env, `login:${await hash(email)}`, 10, 600);
+    const u = await query(env, 'SELECT * FROM users WHERE email=?', email).first();
+    // Hash even when there is no account, so a missing address and a wrong
+    // password cost the same and answer the same.
+    const candidate = await passwordHash(String(d.password || ''), u?.password_salt || 'no-such-account');
+    if (!u?.password_hash || !sameSecret(candidate, u.password_hash)) fail(401, 'Wrong email or password.');
+    return session(env, u.email, u.name, 'password', null, ctx);
+  }
   if (path === '/auth/email') {
     if (!env.RESEND_API_KEY || !env.OTP_SECRET) fail(503, 'Email sign-in is temporarily unavailable. Please use Google.');
     await limit(env, `mail:${await hash(email)}`, 3, 600);
@@ -92,12 +117,24 @@ async function auth(req, env, path, ctx) {
 async function setPassword(req, env) {
   const u = await user(req, env);
   const d = await body(req);
+  await limit(env, `password:${u.id}`, 5, 600);
+  // A session token lives in localStorage for 30 days; replacing a password
+  // that already exists has to cost more than holding one.
+  if (u.password_hash) {
+    const current = await passwordHash(String(d.current || ''), u.password_salt);
+    if (!sameSecret(current, u.password_hash)) fail(401, 'Current password is wrong.');
+  }
+  if (d.remove === true) {
+    if (!u.password_hash) fail(400, 'No password to remove.');
+    await query(env, 'UPDATE users SET password_hash=NULL,password_salt=NULL WHERE id=?', u.id).run();
+    return json({ ok: true, hasPassword: false });
+  }
   const password = String(d.password || '');
   if (password.length < 8 || password.length > 256) fail(400, 'Password must be 8 to 256 characters.');
-  await limit(env, `password:${u.id}`, 5, 600);
+  if (password.toLowerCase() === u.email.toLowerCase()) fail(400, 'Pick a password that is not your email address.');
   const salt = crypto.randomUUID();
   await query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?', await passwordHash(password, salt), salt, u.id).run();
-  return json({ ok: true });
+  return json({ ok: true, hasPassword: true });
 }
 async function scores(req, env) {
   if (req.method === 'GET') {
@@ -261,7 +298,7 @@ export default {
       if (req.method === 'OPTIONS') response = new Response(null, { status: 204 });
       else if (path === '/health' && req.method === 'GET') response = json({ ok: true });
       else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env, ctx);
-      else if (['/auth/email', '/auth/verify', '/auth/google'].includes(path) && req.method === 'POST') response = await auth(req, env, path, ctx);
+      else if (['/auth/email', '/auth/verify', '/auth/google', '/auth/check', '/auth/login'].includes(path) && req.method === 'POST') response = await auth(req, env, path, ctx);
       else if (path === '/auth/logout' && req.method === 'POST') {
         await user(req, env);
         await query(env, 'DELETE FROM sessions WHERE token_hash=?', await hash(req.headers.get('Authorization').slice(7))).run();

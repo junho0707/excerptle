@@ -1151,6 +1151,10 @@ footer a { color: inherit; }
 }
 #screen-settings .row:first-of-type { margin-top: 1.2rem; }
 #screen-settings #auth-status { margin: 0; }
+#password-box:not(:empty) { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+#password-box .pw-title { margin: 0 0 0.3rem; font-size: 1.05rem; }
+#password-box .lede { margin: 0 0 0.8rem; }
+#password-box .btn { justify-self: start; }
 .news-date {
   margin: 0.15rem 0 0.5rem;
   font-size: 0.72rem;

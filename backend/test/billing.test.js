@@ -62,6 +62,47 @@ test('Google tokens issued to another app are rejected', async () => {
   try { assert.equal((await request('/auth/google',{accessToken:'fake'})).status,401); }
   finally { globalThis.fetch = originalFetch; }
 });
+test('an email is checked before anything is sent, and a password signs in without one', async () => {
+  await env.DB.prepare('DELETE FROM rate_limits').run();
+  const email = 'pw@example.com';
+  const as = (tok, data) => worker.fetch(new Request('https://api.example/me/password', { method: 'POST', headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${tok}`, 'Content-Type': 'application/json' }, body: JSON.stringify(data) }), env);
+  const check = async () => (await request('/auth/check', { email })).json();
+
+  assert.deepEqual(await check(), { account: false, hasPassword: false, google: false });
+  await env.DB.prepare('INSERT INTO email_codes VALUES(?,?,?,0)').bind(email, digest(`${env.OTP_SECRET}:${email}:111222`), now()+600).run();
+  const first = await (await request('/auth/verify', { email, code: '111222' })).json();
+  assert.equal(first.hasPassword, false);
+  assert.deepEqual(await check(), { account: true, hasPassword: false, google: false });
+
+  // No password yet: the only way in is still a code.
+  assert.equal((await request('/auth/login', { email, password: 'whatever12' })).status, 401);
+  assert.equal((await as(first.token, { password: 'short' })).status, 400);
+  assert.equal((await as(first.token, { password: email })).status, 400);
+  assert.equal((await as(first.token, { password: 'correct horse battery' })).status, 200);
+  assert.equal((await check()).hasPassword, true);
+
+  assert.equal((await request('/auth/login', { email, password: 'wrong password!!' })).status, 401);
+  const signedIn = await (await request('/auth/login', { email, password: 'correct horse battery' })).json();
+  assert.equal(signedIn.provider, 'password');
+  assert.equal(signedIn.hasPassword, true);
+  assert.equal(signedIn.token.length, 64);
+  assert.ok(await env.DB.prepare('SELECT * FROM sessions WHERE token_hash=?').bind(digest(signedIn.token)).first());
+
+  // Five password writes per ten minutes is the real cap; this one test walks
+  // through more than that on purpose.
+  await env.DB.prepare('DELETE FROM rate_limits').run();
+
+  // A stolen session token must not be enough to replace a password.
+  assert.equal((await as(signedIn.token, { password: 'another good one' })).status, 401);
+  assert.equal((await as(signedIn.token, { current: 'nope nope nope', password: 'another good one' })).status, 401);
+  assert.equal((await as(signedIn.token, { current: 'correct horse battery', password: 'another good one' })).status, 200);
+  assert.equal((await request('/auth/login', { email, password: 'another good one' })).status, 200);
+
+  // Removing it drops them back to email codes.
+  assert.equal((await as(signedIn.token, { current: 'another good one', remove: true })).status, 200);
+  assert.equal((await request('/auth/login', { email, password: 'another good one' })).status, 401);
+  assert.equal((await check()).hasPassword, false);
+});
 test('password creation, scores, and progress are scoped to a verified session', async () => {
   assert.equal((await request('/auth/password', { email: 'password@example.com', password: 'a secure password' })).status, 404);
   const authRequest = (path, data, method = 'POST') => worker.fetch(new Request(`https://api.example${path}`, { method, headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(data) }), env);

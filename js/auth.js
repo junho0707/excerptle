@@ -29,6 +29,25 @@ window.BookleAuth = (() => {
     localStorage.setItem(USERS, JSON.stringify(u));
   }
 
+  // Both names are set by js/config.js; reading only one of them is how
+  // sendCode used to fall through to the demo path on a live site.
+  function api() {
+    return String(window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
+  }
+  async function post(path, body, token) {
+    const res = await fetch(`${api()}${path}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw Object.assign(new Error(data.error || "Something went wrong. Try again."), { status: res.status });
+    return data;
+  }
+
   function validEmail(s) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
   }
@@ -38,16 +57,41 @@ window.BookleAuth = (() => {
     return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
   }
 
+  /* Which of the three doors this address goes through: a new account (code),
+     a returning one with a password (password), or a returning one without
+     (code again). Asked before any mail is sent. */
+  async function checkEmail(email) {
+    if (api()) {
+      try {
+        const data = await post("/auth/check", { email });
+        return { account: !!data.account, hasPassword: !!data.hasPassword };
+      } catch (e) {
+        // An API deployed before this frontend has no /auth/check. Sending a
+        // code still works, so fall back to it rather than locking the door.
+        if (e.status !== 404) throw e;
+        return { account: false, hasPassword: false };
+      }
+    }
+    const rec = users()[String(email).toLowerCase()];
+    return { account: !!rec, hasPassword: !!rec?.passwordHash };
+  }
+
+  async function signInWithPassword(email, password) {
+    if (!password) throw new Error("Enter your password.");
+    if (api()) {
+      finish(await post("/auth/login", { email, password }));
+      return session();
+    }
+    const rec = users()[String(email).toLowerCase()];
+    const digest = await sha256(`${String(email).toLowerCase()}::${password}`);
+    if (!rec?.passwordHash || rec.passwordHash !== digest) throw new Error("Wrong email or password.");
+    finish({ email, name: email.split("@")[0], provider: "password", uid: email.toLowerCase(), hasPassword: true });
+    return session();
+  }
+
   async function sendCode(email) {
-    const api = window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/email`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Could not send a code.");
-      const data = await res.json().catch(() => ({}));
+    if (api()) {
+      const data = await post("/auth/email", { email });
       return { hasPassword: !!data.hasPassword, demoCode: null };
     }
     const code = String(Math.floor(100000 + Math.random() * 900000));
@@ -59,16 +103,8 @@ window.BookleAuth = (() => {
   }
 
   async function verifyCode(email, code) {
-    const api = window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/verify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code }),
-      });
-      if (!res.ok) throw new Error("That code didn’t work.");
-      const data = await res.json();
-      finish(data);
+    if (api()) {
+      finish(await post("/auth/verify", { email, code }));
       return;
     }
     const pending = JSON.parse(sessionStorage.getItem(PENDING) || "null");
@@ -77,30 +113,53 @@ window.BookleAuth = (() => {
     }
     if (String(code).trim() !== String(pending.code)) throw new Error("That code didn’t work.");
     sessionStorage.removeItem(PENDING);
-    finish({ email, name: email.split("@")[0], provider: "email", uid: email.toLowerCase() });
+    const rec = users()[email.toLowerCase()];
+    finish({ email, name: email.split("@")[0], provider: "email", uid: email.toLowerCase(), hasPassword: !!rec?.passwordHash });
   }
 
-  async function setPassword(password) {
+  function hasPassword() {
+    return !!session()?.hasPassword;
+  }
+  // The session carries it, so Settings can tell "set" from "change" without
+  // another round trip.
+  function markPassword(has) {
+    const s = session();
+    if (s) setSession({ ...s, hasPassword: has });
+  }
+
+  async function setPassword(password, current) {
     if (!password || password.length < 8) throw new Error("Password must be at least 8 characters.");
-    const api = window.BOOKLE_API;
-    if (api) {
-      const s = session();
-      if (!s?.token) throw new Error("Verify your email first.");
-      const res = await fetch(`${api.replace(/\/$/, "")}/me/password`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${s.token}` },
-        body: JSON.stringify({ password }),
-      });
-      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Could not save password.");
+    const s = session();
+    if (!s) throw new Error("Verify your email first.");
+    if (api()) {
+      await post("/me/password", { password, ...(current ? { current } : {}) }, s.token);
+      markPassword(true);
       return;
     }
-    const email = session()?.email;
-    if (!email) throw new Error("Verify your email first.");
-    const hash = await sha256(`${email.toLowerCase()}::${password}`);
+    const email = s.email.toLowerCase();
     const all = users();
-    const rec = all[email.toLowerCase()];
-    all[email.toLowerCase()] = { passwordHash: hash, provider: "email" };
+    if (all[email]?.passwordHash && all[email].passwordHash !== await sha256(`${email}::${current || ""}`)) {
+      throw new Error("Current password is wrong.");
+    }
+    all[email] = { ...all[email], passwordHash: await sha256(`${email}::${password}`), provider: "email" };
     saveUsers(all);
+    markPassword(true);
+  }
+
+  async function removePassword(current) {
+    const s = session();
+    if (!s) throw new Error("Sign in first.");
+    if (api()) {
+      await post("/me/password", { remove: true, current }, s.token);
+      markPassword(false);
+      return;
+    }
+    const email = s.email.toLowerCase();
+    const all = users();
+    if (all[email]?.passwordHash !== await sha256(`${email}::${current || ""}`)) throw new Error("Current password is wrong.");
+    delete all[email].passwordHash;
+    saveUsers(all);
+    markPassword(false);
   }
 
   function finish(s) {
@@ -111,8 +170,7 @@ window.BookleAuth = (() => {
 
   function signOut() {
     const s = session();
-    const api = window.EXCERPTLE_API || window.BOOKLE_API;
-    if (api && s?.token) fetch(`${api.replace(/\/$/, "")}/auth/logout`, {
+    if (api() && s?.token) fetch(`${api()}/auth/logout`, {
       method: "POST", headers: { Authorization: `Bearer ${s.token}` }, keepalive: true,
     }).catch(() => {});
     setSession(null);
@@ -193,15 +251,8 @@ window.BookleAuth = (() => {
   }
 
   async function googleProfile(token) {
-    const api = window.EXCERPTLE_API || window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/google`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accessToken: token }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Google sign-in failed.");
-      finish(data);
+    if (api()) {
+      finish(await post("/auth/google", { accessToken: token }));
       return session();
     }
     const res = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
@@ -223,9 +274,13 @@ window.BookleAuth = (() => {
     session,
     signOut,
     validEmail,
+    checkEmail,
     sendCode,
     verifyCode,
+    signInWithPassword,
+    hasPassword,
     setPassword,
+    removePassword,
     googleSignIn,
   };
 })();
