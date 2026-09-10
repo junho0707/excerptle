@@ -1093,6 +1093,7 @@
           <input id="auth-newpass" type="password" autocomplete="new-password" placeholder="New password (8+ characters)">
           <button class="btn full" type="button" data-act="auth-set-password">Save password</button>
         </div>
+        <p class="lede pw-note">Your password is scrambled on this device before it is sent. That takes a moment on an older phone.</p>
         <p class="auth-err" id="auth-err"></p>
         <p><button class="btn ghost" type="button" data-act="close-modal">Not now</button></p>
         <p class="lede">You can always set one later under Settings.</p>
@@ -2000,7 +2001,11 @@
         // Ask first: a returning account with a password should never be made
         // to wait on an email that it does not need.
         const who = await window.BookleAuth.checkEmail(email);
-        if (who.account && who.hasPassword) return openAuth("password", email);
+        if (who.account && who.hasPassword) {
+          // Carried across so the password screen doesn't ask a second time.
+          window._bookleKdf = who.kdf;
+          return openAuth("password", email);
+        }
         openAuth("verify", email, await window.BookleAuth.sendCode(email));
       } catch (err) {
         authError(err.message || String(err));
@@ -2010,9 +2015,9 @@
     }
     if (act === "auth-password") {
       const btn = e.target.closest("[data-act]");
-      const busy = authBusy(btn, "Signing in…");
+      const busy = authBusy(btn, "Checking password…");
       try {
-        await window.BookleAuth.signInWithPassword(window._bookleEmail, $("#auth-pass")?.value || "");
+        await window.BookleAuth.signInWithPassword(window._bookleEmail, $("#auth-pass")?.value || "", window._bookleKdf);
         closeModal();
         paintAuth();
       } catch (err) {
@@ -2036,7 +2041,7 @@
     }
     if (act === "auth-set-password") {
       const btn = e.target.closest("[data-act]");
-      const busy = authBusy(btn, "Saving…");
+      const busy = authBusy(btn, "Securing…");
       try {
         await window.BookleAuth.setPassword($("#auth-newpass")?.value || "");
         closeModal();
@@ -2079,7 +2084,7 @@
       const current = $("#pw-current")?.value || "";
       if (act === "pw-remove" && !confirm("Remove your password? You'll sign in with an emailed code instead.")) return;
       if (err) err.textContent = "";
-      const busy = authBusy(btn, "Saving…");
+      const busy = authBusy(btn, "Securing…");
       try {
         if (act === "pw-remove") await window.BookleAuth.removePassword(current);
         else await window.BookleAuth.setPassword($("#pw-new")?.value || "", current);

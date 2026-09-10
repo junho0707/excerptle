@@ -1155,6 +1155,8 @@ footer a { color: inherit; }
 #password-box .pw-title { margin: 0 0 0.3rem; font-size: 1.05rem; }
 #password-box .lede { margin: 0 0 0.8rem; }
 #password-box .btn { justify-self: start; }
+.pw-note { font-size: 0.82rem; color: var(--ink-soft); }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
 .news-date {
   margin: 0.15rem 0 0.5rem;
   font-size: 0.72rem;

@@ -8,10 +8,29 @@ const hash = async value => Array.from(new Uint8Array(await crypto.subtle.digest
 const query = (env, sql, ...args) => env.DB.prepare(sql).bind(...args);
 const stripe = env => new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: '2025-08-27.basil', httpClient: Stripe.createFetchHttpClient(), maxNetworkRetries: 2 });
 const origins = env => (env.ALLOWED_ORIGINS || '').split(',');
-const passwordHash = async (password, salt) => {
-  const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: new TextEncoder().encode(salt), iterations: 310000, hash: 'SHA-256' }, material, 256);
-  return Array.from(new Uint8Array(bits), b => b.toString(16).padStart(2, '0')).join('');
+/* Passwords are stretched in the browser, not here.
+ *
+ * PBKDF2 at a defensible iteration count costs ~73ms of CPU; a Workers free
+ * plan invocation gets 10ms, so hashing server-side does not run at all — it
+ * blows the budget and the request dies as a 503. The client therefore does
+ * the stretching (its own CPU, free to us) and sends the derived key, which
+ * this Worker treats exactly as it would a password: never stored as sent,
+ * only as a fast digest of it. That last step is what stops a leaked database
+ * from being a pile of ready-to-use credentials.
+ *
+ * The floor below is enforced here rather than trusted from the client, or a
+ * caller would simply announce that one iteration was plenty. Salt and count
+ * are public — they travel back to the browser at sign-in — so the security
+ * rests on the iteration count, not on hiding either.
+ */
+const KDF = { iterations: 600000, minIterations: 600000, maxIterations: 5000000, saltBytes: 16 };
+const isHex = (value, chars) => typeof value === 'string' && value.length === chars && /^[0-9a-f]+$/.test(value);
+// Cheap by design: the derived key already carries the expensive work, and a
+// per-user salt is what keeps one rainbow table from covering everybody.
+const verifier = (key, salt) => hash(`excerptle-pwd-v2:${salt}:${key}`);
+const kdfParams = row => {
+  const [iterations, salt] = String(row?.password_salt || '').split(':');
+  return row?.password_hash && salt ? { salt, iterations: Number(iterations) } : null;
 };
 // Hex digests only, so a character-wise compare is enough: no early return on
 // the first differing byte.
@@ -78,16 +97,18 @@ async function auth(req, env, path, ctx) {
   // has an account here; the rate limit is what keeps that from being a list.
   if (path === '/auth/check') {
     await limit(env, `check:${req.headers.get('CF-Connecting-IP') || 'local'}`, 20, 600);
-    const account = await query(env, 'SELECT password_hash, google_sub FROM users WHERE email=?', email).first();
-    return json({ account: !!account, hasPassword: !!account?.password_hash, google: !!account?.google_sub });
+    const account = await query(env, 'SELECT password_hash, password_salt, google_sub FROM users WHERE email=?', email).first();
+    const kdf = kdfParams(account);
+    return json({ account: !!account, hasPassword: !!kdf, google: !!account?.google_sub, ...(kdf ? { kdf } : {}) });
   }
   if (path === '/auth/login') {
     await limit(env, `login:${await hash(email)}`, 10, 600);
     const u = await query(env, 'SELECT * FROM users WHERE email=?', email).first();
-    // Hash even when there is no account, so a missing address and a wrong
-    // password cost the same and answer the same.
-    const candidate = await passwordHash(String(d.password || ''), u?.password_salt || 'no-such-account');
-    if (!u?.password_hash || !sameSecret(candidate, u.password_hash)) fail(401, 'Wrong email or password.');
+    const kdf = kdfParams(u);
+    // Computed even with no account to compare against, so a missing address
+    // and a wrong password cost the same and answer the same.
+    const candidate = await verifier(isHex(d.key, 64) ? d.key : 'x', kdf?.salt || 'no-such-account');
+    if (!kdf || !sameSecret(candidate, u.password_hash)) fail(401, 'Wrong email or password.');
     return session(env, u.email, u.name, 'password', null, ctx);
   }
   if (path === '/auth/email') {
@@ -118,22 +139,26 @@ async function setPassword(req, env) {
   const u = await user(req, env);
   const d = await body(req);
   await limit(env, `password:${u.id}`, 5, 600);
-  // A session token lives in localStorage for 30 days; replacing a password
-  // that already exists has to cost more than holding one.
-  if (u.password_hash) {
-    const current = await passwordHash(String(d.current || ''), u.password_salt);
-    if (!sameSecret(current, u.password_hash)) fail(401, 'Current password is wrong.');
+  const existing = kdfParams(u);
+  // A session token lives in localStorage for thirty days; replacing a
+  // password that already exists has to cost more than holding one.
+  if (existing && !sameSecret(await verifier(isHex(d.currentKey, 64) ? d.currentKey : 'x', existing.salt), u.password_hash)) {
+    fail(401, 'Current password is wrong.');
   }
   if (d.remove === true) {
-    if (!u.password_hash) fail(400, 'No password to remove.');
+    if (!existing) fail(400, 'No password to remove.');
     await query(env, 'UPDATE users SET password_hash=NULL,password_salt=NULL WHERE id=?', u.id).run();
     return json({ ok: true, hasPassword: false });
   }
-  const password = String(d.password || '');
-  if (password.length < 8 || password.length > 256) fail(400, 'Password must be 8 to 256 characters.');
-  if (password.toLowerCase() === u.email.toLowerCase()) fail(400, 'Pick a password that is not your email address.');
-  const salt = crypto.randomUUID();
-  await query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?', await passwordHash(password, salt), salt, u.id).run();
+  const iterations = Number(d.iterations);
+  if (!isHex(d.key, 64)) fail(400, 'Could not read that password. Please try again.');
+  if (!isHex(d.salt, KDF.saltBytes * 2)) fail(400, 'Could not read that password. Please try again.');
+  // The whole scheme rests on this number, and it arrives from the browser.
+  if (!Number.isInteger(iterations) || iterations < KDF.minIterations || iterations > KDF.maxIterations) {
+    fail(400, 'Unsupported password settings. Please reload the page.');
+  }
+  await query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?',
+    await verifier(d.key, d.salt), `${iterations}:${d.salt}`, u.id).run();
   return json({ ok: true, hasPassword: true });
 }
 async function scores(req, env) {
@@ -297,6 +322,9 @@ export default {
       if (origin && !origins(env).includes(origin)) fail(403, 'Origin not allowed.');
       if (req.method === 'OPTIONS') response = new Response(null, { status: 204 });
       else if (path === '/health' && req.method === 'GET') response = json({ ok: true });
+      // Read by the browser before deriving a new password, so the cost can be
+      // raised for everyone from here without shipping a new frontend.
+      else if (path === '/auth/kdf' && req.method === 'GET') response = json({ iterations: KDF.iterations, saltBytes: KDF.saltBytes });
       else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env, ctx);
       else if (['/auth/email', '/auth/verify', '/auth/google', '/auth/check', '/auth/login'].includes(path) && req.method === 'POST') response = await auth(req, env, path, ctx);
       else if (path === '/auth/logout' && req.method === 'POST') {

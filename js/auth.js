@@ -52,6 +52,42 @@ window.BookleAuth = (() => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
   }
 
+  /* The password is stretched here, in the browser, and only the derived key
+     ever leaves. Not a flourish: a Workers free-plan request gets 10ms of CPU
+     and PBKDF2 at a defensible cost needs ~73ms, so stretching server-side
+     does not run at all. The work lands on a device with CPU to spare, and an
+     attacker holding a copy of the database still has to pay it per guess.
+     The server picks the iteration count and enforces a floor; a client that
+     asked for less would only be describing its own account. */
+  const KDF_FALLBACK = { iterations: 600000, saltBytes: 16 };
+  let kdfPromise = null;
+  function kdfParams() {
+    if (!api()) return Promise.resolve(KDF_FALLBACK);
+    kdfPromise = kdfPromise || fetch(`${api()}/auth/kdf`)
+      .then((r) => (r.ok ? r.json() : KDF_FALLBACK))
+      .catch(() => KDF_FALLBACK);
+    return kdfPromise.then((p) => ({
+      iterations: Number(p?.iterations) || KDF_FALLBACK.iterations,
+      saltBytes: Number(p?.saltBytes) || KDF_FALLBACK.saltBytes,
+    }));
+  }
+
+  const hex = (bytes) => [...new Uint8Array(bytes)].map((b) => b.toString(16).padStart(2, "0")).join("");
+
+  async function deriveKey(password, salt, iterations) {
+    if (!salt || !iterations) throw new Error("Could not read the password settings. Reload and try again.");
+    const material = await crypto.subtle.importKey(
+      "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]
+    );
+    // The email is not in here: the salt already makes this account-specific,
+    // and folding it in would break every stored password on an email change.
+    const bits = await crypto.subtle.deriveBits(
+      { name: "PBKDF2", salt: new TextEncoder().encode(salt), iterations, hash: "SHA-256" },
+      material, 256
+    );
+    return hex(bits);
+  }
+
   async function sha256(s) {
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
     return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -64,7 +100,7 @@ window.BookleAuth = (() => {
     if (api()) {
       try {
         const data = await post("/auth/check", { email });
-        return { account: !!data.account, hasPassword: !!data.hasPassword };
+        return { account: !!data.account, hasPassword: !!data.hasPassword, kdf: data.kdf || null };
       } catch (e) {
         // An API deployed before this frontend has no /auth/check. Sending a
         // code still works, so fall back to it rather than locking the door.
@@ -73,18 +109,24 @@ window.BookleAuth = (() => {
       }
     }
     const rec = users()[String(email).toLowerCase()];
-    return { account: !!rec, hasPassword: !!rec?.passwordHash };
+    return { account: !!rec, hasPassword: !!rec?.passwordHash, kdf: rec?.kdf || null };
   }
 
-  async function signInWithPassword(email, password) {
+  async function signInWithPassword(email, password, kdf) {
     if (!password) throw new Error("Enter your password.");
+    // Handed down from the checkEmail that sent us to the password screen;
+    // asked for again only if this was called cold.
+    const params = kdf || (await checkEmail(email)).kdf;
+    if (!params) throw new Error("Wrong email or password.");
+    const key = await deriveKey(password, params.salt, params.iterations);
     if (api()) {
-      finish(await post("/auth/login", { email, password }));
+      finish(await post("/auth/login", { email, key }));
       return session();
     }
     const rec = users()[String(email).toLowerCase()];
-    const digest = await sha256(`${String(email).toLowerCase()}::${password}`);
-    if (!rec?.passwordHash || rec.passwordHash !== digest) throw new Error("Wrong email or password.");
+    if (!rec?.passwordHash || rec.passwordHash !== await sha256(`v2:${params.salt}:${key}`)) {
+      throw new Error("Wrong email or password.");
+    }
     finish({ email, name: email.split("@")[0], provider: "password", uid: email.toLowerCase(), hasPassword: true });
     return session();
   }
@@ -127,21 +169,34 @@ window.BookleAuth = (() => {
     if (s) setSession({ ...s, hasPassword: has });
   }
 
+  // Replacing or removing a password means proving the current one, which
+  // means deriving it against the salt it was made with, not the new one.
+  async function currentKey(email, current) {
+    const params = (await checkEmail(email)).kdf;
+    if (!params) return null;
+    return deriveKey(current || "", params.salt, params.iterations);
+  }
+
   async function setPassword(password, current) {
     if (!password || password.length < 8) throw new Error("Password must be at least 8 characters.");
     const s = session();
     if (!s) throw new Error("Verify your email first.");
+    const email = s.email.toLowerCase();
+    const { iterations, saltBytes } = await kdfParams();
+    const salt = hex(crypto.getRandomValues(new Uint8Array(saltBytes)));
+    const key = await deriveKey(password, salt, iterations);
+    const proof = await currentKey(email, current);
     if (api()) {
-      await post("/me/password", { password, ...(current ? { current } : {}) }, s.token);
+      await post("/me/password", { key, salt, iterations, ...(proof ? { currentKey: proof } : {}) }, s.token);
       markPassword(true);
       return;
     }
-    const email = s.email.toLowerCase();
     const all = users();
-    if (all[email]?.passwordHash && all[email].passwordHash !== await sha256(`${email}::${current || ""}`)) {
+    const rec = all[email];
+    if (rec?.passwordHash && rec.passwordHash !== await sha256(`v2:${rec.kdf?.salt}:${proof}`)) {
       throw new Error("Current password is wrong.");
     }
-    all[email] = { ...all[email], passwordHash: await sha256(`${email}::${password}`), provider: "email" };
+    all[email] = { ...rec, passwordHash: await sha256(`v2:${salt}:${key}`), kdf: { salt, iterations }, provider: "email" };
     saveUsers(all);
     markPassword(true);
   }
@@ -149,15 +204,20 @@ window.BookleAuth = (() => {
   async function removePassword(current) {
     const s = session();
     if (!s) throw new Error("Sign in first.");
+    const email = s.email.toLowerCase();
+    const proof = await currentKey(email, current);
     if (api()) {
-      await post("/me/password", { remove: true, current }, s.token);
+      await post("/me/password", { remove: true, currentKey: proof }, s.token);
       markPassword(false);
       return;
     }
-    const email = s.email.toLowerCase();
     const all = users();
-    if (all[email]?.passwordHash !== await sha256(`${email}::${current || ""}`)) throw new Error("Current password is wrong.");
+    const rec = all[email];
+    if (!rec?.passwordHash || rec.passwordHash !== await sha256(`v2:${rec.kdf.salt}:${proof}`)) {
+      throw new Error("Current password is wrong.");
+    }
     delete all[email].passwordHash;
+    delete all[email].kdf;
     saveUsers(all);
     markPassword(false);
   }

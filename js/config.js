@@ -5,6 +5,16 @@ window.BOOKLE_GOOGLE_CLIENT_ID = window.EXCERPTLE_GOOGLE_CLIENT_ID;
 window.EXCERPTLE_API = "https://excerptle-api.winter-glade-cbab.workers.dev";
 window.BOOKLE_API = window.EXCERPTLE_API;
 
+/* Local testing without a backend: http://localhost:8765/?demo=1 drops the API
+   and runs js/auth.js's localStorage-only mode, which prints the sign-in code
+   on screen instead of mailing it. Gated on hostname, so it cannot fire on the
+   live site however the query string is dressed up. */
+if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+    && new URLSearchParams(location.search).get("demo") === "1") {
+  window.EXCERPTLE_API = "";
+  window.BOOKLE_API = "";
+}
+
 /* Ads. Nothing is requested from Google until `enabled` is true AND both IDs
    are filled in, so this file is safe to ship before AdSense approves the site.
    On approval: paste the pub ID + the display unit's slot ID, flip `enabled`,

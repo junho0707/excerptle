@@ -1,7 +1,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
+import { createHash, pbkdf2Sync } from 'node:crypto';
 import { Miniflare } from 'miniflare';
 import Stripe from 'stripe';
 import worker from '../src/worker.js';
@@ -9,6 +9,10 @@ import worker from '../src/worker.js';
 let mf, env;
 const originalFetch = globalThis.fetch;
 const digest = s => createHash('sha256').update(s).digest('hex');
+// What the browser sends: PBKDF2 output, hex. The Worker never sees the password.
+const ITERATIONS = 600000;
+const derive = (password, salt) => pbkdf2Sync(password, salt, ITERATIONS, 32, 'sha256').toString('hex');
+const verifier = (key, salt) => digest(`excerptle-pwd-v2:${salt}:${key}`);
 const token = 'a'.repeat(64);
 const now = () => Math.floor(Date.now() / 1000);
 async function request(path, data, auth = false, origin = 'https://excerptle.io') {
@@ -65,24 +69,38 @@ test('Google tokens issued to another app are rejected', async () => {
 test('an email is checked before anything is sent, and a password signs in without one', async () => {
   await env.DB.prepare('DELETE FROM rate_limits').run();
   const email = 'pw@example.com';
+  const salt = 'a'.repeat(32), salt2 = 'b'.repeat(32);
   const as = (tok, data) => worker.fetch(new Request('https://api.example/me/password', { method: 'POST', headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${tok}`, 'Content-Type': 'application/json' }, body: JSON.stringify(data) }), env);
   const check = async () => (await request('/auth/check', { email })).json();
+  const key = derive('correct horse battery', salt);
 
   assert.deepEqual(await check(), { account: false, hasPassword: false, google: false });
   await env.DB.prepare('INSERT INTO email_codes VALUES(?,?,?,0)').bind(email, digest(`${env.OTP_SECRET}:${email}:111222`), now()+600).run();
   const first = await (await request('/auth/verify', { email, code: '111222' })).json();
   assert.equal(first.hasPassword, false);
-  assert.deepEqual(await check(), { account: true, hasPassword: false, google: false });
 
   // No password yet: the only way in is still a code.
-  assert.equal((await request('/auth/login', { email, password: 'whatever12' })).status, 401);
-  assert.equal((await as(first.token, { password: 'short' })).status, 400);
-  assert.equal((await as(first.token, { password: email })).status, 400);
-  assert.equal((await as(first.token, { password: 'correct horse battery' })).status, 200);
-  assert.equal((await check()).hasPassword, true);
+  assert.equal((await request('/auth/login', { email, key })).status, 401);
+  // The iteration count is the whole scheme, so it is enforced, not trusted.
+  assert.equal((await as(first.token, { key, salt, iterations: 1 })).status, 400);
+  assert.equal((await as(first.token, { key, salt, iterations: 599999 })).status, 400);
+  assert.equal((await as(first.token, { key: 'not-a-key', salt, iterations: ITERATIONS })).status, 400);
+  assert.equal((await as(first.token, { key, salt: 'short', iterations: ITERATIONS })).status, 400);
+  assert.equal((await as(first.token, { key, salt, iterations: ITERATIONS })).status, 200);
 
-  assert.equal((await request('/auth/login', { email, password: 'wrong password!!' })).status, 401);
-  const signedIn = await (await request('/auth/login', { email, password: 'correct horse battery' })).json();
+  // The stored row must not be the key itself: a leak has to stay uncrackable.
+  const row = await env.DB.prepare('SELECT password_hash,password_salt FROM users WHERE email=?').bind(email).first();
+  assert.equal(row.password_salt, `${ITERATIONS}:${salt}`);
+  assert.notEqual(row.password_hash, key);
+  assert.equal(row.password_hash, verifier(key, salt));
+
+  // The browser is told where to derive from, and what it costs.
+  assert.deepEqual(await check(), { account: true, hasPassword: true, google: false, kdf: { salt, iterations: ITERATIONS } });
+  const params = await (await worker.fetch(new Request('https://api.example/auth/kdf', { headers: { Origin: 'https://excerptle.io' } }), env)).json();
+  assert.ok(params.iterations >= ITERATIONS);
+
+  assert.equal((await request('/auth/login', { email, key: derive('wrong password', salt) })).status, 401);
+  const signedIn = await (await request('/auth/login', { email, key })).json();
   assert.equal(signedIn.provider, 'password');
   assert.equal(signedIn.hasPassword, true);
   assert.equal(signedIn.token.length, 64);
@@ -93,20 +111,22 @@ test('an email is checked before anything is sent, and a password signs in witho
   await env.DB.prepare('DELETE FROM rate_limits').run();
 
   // A stolen session token must not be enough to replace a password.
-  assert.equal((await as(signedIn.token, { password: 'another good one' })).status, 401);
-  assert.equal((await as(signedIn.token, { current: 'nope nope nope', password: 'another good one' })).status, 401);
-  assert.equal((await as(signedIn.token, { current: 'correct horse battery', password: 'another good one' })).status, 200);
-  assert.equal((await request('/auth/login', { email, password: 'another good one' })).status, 200);
+  const next = derive('another good one', salt2);
+  assert.equal((await as(signedIn.token, { key: next, salt: salt2, iterations: ITERATIONS })).status, 401);
+  assert.equal((await as(signedIn.token, { key: next, salt: salt2, iterations: ITERATIONS, currentKey: derive('nope', salt) })).status, 401);
+  assert.equal((await as(signedIn.token, { key: next, salt: salt2, iterations: ITERATIONS, currentKey: key })).status, 200);
+  assert.equal((await request('/auth/login', { email, key: next })).status, 200);
+  assert.equal((await request('/auth/login', { email, key })).status, 401);
 
   // Removing it drops them back to email codes.
-  assert.equal((await as(signedIn.token, { current: 'another good one', remove: true })).status, 200);
-  assert.equal((await request('/auth/login', { email, password: 'another good one' })).status, 401);
+  assert.equal((await as(signedIn.token, { remove: true, currentKey: next })).status, 200);
+  assert.equal((await request('/auth/login', { email, key: next })).status, 401);
   assert.equal((await check()).hasPassword, false);
 });
 test('password creation, scores, and progress are scoped to a verified session', async () => {
-  assert.equal((await request('/auth/password', { email: 'password@example.com', password: 'a secure password' })).status, 404);
+  assert.equal((await request('/auth/password', { email: 'password@example.com', key: 'x' })).status, 404);
   const authRequest = (path, data, method = 'POST') => worker.fetch(new Request(`https://api.example${path}`, { method, headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(data) }), env);
-  assert.equal((await authRequest('/me/password', { password: 'a secure password' })).status, 200);
+  assert.equal((await authRequest('/me/password', { key: derive('a secure password', 'c'.repeat(32)), salt: 'c'.repeat(32), iterations: ITERATIONS })).status, 200);
   assert.ok((await env.DB.prepare('SELECT password_hash FROM users WHERE id=?').bind('user1').first()).password_hash);
   assert.equal((await authRequest('/scores', { puzzleIndex: 1001, guesses: 3, hints: 1, timeMs: 12000, win: true })).status, 200);
   const board = await (await request('/scores?puzzleIndex=1001&hints=1')).json();
