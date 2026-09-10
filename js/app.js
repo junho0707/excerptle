@@ -518,12 +518,16 @@
     if (!state.puzzle) return;
     const t = tiers(state.puzzle);
     const labels = hintLabels();
-    const idx = Math.min(state.hints, t.length - 1);
+    // Naming the book ends the puzzle, so the excerpt opens to its full length
+    // however few hints were taken: solving it early should mean more of the
+    // book to read, not less. Hint tiers still gate everything mid-round.
+    const solved = state.status === "won";
+    const idx = solved ? t.length - 1 : Math.min(state.hints, t.length - 1);
     // The hint count lives on the Hint button now — the label just names the tier.
     $("#tier-label").textContent = labels[idx] || "Excerpt";
     const ab = $("#author-reveal");
     if (ab) {
-      const shown = state.hints >= MAX_HINTS && state.puzzle.author;
+      const shown = (solved || state.hints >= MAX_HINTS) && state.puzzle.author;
       ab.hidden = !shown;
       if (shown) ab.textContent = `Author: ${state.puzzle.author}`;
     }
@@ -699,7 +703,8 @@
   }
 
   // Playing: story first, "guess more" under it. Finished: CTA on top, then the
-  // result card, then the excerpt as far as you revealed it.
+  // result card, then the excerpt — opened to its full length once solved, and
+  // as far as it was revealed if the guesses ran out.
   function placeMore(done) {
     const more = $("#more");
     const game = $("#game");
