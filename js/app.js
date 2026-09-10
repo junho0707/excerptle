@@ -34,8 +34,17 @@
 
   };
 
-  function utcDate(d = new Date()) {
-    return new Date(d).toISOString().slice(0, 10);
+  /* The daily rolls over at midnight Pacific for everyone, not in whatever
+     zone the browser happens to sit in — otherwise "today's puzzle" means a
+     different book either side of a time zone, and the leaderboards for one
+     index fill up over two calendar days. en-CA formats as YYYY-MM-DD, which
+     is what daysBetween() and the stored streak dates expect. */
+  const DAY_ZONE = "America/Los_Angeles";
+  const dayFormatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: DAY_ZONE, year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  function gameDate(d = new Date()) {
+    return dayFormatter.format(d);
   }
   function daysBetween(a, b) {
     return Math.floor(
@@ -322,7 +331,7 @@
   function dailyIndexNow() {
     const start = state.index?.startDate || START;
     const base = state.index?.dailyStartIndex ?? 600;
-    return base + Math.max(0, daysBetween(start, utcDate()));
+    return base + Math.max(0, daysBetween(start, gameDate()));
   }
 
   function slugForIndex(n) {
@@ -772,15 +781,15 @@
     }
     if (state.mode !== "daily") return;
     const s = loadStats();
-    if (s.lastDaily === utcDate()) return;
+    if (s.lastDaily === gameDate()) return;
     s.played += 1;
-    s.lastDaily = utcDate();
+    s.lastDaily = gameDate();
     if (state.status === "won") {
       s.wins += 1;
       s.dist[Math.min(state.guesses.length, MAX_GUESSES) - 1] += 1;
-      if (s.lastWinDate && daysBetween(s.lastWinDate, utcDate()) === 1) s.currentStreak += 1;
+      if (s.lastWinDate && daysBetween(s.lastWinDate, gameDate()) === 1) s.currentStreak += 1;
       else s.currentStreak = 1;
-      s.lastWinDate = utcDate();
+      s.lastWinDate = gameDate();
       s.maxStreak = Math.max(s.maxStreak, s.currentStreak);
     } else {
       s.fails += 1;
@@ -2210,6 +2219,17 @@
     if (e.target.id === "modal") closeModal();
   });
 
+  /* The daily index is read once, when the route runs. A tab left open across
+     midnight would sit on yesterday's book forever, so re-check on the way
+     back in — but never yank a puzzle out from under a game in progress. */
+  function rollDaily() {
+    if (state.mode !== "daily" || !state.puzzle) return;
+    const today = dailyIndexNow();
+    if (today === state.playIndex) return;
+    if (state.status === "playing" && (state.guesses.length || state.hints)) return;
+    startPlay({ playIndex: today, mode: "daily", showHow: false });
+  }
+
   window.addEventListener("hashchange", () => {
     setNav(false);
     go();
@@ -2218,7 +2238,10 @@
   // time at that boundary instead of relying solely on the 10-second check.
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden" && state.puzzle && state.status === "playing") saveProgress();
-    if (document.visibilityState === "visible") wakeBattle();
+    if (document.visibilityState === "visible") {
+      wakeBattle();
+      rollDaily();
+    }
   });
   window.addEventListener("online", wakeBattle);
   window.addEventListener("pagehide", () => {
