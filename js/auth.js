@@ -61,15 +61,35 @@ window.BookleAuth = (() => {
      asked for less would only be describing its own account. */
   const KDF_FALLBACK = { iterations: 600000, saltBytes: 16 };
   let kdfPromise = null;
-  function kdfParams() {
-    if (!api()) return Promise.resolve(KDF_FALLBACK);
-    kdfPromise = kdfPromise || fetch(`${api()}/auth/kdf`)
-      .then((r) => (r.ok ? r.json() : KDF_FALLBACK))
-      .catch(() => KDF_FALLBACK);
-    return kdfPromise.then((p) => ({
+  // An API older than this file has no /auth/kdf, and its /me/password wants a
+  // field we no longer send — it would answer a derived key with a complaint
+  // about password length. Say what is actually wrong instead.
+  async function kdfParams() {
+    if (!api()) return KDF_FALLBACK;
+    // Only a real answer is remembered: caching a dropped connection would
+    // keep failing long after the connection came back.
+    if (!kdfPromise) {
+      kdfPromise = (async () => {
+        let res;
+        try {
+          res = await fetch(`${api()}/auth/kdf`);
+        } catch {
+          throw new Error("Could not reach the server. Check your connection and try again.");
+        }
+        if (res.status === 404) throw new Error("Passwords aren’t enabled on the server yet. Sign in with an email code for now.");
+        if (!res.ok) throw new Error("Could not reach the server. Check your connection and try again.");
+        return res.json();
+      })();
+      // A 404 is settled news; anything else is worth asking again.
+      kdfPromise.catch((e) => {
+        if (!/aren’t enabled/.test(e.message)) kdfPromise = null;
+      });
+    }
+    const p = await kdfPromise;
+    return {
       iterations: Number(p?.iterations) || KDF_FALLBACK.iterations,
       saltBytes: Number(p?.saltBytes) || KDF_FALLBACK.saltBytes,
-    }));
+    };
   }
 
   const hex = (bytes) => [...new Uint8Array(bytes)].map((b) => b.toString(16).padStart(2, "0")).join("");
