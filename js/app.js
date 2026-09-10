@@ -1392,10 +1392,11 @@
     show("screen-battle");
     const b = state.battle || {};
     const idx = state.battlePending;
+    const shareLink = link || b.link;
     const host = b.role !== "guest";
     const signedIn = !!window.BookleAuth?.session?.();
     const them = b.peerName;
-    const ready = !!them;
+    const ready = host ? !!them : !!b.settled;
     const startable = host && ready;
 
     const who = `
@@ -1410,16 +1411,19 @@
       </li>
       <li class="who-row${ready ? "" : " waiting"}">
         <span class="who-dot${ready ? " on" : ""}" aria-hidden="true"></span>
-        <span class="who-name">${ready ? escapeHtml(them) : "Waiting…"}</span>
+        <span class="who-name">${ready ? escapeHtml(them || (host ? "Guest" : "Host")) : "Waiting…"}</span>
         <span class="who-tag">${host ? "Guest" : "Host"}</span>
       </li>`;
 
     $("#battle-body").innerHTML = `
       <section class="b-sec">
-        ${idx ? `<div class="story-bar"><span class="story-id">Book bank #${idx}</span></div>` : ""}
+        ${Number.isInteger(idx) ? `<div class="story-bar"><span class="story-id">Book bank #${idx}</span></div>` : ""}
         <p class="lede">${escapeHtml(status)}</p>
         <div class="battle-code">${escapeHtml(code || "……")}</div>
-        <p class="b-actions"><button class="btn ghost" type="button" data-act="copy-battle">Copy link</button></p>
+        <p class="b-actions">
+          ${shareLink ? `<button class="btn ghost" type="button" data-act="copy-battle">Copy link</button>` : ""}
+          ${b.failed ? `<button class="btn ghost" type="button" data-act="battle-retry">Try again</button>` : ""}
+        </p>
       </section>
 
       <section class="b-sec">
@@ -1428,7 +1432,7 @@
         ${host
           ? `<p><button class="btn full" type="button" data-act="battle-start" ${startable ? "" : "disabled"}>
                ${startable ? "Start battle" : "Waiting for a friend to join…"}</button></p>`
-          : `<p class="lede">${ready ? "Waiting for the host to start…" : "Connecting…"}</p>`}
+          : `<p class="lede">${ready ? "Waiting for the host to start…" : ""}</p>`}
         <p class="lede b-rules">Same book. First correct title wins. A hint either of you takes is shown to both.</p>
       </section>
 
@@ -1446,94 +1450,236 @@
     renderBattleLobby(b.code, b.status || "", b.link);
   }
 
+  /* The signalling server forgets a peer id the instant its socket closes, and
+     a phone that leaves the browser to paste the link into a chat app is
+     exactly that: the host's lobby still shows a code, the guest gets
+     "could not connect to peer". So watch the socket, re-register on the way
+     back, and let a guest keep knocking instead of failing once. */
+  const BATTLE_TRIES = 20;
+  const FATAL_PEER = new Set([
+    "invalid-id", "invalid-key", "ssl-unavailable", "server-error",
+    "socket-error", "socket-closed", "browser-incompatible",
+  ]);
+
+  function peerErrorText(e) {
+    switch (e?.type) {
+      case "peer-unavailable": return "That room isn’t open.";
+      case "unavailable-id": return "That room code is already in use.";
+      case "browser-incompatible": return "This browser can’t run battles.";
+      case "network": case "socket-error": case "socket-closed": case "server-error":
+        return "Lost the battle server. Check your connection.";
+      default: return String(e?.message || e || "Battle error.");
+    }
+  }
+
+  function current(b, peer) {
+    return state.battle === b && (!peer || b.peer === peer);
+  }
+
+  function battleStatus(text, failed) {
+    const b = state.battle;
+    if (!b) return;
+    b.status = text;
+    b.failed = !!failed;
+    repaintLobby();
+  }
+
   function leaveBattle() {
+    clearTimeout(state.battle?.knockTimer);
+    clearInterval(state.battle?.watchdog);
+    try { state.battle?.conn?.close(); } catch { /* */ }
     try { state.battle?.peer?.destroy(); } catch { /* */ }
     state.battle = null;
   }
 
   async function battleHost(index) {
     await loadIndex();
-    const playIndex = index || randomPresetIndex();
+    const playIndex = Number.isInteger(index) ? index : randomPresetIndex();
     const code = battleCode();
-    const id = "bk-" + code;
     const link = `${origin()}?b=${code}&p=${playIndex}&n=${encodeURIComponent(displayName().slice(0, 24))}`;
     state.battlePending = playIndex;
-    renderBattleLobby(code, "Starting room…", link);
+    state.battle = { role: "host", code, playIndex, link, status: "Starting room…" };
+    renderBattleLobby(code, state.battle.status, link);
     try {
       await loadPeer();
     } catch {
-      $("#battle-body").insertAdjacentHTML("beforeend", `<p>Could not load battle network. Try again on Wi‑Fi.</p>`);
+      battleStatus("Could not load the battle network. Try again on Wi‑Fi.", true);
       return;
     }
-    const peer = new window.Peer(id);
-    state.battle = { role: "host", peer, code, playIndex, link, status: "Starting room…" };
+    if (state.battle?.role !== "host" || state.battle.code !== code) return;
+    hostPeer();
+  }
+
+  function hostPeer() {
+    const b = state.battle;
+    const peer = new window.Peer("bk-" + b.code);
+    b.peer = peer;
     peer.on("open", () => {
-      state.battle.status = "Waiting for your friend… share the link.";
-      repaintLobby();
-    });
-    peer.on("error", (e) => {
-      setMsg(String(e));
+      if (!current(b, peer)) return;
+      b.hostTries = 0;
+      battleStatus(b.peerName
+        ? "Your friend is here. Start when you’re ready."
+        : "Waiting for your friend… share the link.");
     });
     peer.on("connection", (conn) => {
-      state.battle.conn = conn;
+      if (!current(b, peer)) { try { conn.close(); } catch { /* */ } return; }
+      try { b.conn?.close(); } catch { /* */ }
+      b.conn = conn;
       conn.on("open", () => {
+        if (!current(b, peer) || b.conn !== conn) return;
         // Presence only. The host still has to press Start.
-        conn.send({ type: "hello", playIndex, name: displayName() });
-        state.battle.status = "Your friend is here. Start when you’re ready.";
-        repaintLobby();
+        conn.send({ type: "hello", playIndex: b.playIndex, name: displayName() });
+        battleStatus("Your friend is here. Start when you’re ready.");
       });
       conn.on("data", onBattleData);
       conn.on("close", () => {
-        state.battle.peerName = null;
-        state.battle.status = "Your friend left the room.";
-        repaintLobby();
+        if (!current(b, peer) || b.conn !== conn) return;
+        b.peerName = null;
+        if (state.status === "playing") { setMsg("Your opponent disconnected."); return; }
+        battleStatus("Your friend left the room.");
       });
+      conn.on("error", () => { /* the close handler does the talking */ });
+    });
+    clearInterval(b.watchdog);
+    b.watchdog = setInterval(() => {
+      if (!current(b, peer) || peer.destroyed) return clearInterval(b.watchdog);
+      if (peer.disconnected) { try { peer.reconnect(); } catch { /* */ } }
+    }, 10000);
+    // A background tab loses the socket; the id goes with it. Re-register.
+    peer.on("disconnected", () => {
+      if (!current(b, peer) || peer.destroyed) return;
+      battleStatus("Reconnecting to the battle server…");
+      try { peer.reconnect(); } catch { /* */ }
+    });
+    peer.on("error", (e) => {
+      if (!current(b, peer)) return;
+      // The server can still be holding our old socket. Take the code back.
+      if (e?.type === "unavailable-id" && (b.hostTries = (b.hostTries || 0) + 1) <= 3) {
+        battleStatus("Reopening the room…");
+        clearTimeout(b.knockTimer);
+        b.knockTimer = setTimeout(() => { if (current(b, peer)) hostPeer(); }, 1500 * b.hostTries);
+        return;
+      }
+      if (e?.type === "network") {
+        battleStatus("Reconnecting to the battle server…");
+        try { peer.reconnect(); } catch { /* */ }
+        return;
+      }
+      battleStatus(peerErrorText(e), FATAL_PEER.has(e?.type) || e?.type === "unavailable-id");
     });
   }
 
-  async function battleJoin(code) {
+  async function battleJoin(code, linkIndex, hostName) {
     code = (code || "").trim().toLowerCase();
     if (!code) return;
     await loadIndex();
-    const params = new URLSearchParams(location.search);
-    const fromLink = parseInt(params.get("p"), 10);
+    const fromLink = parseInt(linkIndex, 10);
     const playIndex = fromLink >= 0 && fromLink < presetCount() ? fromLink : 0;
+    state.battle = { role: "guest", code, playIndex, tries: 0, status: `Joining ${code}…` };
+    if (hostName) state.battle.peerName = hostName.slice(0, 24);
+    state.battlePending = playIndex;
+    renderBattleLobby(code, state.battle.status, null);
     try {
       await loadPeer();
     } catch {
-      alert("Could not load battle network.");
+      battleStatus("Could not load the battle network. Try again on Wi‑Fi.", true);
       return;
     }
+    if (state.battle?.role !== "guest" || state.battle.code !== code) return;
+    guestPeer();
+  }
+
+  function guestPeer() {
+    const b = state.battle;
     const peer = new window.Peer();
-    state.battle = { role: "guest", peer, code, playIndex, status: `Joining ${code}…` };
-    state.battlePending = playIndex;
-    renderBattleLobby(code, state.battle.status, null);
-    peer.on("open", () => {
-      const conn = peer.connect("bk-" + code);
-      state.battle.conn = conn;
-      conn.on("open", () => {
-        conn.send({ type: "hello", name: displayName() });
-        state.battle.status = "In the room. Waiting for the host to start.";
-        repaintLobby();
-      });
-      conn.on("data", onBattleData);
-      conn.on("close", () => {
-        state.battle.peerName = null;
-        state.battle.status = "The host left the room.";
-        repaintLobby();
-      });
+    b.peer = peer;
+    // Fires again after a reconnect, which is exactly when to knock again.
+    peer.on("open", () => { if (current(b, peer)) guestConnect(); });
+    peer.on("disconnected", () => {
+      if (!current(b, peer) || peer.destroyed) return;
+      battleStatus("Reconnecting to the battle server…");
+      try { peer.reconnect(); } catch { /* */ }
     });
     peer.on("error", (e) => {
-      state.battle.status = `Could not join: ${String(e)}`;
-      repaintLobby();
+      if (!current(b, peer)) return;
+      // The host's tab is asleep or still coming back. Keep knocking.
+      if (e?.type === "peer-unavailable") return rejoin();
+      if (e?.type === "network") {
+        battleStatus("Reconnecting to the battle server…");
+        try { peer.reconnect(); } catch { /* */ }
+        return;
+      }
+      battleStatus(peerErrorText(e), FATAL_PEER.has(e?.type));
     });
+  }
+
+  function guestConnect() {
+    const b = state.battle;
+    if (!b || b.role !== "guest" || !b.peer || b.peer.destroyed) return;
+    if (b.conn?.open) return;
+    const peer = b.peer;
+    clearTimeout(b.knockTimer);
+    try { b.conn?.close(); } catch { /* */ }
+    const conn = peer.connect("bk-" + b.code, { reliable: true });
+    b.conn = conn;
+    b.settled = false;
+    let opened = false;
+    const mine = () => current(b, peer) && b.conn === conn;
+    // A silent connect — no error, no open — is as dead as a refused one.
+    b.knockTimer = setTimeout(() => { if (mine() && !b.settled) rejoin(); }, 8000);
+    conn.on("open", () => {
+      if (!mine()) return;
+      opened = true;
+      b.settled = true;
+      b.tries = 0;
+      clearTimeout(b.knockTimer);
+      conn.send({ type: "hello", name: displayName() });
+      battleStatus("In the room. Waiting for the host to start.");
+    });
+    conn.on("data", onBattleData);
+    conn.on("error", () => { if (mine() && !b.settled) rejoin(); });
+    conn.on("close", () => {
+      // A knock that never opened is rejoin's business, not a lost opponent.
+      if (!opened || !mine()) return;
+      b.peerName = null;
+      b.settled = false;
+      if (state.status === "playing") { setMsg("Your opponent disconnected."); return; }
+      battleStatus("The host left the room.", true);
+    });
+  }
+
+  function rejoin() {
+    const b = state.battle;
+    if (!b || b.role !== "guest" || b.settled) return;
+    clearTimeout(b.knockTimer);
+    try { b.conn?.close(); } catch { /* */ }
+    b.conn = null;
+    b.tries = (b.tries || 0) + 1;
+    if (b.tries > BATTLE_TRIES) {
+      battleStatus("No answer from the room. Ask your friend to reopen it and send a fresh link.", true);
+      return;
+    }
+    battleStatus("No answer yet — still knocking. The host’s tab has to be open on their screen.");
+    b.knockTimer = setTimeout(() => { if (state.battle === b) guestConnect(); }, Math.min(1200 * b.tries, 5000));
+  }
+
+  /* Coming back to the tab is the moment to repair a socket the browser
+     suspended while it was in the background. */
+  function wakeBattle() {
+    const b = state.battle;
+    if (!b || !b.peer || b.peer.destroyed || b.failed) return;
+    if (b.peer.disconnected) {
+      try { b.peer.reconnect(); } catch { /* */ }
+      return;
+    }
+    if (b.role === "guest" && !b.settled) guestConnect();
   }
 
   async function onBattleData(msg) {
     if (!msg || typeof msg !== "object") return;
     if (msg.type === "hello") {
       state.battle.peerName = msg.name || (state.battle.role === "guest" ? "Host" : "Guest");
-      if (msg.playIndex && state.battle.role === "guest") {
+      if (Number.isInteger(msg.playIndex) && state.battle.role === "guest") {
         state.battle.playIndex = msg.playIndex;
         state.battlePending = msg.playIndex;
         state.battle.status = "In the room. Waiting for the host to start.";
@@ -1577,7 +1723,9 @@
     const qBattle = params.get("b");
     const qPlay = params.get("p");
     const qShare = params.get("s");
-    if (qBattle && !parts.length) return { page: "battle-join", code: qBattle, playIndex: qPlay };
+    if (qBattle && !parts.length) {
+      return { page: "battle-join", code: qBattle, playIndex: qPlay, hostName: params.get("n") };
+    }
     if (qPlay && !parts.length) return { page: "play", playIndex: parseInt(qPlay, 10), share: qShare };
     const page = parts[0] || "home";
     if (page === "play" && parts[1]) return { page: "play", playIndex: parseInt(parts[1], 10) };
@@ -1649,7 +1797,9 @@
       return;
     }
     if (screens[r.page]) return show(screens[r.page]);
-    if (r.page === "battle-join") return battleJoin(r.code);
+    // go() has already stripped the query string, so hand the link's own
+    // play index and host name down rather than re-reading location.search.
+    if (r.page === "battle-join") return battleJoin(r.code, r.playIndex, r.hostName);
     if (r.page === "battle") return battleHost();
     if (r.page === "play" && Number.isInteger(r.playIndex) && r.playIndex >= 0) {
       const mode = r.playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset";
@@ -1836,6 +1986,21 @@
       await startPlay({ playIndex: idx, mode: "battle", fresh: true });
       setMsg("Battle on. First title wins.");
     }
+    if (act === "battle-retry") {
+      const b = state.battle;
+      if (!b) return;
+      if (b.role !== "guest") {
+        const idx = b.playIndex;
+        leaveBattle();
+        return battleHost(idx);
+      }
+      b.tries = 0;
+      b.settled = false;
+      battleStatus(`Joining ${b.code}…`);
+      if (!b.peer || b.peer.destroyed) guestPeer();
+      else if (b.peer.disconnected) { try { b.peer.reconnect(); } catch { /* */ } }
+      else guestConnect();
+    }
     if (act === "copy-battle" && state.battle?.link) {
       await navigator.clipboard.writeText(state.battle.link);
       const btn = e.target.closest("[data-act]");
@@ -1886,7 +2051,9 @@
   // time at that boundary instead of relying solely on the 10-second check.
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden" && state.puzzle && state.status === "playing") saveProgress();
+    if (document.visibilityState === "visible") wakeBattle();
   });
+  window.addEventListener("online", wakeBattle);
   window.addEventListener("pagehide", () => {
     if (state.puzzle && state.status === "playing") saveProgress();
   });
