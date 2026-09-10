@@ -66,6 +66,28 @@ test('Google tokens issued to another app are rejected', async () => {
   try { assert.equal((await request('/auth/google',{accessToken:'fake'})).status,401); }
   finally { globalThis.fetch = originalFetch; }
 });
+test('a sign-in code is only ever handed back on localhost, with no mail provider', async () => {
+  await env.DB.prepare('DELETE FROM rate_limits').run();
+  const ask = (e, origin, extra = {}) => worker.fetch(new Request('https://api.example/auth/email', {
+    method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json' }, body: JSON.stringify({ email: e })
+  }), { ...env, RESEND_API_KEY: undefined, ...extra });
+
+  // The opt-in alone does nothing away from localhost.
+  const dev = { DEV_ECHO_CODES: 'true' };
+  assert.equal((await (await ask('a@echo.test', 'http://localhost:8765', dev)).json()).devCode.length, 6);
+  assert.equal((await ask('b@echo.test', 'https://excerptle.io', dev)).status, 503);
+  assert.equal((await ask('c@echo.test', '', dev)).status, 503);
+  // Nor does localhost without the opt-in.
+  assert.equal((await ask('d@echo.test', 'http://localhost:8765')).status, 503);
+  // And a configured mail provider rules it out however the rest is set.
+  globalThis.fetch = async () => Response.json({ id: 'sent' });
+  try {
+    const live = await (await worker.fetch(new Request('https://api.example/auth/email', {
+      method: 'POST', headers: { Origin: 'http://localhost:8765', 'Content-Type': 'application/json' }, body: JSON.stringify({ email: 'e@echo.test' })
+    }), { ...env, RESEND_API_KEY: 'live-key', DEV_ECHO_CODES: 'true' })).json();
+    assert.equal(live.devCode, undefined);
+  } finally { globalThis.fetch = originalFetch; }
+});
 test('an email is checked before anything is sent, and a password signs in without one', async () => {
   await env.DB.prepare('DELETE FROM rate_limits').run();
   const email = 'pw@example.com';

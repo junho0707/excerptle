@@ -154,7 +154,8 @@ window.BookleAuth = (() => {
   async function sendCode(email) {
     if (api()) {
       const data = await post("/auth/email", { email });
-      return { hasPassword: !!data.hasPassword, demoCode: null };
+      // devCode only ever arrives from a local Worker with no mail configured.
+      return { hasPassword: !!data.hasPassword, demoCode: data.devCode || null };
     }
     const code = String(Math.floor(100000 + Math.random() * 900000));
     sessionStorage.setItem(

@@ -112,17 +112,28 @@ async function auth(req, env, path, ctx) {
     return session(env, u.email, u.name, 'password', null, ctx);
   }
   if (path === '/auth/email') {
-    if (!env.RESEND_API_KEY || !env.OTP_SECRET) fail(503, 'Email sign-in is temporarily unavailable. Please use Google.');
+    /* Handing a sign-in code back in the response is account takeover for
+       anyone who can name an address, so it takes three deliberate conditions
+       that do not co-occur in production: no mail provider configured, an
+       opt-in that lives only in backend/.dev.vars (gitignored, never uploaded
+       by `wrangler deploy`), and a caller on localhost. Production has a
+       RESEND_API_KEY, which alone is enough to rule this out. */
+    const echoCode = env.DEV_ECHO_CODES === 'true'
+      && !env.RESEND_API_KEY
+      && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.get('Origin') || '');
+    if (!env.OTP_SECRET || (!env.RESEND_API_KEY && !echoCode)) fail(503, 'Email sign-in is temporarily unavailable. Please use Google.');
     await limit(env, `mail:${await hash(email)}`, 3, 600);
     const n = crypto.getRandomValues(new Uint32Array(1))[0];
     const code = String(n % 1000000).padStart(6, '0');
     const digest = await hash(`${env.OTP_SECRET}:${email}:${code}`);
     await query(env, `INSERT INTO email_codes VALUES(?,?,?,0) ON CONFLICT(email)
       DO UPDATE SET code_hash=excluded.code_hash,expires_at=excluded.expires_at,attempts=0`, email, digest, now() + 600).run();
-    const res = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ from: env.MAIL_FROM, to: [email], subject: 'Your Excerptle sign-in code', text: `Your Excerptle code is ${code}. It expires in 10 minutes. If you did not request this, ignore this email.` }) });
-    if (!res.ok) fail(503, 'Could not send your code. Try again later.');
-    const account = await query(env, 'SELECT password_hash FROM users WHERE email=?', email).first();
-    return json({ hasPassword: !!account?.password_hash });
+    if (!echoCode) {
+      const res = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ from: env.MAIL_FROM, to: [email], subject: 'Your Excerptle sign-in code', text: `Your Excerptle code is ${code}. It expires in 10 minutes. If you did not request this, ignore this email.` }) });
+      if (!res.ok) fail(503, 'Could not send your code. Try again later.');
+    }
+    const account = await query(env, 'SELECT password_hash, password_salt FROM users WHERE email=?', email).first();
+    return json({ hasPassword: !!kdfParams(account), ...(echoCode ? { devCode: code } : {}) });
   }
   if (path === '/auth/verify') {
     if (!env.OTP_SECRET) fail(503, 'Email sign-in unavailable.');

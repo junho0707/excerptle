@@ -248,9 +248,15 @@ npx wrangler d1 migrations apply DB --local --config wrangler.toml   # once
 npx wrangler dev --config wrangler.toml --port 8787
 ```
 
-Email sign-in needs `RESEND_API_KEY` in `backend/.dev.vars` to send anything, so
-seed an account and a session straight into the local D1 instead — `--local`
-touches a file on this machine, never production:
+Copy `backend/.dev.vars.example` to `backend/.dev.vars` and email sign-in works
+locally without a mail provider: the code comes back in the response and the
+page prints it on screen. That path needs all three of no `RESEND_API_KEY`, the
+`DEV_ECHO_CODES` opt-in, and a caller on localhost — production has a Resend
+key, which on its own rules it out. `.dev.vars` is gitignored and `wrangler
+deploy` does not upload it. A test asserts each gate.
+
+To skip sign-in altogether, seed an account straight into the local D1 —
+`--local` touches a file on this machine, never production:
 
 ```bash
 npx wrangler d1 execute DB --local --config wrangler.toml --command \
