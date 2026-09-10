@@ -225,3 +225,36 @@ Console edits can take a few minutes to propagate.
 **Auth is a demo, not real auth.** With no API configured, `js/auth.js` stores users and sessions in `localStorage`, generates verification codes client-side, and trusts a Google access token read **entirely in the browser**. Anyone can forge a session from devtools. Fine for a static preview; it cannot back real accounts or trustworthy leaderboards. Both need the server before they mean anything.
 
 **Leftover `CNAME` file.** The repo root has a `CNAME` containing `excerptle.io` — a GitHub Pages artifact. Cloudflare ignores it. Safe to delete.
+
+## Checking sign-in locally
+
+Two switches, both refusing to work anywhere but localhost (see `js/config.js`):
+
+| URL | API | Good for |
+| --- | --- | --- |
+| `localhost:8765/?demo=1` | none | the whole flow with no backend; the sign-in code is printed on screen instead of mailed |
+| `localhost:8765/?api=local` | real Worker on `:8787` | the frontend and the API actually talking to each other |
+| `localhost:8765` | **deployed** API | what production does — and what a not-yet-deployed API does to it |
+
+The middle one is the one that matters before a release. `?demo=1` cannot catch
+a frontend and an API that disagree, because there is no API to disagree with:
+that is how a `/me/password` rewrite reached the browser while the deployed
+Worker still expected the old request shape, and answered a derived key with a
+complaint about password length.
+
+```bash
+cd backend
+npx wrangler d1 migrations apply DB --local --config wrangler.toml   # once
+npx wrangler dev --config wrangler.toml --port 8787
+```
+
+Email sign-in needs `RESEND_API_KEY` in `backend/.dev.vars` to send anything, so
+seed an account and a session straight into the local D1 instead — `--local`
+touches a file on this machine, never production:
+
+```bash
+npx wrangler d1 execute DB --local --config wrangler.toml --command \
+  "INSERT INTO users(id,email,name,created_at) VALUES('dev1','dev@local.test','Dev',strftime('%s','now'))"
+```
+
+`http://localhost:8765` is already in `ALLOWED_ORIGINS`, so CORS works as-is.

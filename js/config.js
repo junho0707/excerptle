@@ -5,14 +5,20 @@ window.BOOKLE_GOOGLE_CLIENT_ID = window.EXCERPTLE_GOOGLE_CLIENT_ID;
 window.EXCERPTLE_API = "https://excerptle-api.winter-glade-cbab.workers.dev";
 window.BOOKLE_API = window.EXCERPTLE_API;
 
-/* Local testing without a backend: http://localhost:8765/?demo=1 drops the API
-   and runs js/auth.js's localStorage-only mode, which prints the sign-in code
-   on screen instead of mailing it. Gated on hostname, so it cannot fire on the
-   live site however the query string is dressed up. */
-if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)
-    && new URLSearchParams(location.search).get("demo") === "1") {
-  window.EXCERPTLE_API = "";
-  window.BOOKLE_API = "";
+/* Local testing, both gated on hostname so neither can fire on the live site
+   however the query string is dressed up:
+
+     ?demo=1    no backend at all. js/auth.js runs its localStorage-only path
+                and prints the sign-in code on screen instead of mailing it.
+     ?api=local the real Worker on :8787 (backend/ $ npx wrangler dev), against
+                a local D1. This is the one that catches a frontend and an API
+                that disagree — the failure ?demo=1 cannot see, because there
+                is no API to disagree with. */
+if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+  const flag = new URLSearchParams(location.search);
+  if (flag.get("demo") === "1") window.EXCERPTLE_API = "";
+  else if (flag.get("api") === "local") window.EXCERPTLE_API = "http://127.0.0.1:8787";
+  window.BOOKLE_API = window.EXCERPTLE_API;
 }
 
 /* Ads. Nothing is requested from Google until `enabled` is true AND both IDs
