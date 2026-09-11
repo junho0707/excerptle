@@ -46,6 +46,13 @@ test('billing rejects absent, forged, and expired sessions; CORS rejects outside
 test('return URLs cannot redirect checkout to another site', async () => {
   assert.equal((await request('/billing/checkout', { returnUrl: 'https://evil.test' }, true)).status, 400);
 });
+test('progress uploads are allowed by the browser CORS preflight', async () => {
+  const response = await worker.fetch(new Request('https://api.example/me/progress', {
+    method: 'OPTIONS', headers: { Origin: 'https://excerptle.io', 'Access-Control-Request-Method': 'PUT', 'Access-Control-Request-Headers': 'authorization,content-type' },
+  }), env);
+  assert.equal(response.status, 204);
+  assert.ok(response.headers.get('Access-Control-Allow-Methods').split(',').map(s => s.trim()).includes('PUT'));
+});
 test('checkout accepts only the two server-configured billing intervals', async () => {
   assert.equal((await request('/billing/checkout', { returnUrl: 'https://excerptle.io', plan: 'lifetime' }, true)).status, 400);
 });
@@ -219,6 +226,17 @@ test('checkout expires a legacy session that carries no plan', async () => {
     assert.equal((await response.json()).url, 'https://checkout.stripe.com/fresh');
     assert.deepEqual(calls.expired, ['cs_legacy']);
   } finally { globalThis.fetch = originalFetch; }
+});
+test('scores keep the lexicographically best result, including concurrent writes', async () => {
+  const post = (hints, guesses) => request('/scores', { puzzleIndex: 499, hints, guesses, win: true }, true);
+  assert.equal((await post(1, 6)).status, 200);
+  assert.equal((await post(2, 1)).status, 200);
+  let rows = (await (await request('/scores?puzzleIndex=499')).json()).scores;
+  assert.deepEqual(rows.map(({ hints, guesses }) => [hints, guesses]), [[1, 6]]);
+  const responses = await Promise.all([post(0, 6), post(1, 1), post(0, 3)]);
+  assert.ok(responses.every(r => r.status === 200));
+  rows = (await (await request('/scores?puzzleIndex=499')).json()).scores;
+  assert.deepEqual(rows.map(({ hints, guesses }) => [hints, guesses]), [[0, 3]]);
 });
 test('logout revokes the server token', async () => {
   assert.equal((await request('/auth/logout',{},true)).status,200);

@@ -23,6 +23,16 @@ FAMOUS = {
 }
 
 
+# Gutenberg's licence sits after the text, so it only ever surfaced on the last
+# tier of a short work — where tier 5 is the whole book. A gate, not 15 hand
+# edits: strip_pg() is what must keep this empty.
+# Only markers no novel would contain: "redistribute" is a word Cather and
+# Gogol both use in ordinary prose.
+BOILERPLATE_RE = re.compile(
+    r"project gutenberg|gutenberg\.org|gutenberg-?tm|gutenberg\u2122|"
+    r"\bpglaf\b|updated editions will replace", re.I)
+
+
 def fold(s: str) -> str:
     s = s.lower()
     s = unicodedata.normalize("NFD", s)
@@ -69,6 +79,11 @@ def main() -> int:
         for a in d.get("aliases") or []:
             if not fold(a):
                 bad.append((slug, "empty alias", a))
+        for i, t in enumerate(d["texts"]):
+            hit = BOILERPLATE_RE.search(t)
+            if hit:
+                bad.append((slug, f"etext boilerplate in tier {i + 1}", hit.group(0)))
+                break
 
     for slug, opening in FAMOUS.items():
         f = PUZ / f"{slug}.json"
@@ -86,6 +101,7 @@ def main() -> int:
         return 1
     print(f"ok {len(order)} puzzles, {index['presetCount']} bank + {index['dailyPoolCount']} dailies")
     print(f"ok {len(FAMOUS)} famous openings")
+    print("ok no etext boilerplate in any tier")
     return 0
 
 

@@ -67,12 +67,38 @@ They served a public duplicate of the site on a hostname nobody should be linkin
 
 ```bash
 npx wrangler deploy --config tools/og-worker/wrangler.jsonc   # renderer FIRST
-npx wrangler deploy                                            # front door
+npm run deploy:site                                             # tests, then front door
 npx wrangler deploy --config backend/wrangler.toml             # api
 ```
 
 The renderer goes first: the front door's `OG` service binding will not resolve
 against a script that does not exist yet.
+
+### Core gameplay release checks
+
+Install the browser once with `npx playwright install chromium`. `npm run
+deploy:site` runs the client checks and the Playwright gameplay suite before
+uploading; a failure stops the deployment. Direct `wrangler deploy` bypasses
+this gate. GitHub Actions runs the same checks on pushes and pull requests
+and keeps browser traces when they fail.
+
+Run `npm run test:e2e` independently to exercise daily wins/losses, reloads,
+random books, book #0, the New game picker, and All Books on desktop and
+mobile viewports. It covers guests, expired sessions, and signed-in users
+with unavailable account services, plus a successful sign-in after solving.
+It also holds back a puzzle response to check that loading cannot erase a guess.
+The logic sweep adds stale-response navigation, failed puzzle recovery, shared
+link validation, leaderboard routing, remote-progress restoration and sign-out
+isolation. `npm test` also checks progress retries, upload batching, battle
+message bounds, timestamp ordering, and archived-daily streak handling.
+`npm run deploy:api` gates API uploads on the backend suite, including CORS,
+score ordering/concurrency, sessions, password flows, and billing webhooks.
+Account responses are mocked, so this checks browser behavior, not delivery
+of email codes or Google OAuth. No production accounts or scores are written.
+
+For a post-deployment check, use `PLAY_TEST_URL=https://excerptle.io npm run
+test:e2e`. To use an existing Chromium installation, set
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable.
 
 **Why they're split.** `run_worker_first` puts `excerptle` in front of `/`, so
 its whole bundle is loaded into an isolate before the first page load in a cold

@@ -193,14 +193,15 @@ async function scores(req, env) {
   const timeMs = Number.isFinite(Number(d.timeMs)) ? Math.min(Math.max(Number(d.timeMs), 0), 86400000) : 0;
   if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || !Number.isInteger(guesses) || guesses < 1 || guesses > 6 || !Number.isInteger(hints) || hints < 0 || hints > 5 || d.win !== true) fail(400, 'Invalid score.');
   await limit(env, `score:${u.id}`, 30, 600);
-  const previous = await query(env, 'SELECT id,guesses,hints FROM scores WHERE user_id=? AND puzzle_index=?', u.id, puzzleIndex).first();
-  // Same order the board uses. won_at is not compared: an earlier attempt is
-  // always the earlier one, so keeping it would freeze the first result in.
-  const candidate = [hints, guesses];
-  const old = previous && [previous.hints, previous.guesses];
-  if (old && old.every((v, i) => v <= candidate[i])) return json({ ok: true });
-  if (previous) await query(env, 'DELETE FROM scores WHERE id=?', previous.id).run();
-  await query(env, 'INSERT INTO scores VALUES(?,?,?,?,?,?,?,?)', crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now()).run();
+  // Compare lexicographically (hints first), and update atomically so two
+  // submissions cannot delete or overwrite the better result.
+  await env.DB.batch([
+    query(env, `DELETE FROM scores WHERE user_id=? AND puzzle_index=?
+      AND (hints>? OR (hints=? AND guesses>?))`, u.id, puzzleIndex, hints, hints, guesses),
+    query(env, `INSERT INTO scores SELECT ?,?,?,?,?,?,?,?
+      WHERE NOT EXISTS (SELECT 1 FROM scores WHERE user_id=? AND puzzle_index=?)`,
+      crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now(), u.id, puzzleIndex),
+  ]);
   return json({ ok: true });
 }
 async function progress(req, env) {
@@ -356,7 +357,7 @@ export default {
     response.headers.set('Vary', 'Origin');
     if (origin && origins(env).includes(origin)) {
       response.headers.set('Access-Control-Allow-Origin', origin);
-      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS');
       response.headers.set('Access-Control-Allow-Headers', 'Authorization, Content-Type');
     }
     return response;

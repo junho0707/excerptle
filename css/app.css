@@ -682,6 +682,12 @@ footer a { color: inherit; }
     margin-left: 0;
   }
 }
+.form-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
 .linkish {
   background: none;
   border: 0;
@@ -1070,6 +1076,8 @@ footer a { color: inherit; }
 .how-notes li:last-child { margin-bottom: 0; }
 
 /* Hint 5: author reveal */
+/* Outside .excerpt-wrap on purpose: that box scrolls, and the author was
+   only reachable at the very bottom of a long chapter. */
 .author-reveal {
   margin-top: 0.7rem;
   padding: 0.5rem 0.7rem;

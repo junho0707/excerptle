@@ -8,6 +8,8 @@ node_modules/
 .wrangler/
 .dev.vars*
 dist/
+test-results/
+playwright-report/
 
 !.dev.vars.example
 !.env.example

@@ -195,12 +195,14 @@
     return loadJSON(K.progress, {});
   }
   function saveProgress({ remote = true } = {}) {
+    if (!state.puzzle || state.loading) return;
     const all = progressMap();
     const key = String(state.playIndex);
     const row = {
       status: state.status,
       guesses: state.guesses,
       hints: state.hints,
+      gaveUp: state.gaveUp ? 1 : undefined,
       puzzleId: state.puzzle?.id,
       mode: state.mode,
       // Kept once the round ends so the bank can label a book you have read
@@ -211,7 +213,8 @@
     };
     all[key] = row;
     localStorage.setItem(K.progress, JSON.stringify(all));
-    if (remote) syncProgressEntry({ [key]: row });
+    // Merely opening a book must not overwrite a round saved on another device.
+    if (remote && (state.status !== "playing" || state.guesses.length || state.hints)) syncProgressEntry({ [key]: row });
   }
 
   // The browser remains the fast, offline-first copy.  On sign-in we merge by
@@ -222,26 +225,33 @@
   function progressConnection() {
     const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
     const auth = window.BookleAuth?.session?.();
-    return api && auth?.token ? { api, headers: { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" } } : null;
+    return api && auth?.token ? { api, token: auth.token, headers: { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" } } : null;
   }
+  const ownsProgress = connection => connection?.token === window.BookleAuth?.session?.()?.token;
   function syncProgressEntry(entries) {
     pendingProgress = { ...pendingProgress, ...entries };
     return flushProgressEntries();
   }
   async function flushProgressEntries() {
     const connection = progressConnection();
-    if (!connection || progressSyncing) return progressSyncing;
+    if (!connection || progressSyncing || !Object.keys(pendingProgress).length) return progressSyncing;
     progressSyncing = (async () => {
       try {
-        while (Object.keys(pendingProgress).length) {
-          const batch = pendingProgress;
-          pendingProgress = {};
-          await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: batch }) });
+        while (ownsProgress(connection) && Object.keys(pendingProgress).length) {
+          // Stay below the API's 16 KB request limit, even with long guesses.
+          const batch = Object.fromEntries(Object.entries(pendingProgress).slice(0, 2));
+          for (const key of Object.keys(batch)) delete pendingProgress[key];
+          try {
+            const res = await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: batch }), signal: AbortSignal.timeout(5000) });
+            if (!res.ok) throw new Error(`progress ${res.status}`);
+          } catch {
+            if (ownsProgress(connection)) pendingProgress = { ...batch, ...pendingProgress };
+            break; // Retry on the next action/online event, not a tight loop.
+          }
         }
       } catch { /* The browser copy remains authoritative until the next retry. */ }
       finally {
         progressSyncing = null;
-        if (Object.keys(pendingProgress).length) flushProgressEntries();
       }
     })();
     return progressSyncing;
@@ -251,15 +261,23 @@
     if (!connection || progressSyncing) return progressSyncing;
     progressSyncing = (async () => {
       try {
-        const res = await fetch(`${connection.api}/me/progress`, { headers: connection.headers });
-        if (!res.ok) return;
+        const res = await fetch(`${connection.api}/me/progress`, { headers: connection.headers, signal: AbortSignal.timeout(5000) });
+        if (!res.ok || !ownsProgress(connection)) return;
         const remote = (await res.json()).progress || {};
+        if (!ownsProgress(connection)) return;
         const merged = { ...remote };
-        for (const [index, row] of Object.entries(progressMap())) {
-          if (!merged[index] || Number(row?.at || 0) >= Number(merged[index]?.at || 0)) merged[index] = row;
+        const local = progressMap();
+        for (const [index, row] of Object.entries(local)) {
+          const empty = row?.status === "playing" && !row.hints && !row.guesses?.length;
+          if (!merged[index] || (!empty && Number(row?.at || 0) >= Number(merged[index]?.at || 0))) merged[index] = row;
         }
         localStorage.setItem(K.progress, JSON.stringify(merged));
-        await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: merged }) });
+        pendingProgress = { ...pendingProgress, ...merged };
+        const active = String(state.playIndex);
+        if (merged[active] && merged[active] !== local[active] && state.status === "playing"
+          && !state.loading && state.mode !== "battle" && !$("#game").classList.contains("hidden")) {
+          await startPlay({ playIndex: state.playIndex, mode: state.mode, showHow: false });
+        }
         await backfillScores(connection);
       } catch { /* Sync is opportunistic; local progress remains intact. */ }
       finally {
@@ -283,25 +301,34 @@
     const me = playerId();
     let sent = 0;
     for (const [index, list] of Object.entries(all)) {
-      if (sent >= BACKFILL_MAX) break;
+      if (!ownsProgress(connection) || sent >= BACKFILL_MAX) break;
       const mine = (list || []).filter((r) => r.win && r.id === me && !r.sent);
       if (!mine.length) continue;
       // Only our best row per puzzle is worth a request — the server would
       // discard the rest on arrival anyway.
       const best = [...mine].sort((a, b) => a.hints - b.hints || a.guesses - b.guesses || (a.at || 0) - (b.at || 0))[0];
       try {
+        sent += 1;
         const res = await fetch(`${connection.api}/scores`, {
           method: "POST",
           headers: connection.headers,
           body: JSON.stringify({ puzzleIndex: Number(index), guesses: best.guesses, hints: best.hints, win: true }),
         });
         // A 429 or a rejected row stays unstamped, to be retried next sign-in.
-        if (!res.ok) continue;
+        if (!ownsProgress(connection)) return;
+        if (!res.ok) break;
         for (const r of mine) r.sent = 1;
-        sent += 1;
       } catch { break; /* Offline. Nothing is stamped, so nothing is lost. */ }
     }
-    if (sent) localStorage.setItem(K.lb, JSON.stringify(all));
+    if (sent && ownsProgress(connection)) {
+      const latest = loadJSON(K.lb, {});
+      for (const [index, list] of Object.entries(all)) {
+        for (const row of latest[index] || []) {
+          if (list.some(old => old.sent && old.id === row.id && old.at === row.at)) row.sent = 1;
+        }
+      }
+      localStorage.setItem(K.lb, JSON.stringify(latest));
+    }
   }
 
   // Sign-out has to take the play data with it. These keys are merged into
@@ -441,12 +468,16 @@
 
   function readShare(raw) {
     try {
+      if (typeof raw !== "string" || raw.length > 2048) return null;
       const d = JSON.parse(b64u.dec(raw));
       if (!d || ![1, 2].includes(d.v)) return null;
       d.c = d.v === 1 ? 1 : d.c === 1 ? 1 : 0;
       d.g = Math.min(Math.max(0, d.g | 0), MAX_GUESSES);
       d.h = Math.min(Math.max(0, d.h | 0), MAX_HINTS);
       d.n = String(d.n || "A player").slice(0, 24);
+      d.w = d.w ? 1 : 0;
+      d.m = d.m === "daily" || d.m === "battle" ? d.m : "preset";
+      for (const key of ["br", "bn", "or", "on"]) d[key] = Math.max(0, d[key] | 0);
       return d;
     } catch {
       return null;
@@ -585,12 +616,25 @@
     // Losses are not ranked — filtered here too, so older saved rows drop out.
     return (all[String(idx)] || []).filter((r) => r.win);
   }
+  // Your own row is kept on the board's own ordering, the same comparison the
+  // server makes — replaying a book you already solved must not downgrade the
+  // result locally while the server keeps the better one.
+  const betterRow = (a, b) => {
+    if (!a) return b;
+    if (!b) return a;
+    if (a.win !== b.win) return a.win ? a : b;
+    if (a.hints !== b.hints) return a.hints < b.hints ? a : b;
+    if (a.guesses !== b.guesses) return a.guesses < b.guesses ? a : b;
+    return (a.at || 0) <= (b.at || 0) ? a : b;
+  };
   function pushLb(entry) {
     const all = loadJSON(K.lb, {});
     const k = String(state.playIndex);
     const list = all[k] || [];
-    const mine = list.filter((r) => r.id !== playerId());
-    mine.push(entry);
+    const me = playerId();
+    const mine = list.filter((r) => r.id !== me);
+    const kept = betterRow(list.find((r) => r.id === me), entry);
+    mine.push(kept);
     mine.sort((a, b) => {
       if (a.win !== b.win) return a.win ? -1 : 1;
       if (a.hints !== b.hints) return a.hints - b.hints;
@@ -599,18 +643,29 @@
     });
     all[k] = mine.slice(0, 100);
     localStorage.setItem(K.lb, JSON.stringify(all));
-    const url = window.BOOKLE_API;
-    const auth = window.BookleAuth?.session?.();
-    if (url && auth?.token) {
-      try {
-        fetch(`${url.replace(/\/$/, "")}/scores`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${auth.token}` },
-          keepalive: true,
-          body: JSON.stringify({ ...entry, puzzleIndex: state.playIndex }),
-        }).catch(() => {});
-      } catch { /* optional */ }
+    sendScore(k, kept);
+  }
+
+  // A row the server has taken is stamped `sent`. Without the stamp every
+  // sign-in replayed the same first twenty rows (see BACKFILL_MAX) and a
+  // backlog beyond that never reached a board at all.
+  async function sendScore(key, entry) {
+    const connection = progressConnection();
+    if (!connection || !entry?.win || entry.sent) return;
+    try {
+      const res = await fetch(`${connection.api}/scores`, {
+        method: "POST",
+        headers: connection.headers,
+        keepalive: true,
+        body: JSON.stringify({ puzzleIndex: Number(key), guesses: entry.guesses, hints: entry.hints, win: true }),
+      });
+      if (!res.ok || !ownsProgress(connection)) return;
+    } catch { return; /* Unstamped, so the next sign-in retries it. */ }
+    const all = loadJSON(K.lb, {});
+    for (const row of all[key] || []) {
+      if (row.id === entry.id && row.hints === entry.hints && row.guesses === entry.guesses) row.sent = 1;
     }
+    localStorage.setItem(K.lb, JSON.stringify(all));
   }
 
   // Boards are ordered by who got there first, so the moment of solving is the
@@ -653,7 +708,8 @@
       .map((r, i) => `<tr class="${r.id === me ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.guesses}</td><td>${fmtWhen(r.at)}</td></tr>`)
       .join("");
     const won = state.status === "won";
-    const lostLine = state.beatenBy ? `${escapeHtml(state.beatenBy)} got there first` : "Out of guesses";
+    const lostLine = state.beatenBy ? `${escapeHtml(state.beatenBy)} got there first`
+      : state.gaveUp ? "Gave up" : "Out of guesses";
     const words = chapterWords(p);
     const gut = p.source?.gutenberg;
     const hintWord = `${state.hints} hint${state.hints === 1 ? "" : "s"}`;
@@ -700,7 +756,7 @@
 
       ${won && !window.BookleAuth?.session?.() ? `<section class="pg-sec pg-save">
         <h3>Keep this result</h3>
-        <p>You solved this signed out. Sign in and it goes on the leaderboard \u2014 and your progress follows you to any device.</p>
+        <p>Your result is saved on this device. Sign in to add it to the leaderboard and sync your progress. You can keep playing without signing in.</p>
         <button class="btn" type="button" data-act="open-auth">Sign in to save it</button>
       </section>` : ""}
 
@@ -731,6 +787,7 @@
     const more = $("#more");
     const battle = state.mode === "battle";
     $("#share-playing")?.classList.toggle("hidden", battle);
+    $("#give-up")?.classList.toggle("hidden", battle);
     if (state.status === "playing") {
       box.classList.add("hidden");
       form.classList.remove("hidden");
@@ -779,7 +836,7 @@
       localStorage.setItem(K.stats, JSON.stringify(s));
       return;
     }
-    if (state.mode !== "daily") return;
+    if (state.mode !== "daily" || state.playIndex !== dailyIndexNow()) return;
     const s = loadStats();
     if (s.lastDaily === gameDate()) return;
     s.played += 1;
@@ -799,7 +856,9 @@
   }
 
   function onHint() {
+    if (state.loading || !state.puzzle) return;
     if (state.status !== "playing") return;
+    armGiveUp(false);
     if (state.hints >= MAX_HINTS) {
       setMsg("No more hints.");
       return;
@@ -813,8 +872,40 @@
     if (state.battle) battleSend({ type: "hint", hints: state.hints });
   }
 
-  function onGuess(raw) {
+  // Two taps, because one stray tap must not be able to end a round. The arm
+  // clears on any other move, so it cannot lie in wait across a game.
+  let giveUpArmed = false;
+  function armGiveUp(on) {
+    giveUpArmed = on;
+    const btn = $("#give-up");
+    if (btn) btn.textContent = on ? "Tap again to reveal" : "Give up";
+  }
+  function onGiveUp() {
+    if (state.loading || !state.puzzle) return;
     if (state.status !== "playing") return;
+    if (state.mode === "battle") {
+      setMsg("A battle ends when one of you names the book.");
+      return;
+    }
+    if (!giveUpArmed) {
+      armGiveUp(true);
+      setMsg("Give up and see the answer? Tap again to confirm.");
+      return;
+    }
+    armGiveUp(false);
+    state.status = "lost";
+    state.gaveUp = true;
+    setMsg("");
+    recordFinish();
+    renderExcerpt();
+    renderGuesses();
+    renderResult();
+  }
+
+  function onGuess(raw) {
+    if (state.loading || !state.puzzle) return;
+    if (state.status !== "playing") return;
+    armGiveUp(false);
     const guess = raw.trim();
     if (!guess) {
       setMsg("Type a title, or take a hint.");
@@ -848,16 +939,32 @@
     bump($("#count-guesses"));
   }
 
+  let playRequest = 0;
   async function startPlay({ playIndex, mode, resume = true, fresh = false, showHow = true }) {
+    const request = ++playRequest;
+    state.loading = true;
     clearInterval(progressCheckpointTimer);
     clearInterval(accountProgressSyncTimer);
     progressCheckpointTimer = null;
     accountProgressSyncTimer = null;
     await loadIndex();
+    if (request !== playRequest) return;
+    // Don't expose the previous round's input while the next puzzle loads:
+    // startPlay clears it on arrival, which would erase a fast user's guess.
+    $("#form").classList.add("hidden");
+    $("#result").classList.add("hidden");
+    $("#excerpt").textContent = "Loading…";
+    $("#author-reveal").hidden = true;
+    $("#guesses").innerHTML = "";
+    state.puzzle = null;
     show("game");
     state.mode = mode || (playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset");
     state.playIndex = playIndex;
     const todayDaily = dailyIndexNow();
+    if (!Number.isSafeInteger(playIndex) || playIndex < 0 || (state.mode !== "daily" && playIndex >= presetCount())) {
+      $("#excerpt").textContent = "Puzzle not in the bank yet.";
+      return;
+    }
     if (state.mode === "daily" && playIndex > todayDaily) {
       $("#excerpt").textContent = "That daily isn’t out yet.";
       $("#form").classList.add("hidden");
@@ -868,18 +975,30 @@
       $("#excerpt").textContent = "Puzzle not in the bank yet.";
       return;
     }
-    state.puzzle = await loadPuzzle(slug);
+    let puzzle;
+    try {
+      puzzle = await loadPuzzle(slug);
+    } catch {
+      if (request === playRequest) $("#excerpt").textContent = "Could not load this book. Reload the page or choose another book.";
+      return;
+    }
+    if (request !== playRequest) return;
+    state.puzzle = puzzle;
+    state.loading = false;
     const saved = resume ? progressMap()[String(playIndex)] : null;
     if (!fresh && saved && saved.puzzleId === state.puzzle.id) {
       state.guesses = saved.guesses || [];
       state.hints = saved.hints || 0;
       state.status = saved.status || "playing";
+      state.gaveUp = !!saved.gaveUp;
     } else {
       state.guesses = [];
       state.hints = 0;
       state.status = "playing";
+      state.gaveUp = false;
     }
     state.beatenBy = null;
+    armGiveUp(false);
     setMsg("");
     const input = $("#guess-input");
     if (input) input.value = "";
@@ -1183,6 +1302,7 @@
         <li>If a guess includes a distinctive word from the title, you’ll be told how many key title words remain — never which words they are.</li>
         <li><strong>Close spelling counts.</strong> “Pride and Predjudice” is fine, and you can drop a leading “The”. A vague one-word guess such as “great” does not solve the book or earn a title-word nudge; try more of the title.</li>
         <li>The fewer hints and guesses you use, the better you score.</li>
+        <li><strong>Give up</strong> ends the round and names the book. Two taps, and it counts as a miss.</li>
       </ul>
       <p><button class="btn" type="button" data-act="close-modal">Close</button></p>
     `);
@@ -1192,6 +1312,8 @@
     show("screen-bank");
     const presets = state.index.presetCount || state.index.order.length;
     const filter = $("#bank-filter").value;
+    const status = $("#bank-status")?.value || "all";
+    const prog = progressMap();
     const today = dailyIndexNow();
     const pageSize = 100;
     const params = new URLSearchParams(location.hash.split("?")[1] || location.search);
@@ -1203,6 +1325,16 @@
     if (filter !== "preset") {
       for (let i = state.index.dailyStartIndex; i <= today; i++) items.push(i);
     }
+    // The same narrowing the leaderboard offers, read out of the progress map:
+    // what this browser has actually played.
+    if (status !== "all") {
+      items = items.filter((n) => {
+        const st = prog[String(n)]?.status;
+        if (status === "won") return st === "won";
+        if (status === "done") return st === "won" || st === "lost";
+        return st !== "won" && st !== "lost";
+      });
+    }
     const jump = parseInt($("#bank-jump").value, 10);
     if (Number.isInteger(jump)) {
       const idx = items.indexOf(jump);
@@ -1211,7 +1343,13 @@
     const maxPage = Math.max(1, Math.ceil(items.length / pageSize));
     page = Math.min(page, maxPage);
     const slice = items.slice((page - 1) * pageSize, page * pageSize);
-    const prog = progressMap();
+    if (!items.length) {
+      $("#bank-grid").innerHTML = `<p class="lede">${status === "todo"
+        ? "You have finished every book in this list."
+        : "Nothing here yet — finish a book and it shows up."}</p>`;
+      $("#bank-pager").innerHTML = "";
+      return;
+    }
     $("#bank-grid").innerHTML = slice
       .map((n) => {
         const row = prog[String(n)];
@@ -1242,7 +1380,8 @@
   const rankSort = (a, b) => {
     if (a.hints !== b.hints) return a.hints - b.hints;
     if (a.guesses !== b.guesses) return a.guesses - b.guesses;
-    return (a.at || 0) - (b.at || 0);
+    const milliseconds = value => value < 1e12 ? value * 1000 : value;
+    return milliseconds(a.at || 0) - milliseconds(b.at || 0);
   };
   // The server carries no row id, so your own remote row is recognised by the
   // values you played it with.
@@ -1255,11 +1394,11 @@
       .join("")}</tbody></table></div>`;
   }
 
-  function renderRanks() {
+  function renderRanks({ fromRoute = false } = {}) {
     show("screen-ranks");
     const params = new URLSearchParams((location.hash.split("?")[1] || "") + "&" + location.search.slice(1));
     const fallback = dailyIndexNow();
-    if (!$("#lb-index").value) $("#lb-index").value = params.get("i") || fallback;
+    if (fromRoute || !$("#lb-index").value) $("#lb-index").value = params.get("i") || fallback;
     // The number field takes any book; the tick narrows it to the ones this
     // browser has actually finished, so you can find a board worth reading.
     const finished = Object.entries(progressMap())
@@ -1383,7 +1522,7 @@
         <h2>Daily</h2>
         <div class="stat-grid">
           ${tile(daily.wins, "Completed")}
-          ${tile(stats.currentStreak, "Streak")}
+          ${tile(stats.lastWinDate && daysBetween(stats.lastWinDate, gameDate()) <= 1 ? stats.currentStreak : 0, "Streak")}
           ${tile(stats.maxStreak, "Best streak")}
           ${tile(pct(daily.wins, daily.played), "Win rate")}
         </div>
@@ -1620,7 +1759,7 @@
         conn.send({ type: "hello", playIndex: b.playIndex, name: displayName() });
         battleStatus("Your friend is here. Start when you’re ready.");
       });
-      conn.on("data", onBattleData);
+      conn.on("data", msg => { if (current(b, peer) && b.conn === conn) onBattleData(msg); });
       conn.on("close", () => {
         if (!current(b, peer) || b.conn !== conn) return;
         b.peerName = null;
@@ -1725,7 +1864,7 @@
       conn.send({ type: "hello", name: displayName() });
       battleStatus("In the room. Waiting for the host to start.");
     });
-    conn.on("data", onBattleData);
+    conn.on("data", msg => { if (mine()) onBattleData(msg); });
     conn.on("error", () => { if (mine() && !b.settled) rejoin(); });
     conn.on("close", () => {
       // A knock that never opened is rejoin's business, not a lost opponent.
@@ -1765,10 +1904,11 @@
   }
 
   async function onBattleData(msg) {
-    if (!msg || typeof msg !== "object") return;
+    const battle = state.battle;
+    if (!battle || !msg || typeof msg !== "object") return;
     if (msg.type === "hello") {
       state.battle.peerName = msg.name || (state.battle.role === "guest" ? "Host" : "Guest");
-      if (Number.isInteger(msg.playIndex) && state.battle.role === "guest") {
+      if (Number.isInteger(msg.playIndex) && msg.playIndex >= 0 && msg.playIndex < presetCount() && state.battle.role === "guest") {
         state.battle.playIndex = msg.playIndex;
         state.battlePending = msg.playIndex;
         state.battle.status = "In the room. Waiting for the host to start.";
@@ -1781,11 +1921,13 @@
       repaintLobby();
     }
     if (msg.type === "start" && state.battle.role === "guest") {
-      const idx = msg.playIndex || state.battle.playIndex;
+      const idx = msg.playIndex ?? state.battle.playIndex;
+      if (!Number.isInteger(idx) || idx < 0 || idx >= presetCount()) return;
       await startPlay({ playIndex: idx, mode: "battle", fresh: true });
+      if (state.battle !== battle || !state.puzzle) return;
       setMsg(`${state.battle.peerName || "Host"} started the battle. First title wins.`);
     }
-    if (msg.type === "hint" && typeof msg.hints === "number") {
+    if (msg.type === "hint" && state.mode === "battle" && Number.isInteger(msg.hints) && msg.hints >= 0 && msg.hints <= MAX_HINTS) {
       if (msg.hints > state.hints && state.status === "playing") {
         state.hints = msg.hints;
         setMsg("Your opponent took a hint — you see it too.");
@@ -1794,7 +1936,7 @@
         bump($("#tier-label"));
       }
     }
-    if (msg.type === "win" && state.status === "playing") {
+    if (msg.type === "win" && state.mode === "battle" && !state.loading && state.status === "playing") {
       state.status = "lost";
       state.beatenBy = msg.name || "Your opponent";
       setMsg(`${state.beatenBy} guessed first.`);
@@ -1851,6 +1993,8 @@
   }
 
   async function go() {
+    ++playRequest; // Invalidate requests even when leaving for a non-game screen.
+    stopRoundTimers();
     applyTheme();
     playerId();
     paintAuth();
@@ -1870,7 +2014,7 @@
     setTitle(r.page, r.playIndex);
     const screens = { news: "screen-news", support: "screen-support", settings: "screen-settings", legal: "screen-legal" };
     if (r.page === "bank") return renderBank();
-    if (r.page === "ranks") return renderRanks();
+    if (r.page === "ranks") return renderRanks({ fromRoute: true });
     if (r.page === "stats") return renderStats();
     if (r.page === "settings") return renderSettings();
     /* One-shot modal routes: #/pro is how the nav and Stripe's return URL ask
@@ -2107,6 +2251,7 @@
       }
     }
     if (act === "hint") onHint();
+    if (act === "give-up") onGiveUp();
     if (act === "play-today" || act === "pick-today") {
       closeModal();
       leaveBattle();
@@ -2199,7 +2344,7 @@
       localStorage.setItem(K.name, e.target.value.trim().slice(0, 24));
       battleSend({ type: "name", name: displayName() });
     }
-    if (e.target.id === "bank-filter") renderBank();
+    if (e.target.id === "bank-filter" || e.target.id === "bank-status") renderBank();
     if (e.target.id === "lb-hints") renderRanks();
   });
   document.addEventListener("keydown", (e) => {
@@ -2244,13 +2389,28 @@
     }
   });
   window.addEventListener("online", wakeBattle);
+  window.addEventListener("online", flushProgressEntries);
   window.addEventListener("pagehide", () => {
     if (state.puzzle && state.status === "playing") saveProgress();
   });
   document.addEventListener("bookle-auth", (e) => {
-    if (!e.detail) clearLocalPlayData();
+    if (!e.detail) {
+      clearLocalPlayData();
+      stopRoundTimers();
+      state.puzzle = null;
+      state.guesses = [];
+      state.hints = 0;
+      state.status = "playing";
+      go();
+    }
     paintAuth();
-    syncProgress();
+    // The result card contains an optional sign-in offer. It must follow the
+    // session too, or a successful login leaves a stale "Sign in" action.
+    if (state.puzzle && state.status !== "playing") $("#result").innerHTML = postGameHtml();
+    const token = e.detail?.token;
+    Promise.resolve(progressSyncing).then(() => {
+      if (token && token === window.BookleAuth?.session?.()?.token) syncProgress();
+    });
   });
   // Entitlement arriving late must repaint the badge, the open modal, and the
   // ad slot — someone who just paid shouldn't have to reload to lose the ad.
@@ -2270,5 +2430,5 @@
   window.ExcerptlePro?.refresh?.();
   applyTheme();
   paintAuth();
-  go();
+  go().then(syncProgress);
 })();

@@ -3,9 +3,14 @@
 # not, so exclude these by hand there too.
 backend/
 tools/
+tests/
+test-results/
+playwright-report/
+playwright.config.js
 dist/
 node_modules/
 .git/
+.github/
 .codex/
 .agents/
 .wrangler/

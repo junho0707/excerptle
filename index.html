@@ -85,7 +85,7 @@
           <button type="button" class="btn ghost sm" data-act="play-random">🎲 Random book</button>
           <form id="jump-form" class="jump">
             <label class="sr-only" for="jump-input">Choose by ID</label>
-            <input id="jump-input" type="number" min="1" inputmode="numeric" placeholder="Book #">
+            <input id="jump-input" type="number" min="0" inputmode="numeric" placeholder="Book #">
             <button type="submit" class="btn ghost sm">Go</button>
           </form>
         </div>
@@ -97,8 +97,8 @@
         <div class="excerpt-wrap">
           <div id="tier-label" class="tier-label">First sentence</div>
           <article id="excerpt" class="excerpt drop">Loading…</article>
-          <div id="author-reveal" class="author-reveal" hidden></div>
         </div>
+        <div id="author-reveal" class="author-reveal" hidden></div>
         <ul id="guesses" class="guesses"></ul>
         <p id="msg" class="msg" role="status"></p>
         <form id="form" class="form" autocomplete="off">
@@ -112,7 +112,10 @@
               Guess <span id="count-guesses" class="pill">0/6</span>
             </button>
           </div>
-          <button type="button" class="linkish" data-act="share" id="share-playing">Share</button>
+          <div class="form-links">
+            <button type="button" class="linkish" data-act="give-up" id="give-up">Give up</button>
+            <button type="button" class="linkish" data-act="share" id="share-playing">Share</button>
+          </div>
         </form>
         <div id="result" class="result hidden"></div>
       </section>
@@ -128,6 +131,14 @@
             <option value="all">All</option>
             <option value="preset">Book bank</option>
             <option value="daily">Past dailies (#600+)</option>
+          </select>
+        </label>
+        <label>Status
+          <select id="bank-status">
+            <option value="all">All</option>
+            <option value="won">Solved</option>
+            <option value="done">Finished</option>
+            <option value="todo">Not played</option>
           </select>
         </label>
         <label>Choose by ID

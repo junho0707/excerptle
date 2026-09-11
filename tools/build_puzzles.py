@@ -79,6 +79,10 @@ BOOKS = load_books()
 
 START_RE = re.compile(r"\*\*\*\s*START OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
 END_RE = re.compile(r"\*\*\*\s*END OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
+# Older etexts close with a bare sentence before the starred marker — and some
+# carry no starred marker at all, which is how licence text reached hint 5.
+END_PLAIN_RE = re.compile(
+    r"^\s*end of (?:the )?project gutenberg(?:'|\u2019)?s?\b.*$", re.I | re.M)
 
 HEADING_RE = re.compile(
     r"""^\s*(?:
@@ -178,12 +182,18 @@ def fetch(gid: int) -> str:
 
 
 def strip_pg(text: str) -> str:
+    # Cut the header first, then search for the footer in what is left: an
+    # offset measured in the original string is meaningless once the text has
+    # been re-sliced, and using it let the licence through by the length of
+    # the header — invisible in a novel, but hint 5 of a short story is the
+    # whole text, so it ended on the trademark notice.
     start = START_RE.search(text)
-    end = END_RE.search(text)
     if start:
         text = text[start.end() :]
-    if end:
-        text = text[: end.start()]
+    for pattern in (END_RE, END_PLAIN_RE):
+        end = pattern.search(text)
+        if end:
+            text = text[: end.start()]
     return text.replace("\r\n", "\n").replace("\r", "\n").replace("\ufeff", "").strip()
 
 
