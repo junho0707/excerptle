@@ -1,0 +1,8922 @@
+{
+  "g2638": {
+    "title": "The Idiot",
+    "source": "wikidata:Q210784",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Russian Empire"
+    ]
+  },
+  "g2814": {
+    "title": "Dubliners",
+    "source": "wikidata:Q459592",
+    "genreQids": [],
+    "settingQids": [
+      "Q27"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Ireland"
+    ]
+  },
+  "g910": {
+    "title": "White Fang",
+    "source": "wikidata:Q152267",
+    "genreQids": [
+      "Q21802675",
+      "Q111984153"
+    ],
+    "settingQids": [
+      "Q2009",
+      "Q797"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "young adult fiction"
+    ],
+    "settingCandidates": [
+      "Yukon",
+      "Alaska"
+    ]
+  },
+  "g61": {
+    "title": "The Communist Manifesto",
+    "source": "wikidata:Q40591",
+    "genreQids": [
+      "Q104783349"
+    ],
+    "settingQids": [
+      "Q183"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "political manifesto"
+    ],
+    "settingCandidates": [
+      "Germany"
+    ]
+  },
+  "g105": {
+    "title": "Persuasion",
+    "source": "wikidata:Q333179",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g940": {
+    "title": "The Last of the Mohicans",
+    "source": "wikidata:Q493574",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q19464773"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Northern America and Mexico"
+    ]
+  },
+  "g139": {
+    "title": "The Lost World",
+    "source": "wikidata:Q785255",
+    "genreQids": [
+      "Q2477736",
+      "Q24925",
+      "Q21802675",
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q828",
+      "Q244451"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "lost world fiction",
+      "science fiction",
+      "adventure fiction",
+      "fiction"
+    ],
+    "settingCandidates": [
+      "Americas",
+      "Amazon basin"
+    ]
+  },
+  "g2500": {
+    "title": "Siddhartha",
+    "source": "wikidata:Q457289",
+    "genreQids": [
+      "Q2016518",
+      "Q1312571"
+    ],
+    "settingQids": [
+      "Q668"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "philosophical novel",
+      "developmental novel"
+    ],
+    "settingCandidates": [
+      "India"
+    ]
+  },
+  "g140": {
+    "title": "The Jungle",
+    "source": "wikidata:Q260205",
+    "genreQids": [
+      "Q104100753"
+    ],
+    "settingQids": [
+      "Q1297"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social fiction"
+    ],
+    "settingCandidates": [
+      "Chicago"
+    ]
+  },
+  "g4217": {
+    "title": "A Portrait of the Artist as a Young Man",
+    "source": "wikidata:Q465360",
+    "genreQids": [
+      "Q3056541",
+      "Q783459",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q1761"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiographical novel",
+      "Künstlerroman",
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Dublin"
+    ]
+  },
+  "g308": {
+    "title": "Three Men in a Boat",
+    "source": "wikidata:Q955910",
+    "genreQids": [
+      "Q121389176"
+    ],
+    "settingQids": [
+      "Q23220"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "humorous fiction"
+    ],
+    "settingCandidates": [
+      "Berkshire"
+    ]
+  },
+  "g4517": {
+    "title": "Ethan Frome",
+    "source": "wikidata:Q5402934",
+    "genreQids": [
+      "Q4745527"
+    ],
+    "settingQids": [
+      "Q771",
+      "Q18389"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "American realism"
+    ],
+    "settingCandidates": [
+      "Massachusetts",
+      "New England"
+    ]
+  },
+  "g141": {
+    "title": "Mansfield Park",
+    "source": "wikidata:Q469690",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g11231": {
+    "title": "Bartleby, the Scrivener",
+    "source": "wikidata:Q780407",
+    "genreQids": [
+      "Q1508663"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social criticism"
+    ],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g972": {
+    "title": "The Devil's Dictionary",
+    "source": "wikidata:Q1147121",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": []
+  },
+  "g60976": {
+    "title": "Rip Van Winkle",
+    "source": "wikidata:Q1129589",
+    "genreQids": [
+      "Q104767031"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "time-travel fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g375": {
+    "title": "An Occurrence at Owl Creek Bridge",
+    "source": "wikidata:Q2943621",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g82": {
+    "title": "Ivanhoe",
+    "source": "wikidata:Q840974",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g60": {
+    "title": "The Scarlet Pimpernel",
+    "source": "wikidata:Q1249536",
+    "genreQids": [
+      "Q1589214"
+    ],
+    "settingQids": [
+      "Q142"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "cloak and dagger novel"
+    ],
+    "settingCandidates": [
+      "France"
+    ]
+  },
+  "g201": {
+    "title": "Flatland",
+    "source": "wikidata:Q728312",
+    "genreQids": [
+      "Q24925",
+      "Q24255733",
+      "Q110540276"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction",
+      "mathematical fiction",
+      "satirical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g107": {
+    "title": "Far from the Madding Crowd",
+    "source": "wikidata:Q5642996",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g73144": {
+    "title": "Lady Chatterley's Lover",
+    "source": "wikidata:Q750670",
+    "genreQids": [
+      "Q747483",
+      "Q1191618"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "erotic literature",
+      "erotic romance novel"
+    ],
+    "settingCandidates": []
+  },
+  "g1450": {
+    "title": "Pollyanna",
+    "source": "wikidata:Q2348190",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g5658": {
+    "title": "Lord Jim",
+    "source": "wikidata:Q727408",
+    "genreQids": [
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q48"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "psychological fiction"
+    ],
+    "settingCandidates": [
+      "Asia"
+    ]
+  },
+  "g78": {
+    "title": "Tarzan of the Apes",
+    "source": "wikidata:Q655296",
+    "genreQids": [
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q15"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "adventure fiction"
+    ],
+    "settingCandidates": [
+      "Africa"
+    ]
+  },
+  "g6157": {
+    "title": "How Much Land Does a Man Need?",
+    "source": "wikidata:Q1269280",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Russian Empire"
+    ]
+  },
+  "g550": {
+    "title": "Silas Marner",
+    "source": "wikidata:Q638327",
+    "genreQids": [
+      "Q538812"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "novel of manners"
+    ],
+    "settingCandidates": []
+  },
+  "g969": {
+    "title": "The Tenant of Wildfell Hall",
+    "source": "wikidata:Q44701",
+    "genreQids": [
+      "Q2250271"
+    ],
+    "settingQids": [
+      "Q163"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary fiction"
+    ],
+    "settingCandidates": [
+      "Yorkshire"
+    ]
+  },
+  "g153": {
+    "title": "Jude the Obscure",
+    "source": "wikidata:Q1248773",
+    "genreQids": [],
+    "settingQids": [
+      "Q23220"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Berkshire"
+    ]
+  },
+  "g61221": {
+    "title": "A Passage to India",
+    "source": "wikidata:Q622303",
+    "genreQids": [],
+    "settingQids": [
+      "Q668"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "India"
+    ]
+  },
+  "g143": {
+    "title": "The Mayor of Casterbridge",
+    "source": "wikidata:Q2343169",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1156": {
+    "title": "Babbitt",
+    "source": "wikidata:Q1107000",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": [
+      "United States"
+    ]
+  },
+  "g1074": {
+    "title": "The Sea-Wolf",
+    "source": "wikidata:Q1196857",
+    "genreQids": [
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q232264",
+      "Q12353254",
+      "Q25322"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction"
+    ],
+    "settingCandidates": [
+      "San Francisco Bay",
+      "North Pacific Ocean",
+      "Arctic"
+    ]
+  },
+  "g1237": {
+    "title": "Père Goriot",
+    "source": "wikidata:Q240617",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q142"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Paris",
+      "France"
+    ]
+  },
+  "g95": {
+    "title": "The Prisoner of Zenda",
+    "source": "wikidata:Q1193766",
+    "genreQids": [
+      "Q1589214",
+      "Q21802675",
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q111353143"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "cloak and dagger novel",
+      "adventure fiction",
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "The Castle of Zenda"
+    ]
+  },
+  "g351": {
+    "title": "Of Human Bondage",
+    "source": "wikidata:Q1195793",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q84",
+      "Q23298"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Paris",
+      "London",
+      "Kent"
+    ]
+  },
+  "g396": {
+    "title": "The Lady, or the Tiger?",
+    "source": "wikidata:Q2707051",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g61085": {
+    "title": "In Our Time",
+    "source": "wikidata:Q1164998",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2834": {
+    "title": "The Portrait of a Lady",
+    "source": "wikidata:Q861017",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g61620": {
+    "title": "The Mark of Zorro",
+    "source": "wikidata:Q639072",
+    "genreQids": [
+      "Q1589214",
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q99"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "cloak and dagger novel",
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "California"
+    ]
+  },
+  "g65238": {
+    "title": "The Secret of Chimneys",
+    "source": "wikidata:Q174654",
+    "genreQids": [
+      "Q182015",
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "thriller",
+      "crime fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g3268": {
+    "title": "The Mysteries of Udolpho",
+    "source": "wikidata:Q2600909",
+    "genreQids": [
+      "Q19765983",
+      "Q16575965",
+      "Q182015",
+      "Q20669641",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "horror fiction",
+      "thriller",
+      "Gothic fiction",
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g2465": {
+    "title": "Carmen",
+    "source": "wikidata:Q674832",
+    "genreQids": [],
+    "settingQids": [
+      "Q5783"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Andalusia"
+    ]
+  },
+  "g601": {
+    "title": "The Monk",
+    "source": "wikidata:Q2659564",
+    "genreQids": [
+      "Q20669641",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q2807"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Gothic fiction",
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Madrid"
+    ]
+  },
+  "g393": {
+    "title": "The Blue Lagoon",
+    "source": "wikidata:Q3822730",
+    "genreQids": [
+      "Q738473"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romance"
+    ],
+    "settingCandidates": []
+  },
+  "g589": {
+    "title": "Catriona",
+    "source": "wikidata:Q2277829",
+    "genreQids": [
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q55"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Netherlands"
+    ]
+  },
+  "g10002": {
+    "title": "The House on the Borderland",
+    "source": "wikidata:Q740473",
+    "genreQids": [
+      "Q16575965",
+      "Q132311",
+      "Q732782"
+    ],
+    "settingQids": [
+      "Q27"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction",
+      "fantasy",
+      "weird fiction"
+    ],
+    "settingCandidates": [
+      "Ireland"
+    ]
+  },
+  "g69700": {
+    "title": "The Case-Book of Sherlock Holmes",
+    "source": "wikidata:Q1129378",
+    "genreQids": [
+      "Q186424",
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction",
+      "crime fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g58866": {
+    "title": "The Murder on the Links",
+    "source": "wikidata:Q542293",
+    "genreQids": [
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "crime fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g3289": {
+    "title": "The Valley of Fear",
+    "source": "wikidata:Q863438",
+    "genreQids": [
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q145"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "crime fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "United Kingdom"
+    ]
+  },
+  "g61168": {
+    "title": "The Man in the Brown Suit",
+    "source": "wikidata:Q1167555",
+    "genreQids": [
+      "Q182015",
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "thriller",
+      "crime fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g560": {
+    "title": "Mr. Standfast",
+    "source": "wikidata:Q16387145",
+    "genreQids": [
+      "Q21803247"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "military fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g8954": {
+    "title": "Lady Audley's Secret",
+    "source": "wikidata:Q2738351",
+    "genreQids": [
+      "Q3440961"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "sensation fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1259": {
+    "title": "Twenty Years After",
+    "source": "wikidata:Q1639633",
+    "genreQids": [
+      "Q1589214",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q142"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "cloak and dagger novel",
+      "adventure fiction"
+    ],
+    "settingCandidates": [
+      "France"
+    ]
+  },
+  "g70114": {
+    "title": "The Big Four",
+    "source": "wikidata:Q734675",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "London",
+      "Paris"
+    ]
+  },
+  "g2350": {
+    "title": "His Last Bow",
+    "source": "wikidata:Q733582",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g50133": {
+    "title": "The Dunwich Horror",
+    "source": "wikidata:Q2468877",
+    "genreQids": [
+      "Q16575965",
+      "Q24925",
+      "Q732782"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction",
+      "science fiction",
+      "weird fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g389": {
+    "title": "The Great God Pan",
+    "source": "wikidata:Q1394704",
+    "genreQids": [
+      "Q16575965",
+      "Q732782",
+      "Q118141790"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction",
+      "weird fiction",
+      "folk horror"
+    ],
+    "settingCandidates": []
+  },
+  "g8486": {
+    "title": "Ghost Stories of an Antiquary",
+    "source": "wikidata:Q1226144",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g57669": {
+    "title": "The Problem of Cell 13",
+    "source": "wikidata:Q3795335",
+    "genreQids": [
+      "Q1141200"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "locked room mystery"
+    ],
+    "settingCandidates": []
+  },
+  "g1872": {
+    "title": "The Red House Mystery",
+    "source": "wikidata:Q7759881",
+    "genreQids": [
+      "Q6585139"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "mystery fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g173": {
+    "title": "The Insidious Dr. Fu-Manchu",
+    "source": "wikidata:Q5979985",
+    "genreQids": [
+      "Q6585139"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "mystery fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2160": {
+    "title": "The Expedition of Humphry Clinker",
+    "source": "wikidata:Q3203413",
+    "genreQids": [
+      "Q465821"
+    ],
+    "settingQids": [
+      "Q23666"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary novel"
+    ],
+    "settingCandidates": [
+      "Great Britain"
+    ]
+  },
+  "g17460": {
+    "title": "Lorna Doone",
+    "source": "wikidata:Q3400981",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q23156"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "Devon"
+    ]
+  },
+  "g9911": {
+    "title": "First Love",
+    "source": "wikidata:Q1826666",
+    "genreQids": [
+      "Q12799318"
+    ],
+    "settingQids": [
+      "Q183"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "short novel"
+    ],
+    "settingCandidates": [
+      "Germany"
+    ]
+  },
+  "g921": {
+    "title": "De Profundis",
+    "source": "wikidata:Q1249459",
+    "genreQids": [
+      "Q215495"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistle"
+    ],
+    "settingCandidates": []
+  },
+  "g1079": {
+    "title": "Tristram Shandy",
+    "source": "wikidata:Q1164083",
+    "genreQids": [
+      "Q110540276",
+      "Q44563",
+      "Q531067"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satirical fiction",
+      "picaresque novel",
+      "metafiction"
+    ],
+    "settingCandidates": []
+  },
+  "g696": {
+    "title": "The Castle of Otranto",
+    "source": "wikidata:Q548576",
+    "genreQids": [
+      "Q20669641",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Gothic fiction",
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2040": {
+    "title": "Confessions of an English Opium-Eater",
+    "source": "wikidata:Q1610128",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiography"
+    ],
+    "settingCandidates": []
+  },
+  "g38703": {
+    "title": "The Black Moth",
+    "source": "wikidata:Q7718392",
+    "genreQids": [
+      "Q19765983",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q23666"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Great Britain"
+    ]
+  },
+  "g1170": {
+    "title": "Anabasis",
+    "source": "wikidata:Q73112",
+    "genreQids": [
+      "Q1164267",
+      "Q30277550"
+    ],
+    "settingQids": [
+      "Q45301",
+      "Q6514",
+      "Q399",
+      "Q166"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "travel book",
+      "historiography"
+    ],
+    "settingCandidates": [
+      "Trabzon",
+      "Dardanelles",
+      "Armenia",
+      "Black Sea"
+    ]
+  },
+  "g786": {
+    "title": "Hard Times",
+    "source": "wikidata:Q1340493",
+    "genreQids": [
+      "Q1347298",
+      "Q104100753"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "serialized fiction",
+      "social fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g131": {
+    "title": "The Pilgrim's Progress",
+    "source": "wikidata:Q268211",
+    "genreQids": [
+      "Q2839016"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "allegory"
+    ],
+    "settingCandidates": []
+  },
+  "g8117": {
+    "title": "Demons",
+    "source": "wikidata:Q329989",
+    "genreQids": [
+      "Q2254211",
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q159",
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "political fiction",
+      "psychological fiction"
+    ],
+    "settingCandidates": [
+      "Russia",
+      "Russian Empire"
+    ]
+  },
+  "g47": {
+    "title": "Anne of Avonlea",
+    "source": "wikidata:Q1331757",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q1306534"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Avonlea"
+    ]
+  },
+  "g883": {
+    "title": "Our Mutual Friend",
+    "source": "wikidata:Q1557935",
+    "genreQids": [
+      "Q1347298",
+      "Q6585139"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "serialized fiction",
+      "mystery fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g2853": {
+    "title": "Quo Vadis",
+    "source": "wikidata:Q335315",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1747689"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Ancient Rome"
+    ]
+  },
+  "g512": {
+    "title": "Mosses from an Old Manse",
+    "source": "wikidata:Q595934",
+    "genreQids": [
+      "Q9326077"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "speculative fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1056": {
+    "title": "Martin Eden",
+    "source": "wikidata:Q1317839",
+    "genreQids": [
+      "Q783459"
+    ],
+    "settingQids": [
+      "Q17042"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Künstlerroman"
+    ],
+    "settingCandidates": [
+      "Oakland"
+    ]
+  },
+  "g805": {
+    "title": "This Side of Paradise",
+    "source": "wikidata:Q2581681",
+    "genreQids": [],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g963": {
+    "title": "Little Dorrit",
+    "source": "wikidata:Q565638",
+    "genreQids": [],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g700": {
+    "title": "The Old Curiosity Shop",
+    "source": "wikidata:Q2700616",
+    "genreQids": [
+      "Q1508663"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social criticism"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g9182": {
+    "title": "Villette",
+    "source": "wikidata:Q2449570",
+    "genreQids": [
+      "Q223945",
+      "Q619593"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman",
+      "Victorian literature"
+    ],
+    "settingCandidates": []
+  },
+  "g222": {
+    "title": "The Moon and Sixpence",
+    "source": "wikidata:Q1792726",
+    "genreQids": [
+      "Q4914883"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "biographical novel"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g2197": {
+    "title": "The Gambler",
+    "source": "wikidata:Q223688",
+    "genreQids": [],
+    "settingQids": [
+      "Q46"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Europe"
+    ]
+  },
+  "g32": {
+    "title": "Herland",
+    "source": "wikidata:Q5739278",
+    "genreQids": [
+      "Q24925",
+      "Q15062360",
+      "Q2435402",
+      "Q1347298"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction",
+      "utopian fiction",
+      "feminist science fiction",
+      "serialized fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g708": {
+    "title": "The Princess and the Goblin",
+    "source": "wikidata:Q466505",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g11438": {
+    "title": "The Willows",
+    "source": "wikidata:Q7775018",
+    "genreQids": [
+      "Q732782",
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q28513",
+      "Q1653"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "weird fiction",
+      "horror fiction"
+    ],
+    "settingCandidates": [
+      "Austria–Hungary",
+      "Danube"
+    ]
+  },
+  "g208": {
+    "title": "Daisy Miller",
+    "source": "wikidata:Q574887",
+    "genreQids": [],
+    "settingQids": [
+      "Q220"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Rome"
+    ]
+  },
+  "g102": {
+    "title": "Pudd'nhead Wilson",
+    "source": "wikidata:Q1776855",
+    "genreQids": [
+      "Q6585139",
+      "Q2561390"
+    ],
+    "settingQids": [
+      "Q1581"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "mystery fiction",
+      "comic novel"
+    ],
+    "settingCandidates": [
+      "Missouri"
+    ]
+  },
+  "g1210": {
+    "title": "Kwaidan",
+    "source": "wikidata:Q2345085",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g9830": {
+    "title": "The Beautiful and Damned",
+    "source": "wikidata:Q2531205",
+    "genreQids": [],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g54": {
+    "title": "The Marvelous Land of Oz",
+    "source": "wikidata:Q1659447",
+    "genreQids": [
+      "Q56451354",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction",
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g18247": {
+    "title": "The Last Man",
+    "source": "wikidata:Q2323961",
+    "genreQids": [
+      "Q197949",
+      "Q24925",
+      "Q64448878"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "post-apocalyptic fiction",
+      "science fiction",
+      "futuristic fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g217": {
+    "title": "Sons and Lovers",
+    "source": "wikidata:Q80771",
+    "genreQids": [
+      "Q3056541"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiographical novel"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g122": {
+    "title": "The Return of the Native",
+    "source": "wikidata:Q141568",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g13707": {
+    "title": "Twice-Told Tales",
+    "source": "wikidata:Q2920815",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g624": {
+    "title": "Looking Backward",
+    "source": "wikidata:Q1305106",
+    "genreQids": [
+      "Q64448878",
+      "Q111972381",
+      "Q2254211"
+    ],
+    "settingQids": [
+      "Q100"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "futuristic fiction",
+      "utopian literature",
+      "political fiction"
+    ],
+    "settingCandidates": [
+      "Boston"
+    ]
+  },
+  "g144": {
+    "title": "The Voyage Out",
+    "source": "wikidata:Q599198",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2302": {
+    "title": "Poor Folk",
+    "source": "wikidata:Q117293",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Russian Empire"
+    ]
+  },
+  "g689": {
+    "title": "The Kreutzer Sonata",
+    "source": "wikidata:Q1214091",
+    "genreQids": [
+      "Q19765983",
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g220": {
+    "title": "The Secret Sharer",
+    "source": "wikidata:Q1198668",
+    "genreQids": [
+      "Q7440128"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "nautical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g3155": {
+    "title": "She",
+    "source": "wikidata:Q640513",
+    "genreQids": [
+      "Q2477736",
+      "Q21802675",
+      "Q20669641",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "lost world fiction",
+      "adventure fiction",
+      "Gothic fiction",
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g416": {
+    "title": "Winesburg, Ohio",
+    "source": "wikidata:Q10958564",
+    "genreQids": [
+      "Q7502092"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "short story cycle"
+    ],
+    "settingCandidates": []
+  },
+  "g1093": {
+    "title": "The Beast in the Jungle",
+    "source": "wikidata:Q27331",
+    "genreQids": [
+      "Q38072107"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fiction literature"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g24": {
+    "title": "O Pioneers!",
+    "source": "wikidata:Q2008343",
+    "genreQids": [
+      "Q136472"
+    ],
+    "settingQids": [
+      "Q1553"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Nebraska"
+    ]
+  },
+  "g1938": {
+    "title": "Resurrection",
+    "source": "wikidata:Q146866",
+    "genreQids": [
+      "Q20737414",
+      "Q2254211",
+      "Q104100753"
+    ],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "philosophical fiction",
+      "political fiction",
+      "social fiction"
+    ],
+    "settingCandidates": [
+      "Russian Empire"
+    ]
+  },
+  "g1900": {
+    "title": "Typee",
+    "source": "wikidata:Q2463076",
+    "genreQids": [
+      "Q1072723"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "travel literature"
+    ],
+    "settingCandidates": []
+  },
+  "g1965": {
+    "title": "Captain Blood",
+    "source": "wikidata:Q2621164",
+    "genreQids": [
+      "Q111143082",
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "pirate fiction",
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g37536": {
+    "title": "The House of the Dead",
+    "source": "wikidata:Q1161171",
+    "genreQids": [
+      "Q1347298"
+    ],
+    "settingQids": [
+      "Q34266",
+      "Q41979"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "serialized fiction"
+    ],
+    "settingCandidates": [
+      "Russian Empire",
+      "Siberian Federal District"
+    ]
+  },
+  "g479": {
+    "title": "Little Lord Fauntleroy",
+    "source": "wikidata:Q387480",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "United States"
+    ]
+  },
+  "g6124": {
+    "title": "Pamela",
+    "source": "wikidata:Q2048624",
+    "genreQids": [
+      "Q465821",
+      "Q1029945"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary novel",
+      "education novel"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g1164": {
+    "title": "The Iron Heel",
+    "source": "wikidata:Q2465752",
+    "genreQids": [
+      "Q15062348",
+      "Q24925",
+      "Q2254211"
+    ],
+    "settingQids": [
+      "Q62"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "dystopian fiction",
+      "science fiction",
+      "political fiction"
+    ],
+    "settingCandidates": [
+      "San Francisco"
+    ]
+  },
+  "g7469": {
+    "title": "Daniel Deronda",
+    "source": "wikidata:Q552238",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": []
+  },
+  "g4240": {
+    "title": "Women in Love",
+    "source": "wikidata:Q2443714",
+    "genreQids": [
+      "Q971480",
+      "Q3139891",
+      "Q101240581"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "modernist literature",
+      "LGBT-related literature",
+      "psychological fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g5231": {
+    "title": "The Way We Live Now",
+    "source": "wikidata:Q7773866",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": []
+  },
+  "g767": {
+    "title": "Agnes Grey",
+    "source": "wikidata:Q517172",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g41085": {
+    "title": "La Vita Nuova",
+    "source": "wikidata:Q18084",
+    "genreQids": [
+      "Q1159457",
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "chivalric romance",
+      "autobiography"
+    ],
+    "settingCandidates": []
+  },
+  "g432": {
+    "title": "The Ambassadors",
+    "source": "wikidata:Q650571",
+    "genreQids": [
+      "Q101240581",
+      "Q740919"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "psychological fiction",
+      "social novel"
+    ],
+    "settingCandidates": [
+      "United States"
+    ]
+  },
+  "g165": {
+    "title": "McTeague",
+    "source": "wikidata:Q11772710",
+    "genreQids": [],
+    "settingQids": [
+      "Q62"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "San Francisco"
+    ]
+  },
+  "g2153": {
+    "title": "Mary Barton",
+    "source": "wikidata:Q2607078",
+    "genreQids": [],
+    "settingQids": [
+      "Q18125"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Manchester"
+    ]
+  },
+  "g5998": {
+    "title": "Waverley",
+    "source": "wikidata:Q678251",
+    "genreQids": [
+      "Q44563",
+      "Q223945",
+      "Q136472"
+    ],
+    "settingQids": [
+      "Q22"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "picaresque novel",
+      "Bildungsroman",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Scotland"
+    ]
+  },
+  "g81": {
+    "title": "The Return of Tarzan",
+    "source": "wikidata:Q2441302",
+    "genreQids": [
+      "Q21802675",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q97"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Atlantic Ocean"
+    ]
+  },
+  "g28948": {
+    "title": "The Rainbow",
+    "source": "wikidata:Q3288936",
+    "genreQids": [
+      "Q870452"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "family saga"
+    ],
+    "settingCandidates": []
+  },
+  "g28961": {
+    "title": "Heart",
+    "source": "wikidata:Q11336",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q495"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Turin"
+    ]
+  },
+  "g2667": {
+    "title": "The Vicar of Wakefield",
+    "source": "wikidata:Q1196205",
+    "genreQids": [
+      "Q7451276"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "sentimental novel"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g6053": {
+    "title": "Evelina",
+    "source": "wikidata:Q1635110",
+    "genreQids": [
+      "Q465821"
+    ],
+    "settingQids": [
+      "Q23154"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary novel"
+    ],
+    "settingCandidates": [
+      "Bristol"
+    ]
+  },
+  "g370": {
+    "title": "Moll Flanders",
+    "source": "wikidata:Q612523",
+    "genreQids": [
+      "Q44563"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "picaresque novel"
+    ],
+    "settingCandidates": []
+  },
+  "g8118": {
+    "title": "Redburn",
+    "source": "wikidata:Q7305519",
+    "genreQids": [],
+    "settingQids": [
+      "Q24826"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Liverpool"
+    ]
+  },
+  "g913": {
+    "title": "A Hero of Our Time",
+    "source": "wikidata:Q1304649",
+    "genreQids": [
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q41970",
+      "Q153676"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "psychological fiction"
+    ],
+    "settingCandidates": [
+      "Pyatigorsk",
+      "Kislovodsk"
+    ]
+  },
+  "g36483": {
+    "title": "Wilhelm Meister's Apprenticeship",
+    "source": "wikidata:Q1194031",
+    "genreQids": [
+      "Q1312571",
+      "Q223945"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "developmental novel",
+      "Bildungsroman"
+    ],
+    "settingCandidates": []
+  },
+  "g525": {
+    "title": "Youth",
+    "source": "wikidata:Q1339248",
+    "genreQids": [
+      "Q1505819"
+    ],
+    "settingQids": [
+      "Q97"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "frame story"
+    ],
+    "settingCandidates": [
+      "Atlantic Ocean"
+    ]
+  },
+  "g5670": {
+    "title": "Jacob's Room",
+    "source": "wikidata:Q1677745",
+    "genreQids": [],
+    "settingQids": [
+      "Q350"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Cambridge"
+    ]
+  },
+  "g20657": {
+    "title": "Tales from Shakespeare",
+    "source": "wikidata:Q589197",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g836": {
+    "title": "The Phoenix and the Carpet",
+    "source": "wikidata:Q3795974",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g64682": {
+    "title": "The Painted Veil",
+    "source": "wikidata:Q795340",
+    "genreQids": [],
+    "settingQids": [
+      "Q8646"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Hong Kong"
+    ]
+  },
+  "g3285": {
+    "title": "The Deerslayer",
+    "source": "wikidata:Q855801",
+    "genreQids": [
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1384"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "New York"
+    ]
+  },
+  "g3409": {
+    "title": "Barchester Towers",
+    "source": "wikidata:Q4859885",
+    "genreQids": [],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g1290": {
+    "title": "Salammbô",
+    "source": "wikidata:Q117182",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g268": {
+    "title": "The Octopus",
+    "source": "wikidata:Q7754678",
+    "genreQids": [],
+    "settingQids": [
+      "Q99"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "California"
+    ]
+  },
+  "g873": {
+    "title": "A House of Pomegranates",
+    "source": "wikidata:Q734607",
+    "genreQids": [
+      "Q24723"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "literary fairy tale"
+    ],
+    "settingCandidates": []
+  },
+  "g2081": {
+    "title": "The Blithedale Romance",
+    "source": "wikidata:Q4007947",
+    "genreQids": [
+      "Q19765983",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q771"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Massachusetts"
+    ]
+  },
+  "g39858": {
+    "title": "Trilby",
+    "source": "wikidata:Q1691967",
+    "genreQids": [
+      "Q20669641"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Gothic fiction"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g126": {
+    "title": "The Poison Belt",
+    "source": "wikidata:Q2660166",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g5164": {
+    "title": "The Beetle",
+    "source": "wikidata:Q7716299",
+    "genreQids": [
+      "Q132311",
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "horror fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g21970": {
+    "title": "The Scarlet Plague",
+    "source": "wikidata:Q2634129",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q62"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction"
+    ],
+    "settingCandidates": [
+      "San Francisco"
+    ]
+  },
+  "g1999": {
+    "title": "Crome Yellow",
+    "source": "wikidata:Q5187582",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2948": {
+    "title": "Where Angels Fear to Tread",
+    "source": "wikidata:Q7993159",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2275": {
+    "title": "The Pioneers",
+    "source": "wikidata:Q1898036",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1384"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "New York"
+    ]
+  },
+  "g176": {
+    "title": "Roderick Hudson",
+    "source": "wikidata:Q3079804",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": []
+  },
+  "g3781": {
+    "title": "The Jewel of Seven Stars",
+    "source": "wikidata:Q7743210",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g10832": {
+    "title": "Carnacki, the Ghost-Finder",
+    "source": "wikidata:Q5043764",
+    "genreQids": [
+      "Q7644030",
+      "Q186424",
+      "Q10728648",
+      "Q732782",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "supernatural fiction",
+      "detective fiction",
+      "occult detective fiction",
+      "weird fiction",
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g11052": {
+    "title": "The Custom of the Country",
+    "source": "wikidata:Q7728505",
+    "genreQids": [],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g1307": {
+    "title": "La Peau de chagrin",
+    "source": "wikidata:Q1142149",
+    "genreQids": [
+      "Q116213606"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantastique"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g780": {
+    "title": "The War in the Air",
+    "source": "wikidata:Q964055",
+    "genreQids": [
+      "Q3919251",
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "apocalyptic fiction",
+      "science fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g24020": {
+    "title": "Romola",
+    "source": "wikidata:Q7363279",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q2044"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Florence"
+    ]
+  },
+  "g1188": {
+    "title": "The Lair of the White Worm",
+    "source": "wikidata:Q3566302",
+    "genreQids": [
+      "Q132311",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g10935": {
+    "title": "The Wonderful Adventures of Nils",
+    "source": "wikidata:Q726254",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q1642709",
+      "Q1478637",
+      "Q1663657",
+      "Q1418074",
+      "Q1531449",
+      "Q1791521",
+      "Q1636516",
+      "Q25789",
+      "Q911329",
+      "Q1825191",
+      "Q1645268",
+      "Q54757",
+      "Q1805733",
+      "Q25732",
+      "Q1779560",
+      "Q211425",
+      "Q15107508",
+      "Q25286",
+      "Q1754",
+      "Q2695839",
+      "Q7114098",
+      "Q913070",
+      "Q4994152",
+      "Q26937",
+      "Q4991975",
+      "Q784269",
+      "Q893554",
+      "Q4570016",
+      "Q10683939",
+      "Q2745396",
+      "Q263877",
+      "Q25415",
+      "Q1800264",
+      "Q1756189",
+      "Q860536",
+      "Q1236659",
+      "Q29582989",
+      "Q513949",
+      "Q54357",
+      "Q1000129",
+      "Q25724",
+      "Q431863",
+      "Q3361714",
+      "Q1019336",
+      "Q26498",
+      "Q2575078",
+      "Q25412",
+      "Q37404",
+      "Q2370596",
+      "Q1358418",
+      "Q820245",
+      "Q216627",
+      "Q1975525",
+      "Q1003260",
+      "Q2996081",
+      "Q764547",
+      "Q725108",
+      "Q254953",
+      "Q2683285",
+      "Q26476",
+      "Q775641",
+      "Q209853",
+      "Q211652",
+      "Q83718",
+      "Q1741182",
+      "Q1877583",
+      "Q83232",
+      "Q26515",
+      "Q1160449",
+      "Q691597",
+      "Q298372",
+      "Q1338024",
+      "Q1653205",
+      "Q10432134",
+      "Q406556",
+      "Q1417226",
+      "Q1530442",
+      "Q1735844"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Västra Vemmenhög",
+      "Vombsjön",
+      "Vittskövle Castle",
+      "Övedskloster Castle",
+      "Glimmingehus",
+      "Kullaberg",
+      "Ronneby River",
+      "Karlskrona",
+      "Ottenby",
+      "Lilla Karlsö",
+      "Vineta",
+      "Visby",
+      "Tåkern",
+      "Örebro",
+      "Kolmården",
+      "Hjälmaren",
+      "Falun Mine",
+      "Uppsala",
+      "Stockholm",
+      "Linderödsåsen",
+      "Ovesholm Castle",
+      "Bäckaskog Castle",
+      "Ryssberget",
+      "Kristianstad",
+      "Lyckebyån",
+      "Kalmar Strait",
+      "Borgholm",
+      "Tjust",
+      "Sunnerbo hundred",
+      "Taberg",
+      "Huskvarna",
+      "Jönköping",
+      "Ulvåsa",
+      "Alvastra Abbey",
+      "Vreta Abbey",
+      "Linköping Cathedral",
+      "Medevi",
+      "Vadstena Abbey",
+      "Motala",
+      "Finspång",
+      "Norrköping",
+      "Göta Canal",
+      "Yngaren",
+      "Båven",
+      "Eskilstuna",
+      "Fellingsbro",
+      "Västerås",
+      "Norberg Municipality",
+      "Svartån",
+      "Sagån",
+      "Bergslagen",
+      "Dalälven",
+      "Rättvik",
+      "Leksand",
+      "Floda",
+      "Stockholm archipelago",
+      "Skansen",
+      "Älvkarleby",
+      "Delsbo",
+      "Sundsvall",
+      "Alnön",
+      "Ångermanland",
+      "Västerbotten",
+      "Malmberget",
+      "Kiirunavaara",
+      "Luossavaara",
+      "Kiruna",
+      "Östersund",
+      "Ljusnan",
+      "Sonfjället National Park",
+      "Österdal River",
+      "Klarälven",
+      "Mårbacka",
+      "Q10432134",
+      "Marstrand",
+      "Nääs Castle",
+      "Söderåsen National Park",
+      "Smygehuk"
+    ]
+  },
+  "g211": {
+    "title": "The Aspern Papers",
+    "source": "wikidata:Q2362409",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3431": {
+    "title": "The Gadfly",
+    "source": "wikidata:Q2426986",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g804": {
+    "title": "A Sentimental Journey Through France and Italy",
+    "source": "wikidata:Q768792",
+    "genreQids": [
+      "Q2753521"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "imaginary voyage"
+    ],
+    "settingCandidates": []
+  },
+  "g1845": {
+    "title": "Zuleika Dobson",
+    "source": "wikidata:Q8075113",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": []
+  },
+  "g1018": {
+    "title": "The Water-Babies",
+    "source": "wikidata:Q14914646",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g467": {
+    "title": "La Princesse de Clèves",
+    "source": "wikidata:Q1157010",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2604": {
+    "title": "The Longest Journey",
+    "source": "wikidata:Q15999894",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g718": {
+    "title": "Tono-Bungay",
+    "source": "wikidata:Q1535422",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g486": {
+    "title": "Ozma of Oz",
+    "source": "wikidata:Q634885",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q2918164"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Land of Oz"
+    ]
+  },
+  "g778": {
+    "title": "Five Children and It",
+    "source": "wikidata:Q651866",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q23298"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Kent"
+    ]
+  },
+  "g16457": {
+    "title": "Around the Moon",
+    "source": "wikidata:Q1327411",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q405",
+      "Q210448",
+      "Q98"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction"
+    ],
+    "settingCandidates": [
+      "Moon",
+      "lunar orbit",
+      "Pacific Ocean"
+    ]
+  },
+  "g7118": {
+    "title": "What Maisie Knew",
+    "source": "wikidata:Q2943614",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1749": {
+    "title": "Cousin Bette",
+    "source": "wikidata:Q2712800",
+    "genreQids": [
+      "Q1248788"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "realist novel"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g70875": {
+    "title": "Arrowsmith",
+    "source": "wikidata:Q743777",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g30340": {
+    "title": "The Passionate Friends: A Novel",
+    "source": "wikidata:Q7756281",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g6761": {
+    "title": "The Adventures of Ferdinand, Count Fathom",
+    "source": "wikidata:Q16385022",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g4085": {
+    "title": "The Adventures of Roderick Random",
+    "source": "wikidata:Q7712626",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g42389": {
+    "title": "The Pirate (novel)",
+    "source": "wikidata:Q3225628",
+    "genreQids": [
+      "Q1196408",
+      "Q111143082"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction",
+      "pirate fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g224": {
+    "title": "A Pair of Blue Eyes",
+    "source": "wikidata:Q2931240",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3922": {
+    "title": "The Red Lily (novel)",
+    "source": "wikidata:Q3224130",
+    "genreQids": [],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g6768": {
+    "title": "The Man Upstairs (short story collection)",
+    "source": "wikidata:Q7749897",
+    "genreQids": [
+      "Q60548032"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "humor"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g3044": {
+    "title": "Desperate Remedies",
+    "source": "wikidata:Q2846293",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3146": {
+    "title": "Two on a Tower",
+    "source": "wikidata:Q7859431",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g15399": {
+    "title": "The Interesting Narrative of the Life of Olaudah Equiano",
+    "source": "wikidata:Q7742270",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiography"
+    ],
+    "settingCandidates": []
+  },
+  "g4599": {
+    "title": "The Small House at Allington",
+    "source": "wikidata:Q7764868",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g34181": {
+    "title": "Irene Iddesleigh",
+    "source": "wikidata:Q88316399",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g7895": {
+    "title": "A Terrible Temptation",
+    "source": "wikidata:Q106039878",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1680": {
+    "title": "La Maison du chat-qui-pelote",
+    "source": "wikidata:Q377466",
+    "genreQids": [
+      "Q667661"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "literary realism"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g902": {
+    "title": "The Devoted Friend",
+    "source": "wikidata:Q797466",
+    "genreQids": [
+      "Q699"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fairy tale"
+    ],
+    "settingCandidates": []
+  },
+  "g3177": {
+    "title": "Roughing It",
+    "source": "wikidata:Q3576767",
+    "genreQids": [
+      "Q1072723"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "travel literature"
+    ],
+    "settingCandidates": []
+  },
+  "g1153": {
+    "title": "The Chessmen of Mars",
+    "source": "wikidata:Q2043958",
+    "genreQids": [
+      "Q1080374",
+      "Q24925",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q111"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fantasy",
+      "science fiction",
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Mars"
+    ]
+  },
+  "g51": {
+    "title": "Anne of the Island",
+    "source": "wikidata:Q1352419",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q1952",
+      "Q1978"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Nova Scotia",
+      "Prince Edward Island"
+    ]
+  },
+  "g3178": {
+    "title": "The Gilded Age: A Tale of Today",
+    "source": "wikidata:Q16385809",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3189": {
+    "title": "Sketches New and Old",
+    "source": "wikidata:Q3058638",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1091": {
+    "title": "On Heroes, Hero-Worship, & the Heroic in History",
+    "source": "wikidata:Q7091008",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2232": {
+    "title": "The Duchess of Malfi",
+    "source": "wikidata:Q3408612",
+    "genreQids": [
+      "Q20035824"
+    ],
+    "settingQids": [
+      "Q80563"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "revenge tragedy"
+    ],
+    "settingCandidates": [
+      "Amalfi"
+    ]
+  },
+  "g2885": {
+    "title": "The House of the Wolfings",
+    "source": "wikidata:Q7740689",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g821": {
+    "title": "Dombey and Son",
+    "source": "wikidata:Q963659",
+    "genreQids": [
+      "Q1508663"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social criticism"
+    ],
+    "settingCandidates": []
+  },
+  "g29021": {
+    "title": "The Ridiculous Wishes",
+    "source": "wikidata:Q3235605",
+    "genreQids": [
+      "Q17991521"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "tale"
+    ],
+    "settingCandidates": []
+  },
+  "g60333": {
+    "title": "Selections from the Writings of Kierkegaard",
+    "source": "wikidata:Q7447737",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2434": {
+    "title": "New Atlantis",
+    "source": "wikidata:Q1233830",
+    "genreQids": [
+      "Q20737414",
+      "Q132311",
+      "Q15062360",
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "philosophical fiction",
+      "fantasy",
+      "utopian fiction",
+      "science fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g10897": {
+    "title": "The Wendigo (novella)",
+    "source": "wikidata:Q19102119",
+    "genreQids": [
+      "Q732782",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "weird fiction",
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g14833": {
+    "title": "Varney the Vampire",
+    "source": "wikidata:Q1987925",
+    "genreQids": [
+      "Q111019576",
+      "Q20669641"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "vampire fiction",
+      "Gothic fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g15263": {
+    "title": "The Underground Railroad (Still)",
+    "source": "wikidata:Q7771382",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3796": {
+    "title": "Rilla of Ingleside",
+    "source": "wikidata:Q734757",
+    "genreQids": [
+      "Q908667"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "war novel"
+    ],
+    "settingCandidates": []
+  },
+  "g968": {
+    "title": "Martin Chuzzlewit",
+    "source": "wikidata:Q1903609",
+    "genreQids": [
+      "Q1508663"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social criticism"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g26624": {
+    "title": "The Road to Oz",
+    "source": "wikidata:Q1250364",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g14872": {
+    "title": "The Tale of Squirrel Nutkin",
+    "source": "wikidata:Q4272152",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g21816": {
+    "title": "The Confidence-Man",
+    "source": "wikidata:Q3820043",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": []
+  },
+  "g917": {
+    "title": "Barnaby Rudge",
+    "source": "wikidata:Q2362527",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q23240"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Essex"
+    ]
+  },
+  "g1937": {
+    "title": "The Second Jungle Book",
+    "source": "wikidata:Q1101819",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g61236": {
+    "title": "Emily of New Moon",
+    "source": "wikidata:Q73706",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q1978"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "Prince Edward Island"
+    ]
+  },
+  "g30486": {
+    "title": "Shirley (novel)",
+    "source": "wikidata:Q615175",
+    "genreQids": [
+      "Q104100753"
+    ],
+    "settingQids": [
+      "Q163"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social fiction"
+    ],
+    "settingCandidates": [
+      "Yorkshire"
+    ]
+  },
+  "g14363": {
+    "title": "The Worst Journey in the World",
+    "source": "wikidata:Q385926",
+    "genreQids": [
+      "Q112983"
+    ],
+    "settingQids": [
+      "Q51"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "memoir"
+    ],
+    "settingCandidates": [
+      "Antarctica"
+    ]
+  },
+  "g773": {
+    "title": "Lord Arthur Savile's Crime and Other Stories",
+    "source": "wikidata:Q2466956",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g172": {
+    "title": "The Haunted Bookshop",
+    "source": "wikidata:Q7738999",
+    "genreQids": [
+      "Q182015"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "thriller"
+    ],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g986": {
+    "title": "Master and Man (short story)",
+    "source": "wikidata:Q1302957",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266",
+      "Q159"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Russian Empire",
+      "Russia"
+    ]
+  },
+  "g26732": {
+    "title": "Free Air",
+    "source": "wikidata:Q5499735",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1245": {
+    "title": "Night and Day (Woolf novel)",
+    "source": "wikidata:Q1610831",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g1640": {
+    "title": "Lilith (novel)",
+    "source": "wikidata:Q3832392",
+    "genreQids": [
+      "Q111019576",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "vampire fiction",
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g56644": {
+    "title": "Bulfinch's Mythology",
+    "source": "wikidata:Q4996134",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g8164": {
+    "title": "My Man Jeeves",
+    "source": "wikidata:Q17635162",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g4274": {
+    "title": "Wives and Daughters",
+    "source": "wikidata:Q2453239",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g59254": {
+    "title": "The Inimitable Jeeves",
+    "source": "wikidata:Q7742044",
+    "genreQids": [
+      "Q40831"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "comedy"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g61077": {
+    "title": "The King of Elfland's Daughter",
+    "source": "wikidata:Q2470392",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g914": {
+    "title": "The Uncommercial Traveller",
+    "source": "wikidata:Q7771322",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g559": {
+    "title": "Greenmantle",
+    "source": "wikidata:Q5604315",
+    "genreQids": [
+      "Q21802675",
+      "Q21803247"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "military fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1840": {
+    "title": "The Financier",
+    "source": "wikidata:Q577607",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1696": {
+    "title": "The Club of Queer Trades",
+    "source": "wikidata:Q3221512",
+    "genreQids": [
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "crime fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g15137": {
+    "title": "The Tale of Mrs. Tiggy-Winkle",
+    "source": "wikidata:Q6625462",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's literature"
+    ],
+    "settingCandidates": []
+  },
+  "g498": {
+    "title": "Rebecca of Sunnybrook Farm",
+    "source": "wikidata:Q7301985",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": []
+  },
+  "g60093": {
+    "title": "Cane (novel)",
+    "source": "wikidata:Q3655399",
+    "genreQids": [],
+    "settingQids": [
+      "Q1297"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Chicago"
+    ]
+  },
+  "g3499": {
+    "title": "Jo's Boys",
+    "source": "wikidata:Q1436824",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2892": {
+    "title": "Irish Fairy Tales",
+    "source": "wikidata:Q6070722",
+    "genreQids": [
+      "Q36192"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "folklore"
+    ],
+    "settingCandidates": []
+  },
+  "g3031": {
+    "title": "Lobo, the King of Currumpaw",
+    "source": "wikidata:Q3271910",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3261": {
+    "title": "News from Nowhere",
+    "source": "wikidata:Q7019506",
+    "genreQids": [
+      "Q944250",
+      "Q64448878",
+      "Q111972381",
+      "Q104767031",
+      "Q2254211"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social science fiction",
+      "futuristic fiction",
+      "utopian literature",
+      "time-travel fiction",
+      "political fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g8395": {
+    "title": "The Gods of Pegāna",
+    "source": "wikidata:Q7736948",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g17731": {
+    "title": "The Nigger of the \"Narcissus\"",
+    "source": "wikidata:Q478537",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g14868": {
+    "title": "The Tailor of Gloucester",
+    "source": "wikidata:Q4386569",
+    "genreQids": [
+      "Q77762397"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Christmas fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g770": {
+    "title": "The Story of the Treasure Seekers",
+    "source": "wikidata:Q7766848",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g367": {
+    "title": "The Country of the Pointed Firs",
+    "source": "wikidata:Q7727811",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1028": {
+    "title": "The Professor (novel)",
+    "source": "wikidata:Q762203",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1202": {
+    "title": "Tales of Unrest",
+    "source": "wikidata:Q3151490",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g5265": {
+    "title": "The Ball and the Cross",
+    "source": "wikidata:Q3824160",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g6695": {
+    "title": "Tales of the Jazz Age",
+    "source": "wikidata:Q3928516",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2804": {
+    "title": "Rose in Bloom",
+    "source": "wikidata:Q7368002",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g517": {
+    "title": "The Emerald City of Oz",
+    "source": "wikidata:Q1250366",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g154": {
+    "title": "The Rise of Silas Lapham",
+    "source": "wikidata:Q7760892",
+    "genreQids": [],
+    "settingQids": [
+      "Q100",
+      "Q771"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Boston",
+      "Massachusetts"
+    ]
+  },
+  "g6406": {
+    "title": "The Monastery: A Romance",
+    "source": "wikidata:Q3224650",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1178": {
+    "title": "Constitution of the Lacedaemonians",
+    "source": "wikidata:Q1170453",
+    "genreQids": [
+      "Q384515"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "treatise"
+    ],
+    "settingCandidates": []
+  },
+  "g1441": {
+    "title": "The Story of an African Farm",
+    "source": "wikidata:Q7766827",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1438": {
+    "title": "No Name (novel)",
+    "source": "wikidata:Q7044605",
+    "genreQids": [
+      "Q6585139",
+      "Q3440961"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "mystery fiction",
+      "sensation fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g4368": {
+    "title": "Flappers and Philosophers",
+    "source": "wikidata:Q3850705",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g27884": {
+    "title": "Niels Klim's Underground Travels",
+    "source": "wikidata:Q2485789",
+    "genreQids": [
+      "Q24925",
+      "Q132311",
+      "Q110540276"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction",
+      "fantasy",
+      "satirical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g13468": {
+    "title": "The New Jerusalem (Chesterton book)",
+    "source": "wikidata:Q7753644",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3608": {
+    "title": "The Ragged-Trousered Philanthropists",
+    "source": "wikidata:Q7759270",
+    "genreQids": [
+      "Q3056541"
+    ],
+    "settingQids": [
+      "Q23346"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiographical novel"
+    ],
+    "settingCandidates": [
+      "Sussex"
+    ]
+  },
+  "g5348": {
+    "title": "Ragged Dick",
+    "source": "wikidata:Q7282890",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1162": {
+    "title": "The Star Rover",
+    "source": "wikidata:Q626663",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g837": {
+    "title": "The Story of the Amulet",
+    "source": "wikidata:Q7766831",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g54672": {
+    "title": "The Indiscreet Jewels",
+    "source": "wikidata:Q1218663",
+    "genreQids": [
+      "Q794357",
+      "Q512207",
+      "Q747483"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "libertine novel",
+      "roman à clef",
+      "erotic literature"
+    ],
+    "settingCandidates": []
+  },
+  "g1860": {
+    "title": "Westward Ho! (novel)",
+    "source": "wikidata:Q7989800",
+    "genreQids": [],
+    "settingQids": [
+      "Q23156"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Devon"
+    ]
+  },
+  "g1424": {
+    "title": "Castle Rackrent",
+    "source": "wikidata:Q5050238",
+    "genreQids": [
+      "Q1196408",
+      "Q2254211"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction",
+      "political fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g11323": {
+    "title": "Things as They Are; or, The Adventures of Caleb Williams",
+    "source": "wikidata:Q7784409",
+    "genreQids": [
+      "Q6119667"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Jacobin novel"
+    ],
+    "settingCandidates": []
+  },
+  "g2480": {
+    "title": "Under Western Eyes (novel)",
+    "source": "wikidata:Q3685905",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g30852": {
+    "title": "The Tin Woodman of Oz",
+    "source": "wikidata:Q7769442",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g32242": {
+    "title": "A Wonder-Book for Girls and Boys",
+    "source": "wikidata:Q4660769",
+    "genreQids": [],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "United States"
+    ]
+  },
+  "g402": {
+    "title": "Penrod",
+    "source": "wikidata:Q7164623",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g27690": {
+    "title": "Nobody's Girl (novel)",
+    "source": "wikidata:Q2277224",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q142"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "France"
+    ]
+  },
+  "g4084": {
+    "title": "The Adventures of Peregrine Pickle",
+    "source": "wikidata:Q7712607",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g2084": {
+    "title": "The Way of All Flesh",
+    "source": "wikidata:Q255074",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g3045": {
+    "title": "The Last Chronicle of Barset",
+    "source": "wikidata:Q7745622",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g14220": {
+    "title": "The Tale of the Flopsy Bunnies",
+    "source": "wikidata:Q3062161",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's literature"
+    ],
+    "settingCandidates": []
+  },
+  "g19500": {
+    "title": "Can You Forgive Her?",
+    "source": "wikidata:Q5029115",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g60067": {
+    "title": "Leave It to Psmith",
+    "source": "wikidata:Q6510574",
+    "genreQids": [
+      "Q40831"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "comedy"
+    ],
+    "settingCandidates": []
+  },
+  "g7381": {
+    "title": "The Eustace Diamonds",
+    "source": "wikidata:Q7732627",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g13159": {
+    "title": "Illusions perdues",
+    "source": "wikidata:Q2092894",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g344": {
+    "title": "The Merry Men and Other Tales and Fables",
+    "source": "wikidata:Q3232887",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g29257": {
+    "title": "The Book of Khalid",
+    "source": "wikidata:Q7719249",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g1154": {
+    "title": "The Voyages of Doctor Dolittle",
+    "source": "wikidata:Q7773132",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g13416": {
+    "title": "The Darling (short story)",
+    "source": "wikidata:Q394219",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Russian Empire"
+    ]
+  },
+  "g30344": {
+    "title": "Roxana: The Fortunate Mistress",
+    "source": "wikidata:Q3825485",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g701": {
+    "title": "The King of the Golden River",
+    "source": "wikidata:Q14476439",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g93": {
+    "title": "Tom Sawyer, Detective",
+    "source": "wikidata:Q4460113",
+    "genreQids": [
+      "Q6585139",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "mystery fiction",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1565": {
+    "title": "The Last Days of Pompeii",
+    "source": "wikidata:Q1218985",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1747689"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Ancient Rome"
+    ]
+  },
+  "g4737": {
+    "title": "A Tale of a Tub",
+    "source": "wikidata:Q2353123",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire"
+    ],
+    "settingCandidates": []
+  },
+  "g2726": {
+    "title": "Eight Cousins",
+    "source": "wikidata:Q3281243",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g18640": {
+    "title": "Phineas Redux",
+    "source": "wikidata:Q7186370",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g5247": {
+    "title": "The Old Wives' Tale",
+    "source": "wikidata:Q7754941",
+    "genreQids": [],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g4313": {
+    "title": "The Odd Women",
+    "source": "wikidata:Q7754692",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g1449": {
+    "title": "The Valley of the Moon (novel)",
+    "source": "wikidata:Q1174082",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g9840": {
+    "title": "Vivian Grey",
+    "source": "wikidata:Q7937713",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g7477": {
+    "title": "The Book of Wonder",
+    "source": "wikidata:Q7719322",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g520": {
+    "title": "The Life and Adventures of Santa Claus",
+    "source": "wikidata:Q4180222",
+    "genreQids": [
+      "Q7102502",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "origin story",
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g42455": {
+    "title": "The Mystery of the Sea",
+    "source": "wikidata:Q7752921",
+    "genreQids": [
+      "Q622291"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "political thriller"
+    ],
+    "settingCandidates": []
+  },
+  "g1709": {
+    "title": "New Grub Street",
+    "source": "wikidata:Q29053296",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g96": {
+    "title": "The Monster Men",
+    "source": "wikidata:Q7752080",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2346": {
+    "title": "The Adventure of the Bruce-Partington Plans",
+    "source": "wikidata:Q2446784",
+    "genreQids": [
+      "Q186424",
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction",
+      "crime fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g2786": {
+    "title": "Jack and Jill: A Village Story",
+    "source": "wikidata:Q6115945",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g25876": {
+    "title": "The House with the Green Shutters",
+    "source": "wikidata:Q7740720",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g4540": {
+    "title": "In His Steps",
+    "source": "wikidata:Q8017321",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g423": {
+    "title": "Round the Red Lamp",
+    "source": "wikidata:Q3492113",
+    "genreQids": [
+      "Q20664427"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "medical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g4090": {
+    "title": "From Ritual to Romance",
+    "source": "wikidata:Q5505497",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g329": {
+    "title": "Island Nights' Entertainments",
+    "source": "wikidata:Q82737",
+    "genreQids": [],
+    "settingQids": [
+      "Q156418"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Kingdom of Hawaiʻi"
+    ]
+  },
+  "g6424": {
+    "title": "A Modern Utopia",
+    "source": "wikidata:Q1249074",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g7371": {
+    "title": "A Sicilian Romance",
+    "source": "wikidata:Q979649",
+    "genreQids": [
+      "Q20669641",
+      "Q16575965",
+      "Q858330"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Gothic fiction",
+      "horror fiction",
+      "romance novel"
+    ],
+    "settingCandidates": []
+  },
+  "g2860": {
+    "title": "Framley Parsonage",
+    "source": "wikidata:Q8565314",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g561": {
+    "title": "The Further Adventures of Robinson Crusoe",
+    "source": "wikidata:Q4154269",
+    "genreQids": [
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g17089": {
+    "title": "The Tale of Mrs. Tittlemouse",
+    "source": "wikidata:Q3275331",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's literature"
+    ],
+    "settingCandidates": []
+  },
+  "g2347": {
+    "title": "The Adventure of the Dying Detective",
+    "source": "wikidata:Q466166",
+    "genreQids": [
+      "Q186424",
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction",
+      "crime fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g15575": {
+    "title": "The Tale of Samuel Whiskers or The Roly-Poly Pudding",
+    "source": "wikidata:Q2068209",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's literature"
+    ],
+    "settingCandidates": []
+  },
+  "g678": {
+    "title": "The Cricket on the Hearth",
+    "source": "wikidata:Q825220",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g11696": {
+    "title": "The Food of the Gods and How It Came to Earth",
+    "source": "wikidata:Q1215802",
+    "genreQids": [
+      "Q24925",
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "science fiction",
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g419": {
+    "title": "The Magic of Oz",
+    "source": "wikidata:Q7749508",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g285": {
+    "title": "The Lost Continent: The Story of Atlantis",
+    "source": "wikidata:Q7748596",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g1190": {
+    "title": "The Jolly Corner",
+    "source": "wikidata:Q15240001",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g3179": {
+    "title": "The American Claimant",
+    "source": "wikidata:Q7713449",
+    "genreQids": [
+      "Q110540276",
+      "Q132311",
+      "Q224989"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satirical fiction",
+      "fantasy",
+      "alternate history"
+    ],
+    "settingCandidates": []
+  },
+  "g59239": {
+    "title": "The Flying Inn",
+    "source": "wikidata:Q7734598",
+    "genreQids": [
+      "Q9326077",
+      "Q24925",
+      "Q2254211"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "speculative fiction",
+      "science fiction",
+      "political fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g4770": {
+    "title": "Work: A Story of Experience",
+    "source": "wikidata:Q8034531",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiography"
+    ],
+    "settingCandidates": []
+  },
+  "g1848": {
+    "title": "Montezuma's Daughter",
+    "source": "wikidata:Q401954",
+    "genreQids": [
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q170603",
+      "Q2608489"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "New Spain",
+      "Aztec Empire"
+    ]
+  },
+  "g420": {
+    "title": "Dorothy and the Wizard in Oz",
+    "source": "wikidata:Q473588",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q2918164"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "Land of Oz"
+    ]
+  },
+  "g5174": {
+    "title": "The Holy Flower",
+    "source": "wikidata:Q4731051",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g7166": {
+    "title": "The Home and the World",
+    "source": "wikidata:Q7740074",
+    "genreQids": [],
+    "settingQids": [
+      "Q668"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "India"
+    ]
+  },
+  "g605": {
+    "title": "Pellucidar",
+    "source": "wikidata:Q928680",
+    "genreQids": [
+      "Q21802675",
+      "Q24925",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction",
+      "science fiction",
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g2158": {
+    "title": "The Prime Minister (novel)",
+    "source": "wikidata:Q7758216",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": []
+  },
+  "g46709": {
+    "title": "Memoirs of Joseph Grimaldi",
+    "source": "wikidata:Q6815266",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiography"
+    ],
+    "settingCandidates": []
+  },
+  "g62254": {
+    "title": "Fabiola (novel)",
+    "source": "wikidata:Q2247155",
+    "genreQids": [],
+    "settingQids": [
+      "Q1747689"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Ancient Rome"
+    ]
+  },
+  "g3629": {
+    "title": "The Titan (novel)",
+    "source": "wikidata:Q4458189",
+    "genreQids": [],
+    "settingQids": [
+      "Q1297"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "Chicago"
+    ]
+  },
+  "g1267": {
+    "title": "Kai Lung's Golden Hours",
+    "source": "wikidata:Q6347444",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g23000": {
+    "title": "Orley Farm (novel)",
+    "source": "wikidata:Q16962094",
+    "genreQids": [],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g2721": {
+    "title": "Eric Brighteyes",
+    "source": "wikidata:Q5386184",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g8183": {
+    "title": "Time and the Gods",
+    "source": "wikidata:Q7805268",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g1342": {
+    "title": "Pride and Prejudice",
+    "source": "wikidata:Q170583",
+    "genreQids": [
+      "Q538812",
+      "Q110540276",
+      "Q101240581",
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q2395940",
+      "Q2154088",
+      "Q2420330",
+      "Q3410",
+      "Q2484090",
+      "Q2321393",
+      "Q19792",
+      "Q63992194",
+      "Q63992252",
+      "Q64019667"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "novel of manners",
+      "satirical fiction",
+      "psychological fiction",
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "Netherfield",
+      "Meryton",
+      "Longbourn",
+      "Hertfordshire",
+      "Pemberley",
+      "Westerham",
+      "Ware",
+      "Hunsford",
+      "Rosings Park",
+      "Lambton"
+    ]
+  },
+  "g2554": {
+    "title": "Crime and Punishment",
+    "source": "wikidata:Q165318",
+    "genreQids": [
+      "Q20737414",
+      "Q1347298",
+      "Q5937792",
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q656"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "philosophical fiction",
+      "serialized fiction",
+      "crime fiction",
+      "psychological fiction"
+    ],
+    "settingCandidates": [
+      "Saint Petersburg"
+    ]
+  },
+  "g1661": {
+    "title": "The Adventures of Sherlock Holmes",
+    "source": "wikidata:Q392147",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g345": {
+    "title": "Dracula",
+    "source": "wikidata:Q41542",
+    "genreQids": [
+      "Q2250271",
+      "Q20669641",
+      "Q16575965",
+      "Q19765983",
+      "Q111019576"
+    ],
+    "settingQids": [
+      "Q852778",
+      "Q39473",
+      "Q84",
+      "Q776842",
+      "Q187205",
+      "Q1473795",
+      "Q25610",
+      "Q1972020",
+      "Q6506",
+      "Q587746",
+      "Q170996",
+      "Q100188"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary fiction",
+      "Gothic fiction",
+      "horror fiction",
+      "romantic fiction",
+      "vampire fiction"
+    ],
+    "settingCandidates": [
+      "Whitby",
+      "Transylvania",
+      "London",
+      "Eastern Carpathians",
+      "Bistrița",
+      "Tihuța Pass",
+      "Hampstead",
+      "Purfleet-on-Thames",
+      "Varna",
+      "Siret",
+      "Galați",
+      "Cluj-Napoca"
+    ]
+  },
+  "g43": {
+    "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "source": "wikidata:Q217352",
+    "genreQids": [
+      "Q3440961",
+      "Q20669641",
+      "Q24925",
+      "Q5937792",
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "sensation fiction",
+      "Gothic fiction",
+      "science fiction",
+      "crime fiction",
+      "horror fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g1260": {
+    "title": "Jane Eyre",
+    "source": "wikidata:Q182961",
+    "genreQids": [
+      "Q1029945",
+      "Q3056541",
+      "Q20669641",
+      "Q738473",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q7796413",
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "education novel",
+      "autobiographical novel",
+      "Gothic fiction",
+      "romance",
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Thornfield Hall",
+      "England"
+    ]
+  },
+  "g244": {
+    "title": "A Study in Scarlet",
+    "source": "wikidata:Q223131",
+    "genreQids": [
+      "Q5937792",
+      "Q6585139",
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "crime fiction",
+      "mystery fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g863": {
+    "title": "The Mysterious Affair at Styles",
+    "source": "wikidata:Q472228",
+    "genreQids": [
+      "Q19765983",
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q23240"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "Essex"
+    ]
+  },
+  "g175": {
+    "title": "The Phantom of the Opera",
+    "source": "wikidata:Q272506",
+    "genreQids": [
+      "Q19765983",
+      "Q20669641",
+      "Q132311",
+      "Q16575965",
+      "Q6585139"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "Gothic fiction",
+      "fantasy",
+      "horror fiction",
+      "mystery fiction"
+    ],
+    "settingCandidates": [
+      "Paris"
+    ]
+  },
+  "g64317": {
+    "title": "The Great Gatsby",
+    "source": "wikidata:Q214371",
+    "genreQids": [
+      "Q80930",
+      "Q1544219"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "tragedy",
+      "Great American Novel"
+    ],
+    "settingCandidates": [
+      "New York City"
+    ]
+  },
+  "g28054": {
+    "title": "The Brothers Karamazov",
+    "source": "wikidata:Q183157",
+    "genreQids": [
+      "Q1347298",
+      "Q20737414"
+    ],
+    "settingQids": [
+      "Q159",
+      "Q34266"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "serialized fiction",
+      "philosophical fiction"
+    ],
+    "settingCandidates": [
+      "Russia",
+      "Russian Empire"
+    ]
+  },
+  "g98": {
+    "title": "A Tale of Two Cities",
+    "source": "wikidata:Q308918",
+    "genreQids": [
+      "Q104100753",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Paris",
+      "London"
+    ]
+  },
+  "g5200": {
+    "title": "The Metamorphosis",
+    "source": "wikidata:Q184222",
+    "genreQids": [
+      "Q1097273",
+      "Q481315",
+      "Q102260654"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epic literature",
+      "absurdist literature",
+      "body horror literature"
+    ],
+    "settingCandidates": []
+  },
+  "g161": {
+    "title": "Sense and Sensibility",
+    "source": "wikidata:Q274744",
+    "genreQids": [
+      "Q223945",
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman",
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g74": {
+    "title": "The Adventures of Tom Sawyer",
+    "source": "wikidata:Q326914",
+    "genreQids": [
+      "Q223945",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q1581"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman",
+      "adventure fiction"
+    ],
+    "settingCandidates": [
+      "Missouri"
+    ]
+  },
+  "g18857": {
+    "title": "Journey to the Center of the Earth",
+    "source": "wikidata:Q219457",
+    "genreQids": [
+      "Q2477736",
+      "Q7632212",
+      "Q3940786",
+      "Q21802675",
+      "Q1436734"
+    ],
+    "settingQids": [
+      "Q12317310",
+      "Q1589941",
+      "Q29157",
+      "Q1898947",
+      "Q1315012",
+      "Q189"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "lost world fiction",
+      "subterranean fiction",
+      "scientific romance",
+      "adventure fiction",
+      "adventure"
+    ],
+    "settingCandidates": [
+      "Hotel Phoenix Copenhagen",
+      "Kongens Nytorv",
+      "Church of Our Saviour",
+      "Rosenborg Castle Gardens",
+      "Snæfellsjökull",
+      "Iceland"
+    ]
+  },
+  "g766": {
+    "title": "David Copperfield",
+    "source": "wikidata:Q189811",
+    "genreQids": [
+      "Q3056541",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "autobiographical novel",
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g1400": {
+    "title": "Great Expectations",
+    "source": "wikidata:Q219552",
+    "genreQids": [
+      "Q53094",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q23298"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "black comedy",
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "London",
+      "Kent"
+    ]
+  },
+  "g120": {
+    "title": "Treasure Island",
+    "source": "wikidata:Q185118",
+    "genreQids": [
+      "Q2975633",
+      "Q7440128",
+      "Q21802675",
+      "Q111143082"
+    ],
+    "settingQids": [
+      "Q1032551",
+      "Q30766063",
+      "Q14834627",
+      "Q653884"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "coming-of-age fiction",
+      "nautical fiction",
+      "adventure fiction",
+      "pirate fiction"
+    ],
+    "settingCandidates": [
+      "North Devon",
+      "Hispaniola",
+      "Treasure Island",
+      "Hispanic America"
+    ]
+  },
+  "g14838": {
+    "title": "The Tale of Peter Rabbit",
+    "source": "wikidata:Q580463",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's literature"
+    ],
+    "settingCandidates": []
+  },
+  "g16": {
+    "title": "Peter Pan",
+    "source": "wikidata:Q3435337",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g46": {
+    "title": "A Christmas Carol",
+    "source": "wikidata:Q62879",
+    "genreQids": [
+      "Q77762397"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Christmas fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g2610": {
+    "title": "The Hunchback of Notre-Dame",
+    "source": "wikidata:Q191380",
+    "genreQids": [
+      "Q20669641",
+      "Q37068",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q2981",
+      "Q1469337",
+      "Q59918",
+      "Q143080"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Gothic fiction",
+      "Romanticism",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Paris",
+      "Notre-Dame de Paris",
+      "place de l'Hôtel-de-Ville - Esplanade de la Libération",
+      "Cour des miracles",
+      "Palais de Justice, Paris"
+    ]
+  },
+  "g135": {
+    "title": "Les Misérables",
+    "source": "wikidata:Q180736",
+    "genreQids": [
+      "Q80930",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q181306",
+      "Q213344",
+      "Q237367",
+      "Q1326237",
+      "Q90"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "tragedy",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Digne-les-Bains",
+      "Montreuil-sur-Mer",
+      "Montfermeil",
+      "Elephant of the Bastille",
+      "Paris"
+    ]
+  },
+  "g215": {
+    "title": "The Call of the Wild",
+    "source": "wikidata:Q476871",
+    "genreQids": [
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q16",
+      "Q2009",
+      "Q797",
+      "Q30",
+      "Q286340"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "adventure fiction"
+    ],
+    "settingCandidates": [
+      "Canada",
+      "Yukon",
+      "Alaska",
+      "United States",
+      "Klondike River"
+    ]
+  },
+  "g158": {
+    "title": "Emma",
+    "source": "wikidata:Q223880",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q1134643"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "Southern England"
+    ]
+  },
+  "g514": {
+    "title": "Little Women",
+    "source": "wikidata:Q523076",
+    "genreQids": [
+      "Q1312571",
+      "Q223945",
+      "Q4184",
+      "Q1248788",
+      "Q870452"
+    ],
+    "settingQids": [
+      "Q771",
+      "Q84",
+      "Q90",
+      "Q2966",
+      "Q60",
+      "Q33959",
+      "Q3554134",
+      "Q1741",
+      "Q68160"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "developmental novel",
+      "Bildungsroman",
+      "autobiography",
+      "realist novel",
+      "family saga"
+    ],
+    "settingCandidates": [
+      "Massachusetts",
+      "London",
+      "Paris",
+      "Heidelberg",
+      "New York City",
+      "Nice",
+      "Quartier de Valrose",
+      "Vienna",
+      "Vevey"
+    ]
+  },
+  "g236": {
+    "title": "The Jungle Book",
+    "source": "wikidata:Q189509",
+    "genreQids": [
+      "Q20668387"
+    ],
+    "settingQids": [
+      "Q668",
+      "Q110977308"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "didactic literature"
+    ],
+    "settingCandidates": [
+      "India",
+      "Lost city"
+    ]
+  },
+  "g67098": {
+    "title": "Winnie-the-Pooh",
+    "source": "wikidata:Q1633087",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "children's fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g12": {
+    "title": "Through the Looking-Glass",
+    "source": "wikidata:Q220331",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy"
+    ],
+    "settingCandidates": []
+  },
+  "g19942": {
+    "title": "Candide",
+    "source": "wikidata:Q215894",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q12548",
+      "Q45",
+      "Q12560",
+      "Q641",
+      "Q155",
+      "Q192550",
+      "Q211435",
+      "Q521271",
+      "Q41839",
+      "Q70972",
+      "Q23666",
+      "Q16869",
+      "Q219"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Holy Roman Empire",
+      "Portugal",
+      "Ottoman Empire",
+      "Venice",
+      "Brazil",
+      "El Dorado",
+      "Viceroyalty of Peru",
+      "Río de la Plata Governorate",
+      "Paraguay Governorate",
+      "Kingdom of France",
+      "Great Britain",
+      "Constantinople",
+      "Bulgaria"
+    ]
+  },
+  "g7849": {
+    "title": "The Trial",
+    "source": "wikidata:Q36097",
+    "genreQids": [
+      "Q481315",
+      "Q15062348"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "absurdist literature",
+      "dystopian fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g33": {
+    "title": "The Scarlet Letter",
+    "source": "wikidata:Q907568",
+    "genreQids": [
+      "Q19765983",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q100"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction",
+      "historical fiction"
+    ],
+    "settingCandidates": [
+      "Boston"
+    ]
+  },
+  "g67979": {
+    "title": "The Blue Castle",
+    "source": "wikidata:Q7718738",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q804569",
+      "Q382508"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "Bala",
+      "Muskoka District Municipality"
+    ]
+  },
+  "g1695": {
+    "title": "The Man Who Was Thursday",
+    "source": "wikidata:Q959816",
+    "genreQids": [
+      "Q182015"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "thriller"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g209": {
+    "title": "The Turn of the Screw",
+    "source": "wikidata:Q625923",
+    "genreQids": [
+      "Q132311",
+      "Q20669641",
+      "Q1519335",
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q23240"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "fantasy",
+      "Gothic fiction",
+      "ghost story",
+      "horror fiction"
+    ],
+    "settingCandidates": [
+      "Essex"
+    ]
+  },
+  "g2097": {
+    "title": "The Sign of the Four",
+    "source": "wikidata:Q500688",
+    "genreQids": [
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "crime fiction",
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g108": {
+    "title": "The Return of Sherlock Holmes",
+    "source": "wikidata:Q725752",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g68283": {
+    "title": "The Call of Cthulhu",
+    "source": "wikidata:Q1141815",
+    "genreQids": [
+      "Q16575965",
+      "Q24925",
+      "Q732782"
+    ],
+    "settingQids": [
+      "Q18383",
+      "Q38022",
+      "Q34404",
+      "Q223",
+      "Q98",
+      "Q3130",
+      "Q585",
+      "Q133073",
+      "Q37100",
+      "Q62"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "horror fiction",
+      "science fiction",
+      "weird fiction"
+    ],
+    "settingCandidates": [
+      "Providence",
+      "St. Louis",
+      "New Orleans",
+      "Greenland",
+      "Pacific Ocean",
+      "Sydney",
+      "Oslo",
+      "Dunedin",
+      "Auckland",
+      "San Francisco"
+    ]
+  },
+  "g155": {
+    "title": "The Moonstone",
+    "source": "wikidata:Q2362563",
+    "genreQids": [
+      "Q465821",
+      "Q132311",
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary novel",
+      "fantasy",
+      "crime fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g1155": {
+    "title": "The Secret Adversary",
+    "source": "wikidata:Q617379",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g558": {
+    "title": "The Thirty-Nine Steps",
+    "source": "wikidata:Q2609365",
+    "genreQids": [
+      "Q20664331",
+      "Q6585139"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q23666"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "spy fiction",
+      "mystery fiction"
+    ],
+    "settingCandidates": [
+      "London",
+      "Great Britain"
+    ]
+  },
+  "g974": {
+    "title": "The Secret Agent",
+    "source": "wikidata:Q1247666",
+    "genreQids": [
+      "Q20664331"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "spy fiction"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g16389": {
+    "title": "The Enchanted April",
+    "source": "wikidata:Q18187988",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g58820": {
+    "title": "Whose Body?",
+    "source": "wikidata:Q1197575",
+    "genreQids": [
+      "Q186424",
+      "Q20664530"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction",
+      "crime literature"
+    ],
+    "settingCandidates": [
+      "London"
+    ]
+  },
+  "g4300": {
+    "title": "Ulysses",
+    "source": "wikidata:Q6511",
+    "genreQids": [
+      "Q971480",
+      "Q1384425",
+      "Q6647667",
+      "Q531067",
+      "Q1347298",
+      "Q4184",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q1761",
+      "Q2062702",
+      "Q1672830",
+      "Q7417543",
+      "Q1263215",
+      "Q5500969",
+      "Q5242183",
+      "Q659895",
+      "Q2088319",
+      "Q135501",
+      "Q1766409",
+      "Q2350741",
+      "Q13156901",
+      "Q28601860"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "modernist literature",
+      "experimental literature",
+      "high literature",
+      "metafiction",
+      "serialized fiction",
+      "autobiography",
+      "Bildungsroman"
+    ],
+    "settingCandidates": [
+      "Dublin",
+      "James Joyce Tower and Museum",
+      "National Library of Ireland",
+      "Sandymount Strand",
+      "Glasnevin Cemetery",
+      "Freeman's Journal",
+      "Davy Byrne's pub",
+      "Dalkey",
+      "Cabra",
+      "Grafton Street",
+      "O'Connell Bridge",
+      "Nelson's Pillar",
+      "National Maternity Hospital, Dublin",
+      "#7 Eccles street"
+    ]
+  },
+  "g2527": {
+    "title": "The Sorrows of Young Werther",
+    "source": "wikidata:Q151883",
+    "genreQids": [
+      "Q465821",
+      "Q18939591",
+      "Q7451276"
+    ],
+    "settingQids": [
+      "Q61961"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "epistolary novel",
+      "diary literature",
+      "sentimental novel"
+    ],
+    "settingCandidates": [
+      "Walheim"
+    ]
+  },
+  "g1080": {
+    "title": "A Modest Proposal",
+    "source": "wikidata:Q264143",
+    "genreQids": [
+      "Q18536349",
+      "Q35760"
+    ],
+    "settingQids": [
+      "Q215530"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "polemical lampoon",
+      "essay"
+    ],
+    "settingCandidates": [
+      "Kingdom of Ireland"
+    ]
+  },
+  "g160": {
+    "title": "The Awakening",
+    "source": "wikidata:Q1567505",
+    "genreQids": [],
+    "settingQids": [
+      "Q34404"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [],
+    "settingCandidates": [
+      "New Orleans"
+    ]
+  },
+  "g1837": {
+    "title": "The Prince and the Pauper",
+    "source": "wikidata:Q869725",
+    "genreQids": [
+      "Q1589214",
+      "Q1196408",
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "cloak and dagger novel",
+      "historical fiction",
+      "children's fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g86": {
+    "title": "A Connecticut Yankee in King Arthur's Court",
+    "source": "wikidata:Q848612",
+    "genreQids": [
+      "Q110540276",
+      "Q5977103",
+      "Q24925",
+      "Q132311",
+      "Q224989"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satirical fiction",
+      "humorous literature",
+      "science fiction",
+      "fantasy",
+      "alternate history"
+    ],
+    "settingCandidates": []
+  },
+  "g2383": {
+    "title": "The Canterbury Tales",
+    "source": "wikidata:Q191663",
+    "genreQids": [
+      "Q186579"
+    ],
+    "settingQids": [
+      "Q23298"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "English-language literature"
+    ],
+    "settingCandidates": [
+      "Kent"
+    ]
+  },
+  "g121": {
+    "title": "Northanger Abbey",
+    "source": "wikidata:Q477508",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "romantic fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g271": {
+    "title": "Black Beauty",
+    "source": "wikidata:Q880092",
+    "genreQids": [
+      "Q111984153"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "young adult fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g599": {
+    "title": "Vanity Fair",
+    "source": "wikidata:Q612836",
+    "genreQids": [
+      "Q110540276"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satirical fiction"
+    ],
+    "settingCandidates": []
+  },
+  "g580": {
+    "title": "The Pickwick Papers",
+    "source": "wikidata:Q460583",
+    "genreQids": [
+      "Q128758",
+      "Q44563"
+    ],
+    "settingQids": [],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "satire",
+      "picaresque novel"
+    ],
+    "settingCandidates": []
+  },
+  "g967": {
+    "title": "Nicholas Nickleby",
+    "source": "wikidata:Q847642",
+    "genreQids": [
+      "Q1508663"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q163"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "social criticism"
+    ],
+    "settingCandidates": [
+      "London",
+      "Yorkshire"
+    ]
+  },
+  "g1023": {
+    "title": "Bleak House",
+    "source": "wikidata:Q883305",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "detective fiction"
+    ],
+    "settingCandidates": [
+      "England"
+    ]
+  },
+  "g600": {
+    "title": "Notes from Underground",
+    "source": "wikidata:Q695116",
+    "genreQids": [
+      "Q20737414"
+    ],
+    "settingQids": [
+      "Q656"
+    ],
+    "status": "needs concise review",
+    "genreCandidates": [
+      "philosophical fiction"
+    ],
+    "settingCandidates": [
+      "Saint Petersburg"
+    ]
+  },
+  "g26": {
+    "title": "Paradise Lost",
+    "source": "wikidata:Q28754",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1268": {
+    "title": "The Mysterious Island",
+    "source": "wikidata:Q471005",
+    "genreQids": [
+      "Q21192427",
+      "Q3940786",
+      "Q279060",
+      "Q9326077",
+      "Q24925",
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q38125561",
+      "Q698739"
+    ],
+    "status": "needs concise review"
+  },
+  "g5230": {
+    "title": "The Invisible Man",
+    "source": "wikidata:Q1539509",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q23346"
+    ],
+    "status": "needs concise review"
+  },
+  "g159": {
+    "title": "The Island of Doctor Moreau",
+    "source": "wikidata:Q718268",
+    "genreQids": [
+      "Q24925",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g541": {
+    "title": "The Age of Innocence",
+    "source": "wikidata:Q1045464",
+    "genreQids": [
+      "Q738473",
+      "Q538812"
+    ],
+    "settingQids": [
+      "Q60",
+      "Q54264",
+      "Q100"
+    ],
+    "status": "needs concise review"
+  },
+  "g284": {
+    "title": "The House of Mirth",
+    "source": "wikidata:Q6474536",
+    "genreQids": [
+      "Q222926"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review"
+  },
+  "g148": {
+    "title": "The Autobiography of Benjamin Franklin",
+    "source": "wikidata:Q7714957",
+    "genreQids": [
+      "Q112983"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g75170": {
+    "title": "The Sound and the Fury",
+    "source": "wikidata:Q135515",
+    "genreQids": [
+      "Q276709"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2166": {
+    "title": "King Solomon's Mines",
+    "source": "wikidata:Q1137494",
+    "genreQids": [
+      "Q2477736",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q132959",
+      "Q15"
+    ],
+    "status": "needs concise review"
+  },
+  "g44747": {
+    "title": "The Red and the Black",
+    "source": "wikidata:Q192649",
+    "genreQids": [
+      "Q223945",
+      "Q1196408",
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q16394",
+      "Q37776",
+      "Q107429812"
+    ],
+    "status": "needs concise review"
+  },
+  "g242": {
+    "title": "My Ántonia",
+    "source": "wikidata:Q2776448",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1553"
+    ],
+    "status": "needs concise review"
+  },
+  "g73011": {
+    "title": "The House at Pooh Corner",
+    "source": "wikidata:Q1633087",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g507": {
+    "title": "Adam Bede",
+    "source": "wikidata:Q2611046",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g78220": {
+    "title": "The Murder at the Vicarage",
+    "source": "wikidata:Q693559",
+    "genreQids": [
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g964": {
+    "title": "The Merry Adventures of Robin Hood",
+    "source": "wikidata:Q7751092",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g66073": {
+    "title": "Death in Venice",
+    "source": "wikidata:Q828296",
+    "genreQids": [],
+    "settingQids": [
+      "Q641"
+    ],
+    "status": "needs concise review"
+  },
+  "g77924": {
+    "title": "The Secret of the Old Clock",
+    "source": "wikidata:Q2070626",
+    "genreQids": [
+      "Q11163999"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g69730": {
+    "title": "Death Comes for the Archbishop",
+    "source": "wikidata:Q543116",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q597711"
+    ],
+    "status": "needs concise review"
+  },
+  "g69768": {
+    "title": "The Bridge of San Luis Rey",
+    "source": "wikidata:Q941462",
+    "genreQids": [
+      "Q192239"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g78157": {
+    "title": "Strong Poison",
+    "source": "wikidata:Q2544560",
+    "genreQids": [
+      "Q20664530",
+      "Q20665028"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g564": {
+    "title": "The Mystery of Edwin Drood",
+    "source": "wikidata:Q1168105",
+    "genreQids": [
+      "Q192782",
+      "Q20664530"
+    ],
+    "settingQids": [
+      "Q23298"
+    ],
+    "status": "needs concise review"
+  },
+  "g468": {
+    "title": "Manon Lescaut",
+    "source": "wikidata:Q1141032",
+    "genreQids": [
+      "Q112983",
+      "Q3440809",
+      "Q19765983"
+    ],
+    "settingQids": [
+      "Q142",
+      "Q34404",
+      "Q658054"
+    ],
+    "status": "needs concise review"
+  },
+  "g72824": {
+    "title": "The Mystery of the Blue Train",
+    "source": "wikidata:Q636815",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1685": {
+    "title": "The Mystery of the Yellow Room",
+    "source": "wikidata:Q2563691",
+    "genreQids": [
+      "Q1141200",
+      "Q5937792",
+      "Q6585139",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g62": {
+    "title": "A Princess of Mars",
+    "source": "wikidata:Q475589",
+    "genreQids": [
+      "Q132311",
+      "Q24925",
+      "Q2630193",
+      "Q1080374",
+      "Q351718"
+    ],
+    "settingQids": [
+      "Q111"
+    ],
+    "status": "needs concise review"
+  },
+  "g64": {
+    "title": "The Gods of Mars",
+    "source": "wikidata:Q673493",
+    "genreQids": [
+      "Q132311",
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q111"
+    ],
+    "status": "needs concise review"
+  },
+  "g6087": {
+    "title": "The Vampyre",
+    "source": "wikidata:Q509070",
+    "genreQids": [
+      "Q20669641",
+      "Q111019576",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1515": {
+    "title": "The Merchant of Venice",
+    "source": "wikidata:Q206400",
+    "genreQids": [
+      "Q192881"
+    ],
+    "settingQids": [
+      "Q641"
+    ],
+    "status": "needs concise review"
+  },
+  "g501": {
+    "title": "The Story of Doctor Dolittle",
+    "source": "wikidata:Q251604",
+    "genreQids": [
+      "Q56451354",
+      "Q132311",
+      "Q8275050"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1300": {
+    "title": "Riders of the Purple Sage",
+    "source": "wikidata:Q3398694",
+    "genreQids": [
+      "Q21590660"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g903": {
+    "title": "The White Company",
+    "source": "wikidata:Q2297190",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g6626": {
+    "title": "Thérèse Raquin",
+    "source": "wikidata:Q268545",
+    "genreQids": [
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g1715": {
+    "title": "Eugénie Grandet",
+    "source": "wikidata:Q1373644",
+    "genreQids": [
+      "Q1248788"
+    ],
+    "settingQids": [
+      "Q193821"
+    ],
+    "status": "needs concise review"
+  },
+  "g2276": {
+    "title": "The Private Memoirs and Confessions of a Justified Sinner",
+    "source": "wikidata:Q2992437",
+    "genreQids": [
+      "Q110540276",
+      "Q20669641",
+      "Q20737414"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g42401": {
+    "title": "Vathek",
+    "source": "wikidata:Q54548",
+    "genreQids": [
+      "Q132311",
+      "Q84350094",
+      "Q20669641",
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q8514"
+    ],
+    "status": "needs concise review"
+  },
+  "g35155": {
+    "title": "The Betrothed",
+    "source": "wikidata:Q28491",
+    "genreQids": [
+      "Q19765983",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1210",
+      "Q42942",
+      "Q3900689",
+      "Q6237",
+      "Q16538019",
+      "Q15523"
+    ],
+    "status": "needs concise review"
+  },
+  "g70128": {
+    "title": "Max Havelaar",
+    "source": "wikidata:Q919067",
+    "genreQids": [
+      "Q4376526",
+      "Q2254211"
+    ],
+    "settingQids": [
+      "Q10119",
+      "Q3261115"
+    ],
+    "status": "needs concise review"
+  },
+  "g73042": {
+    "title": "The Well of Loneliness",
+    "source": "wikidata:Q1514807",
+    "genreQids": [
+      "Q3139891",
+      "Q3294465"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g434": {
+    "title": "The Circular Staircase",
+    "source": "wikidata:Q3824009",
+    "genreQids": [
+      "Q6585139"
+    ],
+    "settingQids": [
+      "Q18389"
+    ],
+    "status": "needs concise review"
+  },
+  "g77900": {
+    "title": "Vile Bodies",
+    "source": "wikidata:Q7271018",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g8492": {
+    "title": "The King in Yellow",
+    "source": "wikidata:Q1195112",
+    "genreQids": [
+      "Q846094",
+      "Q16575965",
+      "Q7644030",
+      "Q732782"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g59828": {
+    "title": "The String of Pearls",
+    "source": "wikidata:Q7767037",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g61262": {
+    "title": "Poirot Investigates",
+    "source": "wikidata:Q1418731",
+    "genreQids": [
+      "Q186424",
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g75288": {
+    "title": "The Seven Dials Mystery",
+    "source": "wikidata:Q457252",
+    "genreQids": [
+      "Q182015",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g537": {
+    "title": "Tales of Terror and Mystery",
+    "source": "wikidata:Q18546595",
+    "genreQids": [
+      "Q6585139",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g70008": {
+    "title": "Unnatural Death (novel)",
+    "source": "wikidata:Q1566420",
+    "genreQids": [
+      "Q6585139",
+      "Q20664530"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g23172": {
+    "title": "The Damned Thing",
+    "source": "wikidata:Q7728792",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g19771": {
+    "title": "Henrietta Temple",
+    "source": "wikidata:Q42295247",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g9473": {
+    "title": "The Knights of the Cross",
+    "source": "wikidata:Q1214098",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q156020"
+    ],
+    "status": "needs concise review"
+  },
+  "g851": {
+    "title": "A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson",
+    "source": "wikidata:Q16154858",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g500": {
+    "title": "The Adventures of Pinocchio",
+    "source": "wikidata:Q8065468",
+    "genreQids": [
+      "Q24723",
+      "Q5793767",
+      "Q56451354",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q1273"
+    ],
+    "status": "needs concise review"
+  },
+  "g36034": {
+    "title": "White Nights (short story)",
+    "source": "wikidata:Q600461",
+    "genreQids": [],
+    "settingQids": [
+      "Q656"
+    ],
+    "status": "needs concise review"
+  },
+  "g1200": {
+    "title": "Gargantua",
+    "source": "wikidata:Q10288350",
+    "genreQids": [],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g45631": {
+    "title": "Twelve Years a Slave",
+    "source": "wikidata:Q7857661",
+    "genreQids": [
+      "Q112983",
+      "Q4184",
+      "Q3429239"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review"
+  },
+  "g30201": {
+    "title": "In Praise of Folly",
+    "source": "wikidata:Q569869",
+    "genreQids": [
+      "Q128758"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g78084": {
+    "title": "The Mysterious Mr Quin",
+    "source": "wikidata:Q1143438",
+    "genreQids": [
+      "Q5937792"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g78016": {
+    "title": "Herman Melville (book)",
+    "source": "wikidata:Q96380915",
+    "genreQids": [
+      "Q36279"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g78120": {
+    "title": "The Marvellous Land of Snergs",
+    "source": "wikidata:Q287321",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g27432": {
+    "title": "The Fifth Queen",
+    "source": "wikidata:Q7733772",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g3526": {
+    "title": "Five Weeks in a Balloon",
+    "source": "wikidata:Q622634",
+    "genreQids": [
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q15"
+    ],
+    "status": "needs concise review"
+  },
+  "g75643": {
+    "title": "The Black Abbot (novel)",
+    "source": "wikidata:Q3818148",
+    "genreQids": [
+      "Q6585139"
+    ],
+    "settingQids": [
+      "Q2357393"
+    ],
+    "status": "needs concise review"
+  },
+  "g78024": {
+    "title": "The Woman of Andros",
+    "source": "wikidata:Q19898261",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g59931": {
+    "title": "The Love Story of Aliette Brunton (novel)",
+    "source": "wikidata:Q57976186",
+    "genreQids": [
+      "Q19765983"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g76352": {
+    "title": "The World Below",
+    "source": "wikidata:Q7775943",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g76257": {
+    "title": "The Crimson Circle (novel)",
+    "source": "wikidata:Q3793414",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g75998": {
+    "title": "Daredevil (novel)",
+    "source": "wikidata:Q5222497",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g75949": {
+    "title": "Terror Keep",
+    "source": "wikidata:Q85806014",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g76212": {
+    "title": "Kate Plus Ten (novel)",
+    "source": "wikidata:Q6375719",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g75808": {
+    "title": "Four Square Jane",
+    "source": "wikidata:Q85761810",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g10007": {
+    "title": "Carmilla",
+    "source": "wikidata:Q1043792",
+    "genreQids": [
+      "Q132311",
+      "Q3294465",
+      "Q111019576",
+      "Q20669641"
+    ],
+    "settingQids": [
+      "Q41358"
+    ],
+    "status": "needs concise review"
+  },
+  "g110": {
+    "title": "Tess of the d'Urbervilles",
+    "source": "wikidata:Q649409",
+    "genreQids": [
+      "Q80930",
+      "Q740919"
+    ],
+    "settingQids": [
+      "Q39671",
+      "Q5288958",
+      "Q172157"
+    ],
+    "status": "needs concise review"
+  },
+  "g7256": {
+    "title": "The Gift of the Magi",
+    "source": "wikidata:Q1168338",
+    "genreQids": [
+      "Q77762397"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review"
+  },
+  "g146": {
+    "title": "A Little Princess",
+    "source": "wikidata:Q10483376",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g932": {
+    "title": "The Fall of the House of Usher",
+    "source": "wikidata:Q1197735",
+    "genreQids": [
+      "Q20669641",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g12122": {
+    "title": "The Monkey's Paw",
+    "source": "wikidata:Q1210939",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g13415": {
+    "title": "The Lady with the Dog",
+    "source": "wikidata:Q2418554",
+    "genreQids": [],
+    "settingQids": [
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g16199": {
+    "title": "Memoirs of the Author of A Vindication of the Rights of Woman",
+    "source": "wikidata:Q933002",
+    "genreQids": [
+      "Q36279"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g74222": {
+    "title": "Demian",
+    "source": "wikidata:Q860577",
+    "genreQids": [
+      "Q2016518",
+      "Q1312571"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1064": {
+    "title": "The Masque of the Red Death",
+    "source": "wikidata:Q766086",
+    "genreQids": [
+      "Q20669641",
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1081": {
+    "title": "Dead Souls",
+    "source": "wikidata:Q647379",
+    "genreQids": [
+      "Q110540276",
+      "Q44563",
+      "Q6045975"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g14522": {
+    "title": "The Canterville Ghost",
+    "source": "wikidata:Q288020",
+    "genreQids": [
+      "Q136472"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g6852": {
+    "title": "Venus in Furs",
+    "source": "wikidata:Q677592",
+    "genreQids": [
+      "Q181001"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g11757": {
+    "title": "The Velveteen Rabbit",
+    "source": "wikidata:Q168351",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g40580": {
+    "title": "A General History of the Pyrates",
+    "source": "wikidata:Q525738",
+    "genreQids": [
+      "Q36279"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g6688": {
+    "title": "The Mill on the Floss",
+    "source": "wikidata:Q1215018",
+    "genreQids": [
+      "Q101240581"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1254": {
+    "title": "Cyrano de Bergerac (play)",
+    "source": "wikidata:Q1048916",
+    "genreQids": [
+      "Q5151421"
+    ],
+    "settingQids": [
+      "Q1643111"
+    ],
+    "status": "needs concise review"
+  },
+  "g11870": {
+    "title": "The Country of the Blind",
+    "source": "wikidata:Q823691",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q736"
+    ],
+    "status": "needs concise review"
+  },
+  "g544": {
+    "title": "Anne's House of Dreams",
+    "source": "wikidata:Q2420701",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q1109932",
+      "Q1978"
+    ],
+    "status": "needs concise review"
+  },
+  "g77": {
+    "title": "The House of the Seven Gables",
+    "source": "wikidata:Q1141732",
+    "genreQids": [
+      "Q20669641"
+    ],
+    "settingQids": [
+      "Q771"
+    ],
+    "status": "needs concise review"
+  },
+  "g119": {
+    "title": "A Tramp Abroad",
+    "source": "wikidata:Q1004825",
+    "genreQids": [
+      "Q1072723"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g12233": {
+    "title": "Stonewall Jackson and the American Civil War",
+    "source": "wikidata:Q7619371",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g79401": {
+    "title": "Pickman's Model",
+    "source": "wikidata:Q2317316",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q100"
+    ],
+    "status": "needs concise review"
+  },
+  "g27365": {
+    "title": "Tales of Space and Time",
+    "source": "wikidata:Q7679355",
+    "genreQids": [
+      "Q24925",
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2776": {
+    "title": "The Four Million",
+    "source": "wikidata:Q7735024",
+    "genreQids": [],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review"
+  },
+  "g2044": {
+    "title": "The Education of Henry Adams",
+    "source": "wikidata:Q7731604",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g72890": {
+    "title": "The Eternal Moment",
+    "source": "wikidata:Q16385631",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g45524": {
+    "title": "The Open Boat",
+    "source": "wikidata:Q3220359",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g325": {
+    "title": "Phantastes",
+    "source": "wikidata:Q1616808",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g79360": {
+    "title": "The Planet of Peril",
+    "source": "wikidata:Q23307580",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g3186": {
+    "title": "The Mysterious Stranger",
+    "source": "wikidata:Q2582895",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1906": {
+    "title": "Erewhon",
+    "source": "wikidata:Q1350048",
+    "genreQids": [
+      "Q24925",
+      "Q132311",
+      "Q110540276",
+      "Q15062360",
+      "Q2477736"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g55283": {
+    "title": "The Bet (short story)",
+    "source": "wikidata:Q394247",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g79405": {
+    "title": "The Picture in the House",
+    "source": "wikidata:Q4216206",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g782": {
+    "title": "The Travels of Sir John Mandeville",
+    "source": "wikidata:Q3257249",
+    "genreQids": [
+      "Q1072723",
+      "Q2753521",
+      "Q1164267"
+    ],
+    "settingQids": [
+      "Q79",
+      "Q668",
+      "Q27275",
+      "Q29520"
+    ],
+    "status": "needs concise review"
+  },
+  "g46853": {
+    "title": "Le Morte d'Arthur",
+    "source": "wikidata:Q1136104",
+    "genreQids": [
+      "Q1159457"
+    ],
+    "settingQids": [
+      "Q21",
+      "Q220437"
+    ],
+    "status": "needs concise review"
+  },
+  "g26610": {
+    "title": "The Trail of the Hawk",
+    "source": "wikidata:Q17038220",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g12750": {
+    "title": "The Stolen Bacillus and Other Incidents",
+    "source": "wikidata:Q3793017",
+    "genreQids": [
+      "Q24925",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g47935": {
+    "title": "Fathers and Sons (novel)",
+    "source": "wikidata:Q29424",
+    "genreQids": [
+      "Q2254211",
+      "Q20737414"
+    ],
+    "settingQids": [
+      "Q34266",
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g8525": {
+    "title": "Eve's Diary",
+    "source": "wikidata:Q2293598",
+    "genreQids": [
+      "Q465821",
+      "Q60548032"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g5343": {
+    "title": "Rainbow Valley",
+    "source": "wikidata:Q2394369",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2021": {
+    "title": "Nostromo",
+    "source": "wikidata:Q430248",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g225": {
+    "title": "At the Back of the North Wind",
+    "source": "wikidata:Q1619593",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g29220": {
+    "title": "Monday or Tuesday",
+    "source": "wikidata:Q6898670",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g20008": {
+    "title": "The Young Duke",
+    "source": "wikidata:Q45028402",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g42332": {
+    "title": "The Sorrows of Satan",
+    "source": "wikidata:Q13424700",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2145": {
+    "title": "Ben-Hur: A Tale of the Christ",
+    "source": "wikidata:Q816528",
+    "genreQids": [
+      "Q8253",
+      "Q100339660",
+      "Q1196408",
+      "Q192239"
+    ],
+    "settingQids": [
+      "Q1747689",
+      "Q1003997"
+    ],
+    "status": "needs concise review"
+  },
+  "g1448": {
+    "title": "Heidi",
+    "source": "wikidata:Q271697",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q39",
+      "Q183",
+      "Q1286"
+    ],
+    "status": "needs concise review"
+  },
+  "g32338": {
+    "title": "Toilers of the Sea",
+    "source": "wikidata:Q1211109",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g882": {
+    "title": "Sketches by Boz",
+    "source": "wikidata:Q2609480",
+    "genreQids": [
+      "Q213051"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g535": {
+    "title": "Travels with a Donkey in the Cévennes",
+    "source": "wikidata:Q10202",
+    "genreQids": [
+      "Q1164267"
+    ],
+    "settingQids": [
+      "Q626655"
+    ],
+    "status": "needs concise review"
+  },
+  "g2911": {
+    "title": "Justice (play)",
+    "source": "wikidata:Q3467424",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g15859": {
+    "title": "The Piazza Tales",
+    "source": "wikidata:Q7757032",
+    "genreQids": [
+      "Q6647667"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g456": {
+    "title": "The Door in the Wall (short story)",
+    "source": "wikidata:Q5967936",
+    "genreQids": [
+      "Q9326077"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g68236": {
+    "title": "The Colour Out of Space",
+    "source": "wikidata:Q1212384",
+    "genreQids": [
+      "Q24925",
+      "Q16575965",
+      "Q732782"
+    ],
+    "settingQids": [
+      "Q18389"
+    ],
+    "status": "needs concise review"
+  },
+  "g90": {
+    "title": "The Son of Tarzan",
+    "source": "wikidata:Q2020554",
+    "genreQids": [
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2429": {
+    "title": "Lost Face",
+    "source": "wikidata:Q4552609",
+    "genreQids": [
+      "Q21802675",
+      "Q367591"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g157": {
+    "title": "Daddy-Long-Legs (novel)",
+    "source": "wikidata:Q1156969",
+    "genreQids": [
+      "Q465821",
+      "Q111984153"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review"
+  },
+  "g79003": {
+    "title": "Last and First Men",
+    "source": "wikidata:Q2707204",
+    "genreQids": [
+      "Q7490686",
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g6523": {
+    "title": "The Post Office (play)",
+    "source": "wikidata:Q7757862",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g14323": {
+    "title": "Là-bas (novel)",
+    "source": "wikidata:Q1763200",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g243": {
+    "title": "The Forged Coupon",
+    "source": "wikidata:Q1134252",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review"
+  },
+  "g67090": {
+    "title": "The Worm Ouroboros",
+    "source": "wikidata:Q826727",
+    "genreQids": [
+      "Q132311",
+      "Q2625243",
+      "Q326439"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g447": {
+    "title": "Maggie: A Girl of the Streets",
+    "source": "wikidata:Q3276774",
+    "genreQids": [],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review"
+  },
+  "g106": {
+    "title": "Jungle Tales of Tarzan",
+    "source": "wikidata:Q6312905",
+    "genreQids": [
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g62940": {
+    "title": "Mrs. Spring Fragrance",
+    "source": "wikidata:Q6929883",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1480": {
+    "title": "Tom Brown's School Days",
+    "source": "wikidata:Q7815084",
+    "genreQids": [
+      "Q7432631",
+      "Q56451354",
+      "Q109620002"
+    ],
+    "settingQids": [
+      "Q23220",
+      "Q1143281"
+    ],
+    "status": "needs concise review"
+  },
+  "g13015": {
+    "title": "Tales of Old Japan",
+    "source": "wikidata:Q7679344",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g27085": {
+    "title": "Rootabaga Stories",
+    "source": "wikidata:Q7366589",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g22354": {
+    "title": "The Adventures of Maya the Bee",
+    "source": "wikidata:Q109832680",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1197": {
+    "title": "Taras Bulba",
+    "source": "wikidata:Q1250822",
+    "genreQids": [
+      "Q1196408",
+      "Q19765983"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g26526": {
+    "title": "Stingaree (novel)",
+    "source": "wikidata:Q19879547",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g56528": {
+    "title": "Germinal (novel)",
+    "source": "wikidata:Q137869",
+    "genreQids": [
+      "Q20737414",
+      "Q104100753"
+    ],
+    "settingQids": [
+      "Q392215"
+    ],
+    "status": "needs concise review"
+  },
+  "g6373": {
+    "title": "The Luck of Roaring Camp",
+    "source": "wikidata:Q7749138",
+    "genreQids": [
+      "Q367591"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g620": {
+    "title": "Sylvie and Bruno",
+    "source": "wikidata:Q1632505",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1013": {
+    "title": "The First Men in the Moon",
+    "source": "wikidata:Q1218232",
+    "genreQids": [
+      "Q19765983",
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q405",
+      "Q6653058"
+    ],
+    "status": "needs concise review"
+  },
+  "g8606": {
+    "title": "The Blue Bird (play)",
+    "source": "wikidata:Q1367544",
+    "genreQids": [
+      "Q699"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g26977": {
+    "title": "The Old Tobacco Shop",
+    "source": "wikidata:Q7754922",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g65974": {
+    "title": "Carry On, Jeeves",
+    "source": "wikidata:Q5046784",
+    "genreQids": [],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g25519": {
+    "title": "Little Wizard Stories of Oz",
+    "source": "wikidata:Q6652545",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g27384": {
+    "title": "The Regent's Daughter",
+    "source": "wikidata:Q24964717",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2787": {
+    "title": "An Old-Fashioned Girl",
+    "source": "wikidata:Q1448469",
+    "genreQids": [
+      "Q111984153"
+    ],
+    "settingQids": [
+      "Q771"
+    ],
+    "status": "needs concise review"
+  },
+  "g1026": {
+    "title": "The Diary of a Nobody",
+    "source": "wikidata:Q864150",
+    "genreQids": [
+      "Q465821",
+      "Q2561390"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g30123": {
+    "title": "Micromégas",
+    "source": "wikidata:Q1785978",
+    "genreQids": [
+      "Q20737410",
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q2",
+      "Q193",
+      "Q3409"
+    ],
+    "status": "needs concise review"
+  },
+  "g6782": {
+    "title": "The Robbers",
+    "source": "wikidata:Q466333",
+    "genreQids": [
+      "Q21010853",
+      "Q961849"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g79424": {
+    "title": "The Libertine (book)",
+    "source": "wikidata:Q25218042",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g3023": {
+    "title": "Faust, Part One",
+    "source": "wikidata:Q13221881",
+    "genreQids": [
+      "Q21010853",
+      "Q80930"
+    ],
+    "settingQids": [
+      "Q523117",
+      "Q155721"
+    ],
+    "status": "needs concise review"
+  },
+  "g513": {
+    "title": "The Snow-Image, and Other Twice-Told Tales",
+    "source": "wikidata:Q7765012",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g23489": {
+    "title": "Godfrey Morgan",
+    "source": "wikidata:Q1216126",
+    "genreQids": [
+      "Q279060",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g20004": {
+    "title": "Tancred (novel)",
+    "source": "wikidata:Q7682378",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g85": {
+    "title": "The Beasts of Tarzan",
+    "source": "wikidata:Q2083126",
+    "genreQids": [
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g3836": {
+    "title": "The Swiss Family Robinson",
+    "source": "wikidata:Q665715",
+    "genreQids": [
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g47356": {
+    "title": "Studies on Homer and the Homeric Age",
+    "source": "wikidata:Q7628088",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g21640": {
+    "title": "A Bid for Fortune; Or, Doctor Nikola's Vendetta",
+    "source": "wikidata:Q120070454",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1213": {
+    "title": "The Man That Corrupted Hadleyburg",
+    "source": "wikidata:Q123014034",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g34970": {
+    "title": "Pierre; or, The Ambiguities",
+    "source": "wikidata:Q3387840",
+    "genreQids": [],
+    "settingQids": [
+      "Q1384"
+    ],
+    "status": "needs concise review"
+  },
+  "g37775": {
+    "title": "Etidorhpa",
+    "source": "wikidata:Q3733783",
+    "genreQids": [
+      "Q24925",
+      "Q2477736"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g17034": {
+    "title": "English Fairy Tales",
+    "source": "wikidata:Q107326545",
+    "genreQids": [
+      "Q699"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g92": {
+    "title": "Tarzan and the Jewels of Opar",
+    "source": "wikidata:Q3515904",
+    "genreQids": [
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g35587": {
+    "title": "The Headless Horseman (novel)",
+    "source": "wikidata:Q2657678",
+    "genreQids": [],
+    "settingQids": [
+      "Q1439"
+    ],
+    "status": "needs concise review"
+  },
+  "g25919": {
+    "title": "Miss Mapp",
+    "source": "wikidata:Q106696385",
+    "genreQids": [
+      "Q40831"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g471": {
+    "title": "The Bride of Lammermoor",
+    "source": "wikidata:Q2659725",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q1216412"
+    ],
+    "status": "needs concise review"
+  },
+  "g20869": {
+    "title": "The Skylark of Space",
+    "source": "wikidata:Q3208037",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g3760": {
+    "title": "Sybil (novel)",
+    "source": "wikidata:Q3506752",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g47312": {
+    "title": "The Mysteries of London",
+    "source": "wikidata:Q7752831",
+    "genreQids": [],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g13514": {
+    "title": "Tales of a Traveller",
+    "source": "wikidata:Q7679380",
+    "genreQids": [
+      "Q35760"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2870": {
+    "title": "Washington Square (novel)",
+    "source": "wikidata:Q1548029",
+    "genreQids": [
+      "Q19765983",
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q60"
+    ],
+    "status": "needs concise review"
+  },
+  "g38241": {
+    "title": "Uncle's Dream",
+    "source": "wikidata:Q1129859",
+    "genreQids": [
+      "Q667661",
+      "Q286328"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g39402": {
+    "title": "Jeremiah (play)",
+    "source": "wikidata:Q5929312",
+    "genreQids": [
+      "Q11635"
+    ],
+    "settingQids": [
+      "Q1218"
+    ],
+    "status": "needs concise review"
+  },
+  "g27711": {
+    "title": "Germinie Lacerteux",
+    "source": "wikidata:Q3761166",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g76513": {
+    "title": "Billy Budd",
+    "source": "wikidata:Q863037",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g45264": {
+    "title": "The Tale of Two Bad Mice",
+    "source": "wikidata:Q5390567",
+    "genreQids": [
+      "Q131539"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g111": {
+    "title": "Freckles (novel)",
+    "source": "wikidata:Q5494338",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g54700": {
+    "title": "Oblomov",
+    "source": "wikidata:Q842074",
+    "genreQids": [
+      "Q1483466"
+    ],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review"
+  },
+  "g1826": {
+    "title": "Sarrasine",
+    "source": "wikidata:Q2704213",
+    "genreQids": [],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g1944": {
+    "title": "The Witch (short story)",
+    "source": "wikidata:Q3212904",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g22246": {
+    "title": "The Upper Berth",
+    "source": "wikidata:Q19101574",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g15493": {
+    "title": "The Lancashire Witches",
+    "source": "wikidata:Q7745322",
+    "genreQids": [
+      "Q19715429"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g26719": {
+    "title": "An Anarchist Woman",
+    "source": "wikidata:Q111472398",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g24750": {
+    "title": "Mizora",
+    "source": "wikidata:Q6884678",
+    "genreQids": [
+      "Q2435402",
+      "Q358998"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g985": {
+    "title": "Father Sergius",
+    "source": "wikidata:Q771376",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g5340": {
+    "title": "Further Chronicles of Avonlea",
+    "source": "wikidata:Q5509748",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2845": {
+    "title": "Sir Nigel",
+    "source": "wikidata:Q1963997",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q23666"
+    ],
+    "status": "needs concise review"
+  },
+  "g697": {
+    "title": "The Light Princess",
+    "source": "wikidata:Q7747260",
+    "genreQids": [
+      "Q699"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g5140": {
+    "title": "He Knew He Was Right",
+    "source": "wikidata:Q5688834",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g55307": {
+    "title": "The Black Monk",
+    "source": "wikidata:Q948223",
+    "genreQids": [],
+    "settingQids": [
+      "Q34266"
+    ],
+    "status": "needs concise review"
+  },
+  "g43092": {
+    "title": "The Dead Secret",
+    "source": "wikidata:Q16934313",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g72961": {
+    "title": "Buddenbrooks",
+    "source": "wikidata:Q326909",
+    "genreQids": [
+      "Q870452",
+      "Q186602",
+      "Q223945",
+      "Q104100753",
+      "Q180494",
+      "Q512207"
+    ],
+    "settingQids": [
+      "Q2843",
+      "Q1350892",
+      "Q315187",
+      "Q1420057",
+      "Q679101",
+      "Q321792",
+      "Q1611",
+      "Q906011",
+      "Q153656",
+      "Q1958506",
+      "Q516432",
+      "Q183"
+    ],
+    "status": "needs concise review"
+  },
+  "g46597": {
+    "title": "In Search of the Castaways",
+    "source": "wikidata:Q1213902",
+    "genreQids": [
+      "Q7440128",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q773749",
+      "Q1507",
+      "Q408",
+      "Q664",
+      "Q698739"
+    ],
+    "status": "needs concise review"
+  },
+  "g395": {
+    "title": "The Holy War",
+    "source": "wikidata:Q4920388",
+    "genreQids": [
+      "Q132311"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g482": {
+    "title": "The Woodlanders",
+    "source": "wikidata:Q2254480",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g29413": {
+    "title": "The Adventures of Captain Hatteras",
+    "source": "wikidata:Q319149",
+    "genreQids": [
+      "Q1072723",
+      "Q7440128",
+      "Q24925"
+    ],
+    "settingQids": [
+      "Q934"
+    ],
+    "status": "needs concise review"
+  },
+  "g619": {
+    "title": "The Warden",
+    "source": "wikidata:Q3818437",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g40882": {
+    "title": "Felix Holt, the Radical",
+    "source": "wikidata:Q5442230",
+    "genreQids": [
+      "Q104100753"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g4047": {
+    "title": "The Leavenworth Case",
+    "source": "wikidata:Q16936995",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g318": {
+    "title": "John Barleycorn (novel)",
+    "source": "wikidata:Q3180997",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review"
+  },
+  "g68229": {
+    "title": "All the Sad Young Men",
+    "source": "wikidata:Q4730179",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1085": {
+    "title": "The Life of John Sterling",
+    "source": "wikidata:Q7747184",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g76911": {
+    "title": "Good-Bye to All That",
+    "source": "wikidata:Q2356106",
+    "genreQids": [
+      "Q4184",
+      "Q111541985"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g29756": {
+    "title": "The Cat of Bubastes",
+    "source": "wikidata:Q7721680",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g52468": {
+    "title": "The Lower Depths",
+    "source": "wikidata:Q1330429",
+    "genreQids": [
+      "Q25372"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1842": {
+    "title": "Michael Strogoff",
+    "source": "wikidata:Q1121567",
+    "genreQids": [
+      "Q21802675",
+      "Q21803247",
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g26854": {
+    "title": "The Trembling of a Leaf",
+    "source": "wikidata:Q113685689",
+    "genreQids": [
+      "Q38072107"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g4761": {
+    "title": "The Cossacks (novel)",
+    "source": "wikidata:Q1214043",
+    "genreQids": [
+      "Q12799318"
+    ],
+    "settingQids": [
+      "Q18869",
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g76599": {
+    "title": "My Past and Thoughts",
+    "source": "wikidata:Q4101057",
+    "genreQids": [
+      "Q4184"
+    ],
+    "settingQids": [
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g346": {
+    "title": "The Troll Garden",
+    "source": "wikidata:Q7770322",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g79489": {
+    "title": "The Grandmothers",
+    "source": "wikidata:Q7737517",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g36028": {
+    "title": "Royal Highness (novel)",
+    "source": "wikidata:Q1109439",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q27016749",
+      "Q183"
+    ],
+    "status": "needs concise review"
+  },
+  "g37027": {
+    "title": "With Fire and Sword",
+    "source": "wikidata:Q927292",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q172107"
+    ],
+    "status": "needs concise review"
+  },
+  "g3166": {
+    "title": "Doctor Thorne",
+    "source": "wikidata:Q5287401",
+    "genreQids": [],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g653": {
+    "title": "The Chimes",
+    "source": "wikidata:Q3828573",
+    "genreQids": [],
+    "settingQids": [
+      "Q38022"
+    ],
+    "status": "needs concise review"
+  },
+  "g73727": {
+    "title": "Metropolis (novel)",
+    "source": "wikidata:Q3307458",
+    "genreQids": [
+      "Q24925"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g29042": {
+    "title": "A Tangled Tale",
+    "source": "wikidata:Q1517691",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2502": {
+    "title": "Chitra (play)",
+    "source": "wikidata:Q17103580",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g709": {
+    "title": "The Princess and Curdie",
+    "source": "wikidata:Q2603469",
+    "genreQids": [
+      "Q132311",
+      "Q56451354"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g17780": {
+    "title": "Scenes of Clerical Life",
+    "source": "wikidata:Q6544172",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2662": {
+    "title": "Under the Greenwood Tree",
+    "source": "wikidata:Q2251594",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g32596": {
+    "title": "The Revolt of the Angels",
+    "source": "wikidata:Q3212617",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g25014": {
+    "title": "Bouvard and Pécuchet",
+    "source": "wikidata:Q728104",
+    "genreQids": [],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2020": {
+    "title": "Tarzan the Terrible",
+    "source": "wikidata:Q3515897",
+    "genreQids": [
+      "Q132311",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g50054": {
+    "title": "The Female Quixote",
+    "source": "wikidata:Q1404172",
+    "genreQids": [
+      "Q1029945",
+      "Q110540276"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g21659": {
+    "title": "Some Everyday Folk and Dawn",
+    "source": "wikidata:Q24886858",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g27537": {
+    "title": "Sentimental Education",
+    "source": "wikidata:Q1212285",
+    "genreQids": [
+      "Q1248788"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g8123": {
+    "title": "The Virginians",
+    "source": "wikidata:Q7772832",
+    "genreQids": [
+      "Q1196408"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2701": {
+    "title": "Moby-Dick",
+    "source": "wikidata:Q174596",
+    "genreQids": [
+      "Q7440128",
+      "Q21802675"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g11": {
+    "title": "Alice's Adventures in Wonderland",
+    "source": "wikidata:Q92640",
+    "genreQids": [
+      "Q699",
+      "Q936749",
+      "Q56451354",
+      "Q8275050"
+    ],
+    "settingQids": [
+      "Q3402263"
+    ],
+    "status": "needs concise review"
+  },
+  "g84": {
+    "title": "Frankenstein",
+    "source": "wikidata:Q150827",
+    "genreQids": [
+      "Q465821",
+      "Q102260654",
+      "Q20669641",
+      "Q24925",
+      "Q132311",
+      "Q2367164"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2641": {
+    "title": "A Room with a View",
+    "source": "wikidata:Q120288",
+    "genreQids": [
+      "Q738473"
+    ],
+    "settingQids": [
+      "Q220",
+      "Q2044",
+      "Q23276"
+    ],
+    "status": "needs concise review"
+  },
+  "g145": {
+    "title": "Middlemarch",
+    "source": "wikidata:Q313129",
+    "genreQids": [
+      "Q1248788",
+      "Q223945",
+      "Q101240581",
+      "Q740919"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g2852": {
+    "title": "The Hound of the Baskervilles",
+    "source": "wikidata:Q45192",
+    "genreQids": [
+      "Q5937792",
+      "Q6585139",
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q214823",
+      "Q84",
+      "Q23156"
+    ],
+    "status": "needs concise review"
+  },
+  "g69087": {
+    "title": "The Murder of Roger Ackroyd",
+    "source": "wikidata:Q224078",
+    "genreQids": [
+      "Q5937792",
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1184": {
+    "title": "The Count of Monte Cristo",
+    "source": "wikidata:Q191838",
+    "genreQids": [
+      "Q1347298",
+      "Q19765983",
+      "Q21802675",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q23482",
+      "Q622500",
+      "Q90",
+      "Q220",
+      "Q203169"
+    ],
+    "status": "needs concise review"
+  },
+  "g174": {
+    "title": "The Picture of Dorian Gray",
+    "source": "wikidata:Q82464",
+    "genreQids": [
+      "Q192782"
+    ],
+    "settingQids": [
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g75201": {
+    "title": "A Farewell to Arms",
+    "source": "wikidata:Q235795",
+    "genreQids": [
+      "Q908667"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g768": {
+    "title": "Wuthering Heights",
+    "source": "wikidata:Q202975",
+    "genreQids": [
+      "Q20669641",
+      "Q619593",
+      "Q19765983",
+      "Q5054705"
+    ],
+    "settingQids": [
+      "Q163"
+    ],
+    "status": "needs concise review"
+  },
+  "g2600": {
+    "title": "War and Peace",
+    "source": "wikidata:Q161531",
+    "genreQids": [
+      "Q19765983",
+      "Q111956902",
+      "Q20737414",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q34266",
+      "Q131964"
+    ],
+    "status": "needs concise review"
+  },
+  "g55": {
+    "title": "The Wonderful Wizard of Oz",
+    "source": "wikidata:Q130295",
+    "genreQids": [
+      "Q5793767",
+      "Q132311"
+    ],
+    "settingQids": [
+      "Q1558",
+      "Q2918164"
+    ],
+    "status": "needs concise review"
+  },
+  "g113": {
+    "title": "The Secret Garden",
+    "source": "wikidata:Q472194",
+    "genreQids": [
+      "Q8275050",
+      "Q1347298"
+    ],
+    "settingQids": [
+      "Q163"
+    ],
+    "status": "needs concise review"
+  },
+  "g103": {
+    "title": "Around the World in Eighty Days",
+    "source": "wikidata:Q1219561",
+    "genreQids": [
+      "Q1347298",
+      "Q21802675",
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q8686",
+      "Q8646",
+      "Q60",
+      "Q62",
+      "Q84",
+      "Q24826",
+      "Q668",
+      "Q79",
+      "Q334",
+      "Q17",
+      "Q131694",
+      "Q38",
+      "Q142"
+    ],
+    "status": "needs concise review"
+  },
+  "g76": {
+    "title": "Adventures of Huckleberry Finn",
+    "source": "wikidata:Q215410",
+    "genreQids": [
+      "Q128758",
+      "Q60548032",
+      "Q44563",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q1497"
+    ],
+    "status": "needs concise review"
+  },
+  "g203": {
+    "title": "Uncle Tom's Cabin",
+    "source": "wikidata:Q2222",
+    "genreQids": [
+      "Q1347298"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g71865": {
+    "title": "Mrs Dalloway",
+    "source": "wikidata:Q752584",
+    "genreQids": [
+      "Q971480",
+      "Q101240581"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g35": {
+    "title": "The Time Machine",
+    "source": "wikidata:Q627333",
+    "genreQids": [
+      "Q104767031",
+      "Q19765983",
+      "Q15062348",
+      "Q24925",
+      "Q197949"
+    ],
+    "settingQids": [
+      "Q2500974",
+      "Q71429817"
+    ],
+    "status": "needs concise review"
+  },
+  "g1399": {
+    "title": "Anna Karenina",
+    "source": "wikidata:Q147787",
+    "genreQids": [
+      "Q1248788"
+    ],
+    "settingQids": [
+      "Q34266",
+      "Q159"
+    ],
+    "status": "needs concise review"
+  },
+  "g219": {
+    "title": "Heart of Darkness",
+    "source": "wikidata:Q129778",
+    "genreQids": [
+      "Q38072107",
+      "Q1347298",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q15",
+      "Q974"
+    ],
+    "status": "needs concise review"
+  },
+  "g829": {
+    "title": "Gulliver's Travels",
+    "source": "wikidata:Q181488",
+    "genreQids": [
+      "Q7225114",
+      "Q132311",
+      "Q7440128",
+      "Q2994242",
+      "Q6045975"
+    ],
+    "settingQids": [
+      "Q102424699",
+      "Q1931914",
+      "Q923051",
+      "Q543170",
+      "Q8240859",
+      "Q3849264",
+      "Q3849256",
+      "Q138794260",
+      "Q20481657"
+    ],
+    "status": "needs concise review"
+  },
+  "g996": {
+    "title": "Don Quixote",
+    "source": "wikidata:Q480",
+    "genreQids": [
+      "Q1159457",
+      "Q21802675",
+      "Q16669008",
+      "Q25377629"
+    ],
+    "settingQids": [
+      "Q80702",
+      "Q844209",
+      "Q1492"
+    ],
+    "status": "needs concise review"
+  },
+  "g730": {
+    "title": "Oliver Twist",
+    "source": "wikidata:Q164974",
+    "genreQids": [
+      "Q223945"
+    ],
+    "settingQids": [
+      "Q84"
+    ],
+    "status": "needs concise review"
+  },
+  "g521": {
+    "title": "Robinson Crusoe",
+    "source": "wikidata:Q483034",
+    "genreQids": [
+      "Q1312571",
+      "Q279060",
+      "Q21802675",
+      "Q111143082"
+    ],
+    "settingQids": [
+      "Q131792",
+      "Q466046"
+    ],
+    "status": "needs concise review"
+  },
+  "g36": {
+    "title": "The War of the Worlds",
+    "source": "wikidata:Q213019",
+    "genreQids": [
+      "Q3919251",
+      "Q24925",
+      "Q111956902",
+      "Q2608088",
+      "Q1347298"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1257": {
+    "title": "The Three Musketeers",
+    "source": "wikidata:Q140527",
+    "genreQids": [
+      "Q1347298",
+      "Q21802675"
+    ],
+    "settingQids": [
+      "Q90",
+      "Q658776",
+      "Q84",
+      "Q6454",
+      "Q82185",
+      "Q207145"
+    ],
+    "status": "needs concise review"
+  },
+  "g289": {
+    "title": "The Wind in the Willows",
+    "source": "wikidata:Q936276",
+    "genreQids": [
+      "Q56451354"
+    ],
+    "settingQids": [
+      "Q23220",
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g2413": {
+    "title": "Madame Bovary",
+    "source": "wikidata:Q193417",
+    "genreQids": [
+      "Q1248788"
+    ],
+    "settingQids": [
+      "Q3572550"
+    ],
+    "status": "needs concise review"
+  },
+  "g67138": {
+    "title": "The Sun Also Rises",
+    "source": "wikidata:Q501351",
+    "genreQids": [],
+    "settingQids": [
+      "Q90",
+      "Q10282"
+    ],
+    "status": "needs concise review"
+  },
+  "g75011": {
+    "title": "All Quiet on the Western Front",
+    "source": "wikidata:Q207332",
+    "genreQids": [
+      "Q512207",
+      "Q908667",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q14201393",
+      "Q152989"
+    ],
+    "status": "needs concise review"
+  },
+  "g6133": {
+    "title": "Arsène Lupin, Gentleman-Burglar",
+    "source": "wikidata:Q82442",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [
+      "Q90"
+    ],
+    "status": "needs concise review"
+  },
+  "g834": {
+    "title": "The Memoirs of Sherlock Holmes",
+    "source": "wikidata:Q860831",
+    "genreQids": [
+      "Q186424"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1063": {
+    "title": "The Cask of Amontillado",
+    "source": "wikidata:Q1130590",
+    "genreQids": [
+      "Q16575965"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g6593": {
+    "title": "The History of Tom Jones, a Foundling",
+    "source": "wikidata:Q248096",
+    "genreQids": [
+      "Q223945",
+      "Q44563"
+    ],
+    "settingQids": [
+      "Q84",
+      "Q21"
+    ],
+    "status": "needs concise review"
+  },
+  "g1232": {
+    "title": "The Prince",
+    "source": "wikidata:Q131719",
+    "genreQids": [
+      "Q35760"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g1952": {
+    "title": "The Yellow Wallpaper",
+    "source": "wikidata:Q462373",
+    "genreQids": [
+      "Q8253"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review"
+  },
+  "g205": {
+    "title": "Walden",
+    "source": "wikidata:Q863534",
+    "genreQids": [
+      "Q27801",
+      "Q185598"
+    ],
+    "settingQids": [],
+    "status": "needs concise review"
+  },
+  "g73": {
+    "title": "The Red Badge of Courage",
+    "source": "wikidata:Q1219239",
+    "genreQids": [
+      "Q111956902",
+      "Q1196408"
+    ],
+    "settingQids": [
+      "Q30"
+    ],
+    "status": "needs concise review"
+  }
+}

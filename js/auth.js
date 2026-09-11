@@ -249,6 +249,23 @@ window.BookleAuth = (() => {
     if (s.name) localStorage.setItem("bookle.name", s.name.slice(0, 24));
   }
 
+  async function updateProfile(name) {
+    const s = session();
+    if (!s) throw new Error("Sign in first.");
+    const clean = String(name ?? "").trim().replace(/\s+/g, " ");
+    if ([...clean].length > 24 || /[\u0000-\u001f\u007f]/.test(clean)) throw new Error("Use up to 24 visible characters.");
+    if (api()) {
+      const saved = await post("/me/profile", { name: clean }, s.token);
+      setSession({ ...s, name: saved.name, uid: saved.uid || s.uid });
+      localStorage.setItem("bookle.name", saved.name);
+      return saved;
+    }
+    const saved = clean || "Anonymous";
+    setSession({ ...s, name: saved });
+    localStorage.setItem("bookle.name", saved);
+    return { uid: s.uid, name: saved };
+  }
+
   function signOut() {
     const s = session();
     if (api() && s?.token) fetch(`${api()}/auth/logout`, {
@@ -362,6 +379,7 @@ window.BookleAuth = (() => {
     hasPassword,
     setPassword,
     removePassword,
+    updateProfile,
     googleSignIn,
   };
 })();

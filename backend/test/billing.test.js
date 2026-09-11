@@ -164,6 +164,15 @@ test('password creation, scores, and progress are scoped to a verified session',
   const saved = await worker.fetch(new Request('https://api.example/me/progress', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}` } }), env);
   assert.equal((await saved.json()).progress[1001].status, 'won');
 });
+test('a signed-in player can change their display name without changing their score', async () => {
+  const before = await (await request('/me/profile', undefined, true)).json();
+  assert.deepEqual(before, { uid: 'user1', name: 'One' });
+  const updated = await (await request('/me/profile', { name: '  New   Name  ' }, true)).json();
+  assert.deepEqual(updated, { uid: 'user1', name: 'New Name' });
+  const board = await (await request('/scores?puzzleIndex=1001&hints=1', undefined)).json();
+  assert.equal(board.scores[0].name, 'New Name');
+  assert.equal((await request('/me/profile', { name: 'x'.repeat(25) }, true)).status, 400);
+});
 test('signed webhooks activate Pro, reject tampering, survive duplicates and old events', async () => {
   let sub = { id:'sub_one', customer:'cus_one', status:'active', cancel_at_period_end:false, items:{data:[{price:{id:'price_pro'},current_period_end:now()+86400}]} };
   globalThis.fetch = async () => Response.json(sub);

@@ -21,7 +21,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 HERE = Path(__file__).parent
 OUT = ROOT / "puzzles"
+READING_OUT = OUT / "reading"
 CACHE = HERE / ".gutenberg-cache"
+HINT_METADATA_PATH = HERE / "hint_metadata.json"
 # The two lists final_lists.py cuts. The bank is the pick-any catalogue; the
 # dailies are held back so a daily is never a book you could already browse.
 BANK_PATH = HERE / "final_bank.json"
@@ -64,6 +66,8 @@ def load_books() -> list[dict]:
                 "title": b["title"],
                 "author": b.get("author") or "",
                 "year": int(year) if year.isdigit() else 0,
+                "genre": b.get("genre") or "",
+                "form": b.get("form") or "",
                 "aliases": LEGACY_ALIASES.get(b.get("old_slug") or "", []),
                 "anchor": ANCHORS.get(str(gid), ""),
             })
@@ -76,6 +80,24 @@ def load_books() -> list[dict]:
 
 
 BOOKS = load_books()
+
+
+def load_hint_metadata() -> dict[str, dict]:
+    """Reviewed facts keyed by the stable Gutenberg puzzle id.
+
+    Genre can be seeded from the curated catalogue, but setting is never
+    invented by the builder. Missing facts are reported and block a rebuild.
+    """
+    try:
+        data = json.loads(HINT_METADATA_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    if not isinstance(data, dict):
+        raise RuntimeError("hint_metadata.json must be an object keyed by puzzle id")
+    return data
+
+
+HINT_METADATA = load_hint_metadata()
 
 START_RE = re.compile(r"\*\*\*\s*START OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
 END_RE = re.compile(r"\*\*\*\s*END OF (THIS|THE) PROJECT GUTENBERG.*?\*\*\*", re.I)
@@ -561,6 +583,201 @@ def split_after_anchor(from_here: str) -> list[str]:
     return chapters
 
 
+EXCERPT_TARGET = 100
+EXCERPT_CEILING = 260
+# Thresholds for "a human should look at this one", not for rejecting a book.
+# Every flagged row still ships; the report is what says which ones were read.
+EXCERPT_MIN = 60
+READING_MIN = 400
+READING_MAX = 12000
+
+
+def opening_excerpt(paras: list[str]) -> str:
+    """Complete opening paragraphs, aimed at 100--180 words.
+
+    Paragraph boundaries win over the word target: a paragraph is never cut
+    mid-sentence to hit a quota. So a book that opens with one 600-word block
+    gets that block, and build_report() records it as an over-length exception.
+    """
+    chosen: list[str] = []
+    words = 0
+    for para in paras[:4]:
+        n = len(para.split())
+        if chosen and (words >= EXCERPT_TARGET or words + n > EXCERPT_CEILING):
+            break
+        chosen.append(para)
+        words += n
+    return "\n\n".join(chosen)
+
+
+# Chapter headings the shared is_heading() misses: "CHAP. II." and the bare
+# capitalised story titles that separate the tales in a collection.
+CHAPTERISH_RE = re.compile(
+    r"^(?:CHAPTER|CHAP\.?|STAVE|ACT|SCENE|PART|BOOK|LETTER|CANTO)\b",
+    re.I,
+)
+# "CHAPTER II." often sits on its own line with the chapter's title on the
+# next one, so a named heading is allowed to run straight into text -- but
+# only while it stays short enough that no sentence of prose could pass for it.
+HEADING_MAX_RUN_ON = 45
+# A title line is all-caps (underscores stripped), short, and not a shouted
+# line of dialogue.
+TITLE_LINE_RE = re.compile(r"^[A-Z][A-Z0-9 ,.'\u2019\-&:]{2,68}$")
+# "II.", "CHAPTER 4.", "Book the Second." -- a heading that numbers a section
+# without naming it. Inside a collection these number the parts of one story,
+# so they are not where one story ends and the next begins.
+INITIALS_RE = re.compile(r"^(?:[A-Z]\.){1,4}$")
+NUMERAL_HEADING_RE = re.compile(
+    r"^(?:(?:CHAPTER|CHAP\.?|PART|BOOK|CANTO|SECTION|STAVE)[\s.:]*)?"
+    r"(?:[IVXLCDM]+|\d+|THE\s+\w+)\.?$",
+    re.I,
+)
+
+
+def heading_kind(line: str, prev: str, nxt: str) -> str:
+    """"titled", "numeral", or "" for a line that starts no new section.
+
+    Wider than is_heading(), and deliberately kept separate from it:
+    is_heading() also decides which paragraphs to drop, and a looser test there
+    would eat prose. This one only decides where sections divide, so it can
+    afford to recognise a bare title line -- but it demands blank lines on both
+    sides, which a wrapped line of prose never has.
+    """
+    s = line.strip()
+    if not s or len(s) > 90 or prev.strip():
+        return ""
+    core = s.replace("_", "").strip()
+    if core.endswith(("!", "?", ",", ";", ":", "-", "\u2013", "\u2014")):
+        return ""
+    named = is_heading(core) or CHAPTERISH_RE.match(core)
+    # A capitalised line inside a letter -- "DEAR FRIEND", a signature, a set
+    # of initials -- is not a heading, however isolated it looks.
+    titled = (
+        TITLE_LINE_RE.match(core)
+        and len(core.split()) <= 12
+        and len(re.sub(r"[^A-Za-z]", "", core)) >= 4
+        and not INITIALS_RE.match(core)
+    )
+    if named:
+        if nxt.strip() and len(core) > HEADING_MAX_RUN_ON:
+            return ""
+    elif not (titled and not nxt.strip()):
+        return ""
+    return "numeral" if NUMERAL_HEADING_RE.match(core) else "titled"
+
+
+def split_sections(from_here: str, titled_only: bool = False) -> tuple[list[str], str]:
+    """The text after the anchor, cut at the next real section heading.
+
+    Returns the sections found and the heading that ended the first one, which
+    is what tells a chapter apart from the next story in a collection.
+    """
+    lines = from_here.split("\n")
+    idxs = []
+    for i, ln in enumerate(lines):
+        if i <= 4:
+            continue
+        kind = heading_kind(ln, lines[i - 1], lines[i + 1] if i + 1 < len(lines) else "")
+        if kind and not (titled_only and kind == "numeral"):
+            idxs.append(i)
+    if not idxs:
+        return [from_here], ""
+    sections = ["\n".join(lines[: idxs[0]])]
+    for n, start in enumerate(idxs):
+        end = idxs[n + 1] if n + 1 < len(idxs) else len(lines)
+        chunk = "\n".join(lines[start:end]).strip()
+        if len(chunk) > 80:
+            sections.append(chunk)
+        if len(sections) >= 4:
+            break
+    return sections, lines[idxs[0]].strip()
+
+
+COLLECTION_FORMS = ("short story collection", "fairy tales", "myth", "folklore")
+
+
+def reading_label(book: dict, sections: list[str], next_heading: str) -> str:
+    """Name the reading section for what it actually is.
+
+    Calling the first Grimm tale "Chapter 1" would be a lie, and so would
+    calling a whole short story an opening. The catalogue's form field decides
+    where it has one; the shape of the next heading decides otherwise.
+    """
+    form = (book.get("form") or "").lower()
+    if is_collection(book):
+        return "First story"
+    if form == "play":
+        return "Opening scene"
+    if form in ("short story", "novelette") and len(sections) == 1:
+        return "The full story"
+    if next_heading and CHAPTERISH_RE.match(next_heading):
+        return "Chapter 1"
+    return "Opening section"
+
+
+def reading_kind(label: str) -> str:
+    low = label.lower()
+    if low.startswith("chapter"):
+        return "chapter"
+    if "story" in low or "tale" in low:
+        return "story"
+    if low.startswith("the opening"):
+        return "pages"
+    return "section"
+
+
+def is_collection(book: dict) -> bool:
+    form = (book.get("form") or "").lower()
+    return any(f in form for f in COLLECTION_FORMS)
+
+
+# Some books simply have no chapters -- Mrs Dalloway runs unbroken, and plenty
+# of etexts carry no heading the splitter can trust. Handing the reader the
+# whole novel is not "the first chapter", so cap it and stop calling it one.
+OPENING_PAGES_WORDS = 2500
+
+
+def opening_pages(paras: list[str], cap: int = OPENING_PAGES_WORDS) -> list[str]:
+    """Whole paragraphs up to roughly `cap` words."""
+    out: list[str] = []
+    words = 0
+    for para in paras:
+        out.append(para)
+        words += len(para.split())
+        if words >= cap:
+            break
+    return out
+
+
+def reading_section(from_here: str, book: dict) -> tuple[str, list[str]]:
+    """The complete first narrative chapter, story or section after the anchor."""
+    sections, next_heading = split_sections(from_here, titled_only=is_collection(book))
+    paras = paragraphs_from(sections[0] if sections else from_here)
+    if not paras:
+        raise RuntimeError("no prose in first reading section")
+    words = sum(len(para.split()) for para in paras)
+    # A bare "II" can number the parts of one prologue rather than divide the
+    # book, leaving a stub. Read on into the next sections until it is a
+    # section worth opening.
+    nxt = 1
+    while words < READING_MIN and nxt < len(sections):
+        more = paragraphs_from(sections[nxt])
+        paras += more
+        words += sum(len(para.split()) for para in more)
+        nxt += 1
+    if words < READING_MIN:
+        # Headings so dense the "sections" are stubs -- a contents list, or a
+        # run of chapter titles. Fall back to the prose itself.
+        paras = opening_pages(paragraphs_from(from_here))
+        words = sum(len(para.split()) for para in paras)
+        if words >= READING_MIN:
+            return "The opening pages", paras
+    label = reading_label(book, sections, next_heading)
+    if words > READING_MAX:
+        return "The opening pages", opening_pages(paras)
+    return label, paras
+
+
 def build_ladder(paras: list[str], sent: str) -> tuple[list[str], list[int]]:
     """Five strictly growing tiers, sliced at paragraph boundaries.
 
@@ -614,6 +831,10 @@ def build_one(book: dict) -> dict:
     if not paras:
         raise RuntimeError(f"no paragraphs after anchor: {book['title']}")
     sent = first_sentence(paras[0])
+    # The hint-version-2 fields all have to agree with each other: the sentence
+    # on screen at nought hints is the sentence the excerpt and the reader then
+    # open with. The legacy ladder keeps its own overridden `sent` below.
+    opening_sentence = sent
     if book["gutenberg"] == 74:  # Tom Sawyer opens mid-dialogue ("TOM!" / "No answer.")
         sent = paras[0].split("No answer")[0].strip() or '"TOM!"'
         if not sent.endswith("!") and "TOM" in paras[0].upper():
@@ -622,6 +843,14 @@ def build_one(book: dict) -> dict:
     # split_after_anchor() caps at four chapters and re-splits paragraphs, so
     # it starves the ladder — use it only to size chapter 1 for the label.
     seq, used = build_ladder(paras, sent)
+    opening = opening_excerpt(paras)
+    reading_label_text, reading_paras = reading_section(from_here, book)
+    meta = HINT_METADATA.get(book["slug"], {})
+    genre = str(meta.get("genre") or book.get("genre") or "").strip()
+    setting = str(meta.get("setting") or "").strip()
+    if not genre or not setting:
+        missing = ", ".join(name for name, value in (("genre", genre), ("setting", setting)) if not value)
+        raise RuntimeError(f"missing reviewed hint metadata: {missing}")
     ch1_words = 0
     for ch in split_after_anchor(from_here):
         ps = paragraphs_from(ch)
@@ -635,11 +864,29 @@ def build_one(book: dict) -> dict:
         "A few pages",
         "Chapter 1" if ch1_words and len(seq[4].split()) <= ch1_words else "The opening pages",
     ]
+    reading = {
+        "puzzleId": book["slug"],
+        "label": str(meta.get("readingLabel") or reading_label_text),
+        "paragraphs": reading_paras,
+    }
+    reading_words = sum(len(para.split()) for para in reading_paras)
     return {
+        "schemaVersion": 2,
+        "hintVersion": 2,
         "id": book["slug"],
         "title": book["title"],
         "author": book["author"],
         "year": book["year"],
+        "openingSentence": opening_sentence,
+        "openingExcerpt": opening,
+        "genre": genre,
+        "setting": setting,
+        "reading": {
+            "kind": reading_kind(reading["label"]),
+            "label": reading["label"],
+            "url": f"/puzzles/reading/{book['slug']}.v2.json",
+            "wordCount": reading_words,
+        },
         "aliases": book["aliases"],
         "source": {
             "gutenberg": book["gutenberg"],
@@ -648,6 +895,7 @@ def build_one(book: dict) -> dict:
         },
         "labels": labels,
         "texts": seq,
+        "_reading": reading,
     }
 
 
@@ -662,6 +910,9 @@ def main() -> None:
         if a.startswith("--limit="):
             only = int(a.split("=", 1)[1])
     OUT.mkdir(parents=True, exist_ok=True)
+    READING_OUT.mkdir(parents=True, exist_ok=True)
+    # A run that builds nothing -- --limit=0, an empty cache -- must not be able
+    # to publish an index with no puzzles in it.
     built = set()
     failed = []
     fresh = 0
@@ -688,12 +939,18 @@ def main() -> None:
                 "error": str(e)[:200],
             })
             continue
+        reading = puzzle.pop("_reading")
         dest.write_text(json.dumps(puzzle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        (READING_OUT / f"{book['slug']}.v2.json").write_text(
+            json.dumps(reading, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
         preview = puzzle["texts"][0].replace("\n", " ")[:80]
         print(f"  ok  {preview!r}", flush=True)
         built.add(book["slug"])
         fresh += 1
-    write_index(built, failed)
+    if built:
+        write_index(built, failed)
+        write_report(built)
     bank = sum(1 for b in BOOKS if b["kind"] == "bank" and b["slug"] in built)
     daily = sum(1 for b in BOOKS if b["kind"] == "daily" and b["slug"] in built)
     print(
@@ -706,6 +963,77 @@ def main() -> None:
             json.dumps(failed, indent=2, ensure_ascii=False), encoding="utf-8"
         )
         print(f"failures written to tools/build_failures.json", flush=True)
+
+
+def normalise_quotes(text: str) -> str:
+    return text.replace("\u201c", '"').replace("\u201d", '"').replace("\u2018", "'").replace("\u2019", "'")
+
+
+def review_row(puzzle: dict, reading: dict) -> dict:
+    """One line of the curation report: what was built, and what looks odd."""
+    excerpt_words = len(puzzle["openingExcerpt"].split())
+    reading_words = puzzle["reading"]["wordCount"]
+    flags = []
+    if excerpt_words < EXCERPT_MIN:
+        flags.append("excerpt-short")
+    if excerpt_words > EXCERPT_CEILING:
+        flags.append("excerpt-long-paragraph")
+    if reading_words < READING_MIN:
+        flags.append("reading-short")
+    if reading_words > READING_MAX:
+        flags.append("reading-long")
+    if puzzle["reading"]["label"] == "Opening section":
+        flags.append("no-section-boundary")
+    head = normalise_quotes(puzzle["openingSentence"])[:40]
+    if not normalise_quotes(puzzle["openingExcerpt"]).startswith(head):
+        flags.append("excerpt-does-not-open-the-book")
+    if not normalise_quotes(reading["paragraphs"][0]).startswith(head):
+        flags.append("reader-does-not-start-at-the-opening")
+    return {
+        "id": puzzle["id"],
+        "title": puzzle["title"],
+        "genre": puzzle["genre"],
+        "setting": puzzle["setting"],
+        "excerptWords": excerpt_words,
+        "excerptParagraphs": puzzle["openingExcerpt"].count("\n\n") + 1,
+        "readingLabel": puzzle["reading"]["label"],
+        "readingKind": puzzle["reading"]["kind"],
+        "readingWords": reading_words,
+        "readingParagraphs": len(reading["paragraphs"]),
+        "flags": flags,
+    }
+
+
+def write_report(built: set[str]) -> None:
+    """Coverage and exceptions, for review before a rebuild ships.
+
+    Read back off disk rather than collected during the loop, so an incremental
+    run still reports on the whole catalogue instead of on the one book it
+    happened to rebuild.
+    """
+    report = []
+    for slug in sorted(built):
+        try:
+            puzzle = json.loads((OUT / f"{slug}.json").read_text(encoding="utf-8"))
+            reading = json.loads((READING_OUT / f"{slug}.v2.json").read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            continue
+        report.append(review_row(puzzle, reading))
+    if not report:
+        return
+    flagged = [row for row in report if row["flags"]]
+    (HERE / "hint_report.json").write_text(
+        json.dumps({"built": len(report), "flagged": len(flagged), "rows": report},
+                   indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    counts: dict[str, int] = {}
+    for row in flagged:
+        for flag in row["flags"]:
+            counts[flag] = counts.get(flag, 0) + 1
+    print(f"hint report: {len(flagged)}/{len(report)} rows flagged for review", flush=True)
+    for flag, n in sorted(counts.items(), key=lambda kv: -kv[1]):
+        print(f"  {n:4d}  {flag}", flush=True)
 
 
 def play_order(slugs):

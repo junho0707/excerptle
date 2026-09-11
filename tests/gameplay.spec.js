@@ -162,21 +162,26 @@ test('giving up takes two taps, names the book, and survives a reload', async ({
   await expect(page.locator('#guess-input')).toBeHidden();
 });
 
-test('the author sits under the story box, not inside its scroll', async ({ page, baseURL }) => {
+test('the revealed facts sit under the story box, not inside its scroll', async ({ page, baseURL }) => {
   await page.clock.setFixedTime(new Date('2026-09-10T18:00:00Z'));
   await page.route('https://**/*', route => new URL(route.request().url()).origin === new URL(baseURL).origin
     ? route.continue() : route.fulfill({ status: 503, body: '{}' }));
+  const puzzleResponse = page.waitForResponse(r => /\/puzzles\/g\d+\.json/.test(r.url()));
   await page.goto('/#/play/7');
+  const puzzle = await (await puzzleResponse).json();
   await page.locator('#modal [data-act="close-modal"]').last().click();
   await playable(page);
-  expect(await page.locator('#author-reveal').evaluate(el => !!el.closest('.excerpt-wrap'))).toBe(false);
+  const facts = page.locator('#hint-facts');
+  expect(await facts.evaluate(el => !!el.closest('.excerpt-wrap'))).toBe(false);
   for (let i = 0; i < 5; i++) await page.locator('[data-act="hint"]').click();
-  const reveal = page.locator('#author-reveal');
-  await expect(reveal).toBeVisible();
-  await expect(reveal).toContainText('Author:');
+  await expect(facts).toBeVisible();
+  // The author is the last of the five, and it is a fact now, not a caption.
+  await expect(facts).toContainText('Author');
+  await expect(facts).toContainText(puzzle.author.split(' ').pop());
+  await expect(page.locator('#author-reveal')).toBeHidden();
   // Visible where the page put it, with the story box left scrolled to the top.
   const wrap = await page.locator('.excerpt-wrap').boundingBox();
-  const box = await reveal.boundingBox();
+  const box = await facts.boundingBox();
   expect(box.y).toBeGreaterThanOrEqual(wrap.y + wrap.height - 1);
   expect(await page.locator('.excerpt-wrap').evaluate(el => el.scrollTop)).toBe(0);
 });

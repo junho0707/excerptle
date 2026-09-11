@@ -31,6 +31,7 @@
     beatenBy: null, // opponent's name, when a battle ended on their guess
     settings: loadSettings(),
     battle: null,
+    reader: { open: false, loading: false, data: null, error: "" },
 
   };
 
@@ -202,6 +203,7 @@
       status: state.status,
       guesses: state.guesses,
       hints: state.hints,
+      hintVersion: roundHintVersion(),
       gaveUp: state.gaveUp ? 1 : undefined,
       puzzleId: state.puzzle?.id,
       mode: state.mode,
@@ -312,7 +314,7 @@
         const res = await fetch(`${connection.api}/scores`, {
           method: "POST",
           headers: connection.headers,
-          body: JSON.stringify({ puzzleIndex: Number(index), guesses: best.guesses, hints: best.hints, win: true }),
+          body: JSON.stringify({ puzzleIndex: Number(index), guesses: best.guesses, hints: best.hints, hintVersion: best.hintVersion || 1, win: true }),
         });
         // A 429 or a rejected row stays unstamped, to be retried next sign-in.
         if (!ownsProgress(connection)) return;
@@ -412,6 +414,24 @@
   ];
   function hintLabels() {
     return TIER_LABELS;
+  }
+  const FACT_HINTS = ["Opening excerpt", "Genre", "Publication year", "Setting", "Author"];
+  function isCurrentHints(p = state.puzzle) {
+    return Number(p?.hintVersion) === 2;
+  }
+  function roundHintVersion(p = state.puzzle) {
+    return isCurrentHints(p) ? 2 : 1;
+  }
+  // Every puzzle in the shipped catalogue is on version 2. A board can be
+  // browsed for a book that is not the round in play -- straight to #/ranks, or
+  // the index picker -- and there is no puzzle loaded to read the version off,
+  // so fall back to what the catalogue is on rather than to the old scheme.
+  const CATALOGUE_HINT_VERSION = 2;
+  function boardHintVersion(idx) {
+    return state.puzzle && state.playIndex === idx ? roundHintVersion() : CATALOGUE_HINT_VERSION;
+  }
+  function nextHintLabel() {
+    return isCurrentHints() ? FACT_HINTS[state.hints] || "No more hints" : hintLabels()[state.hints + 1] || "No more hints";
   }
 
   // The Worker renders the shared result as both metadata and a PNG card.
@@ -559,21 +579,26 @@
     if (!state.puzzle) return;
     const t = tiers(state.puzzle);
     const labels = hintLabels();
+    const currentHints = isCurrentHints();
     // Naming the book ends the puzzle, so the excerpt opens to its full length
     // however few hints were taken: solving it early should mean more of the
     // book to read, not less. Hint tiers still gate everything mid-round.
     const solved = state.status === "won";
-    const idx = solved ? t.length - 1 : Math.min(state.hints, t.length - 1);
+    const idx = currentHints ? (state.hints ? 1 : 0) : (solved ? t.length - 1 : Math.min(state.hints, t.length - 1));
     // The hint count lives on the Hint button now — the label just names the tier.
-    $("#tier-label").textContent = labels[idx] || "Excerpt";
+    $("#tier-label").textContent = currentHints
+      ? (state.hints ? "Opening excerpt" : "First sentence")
+      : (labels[idx] || "Excerpt");
     const ab = $("#author-reveal");
     if (ab) {
-      const shown = (solved || state.hints >= MAX_HINTS) && state.puzzle.author;
+      const shown = !currentHints && (solved || state.hints >= MAX_HINTS) && state.puzzle.author;
       ab.hidden = !shown;
       if (shown) ab.textContent = `Author: ${state.puzzle.author}`;
     }
     const box = $("#excerpt");
-    box.textContent = t[idx] || "";
+    box.textContent = currentHints
+      ? (state.hints ? state.puzzle.openingExcerpt : state.puzzle.openingSentence)
+      : (t[idx] || "");
     box.classList.remove("fade");
     void box.offsetWidth;
     box.classList.add("fade");
@@ -593,7 +618,17 @@
       chn.classList.toggle("spent", state.hints >= MAX_HINTS);
     }
     const hb = $("#hint-btn");
-    if (hb) hb.disabled = state.status !== "playing" || state.hints >= MAX_HINTS;
+    if (hb) {
+      hb.disabled = state.status !== "playing" || state.hints >= MAX_HINTS;
+      hb.firstChild.textContent = currentHints ? `Hint: ${nextHintLabel()} ` : "Hint ";
+    }
+    const facts = $("#hint-facts");
+    if (facts) {
+      const values = [null, state.puzzle.genre, state.puzzle.year, state.puzzle.setting, state.puzzle.author];
+      facts.innerHTML = currentHints ? FACT_HINTS.slice(1, state.hints).map((label, i) =>
+        `<div><dt>${label}</dt><dd>${escapeHtml(String(values[i + 1] || ""))}</dd></div>`).join("") : "";
+      facts.hidden = !facts.innerHTML;
+    }
   }
 
   function escapeHtml(s) {
@@ -614,7 +649,7 @@
   function lbFor(idx) {
     const all = loadJSON(K.lb, {});
     // Losses are not ranked — filtered here too, so older saved rows drop out.
-    return (all[String(idx)] || []).filter((r) => r.win);
+    return (all[String(idx)] || []).filter((r) => r.win && (r.hintVersion || 1) === roundHintVersion());
   }
   // Your own row is kept on the board's own ordering, the same comparison the
   // server makes — replaying a book you already solved must not downgrade the
@@ -657,13 +692,16 @@
         method: "POST",
         headers: connection.headers,
         keepalive: true,
-        body: JSON.stringify({ puzzleIndex: Number(key), guesses: entry.guesses, hints: entry.hints, win: true }),
+        body: JSON.stringify({ puzzleIndex: Number(key), guesses: entry.guesses, hints: entry.hints, hintVersion: entry.hintVersion || 1, win: true }),
       });
       if (!res.ok || !ownsProgress(connection)) return;
     } catch { return; /* Unstamped, so the next sign-in retries it. */ }
     const all = loadJSON(K.lb, {});
     for (const row of all[key] || []) {
-      if (row.id === entry.id && row.hints === entry.hints && row.guesses === entry.guesses) row.sent = 1;
+      if (row.id === entry.id && row.hints === entry.hints && row.guesses === entry.guesses) {
+        row.sent = 1;
+        row.playerId = window.BookleAuth?.session?.()?.uid;
+      }
     }
     localStorage.setItem(K.lb, JSON.stringify(all));
   }
@@ -683,6 +721,10 @@
 
   // Longest tier we hold for this book — the first chapter — gives an honest size.
   function chapterWords(p) {
+    if (p?.reading?.wordCount) {
+      const n = Number(p.reading.wordCount);
+      return n < 1000 ? `${n}` : `${(Math.round(n / 100) / 10).toFixed(1)}k`;
+    }
     const t = (p.texts || []).reduce((a, b) => (b.length > a.length ? b : a), "");
     const n = t.trim().split(/\s+/).filter(Boolean).length;
     if (!n) return null;
@@ -732,10 +774,16 @@
         <dl class="pg-stats">
           ${p.year ? `<div><dt>Published</dt><dd>${escapeHtml(String(p.year))}</dd></div>` : ""}
           <div><dt>Book</dt><dd>#${state.playIndex}</dd></div>
-          ${words ? `<div><dt>Chapter 1</dt><dd>${words} words</dd></div>` : ""}
+          ${words ? `<div><dt>${escapeHtml(p.reading?.label || "Chapter 1")}</dt><dd>${words} words</dd></div>` : ""}
           ${gut ? `<div><dt>Gutenberg</dt><dd>#${escapeHtml(String(gut))}</dd></div>` : ""}
         </dl>
       </section>
+
+      ${p.reading ? `<section class="pg-sec pg-read">
+        <h3>Keep reading</h3>
+        <p>Read the complete ${escapeHtml((p.reading.label || "first chapter").toLowerCase())} here.</p>
+        <button class="btn pg-read-btn" type="button" data-act="open-reader" aria-expanded="${state.reader.open}" aria-controls="chapter-reader">Read the ${escapeHtml((p.reading.label || "first chapter").toLowerCase())}</button>
+      </section>` : ""}
 
       <section class="pg-sec pg-effort">
         <h3>Your round</h3>
@@ -765,7 +813,62 @@
         <a class="btn ghost" href="#/ranks?i=${state.playIndex}">Full leaderboard</a>
         <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Gutenberg</a>
       </div>
+      <section id="chapter-reader" class="chapter-reader${state.reader.open ? "" : " hidden"}" aria-label="Reading section"></section>
     `;
+  }
+
+  function renderReader({ focus = false } = {}) {
+    const box = $("#chapter-reader");
+    if (!box || !state.reader.open) return;
+    box.classList.remove("hidden");
+    const p = state.puzzle;
+    if (state.reader.loading) {
+      box.innerHTML = `<p class="lede">Loading ${escapeHtml((p.reading?.label || "the chapter").toLowerCase())}…</p>`;
+      return;
+    }
+    if (state.reader.error) {
+      box.innerHTML = `<p class="lede">${escapeHtml(state.reader.error)}</p><button class="btn" type="button" data-act="open-reader">Try again</button>`;
+      return;
+    }
+    const data = state.reader.data;
+    if (!data?.paragraphs?.length) return;
+    box.innerHTML = `<div class="chapter-reader-head"><div><h2 id="chapter-reader-title" tabindex="-1">${escapeHtml(data.label || p.reading?.label || "Opening section")}</h2><p class="by">${escapeHtml(p.title)} · ${escapeHtml(p.author)}</p></div><button class="btn ghost" type="button" data-act="close-reader">Close</button></div><article class="chapter-prose">${data.paragraphs.map(x => `<p>${escapeHtml(x)}</p>`).join("")}</article><button class="btn ghost" type="button" data-act="close-reader">Back to result</button>`;
+    if (focus) {
+      const heading = $("#chapter-reader-title");
+      heading?.focus({ preventScroll: true });
+      box.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    }
+  }
+
+  async function openReader() {
+    if (state.status === "playing" || !state.puzzle?.reading) return;
+    state.reader.open = true;
+    state.reader.error = "";
+    if (state.reader.data) return renderReader({ focus: true });
+    state.reader.loading = true;
+    renderReader();
+    const expected = state.puzzle.id;
+    try {
+      const res = await fetch(state.puzzle.reading.url);
+      if (!res.ok) throw new Error("Could not load this reading section.");
+      const data = await res.json();
+      if (state.puzzle?.id !== expected || data?.puzzleId !== expected || !Array.isArray(data?.paragraphs)) return;
+      state.reader.data = data;
+    } catch {
+      if (state.puzzle?.id === expected) state.reader.error = "Could not load this reading section. Try again.";
+    } finally {
+      if (state.puzzle?.id === expected) {
+        state.reader.loading = false;
+        renderReader({ focus: !state.reader.error });
+      }
+    }
+  }
+
+  function closeReader() {
+    state.reader.open = false;
+    const box = $("#chapter-reader");
+    if (box) box.classList.add("hidden");
+    $("[data-act='open-reader']")?.focus();
   }
 
   // Playing: story first, "guess more" under it. Finished: CTA on top, then the
@@ -781,7 +884,7 @@
     card.classList.toggle("done", done);
   }
 
-  function renderResult() {
+  function renderResult({ refreshAd = true } = {}) {
     const box = $("#result");
     const form = $("#form");
     const more = $("#more");
@@ -802,7 +905,7 @@
     box.classList.remove("hidden");
     box.innerHTML = postGameHtml();
     // Fresh <ins> per finished game — see js/ads.js.
-    window.ExcerptleAds?.render();
+    if (refreshAd) window.ExcerptleAds?.render();
   }
 
   function recordFinish() {
@@ -814,6 +917,7 @@
         name: displayName(),
         guesses: state.guesses.length,
         hints: state.hints,
+        hintVersion: Number(state.puzzle?.hintVersion) === 2 ? 2 : 1,
         win: true,
         at: Date.now(),
       });
@@ -864,7 +968,7 @@
       return;
     }
     state.hints += 1;
-    setMsg("");
+    setMsg(isCurrentHints() ? `${FACT_HINTS[state.hints - 1]} revealed.` : "");
     saveProgress();
     renderExcerpt();
     bump($("#count-hints"));
@@ -957,6 +1061,7 @@
     $("#author-reveal").hidden = true;
     $("#guesses").innerHTML = "";
     state.puzzle = null;
+    state.reader = { open: false, loading: false, data: null, error: "" };
     show("game");
     state.mode = mode || (playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset");
     state.playIndex = playIndex;
@@ -1286,23 +1391,24 @@
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>How to play</h2>
       <p class="how-intro">You see the <strong>first sentence</strong> of a book. Name the book in <strong>six guesses</strong>.</p>
-      <p class="how-sub">Stuck? Take a hint. A hint doesn’t tell you the answer — it <strong>shows you more of the book</strong>:</p>
+      <p class="how-sub">Stuck? Take a hint. Each one stays visible and gives you another way into the book:</p>
       <table class="how-table">
         <tbody>
           <tr><th>Start</th><td>The first sentence</td></tr>
-          <tr><th>Hint 1</th><td>The first paragraph</td></tr>
-          <tr><th>Hint 2</th><td>The first few paragraphs</td></tr>
-          <tr><th>Hint 3</th><td>The first couple of pages</td></tr>
-          <tr><th>Hint 4</th><td>The whole first chapter</td></tr>
-          <tr><th>Hint 5</th><td>The author’s name</td></tr>
+          <tr><th>Hint 1</th><td>Opening excerpt (2–4 paragraphs)</td></tr>
+          <tr><th>Hint 2</th><td>Genre</td></tr>
+          <tr><th>Hint 3</th><td>Original publication year</td></tr>
+          <tr><th>Hint 4</th><td>Setting</td></tr>
+          <tr><th>Hint 5</th><td>Author</td></tr>
         </tbody>
       </table>
       <ul class="how-notes">
-        <li>Only hints reveal more text — a wrong guess never does.</li>
+        <li>Wrong guesses use a guess but never reveal a hint. Using every hint does not end the round.</li>
         <li>If a guess includes a distinctive word from the title, you’ll be told how many key title words remain — never which words they are.</li>
         <li><strong>Close spelling counts.</strong> “Pride and Predjudice” is fine, and you can drop a leading “The”. A vague one-word guess such as “great” does not solve the book or earn a title-word nudge; try more of the title.</li>
         <li>The fewer hints and guesses you use, the better you score.</li>
         <li><strong>Give up</strong> ends the round and names the book. Two taps, and it counts as a miss.</li>
+        <li>After solving, using all six guesses, or giving up, you can read the complete first chapter (or first section) here.</li>
       </ul>
       <p><button class="btn" type="button" data-act="close-modal">Close</button></p>
     `);
@@ -1385,7 +1491,7 @@
   };
   // The server carries no row id, so your own remote row is recognised by the
   // values you played it with.
-  const rankKey = (r) => `${r.name}|${r.hints}|${r.guesses}`;
+  const rankKey = (r) => `${r.playerId || r.id || r.name}|${r.hintVersion || 1}|${r.hints}|${r.guesses}`;
   function lbTable(rows) {
     if (!rows.length) return "";
     return `<div class="lb"><table><thead><tr><th>#</th><th>Player</th><th>Hints</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${rows
@@ -1432,14 +1538,19 @@
     const hintF = $("#lb-hints").value;
     const all = loadJSON(K.lb, {});
     const me = playerId();
-    // Every puzzle has its own board, and only solves are ranked.
-    let local = (all[String(idx)] || []).filter((r) => r.win).map((r) => ({ ...r, mine: r.id === me }));
+    // Every puzzle has its own board, and only solves are ranked. Rounds played
+    // under the old hint scheme are not comparable, so they are not merged in.
+    const version = boardHintVersion(idx);
+    let local = (all[String(idx)] || [])
+      .filter((r) => r.win && (r.hintVersion || 1) === version)
+      .map((r) => ({ ...r, mine: r.id === me }));
     if (hintF !== "any") local = local.filter((r) => r.hints === parseInt(hintF, 10));
     local.sort(rankSort);
     $("#lb-body").innerHTML = lbTable(local);
     const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
     if (!api) return;
     const query = new URLSearchParams({ puzzleIndex: idx });
+    query.set("hintVersion", String(version));
     if (hintF !== "any") query.set("hints", hintF);
     fetch(`${api}/scores?${query}`).then((r) => (r.ok ? r.json() : null)).then((data) => {
       if (!data?.scores || parseInt($("#lb-index").value, 10) !== idx || $("#lb-hints").value !== hintF) return;
@@ -1447,7 +1558,8 @@
       // score never reaches the server, and replacing the table would blank
       // the row they just earned.
       const mineKeys = new Set(local.filter((r) => r.mine).map(rankKey));
-      const remote = data.scores.map((r) => ({ ...r, mine: mineKeys.has(rankKey(r)) }));
+      const accountId = window.BookleAuth?.session?.()?.uid;
+      const remote = data.scores.map((r) => ({ ...r, mine: r.playerId === accountId || mineKeys.has(rankKey(r)) }));
       const seen = new Set(remote.map(rankKey));
       const merged = remote.concat(local.filter((r) => !seen.has(rankKey(r))));
       merged.sort(rankSort);
@@ -1583,9 +1695,48 @@
   function renderSettings() {
     show("screen-settings");
     $("#theme").value = state.settings.theme;
-    $("#display-name").value = localStorage.getItem(K.name) || "";
+    $("#display-name").value = displayName() === "Anonymous" ? "" : displayName();
     paintAuth();
     renderPasswordBox();
+  }
+
+  function updateOwnedNames(name) {
+    const all = loadJSON(K.lb, {});
+    const me = playerId();
+    for (const rows of Object.values(all)) {
+      for (const row of rows || []) if (row.id === me) row.name = name;
+    }
+    localStorage.setItem(K.lb, JSON.stringify(all));
+  }
+  async function saveDisplayName() {
+    const field = $("#display-name");
+    const status = $("#name-status");
+    const button = $("[data-act='save-name']");
+    const draft = String(field?.value || "").trim().replace(/\s+/g, " ");
+    if ([...draft].length > 24 || /[\u0000-\u001f\u007f]/.test(draft)) {
+      if (status) status.textContent = "Use up to 24 visible characters.";
+      return;
+    }
+    if (button) button.disabled = true;
+    if (status) status.textContent = "Saving…";
+    try {
+      const auth = window.BookleAuth?.session?.();
+      const name = auth ? (await window.BookleAuth.updateProfile(draft)).name : (draft || "Anonymous");
+      if (!auth) localStorage.setItem(K.name, name);
+      updateOwnedNames(name);
+      if (field) field.value = name === "Anonymous" ? "" : name;
+      if (status) status.textContent = auth ? "Saved to your account." : "Saved on this device.";
+      paintAuth();
+      if (state.status !== "playing") {
+        renderResult({ refreshAd: false });
+        if (state.reader.open) renderReader();
+      }
+      battleSend({ type: "name", name });
+    } catch (err) {
+      if (status) status.textContent = err.message || "Could not save your name.";
+    } finally {
+      if (button) button.disabled = false;
+    }
   }
 
   /* —— Battle (PeerJS) —— */
@@ -1973,7 +2124,7 @@
     stats: "Stats",
     settings: "Settings",
     legal: "Privacy & Terms",
-    support: "Support",
+    support: "Support me",
     news: "News",
     battle: "Battle Mode",
     "battle-join": "Battle Mode",
@@ -2252,6 +2403,9 @@
     }
     if (act === "hint") onHint();
     if (act === "give-up") onGiveUp();
+    if (act === "open-reader") openReader();
+    if (act === "close-reader") closeReader();
+    if (act === "save-name") saveDisplayName();
     if (act === "play-today" || act === "pick-today") {
       closeModal();
       leaveBattle();
@@ -2336,9 +2490,6 @@
     if (e.target.id === "theme") {
       state.settings.theme = e.target.value;
       saveSettings();
-    }
-    if (e.target.id === "display-name") {
-      localStorage.setItem(K.name, e.target.value.trim().slice(0, 24));
     }
     if (e.target.id === "battle-name") {
       localStorage.setItem(K.name, e.target.value.trim().slice(0, 24));

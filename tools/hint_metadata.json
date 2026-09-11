@@ -1,0 +1,2882 @@
+{
+ "g11": {
+  "genre": "Children's fantasy",
+  "setting": "Wonderland, reached down a rabbit hole"
+ },
+ "g12": {
+  "genre": "Children's fantasy",
+  "setting": "A looking-glass world laid out as a chessboard"
+ },
+ "g16": {
+  "genre": "Children's fantasy",
+  "setting": "London and the island of Neverland"
+ },
+ "g23": {
+  "genre": "Slave narrative",
+  "setting": "Maryland and Massachusetts, 1818-1845"
+ },
+ "g24": {
+  "genre": "Frontier fiction",
+  "setting": "The Nebraska prairie, 1880s-1900s"
+ },
+ "g26": {
+  "genre": "Epic poem",
+  "setting": "Heaven, Hell and Eden, at the beginning of the world"
+ },
+ "g32": {
+  "genre": "Utopian science fiction",
+  "setting": "A hidden all-female country, 1910s"
+ },
+ "g33": {
+  "genre": "Historical fiction",
+  "setting": "Puritan Boston, 1640s"
+ },
+ "g35": {
+  "genre": "Science fiction",
+  "setting": "Victorian England and the year 802,701"
+ },
+ "g36": {
+  "genre": "Science fiction",
+  "setting": "Surrey and London, 1890s"
+ },
+ "g43": {
+  "genre": "Gothic novella",
+  "setting": "London, 1880s"
+ },
+ "g45": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, 1870s-1880s"
+ },
+ "g46": {
+  "genre": "Christmas novella",
+  "setting": "London, 1840s"
+ },
+ "g47": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, around 1890"
+ },
+ "g51": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island and Nova Scotia, 1890s"
+ },
+ "g54": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g55": {
+  "genre": "Children's fantasy",
+  "setting": "Kansas and the Land of Oz"
+ },
+ "g60": {
+  "genre": "Historical adventure",
+  "setting": "England and Revolutionary France, 1792"
+ },
+ "g61": {
+  "genre": "Political manifesto",
+  "setting": "Industrial Europe, 1840s"
+ },
+ "g62": {
+  "genre": "Science fantasy",
+  "setting": "Mars, 1860s-1870s"
+ },
+ "g64": {
+  "genre": "Science fantasy",
+  "setting": "Mars, 1880s"
+ },
+ "g73": {
+  "genre": "War novel",
+  "setting": "A Virginia battlefield, the American Civil War"
+ },
+ "g74": {
+  "genre": "Children's adventure",
+  "setting": "A Mississippi River town in Missouri, 1840s"
+ },
+ "g76": {
+  "genre": "Picaresque novel",
+  "setting": "The Mississippi River, 1840s"
+ },
+ "g77": {
+  "genre": "Gothic romance",
+  "setting": "Salem, Massachusetts, 1850s"
+ },
+ "g78": {
+  "genre": "Adventure fiction",
+  "setting": "The West African jungle, late 19th century"
+ },
+ "g81": {
+  "genre": "Adventure fiction",
+  "setting": "Paris, North Africa and the African jungle, 1910s"
+ },
+ "g82": {
+  "genre": "Historical romance",
+  "setting": "England, 1190s"
+ },
+ "g84": {
+  "genre": "Gothic science fiction",
+  "setting": "Switzerland, Britain and the Arctic, 1790s"
+ },
+ "g85": {
+  "genre": "Adventure fiction",
+  "setting": "The African coast and jungle, 1910s"
+ },
+ "g86": {
+  "genre": "Satirical science fiction",
+  "setting": "Arthurian Britain, reached from 1880s Connecticut"
+ },
+ "g90": {
+  "genre": "Adventure fiction",
+  "setting": "England and the African jungle, 1910s"
+ },
+ "g91": {
+  "genre": "Comic adventure",
+  "setting": "The Atlantic, the Sahara and Egypt, by balloon"
+ },
+ "g92": {
+  "genre": "Adventure fiction",
+  "setting": "The African interior, 1910s"
+ },
+ "g93": {
+  "genre": "Children's mystery",
+  "setting": "Arkansas, 1840s"
+ },
+ "g95": {
+  "genre": "Swashbuckling adventure",
+  "setting": "The invented kingdom of Ruritania, 1890s"
+ },
+ "g96": {
+  "genre": "Science fiction",
+  "setting": "A Borneo island, 1910s"
+ },
+ "g98": {
+  "genre": "Historical fiction",
+  "setting": "London and Paris, 1775-1793"
+ },
+ "g102": {
+  "genre": "Mystery fiction",
+  "setting": "A Mississippi River town in Missouri, 1830s-1850s"
+ },
+ "g103": {
+  "genre": "Adventure fiction",
+  "setting": "A journey around the world, 1872"
+ },
+ "g105": {
+  "genre": "Novel of manners",
+  "setting": "Somerset and Bath, England, 1814"
+ },
+ "g106": {
+  "genre": "Adventure short stories",
+  "setting": "The West African jungle, 1890s"
+ },
+ "g107": {
+  "genre": "Pastoral novel",
+  "setting": "Rural Wessex, England, mid-19th century"
+ },
+ "g108": {
+  "genre": "Detective fiction",
+  "setting": "London and England, 1890s-1900s"
+ },
+ "g110": {
+  "genre": "Tragic realism",
+  "setting": "Wessex, England, 1880s"
+ },
+ "g111": {
+  "genre": "Nature romance",
+  "setting": "The Limberlost swamp, Indiana, 1900s"
+ },
+ "g113": {
+  "genre": "Children's fiction",
+  "setting": "A Yorkshire manor, early 1900s"
+ },
+ "g119": {
+  "genre": "Travel memoir",
+  "setting": "Germany, the Alps and Italy, 1870s"
+ },
+ "g120": {
+  "genre": "Pirate adventure",
+  "setting": "The English coast and a Caribbean island, 1750s"
+ },
+ "g121": {
+  "genre": "Gothic parody",
+  "setting": "Bath and an English abbey, around 1800"
+ },
+ "g122": {
+  "genre": "Tragic realism",
+  "setting": "Egdon Heath, Wessex, England, 1840s"
+ },
+ "g126": {
+  "genre": "Science fiction",
+  "setting": "England, 1910s"
+ },
+ "g131": {
+  "genre": "Allegory",
+  "setting": "A dream landscape between the City of Destruction and the Celestial City"
+ },
+ "g135": {
+  "genre": "Historical novel",
+  "setting": "France, 1815-1832"
+ },
+ "g139": {
+  "genre": "Science fiction",
+  "setting": "A plateau in the Amazon basin, early 1900s"
+ },
+ "g140": {
+  "genre": "Social novel",
+  "setting": "The Chicago stockyards, early 1900s"
+ },
+ "g141": {
+  "genre": "Novel of manners",
+  "setting": "An English country estate, early 19th century"
+ },
+ "g143": {
+  "genre": "Literary realism",
+  "setting": "Wessex, England, mid-19th century"
+ },
+ "g144": {
+  "genre": "Modernist novel",
+  "setting": "A voyage to South America, 1900s"
+ },
+ "g145": {
+  "genre": "Social realism",
+  "setting": "A Midlands town in England, 1829-1832"
+ },
+ "g146": {
+  "genre": "Children's fiction",
+  "setting": "A London boarding school, 1880s"
+ },
+ "g148": {
+  "genre": "Autobiography",
+  "setting": "Colonial America and England, 18th century"
+ },
+ "g153": {
+  "genre": "Literary realism",
+  "setting": "Wessex, England, late 19th century"
+ },
+ "g154": {
+  "genre": "Literary realism",
+  "setting": "Boston, 1870s-1880s"
+ },
+ "g155": {
+  "genre": "Detective fiction",
+  "setting": "A Yorkshire country house and London, 1848-1849"
+ },
+ "g157": {
+  "genre": "Epistolary novel",
+  "setting": "An orphanage and a New England college, 1910s"
+ },
+ "g158": {
+  "genre": "Novel of manners",
+  "setting": "A Surrey village, England, early 19th century"
+ },
+ "g159": {
+  "genre": "Science fiction",
+  "setting": "A remote Pacific island, 1880s"
+ },
+ "g160": {
+  "genre": "Literary realism",
+  "setting": "New Orleans and the Louisiana coast, 1890s"
+ },
+ "g161": {
+  "genre": "Novel of manners",
+  "setting": "Sussex, Devon and London, England, around 1800"
+ },
+ "g164": {
+  "genre": "Science fiction",
+  "setting": "The oceans of the world aboard a submarine, 1866-1868"
+ },
+ "g165": {
+  "genre": "Naturalist novel",
+  "setting": "San Francisco, 1890s"
+ },
+ "g172": {
+  "genre": "Comic thriller",
+  "setting": "A Brooklyn bookshop, 1919"
+ },
+ "g173": {
+  "genre": "Mystery thriller",
+  "setting": "London, 1910s"
+ },
+ "g174": {
+  "genre": "Gothic novel",
+  "setting": "London, 1890s"
+ },
+ "g175": {
+  "genre": "Gothic romance",
+  "setting": "The Paris Opera House, 1880s"
+ },
+ "g176": {
+  "genre": "Bildungsroman",
+  "setting": "Massachusetts and Rome, 1870s"
+ },
+ "g179": {
+  "genre": "Novel of manners",
+  "setting": "New England, 1840s"
+ },
+ "g201": {
+  "genre": "Satirical science fiction",
+  "setting": "A two-dimensional world"
+ },
+ "g203": {
+  "genre": "Social novel",
+  "setting": "Kentucky, Louisiana and the North, 1850s"
+ },
+ "g204": {
+  "genre": "Detective fiction",
+  "setting": "England, France and Italy, 1900s"
+ },
+ "g205": {
+  "genre": "Memoir",
+  "setting": "Walden Pond, Massachusetts, 1845-1847"
+ },
+ "g208": {
+  "genre": "Novel of manners",
+  "setting": "Switzerland and Rome, 1870s"
+ },
+ "g209": {
+  "genre": "Ghost story",
+  "setting": "An English country house, mid-19th century"
+ },
+ "g211": {
+  "genre": "Psychological novella",
+  "setting": "Venice, 1880s"
+ },
+ "g215": {
+  "genre": "Adventure fiction",
+  "setting": "California and the Klondike, 1897"
+ },
+ "g217": {
+  "genre": "Autobiographical novel",
+  "setting": "A Nottinghamshire mining town, around 1900"
+ },
+ "g219": {
+  "genre": "Psychological novella",
+  "setting": "The Congo River, 1890s"
+ },
+ "g220": {
+  "genre": "Nautical fiction",
+  "setting": "The Gulf of Siam, late 19th century"
+ },
+ "g222": {
+  "genre": "Biographical novel",
+  "setting": "London, Paris and Tahiti, around 1900"
+ },
+ "g223": {
+  "genre": "Detective fiction",
+  "setting": "England and Europe, early 1900s"
+ },
+ "g224": {
+  "genre": "Literary realism",
+  "setting": "The Cornish coast, 1870s"
+ },
+ "g225": {
+  "genre": "Children's fantasy",
+  "setting": "London and the realms of the North Wind, Victorian era"
+ },
+ "g236": {
+  "genre": "Children's fiction",
+  "setting": "The jungles of central India"
+ },
+ "g242": {
+  "genre": "Frontier fiction",
+  "setting": "The Nebraska prairie, late 19th century"
+ },
+ "g243": {
+  "genre": "Moral tale",
+  "setting": "Russia, late 19th century"
+ },
+ "g244": {
+  "genre": "Detective fiction",
+  "setting": "London and Utah, 1880s"
+ },
+ "g268": {
+  "genre": "Naturalist novel",
+  "setting": "The California wheat country, 1890s"
+ },
+ "g271": {
+  "genre": "Animal story",
+  "setting": "England, mid-19th century"
+ },
+ "g284": {
+  "genre": "Novel of manners",
+  "setting": "New York high society, around 1900"
+ },
+ "g285": {
+  "genre": "Lost-world fantasy",
+  "setting": "Atlantis, in the legendary past"
+ },
+ "g289": {
+  "genre": "Children's fantasy",
+  "setting": "An English riverbank and the Wild Wood"
+ },
+ "g308": {
+  "genre": "Comic novel",
+  "setting": "The River Thames, England, 1880s"
+ },
+ "g318": {
+  "genre": "Autobiographical memoir",
+  "setting": "California and the sea, 1880s-1910s"
+ },
+ "g325": {
+  "genre": "Fantasy",
+  "setting": "Fairy Land, entered from a Victorian bedroom"
+ },
+ "g329": {
+  "genre": "Short story collection",
+  "setting": "Hawaii and the South Seas, 1890s"
+ },
+ "g344": {
+  "genre": "Short story collection",
+  "setting": "Scotland and beyond, 19th century"
+ },
+ "g345": {
+  "genre": "Gothic horror",
+  "setting": "Transylvania and England, 1890s"
+ },
+ "g346": {
+  "genre": "Short story collection",
+  "setting": "The American Midwest and the East, 1900s"
+ },
+ "g351": {
+  "genre": "Bildungsroman",
+  "setting": "England, Germany and Paris, around 1900"
+ },
+ "g367": {
+  "genre": "Literary realism",
+  "setting": "A Maine coastal village, 1890s"
+ },
+ "g370": {
+  "genre": "Picaresque novel",
+  "setting": "England and Virginia, 17th century"
+ },
+ "g375": {
+  "genre": "Psychological fiction",
+  "setting": "Northern Alabama, the American Civil War"
+ },
+ "g389": {
+  "genre": "Weird horror",
+  "setting": "Wales and London, 1890s"
+ },
+ "g393": {
+  "genre": "Romance",
+  "setting": "A South Pacific island, Victorian era"
+ },
+ "g394": {
+  "genre": "Social comedy",
+  "setting": "A small Cheshire town, 1830s-1840s"
+ },
+ "g395": {
+  "genre": "Allegory",
+  "setting": "The besieged town of Mansoul"
+ },
+ "g396": {
+  "genre": "Fable",
+  "setting": "A semi-barbaric kingdom, in an unnamed past"
+ },
+ "g402": {
+  "genre": "Comic fiction",
+  "setting": "A Midwestern American town, 1910s"
+ },
+ "g408": {
+  "genre": "Essays",
+  "setting": "The American South after emancipation, 1860s-1900s"
+ },
+ "g416": {
+  "genre": "Short story cycle",
+  "setting": "A small Ohio town, turn of the 20th century"
+ },
+ "g419": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g420": {
+  "genre": "Children's fantasy",
+  "setting": "Underground caverns and the Land of Oz"
+ },
+ "g421": {
+  "genre": "Historical adventure",
+  "setting": "The Scottish Highlands, 1751"
+ },
+ "g423": {
+  "genre": "Medical short stories",
+  "setting": "England, late Victorian era"
+ },
+ "g432": {
+  "genre": "Psychological novel",
+  "setting": "Paris, around 1900"
+ },
+ "g434": {
+  "genre": "Mystery fiction",
+  "setting": "A rented country house in America, 1900s"
+ },
+ "g447": {
+  "genre": "Naturalist novella",
+  "setting": "The Bowery slums of New York, 1890s"
+ },
+ "g456": {
+  "genre": "Fantasy short stories",
+  "setting": "London and England, around 1900"
+ },
+ "g467": {
+  "genre": "Historical romance",
+  "setting": "The French court, 1550s"
+ },
+ "g468": {
+  "genre": "Romance",
+  "setting": "France and Louisiana, early 18th century"
+ },
+ "g471": {
+  "genre": "Tragic romance",
+  "setting": "Scotland, around 1700"
+ },
+ "g479": {
+  "genre": "Children's fiction",
+  "setting": "New York and an English earldom, 1880s"
+ },
+ "g482": {
+  "genre": "Pastoral tragedy",
+  "setting": "A Wessex woodland village, 1870s"
+ },
+ "g486": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Ev and the Land of Oz"
+ },
+ "g498": {
+  "genre": "Bildungsroman",
+  "setting": "Rural Maine, 1870s"
+ },
+ "g500": {
+  "genre": "Children's fantasy",
+  "setting": "Tuscany, 19th century"
+ },
+ "g501": {
+  "genre": "Children's fiction",
+  "setting": "An English village and West Africa, 1830s"
+ },
+ "g503": {
+  "genre": "Fairy tales",
+  "setting": "Assorted folk-tale kingdoms"
+ },
+ "g507": {
+  "genre": "Literary realism",
+  "setting": "Rural Warwickshire, England, 1799"
+ },
+ "g512": {
+  "genre": "Allegorical tales",
+  "setting": "New England, 19th century"
+ },
+ "g513": {
+  "genre": "Allegorical tales",
+  "setting": "New England, 19th century"
+ },
+ "g514": {
+  "genre": "Domestic fiction",
+  "setting": "Massachusetts during the American Civil War, 1860s"
+ },
+ "g517": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g520": {
+  "genre": "Children's fantasy",
+  "setting": "The Forest of Burzee and the Laughing Valley"
+ },
+ "g521": {
+  "genre": "Robinsonade",
+  "setting": "A Caribbean island, 1650s-1680s"
+ },
+ "g525": {
+  "genre": "Nautical fiction",
+  "setting": "A voyage from England to the East, 1860s"
+ },
+ "g535": {
+  "genre": "Travel memoir",
+  "setting": "The Cevennes, France, 1878"
+ },
+ "g537": {
+  "genre": "Mystery and horror tales",
+  "setting": "Britain and abroad, late Victorian era"
+ },
+ "g541": {
+  "genre": "Novel of manners",
+  "setting": "New York high society, 1870s"
+ },
+ "g543": {
+  "genre": "Satire",
+  "setting": "A small Minnesota town, 1910s"
+ },
+ "g544": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, 1890s"
+ },
+ "g550": {
+  "genre": "Social realism",
+  "setting": "An English village, early 19th century"
+ },
+ "g553": {
+  "genre": "Lost-world adventure",
+  "setting": "The lost land of Caspak, 1916"
+ },
+ "g558": {
+  "genre": "Spy thriller",
+  "setting": "London and the Scottish moors, 1914"
+ },
+ "g559": {
+  "genre": "Spy thriller",
+  "setting": "Europe and Ottoman Turkey, 1915-1916"
+ },
+ "g560": {
+  "genre": "Spy thriller",
+  "setting": "Britain and the Western Front, 1917-1918"
+ },
+ "g561": {
+  "genre": "Adventure fiction",
+  "setting": "The island, Madagascar, China and Siberia, early 18th century"
+ },
+ "g564": {
+  "genre": "Mystery fiction",
+  "setting": "An English cathedral town, 1840s"
+ },
+ "g580": {
+  "genre": "Comic novel",
+  "setting": "England, 1827-1828"
+ },
+ "g583": {
+  "genre": "Sensation novel",
+  "setting": "London and Cumberland, England, 1850s"
+ },
+ "g589": {
+  "genre": "Historical adventure",
+  "setting": "Scotland and Holland, 1751-1752"
+ },
+ "g599": {
+  "genre": "Satirical novel",
+  "setting": "England and Europe around Waterloo, 1810s-1830s"
+ },
+ "g600": {
+  "genre": "Philosophical novella",
+  "setting": "St Petersburg, 1860s"
+ },
+ "g601": {
+  "genre": "Gothic novel",
+  "setting": "Madrid, 17th century"
+ },
+ "g605": {
+  "genre": "Lost-world adventure",
+  "setting": "Pellucidar, a world inside the Earth"
+ },
+ "g619": {
+  "genre": "Social satire",
+  "setting": "An English cathedral town, 1850s"
+ },
+ "g620": {
+  "genre": "Children's fantasy",
+  "setting": "England and the fairy land of Outland"
+ },
+ "g624": {
+  "genre": "Utopian fiction",
+  "setting": "Boston, in the year 2000"
+ },
+ "g653": {
+  "genre": "Christmas novella",
+  "setting": "London, 1840s"
+ },
+ "g678": {
+  "genre": "Christmas novella",
+  "setting": "An English home, 1840s"
+ },
+ "g689": {
+  "genre": "Psychological novella",
+  "setting": "A Russian train carriage, 1880s"
+ },
+ "g696": {
+  "genre": "Gothic novel",
+  "setting": "An Italian castle, the Middle Ages"
+ },
+ "g697": {
+  "genre": "Literary fairy tale",
+  "setting": "A small kingdom, once upon a time"
+ },
+ "g700": {
+  "genre": "Social novel",
+  "setting": "London and the English Midlands, 1830s"
+ },
+ "g701": {
+  "genre": "Literary fairy tale",
+  "setting": "An Alpine valley, once upon a time"
+ },
+ "g708": {
+  "genre": "Children's fantasy",
+  "setting": "A mountain kingdom, once upon a time"
+ },
+ "g709": {
+  "genre": "Children's fantasy",
+  "setting": "A mountain kingdom, once upon a time"
+ },
+ "g711": {
+  "genre": "Lost-world adventure",
+  "setting": "East Africa, 1880s"
+ },
+ "g718": {
+  "genre": "Social satire",
+  "setting": "England, 1900s"
+ },
+ "g730": {
+  "genre": "Social novel",
+  "setting": "London and the English countryside, 1830s"
+ },
+ "g765": {
+  "genre": "Lost-world fantasy",
+  "setting": "A hidden world beneath the Carolines, 1910s"
+ },
+ "g766": {
+  "genre": "Bildungsroman",
+  "setting": "England, early 19th century"
+ },
+ "g767": {
+  "genre": "Literary realism",
+  "setting": "Northern England, 1840s"
+ },
+ "g768": {
+  "genre": "Gothic romance",
+  "setting": "The Yorkshire moors, 1770s-1800s"
+ },
+ "g770": {
+  "genre": "Children's fiction",
+  "setting": "A London suburb, 1890s"
+ },
+ "g773": {
+  "genre": "Short story collection",
+  "setting": "London society, 1880s"
+ },
+ "g778": {
+  "genre": "Children's fantasy",
+  "setting": "The Kent countryside, 1900s"
+ },
+ "g780": {
+  "genre": "Science fiction",
+  "setting": "England, Germany and America, 1900s"
+ },
+ "g782": {
+  "genre": "Travel narrative",
+  "setting": "The Holy Land and the East, 14th century"
+ },
+ "g786": {
+  "genre": "Social novel",
+  "setting": "A northern English factory town, 1850s"
+ },
+ "g804": {
+  "genre": "Travel narrative",
+  "setting": "France and Italy, 1760s"
+ },
+ "g805": {
+  "genre": "Bildungsroman",
+  "setting": "Princeton and New York, 1910s"
+ },
+ "g821": {
+  "genre": "Social novel",
+  "setting": "London and the coming of the railways, 1840s"
+ },
+ "g829": {
+  "genre": "Satirical fantasy",
+  "setting": "Four invented countries, reached by shipwreck, 1699-1715"
+ },
+ "g832": {
+  "genre": "Adventure fiction",
+  "setting": "Sherwood Forest, medieval England"
+ },
+ "g834": {
+  "genre": "Detective fiction",
+  "setting": "London and England, 1880s-1890s"
+ },
+ "g836": {
+  "genre": "Children's fantasy",
+  "setting": "London and far-off places, 1900s"
+ },
+ "g837": {
+  "genre": "Children's fantasy",
+  "setting": "London and the ancient world, 1900s"
+ },
+ "g844": {
+  "genre": "Comedy",
+  "setting": "London and a country house, 1890s"
+ },
+ "g851": {
+  "genre": "Captivity narrative",
+  "setting": "Colonial Massachusetts, 1676"
+ },
+ "g863": {
+  "genre": "Detective fiction",
+  "setting": "An Essex country house, 1916"
+ },
+ "g873": {
+  "genre": "Literary fairy tales",
+  "setting": "Assorted kingdoms, once upon a time"
+ },
+ "g882": {
+  "genre": "Sketches",
+  "setting": "London, 1830s"
+ },
+ "g883": {
+  "genre": "Social novel",
+  "setting": "London, 1860s"
+ },
+ "g902": {
+  "genre": "Literary fairy tale",
+  "setting": "A riverside garden, once upon a time"
+ },
+ "g903": {
+  "genre": "Historical fiction",
+  "setting": "England, France and Spain, 1360s"
+ },
+ "g910": {
+  "genre": "Adventure fiction",
+  "setting": "The Yukon and Northern California, 1890s"
+ },
+ "g913": {
+  "genre": "Psychological novel",
+  "setting": "The Caucasus, 1830s"
+ },
+ "g914": {
+  "genre": "Essays and sketches",
+  "setting": "London and England, 1860s"
+ },
+ "g917": {
+  "genre": "Historical fiction",
+  "setting": "London and the Gordon Riots, 1780"
+ },
+ "g921": {
+  "genre": "Autobiographical letter",
+  "setting": "Reading Gaol, England, 1897"
+ },
+ "g932": {
+  "genre": "Gothic horror",
+  "setting": "A decaying mansion, in an unnamed autumn"
+ },
+ "g940": {
+  "genre": "Historical fiction",
+  "setting": "Colonial New York, 1757"
+ },
+ "g963": {
+  "genre": "Social novel",
+  "setting": "London and the Marshalsea debtors' prison, 1820s"
+ },
+ "g964": {
+  "genre": "Adventure fiction",
+  "setting": "Sherwood Forest, medieval England"
+ },
+ "g967": {
+  "genre": "Social novel",
+  "setting": "London and Yorkshire, 1830s"
+ },
+ "g968": {
+  "genre": "Social novel",
+  "setting": "England and the American frontier, 1840s"
+ },
+ "g969": {
+  "genre": "Epistolary novel",
+  "setting": "Yorkshire, England, 1820s"
+ },
+ "g972": {
+  "genre": "Satire",
+  "setting": "The United States, turn of the 20th century"
+ },
+ "g974": {
+  "genre": "Spy fiction",
+  "setting": "London, 1886"
+ },
+ "g985": {
+  "genre": "Moral tale",
+  "setting": "Russia, 19th century"
+ },
+ "g986": {
+  "genre": "Moral tale",
+  "setting": "The Russian countryside in a blizzard, 1870s"
+ },
+ "g996": {
+  "genre": "Satirical romance",
+  "setting": "La Mancha and Spain, around 1600"
+ },
+ "g1013": {
+  "genre": "Science fiction",
+  "setting": "Kent and the Moon, 1900s"
+ },
+ "g1018": {
+  "genre": "Children's fantasy",
+  "setting": "Yorkshire and an underwater world, 1860s"
+ },
+ "g1023": {
+  "genre": "Social novel",
+  "setting": "London and the Court of Chancery, 1850s"
+ },
+ "g1026": {
+  "genre": "Comic fiction",
+  "setting": "A London suburb, 1890s"
+ },
+ "g1028": {
+  "genre": "Bildungsroman",
+  "setting": "Brussels, 1840s"
+ },
+ "g1056": {
+  "genre": "Kunstlerroman",
+  "setting": "Oakland and San Francisco, early 1900s"
+ },
+ "g1063": {
+  "genre": "Gothic short story",
+  "setting": "An Italian city during carnival, in an unnamed past"
+ },
+ "g1064": {
+  "genre": "Gothic horror",
+  "setting": "A walled abbey during a plague, the Middle Ages"
+ },
+ "g1074": {
+  "genre": "Adventure fiction",
+  "setting": "A sealing schooner in the North Pacific, early 1900s"
+ },
+ "g1079": {
+  "genre": "Comic novel",
+  "setting": "Yorkshire, England, 18th century"
+ },
+ "g1080": {
+  "genre": "Satirical essay",
+  "setting": "Ireland, 1729"
+ },
+ "g1081": {
+  "genre": "Satirical novel",
+  "setting": "Provincial Russia, 1820s"
+ },
+ "g1085": {
+  "genre": "Biography",
+  "setting": "England and the Mediterranean, 1806-1844"
+ },
+ "g1091": {
+  "genre": "Lectures",
+  "setting": "Britain, 1840"
+ },
+ "g1093": {
+  "genre": "Psychological fiction",
+  "setting": "England, late 19th century"
+ },
+ "g1142": {
+  "genre": "Nautical fiction",
+  "setting": "The China seas, 1890s"
+ },
+ "g1153": {
+  "genre": "Science fantasy",
+  "setting": "Mars"
+ },
+ "g1154": {
+  "genre": "Children's fantasy",
+  "setting": "England, the sea and a floating island, 1830s"
+ },
+ "g1155": {
+  "genre": "Adventure thriller",
+  "setting": "London, 1920"
+ },
+ "g1156": {
+  "genre": "Satire",
+  "setting": "A Midwestern American city, 1920s"
+ },
+ "g1162": {
+  "genre": "Speculative fiction",
+  "setting": "San Quentin prison and remembered past lives, 1910s"
+ },
+ "g1164": {
+  "genre": "Dystopian fiction",
+  "setting": "The United States, 1910s-1930s"
+ },
+ "g1170": {
+  "genre": "History",
+  "setting": "Persia and Asia Minor, 401-399 BC"
+ },
+ "g1178": {
+  "genre": "Treatise",
+  "setting": "Sparta, 4th century BC"
+ },
+ "g1184": {
+  "genre": "Adventure fiction",
+  "setting": "Marseille, Rome and Paris, 1815-1838"
+ },
+ "g1188": {
+  "genre": "Gothic horror",
+  "setting": "The English Midlands, 1900s"
+ },
+ "g1190": {
+  "genre": "Ghost story",
+  "setting": "New York, 1900s"
+ },
+ "g1197": {
+  "genre": "Historical fiction",
+  "setting": "The Ukrainian steppe, 16th-17th century"
+ },
+ "g1200": {
+  "genre": "Satirical romance",
+  "setting": "Renaissance France, 16th century"
+ },
+ "g1202": {
+  "genre": "Short story collection",
+  "setting": "The Malay archipelago, Africa and Brittany, 1890s"
+ },
+ "g1210": {
+  "genre": "Ghost stories",
+  "setting": "Japan, folklore and the 19th century"
+ },
+ "g1213": {
+  "genre": "Satirical short story",
+  "setting": "A small American town, 1890s"
+ },
+ "g1232": {
+  "genre": "Political treatise",
+  "setting": "Renaissance Italy, early 16th century"
+ },
+ "g1237": {
+  "genre": "Literary realism",
+  "setting": "Paris, 1819"
+ },
+ "g1245": {
+  "genre": "Modernist novel",
+  "setting": "London, 1910s"
+ },
+ "g1254": {
+  "genre": "Verse drama",
+  "setting": "Paris and the siege of Arras, 1640"
+ },
+ "g1257": {
+  "genre": "Historical adventure",
+  "setting": "France and England, 1620s"
+ },
+ "g1259": {
+  "genre": "Historical adventure",
+  "setting": "France and England, 1648-1649"
+ },
+ "g1260": {
+  "genre": "Bildungsroman",
+  "setting": "Northern England, early 19th century"
+ },
+ "g1267": {
+  "genre": "Fantasy",
+  "setting": "An imagined old China"
+ },
+ "g1268": {
+  "genre": "Adventure fiction",
+  "setting": "An uncharted Pacific island, 1865-1869"
+ },
+ "g1290": {
+  "genre": "Historical fiction",
+  "setting": "Carthage, 3rd century BC"
+ },
+ "g1300": {
+  "genre": "Western",
+  "setting": "Southern Utah, 1871"
+ },
+ "g1307": {
+  "genre": "Fantastic realism",
+  "setting": "Paris, 1820s-1830s"
+ },
+ "g1342": {
+  "genre": "Novel of manners",
+  "setting": "The English countryside, early 19th century"
+ },
+ "g1399": {
+  "genre": "Realist novel",
+  "setting": "Moscow, St Petersburg and the Russian countryside, 1870s"
+ },
+ "g1400": {
+  "genre": "Bildungsroman",
+  "setting": "The Kent marshes and London, early 19th century"
+ },
+ "g1424": {
+  "genre": "Historical fiction",
+  "setting": "An Irish estate, 18th century"
+ },
+ "g1438": {
+  "genre": "Sensation novel",
+  "setting": "England, 1840s"
+ },
+ "g1441": {
+  "genre": "Literary fiction",
+  "setting": "The Karoo, South Africa, 1860s-1870s"
+ },
+ "g1448": {
+  "genre": "Children's fiction",
+  "setting": "The Swiss Alps and Frankfurt, 1880s"
+ },
+ "g1449": {
+  "genre": "Social novel",
+  "setting": "Oakland and rural California, 1900s"
+ },
+ "g1450": {
+  "genre": "Children's fiction",
+  "setting": "A New England town, early 1900s"
+ },
+ "g1480": {
+  "genre": "School story",
+  "setting": "Rugby School, England, 1830s"
+ },
+ "g1513": {
+  "genre": "Tragedy",
+  "setting": "Verona, Italy, the Renaissance"
+ },
+ "g1515": {
+  "genre": "Comedy",
+  "setting": "Venice and Belmont, 16th century"
+ },
+ "g1521": {
+  "genre": "History play",
+  "setting": "England and France, 1415"
+ },
+ "g1522": {
+  "genre": "Tragedy",
+  "setting": "Rome, 44 BC"
+ },
+ "g1523": {
+  "genre": "Comedy",
+  "setting": "The Forest of Arden, an unspecified past"
+ },
+ "g1524": {
+  "genre": "Tragedy",
+  "setting": "Elsinore, Denmark, the Middle Ages"
+ },
+ "g1531": {
+  "genre": "Tragedy",
+  "setting": "Venice and Cyprus, the 16th century"
+ },
+ "g1532": {
+  "genre": "Tragedy",
+  "setting": "Ancient Britain"
+ },
+ "g1533": {
+  "genre": "Tragedy",
+  "setting": "Scotland, the 11th century"
+ },
+ "g1534": {
+  "genre": "Tragedy",
+  "setting": "Rome and Egypt, 40-30 BC"
+ },
+ "g1557": {
+  "genre": "Historical fiction",
+  "setting": "England, the early 15th century"
+ },
+ "g1565": {
+  "genre": "Historical fiction",
+  "setting": "Pompeii, AD 79"
+ },
+ "g1640": {
+  "genre": "Fantasy",
+  "setting": "A parallel world reached through a mirror"
+ },
+ "g1661": {
+  "genre": "Detective fiction",
+  "setting": "London and England, 1880s-1890s"
+ },
+ "g1680": {
+  "genre": "Literary realism",
+  "setting": "Paris, 1810s"
+ },
+ "g1685": {
+  "genre": "Locked-room mystery",
+  "setting": "A chateau near Paris, 1890s"
+ },
+ "g1686": {
+  "genre": "Detective fiction",
+  "setting": "St Petersburg, 1900s"
+ },
+ "g1695": {
+  "genre": "Philosophical thriller",
+  "setting": "London, 1900s"
+ },
+ "g1696": {
+  "genre": "Mystery short stories",
+  "setting": "London, 1900s"
+ },
+ "g1709": {
+  "genre": "Social novel",
+  "setting": "Literary London, 1880s"
+ },
+ "g1715": {
+  "genre": "Literary realism",
+  "setting": "Saumur, France, 1810s-1820s"
+ },
+ "g1728": {
+  "genre": "Epic poem",
+  "setting": "The Mediterranean and Ithaca, after the Trojan war"
+ },
+ "g1749": {
+  "genre": "Literary realism",
+  "setting": "Paris, 1838-1846"
+ },
+ "g1826": {
+  "genre": "Novella",
+  "setting": "Paris and Rome, late 18th century"
+ },
+ "g1837": {
+  "genre": "Historical fiction",
+  "setting": "London, 1547"
+ },
+ "g1840": {
+  "genre": "Social novel",
+  "setting": "Philadelphia, 1840s-1870s"
+ },
+ "g1842": {
+  "genre": "Adventure fiction",
+  "setting": "Moscow to Irkutsk across Siberia, 1870s"
+ },
+ "g1845": {
+  "genre": "Satire",
+  "setting": "Oxford, Edwardian era"
+ },
+ "g1848": {
+  "genre": "Historical adventure",
+  "setting": "England and Aztec Mexico, 1510s-1520s"
+ },
+ "g1860": {
+  "genre": "Historical adventure",
+  "setting": "Devon and the Spanish Main, 1570s-1580s"
+ },
+ "g1872": {
+  "genre": "Detective fiction",
+  "setting": "An English country house, 1920s"
+ },
+ "g1874": {
+  "genre": "Children's fiction",
+  "setting": "The Yorkshire countryside, early 1900s"
+ },
+ "g1900": {
+  "genre": "Travel narrative",
+  "setting": "The Marquesas Islands, 1842"
+ },
+ "g1906": {
+  "genre": "Utopian satire",
+  "setting": "A hidden country beyond the mountains, 19th century"
+ },
+ "g1937": {
+  "genre": "Children's fiction",
+  "setting": "The jungles of central India"
+ },
+ "g1938": {
+  "genre": "Social novel",
+  "setting": "Russia and Siberia, 1890s"
+ },
+ "g1944": {
+  "genre": "Short story",
+  "setting": "A remote Russian post-house in a snowstorm, 1880s"
+ },
+ "g1947": {
+  "genre": "Historical adventure",
+  "setting": "France, the Revolution of 1789"
+ },
+ "g1951": {
+  "genre": "Science fiction",
+  "setting": "A subterranean world beneath the Earth, 19th century"
+ },
+ "g1952": {
+  "genre": "Psychological short story",
+  "setting": "A rented country house in America, 1890s"
+ },
+ "g1965": {
+  "genre": "Pirate adventure",
+  "setting": "The Caribbean, 1680s"
+ },
+ "g1999": {
+  "genre": "Satirical novel",
+  "setting": "An English country house, 1920s"
+ },
+ "g2020": {
+  "genre": "Lost-world adventure",
+  "setting": "A hidden African valley, 1910s"
+ },
+ "g2021": {
+  "genre": "Political novel",
+  "setting": "The invented South American republic of Costaguana, late 19th century"
+ },
+ "g2040": {
+  "genre": "Autobiography",
+  "setting": "London and the Lake District, early 19th century"
+ },
+ "g2044": {
+  "genre": "Autobiography",
+  "setting": "America and Europe, 1838-1905"
+ },
+ "g2081": {
+  "genre": "Satirical romance",
+  "setting": "A Massachusetts utopian farm, 1840s"
+ },
+ "g2084": {
+  "genre": "Satirical novel",
+  "setting": "England, 19th century"
+ },
+ "g2097": {
+  "genre": "Detective fiction",
+  "setting": "London, 1888"
+ },
+ "g2145": {
+  "genre": "Historical fiction",
+  "setting": "Judea and Rome, 1st century AD"
+ },
+ "g2153": {
+  "genre": "Social novel",
+  "setting": "Manchester, England, 1830s-1840s"
+ },
+ "g2158": {
+  "genre": "Political novel",
+  "setting": "London and Westminster, 1870s"
+ },
+ "g2160": {
+  "genre": "Epistolary novel",
+  "setting": "England, Scotland and Wales, 1760s"
+ },
+ "g2166": {
+  "genre": "Adventure fiction",
+  "setting": "Southern Africa, 1880s"
+ },
+ "g2197": {
+  "genre": "Psychological novel",
+  "setting": "A German spa town, 1860s"
+ },
+ "g2232": {
+  "genre": "Revenge tragedy",
+  "setting": "Amalfi and Rome, early 16th century"
+ },
+ "g2275": {
+  "genre": "Frontier fiction",
+  "setting": "Upstate New York, 1793"
+ },
+ "g2276": {
+  "genre": "Gothic novel",
+  "setting": "Scotland, early 18th century"
+ },
+ "g2302": {
+  "genre": "Epistolary novel",
+  "setting": "St Petersburg, 1840s"
+ },
+ "g2346": {
+  "genre": "Detective fiction",
+  "setting": "London, 1895"
+ },
+ "g2347": {
+  "genre": "Detective fiction",
+  "setting": "London, 1887"
+ },
+ "g2350": {
+  "genre": "Detective fiction",
+  "setting": "England, 1890s-1914"
+ },
+ "g2360": {
+  "genre": "Spy thriller",
+  "setting": "The Frisian Islands of the North Sea, 1900s"
+ },
+ "g2383": {
+  "genre": "Narrative poetry",
+  "setting": "The pilgrim road from London to Canterbury, 1380s"
+ },
+ "g2413": {
+  "genre": "Realist novel",
+  "setting": "Provincial Normandy, France, 1830s-1840s"
+ },
+ "g2429": {
+  "genre": "Adventure short stories",
+  "setting": "The Klondike and Alaska, 1890s-1900s"
+ },
+ "g2434": {
+  "genre": "Utopian fiction",
+  "setting": "An undiscovered Pacific island, 17th century"
+ },
+ "g2465": {
+  "genre": "Romantic tragedy",
+  "setting": "Andalusia, Spain, 1830"
+ },
+ "g2480": {
+  "genre": "Political novel",
+  "setting": "St Petersburg and Geneva, 1900s"
+ },
+ "g2500": {
+  "genre": "Philosophical novel",
+  "setting": "Ancient India, the time of the Buddha"
+ },
+ "g2502": {
+  "genre": "Verse drama",
+  "setting": "The India of the Mahabharata"
+ },
+ "g2527": {
+  "genre": "Epistolary novel",
+  "setting": "A German village, 1770s"
+ },
+ "g2542": {
+  "genre": "Drama",
+  "setting": "A Norwegian home at Christmas, 1870s"
+ },
+ "g2554": {
+  "genre": "Psychological novel",
+  "setting": "St Petersburg, 1860s"
+ },
+ "g2591": {
+  "genre": "Fairy tales",
+  "setting": "The forests and kingdoms of German folklore"
+ },
+ "g2600": {
+  "genre": "Historical novel",
+  "setting": "Russia during the Napoleonic wars, 1805-1820"
+ },
+ "g2604": {
+  "genre": "Bildungsroman",
+  "setting": "Cambridge and Wiltshire, 1900s"
+ },
+ "g2609": {
+  "genre": "Historical adventure",
+  "setting": "The France of Louis XIV, 1660s"
+ },
+ "g2610": {
+  "genre": "Historical romance",
+  "setting": "Paris, 1482"
+ },
+ "g2638": {
+  "genre": "Psychological novel",
+  "setting": "St Petersburg, 1860s"
+ },
+ "g2641": {
+  "genre": "Novel of manners",
+  "setting": "Florence and Surrey, England, 1900s"
+ },
+ "g2662": {
+  "genre": "Pastoral comedy",
+  "setting": "A Wessex village, 1840s"
+ },
+ "g2667": {
+  "genre": "Sentimental novel",
+  "setting": "An English country parish, 18th century"
+ },
+ "g2680": {
+  "genre": "Philosophy",
+  "setting": "The Roman frontier, the 170s AD"
+ },
+ "g2701": {
+  "genre": "Nautical adventure",
+  "setting": "A New England whaling voyage across the world's oceans, 1840s"
+ },
+ "g2710": {
+  "genre": "Historical adventure",
+  "setting": "The court of Louis XIV, 1660s"
+ },
+ "g2721": {
+  "genre": "Saga fantasy",
+  "setting": "Iceland, the 10th century"
+ },
+ "g2726": {
+  "genre": "Children's fiction",
+  "setting": "A New England town, 1870s"
+ },
+ "g2759": {
+  "genre": "Historical adventure",
+  "setting": "The court of Louis XIV, 1660s"
+ },
+ "g2776": {
+  "genre": "Short story collection",
+  "setting": "New York, 1900s"
+ },
+ "g2786": {
+  "genre": "Children's fiction",
+  "setting": "A New England village, 1870s"
+ },
+ "g2787": {
+  "genre": "Domestic fiction",
+  "setting": "Boston, 1860s"
+ },
+ "g2804": {
+  "genre": "Domestic fiction",
+  "setting": "A New England town, 1870s"
+ },
+ "g2813": {
+  "genre": "Comic thriller",
+  "setting": "A luxury hotel in London, 1900s"
+ },
+ "g2814": {
+  "genre": "Literary realism",
+  "setting": "Dublin, early 1900s"
+ },
+ "g2834": {
+  "genre": "Novel of manners",
+  "setting": "England and Italy, 1870s"
+ },
+ "g2845": {
+  "genre": "Historical fiction",
+  "setting": "England and France, 1350s"
+ },
+ "g2852": {
+  "genre": "Detective fiction",
+  "setting": "Dartmoor, England, 1889"
+ },
+ "g2853": {
+  "genre": "Historical fiction",
+  "setting": "Rome, AD 64"
+ },
+ "g2860": {
+  "genre": "Novel of manners",
+  "setting": "Barsetshire, England, 1850s"
+ },
+ "g2870": {
+  "genre": "Novel of manners",
+  "setting": "New York, 1840s-1850s"
+ },
+ "g2885": {
+  "genre": "Heroic fantasy",
+  "setting": "A Germanic forest tribe facing Rome, late antiquity"
+ },
+ "g2892": {
+  "genre": "Folklore",
+  "setting": "Legendary Ireland"
+ },
+ "g2911": {
+  "genre": "Social drama",
+  "setting": "London and an English prison, 1910s"
+ },
+ "g2948": {
+  "genre": "Social satire",
+  "setting": "England and a Tuscan town, 1900s"
+ },
+ "g3023": {
+  "genre": "Verse drama",
+  "setting": "Germany, the late Middle Ages"
+ },
+ "g3031": {
+  "genre": "Animal story",
+  "setting": "The New Mexico rangeland, 1890s"
+ },
+ "g3044": {
+  "genre": "Sensation novel",
+  "setting": "Wessex, England, 1860s"
+ },
+ "g3045": {
+  "genre": "Novel of manners",
+  "setting": "Barsetshire and London, England, 1860s"
+ },
+ "g3146": {
+  "genre": "Tragic romance",
+  "setting": "Wessex, England, 1880s"
+ },
+ "g3154": {
+  "genre": "Comic tall tales",
+  "setting": "Russia, Turkey and the Moon, 18th century"
+ },
+ "g3155": {
+  "genre": "Lost-world adventure",
+  "setting": "The African interior, 1880s"
+ },
+ "g3166": {
+  "genre": "Novel of manners",
+  "setting": "Barsetshire, England, 1850s"
+ },
+ "g3177": {
+  "genre": "Travel memoir",
+  "setting": "Nevada, California and Hawaii, 1860s"
+ },
+ "g3178": {
+  "genre": "Satire",
+  "setting": "Missouri and Washington, D.C., 1860s-1870s"
+ },
+ "g3179": {
+  "genre": "Satirical novel",
+  "setting": "England and Washington, D.C., 1890s"
+ },
+ "g3186": {
+  "genre": "Philosophical fantasy",
+  "setting": "An Austrian village, 1590"
+ },
+ "g3189": {
+  "genre": "Comic sketches",
+  "setting": "America, mid-19th century"
+ },
+ "g3261": {
+  "genre": "Utopian fiction",
+  "setting": "England, the 21st century"
+ },
+ "g3268": {
+  "genre": "Gothic novel",
+  "setting": "France and Italy, 1584"
+ },
+ "g3285": {
+  "genre": "Frontier adventure",
+  "setting": "Upstate New York, 1740s"
+ },
+ "g3289": {
+  "genre": "Detective fiction",
+  "setting": "Sussex, England and the Pennsylvania coalfields, 1880s"
+ },
+ "g3321": {
+  "genre": "Crime melodrama",
+  "setting": "The New York underworld, 1920s"
+ },
+ "g3409": {
+  "genre": "Social satire",
+  "setting": "An English cathedral city, 1850s"
+ },
+ "g3431": {
+  "genre": "Political novel",
+  "setting": "Italy under Austrian rule, 1830s-1840s"
+ },
+ "g3457": {
+  "genre": "Western",
+  "setting": "The Arizona high country, 1900s"
+ },
+ "g3499": {
+  "genre": "Children's fiction",
+  "setting": "A New England college town, 1880s"
+ },
+ "g3526": {
+  "genre": "Adventure fiction",
+  "setting": "East and Central Africa, 1862"
+ },
+ "g3608": {
+  "genre": "Social novel",
+  "setting": "An English south-coast town, 1900s"
+ },
+ "g3629": {
+  "genre": "Social novel",
+  "setting": "Chicago, 1870s-1890s"
+ },
+ "g3760": {
+  "genre": "Political novel",
+  "setting": "Industrial England, 1830s-1840s"
+ },
+ "g3781": {
+  "genre": "Horror fiction",
+  "setting": "London, 1900s"
+ },
+ "g3796": {
+  "genre": "War novel",
+  "setting": "Prince Edward Island during the First World War, 1914-1918"
+ },
+ "g3836": {
+  "genre": "Robinsonade",
+  "setting": "A tropical island, early 19th century"
+ },
+ "g3922": {
+  "genre": "Psychological novel",
+  "setting": "Paris and Florence, 1890s"
+ },
+ "g4047": {
+  "genre": "Detective fiction",
+  "setting": "New York, 1870s"
+ },
+ "g4084": {
+  "genre": "Picaresque novel",
+  "setting": "England and the Continent, 18th century"
+ },
+ "g4085": {
+  "genre": "Picaresque novel",
+  "setting": "Scotland, London and the high seas, 1740s"
+ },
+ "g4090": {
+  "genre": "Literary scholarship",
+  "setting": "The Grail legend and its ritual origins"
+ },
+ "g4217": {
+  "genre": "Bildungsroman",
+  "setting": "Dublin, 1880s-1900s"
+ },
+ "g4240": {
+  "genre": "Modernist novel",
+  "setting": "The English Midlands and the Alps, 1910s"
+ },
+ "g4274": {
+  "genre": "Novel of manners",
+  "setting": "An English country town, 1830s"
+ },
+ "g4276": {
+  "genre": "Social novel",
+  "setting": "A northern English mill town, 1850s"
+ },
+ "g4300": {
+  "genre": "Modernist novel",
+  "setting": "Dublin, a single day in June 1904"
+ },
+ "g4313": {
+  "genre": "Social novel",
+  "setting": "London, 1880s-1890s"
+ },
+ "g4368": {
+  "genre": "Short story collection",
+  "setting": "America, 1910s-1920s"
+ },
+ "g4517": {
+  "genre": "Literary realism",
+  "setting": "A New England village, 1890s"
+ },
+ "g4540": {
+  "genre": "Religious fiction",
+  "setting": "An American railroad town, 1890s"
+ },
+ "g4599": {
+  "genre": "Novel of manners",
+  "setting": "Barsetshire and London, England, 1860s"
+ },
+ "g4737": {
+  "genre": "Satire",
+  "setting": "England, around 1700"
+ },
+ "g4761": {
+  "genre": "Literary realism",
+  "setting": "A Cossack village in the Caucasus, 1850s"
+ },
+ "g4770": {
+  "genre": "Autobiographical novel",
+  "setting": "New England, 1850s-1870s"
+ },
+ "g5140": {
+  "genre": "Psychological novel",
+  "setting": "England and Italy, 1860s"
+ },
+ "g5160": {
+  "genre": "Myth cycle",
+  "setting": "Wales, the legendary past"
+ },
+ "g5164": {
+  "genre": "Gothic horror",
+  "setting": "London, 1890s"
+ },
+ "g5174": {
+  "genre": "Lost-world adventure",
+  "setting": "East and Central Africa, 1850s"
+ },
+ "g5200": {
+  "genre": "Absurdist novella",
+  "setting": "A family flat in a European city, 1910s"
+ },
+ "g5230": {
+  "genre": "Science fiction",
+  "setting": "Sussex and London, 1890s"
+ },
+ "g5231": {
+  "genre": "Satire",
+  "setting": "London society and finance, 1870s"
+ },
+ "g5247": {
+  "genre": "Literary realism",
+  "setting": "The Staffordshire Potteries and Paris, 1860s-1900s"
+ },
+ "g5265": {
+  "genre": "Philosophical fantasy",
+  "setting": "London and England, 1900s"
+ },
+ "g5340": {
+  "genre": "Short story collection",
+  "setting": "Prince Edward Island, Canada, 1900s"
+ },
+ "g5342": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, 1900s"
+ },
+ "g5343": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, 1900s"
+ },
+ "g5348": {
+  "genre": "Children's fiction",
+  "setting": "New York, 1860s"
+ },
+ "g5658": {
+  "genre": "Psychological novel",
+  "setting": "The Malay archipelago, late 19th century"
+ },
+ "g5670": {
+  "genre": "Modernist novel",
+  "setting": "Cambridge, London and Greece, 1900s-1914"
+ },
+ "g5998": {
+  "genre": "Historical fiction",
+  "setting": "Scotland, the Jacobite rising of 1745"
+ },
+ "g6053": {
+  "genre": "Epistolary novel",
+  "setting": "London and Bristol, 1770s"
+ },
+ "g6087": {
+  "genre": "Gothic horror",
+  "setting": "London, Rome and Greece, early 19th century"
+ },
+ "g6124": {
+  "genre": "Epistolary novel",
+  "setting": "An English country house, 18th century"
+ },
+ "g6130": {
+  "genre": "Epic poem",
+  "setting": "Troy, in the tenth year of the war"
+ },
+ "g6133": {
+  "genre": "Crime fiction",
+  "setting": "Paris and France, 1900s"
+ },
+ "g6157": {
+  "genre": "Parable",
+  "setting": "The Russian steppe, 19th century"
+ },
+ "g6373": {
+  "genre": "Western short stories",
+  "setting": "The California gold camps, 1850s"
+ },
+ "g6406": {
+  "genre": "Historical fiction",
+  "setting": "The Scottish Borders, 1550s"
+ },
+ "g6424": {
+  "genre": "Utopian fiction",
+  "setting": "A parallel Earth, 1900s"
+ },
+ "g6523": {
+  "genre": "Symbolist drama",
+  "setting": "An Indian village, early 20th century"
+ },
+ "g6593": {
+  "genre": "Picaresque novel",
+  "setting": "Somerset, the road, and London, 1745"
+ },
+ "g6626": {
+  "genre": "Naturalist novel",
+  "setting": "Paris, 1860s"
+ },
+ "g6688": {
+  "genre": "Literary realism",
+  "setting": "The English countryside by the River Floss, 1820s-1830s"
+ },
+ "g6695": {
+  "genre": "Short story collection",
+  "setting": "America, 1910s-1920s"
+ },
+ "g6761": {
+  "genre": "Picaresque novel",
+  "setting": "Europe and England, 18th century"
+ },
+ "g6768": {
+  "genre": "Comic short stories",
+  "setting": "London and New York, 1910s"
+ },
+ "g6782": {
+  "genre": "Drama",
+  "setting": "Germany, mid-18th century"
+ },
+ "g6852": {
+  "genre": "Psychological novella",
+  "setting": "A Carpathian spa and Florence, 1860s"
+ },
+ "g7079": {
+  "genre": "Historical adventure",
+  "setting": "France, 1799"
+ },
+ "g7118": {
+  "genre": "Psychological novel",
+  "setting": "London, 1890s"
+ },
+ "g7166": {
+  "genre": "Political novel",
+  "setting": "Bengal, India, 1900s"
+ },
+ "g7256": {
+  "genre": "Short story",
+  "setting": "A New York flat, 1900s"
+ },
+ "g7371": {
+  "genre": "Gothic novel",
+  "setting": "Sicily, late 16th century"
+ },
+ "g7381": {
+  "genre": "Novel of manners",
+  "setting": "London and Scotland, 1860s-1870s"
+ },
+ "g7469": {
+  "genre": "Bildungsroman",
+  "setting": "England and the Continent, 1860s"
+ },
+ "g7477": {
+  "genre": "Fantasy short stories",
+  "setting": "Invented kingdoms at the edge of the world"
+ },
+ "g7849": {
+  "genre": "Absurdist novel",
+  "setting": "An unnamed European city, 1910s"
+ },
+ "g7895": {
+  "genre": "Sensation novel",
+  "setting": "England, 1860s"
+ },
+ "g8117": {
+  "genre": "Political novel",
+  "setting": "A Russian provincial town, 1860s"
+ },
+ "g8118": {
+  "genre": "Nautical fiction",
+  "setting": "New York and Liverpool, 1830s"
+ },
+ "g8123": {
+  "genre": "Historical fiction",
+  "setting": "Virginia and England, the 18th century"
+ },
+ "g8164": {
+  "genre": "Comic short stories",
+  "setting": "London and New York, 1910s"
+ },
+ "g8183": {
+  "genre": "Mythic fantasy",
+  "setting": "An invented pantheon and its worlds"
+ },
+ "g8395": {
+  "genre": "Mythic fantasy",
+  "setting": "An invented pantheon and its worlds"
+ },
+ "g8486": {
+  "genre": "Ghost stories",
+  "setting": "English cathedral towns and country houses, Edwardian era"
+ },
+ "g8492": {
+  "genre": "Weird fiction",
+  "setting": "America and Europe, the 1890s and a near future"
+ },
+ "g8525": {
+  "genre": "Comic sketch",
+  "setting": "The Garden of Eden"
+ },
+ "g8606": {
+  "genre": "Symbolist drama",
+  "setting": "A woodcutter's cottage and the lands of memory"
+ },
+ "g8800": {
+  "genre": "Epic poem",
+  "setting": "Hell, Purgatory and Paradise, Easter 1300"
+ },
+ "g8954": {
+  "genre": "Sensation novel",
+  "setting": "An English country house, 1850s"
+ },
+ "g9182": {
+  "genre": "Bildungsroman",
+  "setting": "A Belgian boarding school, 1840s"
+ },
+ "g9473": {
+  "genre": "Historical fiction",
+  "setting": "Poland and the Teutonic Order, around 1400"
+ },
+ "g9830": {
+  "genre": "Literary fiction",
+  "setting": "New York, 1910s"
+ },
+ "g9840": {
+  "genre": "Novel of manners",
+  "setting": "England and Germany, 1820s"
+ },
+ "g9911": {
+  "genre": "Coming-of-age fiction",
+  "setting": "A country house near Moscow, 1830s"
+ },
+ "g10002": {
+  "genre": "Weird horror",
+  "setting": "Rural western Ireland, 19th century"
+ },
+ "g10007": {
+  "genre": "Gothic vampire fiction",
+  "setting": "Styria, Austria, mid-19th century"
+ },
+ "g10832": {
+  "genre": "Occult detective fiction",
+  "setting": "England, Edwardian era"
+ },
+ "g10897": {
+  "genre": "Weird horror",
+  "setting": "The Canadian backwoods, early 1900s"
+ },
+ "g10935": {
+  "genre": "Children's fantasy",
+  "setting": "Sweden, seen from the air, early 1900s"
+ },
+ "g11052": {
+  "genre": "Novel of manners",
+  "setting": "New York and Paris, 1900s"
+ },
+ "g11231": {
+  "genre": "Literary realism",
+  "setting": "A Wall Street law office, New York, 1850s"
+ },
+ "g11323": {
+  "genre": "Political novel",
+  "setting": "England, 1790s"
+ },
+ "g11438": {
+  "genre": "Weird horror",
+  "setting": "An island on the Danube, early 1900s"
+ },
+ "g11696": {
+  "genre": "Science fiction",
+  "setting": "England, 1900s"
+ },
+ "g11757": {
+  "genre": "Children's fiction",
+  "setting": "A child's nursery, 1920s"
+ },
+ "g11870": {
+  "genre": "Speculative short stories",
+  "setting": "England and a hidden Andean valley, around 1900"
+ },
+ "g12122": {
+  "genre": "Horror fiction",
+  "setting": "An English cottage, 1900s"
+ },
+ "g12233": {
+  "genre": "Military biography",
+  "setting": "Virginia, the American Civil War, 1861-1863"
+ },
+ "g12750": {
+  "genre": "Speculative short stories",
+  "setting": "England, 1890s"
+ },
+ "g13015": {
+  "genre": "Folklore",
+  "setting": "Japan, the feudal era"
+ },
+ "g13159": {
+  "genre": "Bildungsroman",
+  "setting": "Angouleme and Paris, 1820s"
+ },
+ "g13415": {
+  "genre": "Literary realism",
+  "setting": "Yalta and Moscow, 1890s"
+ },
+ "g13416": {
+  "genre": "Short story",
+  "setting": "A Russian provincial town, 1890s"
+ },
+ "g13468": {
+  "genre": "Travel essays",
+  "setting": "Palestine and Jerusalem, 1920"
+ },
+ "g13514": {
+  "genre": "Short story collection",
+  "setting": "Europe and America, early 19th century"
+ },
+ "g13707": {
+  "genre": "Allegorical tales",
+  "setting": "New England, 17th to 19th century"
+ },
+ "g14220": {
+  "genre": "Children's fiction",
+  "setting": "An English kitchen garden, Edwardian era"
+ },
+ "g14323": {
+  "genre": "Decadent novel",
+  "setting": "Paris, 1880s"
+ },
+ "g14363": {
+  "genre": "Memoir",
+  "setting": "Antarctica, 1910-1913"
+ },
+ "g14522": {
+  "genre": "Comic ghost story",
+  "setting": "An English country house, 1880s"
+ },
+ "g14833": {
+  "genre": "Gothic vampire fiction",
+  "setting": "England, 18th century"
+ },
+ "g14838": {
+  "genre": "Children's fiction",
+  "setting": "An English kitchen garden, Edwardian era"
+ },
+ "g14868": {
+  "genre": "Children's fiction",
+  "setting": "Gloucester, England, 18th century"
+ },
+ "g14872": {
+  "genre": "Children's fiction",
+  "setting": "An English lake and its island, Edwardian era"
+ },
+ "g15137": {
+  "genre": "Children's fiction",
+  "setting": "The English Lake District, Edwardian era"
+ },
+ "g15263": {
+  "genre": "Documentary history",
+  "setting": "The United States, 1850s"
+ },
+ "g15384": {
+  "genre": "Domestic realism",
+  "setting": "Chicago, 1910s"
+ },
+ "g15399": {
+  "genre": "Autobiography",
+  "setting": "West Africa, the West Indies and Britain, 18th century"
+ },
+ "g15493": {
+  "genre": "Historical romance",
+  "setting": "Lancashire, England, 1612"
+ },
+ "g15575": {
+  "genre": "Children's fiction",
+  "setting": "An old English farmhouse, Edwardian era"
+ },
+ "g15859": {
+  "genre": "Short story collection",
+  "setting": "America and the Pacific, 1850s"
+ },
+ "g16199": {
+  "genre": "Biography",
+  "setting": "England, 1759-1797"
+ },
+ "g16328": {
+  "genre": "Epic poem",
+  "setting": "Denmark and Geatland, the heroic age"
+ },
+ "g16389": {
+  "genre": "Romance",
+  "setting": "London and an Italian castle, 1920s"
+ },
+ "g16457": {
+  "genre": "Science fiction",
+  "setting": "A projectile in lunar orbit, 1860s"
+ },
+ "g17034": {
+  "genre": "Fairy tales",
+  "setting": "Folk-tale England"
+ },
+ "g17089": {
+  "genre": "Children's fiction",
+  "setting": "A mouse's burrow under a hedge, Edwardian era"
+ },
+ "g17460": {
+  "genre": "Historical romance",
+  "setting": "Exmoor, England, 1670s-1680s"
+ },
+ "g17731": {
+  "genre": "Nautical fiction",
+  "setting": "A voyage from Bombay to London, 1880s"
+ },
+ "g17780": {
+  "genre": "Short story collection",
+  "setting": "The English Midlands, early 19th century"
+ },
+ "g18247": {
+  "genre": "Post-apocalyptic fiction",
+  "setting": "England and Europe, the 2090s"
+ },
+ "g18640": {
+  "genre": "Political novel",
+  "setting": "London and Westminster, 1870s"
+ },
+ "g18857": {
+  "genre": "Adventure fiction",
+  "setting": "Iceland and the world beneath it, 1863"
+ },
+ "g19500": {
+  "genre": "Novel of manners",
+  "setting": "England and Switzerland, 1860s"
+ },
+ "g19771": {
+  "genre": "Romance",
+  "setting": "England and Italy, 1830s"
+ },
+ "g19942": {
+  "genre": "Satirical novella",
+  "setting": "Europe, South America and the Ottoman East, 18th century"
+ },
+ "g20004": {
+  "genre": "Political romance",
+  "setting": "England and the Holy Land, 1840s"
+ },
+ "g20008": {
+  "genre": "Novel of manners",
+  "setting": "English high society, 1820s"
+ },
+ "g20657": {
+  "genre": "Retold tales",
+  "setting": "The worlds of Shakespeare's plays"
+ },
+ "g20869": {
+  "genre": "Space opera",
+  "setting": "Earth and interstellar space, 1920s onward"
+ },
+ "g21640": {
+  "genre": "Adventure thriller",
+  "setting": "England, Australia and the East, 1890s"
+ },
+ "g21659": {
+  "genre": "Social comedy",
+  "setting": "A New South Wales town, 1900s"
+ },
+ "g21816": {
+  "genre": "Satirical novel",
+  "setting": "A Mississippi steamboat, April Fools' Day, 1850s"
+ },
+ "g21970": {
+  "genre": "Post-apocalyptic fiction",
+  "setting": "The California coast, 2073"
+ },
+ "g22066": {
+  "genre": "War novel",
+  "setting": "Virginia, the American Civil War, 1861-1863"
+ },
+ "g22246": {
+  "genre": "Ghost story",
+  "setting": "An Atlantic steamer, 1880s"
+ },
+ "g22354": {
+  "genre": "Children's fiction",
+  "setting": "A meadow and forest, seen by an insect"
+ },
+ "g23000": {
+  "genre": "Legal drama",
+  "setting": "England, 1860s"
+ },
+ "g23042": {
+  "genre": "Romance play",
+  "setting": "A remote island, after a shipwreck"
+ },
+ "g23172": {
+  "genre": "Weird horror",
+  "setting": "The American frontier, 1890s"
+ },
+ "g23489": {
+  "genre": "Adventure fiction",
+  "setting": "San Francisco and a Pacific island, 1880s"
+ },
+ "g24020": {
+  "genre": "Historical fiction",
+  "setting": "Florence, 1490s"
+ },
+ "g24750": {
+  "genre": "Utopian fiction",
+  "setting": "A women's civilisation inside the Earth"
+ },
+ "g25014": {
+  "genre": "Satirical novel",
+  "setting": "Normandy, France, mid-19th century"
+ },
+ "g25519": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g25876": {
+  "genre": "Tragic realism",
+  "setting": "A Scottish country town, 19th century"
+ },
+ "g25919": {
+  "genre": "Social comedy",
+  "setting": "An English seaside town, 1920s"
+ },
+ "g26526": {
+  "genre": "Bushranger adventure",
+  "setting": "The Australian outback, 1890s"
+ },
+ "g26610": {
+  "genre": "Bildungsroman",
+  "setting": "Minnesota and the early aviation circuit, 1900s-1910s"
+ },
+ "g26624": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g26719": {
+  "genre": "Biographical narrative",
+  "setting": "Chicago, 1900s"
+ },
+ "g26732": {
+  "genre": "Comic romance",
+  "setting": "A road trip from Minnesota to Seattle, 1910s"
+ },
+ "g26854": {
+  "genre": "Short story collection",
+  "setting": "The South Pacific islands, 1910s"
+ },
+ "g26977": {
+  "genre": "Children's fantasy",
+  "setting": "An old-fashioned town and the seas of a boy's imagination"
+ },
+ "g27085": {
+  "genre": "Children's fiction",
+  "setting": "An invented American prairie country"
+ },
+ "g27365": {
+  "genre": "Science fiction stories",
+  "setting": "England, prehistory and a distant future"
+ },
+ "g27384": {
+  "genre": "Historical adventure",
+  "setting": "France under the Regency, 1719"
+ },
+ "g27432": {
+  "genre": "Historical fiction",
+  "setting": "The court of Henry VIII, 1539-1542"
+ },
+ "g27537": {
+  "genre": "Bildungsroman",
+  "setting": "Paris, 1840-1851"
+ },
+ "g27690": {
+  "genre": "Children's fiction",
+  "setting": "France, 1890s"
+ },
+ "g27711": {
+  "genre": "Naturalist novel",
+  "setting": "Paris, mid-19th century"
+ },
+ "g27884": {
+  "genre": "Satirical science fiction",
+  "setting": "A world inside the Earth, 18th century"
+ },
+ "g28054": {
+  "genre": "Philosophical novel",
+  "setting": "A Russian provincial town, 1860s"
+ },
+ "g28948": {
+  "genre": "Family saga",
+  "setting": "The English Midlands, 1840s-1900s"
+ },
+ "g28961": {
+  "genre": "Children's fiction",
+  "setting": "A Turin schoolroom, 1880s"
+ },
+ "g29021": {
+  "genre": "Fairy tale",
+  "setting": "A peasant's cottage, once upon a time"
+ },
+ "g29042": {
+  "genre": "Mathematical puzzles",
+  "setting": "A mock-medieval frame of knots and riddles"
+ },
+ "g29220": {
+  "genre": "Experimental short prose",
+  "setting": "London and the mind, 1920s"
+ },
+ "g29257": {
+  "genre": "Philosophical novel",
+  "setting": "Lebanon and New York, 1900s"
+ },
+ "g29413": {
+  "genre": "Adventure fiction",
+  "setting": "The Arctic, 1860s"
+ },
+ "g29756": {
+  "genre": "Historical fiction",
+  "setting": "Ancient Egypt, around 1250 BC"
+ },
+ "g30123": {
+  "genre": "Philosophical tale",
+  "setting": "Sirius, Saturn and the Earth"
+ },
+ "g30201": {
+  "genre": "Satire",
+  "setting": "Renaissance Europe, early 16th century"
+ },
+ "g30340": {
+  "genre": "Literary fiction",
+  "setting": "England, South Africa and Europe, 1900s-1910s"
+ },
+ "g30344": {
+  "genre": "Picaresque novel",
+  "setting": "England and the Continent, late 17th century"
+ },
+ "g30486": {
+  "genre": "Social novel",
+  "setting": "Yorkshire during the Luddite unrest, 1811-1812"
+ },
+ "g30852": {
+  "genre": "Children's fantasy",
+  "setting": "The Land of Oz"
+ },
+ "g32242": {
+  "genre": "Retold myths",
+  "setting": "Greek myth, told in a New England summer"
+ },
+ "g32338": {
+  "genre": "Adventure romance",
+  "setting": "Guernsey and the Channel, 1820s"
+ },
+ "g32596": {
+  "genre": "Satirical fantasy",
+  "setting": "Paris, 1910s"
+ },
+ "g34181": {
+  "genre": "Melodramatic romance",
+  "setting": "An English country estate, Victorian era"
+ },
+ "g34970": {
+  "genre": "Psychological novel",
+  "setting": "Rural New York and the city, 1840s"
+ },
+ "g35155": {
+  "genre": "Historical fiction",
+  "setting": "Spanish-ruled Lombardy, 1628-1630"
+ },
+ "g35587": {
+  "genre": "Western mystery",
+  "setting": "Texas, 1850s"
+ },
+ "g36028": {
+  "genre": "Social satire",
+  "setting": "A small German principality, 1900s"
+ },
+ "g36034": {
+  "genre": "Romantic novella",
+  "setting": "St Petersburg, 1840s"
+ },
+ "g36483": {
+  "genre": "Bildungsroman",
+  "setting": "Germany, late 18th century"
+ },
+ "g37027": {
+  "genre": "Historical fiction",
+  "setting": "Poland and Ukraine, the Cossack rising of 1648"
+ },
+ "g37536": {
+  "genre": "Autobiographical novel",
+  "setting": "A Siberian prison camp, 1850s"
+ },
+ "g37775": {
+  "genre": "Visionary fiction",
+  "setting": "Kentucky and a journey inside the Earth, 19th century"
+ },
+ "g38241": {
+  "genre": "Comic novella",
+  "setting": "A Russian provincial town, 1850s"
+ },
+ "g38703": {
+  "genre": "Historical romance",
+  "setting": "Georgian England, 1750s"
+ },
+ "g39402": {
+  "genre": "Verse drama",
+  "setting": "Jerusalem, the fall of the kingdom of Judah"
+ },
+ "g39858": {
+  "genre": "Gothic novel",
+  "setting": "The artists' quarter of Paris, 1850s"
+ },
+ "g40580": {
+  "genre": "History",
+  "setting": "The Caribbean and the Atlantic, 1710s-1720s"
+ },
+ "g40882": {
+  "genre": "Political novel",
+  "setting": "The English Midlands, 1832"
+ },
+ "g41085": {
+  "genre": "Poetry and prose",
+  "setting": "Florence, late 13th century"
+ },
+ "g42332": {
+  "genre": "Supernatural melodrama",
+  "setting": "London, 1890s"
+ },
+ "g42389": {
+  "genre": "Historical fiction",
+  "setting": "The Shetland Islands, late 17th century"
+ },
+ "g42401": {
+  "genre": "Gothic fantasy",
+  "setting": "An Arabian caliphate, the legendary past"
+ },
+ "g42455": {
+  "genre": "Adventure thriller",
+  "setting": "The Aberdeenshire coast, Scotland, 1898"
+ },
+ "g43092": {
+  "genre": "Sensation novel",
+  "setting": "A Cornish country house, 1820s-1840s"
+ },
+ "g44747": {
+  "genre": "Psychological novel",
+  "setting": "Provincial France and Paris, 1820s"
+ },
+ "g45264": {
+  "genre": "Children's fiction",
+  "setting": "A doll's house, Edwardian era"
+ },
+ "g45524": {
+  "genre": "Naturalist short story",
+  "setting": "An open boat off the Florida coast, 1897"
+ },
+ "g45631": {
+  "genre": "Slave narrative",
+  "setting": "New York and Louisiana, 1841-1853"
+ },
+ "g46597": {
+  "genre": "Adventure fiction",
+  "setting": "Patagonia, Australia and New Zealand, 1860s"
+ },
+ "g46709": {
+  "genre": "Biography",
+  "setting": "London theatre, 1778-1837"
+ },
+ "g46853": {
+  "genre": "Chivalric romance",
+  "setting": "Arthurian Britain"
+ },
+ "g47312": {
+  "genre": "Penny-dreadful melodrama",
+  "setting": "London, 1830s-1840s"
+ },
+ "g47356": {
+  "genre": "Literary scholarship",
+  "setting": "Homeric Greece, studied in 1850s Britain"
+ },
+ "g47935": {
+  "genre": "Literary realism",
+  "setting": "The Russian countryside, 1859"
+ },
+ "g50054": {
+  "genre": "Comic novel",
+  "setting": "England, 18th century"
+ },
+ "g50133": {
+  "genre": "Cosmic horror",
+  "setting": "Rural Massachusetts, 1920s"
+ },
+ "g52468": {
+  "genre": "Drama",
+  "setting": "A Russian doss-house, around 1900"
+ },
+ "g54672": {
+  "genre": "Libertine satire",
+  "setting": "An invented African court"
+ },
+ "g54700": {
+  "genre": "Literary realism",
+  "setting": "St Petersburg, 1850s"
+ },
+ "g55283": {
+  "genre": "Philosophical short story",
+  "setting": "A Russian estate, 1870s-1890s"
+ },
+ "g55307": {
+  "genre": "Psychological short story",
+  "setting": "A Russian country estate, 1890s"
+ },
+ "g56528": {
+  "genre": "Naturalist novel",
+  "setting": "A northern French coalfield, 1860s"
+ },
+ "g56644": {
+  "genre": "Mythology",
+  "setting": "The myths of Greece, Rome and the North"
+ },
+ "g57669": {
+  "genre": "Locked-room mystery",
+  "setting": "An American prison, early 1900s"
+ },
+ "g58820": {
+  "genre": "Detective fiction",
+  "setting": "London, 1920s"
+ },
+ "g58866": {
+  "genre": "Detective fiction",
+  "setting": "Northern France, 1920s"
+ },
+ "g59239": {
+  "genre": "Satirical fantasy",
+  "setting": "England under prohibition, a near future"
+ },
+ "g59254": {
+  "genre": "Comic fiction",
+  "setting": "London and New York, 1920s"
+ },
+ "g59828": {
+  "genre": "Penny-dreadful horror",
+  "setting": "London, 1785"
+ },
+ "g59931": {
+  "genre": "Romance",
+  "setting": "London, just after the First World War"
+ },
+ "g60067": {
+  "genre": "Comic fiction",
+  "setting": "London and an English castle, 1920s"
+ },
+ "g60093": {
+  "genre": "Modernist fiction",
+  "setting": "Rural Georgia and Washington, D.C., 1920s"
+ },
+ "g60333": {
+  "genre": "Philosophy",
+  "setting": "Copenhagen, mid-19th century"
+ },
+ "g60976": {
+  "genre": "Folk tale",
+  "setting": "The Catskill Mountains, New York, before and after the American Revolution"
+ },
+ "g61077": {
+  "genre": "Fantasy",
+  "setting": "The vale of Erl and the land of Elfland"
+ },
+ "g61085": {
+  "genre": "Literary realism",
+  "setting": "Michigan and wartime Europe, 1910s-1920s"
+ },
+ "g61168": {
+  "genre": "Adventure thriller",
+  "setting": "London, an ocean liner and South Africa, 1920s"
+ },
+ "g61221": {
+  "genre": "Literary fiction",
+  "setting": "British India, 1920s"
+ },
+ "g61236": {
+  "genre": "Children's fiction",
+  "setting": "Prince Edward Island, Canada, 1900s"
+ },
+ "g61262": {
+  "genre": "Detective fiction",
+  "setting": "London and England, 1920s"
+ },
+ "g61620": {
+  "genre": "Swashbuckling adventure",
+  "setting": "Spanish California, early 19th century"
+ },
+ "g62254": {
+  "genre": "Historical fiction",
+  "setting": "Rome, AD 302-303"
+ },
+ "g62940": {
+  "genre": "Short story collection",
+  "setting": "The Chinatowns of Seattle and San Francisco, 1900s"
+ },
+ "g64317": {
+  "genre": "Tragedy",
+  "setting": "Long Island and New York, 1922"
+ },
+ "g64682": {
+  "genre": "Literary fiction",
+  "setting": "Hong Kong and cholera-struck China, 1920s"
+ },
+ "g65238": {
+  "genre": "Detective thriller",
+  "setting": "An English country house, 1920s"
+ },
+ "g65974": {
+  "genre": "Comic fiction",
+  "setting": "London and New York, 1920s"
+ },
+ "g66073": {
+  "genre": "Psychological fiction",
+  "setting": "Venice, 1911"
+ },
+ "g66829": {
+  "genre": "Comic novel",
+  "setting": "New York and Europe, 1920s"
+ },
+ "g67090": {
+  "genre": "Heroic fantasy",
+  "setting": "An invented world called Mercury"
+ },
+ "g67098": {
+  "genre": "Children's fiction",
+  "setting": "The Hundred Acre Wood"
+ },
+ "g67138": {
+  "genre": "Modernist novel",
+  "setting": "Paris and Pamplona, 1925"
+ },
+ "g67979": {
+  "genre": "Romance",
+  "setting": "Ontario, Canada, 1920s"
+ },
+ "g68229": {
+  "genre": "Short story collection",
+  "setting": "America, 1920s"
+ },
+ "g68236": {
+  "genre": "Cosmic horror",
+  "setting": "Rural Massachusetts, 1880s"
+ },
+ "g68283": {
+  "genre": "Cosmic horror",
+  "setting": "Providence, New Orleans and the South Pacific, 1920s"
+ },
+ "g69087": {
+  "genre": "Detective fiction",
+  "setting": "An English village, 1920s"
+ },
+ "g69700": {
+  "genre": "Detective fiction",
+  "setting": "London and England, 1890s-1900s"
+ },
+ "g69730": {
+  "genre": "Historical fiction",
+  "setting": "New Mexico, mid-19th century"
+ },
+ "g69768": {
+  "genre": "Philosophical fiction",
+  "setting": "Peru, 1714"
+ },
+ "g70008": {
+  "genre": "Detective fiction",
+  "setting": "London and Hampshire, 1920s"
+ },
+ "g70083": {
+  "genre": "Children's mystery",
+  "setting": "A small American city, 1920s"
+ },
+ "g70114": {
+  "genre": "Detective thriller",
+  "setting": "London and Europe, 1920s"
+ },
+ "g70128": {
+  "genre": "Social satire",
+  "setting": "The Dutch East Indies and Amsterdam, 1850s"
+ },
+ "g70175": {
+  "genre": "Detective fiction",
+  "setting": "England, Spain and America, 1920s"
+ },
+ "g70875": {
+  "genre": "Social novel",
+  "setting": "The American Midwest and the West Indies, 1900s-1920s"
+ },
+ "g71865": {
+  "genre": "Modernist novel",
+  "setting": "London, a single day in June 1923"
+ },
+ "g72824": {
+  "genre": "Detective fiction",
+  "setting": "The French Riviera, 1920s"
+ },
+ "g72890": {
+  "genre": "Short story collection",
+  "setting": "England and Italy, 1900s"
+ },
+ "g72961": {
+  "genre": "Family saga",
+  "setting": "Lubeck, Germany, 1835-1877"
+ },
+ "g73011": {
+  "genre": "Children's fiction",
+  "setting": "The Hundred Acre Wood"
+ },
+ "g73042": {
+  "genre": "Literary fiction",
+  "setting": "England and wartime France, 1890s-1920s"
+ },
+ "g73144": {
+  "genre": "Literary fiction",
+  "setting": "The English Midlands, just after the First World War"
+ },
+ "g73727": {
+  "genre": "Science fiction",
+  "setting": "A vast future city"
+ },
+ "g74222": {
+  "genre": "Bildungsroman",
+  "setting": "Germany, 1900s to the First World War"
+ },
+ "g75011": {
+  "genre": "War novel",
+  "setting": "The Western Front, 1916-1918"
+ },
+ "g75170": {
+  "genre": "Modernist novel",
+  "setting": "Mississippi, 1898-1928"
+ },
+ "g75201": {
+  "genre": "War novel",
+  "setting": "The Italian front and Switzerland, 1916-1918"
+ },
+ "g75288": {
+  "genre": "Detective thriller",
+  "setting": "An English country house and London, 1920s"
+ },
+ "g75643": {
+  "genre": "Crime thriller",
+  "setting": "An English country estate, 1920s"
+ },
+ "g75756": {
+  "genre": "Philosophical novel",
+  "setting": "A German city, 1920s"
+ },
+ "g75808": {
+  "genre": "Crime fiction",
+  "setting": "London and the home counties, 1920s"
+ },
+ "g75949": {
+  "genre": "Crime thriller",
+  "setting": "The English south coast, 1920s"
+ },
+ "g75998": {
+  "genre": "Adventure thriller",
+  "setting": "London, 1920s"
+ },
+ "g76212": {
+  "genre": "Crime thriller",
+  "setting": "England, 1910s"
+ },
+ "g76257": {
+  "genre": "Crime thriller",
+  "setting": "London, 1920s"
+ },
+ "g76352": {
+  "genre": "Science fiction",
+  "setting": "The Earth of the far future"
+ },
+ "g76513": {
+  "genre": "Nautical fiction",
+  "setting": "A British warship, 1797"
+ },
+ "g76599": {
+  "genre": "Memoir",
+  "setting": "Russia and exile in Europe, 1812-1860s"
+ },
+ "g76911": {
+  "genre": "Memoir",
+  "setting": "England and the Western Front, 1895-1929"
+ },
+ "g77600": {
+  "genre": "Hard-boiled detective fiction",
+  "setting": "San Francisco, 1920s"
+ },
+ "g77900": {
+  "genre": "Satirical novel",
+  "setting": "London society, around 1930"
+ },
+ "g77924": {
+  "genre": "Children's mystery",
+  "setting": "Small-town America, 1930"
+ },
+ "g78016": {
+  "genre": "Biography",
+  "setting": "New England and the whaling seas, 19th century"
+ },
+ "g78024": {
+  "genre": "Philosophical fiction",
+  "setting": "A Greek island, shortly before the Christian era"
+ },
+ "g78084": {
+  "genre": "Mystery fiction",
+  "setting": "England, 1920s"
+ },
+ "g78120": {
+  "genre": "Children's fantasy",
+  "setting": "An invented land of small folk"
+ },
+ "g78157": {
+  "genre": "Detective fiction",
+  "setting": "London, 1930"
+ },
+ "g78220": {
+  "genre": "Detective fiction",
+  "setting": "An English village, 1930"
+ },
+ "g79003": {
+  "genre": "Science fiction",
+  "setting": "Earth, Venus and Neptune over two billion years"
+ },
+ "g79360": {
+  "genre": "Planetary romance",
+  "setting": "Venus"
+ },
+ "g79401": {
+  "genre": "Cosmic horror",
+  "setting": "Boston, 1920s"
+ },
+ "g79405": {
+  "genre": "Cosmic horror",
+  "setting": "Rural Massachusetts, 1896"
+ },
+ "g79424": {
+  "genre": "Gothic romance",
+  "setting": "Naples and Switzerland, early 19th century"
+ },
+ "g79489": {
+  "genre": "Family chronicle",
+  "setting": "Rural Wisconsin, 19th century to 1920s"
+ }
+}

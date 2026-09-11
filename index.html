@@ -99,6 +99,7 @@
           <article id="excerpt" class="excerpt drop">Loading…</article>
         </div>
         <div id="author-reveal" class="author-reveal" hidden></div>
+        <dl id="hint-facts" class="hint-facts" hidden aria-live="polite"></dl>
         <ul id="guesses" class="guesses"></ul>
         <p id="msg" class="msg" role="status"></p>
         <form id="form" class="form" autocomplete="off">
@@ -186,6 +187,7 @@
       <label class="row">Display name
         <input id="display-name" type="text" maxlength="24" placeholder="Anonymous">
       </label>
+      <div class="row"><button class="btn" type="button" data-act="save-name">Save name</button><span id="name-status" class="lede" role="status"></span></div>
       <label class="row">Theme
         <select id="theme">
           <option value="paper">Paper</option>
