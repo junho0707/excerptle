@@ -153,6 +153,10 @@ async function auth(req, env, path, ctx) {
 async function setPassword(req, env) {
   const u = await user(req, env);
   const d = await body(req);
+  // "Someone has my account, so I changed my password" has to mean something.
+  // Tokens live thirty days in localStorage, so every other one goes.
+  const mine = await hash(req.headers.get('Authorization').slice(7));
+  const revokeOthers = () => query(env, 'DELETE FROM sessions WHERE user_id=? AND token_hash<>?', u.id, mine);
   await limit(env, `password:${u.id}`, 5, 600);
   const existing = kdfParams(u);
   // A session token lives in localStorage for thirty days; replacing a
@@ -162,7 +166,10 @@ async function setPassword(req, env) {
   }
   if (d.remove === true) {
     if (!existing) fail(400, 'No password to remove.');
-    await query(env, 'UPDATE users SET password_hash=NULL,password_salt=NULL WHERE id=?', u.id).run();
+    await env.DB.batch([
+      query(env, 'UPDATE users SET password_hash=NULL,password_salt=NULL WHERE id=?', u.id),
+      revokeOthers(),
+    ]);
     return json({ ok: true, hasPassword: false });
   }
   const iterations = Number(d.iterations);
@@ -172,8 +179,11 @@ async function setPassword(req, env) {
   if (!Number.isInteger(iterations) || iterations < KDF.minIterations || iterations > KDF.maxIterations) {
     fail(400, 'Unsupported password settings. Please reload the page.');
   }
-  await query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?',
-    await verifier(d.key, d.salt), `${iterations}:${d.salt}`, u.id).run();
+  await env.DB.batch([
+    query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?',
+      await verifier(d.key, d.salt), `${iterations}:${d.salt}`, u.id),
+    revokeOthers(),
+  ]);
   return json({ ok: true, hasPassword: true });
 }
 async function scores(req, env) {
@@ -182,14 +192,13 @@ async function scores(req, env) {
     const params = new URL(req.url).searchParams;
     const hintParam = params.get('hints');
     const hints = hintParam === null ? null : Number(hintParam);
-    const hintVersion = Number(params.get('hintVersion') || 1);
-    if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || ![1, 2].includes(hintVersion) || (hints !== null && (!Number.isInteger(hints) || hints < 0 || hints > 5))) fail(400, 'Invalid leaderboard filter.');
+    if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || (hints !== null && (!Number.isInteger(hints) || hints < 0 || hints > 5))) fail(400, 'Invalid leaderboard filter.');
     // Ranked on help taken, then guesses, then who got there first. Time spent
     // reading is deliberately not part of it: this is a book game, not a race.
-    const select = `SELECT COALESCE(NULLIF(u.name,''),s.name) AS name,s.user_id AS playerId,s.guesses,s.hints,s.won_at AS at FROM scores s LEFT JOIN users u ON u.id=s.user_id`;
+    const select = `SELECT COALESCE(NULLIF(u.name,''),s.name) AS name,s.user_id AS playerId,s.guesses,s.hints,s.hint_version AS hintVersion,s.won_at AS at FROM scores s LEFT JOIN users u ON u.id=s.user_id`;
     const rows = hints === null
-      ? await query(env, `${select} WHERE s.puzzle_index=? AND s.hint_version=? ORDER BY s.hints,s.guesses,s.won_at LIMIT 100`, puzzleIndex, hintVersion).all()
-      : await query(env, `${select} WHERE s.puzzle_index=? AND s.hint_version=? AND s.hints=? ORDER BY s.guesses,s.won_at LIMIT 100`, puzzleIndex, hintVersion, hints).all();
+      ? await query(env, `${select} WHERE s.puzzle_index=? ORDER BY s.hints,s.guesses,s.won_at LIMIT 100`, puzzleIndex).all()
+      : await query(env, `${select} WHERE s.puzzle_index=? AND s.hints=? ORDER BY s.guesses,s.won_at LIMIT 100`, puzzleIndex, hints).all();
     return json({ scores: rows.results });
   }
   const u = await user(req, env);
@@ -200,15 +209,15 @@ async function scores(req, env) {
   const timeMs = Number.isFinite(Number(d.timeMs)) ? Math.min(Math.max(Number(d.timeMs), 0), 86400000) : 0;
   if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || ![1, 2].includes(hintVersion) || !Number.isInteger(guesses) || guesses < 1 || guesses > 6 || !Number.isInteger(hints) || hints < 0 || hints > 5 || d.win !== true) fail(400, 'Invalid score.');
   await limit(env, `score:${u.id}`, 30, 600);
-  // Compare lexicographically (hints first), and update atomically so two
-  // submissions cannot delete or overwrite the better result.
+  // One shared board per book: clue-system versions are display metadata, not
+  // separate competitions. Keep each player's best score across every version.
   await env.DB.batch([
-    query(env, `DELETE FROM scores WHERE user_id=? AND puzzle_index=? AND hint_version=?
-      AND (hints>? OR (hints=? AND guesses>?))`, u.id, puzzleIndex, hintVersion, hints, hints, guesses),
+    query(env, `DELETE FROM scores WHERE user_id=? AND puzzle_index=?
+      AND (hints>? OR (hints=? AND guesses>?))`, u.id, puzzleIndex, hints, hints, guesses),
     query(env, `INSERT INTO scores(id,user_id,puzzle_index,name,guesses,hints,time_ms,won_at,hint_version)
       SELECT ?,?,?,?,?,?,?,?,?
-      WHERE NOT EXISTS (SELECT 1 FROM scores WHERE user_id=? AND puzzle_index=? AND hint_version=?)`,
-      crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now(), hintVersion, u.id, puzzleIndex, hintVersion),
+      WHERE NOT EXISTS (SELECT 1 FROM scores WHERE user_id=? AND puzzle_index=?)`,
+      crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now(), hintVersion, u.id, puzzleIndex),
   ]);
   return json({ ok: true });
 }
@@ -220,6 +229,16 @@ async function profile(req, env) {
   await query(env, 'UPDATE users SET name=? WHERE id=?', name, u.id).run();
   return json({ uid: u.id, name });
 }
+/* How far the stored round got: 2 = over, 1 = played, 0 = only opened. The same
+   three ranks as `progressRank()` in js/app.js, so the two sides of a merge
+   cannot disagree — a newer row that was merely opened must not erase guesses.
+   Nested CASE, not AND, because json_extract raises on a malformed legacy row
+   and the GET path deliberately tolerates one. */
+const STORED_RANK = `(CASE WHEN json_valid(progress.data) THEN (CASE
+    WHEN json_extract(progress.data,'$.status') IN ('won','lost') THEN 2
+    WHEN COALESCE(json_extract(progress.data,'$.hints'),0)>0
+      OR COALESCE(json_array_length(progress.data,'$.guesses'),0)>0 THEN 1
+    ELSE 0 END) ELSE 0 END)`;
 async function progress(req, env) {
   const u = await user(req, env);
   if (req.method === 'GET') {
@@ -236,8 +255,15 @@ async function progress(req, env) {
     if (!Number.isInteger(index) || index < 0 || index > 10000000 || !value || typeof value !== 'object' || Array.isArray(value)) fail(400, 'Invalid progress.');
     const encoded = JSON.stringify(value);
     if (encoded.length > 4096) fail(413, 'Progress entry too large.');
+    // How far a round got beats when it was saved, whatever the clocks say: a
+    // second device with the same book still open would otherwise push its
+    // unfinished copy over a win. Mirrors `beats()` in js/app.js.
+    const rank = value.status === 'won' || value.status === 'lost' ? 2
+      : Number(value.hints) > 0 || (Array.isArray(value.guesses) && value.guesses.length) ? 1 : 0;
     writes.push(query(env, `INSERT INTO progress VALUES(?,?,?,?) ON CONFLICT(user_id,puzzle_index)
-      DO UPDATE SET data=excluded.data,updated_at=excluded.updated_at WHERE excluded.updated_at>=progress.updated_at`, u.id, index, encoded, Number(value.at) || Date.now()));
+      DO UPDATE SET data=excluded.data,updated_at=excluded.updated_at
+      WHERE ?>${STORED_RANK} OR (?=${STORED_RANK} AND excluded.updated_at>=progress.updated_at)`,
+      u.id, index, encoded, Number(value.at) || Date.now(), rank, rank));
   }
   if (writes.length) await env.DB.batch(writes);
   return json({ ok: true });
@@ -294,11 +320,18 @@ async function billing(req, env, path) {
     const price = await s.prices.retrieve(priceId);
     const expected = plan === 'yearly' ? { amount: 2000, interval: 'year' } : { amount: 300, interval: 'month' };
     if (!price.active || price.currency !== 'usd' || price.unit_amount !== expected.amount || price.recurring?.interval !== expected.interval || price.recurring.interval_count !== 1 || price.livemode !== (env.STRIPE_LIVE === 'true')) fail(503, 'Subscription configuration needs attention.');
-    const checkout = await s.checkout.sessions.create({ mode: 'subscription', customer: u.stripe_customer,
+    const params = { mode: 'subscription', customer: u.stripe_customer,
       client_reference_id: u.id, line_items: [{ price: priceId, quantity: 1 }],
       metadata: { user_id: u.id, plan },
-      subscription_data: { metadata: { user_id: u.id, plan } }, success_url: back, cancel_url: back },
-      { idempotencyKey: `checkout:${u.id}:${plan}:${Math.floor(now() / 1800)}` });
+      subscription_data: { metadata: { user_id: u.id, plan } }, success_url: back, cancel_url: back };
+    const key = `checkout:${u.id}:${plan}:${Math.floor(now() / 1800)}`;
+    let checkout = await s.checkout.sessions.create(params, { idempotencyKey: key });
+    // monthly -> yearly -> monthly inside one bucket replays the key of the
+    // session the yearly request expired. The bucket still stops a double-click
+    // buying twice; only a dead replay asks for a new session.
+    if (checkout.status === 'expired' || checkout.status === 'complete') {
+      checkout = await s.checkout.sessions.create(params, { idempotencyKey: `${key}:${crypto.randomUUID()}` });
+    }
     return json({ url: checkout.url });
   } finally { await query(env, 'DELETE FROM checkout_locks WHERE user_id=?', u.id).run(); }
 }

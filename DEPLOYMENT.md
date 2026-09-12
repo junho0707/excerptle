@@ -90,9 +90,22 @@ It also holds back a puzzle response to check that loading cannot erase a guess.
 The logic sweep adds stale-response navigation, failed puzzle recovery, shared
 link validation, leaderboard routing, remote-progress restoration and sign-out
 isolation. `npm test` also checks progress retries, upload batching, battle
-message bounds, timestamp ordering, and archived-daily streak handling.
+message bounds, timestamp ordering, and derived daily streaks. `npm run
+test:data` checks the built catalogue and fails while fewer than 30 days of
+unused dailies remain — it runs in CI and inside `predeploy:site`, so the pool
+running dry is a build failure with runway left, not a morning of repeats.
 `npm run deploy:api` gates API uploads on the backend suite, including CORS,
 score ordering/concurrency, sessions, password flows, and billing webhooks.
+
+**Migrations go first.** Apply pending D1 migrations *before* `npm run
+deploy:api`, never after: the `scores` insert relies on the unique index from
+`0006_shared_leaderboard.sql`, so a Worker deployed ahead of it can write a
+second row for the same account and book under concurrent submissions.
+
+```bash
+cd backend
+npx wrangler d1 migrations apply DB --remote --config wrangler.toml
+```
 Account responses are mocked, so this checks browser behavior, not delivery
 of email codes or Google OAuth. No production accounts or scores are written.
 

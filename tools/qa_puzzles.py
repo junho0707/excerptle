@@ -7,10 +7,16 @@ preface, a dedication, a table-of-contents line, or a stanza. This lists the
 ones worth a human eye, worst first, so the reserve pool can replace them.
 """
 
+import datetime as dt
 import json
 import re
 import sys
 from pathlib import Path
+
+# The daily pool is finite: past the last one, `slugForIndex` wraps and serves
+# book #1 again under a new daily number. That must be a decision, not a
+# surprise, so the build fails while there is still time to curate more.
+RUNWAY_DAYS = 30
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "puzzles"
@@ -60,7 +66,14 @@ def suspects(p: dict) -> list[str]:
     return out
 
 
-def main() -> None:
+def last_new_daily(index: dict) -> dt.date:
+    """The date of the final daily before the pool wraps and books repeat."""
+    order, presets = index["order"], min(index.get("presetCount") or len(index["order"]), len(index["order"]))
+    pool = max(len(order) - presets, 0)
+    return dt.date.fromisoformat(index["startDate"]) + dt.timedelta(days=pool - 1)
+
+
+def main() -> int:
     index = json.loads((OUT / "index.json").read_text(encoding="utf-8"))
     rows = []
     for i, slug in enumerate(index["order"]):
@@ -83,7 +96,15 @@ def main() -> None:
     print(f"\n{len(rows)} of {len(index['order'])} flagged", flush=True)
     if index.get("failed"):
         print(f"{len(index['failed'])} failed to build")
+    last = last_new_daily(index)
+    left = (last - dt.date.today()).days
+    print(f"daily pool: {left} days left (the last new daily falls on {last.isoformat()})")
+    if left < RUNWAY_DAYS:
+        print(f"FAIL: fewer than {RUNWAY_DAYS} days of unused dailies remain — "
+              "add books to the pool, reshuffle each cycle, or stop the daily deliberately")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

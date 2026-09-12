@@ -24,6 +24,7 @@ OUT = ROOT / "puzzles"
 READING_OUT = OUT / "reading"
 CACHE = HERE / ".gutenberg-cache"
 HINT_METADATA_PATH = HERE / "hint_metadata.json"
+PUBLICATION_DATES = json.loads((HERE / "publication_dates.json").read_text(encoding="utf-8"))
 # The two lists final_lists.py cuts. The bank is the pick-any catalogue; the
 # dailies are held back so a daily is never a book you could already browse.
 BANK_PATH = HERE / "final_bank.json"
@@ -65,7 +66,7 @@ def load_books() -> list[dict]:
                 "gutenberg": gid,
                 "title": b["title"],
                 "author": b.get("author") or "",
-                "year": int(year) if year.isdigit() else 0,
+                "year": PUBLICATION_DATES.get(f"g{gid}", {}).get("year") or (int(year) if year.isdigit() else 0),
                 "genre": b.get("genre") or "",
                 "form": b.get("form") or "",
                 "aliases": LEGACY_ALIASES.get(b.get("old_slug") or "", []),
@@ -583,8 +584,8 @@ def split_after_anchor(from_here: str) -> list[str]:
     return chapters
 
 
-EXCERPT_TARGET = 100
-EXCERPT_CEILING = 260
+EXCERPT_TARGET = 350
+EXCERPT_CEILING = 500
 # Thresholds for "a human should look at this one", not for rejecting a book.
 # Every flagged row still ships; the report is what says which ones were read.
 EXCERPT_MIN = 60
@@ -593,7 +594,7 @@ READING_MAX = 12000
 
 
 def opening_excerpt(paras: list[str]) -> str:
-    """Complete opening paragraphs, aimed at 100--180 words.
+    """Complete opening paragraphs, aimed at 350--500 words.
 
     Paragraph boundaries win over the word target: a paragraph is never cut
     mid-sentence to hit a quota. So a book that opens with one 600-word block
@@ -601,7 +602,7 @@ def opening_excerpt(paras: list[str]) -> str:
     """
     chosen: list[str] = []
     words = 0
-    for para in paras[:4]:
+    for para in paras:
         n = len(para.split())
         if chosen and (words >= EXCERPT_TARGET or words + n > EXCERPT_CEILING):
             break
@@ -823,6 +824,8 @@ def build_ladder(paras: list[str], sent: str) -> tuple[list[str], list[int]]:
 
 
 def build_one(book: dict) -> dict:
+    if not book.get("year"):
+        raise RuntimeError(f"missing reviewed publication date: {book['slug']}")
     raw = fetch(int(book["gutenberg"]))
     body = strip_pg(raw)
     start = locate(body, book)
@@ -900,6 +903,42 @@ def build_one(book: dict) -> dict:
 
 
 def main() -> None:
+    if "--refresh-years" in sys.argv:
+        # Apply reviewed metadata without regenerating text, reading sections,
+        # or the play order. The same overrides are used by normal builds.
+        for book in BOOKS:
+            dest = OUT / f"{book['slug']}.json"
+            puzzle = json.loads(dest.read_text(encoding="utf-8"))
+            if not book["year"]:
+                raise RuntimeError(f"Missing publication date: {book['slug']}")
+            if puzzle.get("year") != book["year"]:
+                puzzle["year"] = book["year"]
+                dest.write_text(json.dumps(puzzle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        print(f"Publication dates checked for {len(BOOKS)} puzzles")
+        return
+    if "--refresh-excerpts" in sys.argv:
+        # Puzzle source texts are normally read from the Gutenberg cache. This
+        # path updates an already-built catalogue from its matching opening
+        # reader data, so a copy-only hint-length change needs no re-download.
+        refreshed = set()
+        for dest in OUT.glob("*.json"):
+            if dest.name == "index.json":
+                continue
+            reading_path = READING_OUT / f"{dest.stem}.v2.json"
+            try:
+                puzzle = json.loads(dest.read_text(encoding="utf-8"))
+                reading = json.loads(reading_path.read_text(encoding="utf-8"))
+                paras = reading.get("paragraphs")
+                if not isinstance(paras, list) or not paras:
+                    continue
+                puzzle["openingExcerpt"] = opening_excerpt(paras)
+                dest.write_text(json.dumps(puzzle, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+                refreshed.add(dest.stem)
+            except (OSError, json.JSONDecodeError):
+                continue
+        write_report(refreshed)
+        print(f"refreshed opening excerpts for {len(refreshed)} puzzles", flush=True)
+        return
     force = "--force" in sys.argv
     # --cached-only builds what .gutenberg-cache already holds and touches the
     # network for nothing. Use it while prefetch_texts.py is running: two

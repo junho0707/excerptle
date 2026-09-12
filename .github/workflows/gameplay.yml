@@ -14,6 +14,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - run: npm test --prefix backend
+      # Fails while the daily pool still has runway to fix, rather than on the
+      # morning the schedule wraps and starts repeating books.
+      - run: npm run test:data
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: failure()

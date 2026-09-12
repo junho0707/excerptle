@@ -327,16 +327,6 @@ a { color: var(--wine); }
 }
 .ad .adsbygoogle { display: block; min-height: 5.5rem; }
 .ad-label { display: block; }
-.ad .slot {
-  margin-top: 0.45rem;
-  height: 5.5rem;
-  background: color-mix(in srgb, var(--paper-2) 70%, var(--rule));
-  display: grid;
-  place-items: center;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-}
-
 .screen h1 {
   font-family: var(--serif);
   font-size: 1.7rem;
@@ -661,6 +651,17 @@ footer a { color: inherit; }
   margin: 0 0 0.55rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
+}
+/* Battle results live only in this browser, and the heading says so without
+   competing with the section name. */
+.s-block h2 .s-note {
+  font-family: var(--sans);
+  font-size: var(--cap);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-left: 0.4rem;
 }
 .s-block .stat-grid { margin: 0.7rem 0 0.6rem; }
 .s-block .stat-grid b { font-size: var(--tile); line-height: 1.1; }
@@ -1045,18 +1046,12 @@ footer a { color: inherit; }
 .hint-facts > div { padding: 0.5rem 0.6rem; background: var(--paper-2); border-left: 3px solid var(--gold); }
 .hint-facts dt { font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); }
 .hint-facts dd { margin: 0.16rem 0 0; font-family: var(--serif); }
-.pg-read p { margin: 0 0 0.7rem; color: var(--ink-soft); }
-.pg-read-btn { width: 100%; font-size: 1rem; padding: 0.72rem 0.9rem; }
-.chapter-reader { border-top: 1px solid var(--rule); margin-top: 1.25rem; padding-top: 1.25rem; }
-.chapter-reader-head { display: flex; gap: 0.8rem; align-items: start; justify-content: space-between; margin-bottom: 1rem; }
-.chapter-reader-head h2 { margin: 0; }
-.chapter-reader .by { margin: 0.2rem 0 0; color: var(--ink-soft); }
-.chapter-prose { max-width: 72ch; font-family: var(--serif); font-size: 1.1rem; line-height: 1.72; }
-.chapter-prose p { margin: 0 0 1.1rem; }
+.excerpt.complete-reading { white-space: normal; }
+.excerpt.complete-reading p { margin: 0 0 1.1rem; }
+.excerpt.complete-reading p:last-child { margin-bottom: 0; }
 @media (max-width: 420px) {
   .more-q { font-size: 1rem; }
   .daily-card.done + #more .story-nav .btn, #more + .daily-card .story-nav .btn { font-size: 0.9rem; }
-  .chapter-reader-head { flex-wrap: wrap; }
 }
 
 /* Top of the board, shown with the post-game panel */
@@ -1117,8 +1112,8 @@ footer a { color: inherit; }
 .how-notes li:last-child { margin-bottom: 0; }
 
 /* Hint 5: author reveal */
-/* Outside .excerpt-wrap on purpose: that box scrolls, and the author was
-   only reachable at the very bottom of a long chapter. */
+/* Kept outside the reading surface so it stays visible once that surface
+   expands into the complete opening chapter. */
 .author-reveal {
   margin-top: 0.7rem;
   padding: 0.5rem 0.7rem;

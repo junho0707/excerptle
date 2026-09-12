@@ -114,10 +114,63 @@ test('a score the server took is stamped, so the next load does not resend it', 
   expect(posts[0]).toMatchObject({ puzzleIndex: 9, guesses: 1, hints: 0, win: true });
   // Stamped, which is what keeps the sign-in backfill from replaying the same
   // twenty rows forever while a longer backlog never reaches a board.
+  // Signed in, so the board lives under the account's own key — a guest's
+  // rounds and this account's must never share a bucket on a shared browser.
   await expect.poll(() => page.evaluate(() =>
-    (JSON.parse(localStorage.getItem('bookle.lb.v4'))['9'] || []).every(r => r.sent === 1))).toBe(true);
+    ((JSON.parse(localStorage.getItem('bookle.lb.v4.account:sweep') || 'null') || {})['9'] || [])
+      .filter(r => r.sent === 1).length)).toBe(1);
   await page.reload();
   await expect(page.locator('#result .verdict')).toContainText('Correct');
   await page.waitForTimeout(500);
   expect(posts).toHaveLength(1);
+});
+
+test('a better result from another device does not list the player twice', async ({ page }) => {
+  const API = 'https://excerptle-api.winter-glade-cbab.workers.dev';
+  await page.route(`${API}/**`, route => {
+    const path = new URL(route.request().url()).pathname;
+    // What the server holds: this account's best row, earned elsewhere.
+    const body = path === '/scores'
+      ? '{"scores":[{"name":"Sweep","playerId":"dupe","hints":0,"guesses":2,"at":1757000000000}]}'
+      : path === '/me/progress' ? '{"progress":{}}' : '{}';
+    return route.fulfill({ status: 200, contentType: 'application/json', body });
+  });
+  await page.addInitScript(() => {
+    localStorage.setItem('bookle.auth.session', JSON.stringify({
+      uid: 'dupe', email: 'dupe@example.test', name: 'Sweep', token: 'tok', expiresAt: 4102444800,
+    }));
+    localStorage.setItem('bookle.playerId', 'local-player');
+    // The same person's earlier, worse solve — already uploaded from here.
+    localStorage.setItem('bookle.lb.v4.account:dupe', JSON.stringify({
+      9: [{ id: 'local-player', playerId: 'dupe', name: 'Sweep', hints: 3, guesses: 4, win: true, sent: 1, at: 1756000000000 }],
+    }));
+  });
+  await page.goto('/#/ranks?i=9');
+  await expect(page.locator('#lb-body tbody tr')).toHaveCount(1);
+  await expect(page.locator('#lb-body tbody tr.you td').nth(2)).toHaveText('0');
+});
+
+test('an account already signed in keeps its unscoped board and streak', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('bookle.auth.session', JSON.stringify({
+      uid: 'legacy', email: 'legacy@example.test', name: 'Legacy', token: 'tok', expiresAt: 4102444800,
+    }));
+    // Written by the build that shipped before play data was namespaced.
+    localStorage.setItem('bookle.lb.v4', JSON.stringify({
+      9: [{ id: 'legacy-player', name: 'Legacy', hints: 1, guesses: 2, win: true, at: 1756000000000 }],
+    }));
+    // The first two dailies, 2026-09-09 and 2026-09-10 — a live streak of two.
+    localStorage.setItem('bookle.progress.v4', JSON.stringify({
+      600: { puzzleId: 'x', mode: 'daily', status: 'won', guesses: ['a'], hints: 1, at: 1756000000000 },
+      601: { puzzleId: 'y', mode: 'daily', status: 'won', guesses: ['b'], hints: 0, at: 1757000000000 },
+    }));
+  });
+  await page.goto('/#/stats');
+  const daily = page.locator('.s-block', { has: page.locator('h2:text-is("Daily")') });
+  await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
+  await expect(daily.locator('.stat-grid div').nth(2)).toContainText('2');
+  expect(await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('bookle.lb.v4.account:legacy'))['9'][0].hints)).toBe(1);
+  expect(await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('bookle.progress.v4.account:legacy'))['601'].status)).toBe('won');
 });

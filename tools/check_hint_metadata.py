@@ -18,6 +18,7 @@ def main() -> int:
     books = json.loads((TOOLS / "final_bank.json").read_text()) + json.loads((TOOLS / "final_dailies.json").read_text())
     path = TOOLS / "hint_metadata.json"
     facts = json.loads(path.read_text()) if path.exists() else {}
+    dates = json.loads((TOOLS / "publication_dates.json").read_text())
     missing = []
     for book in books:
         key = f"g{book['gutenberg']}"
@@ -26,6 +27,8 @@ def main() -> int:
         setting = str(entry.get("setting") or "").strip()
         if not genre or not setting:
             missing.append((key, book["title"], "genre" if not genre else "setting"))
+        if not (dates.get(key, {}).get("year") or book.get("year")):
+            missing.append((key, book["title"], "publication date"))
     for key, title, field in missing:
         print(f"{key}\t{field}\t{title}")
     print(f"{len(books) - len(missing)}/{len(books)} ready; {len(missing)} facts still need review")

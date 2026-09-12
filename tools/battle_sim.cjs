@@ -10,13 +10,19 @@
  */
 const fs=require('fs'),path=require('path');
 const src=fs.readFileSync(path.join(__dirname,'..','js','app.js'),'utf8');
-const a=src.indexOf('  const BATTLE_TRIES');
-const b=src.indexOf('  function route() {');
-const region=src.slice(a,b);
-if(a<0||b<0) throw new Error('slice failed');
+// Three real slices, no re-implementation: the settle helpers, recordFinish
+// itself, and the battle block. recordFinish's solo half is unreachable here
+// because state.mode is always 'battle'.
+const cut=(from,to)=>{const i=src.indexOf(from),j=src.indexOf(to);
+  if(i<0||j<0||j<i) throw new Error('slice failed: '+from);return src.slice(i,j)};
+const region=cut('  /* Who named the book first','  function recordFinish() {')
+  +cut('  function recordFinish() {','  function onHint() {')
+  +cut('  const BATTLE_TRIES','  function route() {')
+  +'\nglobalThis.SETTLE = BATTLE_SETTLE_MS;';
 
 // --- stubs ---
-const state={battle:null,battlePending:null,status:'idle'};
+const state={battle:null,battlePending:null,status:'idle',mode:'battle',hints:0,guesses:[],winAt:null,roundStart:Date.now()};
+const stats={battle:{played:0,wins:0,losses:0,streak:0,maxStreak:0,hints:0,guesses:0,lastAt:null}};
 const log=[];
 const repaintLobby=()=>log.push('status: '+state.battle?.status+(state.battle?.failed?' [FAILED]':''));
 const renderBattleLobby=(c,st)=>log.push('render: '+st);
@@ -30,7 +36,13 @@ const loadIndex=async()=>{};
 const loadPeer=async()=>Peer;
 const battleSend=()=>{};
 const startPlay=async o=>log.push('startPlay '+JSON.stringify(o));
-const renderExcerpt=()=>{},renderGuesses=()=>{},renderResult=()=>{},recordFinish=()=>{},bump=()=>{};
+const renderExcerpt=()=>{},renderGuesses=()=>{},renderResult=()=>{},bump=()=>{};
+const stopRoundTimers=()=>{};
+const saveProgress=()=>{};
+const loadStats=()=>stats;
+const savePlayJSON=()=>{};
+const K={stats:'s'};
+const MAX_HINTS=5;
 const $=()=>null;
 
 class Emitter{
@@ -138,5 +150,63 @@ const wait=ms=>new Promise(r=>setTimeout(r,ms));
   const started=Date.now();
   while(!g2.failed && Date.now()-started<120000) await wait(500);
   console.log('T2 gave up after', ((Date.now()-started)/1000).toFixed(1)+'s, tries='+g2.tries, '|', g2.status, '| failed:', g2.failed);
+
+  /* T5: both players name the book. Whoever got there first from their own
+     starting gun keeps it, and a dead heat goes to the host — so the two
+     browsers can never each pick themselves. */
+  const browser = (role, winAt) => {
+    state.battle = { role, conn: { open: true }, committed: false };
+    state.mode = 'battle'; state.status = 'won'; state.winAt = winAt; state.beatenBy = null;
+    state.guesses = ['x']; state.hints = 0;
+    stats.battle = { played: 0, wins: 0, losses: 0, streak: 3, maxStreak: 3, hints: 0, guesses: 0, lastAt: null };
+    recordFinish();                       // what onGuess does on a local win
+    return () => state.status + '/' + (state.beatenBy || '-');
+  };
+  const race = async (hostMs, guestMs) => {
+    const h = browser('host', hostMs);
+    await onBattleData({ type: 'win', name: 'Guest', at: guestMs });
+    const host = h();
+    const g = browser('guest', guestMs);
+    await onBattleData({ type: 'win', name: 'Host', at: hostMs });
+    return `host ${host}  guest ${g()}`;
+  };
+  console.log('T5 host first  :', await race(10000, 10100));
+  console.log('T5 guest first :', await race(10100, 10000));
+  console.log('T5 dead heat   :', await race(10000, 10000));
+
+  // T6: the loser's tally records one loss, never a win it briefly held.
+  browser('guest', 10100);
+  await onBattleData({ type: 'win', name: 'Host', at: 10000 });
+  await wait(SETTLE + 200);     // the provisional win must not land
+  console.log('T6 loser tally :', JSON.stringify({ played: stats.battle.played, wins: stats.battle.wins, losses: stats.battle.losses, streak: stats.battle.streak }));
+
+  // T7: an uncontested win settles after the grace period, once.
+  browser('host', 10000);
+  await wait(SETTLE + 200);
+  await onBattleData({ type: 'win', name: 'Guest', at: 10500 });   // late, and slower
+  console.log('T7 winner tally:', JSON.stringify({ played: stats.battle.played, wins: stats.battle.wins, losses: stats.battle.losses, streak: stats.battle.streak }), '| status:', state.status);
+
+  // T8: an opponent out of guesses is reported, and does not end our round.
+  state.battle = { role: 'host', conn: { open: true }, committed: false };
+  state.status = 'playing'; state.winAt = null; log.length = 0;
+  await onBattleData({ type: 'lose', name: 'Guest' });
+  console.log('T8 out of guesses:', state.status, '|', log.filter(l => l.startsWith('msg:')).join(''), '| peerOut:', state.battle.peerOut);
+
+  // T9: a duplicate "start" cannot restart a guest mid-round.
+  state.battle = { role: 'guest', playIndex: 7, started: true, conn: { open: true } };
+  state.mode = 'battle'; state.puzzle = { id: 'g1' }; log.length = 0;
+  await onBattleData({ type: 'start', playIndex: 7 });
+  console.log('T9 duplicate start:', log.filter(l => l.startsWith('startPlay')).length === 0 ? 'ignored' : 'RESTARTED');
+
+  // T10: the host's own Start is guarded by state, not by a disabled button —
+  // a second tap must not restart the round it just began.
+  state.battle = { role: 'host', playIndex: 7, conn: { open: true } };
+  state.mode = 'battle'; state.puzzle = null; log.length = 0;
+  const first = await startBattleAsHost();
+  const second = await startBattleAsHost();
+  console.log('T10 host start :', `first ${first}, second ${second}, startPlay x${log.filter(l => l.startsWith('startPlay')).length}`);
+  // And no round begins at all before a guest is actually connected.
+  state.battle = { role: 'host', playIndex: 7, conn: null }; log.length = 0;
+  console.log('T10 no guest   :', await startBattleAsHost(), '| startPlay x' + log.filter(l => l.startsWith('startPlay')).length);
   process.exit(0);
 })();

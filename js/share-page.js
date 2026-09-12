@@ -75,9 +75,10 @@
   } catch {
     return;
   }
-  // Same expiry rule as auth.js. A stale session paints "Sign in", which is
-  // what the game shows once it has checked.
-  if (!s?.email || (s.expiresAt && s.expiresAt * 1000 <= Date.now())) return;
+  // Same expiry rule as auth.js, which treats a session with no expiry as
+  // expired. Disagreeing here paints a name in the header while the game shows
+  // "Sign in". These pages don't load config.js, so the API is assumed.
+  if (!s?.email || !s.token || !s.expiresAt || s.expiresAt * 1000 <= Date.now()) return;
   tab.textContent = s.email.split("@")[0] || "Account";
   tab.href = "/#/account";
 })();

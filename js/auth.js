@@ -18,6 +18,11 @@ window.BookleAuth = (() => {
     else localStorage.setItem(SESSION, JSON.stringify(s));
     document.dispatchEvent(new CustomEvent("bookle-auth", { detail: s }));
   }
+  // localStorage is shared by tabs, but CustomEvents are not. Mirror an
+  // account change so a stale tab cannot continue saving under the prior user.
+  window.addEventListener?.("storage", (e) => {
+    if (e.key === SESSION) document.dispatchEvent(new CustomEvent("bookle-auth", { detail: session() }));
+  });
   function users() {
     try {
       return JSON.parse(localStorage.getItem(USERS) || "{}");

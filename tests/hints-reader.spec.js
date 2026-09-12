@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('version-2 hints stay visible and a finished round opens its reading section', async ({ page }) => {
+test('version-2 hints stay visible and a finished round expands the excerpt into its reading section', async ({ page }) => {
   const chapter = { puzzleId: 'g1342', label: 'Chapter 1', paragraphs: ['First chapter paragraph.', 'Second chapter paragraph.'] };
   await page.route('**/puzzles/g1342.json', async route => {
     const original = await route.fetch();
@@ -22,8 +22,11 @@ test('version-2 hints stay visible and a finished round opens its reading sectio
   await expect(page.locator('#hint-facts')).toContainText('Novel of manners');
   await page.locator('#guess-input').fill('Pride and Prejudice');
   await page.locator('#form button[type="submit"]').click();
-  await page.locator('[data-act="open-reader"]').click();
-  await expect(page.locator('#chapter-reader')).toContainText('First chapter paragraph.');
-  await page.locator('[data-act="close-reader"]').first().click();
-  await expect(page.locator('#chapter-reader')).toBeHidden();
+  await expect(page.locator('#excerpt')).toContainText('First chapter paragraph.');
+  await expect(page.locator('#excerpt')).toContainText('Second chapter paragraph.');
+  await expect(page.locator('#hint-facts')).toContainText('Novel of manners');
+  await expect(page.locator('#hint-facts')).toContainText('England, early 19th century');
+  await expect(page.locator('#hint-facts')).toContainText('Jane Austen');
+  await expect(page.locator('[data-act="open-reader"]')).toHaveCount(0);
+  await expect(page.locator('#chapter-reader')).toHaveCount(0);
 });

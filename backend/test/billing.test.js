@@ -247,6 +247,89 @@ test('scores keep the lexicographically best result, including concurrent writes
   rows = (await (await request('/scores?puzzleIndex=499')).json()).scores;
   assert.deepEqual(rows.map(({ hints, guesses }) => [hints, guesses]), [[0, 3]]);
 });
+test('one public leaderboard spans clue-system versions', async () => {
+  const post = (hintVersion, hints, guesses) => request('/scores', { puzzleIndex: 498, hintVersion, hints, guesses, win: true }, true);
+  assert.equal((await post(1, 2, 2)).status, 200);
+  assert.equal((await post(2, 1, 4)).status, 200);
+  // The old query parameter remains harmless for cached clients, but it must
+  // not hide earlier players from the shared per-book board.
+  const rows = (await (await request('/scores?puzzleIndex=498&hintVersion=2')).json()).scores;
+  assert.deepEqual(rows.map(({ hints, guesses }) => [hints, guesses]), [[1, 4]]);
+  assert.equal((await post(1, 5, 1)).status, 200);
+  const afterWorseReplay = (await (await request('/scores?puzzleIndex=498')).json()).scores;
+  assert.deepEqual(afterWorseReplay.map(({ hints, guesses }) => [hints, guesses]), [[1, 4]]);
+});
+test('a finished round is never overwritten by one still in progress', async () => {
+  const put = data => worker.fetch(new Request('https://api.example/me/progress', { method: 'PUT', headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ progress: data }) }), env);
+  const stored = async () => (await (await worker.fetch(new Request('https://api.example/me/progress', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}` } }), env)).json()).progress[1002];
+
+  assert.equal((await put({ 1002: { status: 'won', guesses: ['Dracula'], hints: 0, at: 5000 } })).status, 200);
+  // The other device still has the book open, and its clock is later.
+  assert.equal((await put({ 1002: { status: 'playing', guesses: ['Carmilla'], hints: 2, at: 9000 } })).status, 200);
+  assert.equal((await stored()).status, 'won');
+  // A finished round may still be replaced by a finished round.
+  assert.equal((await put({ 1002: { status: 'lost', guesses: ['a', 'b', 'c', 'd', 'e', 'f'], hints: 5, at: 9500 } })).status, 200);
+  assert.equal((await stored()).status, 'lost');
+  // And an open round is still saved when nothing has finished.
+  assert.equal((await put({ 1003: { status: 'playing', guesses: [], hints: 1, at: 1 } })).status, 200);
+  assert.equal((await put({ 1003: { status: 'playing', guesses: ['Emma'], hints: 1, at: 2 } })).status, 200);
+  const open = await (await worker.fetch(new Request('https://api.example/me/progress', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}` } }), env)).json();
+  assert.deepEqual(open.progress[1003].guesses, ['Emma']);
+  // Merely opening the book on another device is the lowest rank of all: a
+  // newer empty round must not erase guesses either.
+  assert.equal((await put({ 1003: { status: 'playing', guesses: [], hints: 0, at: 9999 } })).status, 200);
+  const kept = await (await worker.fetch(new Request('https://api.example/me/progress', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}` } }), env)).json();
+  assert.deepEqual(kept.progress[1003].guesses, ['Emma']);
+  // A played round still replaces an older played round.
+  assert.equal((await put({ 1003: { status: 'playing', guesses: ['Emma', 'Persuasion'], hints: 1, at: 10000 } })).status, 200);
+  const later = await (await worker.fetch(new Request('https://api.example/me/progress', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${token}` } }), env)).json();
+  assert.deepEqual(later.progress[1003].guesses, ['Emma', 'Persuasion']);
+});
+test('changing a password ends every other session but the caller\'s', async () => {
+  await env.DB.prepare('DELETE FROM rate_limits').run();
+  const other = 'b'.repeat(64);
+  await env.DB.prepare('INSERT INTO sessions VALUES(?,?,?)').bind(digest(other), 'user1', now()+3600).run();
+  const asOther = () => worker.fetch(new Request('https://api.example/billing/status', { headers: { Origin: 'https://excerptle.io', Authorization: `Bearer ${other}` } }), env);
+  assert.equal((await asOther()).status, 200);
+
+  const salt = 'd'.repeat(32);
+  const next = derive('a third good password', salt);
+  const current = derive('a secure password', 'c'.repeat(32));
+  assert.equal((await request('/me/password', { key: next, salt, iterations: ITERATIONS, currentKey: current }, true)).status, 200);
+  // The stolen token is gone; the one that made the change still works.
+  assert.equal((await asOther()).status, 401);
+  assert.equal((await request('/billing/status', undefined, true)).status, 200);
+
+  // Removing the password revokes the others too.
+  await env.DB.prepare('INSERT INTO sessions VALUES(?,?,?)').bind(digest(other), 'user1', now()+3600).run();
+  assert.equal((await request('/me/password', { remove: true, currentKey: next }, true)).status, 200);
+  assert.equal((await asOther()).status, 401);
+  assert.equal((await request('/billing/status', undefined, true)).status, 200);
+});
+test('a replayed checkout key never hands back a dead Stripe session', async () => {
+  const keys = [];
+  globalThis.fetch = async (input, init) => {
+    const url = String(input instanceof Request ? input.url : input);
+    if (url.includes('/subscriptions')) return Response.json({ data: [], has_more: false });
+    if (url.includes('/prices/')) return Response.json({ id: 'price_pro', active: true, currency: 'usd', unit_amount: 300, livemode: false, recurring: { interval: 'month', interval_count: 1 } });
+    if (url.includes('/checkout/sessions') && init?.method === 'POST') {
+      keys.push(new Headers(init.headers).get('Idempotency-Key'));
+      // What Stripe replays after monthly -> yearly -> monthly in one bucket:
+      // the first key's session, already expired by the yearly request.
+      return keys.length === 1
+        ? Response.json({ status: 'expired', url: 'https://checkout.stripe.com/dead' })
+        : Response.json({ status: 'open', url: 'https://checkout.stripe.com/fresh' });
+    }
+    if (url.includes('/checkout/sessions')) return Response.json({ data: [], has_more: false });
+    throw new Error(`Unexpected Stripe call: ${url}`);
+  };
+  try {
+    const response = await request('/billing/checkout', { plan: 'monthly' }, true);
+    assert.equal((await response.json()).url, 'https://checkout.stripe.com/fresh');
+    assert.equal(keys.length, 2);
+    assert.notEqual(keys[0], keys[1]);
+  } finally { globalThis.fetch = originalFetch; }
+});
 test('logout revokes the server token', async () => {
   assert.equal((await request('/auth/logout',{},true)).status,200);
   assert.equal((await request('/billing/status',undefined,true)).status,401);

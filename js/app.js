@@ -31,15 +31,16 @@
     beatenBy: null, // opponent's name, when a battle ended on their guess
     settings: loadSettings(),
     battle: null,
-    reader: { open: false, loading: false, data: null, error: "" },
+    reader: { loading: false, data: null, error: "" },
 
   };
+  let activeAccountUid = window.BookleAuth?.session?.()?.uid || null;
 
   /* The daily rolls over at midnight Pacific for everyone, not in whatever
      zone the browser happens to sit in — otherwise "today's puzzle" means a
      different book either side of a time zone, and the leaderboards for one
      index fill up over two calendar days. en-CA formats as YYYY-MM-DD, which
-     is what daysBetween() and the stored streak dates expect. */
+     is what daysBetween() and the derived daily dates expect. */
   const DAY_ZONE = "America/Los_Angeles";
   const dayFormatter = new Intl.DateTimeFormat("en-CA", {
     timeZone: DAY_ZONE, year: "numeric", month: "2-digit", day: "2-digit",
@@ -192,11 +193,36 @@
       return fallback;
     }
   }
+  // Gameplay data is scoped to the signed-in account (or to this browser's
+  // guest identity). That prevents one person's saved rounds appearing when a
+  // different person signs in on a shared computer. Guest writes also retain
+  // the former key as a backwards-compatible local copy.
+  function playOwner() {
+    const uid = window.BookleAuth?.session?.()?.uid;
+    return uid ? `account:${uid}` : `guest:${playerId()}`;
+  }
+  function playKey(key, owner = playOwner()) {
+    return `${key}.${owner}`;
+  }
+  function loadPlayJSON(key, fallback, owner = playOwner()) {
+    const scoped = playKey(key, owner);
+    if (localStorage.getItem(scoped) !== null) return loadJSON(scoped, fallback);
+    // Existing guest data predates scoped storage. Read it once until it is
+    // naturally saved or imported into an account.
+    return owner.startsWith("guest:") ? loadJSON(key, fallback) : fallback;
+  }
+  function savePlayJSON(key, value, owner = playOwner()) {
+    const text = JSON.stringify(value);
+    localStorage.setItem(playKey(key, owner), text);
+    if (owner.startsWith("guest:")) localStorage.setItem(key, text);
+  }
   function progressMap() {
-    return loadJSON(K.progress, {});
+    return loadPlayJSON(K.progress, {});
   }
   function saveProgress({ remote = true } = {}) {
-    if (!state.puzzle || state.loading) return;
+    // Battles are deliberately casual: they have their own local win/loss
+    // tally and never overwrite a solo book record or enter its leaderboard.
+    if (!state.puzzle || state.loading || state.mode === "battle") return;
     const all = progressMap();
     const key = String(state.playIndex);
     const row = {
@@ -214,7 +240,7 @@
       at: Date.now(),
     };
     all[key] = row;
-    localStorage.setItem(K.progress, JSON.stringify(all));
+    savePlayJSON(K.progress, all);
     // Merely opening a book must not overwrite a round saved on another device.
     if (remote && (state.status !== "playing" || state.guesses.length || state.hints)) syncProgressEntry({ [key]: row });
   }
@@ -224,10 +250,23 @@
   // a round on one device and resume it on another.
   let progressSyncing = null;
   let pendingProgress = {};
+  /* Merging two copies of the same round: how far it got beats when it was
+     saved. 2 = the round is over, 1 = it was played, 0 = it was only opened.
+     A timestamp alone would let a laptop's stale, still-open round overwrite
+     the finish that happened on the phone. */
+  function progressRank(row) {
+    if (row?.status === "won" || row?.status === "lost") return 2;
+    return row?.hints || row?.guesses?.length ? 1 : 0;
+  }
+  function beats(row, current) {
+    const a = progressRank(row);
+    const b = progressRank(current);
+    return a === b ? Number(row?.at || 0) >= Number(current?.at || 0) : a > b;
+  }
   function progressConnection() {
     const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
     const auth = window.BookleAuth?.session?.();
-    return api && auth?.token ? { api, token: auth.token, headers: { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" } } : null;
+    return api && auth?.token ? { api, token: auth.token, uid: auth.uid, headers: { Authorization: `Bearer ${auth.token}`, "Content-Type": "application/json" } } : null;
   }
   const ownsProgress = connection => connection?.token === window.BookleAuth?.session?.()?.token;
   function syncProgressEntry(entries) {
@@ -240,8 +279,9 @@
     progressSyncing = (async () => {
       try {
         while (ownsProgress(connection) && Object.keys(pendingProgress).length) {
-          // Stay below the API's 16 KB request limit, even with long guesses.
-          const batch = Object.fromEntries(Object.entries(pendingProgress).slice(0, 2));
+          // Stay below the API's 16 KB request limit, even with long guesses:
+          // the server rejects any single entry over 4096 bytes.
+          const batch = Object.fromEntries(Object.entries(pendingProgress).slice(0, 3));
           for (const key of Object.keys(batch)) delete pendingProgress[key];
           try {
             const res = await fetch(`${connection.api}/me/progress`, { method: "PUT", headers: connection.headers, body: JSON.stringify({ progress: batch }), signal: AbortSignal.timeout(5000) });
@@ -269,12 +309,17 @@
         if (!ownsProgress(connection)) return;
         const merged = { ...remote };
         const local = progressMap();
+        // Only what the server does not already hold goes back up: queueing the
+        // whole merged map turned every sign-in into a hundred PUTs.
+        const changed = {};
         for (const [index, row] of Object.entries(local)) {
-          const empty = row?.status === "playing" && !row.hints && !row.guesses?.length;
-          if (!merged[index] || (!empty && Number(row?.at || 0) >= Number(merged[index]?.at || 0))) merged[index] = row;
+          if (!merged[index] || beats(row, merged[index])) {
+            merged[index] = row;
+            changed[index] = row;
+          }
         }
-        localStorage.setItem(K.progress, JSON.stringify(merged));
-        pendingProgress = { ...pendingProgress, ...merged };
+        savePlayJSON(K.progress, merged);
+        if (Object.keys(changed).length) pendingProgress = { ...pendingProgress, ...changed };
         const active = String(state.playIndex);
         if (merged[active] && merged[active] !== local[active] && state.status === "playing"
           && !state.loading && state.mode !== "battle" && !$("#game").classList.contains("hidden")) {
@@ -299,7 +344,7 @@
   const BACKFILL_MAX = 20; // /scores allows 30 writes per 10 minutes.
   async function backfillScores(connection) {
     if (!connection) return;
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     const me = playerId();
     let sent = 0;
     for (const [index, list] of Object.entries(all)) {
@@ -319,40 +364,84 @@
         // A 429 or a rejected row stays unstamped, to be retried next sign-in.
         if (!ownsProgress(connection)) return;
         if (!res.ok) break;
-        for (const r of mine) r.sent = 1;
+        for (const r of mine) { r.sent = 1; r.playerId = connection.uid; }
       } catch { break; /* Offline. Nothing is stamped, so nothing is lost. */ }
     }
     if (sent && ownsProgress(connection)) {
-      const latest = loadJSON(K.lb, {});
+      const latest = loadPlayJSON(K.lb, {});
       for (const [index, list] of Object.entries(all)) {
         for (const row of latest[index] || []) {
-          if (list.some(old => old.sent && old.id === row.id && old.at === row.at)) row.sent = 1;
+          if (list.some(old => old.sent && old.id === row.id && old.at === row.at)) {
+            row.sent = 1;
+            // The account id has to survive this re-read, or the board cannot
+            // tell the player's own uploaded row from another player's.
+            row.playerId = connection.uid;
+          }
         }
       }
-      localStorage.setItem(K.lb, JSON.stringify(latest));
+      savePlayJSON(K.lb, latest);
     }
   }
 
-  // Sign-out has to take the play data with it. These keys are merged into
-  // whichever account signs in next, so leaving them behind would push one
-  // player's progress onto another's account on a shared browser.
-  function clearLocalPlayData() {
-    for (const key of [K.progress, K.lb, K.stats]) localStorage.removeItem(key);
-    pendingProgress = {};
+  /* Carry unscoped local play into an account namespace, once per
+     account-and-guest pair. This runs for a fresh sign-in and, at boot, for a
+     session that was already present when scoped storage shipped — that player
+     gets no `bookle-auth` event, so without this their streak and board would
+     simply be gone the first time they loaded the new build. */
+  function importGuestPlay(uid) {
+    if (!uid) return;
+    const guest = `guest:${playerId()}`;
+    const account = `account:${uid}`;
+    const marker = `bookle.guest-imported.${uid}.${guest}`;
+    if (localStorage.getItem(marker)) return;
+
+    const guestProgress = loadPlayJSON(K.progress, {}, guest);
+    const accountProgress = loadPlayJSON(K.progress, {}, account);
+    const mergedProgress = { ...accountProgress };
+    for (const [index, row] of Object.entries(guestProgress)) {
+      if (!mergedProgress[index] || beats(row, mergedProgress[index])) mergedProgress[index] = row;
+    }
+    if (Object.keys(guestProgress).length) savePlayJSON(K.progress, mergedProgress, account);
+
+    const guestBoard = loadPlayJSON(K.lb, {}, guest);
+    const accountBoard = loadPlayJSON(K.lb, {}, account);
+    const mergedBoard = { ...accountBoard };
+    for (const [index, rows] of Object.entries(guestBoard)) {
+      const byId = new Map((mergedBoard[index] || []).map(row => [row.id, row]));
+      for (const row of rows || []) byId.set(row.id, betterRow(byId.get(row.id), row));
+      mergedBoard[index] = [...byId.values()];
+    }
+    if (Object.keys(guestBoard).length) savePlayJSON(K.lb, mergedBoard, account);
+
+    const accountStats = loadPlayJSON(K.stats, {}, account);
+    const guestStats = loadPlayJSON(K.stats, {}, guest);
+    if (!Object.keys(accountStats).length && Object.keys(guestStats).length) savePlayJSON(K.stats, guestStats, account);
+    localStorage.setItem(marker, "1");
   }
 
+  function resetRoundForIdentityChange() {
+    stopRoundTimers();
+    leaveBattle();
+    pendingProgress = {};
+    state.puzzle = null;
+    state.guesses = [];
+    state.hints = 0;
+    state.status = "playing";
+    state.reader = { loading: false, data: null, error: "" };
+  }
+
+  /* Solo play is not tallied here: everything the Stats screen shows about it
+     is derived from the progress map, which syncs. A local counter could not
+     follow a player to a second device, and a derived number self-heals
+     instead of drifting. Battles write no progress row, so they still need a
+     tally of their own — device-local, and labelled as such. */
   function loadStats() {
     return {
-      played: 0, wins: 0, currentStreak: 0, maxStreak: 0,
-      dist: [0, 0, 0, 0, 0, 0], fails: 0, lastDaily: null, lastWinDate: null,
-      practicePlayed: 0,
-      ...loadJSON(K.stats, {}),
-      // Battles overwrite the book's solo progress row, so they can't be
-      // counted from `progress` after the fact — they get their own tally.
+      ...loadPlayJSON(K.stats, {}),
       battle: {
         played: 0, wins: 0, losses: 0, streak: 0, maxStreak: 0,
         hints: 0, guesses: 0, lastAt: null,
-        ...(loadJSON(K.stats, {}).battle || {}),
+        ...(loadPlayJSON(K.stats, {}).battle || {}),
       },
     };
   }
@@ -380,8 +469,29 @@
 
   function dateForDailyIndex(n) {
     const start = state.index?.startDate || START;
-    const base = state.index.dailyStartIndex ?? 600;
+    const base = state.index?.dailyStartIndex ?? 600;
     return addDays(start, n - base);
+  }
+
+  /* Current and best daily streaks, read off the solved dailies. A daily's
+     index is its date, so consecutive dates are a run. The current run only
+     counts while it is still alive — it has to reach today, or yesterday with
+     today still to play. */
+  function dailyStreaks() {
+    const base = state.index?.dailyStartIndex ?? 600;
+    const dates = Object.entries(progressMap())
+      .filter(([key, row]) => row?.status === "won" && parseInt(key, 10) >= base)
+      .map(([key]) => dateForDailyIndex(parseInt(key, 10)))
+      .sort();
+    let best = 0;
+    let run = 0;
+    let last = null;
+    for (const date of dates) {
+      run = last && daysBetween(last, date) === 1 ? run + 1 : 1;
+      best = Math.max(best, run);
+      last = date;
+    }
+    return { current: last && daysBetween(last, gameDate()) <= 1 ? run : 0, best };
   }
 
   async function loadIndex() {
@@ -422,14 +532,6 @@
   function roundHintVersion(p = state.puzzle) {
     return isCurrentHints(p) ? 2 : 1;
   }
-  // Every puzzle in the shipped catalogue is on version 2. A board can be
-  // browsed for a book that is not the round in play -- straight to #/ranks, or
-  // the index picker -- and there is no puzzle loaded to read the version off,
-  // so fall back to what the catalogue is on rather than to the old scheme.
-  const CATALOGUE_HINT_VERSION = 2;
-  function boardHintVersion(idx) {
-    return state.puzzle && state.playIndex === idx ? roundHintVersion() : CATALOGUE_HINT_VERSION;
-  }
   function nextHintLabel() {
     return isCurrentHints() ? FACT_HINTS[state.hints] || "No more hints" : hintLabels()[state.hints + 1] || "No more hints";
   }
@@ -439,8 +541,7 @@
     return mode === "daily" ? "Daily" : mode === "battle" ? "Battle" : "Book";
   }
 
-  /* Standing on this puzzle's board: among everyone (any hints), and among
-     the players who took the same help. Both go in the share. */
+  /* Standing in this browser's cached board, overall and by equal help. */
   function ranksFor(idx, hints) {
     const board = lbFor(idx);
     const me = playerId();
@@ -580,25 +681,27 @@
     const t = tiers(state.puzzle);
     const labels = hintLabels();
     const currentHints = isCurrentHints();
-    // Naming the book ends the puzzle, so the excerpt opens to its full length
-    // however few hints were taken: solving it early should mean more of the
-    // book to read, not less. Hint tiers still gate everything mid-round.
-    const solved = state.status === "won";
-    const idx = currentHints ? (state.hints ? 1 : 0) : (solved ? t.length - 1 : Math.min(state.hints, t.length - 1));
+    const finished = state.status !== "playing";
+    const idx = currentHints ? (state.hints ? 1 : 0) : (finished ? t.length - 1 : Math.min(state.hints, t.length - 1));
     // The hint count lives on the Hint button now — the label just names the tier.
     $("#tier-label").textContent = currentHints
-      ? (state.hints ? "Opening excerpt" : "First sentence")
+      ? (finished ? (state.puzzle.reading?.label || "Opening section") : (state.hints ? "Opening excerpt" : "First sentence"))
       : (labels[idx] || "Excerpt");
     const ab = $("#author-reveal");
     if (ab) {
-      const shown = !currentHints && (solved || state.hints >= MAX_HINTS) && state.puzzle.author;
+      const shown = !currentHints && (finished || state.hints >= MAX_HINTS) && state.puzzle.author;
       ab.hidden = !shown;
       if (shown) ab.textContent = `Author: ${state.puzzle.author}`;
     }
     const box = $("#excerpt");
+    if (!finished) box.classList.remove("complete-reading");
     box.textContent = currentHints
       ? (state.hints ? state.puzzle.openingExcerpt : state.puzzle.openingSentence)
       : (t[idx] || "");
+    // Ending a round turns this same reading surface into the complete opening
+    // chapter/section. It deliberately replaces the excerpt instead of adding
+    // a second copy below the result.
+    if (finished && currentHints && state.puzzle.reading) renderCompletedExcerpt(box);
     box.classList.remove("fade");
     void box.offsetWidth;
     box.classList.add("fade");
@@ -625,10 +728,62 @@
     const facts = $("#hint-facts");
     if (facts) {
       const values = [null, state.puzzle.genre, state.puzzle.year, state.puzzle.setting, state.puzzle.author];
-      facts.innerHTML = currentHints ? FACT_HINTS.slice(1, state.hints).map((label, i) =>
+      // Once the book is known, the whole clue trail is part of the reveal —
+      // not only the facts a player happened to spend during their round.
+      const revealedFacts = finished ? MAX_HINTS : state.hints;
+      facts.innerHTML = currentHints ? FACT_HINTS.slice(1, revealedFacts).map((label, i) =>
         `<div><dt>${label}</dt><dd>${escapeHtml(String(values[i + 1] || ""))}</dd></div>`).join("") : "";
       facts.hidden = !facts.innerHTML;
     }
+  }
+
+  function renderCompletedExcerpt(box) {
+    const data = state.reader.data;
+    if (data?.paragraphs?.length) {
+      box.innerHTML = data.paragraphs.map(x => `<p>${escapeHtml(x)}</p>`).join("");
+      box.classList.add("complete-reading");
+      return;
+    }
+    box.classList.remove("complete-reading");
+    if (state.reader.loading) {
+      box.textContent = `Loading the complete ${(state.puzzle.reading.label || "opening section").toLowerCase()}…`;
+      return;
+    }
+    if (state.reader.error) {
+      box.innerHTML = `<p>${escapeHtml(state.reader.error)}</p><button class="btn ghost" type="button" data-act="retry-reading">Try again</button>`;
+      return;
+    }
+    state.reader.loading = true;
+    box.textContent = `Loading the complete ${(state.puzzle.reading.label || "opening section").toLowerCase()}…`;
+    const expected = state.puzzle.id;
+    fetch(state.puzzle.reading.url)
+      .then(res => {
+        if (!res.ok) throw new Error("Could not load the complete opening section.");
+        return res.json();
+      })
+      .then(data => {
+        if (state.puzzle?.id !== expected || data?.puzzleId !== expected || !Array.isArray(data?.paragraphs) || !data.paragraphs.length) {
+          throw new Error("Invalid reading section.");
+        }
+        state.reader.data = data;
+      })
+      .catch(() => {
+        if (state.puzzle?.id === expected) state.reader.error = "Could not load the complete opening section.";
+      })
+      .finally(() => {
+        if (state.puzzle?.id === expected) {
+          state.reader.loading = false;
+          renderExcerpt();
+        }
+      });
+  }
+
+  function retryCompletedExcerpt() {
+    if (state.status === "playing" || !state.puzzle?.reading) return;
+    state.reader.error = "";
+    state.reader.data = null;
+    state.reader.loading = false;
+    renderExcerpt();
   }
 
   function escapeHtml(s) {
@@ -647,9 +802,9 @@
   }
 
   function lbFor(idx) {
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     // Losses are not ranked — filtered here too, so older saved rows drop out.
-    return (all[String(idx)] || []).filter((r) => r.win && (r.hintVersion || 1) === roundHintVersion());
+    return (all[String(idx)] || []).filter((r) => r.win);
   }
   // Your own row is kept on the board's own ordering, the same comparison the
   // server makes — replaying a book you already solved must not downgrade the
@@ -663,7 +818,7 @@
     return (a.at || 0) <= (b.at || 0) ? a : b;
   };
   function pushLb(entry) {
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     const k = String(state.playIndex);
     const list = all[k] || [];
     const me = playerId();
@@ -677,7 +832,7 @@
       return (a.at || 0) - (b.at || 0);
     });
     all[k] = mine.slice(0, 100);
-    localStorage.setItem(K.lb, JSON.stringify(all));
+    savePlayJSON(K.lb, all);
     sendScore(k, kept);
   }
 
@@ -696,14 +851,14 @@
       });
       if (!res.ok || !ownsProgress(connection)) return;
     } catch { return; /* Unstamped, so the next sign-in retries it. */ }
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     for (const row of all[key] || []) {
       if (row.id === entry.id && row.hints === entry.hints && row.guesses === entry.guesses) {
         row.sent = 1;
-        row.playerId = window.BookleAuth?.session?.()?.uid;
+        row.playerId = connection.uid;
       }
     }
-    localStorage.setItem(K.lb, JSON.stringify(all));
+    savePlayJSON(K.lb, all);
   }
 
   // Boards are ordered by who got there first, so the moment of solving is the
@@ -759,7 +914,7 @@
     const rankLine = won && (r.bracket || r.overall)
       ? `<p class="rank-line">
            ${r.bracket ? `<span>#<b>${r.bracket}</b> of ${r.bracketOf} at ${hintWord}</span>` : ""}
-           ${r.overall ? `<span>#<b>${r.overall}</b> of ${r.overallOf} overall</span>` : ""}
+           ${r.overall ? `<span>#<b>${r.overall}</b> of ${r.overallOf} on this device</span>` : ""}
          </p>`
       : "";
     return `
@@ -778,12 +933,6 @@
           ${gut ? `<div><dt>Gutenberg</dt><dd>#${escapeHtml(String(gut))}</dd></div>` : ""}
         </dl>
       </section>
-
-      ${p.reading ? `<section class="pg-sec pg-read">
-        <h3>Keep reading</h3>
-        <p>Read the complete ${escapeHtml((p.reading.label || "first chapter").toLowerCase())} here.</p>
-        <button class="btn pg-read-btn" type="button" data-act="open-reader" aria-expanded="${state.reader.open}" aria-controls="chapter-reader">Read the ${escapeHtml((p.reading.label || "first chapter").toLowerCase())}</button>
-      </section>` : ""}
 
       <section class="pg-sec pg-effort">
         <h3>Your round</h3>
@@ -813,62 +962,7 @@
         <a class="btn ghost" href="#/ranks?i=${state.playIndex}">Full leaderboard</a>
         <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Gutenberg</a>
       </div>
-      <section id="chapter-reader" class="chapter-reader${state.reader.open ? "" : " hidden"}" aria-label="Reading section"></section>
     `;
-  }
-
-  function renderReader({ focus = false } = {}) {
-    const box = $("#chapter-reader");
-    if (!box || !state.reader.open) return;
-    box.classList.remove("hidden");
-    const p = state.puzzle;
-    if (state.reader.loading) {
-      box.innerHTML = `<p class="lede">Loading ${escapeHtml((p.reading?.label || "the chapter").toLowerCase())}…</p>`;
-      return;
-    }
-    if (state.reader.error) {
-      box.innerHTML = `<p class="lede">${escapeHtml(state.reader.error)}</p><button class="btn" type="button" data-act="open-reader">Try again</button>`;
-      return;
-    }
-    const data = state.reader.data;
-    if (!data?.paragraphs?.length) return;
-    box.innerHTML = `<div class="chapter-reader-head"><div><h2 id="chapter-reader-title" tabindex="-1">${escapeHtml(data.label || p.reading?.label || "Opening section")}</h2><p class="by">${escapeHtml(p.title)} · ${escapeHtml(p.author)}</p></div><button class="btn ghost" type="button" data-act="close-reader">Close</button></div><article class="chapter-prose">${data.paragraphs.map(x => `<p>${escapeHtml(x)}</p>`).join("")}</article><button class="btn ghost" type="button" data-act="close-reader">Back to result</button>`;
-    if (focus) {
-      const heading = $("#chapter-reader-title");
-      heading?.focus({ preventScroll: true });
-      box.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-    }
-  }
-
-  async function openReader() {
-    if (state.status === "playing" || !state.puzzle?.reading) return;
-    state.reader.open = true;
-    state.reader.error = "";
-    if (state.reader.data) return renderReader({ focus: true });
-    state.reader.loading = true;
-    renderReader();
-    const expected = state.puzzle.id;
-    try {
-      const res = await fetch(state.puzzle.reading.url);
-      if (!res.ok) throw new Error("Could not load this reading section.");
-      const data = await res.json();
-      if (state.puzzle?.id !== expected || data?.puzzleId !== expected || !Array.isArray(data?.paragraphs)) return;
-      state.reader.data = data;
-    } catch {
-      if (state.puzzle?.id === expected) state.reader.error = "Could not load this reading section. Try again.";
-    } finally {
-      if (state.puzzle?.id === expected) {
-        state.reader.loading = false;
-        renderReader({ focus: !state.reader.error });
-      }
-    }
-  }
-
-  function closeReader() {
-    state.reader.open = false;
-    const box = $("#chapter-reader");
-    if (box) box.classList.add("hidden");
-    $("[data-act='open-reader']")?.focus();
   }
 
   // Playing: story first, "guess more" under it. Finished: CTA on top, then the
@@ -908,10 +1002,52 @@
     if (refreshAd) window.ExcerptleAds?.render();
   }
 
+  /* Who named the book first, decided the same way in both browsers.
+     Not wall clocks: two phones can disagree by minutes, and the loser of
+     that comparison would be whoever's clock ran slow. Both rounds start
+     from the same message, so the honest measure is how long each player
+     took from their own starting gun. A dead heat goes to the host, so the
+     two browsers can never each pick themselves. */
+  const BATTLE_SETTLE_MS = 1500;
+  let battleCommitTimer = null;
+  function roundElapsed() {
+    return Math.max(0, Date.now() - (state.roundStart || Date.now()));
+  }
+  function theyWereFirst(theirs) {
+    const mine = state.winAt;
+    if (mine == null) return true;
+    if (!Number.isFinite(theirs)) return false;
+    return theirs < mine || (theirs === mine && state.battle?.role === "guest");
+  }
+
+  // The battle tally is written once per match, when the result has settled.
+  function commitBattleResult() {
+    clearTimeout(battleCommitTimer);
+    battleCommitTimer = null;
+    const b_ = state.battle;
+    if (!b_ || b_.committed || state.status === "playing") return;
+    b_.committed = true;
+    const s = loadStats();
+    const b = s.battle;
+    b.played += 1;
+    b.hints += state.hints;
+    b.guesses += state.guesses.length;
+    b.lastAt = Date.now();
+    if (state.status === "won") {
+      b.wins += 1;
+      b.streak += 1;
+      b.maxStreak = Math.max(b.maxStreak, b.streak);
+    } else {
+      b.losses += 1;
+      b.streak = 0;
+    }
+    savePlayJSON(K.stats, s);
+  }
+
   function recordFinish() {
     stopRoundTimers();
-    saveProgress();
-    if (state.status === "won") {
+    if (state.mode !== "battle") saveProgress();
+    if (state.status === "won" && state.mode !== "battle") {
       pushLb({
         id: playerId(),
         name: displayName(),
@@ -923,40 +1059,16 @@
       });
     }
     if (state.mode === "battle") {
-      const s = loadStats();
-      const b = s.battle;
-      b.played += 1;
-      b.hints += state.hints;
-      b.guesses += state.guesses.length;
-      b.lastAt = Date.now();
-      if (state.status === "won") {
-        b.wins += 1;
-        b.streak += 1;
-        b.maxStreak = Math.max(b.maxStreak, b.streak);
+      // A win is provisional for a moment: the other browser may be about to
+      // say it named the book first, and the tally must not count a win that
+      // is then handed over. A loss is final the instant it happens.
+      if (state.status === "won" && state.battle?.conn?.open) {
+        clearTimeout(battleCommitTimer);
+        battleCommitTimer = setTimeout(commitBattleResult, BATTLE_SETTLE_MS);
       } else {
-        b.losses += 1;
-        b.streak = 0;
+        commitBattleResult();
       }
-      localStorage.setItem(K.stats, JSON.stringify(s));
-      return;
     }
-    if (state.mode !== "daily" || state.playIndex !== dailyIndexNow()) return;
-    const s = loadStats();
-    if (s.lastDaily === gameDate()) return;
-    s.played += 1;
-    s.lastDaily = gameDate();
-    if (state.status === "won") {
-      s.wins += 1;
-      s.dist[Math.min(state.guesses.length, MAX_GUESSES) - 1] += 1;
-      if (s.lastWinDate && daysBetween(s.lastWinDate, gameDate()) === 1) s.currentStreak += 1;
-      else s.currentStreak = 1;
-      s.lastWinDate = gameDate();
-      s.maxStreak = Math.max(s.maxStreak, s.currentStreak);
-    } else {
-      s.fails += 1;
-      s.currentStreak = 0;
-    }
-    localStorage.setItem(K.stats, JSON.stringify(s));
   }
 
   function onHint() {
@@ -973,7 +1085,7 @@
     renderExcerpt();
     bump($("#count-hints"));
     bump($("#tier-label"));
-    if (state.battle) battleSend({ type: "hint", hints: state.hints });
+    if (state.mode === "battle" && state.battle) battleSend({ type: "hint", hints: state.hints });
   }
 
   // Two taps, because one stray tap must not be able to end a round. The arm
@@ -1023,13 +1135,14 @@
     if (isMatch(guess, state.puzzle)) {
       state.status = "won";
       setMsg("");
+      if (state.mode === "battle") state.winAt = roundElapsed();
       recordFinish();
-      if (state.battle) battleSend({ type: "win", name: displayName(), guesses: state.guesses.length, hints: state.hints });
+      if (state.mode === "battle" && state.battle) battleSend({ type: "win", name: displayName(), guesses: state.guesses.length, hints: state.hints, at: state.winAt });
     } else if (state.guesses.length >= MAX_GUESSES) {
       state.status = "lost";
       setMsg("No more guesses.");
       recordFinish();
-      if (state.battle) battleSend({ type: "lose", name: displayName() });
+      if (state.mode === "battle" && state.battle) battleSend({ type: "lose", name: displayName() });
     } else {
       const partial = partialMatch(guess, state.puzzle);
       setMsg(partial
@@ -1061,30 +1174,33 @@
     $("#author-reveal").hidden = true;
     $("#guesses").innerHTML = "";
     state.puzzle = null;
-    state.reader = { open: false, loading: false, data: null, error: "" };
+    state.reader = { loading: false, data: null, error: "" };
     show("game");
     state.mode = mode || (playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset");
     state.playIndex = playIndex;
     const todayDaily = dailyIndexNow();
+    // Every exit from here clears `loading`: leaving it set would make the flag
+    // a lie for anything that later reads it on its own.
+    const bail = (text) => { state.loading = false; $("#excerpt").textContent = text; };
     if (!Number.isSafeInteger(playIndex) || playIndex < 0 || (state.mode !== "daily" && playIndex >= presetCount())) {
-      $("#excerpt").textContent = "Puzzle not in the bank yet.";
+      bail("Puzzle not in the bank yet.");
       return;
     }
     if (state.mode === "daily" && playIndex > todayDaily) {
-      $("#excerpt").textContent = "That daily isn’t out yet.";
+      bail("That daily isn’t out yet.");
       $("#form").classList.add("hidden");
       return;
     }
     const slug = slugForIndex(playIndex);
     if (!slug) {
-      $("#excerpt").textContent = "Puzzle not in the bank yet.";
+      bail("Puzzle not in the bank yet.");
       return;
     }
     let puzzle;
     try {
       puzzle = await loadPuzzle(slug);
     } catch {
-      if (request === playRequest) $("#excerpt").textContent = "Could not load this book. Reload the page or choose another book.";
+      if (request === playRequest) bail("Could not load this book. Reload the page or choose another book.");
       return;
     }
     if (request !== playRequest) return;
@@ -1103,6 +1219,9 @@
       state.gaveUp = false;
     }
     state.beatenBy = null;
+    state.winAt = null;
+    state.roundStart = Date.now();
+    if (state.mode === "battle" && state.battle) state.battle.committed = false;
     armGiveUp(false);
     setMsg("");
     const input = $("#guess-input");
@@ -1221,13 +1340,6 @@
     else location.hash = target;
   }
 
-  function pickById(raw) {
-    const n = parseInt(raw, 10);
-    const max = presetCount();
-    if (!Number.isInteger(n) || n < 0) return pickError("Enter a book ID.");
-    playById(raw);
-  }
-
   /* What a recipient sees on arrival. Result only — no title, no excerpt
      detail — so opening a friend's link never spoils the book. */
   function sharedResultHtml(d, idx) {
@@ -1235,7 +1347,7 @@
     const hintWord = `${d.h} hint${d.h === 1 ? "" : "s"}`;
     const stand = [
       d.br ? `#<b>${d.br}</b> of ${d.bn} at ${hintWord}` : "",
-      d.or ? `#<b>${d.or}</b> of ${d.on} overall` : "",
+      d.or ? `#<b>${d.or}</b> of ${d.on} on this device` : "",
     ].filter(Boolean);
     // Same spent-squares readout as the post-game panel, so a result looks
     // the same whether you earned it or were sent it.
@@ -1395,9 +1507,9 @@
       <table class="how-table">
         <tbody>
           <tr><th>Start</th><td>The first sentence</td></tr>
-          <tr><th>Hint 1</th><td>Opening excerpt (2–4 paragraphs)</td></tr>
+          <tr><th>Hint 1</th><td>The book’s opening paragraphs</td></tr>
           <tr><th>Hint 2</th><td>Genre</td></tr>
-          <tr><th>Hint 3</th><td>Original publication year</td></tr>
+          <tr><th>Hint 3</th><td>Original publication date (approximate dates for ancient works)</td></tr>
           <tr><th>Hint 4</th><td>Setting</td></tr>
           <tr><th>Hint 5</th><td>Author</td></tr>
         </tbody>
@@ -1491,7 +1603,7 @@
   };
   // The server carries no row id, so your own remote row is recognised by the
   // values you played it with.
-  const rankKey = (r) => `${r.playerId || r.id || r.name}|${r.hintVersion || 1}|${r.hints}|${r.guesses}`;
+  const rankKey = (r) => `${r.playerId || r.id || r.name}|${r.hints}|${r.guesses}`;
   function lbTable(rows) {
     if (!rows.length) return "";
     return `<div class="lb"><table><thead><tr><th>#</th><th>Player</th><th>Hints</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${rows
@@ -1536,13 +1648,11 @@
     const typed = parseInt($("#lb-index").value, 10);
     const idx = Number.isInteger(typed) && typed >= 0 ? typed : fallback;
     const hintF = $("#lb-hints").value;
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     const me = playerId();
-    // Every puzzle has its own board, and only solves are ranked. Rounds played
-    // under the old hint scheme are not comparable, so they are not merged in.
-    const version = boardHintVersion(idx);
+    // Every puzzle has one public board across clue-system updates.
     let local = (all[String(idx)] || [])
-      .filter((r) => r.win && (r.hintVersion || 1) === version)
+      .filter((r) => r.win)
       .map((r) => ({ ...r, mine: r.id === me }));
     if (hintF !== "any") local = local.filter((r) => r.hints === parseInt(hintF, 10));
     local.sort(rankSort);
@@ -1550,18 +1660,31 @@
     const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
     if (!api) return;
     const query = new URLSearchParams({ puzzleIndex: idx });
-    query.set("hintVersion", String(version));
     if (hintF !== "any") query.set("hints", hintF);
     fetch(`${api}/scores?${query}`).then((r) => (r.ok ? r.json() : null)).then((data) => {
       if (!data?.scores || parseInt($("#lb-index").value, 10) !== idx || $("#lb-hints").value !== hintF) return;
       // The remote board is merged, never substituted: a signed-out player's
       // score never reaches the server, and replacing the table would blank
       // the row they just earned.
-      const mineKeys = new Set(local.filter((r) => r.mine).map(rankKey));
       const accountId = window.BookleAuth?.session?.()?.uid;
-      const remote = data.scores.map((r) => ({ ...r, mine: r.playerId === accountId || mineKeys.has(rankKey(r)) }));
+      const remote = data.scores.map((r) => ({ ...r, mine: r.playerId === accountId }));
       const seen = new Set(remote.map(rankKey));
-      const merged = remote.concat(local.filter((r) => !seen.has(rankKey(r))));
+      // A solve made as a guest is uploaded after sign-in. At that point it
+      // has a new account id, so match the player's local copy by the actual
+      // score fields too; otherwise one solve appears twice.
+      const accountScores = new Set(remote.filter(r => r.playerId === accountId)
+        .map(r => `${r.hints}|${r.guesses}`));
+      // The server keeps one row per account per book, so once it has answered
+      // with ours, a local copy we already uploaded is this player twice — with
+      // different numbers, if the better result was earned on another device.
+      // An un-uploaded row stays: a failed upload must not hide a result.
+      const accountHasRemote = remote.some((r) => r.playerId === accountId);
+      const merged = remote.concat(local.filter((r) => {
+        if (seen.has(rankKey(r))) return false;
+        if (!r.mine) return true;
+        if (r.sent && accountHasRemote) return false;
+        return !accountScores.has(`${r.hints}|${r.guesses}`);
+      }));
       merged.sort(rankSort);
       $("#lb-body").innerHTML = lbTable(merged);
     }).catch(() => {});
@@ -1614,6 +1737,7 @@
     show("screen-stats");
     const { all, books, daily, authors, stats } = summarize();
     const b = stats.battle;
+    const streaks = dailyStreaks();
     const rows = (...pairs) =>
       `<dl class="pg-stats">${pairs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>`;
 
@@ -1634,8 +1758,8 @@
         <h2>Daily</h2>
         <div class="stat-grid">
           ${tile(daily.wins, "Completed")}
-          ${tile(stats.lastWinDate && daysBetween(stats.lastWinDate, gameDate()) <= 1 ? stats.currentStreak : 0, "Streak")}
-          ${tile(stats.maxStreak, "Best streak")}
+          ${tile(streaks.current, "Streak")}
+          ${tile(streaks.best, "Best streak")}
           ${tile(pct(daily.wins, daily.played), "Win rate")}
         </div>
         ${rows(["Avg guesses", avg(daily.guesses, daily.played)],
@@ -1654,7 +1778,7 @@
       </section>
 
       <section class="s-block">
-        <h2>Battle mode</h2>
+        <h2>Battle mode <span class="s-note">on this device</span></h2>
         ${b.played ? `
           <div class="stat-grid">
             ${tile(b.wins, "Won")}
@@ -1701,12 +1825,12 @@
   }
 
   function updateOwnedNames(name) {
-    const all = loadJSON(K.lb, {});
+    const all = loadPlayJSON(K.lb, {});
     const me = playerId();
     for (const rows of Object.values(all)) {
       for (const row of rows || []) if (row.id === me) row.name = name;
     }
-    localStorage.setItem(K.lb, JSON.stringify(all));
+    savePlayJSON(K.lb, all);
   }
   async function saveDisplayName() {
     const field = $("#display-name");
@@ -1729,7 +1853,6 @@
       paintAuth();
       if (state.status !== "playing") {
         renderResult({ refreshAd: false });
-        if (state.reader.open) renderReader();
       }
       battleSend({ type: "name", name });
     } catch (err) {
@@ -1798,6 +1921,7 @@
       <section class="b-sec">
         ${Number.isInteger(idx) ? `<div class="story-bar"><span class="story-id">Book bank #${idx}</span></div>` : ""}
         <p class="lede">${escapeHtml(status)}</p>
+        <p class="pro-note">Casual battle: it does not change solo progress or leaderboard scores.</p>
         <div class="battle-code">${escapeHtml(code || "……")}</div>
         <p class="b-actions">
           ${shareLink ? `<button class="btn ghost" type="button" data-act="copy-battle">Copy link</button>` : ""}
@@ -1864,6 +1988,11 @@
   }
 
   function leaveBattle() {
+    // Walking out does not forfeit a result already on screen: settle it now
+    // rather than losing it with the connection.
+    if (state.battle && !state.battle.committed && state.mode === "battle" && state.status !== "playing") commitBattleResult();
+    clearTimeout(battleCommitTimer);
+    battleCommitTimer = null;
     clearTimeout(state.battle?.knockTimer);
     clearInterval(state.battle?.watchdog);
     try { state.battle?.conn?.close(); } catch { /* */ }
@@ -2054,6 +2183,21 @@
     if (b.role === "guest" && !b.settled) guestConnect();
   }
 
+  /* The host's Start, as a guard rather than a button state. The button is
+     disabled until a guest is in and hidden once the round begins, but disabled
+     markup is not a protocol: a double tap, a repainted lobby or a held key
+     would send a second "start", restart the host's own round from scratch, and
+     desync the two sides — the guest ignores duplicates. */
+  async function startBattleAsHost() {
+    const b = state.battle;
+    if (!b || b.role !== "host" || b.started || !b.conn?.open) return false;
+    b.started = true;
+    battleSend({ type: "start", playIndex: b.playIndex });
+    await startPlay({ playIndex: b.playIndex, mode: "battle", fresh: true });
+    setMsg("Battle on. First title wins.");
+    return true;
+  }
+
   async function onBattleData(msg) {
     const battle = state.battle;
     if (!battle || !msg || typeof msg !== "object") return;
@@ -2074,6 +2218,10 @@
     if (msg.type === "start" && state.battle.role === "guest") {
       const idx = msg.playIndex ?? state.battle.playIndex;
       if (!Number.isInteger(idx) || idx < 0 || idx >= presetCount()) return;
+      // A second "start" is a duplicate, not a rematch: replaying it would
+      // wipe a round the guest is in the middle of.
+      if (state.battle.started && state.mode === "battle" && state.puzzle) return;
+      state.battle.started = true;
       await startPlay({ playIndex: idx, mode: "battle", fresh: true });
       if (state.battle !== battle || !state.puzzle) return;
       setMsg(`${state.battle.peerName || "Host"} started the battle. First title wins.`);
@@ -2087,8 +2235,17 @@
         bump($("#tier-label"));
       }
     }
-    if (msg.type === "win" && state.mode === "battle" && !state.loading && state.status === "playing") {
+    if (msg.type === "lose" && state.mode === "battle") {
+      state.battle.peerOut = true;
+      if (state.status === "playing") setMsg(`${msg.name || "Your opponent"} is out of guesses. Name the book to win it.`);
+    }
+    if (msg.type === "win" && state.mode === "battle" && !state.loading) {
+      const theirs = Number(msg.at);
+      // Either we were still playing, or we both named it and they got there
+      // first. Both browsers run this comparison and reach the same answer.
+      if (state.status !== "playing" && !(state.status === "won" && theyWereFirst(theirs))) return;
       state.status = "lost";
+      state.winAt = null;
       state.beatenBy = msg.name || "Your opponent";
       setMsg(`${state.beatenBy} guessed first.`);
       recordFinish();
@@ -2157,6 +2314,10 @@
       return;
     }
     const r = route();
+    // A battle connection belongs only to battle routes. Leaving through the
+    // back button, a shared link, or direct navigation closes it just as the
+    // visible battle controls do.
+    if (state.battle && r.page !== "battle" && r.page !== "battle-join") leaveBattle();
     // Consume ?b= / ?p= / ?s= once. Left in place they hijack every later
     // navigation back to "#/".
     if (location.search && (params0().get("b") || params0().get("p") || params0().get("s"))) {
@@ -2214,7 +2375,7 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && e.target?.id === "play-id-input") {
       e.preventDefault();
-      pickById(e.target.value);
+      playById(e.target.value);
     }
     if (e.key === "Enter" && e.target?.id === "auth-email") {
       e.preventDefault();
@@ -2403,8 +2564,7 @@
     }
     if (act === "hint") onHint();
     if (act === "give-up") onGiveUp();
-    if (act === "open-reader") openReader();
-    if (act === "close-reader") closeReader();
+    if (act === "retry-reading") retryCompletedExcerpt();
     if (act === "save-name") saveDisplayName();
     if (act === "play-today" || act === "pick-today") {
       closeModal();
@@ -2414,7 +2574,7 @@
     }
     if (act === "play-random") playRandom();
     if (act === "pick-random") pickIndex(randomPresetIndex(state.playIndex));
-    if (act === "pick-id") pickById($("#play-id-input")?.value);
+    if (act === "pick-id") playById($("#play-id-input")?.value);
     if (act === "share") {
       const btn = e.target.closest("[data-act]");
       const url = shareUrl();
@@ -2455,12 +2615,7 @@
       closeModal();
       battleJoin(code);
     }
-    if (act === "battle-start" && state.battle?.role === "host") {
-      const idx = state.battle.playIndex;
-      battleSend({ type: "start", playIndex: idx });
-      await startPlay({ playIndex: idx, mode: "battle", fresh: true });
-      setMsg("Battle on. First title wins.");
-    }
+    if (act === "battle-start") await startBattleAsHost();
     if (act === "battle-retry") {
       const b = state.battle;
       if (!b) return;
@@ -2520,6 +2675,9 @@
      back in — but never yank a puzzle out from under a game in progress. */
   function rollDaily() {
     if (state.mode !== "daily" || !state.puzzle) return;
+    // An explicit #/play/N link is an archive visit. Only the landing route is
+    // allowed to roll itself forward at midnight.
+    if (route().page !== "home") return;
     const today = dailyIndexNow();
     if (today === state.playIndex) return;
     if (state.status === "playing" && (state.guesses.length || state.hints)) return;
@@ -2545,13 +2703,11 @@
     if (state.puzzle && state.status === "playing") saveProgress();
   });
   document.addEventListener("bookle-auth", (e) => {
-    if (!e.detail) {
-      clearLocalPlayData();
-      stopRoundTimers();
-      state.puzzle = null;
-      state.guesses = [];
-      state.hints = 0;
-      state.status = "playing";
+    const nextUid = e.detail?.uid || null;
+    if (nextUid !== activeAccountUid) {
+      if (nextUid) importGuestPlay(nextUid);
+      activeAccountUid = nextUid;
+      resetRoundForIdentityChange();
       go();
     }
     paintAuth();
@@ -2581,5 +2737,6 @@
   window.ExcerptlePro?.refresh?.();
   applyTheme();
   paintAuth();
+  if (activeAccountUid) importGuestPlay(activeAccountUid);
   go().then(syncProgress);
 })();

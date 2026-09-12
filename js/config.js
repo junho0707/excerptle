@@ -57,7 +57,6 @@ window.EXCERPTLE_ADS = {
   client: "ca-pub-2005015845685746",
   slot: "",             // from the Display unit you create AFTER approval
                         // (NOT the 7855100651 customer ID — different number)
-  placeholder: "dev",   // dashed box on localhost only; never in production
 };
 
 /* Stripe. Keys never touch the frontend — the browser only ever calls our own
