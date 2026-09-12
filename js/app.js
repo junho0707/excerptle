@@ -320,6 +320,10 @@
         }
         savePlayJSON(K.progress, merged);
         if (Object.keys(changed).length) pendingProgress = { ...pendingProgress, ...changed };
+        // Stats are derived from this map now, so a sync that lands after the
+        // screen rendered has to repaint it — otherwise opening the app straight
+        // onto Stats shows a zero streak until you navigate away and back.
+        if (!$("#screen-stats")?.classList.contains("hidden")) renderStats();
         const active = String(state.playIndex);
         if (merged[active] && merged[active] !== local[active] && state.status === "playing"
           && !state.loading && state.mode !== "battle" && !$("#game").classList.contains("hidden")) {

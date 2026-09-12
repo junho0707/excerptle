@@ -174,3 +174,24 @@ test('an account already signed in keeps its unscoped board and streak', async (
   expect(await page.evaluate(() =>
     JSON.parse(localStorage.getItem('bookle.progress.v4.account:legacy'))['601'].status)).toBe('won');
 });
+
+test('a streak that arrives from the server repaints the stats screen', async ({ page }) => {
+  const API = 'https://excerptle-api.winter-glade-cbab.workers.dev';
+  // The first two dailies, won on another device and held only by the server.
+  await page.route(`${API}/**`, route => {
+    const path = new URL(route.request().url()).pathname;
+    if (path === '/me/progress' && route.request().method() === 'PUT') return route.fulfill({ json: { ok: true } });
+    const body = path === '/me/progress'
+      ? '{"progress":{"600":{"status":"won","guesses":["a"],"hints":0,"at":1},"601":{"status":"won","guesses":["b"],"hints":0,"at":2}}}'
+      : path === '/scores' ? '{"scores":[]}' : '{}';
+    return route.fulfill({ status: 200, contentType: 'application/json', body });
+  });
+  await page.addInitScript(() => localStorage.setItem('bookle.auth.session', JSON.stringify({
+    uid: 'sync-stats', email: 'stats@example.test', name: 'Stats', token: 'tok', expiresAt: 4102444800,
+  })));
+  await page.goto('/#/stats');
+  const daily = page.locator('.s-block', { has: page.locator('h2:text-is("Daily")') });
+  // Landing straight on Stats, with nothing local: the numbers must arrive.
+  await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
+  await expect(daily.locator('.stat-grid div').nth(0)).toContainText('2');
+});

@@ -13,6 +13,7 @@ function setup(fetch, local = {}) {
     AbortSignal,
     K: { progress: 'progress' }, progressMap: () => local, backfillScores: async () => {},
     savePlayJSON: (key, value) => writes.push([key, value]),
+    $: () => null, renderStats: () => {},
   });
   vm.runInContext(source.slice(source.indexOf('  let progressSyncing'), source.indexOf('  // A puzzle solved before signing in')) +
     '\nglobalThis.api = { syncProgress, syncProgressEntry, flushProgressEntries, pending: () => pendingProgress };', context);
