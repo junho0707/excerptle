@@ -699,9 +699,9 @@
     }
     const box = $("#excerpt");
     if (!finished) box.classList.remove("complete-reading");
-    box.textContent = currentHints
+    setExcerptText(box, currentHints
       ? (state.hints ? state.puzzle.openingExcerpt : state.puzzle.openingSentence)
-      : (t[idx] || "");
+      : (t[idx] || ""));
     // Ending a round turns this same reading surface into the complete opening
     // chapter/section. It deliberately replaces the excerpt instead of adding
     // a second copy below the result.
@@ -739,6 +739,21 @@
         `<div><dt>${label}</dt><dd>${escapeHtml(String(values[i + 1] || ""))}</dd></div>`).join("") : "";
       facts.hidden = !facts.innerHTML;
     }
+  }
+
+  // Some openings name the detective, the hero, the narrator — and the name
+  // alone hands over the book. Those are swapped for the pronoun the sentence
+  // wants, written {{him}} in the puzzle text. Mark the swap in the rendering
+  // so nobody reads the sentence as the author wrote it and hover explains it.
+  const REDACTION_NOTE = "A name that would give the book away, swapped for a pronoun.";
+  function setExcerptText(box, text) {
+    const raw = String(text || "");
+    if (!raw.includes("{{")) {
+      box.textContent = raw;
+      return;
+    }
+    box.innerHTML = escapeHtml(raw).replace(/\{\{([^{}]+)\}\}/g, (_, word) =>
+      `<span class="redacted" tabindex="0" role="note" title="${REDACTION_NOTE}" aria-label="${word}. ${REDACTION_NOTE}">(${word})</span>`);
   }
 
   function renderCompletedExcerpt(box) {

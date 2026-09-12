@@ -181,6 +181,19 @@ a { color: var(--wine); }
   color: var(--wine);
   font-weight: 700;
 }
+/* A name swapped out for a pronoun so the opening does not name the book.
+   Underlined rather than highlighted: it should read as part of the sentence,
+   and only ask for attention when a player wonders about it. */
+.excerpt .redacted {
+  border-bottom: 1px dotted var(--wine);
+  color: var(--wine);
+  cursor: help;
+}
+.excerpt .redacted:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .excerpt.fade { animation: fade 0.45s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
