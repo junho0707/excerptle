@@ -38,7 +38,46 @@
        downloaded twice. This always matches. -->
   <script>window.__excerptleIndex = fetch("/puzzles/index.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Excerptle","url":"https://excerptle.io/","image":"https://excerptle.io/assets/og.png","applicationCategory":"GameApplication","genre":"Word game","description":"Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://excerptle.io/#organization",
+        "name": "Provable Learning LLC",
+        "url": "https://provablelearning.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://excerptle.io/#website",
+        "name": "Excerptle",
+        "alternateName": "Excerptle — Guess the Book",
+        "url": "https://excerptle.io/",
+        "description": "A daily guessing game built on the opening lines of public-domain literature.",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://excerptle.io/#organization"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Excerptle",
+        "url": "https://excerptle.io/",
+        "image": "https://excerptle.io/assets/og.png",
+        "applicationCategory": "GameApplication",
+        "genre": "Word game",
+        "description": "Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.",
+        "isPartOf": {
+          "@id": "https://excerptle.io/#website"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    ]
+  }
   </script>
   <!-- AdSense ownership + review. Static on purpose: the reviewer's crawler
        reads this before approval, and js/ads.js deliberately loads nothing
