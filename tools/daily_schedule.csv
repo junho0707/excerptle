@@ -1,0 +1,121 @@
+index,date,title,author,gutenberg
+600,2026-09-09,Pride and Prejudice,Jane Austen,1342
+601,2026-09-10,Moby-Dick,Herman Melville,2701
+602,2026-09-11,Crime and Punishment,Fyodor Dostoevsky,2554
+603,2026-09-12,The Adventures of Sherlock Holmes,Arthur Conan Doyle,1661
+604,2026-09-13,Alice's Adventures in Wonderland,Lewis Carroll,11
+605,2026-09-14,Frankenstein,Mary Shelley,84
+606,2026-09-15,Romeo and Juliet,William Shakespeare,1513
+607,2026-09-16,Dracula,Bram Stoker,345
+608,2026-09-17,Dr Jekyll and Mr Hyde,Robert Louis Stevenson,43
+609,2026-09-18,A Room with a View,E. M. Forster,2641
+610,2026-09-19,Middlemarch,George Eliot,145
+611,2026-09-20,Jane Eyre,Charlotte Brontë,1260
+612,2026-09-21,A Study in Scarlet,Arthur Conan Doyle,244
+613,2026-09-22,The Hound of the Baskervilles,Arthur Conan Doyle,2852
+614,2026-09-23,The Murder of Roger Ackroyd,Agatha Christie,69087
+615,2026-09-24,The Count of Monte Cristo,Alexandre Dumas,1184
+616,2026-09-25,The Mysterious Affair at Styles,Agatha Christie,863
+617,2026-09-26,The Phantom of the Opera,Gaston Leroux,175
+618,2026-09-27,The Great Gatsby,F. Scott Fitzgerald,64317
+619,2026-09-28,The Brothers Karamazov,Fyodor Dostoevsky,28054
+620,2026-09-29,The Picture of Dorian Gray,Oscar Wilde,174
+621,2026-09-30,A Farewell to Arms,Ernest Hemingway,75201
+622,2026-10-01,Wuthering Heights,Emily Brontë,768
+623,2026-10-02,A Tale of Two Cities,Charles Dickens,98
+624,2026-10-03,Grimms' Fairy Tales,Jacob and Wilhelm Grimm,2591
+625,2026-10-04,The Metamorphosis,Franz Kafka,5200
+626,2026-10-05,War and Peace,Leo Tolstoy,2600
+627,2026-10-06,Sense and Sensibility,Jane Austen,161
+628,2026-10-07,The Iliad,Homer,6130
+629,2026-10-08,The Adventures of Tom Sawyer,Mark Twain,74
+630,2026-10-09,The Wonderful Wizard of Oz,L. Frank Baum,55
+631,2026-10-10,The Secret Garden,Frances Hodgson Burnett,113
+632,2026-10-11,Around the World in Eighty Days,Jules Verne,103
+633,2026-10-12,Adventures of Huckleberry Finn,Mark Twain,76
+634,2026-10-13,Journey to the Center of the Earth,Jules Verne,18857
+635,2026-10-14,David Copperfield,Charles Dickens,766
+636,2026-10-15,Anne of Green Gables,L. M. Montgomery,45
+637,2026-10-16,Great Expectations,Charles Dickens,1400
+638,2026-10-17,Treasure Island,Robert Louis Stevenson,120
+639,2026-10-18,The Tale of Peter Rabbit,Beatrix Potter,14838
+640,2026-10-19,The Importance of Being Earnest,Oscar Wilde,844
+641,2026-10-20,Uncle Tom's Cabin,Harriet Beecher Stowe,203
+642,2026-10-21,Peter Pan,J. M. Barrie,16
+643,2026-10-22,A Christmas Carol,Charles Dickens,46
+644,2026-10-23,The Hunchback of Notre-Dame,Victor Hugo,2610
+645,2026-10-24,Mrs Dalloway,Virginia Woolf,71865
+646,2026-10-25,The Time Machine,H. G. Wells,35
+647,2026-10-26,Anna Karenina,Leo Tolstoy,1399
+648,2026-10-27,Les Misérables,Victor Hugo,135
+649,2026-10-28,The Call of the Wild,Jack London,215
+650,2026-10-29,Emma,Jane Austen,158
+651,2026-10-30,Little Women,Louisa May Alcott,514
+652,2026-10-31,Heart of Darkness,Joseph Conrad,219
+653,2026-11-01,Gulliver's Travels,Jonathan Swift,829
+654,2026-11-02,The Jungle Book,Rudyard Kipling,236
+655,2026-11-03,Twenty Thousand Leagues Under the Sea,Jules Verne,164
+656,2026-11-04,Don Quixote,Miguel de Cervantes,996
+657,2026-11-05,Oliver Twist,Charles Dickens,730
+658,2026-11-06,Winnie-the-Pooh,A. A. Milne,67098
+659,2026-11-07,Robinson Crusoe,Daniel Defoe,521
+660,2026-11-08,The War of the Worlds,H. G. Wells,36
+661,2026-11-09,The Three Musketeers,Alexandre Dumas,1257
+662,2026-11-10,Through the Looking-Glass,Lewis Carroll,12
+663,2026-11-11,Candide,Voltaire,19942
+664,2026-11-12,The Wind in the Willows,Kenneth Grahame,289
+665,2026-11-13,Hamlet,William Shakespeare,1524
+666,2026-11-14,Madame Bovary,Gustave Flaubert,2413
+667,2026-11-15,Macbeth,William Shakespeare,1533
+668,2026-11-16,The Trial,Franz Kafka,7849
+669,2026-11-17,The Tempest,William Shakespeare,23042
+670,2026-11-18,The Sun Also Rises,Ernest Hemingway,67138
+671,2026-11-19,All Quiet on the Western Front,Erich Maria Remarque,75011
+672,2026-11-20,The Odyssey,Homer,1728
+673,2026-11-21,The Scarlet Letter,Nathaniel Hawthorne,33
+674,2026-11-22,King Lear,William Shakespeare,1532
+675,2026-11-23,Othello,William Shakespeare,1531
+676,2026-11-24,The Maltese Falcon,Dashiell Hammett,77600
+677,2026-11-25,The Blue Castle,L. M. Montgomery,67979
+678,2026-11-26,Beowulf,Anonymous,16328
+679,2026-11-27,The Man Who Was Thursday,G. K. Chesterton,1695
+680,2026-11-28,Meditations,Marcus Aurelius,2680
+681,2026-11-29,"Arsène Lupin, Gentleman-Burglar",Maurice Leblanc,6133
+682,2026-11-30,The Turn of the Screw,Henry James,209
+683,2026-12-01,The Innocence of Father Brown,G. K. Chesterton,204
+684,2026-12-02,The Sign of the Four,Arthur Conan Doyle,2097
+685,2026-12-03,The Return of Sherlock Holmes,Arthur Conan Doyle,108
+686,2026-12-04,The Call of Cthulhu,H. P. Lovecraft,68283
+687,2026-12-05,The Woman in White,Wilkie Collins,583
+688,2026-12-06,The Memoirs of Sherlock Holmes,Arthur Conan Doyle,834
+689,2026-12-07,The Moonstone,Wilkie Collins,155
+690,2026-12-08,The Cask of Amontillado,Edgar Allan Poe,1063
+691,2026-12-09,The Secret Adversary,Agatha Christie,1155
+692,2026-12-10,The Thirty-Nine Steps,John Buchan,558
+693,2026-12-11,The Secret Agent,Joseph Conrad,974
+694,2026-12-12,The Enchanted April,Elizabeth von Arnim,16389
+695,2026-12-13,Whose Body?,Dorothy L. Sayers,58820
+696,2026-12-14,Narrative of the Life of Frederick Douglass,Frederick Douglass,23
+697,2026-12-15,Cranford,Elizabeth Gaskell,394
+698,2026-12-16,"The History of Tom Jones, a Foundling",Henry Fielding,6593
+699,2026-12-17,Ulysses,James Joyce,4300
+700,2026-12-18,The Prince,Niccolò Machiavelli,1232
+701,2026-12-19,The Yellow Wallpaper,Charlotte Perkins Gilman,1952
+702,2026-12-20,The Sorrows of Young Werther,Johann Wolfgang von Goethe,2527
+703,2026-12-21,A Doll's House,Henrik Ibsen,2542
+704,2026-12-22,A Modest Proposal,Jonathan Swift,1080
+705,2026-12-23,The Awakening,Kate Chopin,160
+706,2026-12-24,Walden,Henry David Thoreau,205
+707,2026-12-25,The Prince and the Pauper,Mark Twain,1837
+708,2026-12-26,A Connecticut Yankee in King Arthur's Court,Mark Twain,86
+709,2026-12-27,The Canterbury Tales,Geoffrey Chaucer,2383
+710,2026-12-28,Northanger Abbey,Jane Austen,121
+711,2026-12-29,Black Beauty,Anna Sewell,271
+712,2026-12-30,Vanity Fair,William Makepeace Thackeray,599
+713,2026-12-31,The Pickwick Papers,Charles Dickens,580
+714,2027-01-01,The Souls of Black Folk,W. E. B. Du Bois,408
+715,2027-01-02,The Red Badge of Courage,Stephen Crane,73
+716,2027-01-03,Nicholas Nickleby,Charles Dickens,967
+717,2027-01-04,The Divine Comedy,Dante Alighieri,8800
+718,2027-01-05,Bleak House,Charles Dickens,1023
+719,2027-01-06,Notes from Underground,Fyodor Dostoevsky,600

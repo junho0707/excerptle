@@ -1,0 +1,22 @@
+{
+  "name": "excerptle",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tools/test_match.mjs && node tools/auth_flow_test.cjs && node tools/dev_api_switch_test.cjs && node tools/progress_sync_test.mjs && node tools/aux_logic_test.mjs && npm test --prefix tools/og-worker",
+    "test:e2e": "playwright test",
+    "test:data": "python3 tools/test_puzzles.py && python3 tools/qa_puzzles.py && python3 tools/check_hint_metadata.py",
+    "predeploy:site": "npm test && npm run test:data && npm run test:e2e",
+    "predeploy:api": "npm test --prefix backend",
+    "deploy:og": "wrangler deploy --config tools/og-worker/wrangler.jsonc",
+    "deploy:site": "wrangler deploy",
+    "deploy:api": "wrangler deploy --config backend/wrangler.toml",
+    "deploy": "npm run deploy:og && npm run deploy:site && npm run deploy:api",
+    "dev": "wrangler dev",
+    "dev:og": "wrangler dev --config tools/og-worker/wrangler.jsonc --port 8792"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "wrangler": "^4.130.0"
+  }
+}

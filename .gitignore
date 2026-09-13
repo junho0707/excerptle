@@ -1,4 +1,5 @@
 tools/.gutenberg-cache/
+tools/.pd-cache/
 __pycache__/
 *.pyc
 .DS_Store
@@ -7,6 +8,11 @@ node_modules/
 .wrangler/
 .dev.vars*
 dist/
+test-results/
+playwright-report/
 
 !.dev.vars.example
 !.env.example
+tools/.pg-meta-cache/
+*:Zone.Identifier
+tools/openings-preview.html

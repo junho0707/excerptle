@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "excerptle",
+  "main": "tools/og-worker/worker.js",
   "workers_dev": false,
   "preview_urls": false,
   "compatibility_date": "2026-09-09",
@@ -8,9 +9,16 @@
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS",
+    // "/" is worker-first only so share links get their unfurl metadata
+    // rewritten, so whatever runs here is on the critical path of every cold
+    // page load. Keep this Worker free of WASM, fonts and node polyfills.
+    "run_worker_first": ["/", "/index.html", "/og.png"]
   },
-  "compatibility_flags": [
-    "nodejs_compat"
+  // The share-card renderer and its ~3.5 MB of WASM + fonts, in a separate
+  // isolate. See tools/og-worker/wrangler.jsonc; deploy that one first.
+  "services": [
+    { "binding": "OG", "service": "excerptle-og" }
   ]
 }

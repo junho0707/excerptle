@@ -1,0 +1,370 @@
+rank,tier,gutenberg,title,author,year,form,text_source,downloads_30d,sitelinks,wikipedia,genre,status,slug
+1,S,67098,Winnie-the-Pooh,A. A. Milne,1926,children's book,gutenberg,,,,,,
+2,S,,The Murder of Roger Ackroyd,Agatha Christie,1926,novel,us_pd,,,,,,
+3,S,863,The Mysterious Affair at Styles,Agatha Christie,1920,novel,gutenberg,53161,44,yes,detective fiction;romantic fiction,have,g863
+4,S,1184,The Count of Monte Cristo,Alexandre Dumas,1844,novel,gutenberg,53209,,no,,have,b33
+5,S,1257,The Three Musketeers,Alexandre Dumas,1844,novel,gutenberg,14239,,no,,have,g1257
+6,S,244,A Study in Scarlet,Arthur Conan Doyle,1887,novel,gutenberg,62582,61,yes,detective fiction;crime fiction;mystery fiction,have,b28
+7,S,1661,The Adventures of Sherlock Holmes,Arthur Conan Doyle,1892,short story collection,gutenberg,107734,52,yes,detective fiction,have,b29
+8,S,2852,The Hound of the Baskervilles,Arthur Conan Doyle,1902,novel,gutenberg,60959,,no,,have,b30
+9,S,14838,The Tale of Peter Rabbit,Beatrix Potter,1902,children's book,gutenberg,25657,31,yes,children's literature,new,g14838
+10,S,345,Dracula,Bram Stoker,1897,novel,gutenberg,92827,75,yes,epistolary fiction;horror fiction;romantic fiction;Gothic fiction;vampire fiction,have,b03
+11,S,46,A Christmas Carol,Charles Dickens,1843,novella,gutenberg,21933,75,yes,Christmas fiction,have,b14
+12,S,98,A Tale of Two Cities,Charles Dickens,1859,novel,gutenberg,40992,65,yes,historical fiction;social fiction,have,b09
+13,S,766,David Copperfield,Charles Dickens,1850,novel,gutenberg,27631,68,yes,Bildungsroman;autobiographical novel,new,g766
+14,S,1400,Great Expectations,Charles Dickens,1861,novel,gutenberg,26966,69,yes,black comedy;Bildungsroman,have,b10
+15,S,730,Oliver Twist,Charles Dickens,1838,novel,gutenberg,15405,83,yes,Bildungsroman,new,g730
+16,S,1260,Jane Eyre,Charlotte Brontë,1847,novel,gutenberg,71908,70,yes,Bildungsroman;romance;education novel;autobiographical novel;Gothic fiction,have,b07
+17,S,521,Robinson Crusoe,Daniel Defoe,1719,novel,gutenberg,14621,,no,,have,b42
+18,S,,The Maltese Falcon,Dashiell Hammett,1930,novel,us_pd,,,,,,
+19,S,2641,A Room with a View,E. M. Forster,1908,novel,gutenberg,,,,,,
+20,S,768,Wuthering Heights,Emily Brontë,1847,novel,gutenberg,41958,,no,,have,b08
+21,S,,All Quiet on the Western Front,Erich Maria Remarque,1929,novel,us_pd,,,,,,
+22,S,,A Farewell to Arms,Ernest Hemingway,1929,novel,us_pd,,,,,,
+23,S,,The Sun Also Rises,Ernest Hemingway,1926,novel,us_pd,,,,,,
+24,S,64317,The Great Gatsby,F. Scott Fitzgerald,1925,novel,gutenberg,48709,84,yes,tragedy;Great American Novel,have,b05
+25,S,113,The Secret Garden,Frances Hodgson Burnett,1911,novel,gutenberg,32404,,no,,have,b23
+26,S,5200,The Metamorphosis,Franz Kafka,1915,novella,gutenberg,38512,84,yes,absurdist literature;epic literature;body horror literature,have,b27
+27,S,7849,The Trial,Franz Kafka,1925,novel,gutenberg,6403,73,yes,absurdist literature;dystopian fiction,new,g7849
+28,S,2554,Crime and Punishment,Fyodor Dostoevsky,1866,novel,gutenberg,118512,109,yes,serialized fiction;crime fiction;philosophical fiction;psychological fiction,have,b31
+29,S,28054,The Brothers Karamazov,Fyodor Dostoevsky,1880,novel,gutenberg,45630,91,yes,serialized fiction;philosophical fiction,new,g28054
+30,S,175,The Phantom of the Opera,Gaston Leroux,1910,novel,gutenberg,53126,46,yes,fantasy;mystery fiction;horror fiction;romantic fiction;Gothic fiction,have,g175
+31,S,145,Middlemarch,George Eliot,1871,novel,gutenberg,,,,,,
+32,S,2413,Madame Bovary,Gustave Flaubert,1857,novel,gutenberg,8233,74,yes,realist novel,new,g2413
+33,S,35,The Time Machine,H. G. Wells,1895,novella,gutenberg,19811,,no,,have,b18
+34,S,36,The War of the Worlds,H. G. Wells,1898,novel,gutenberg,14318,,no,,have,b17
+35,S,203,Uncle Tom's Cabin,Harriet Beecher Stowe,1852,novel,gutenberg,,,,,,
+36,S,2701,Moby-Dick,Herman Melville,1851,novel,gutenberg,163497,,no,,have,b04
+37,S,6130,The Iliad,Homer,,epic,gutenberg,,,,,,
+38,S,1728,The Odyssey,Homer,,epic,gutenberg,4767,,no,,have,g1728
+39,S,16,Peter Pan,J. M. Barrie,1911,novel,gutenberg,23507,34,yes,fantasy,have,b24
+40,S,215,The Call of the Wild,Jack London,1903,novel,gutenberg,18718,54,yes,adventure fiction,have,b20
+41,S,2591,Grimms' Fairy Tales,Jacob and Wilhelm Grimm,1812,fairy tales,gutenberg,,,,,,
+42,S,158,Emma,Jane Austen,1815,novel,gutenberg,18556,49,yes,romantic fiction,have,b48
+43,S,1342,Pride and Prejudice,Jane Austen,1813,novel,gutenberg,180357,100,yes,novel of manners;romantic fiction;psychological fiction;satirical fiction,have,b01
+44,S,161,Sense and Sensibility,Jane Austen,1811,novel,gutenberg,34708,56,yes,Bildungsroman;romantic fiction,have,b49
+45,S,829,Gulliver's Travels,Jonathan Swift,1726,novel,gutenberg,15893,,no,,have,b41
+46,S,219,Heart of Darkness,Joseph Conrad,1899,novella,gutenberg,16334,,no,,have,b19
+47,S,103,Around the World in Eighty Days,Jules Verne,1873,novel,gutenberg,31322,,no,,have,b35
+48,S,18857,Journey to the Center of the Earth,Jules Verne,1864,novel,gutenberg,28830,64,yes,adventure;lost world fiction;scientific romance;subterranean fiction;adventure fiction,new,g18857
+49,S,164,Twenty Thousand Leagues Under the Sea,Jules Verne,1870,novel,gutenberg,15599,,no,,have,b36
+50,S,289,The Wind in the Willows,Kenneth Grahame,1908,novel,gutenberg,9111,,no,,have,b39
+51,S,55,The Wonderful Wizard of Oz,L. Frank Baum,1900,novel,gutenberg,33071,,no,,have,b21
+52,S,45,Anne of Green Gables,L. M. Montgomery,1908,novel,gutenberg,27049,,no,,have,b22
+53,S,1399,Anna Karenina,Leo Tolstoy,1877,novel,gutenberg,19677,,no,,have,b32
+54,S,2600,War and Peace,Leo Tolstoy,1869,novel,gutenberg,,,,,,
+55,S,11,Alice's Adventures in Wonderland,Lewis Carroll,1865,novel,gutenberg,104420,,no,,have,b06
+56,S,12,Through the Looking-Glass,Lewis Carroll,1871,novel,gutenberg,13061,61,yes,fantasy,have,b37
+57,S,514,Little Women,Louisa May Alcott,1868,novel,gutenberg,17140,52,yes,autobiography;Bildungsroman;family saga;realist novel;developmental novel,have,b38
+58,S,76,Adventures of Huckleberry Finn,Mark Twain,1884,novel,gutenberg,31276,,no,,have,b12
+59,S,74,The Adventures of Tom Sawyer,Mark Twain,1876,novel,gutenberg,33203,76,yes,Bildungsroman;adventure fiction,have,b13
+60,S,84,Frankenstein,Mary Shelley,1818,novel,gutenberg,99964,,no,,have,b02
+61,S,996,Don Quixote,Miguel de Cervantes,1605,novel,gutenberg,15451,,no,,have,b43
+62,S,33,The Scarlet Letter,Nathaniel Hawthorne,1850,novel,gutenberg,4480,45,yes,historical fiction;romantic fiction,have,b25
+63,S,844,The Importance of Being Earnest,Oscar Wilde,1895,play,gutenberg,25392,,no,,have,b47
+64,S,174,The Picture of Dorian Gray,Oscar Wilde,1890,novel,gutenberg,43384,,no,,have,b11
+65,S,43,Dr Jekyll and Mr Hyde,Robert Louis Stevenson,1886,novella,gutenberg,90059,60,yes,science fiction;sensation fiction;crime fiction;horror fiction;Gothic fiction,have,b15
+66,S,120,Treasure Island,Robert Louis Stevenson,1883,novel,gutenberg,26070,85,yes,coming-of-age fiction;nautical fiction;adventure fiction;pirate fiction,have,b16
+67,S,236,The Jungle Book,Rudyard Kipling,1894,short story collection,gutenberg,15872,69,yes,didactic literature,have,b40
+68,S,135,Les Misérables,Victor Hugo,1862,novel,gutenberg,19395,97,yes,tragedy;historical fiction,have,b34
+69,S,2610,The Hunchback of Notre-Dame,Victor Hugo,1831,novel,gutenberg,21845,76,yes,Romanticism;historical fiction;Gothic fiction,new,g2610
+70,S,,Mrs Dalloway,Virginia Woolf,1925,novel,us_pd,,,,,,
+71,S,,To the Lighthouse,Virginia Woolf,1927,novel,us_pd,,,,,,
+72,S,19942,Candide,Voltaire,1759,novella,gutenberg,11022,65,yes,Bildungsroman,new,g19942
+73,S,2267,A Midsummer Night's Dream,William Shakespeare,1595,play,gutenberg,,,,,,
+74,S,1524,Hamlet,William Shakespeare,1603,play,gutenberg,8382,,no,,have,b44
+75,S,1121,Julius Caesar,William Shakespeare,1599,play,gutenberg,,,,,,
+76,S,1532,King Lear,William Shakespeare,1606,play,gutenberg,,,,,,
+77,S,1533,Macbeth,William Shakespeare,1606,play,gutenberg,7903,,no,,have,b46
+78,S,1531,Othello,William Shakespeare,1603,play,gutenberg,,,,,,
+79,S,1513,Romeo and Juliet,William Shakespeare,1597,play,gutenberg,95206,,no,,have,b45
+80,S,23042,The Tempest,William Shakespeare,1611,play,gutenberg,,,,,,
+81,A,73011,The House at Pooh Corner,A. A. Milne,1928,children's book,gutenberg,,,,,,
+82,A,,The Murder at the Vicarage,Agatha Christie,1930,novel,us_pd,,,,,,
+83,A,1155,The Secret Adversary,Agatha Christie,1922,novel,gutenberg,48788,27,yes,detective fiction,have,g1155
+84,A,375,An Occurrence at Owl Creek Bridge,Ambrose Bierce,1890,short story,gutenberg,5510,14,yes,horror fiction,new,g375
+85,A,972,The Devil's Dictionary,Ambrose Bierce,1911,nonfiction,gutenberg,,,,,,
+86,A,271,Black Beauty,Anna Sewell,1877,novel,gutenberg,23114,36,yes,young adult fiction,new,g271
+87,A,969,The Tenant of Wildfell Hall,Anne Brontë,1848,novel,gutenberg,3377,47,yes,epistolary fiction,new,g969
+88,A,16328,Beowulf,Anonymous,,epic,gutenberg,,,,,,
+89,A,95,The Prisoner of Zenda,Anthony Hope,1894,novel,gutenberg,2255,28,yes,cloak and dagger novel;romantic fiction;adventure fiction,have,g95
+90,A,139,The Lost World,Arthur Conan Doyle,1912,novel,gutenberg,9539,33,yes,fiction;science fiction;lost world fiction;adventure fiction,have,g139
+91,A,834,The Memoirs of Sherlock Holmes,Arthur Conan Doyle,1894,short story collection,gutenberg,51694,,no,,have,g834
+92,A,108,The Return of Sherlock Holmes,Arthur Conan Doyle,1905,short story collection,gutenberg,52211,37,yes,detective fiction,have,g108
+93,A,2097,The Sign of the Four,Arthur Conan Doyle,1890,novel,gutenberg,52332,47,yes,detective fiction;crime fiction,have,g2097
+94,A,60,The Scarlet Pimpernel,Baroness Orczy,1905,novel,gutenberg,5053,31,yes,cloak and dagger novel,have,g60
+95,A,148,The Autobiography of Benjamin Franklin,Benjamin Franklin,1791,nonfiction,gutenberg,,,,,,
+96,A,,The Secret of the Old Clock,Carolyn Keene,1930,novel,us_pd,,,,,,
+97,A,1023,Bleak House,Charles Dickens,1853,novel,gutenberg,17475,38,yes,detective fiction,new,g1023
+98,A,967,Nicholas Nickleby,Charles Dickens,1839,novel,gutenberg,20227,31,yes,social criticism,new,g967
+99,A,580,The Pickwick Papers,Charles Dickens,1836,novel,gutenberg,21049,40,yes,picaresque novel;satire,new,g580
+100,A,1952,The Yellow Wallpaper,Charlotte Perkins Gilman,1892,short story,gutenberg,29497,,no,,have,g1952
+101,A,73144,Lady Chatterley's Lover,D. H. Lawrence,1928,novel,gutenberg,4026,46,yes,erotic literature;erotic romance novel,new,g73144
+102,A,8800,The Divine Comedy,Dante Alighieri,1320,poem,gutenberg,,,,,,
+103,A,,Red Harvest,Dashiell Hammett,1929,novel,us_pd,,,,,,
+104,A,,Strong Poison,Dorothy L. Sayers,1930,novel,us_pd,,,,,,
+105,A,58820,Whose Body?,Dorothy L. Sayers,1923,novel,gutenberg,45718,7,yes,detective fiction;crime literature,new,g58820
+106,A,61221,A Passage to India,E. M. Forster,1924,novel,gutenberg,3136,26,yes,,new,g61221
+107,A,22452,Howards End,E. M. Forster,1910,novel,gutenberg,5073,19,yes,family drama,new,g22452
+108,A,1874,The Railway Children,E. Nesbit,1906,novel,gutenberg,10995,,no,,have,g1874
+109,A,1063,The Cask of Amontillado,Edgar Allan Poe,1846,short story,gutenberg,49903,,no,,have,g1063
+110,A,78,Tarzan of the Apes,Edgar Rice Burroughs,1912,novel,gutenberg,3571,26,yes,fantasy;adventure fiction,have,g78
+111,A,4517,Ethan Frome,Edith Wharton,1911,novella,gutenberg,7695,18,yes,American realism,new,g4517
+112,A,541,The Age of Innocence,Edith Wharton,1920,novel,gutenberg,5356,,no,,have,g541
+113,A,284,The House of Mirth,Edith Wharton,1905,novel,gutenberg,4060,,no,,have,g284
+114,A,201,Flatland,Edwin A. Abbott,1884,novella,gutenberg,4122,35,yes,science fiction;mathematical fiction;satirical fiction,new,g201
+115,A,1450,Pollyanna,Eleanor H. Porter,1913,novel,gutenberg,3895,33,yes,children's fiction,have,g1450
+116,A,394,Cranford,Elizabeth Gaskell,1853,novel,gutenberg,,,,,,
+117,A,4276,North and South,Elizabeth Gaskell,1855,novel,gutenberg,,,,,,
+118,A,16389,The Enchanted April,Elizabeth von Arnim,1922,novel,gutenberg,,,,,,
+119,A,61085,In Our Time,Ernest Hemingway,1925,short story collection,gutenberg,,,,,,
+120,A,396,"The Lady, or the Tiger?",Frank R. Stockton,1882,short story,gutenberg,1915,12,yes,,new,g396
+121,A,23,Narrative of the Life of Frederick Douglass,Frederick Douglass,1845,nonfiction,gutenberg,,,,,,
+122,A,600,Notes from Underground,Fyodor Dostoevsky,1864,novella,gutenberg,13537,50,yes,philosophical fiction,new,g600
+123,A,2638,The Idiot,Fyodor Dostoevsky,1869,novel,gutenberg,12869,70,yes,,new,g2638
+124,A,204,The Innocence of Father Brown,G. K. Chesterton,1911,short story collection,gutenberg,,,,,,
+125,A,1695,The Man Who Was Thursday,G. K. Chesterton,1908,novel,gutenberg,59096,19,yes,thriller,have,g1695
+126,A,2383,The Canterbury Tales,Geoffrey Chaucer,1400,poem,gutenberg,23168,71,yes,English-language literature,new,g2383
+127,A,507,Adam Bede,George Eliot,1859,novel,gutenberg,,,,,,
+128,A,550,Silas Marner,George Eliot,1861,novel,gutenberg,3410,22,yes,novel of manners,new,g550
+129,A,5230,The Invisible Man,H. G. Wells,1897,novel,gutenberg,,,,,,
+130,A,159,The Island of Doctor Moreau,H. G. Wells,1896,novel,gutenberg,,,,,,
+131,A,68283,The Call of Cthulhu,H. P. Lovecraft,1928,short story,gutenberg,52038,34,yes,science fiction;weird fiction;horror fiction,new,g68283
+132,A,2166,King Solomon's Mines,H. Rider Haggard,1885,novel,gutenberg,3424,,no,,have,g2166
+133,A,2542,A Doll's House,Henrik Ibsen,1879,play,gutenberg,,,,,,
+134,A,205,Walden,Henry David Thoreau,1854,nonfiction,gutenberg,24578,,no,,have,b26
+135,A,6593,"The History of Tom Jones, a Foundling",Henry Fielding,1749,novel,gutenberg,,,,,,
+136,A,2834,The Portrait of a Lady,Henry James,1881,novel,gutenberg,1450,27,yes,,new,g2834
+137,A,209,The Turn of the Screw,Henry James,1898,novella,gutenberg,54814,27,yes,fantasy;ghost story;horror fiction;Gothic fiction,have,g209
+138,A,11231,"Bartleby, the Scrivener",Herman Melville,1853,short story,gutenberg,6200,23,yes,social criticism,new,g11231
+139,A,2500,Siddhartha,Hermann Hesse,1922,novel,gutenberg,9381,60,yes,developmental novel;philosophical novel,new,g2500
+140,A,,Steppenwolf,Hermann Hesse,1929,novel,us_pd,,,,,,
+141,A,1237,Père Goriot,Honoré de Balzac,1835,novel,gutenberg,2421,60,yes,historical fiction,new,g1237
+142,A,964,The Merry Adventures of Robin Hood,Howard Pyle,1883,novel,gutenberg,1722,,no,,have,g964
+143,A,1074,The Sea-Wolf,Jack London,1904,novel,gutenberg,2597,27,yes,adventure fiction,have,g1074
+144,A,910,White Fang,Jack London,1906,novel,gutenberg,12571,48,yes,adventure fiction;young adult fiction,have,g910
+145,A,940,The Last of the Mohicans,James Fenimore Cooper,1826,novel,gutenberg,9647,52,yes,historical fiction,have,g940
+146,A,4217,A Portrait of the Artist as a Young Man,James Joyce,1916,novel,gutenberg,8579,46,yes,Bildungsroman;Künstlerroman;autobiographical novel,new,g4217
+147,A,2814,Dubliners,James Joyce,1914,short story collection,gutenberg,12784,45,yes,,new,g2814
+148,A,4300,Ulysses,James Joyce,1922,novel,gutenberg,32653,84,yes,autobiography;Bildungsroman;metafiction;modernist literature;serialized fiction;experimental literature;high literature,new,g4300
+149,A,141,Mansfield Park,Jane Austen,1814,novel,gutenberg,7376,44,yes,romantic fiction,new,g141
+150,A,121,Northanger Abbey,Jane Austen,1818,novel,gutenberg,23143,36,yes,romantic fiction,have,g121
+151,A,105,Persuasion,Jane Austen,1817,novel,gutenberg,11688,46,yes,romantic fiction,have,b50
+152,A,308,Three Men in a Boat,Jerome K. Jerome,1889,novel,gutenberg,7984,29,yes,humorous fiction,new,g308
+153,A,2527,The Sorrows of Young Werther,Johann Wolfgang von Goethe,1774,novel,gutenberg,28159,64,yes,epistolary novel;sentimental novel;diary literature,new,g2527
+154,A,558,The Thirty-Nine Steps,John Buchan,1915,novel,gutenberg,47133,20,yes,mystery fiction;spy fiction,have,g558
+155,A,26,Paradise Lost,John Milton,1667,poem,gutenberg,,,,,,
+156,A,61620,The Curse of Capistrano,Johnston McCulley,1919,novel,gutenberg,,,,,,
+157,A,1080,A Modest Proposal,Jonathan Swift,1729,essay,gutenberg,,,,,,
+158,A,5658,Lord Jim,Joseph Conrad,1900,novel,gutenberg,3607,39,yes,psychological fiction,have,g5658
+159,A,974,The Secret Agent,Joseph Conrad,1907,novel,gutenberg,46929,22,yes,spy fiction,have,g974
+160,A,1268,The Mysterious Island,Jules Verne,1874,novel,gutenberg,9741,,no,,have,g1268
+161,A,61,The Communist Manifesto,Karl Marx and Friedrich Engels,1848,nonfiction,gutenberg,,,,,,
+162,A,160,The Awakening,Kate Chopin,1899,novel,gutenberg,25199,16,yes,,new,g160
+163,A,67979,The Blue Castle,L. M. Montgomery,1926,novel,gutenberg,,,,,,
+164,A,6157,How Much Land Does a Man Need?,Leo Tolstoy,1886,short story,gutenberg,3512,24,yes,,new,g6157
+165,A,2680,Meditations,Marcus Aurelius,,nonfiction,gutenberg,,,,,,
+166,A,86,A Connecticut Yankee in King Arthur's Court,Mark Twain,1889,novel,gutenberg,23834,31,yes,science fiction;fantasy;alternate history;humorous literature;satirical fiction,new,g86
+167,A,1837,The Prince and the Pauper,Mark Twain,1881,novel,gutenberg,24154,43,yes,historical fiction;cloak and dagger novel;children's fiction,new,g1837
+168,A,6133,"Arsène Lupin, Gentleman-Burglar",Maurice Leblanc,1907,short story collection,gutenberg,,,,,,
+169,A,1232,The Prince,Niccolò Machiavelli,1532,nonfiction,gutenberg,,,,,,
+170,A,421,Kidnapped,Robert Louis Stevenson,1886,novel,gutenberg,9755,,no,,have,g421
+171,A,849,The King in Yellow,Robert W. Chambers,1895,short story collection,gutenberg,,,,,,
+172,A,1156,Babbitt,Sinclair Lewis,1922,novel,gutenberg,2599,14,yes,satire,have,g1156
+173,A,44747,The Red and the Black,Stendhal,1830,novel,gutenberg,3271,51,yes,Bildungsroman;historical fiction;psychological fiction,new,g44747
+174,A,73,The Red Badge of Courage,Stephen Crane,1895,novel,gutenberg,,,,,,
+175,A,107,Far from the Madding Crowd,Thomas Hardy,1874,novel,gutenberg,4112,25,yes,,new,g107
+176,A,153,Jude the Obscure,Thomas Hardy,1895,novel,gutenberg,3225,19,yes,,new,g153
+177,A,143,The Mayor of Casterbridge,Thomas Hardy,1886,novel,gutenberg,2713,20,yes,,new,g143
+178,A,66073,Death in Venice,Thomas Mann,1912,novella,gutenberg,1679,46,yes,,new,g66073
+179,A,,The Bridge of San Luis Rey,Thornton Wilder,1927,novel,us_pd,,,,,,
+180,A,140,The Jungle,Upton Sinclair,1905,novel,gutenberg,8892,27,yes,social fiction,have,g140
+181,A,,Orlando,Virginia Woolf,1928,novel,us_pd,,,,,,
+182,A,408,The Souls of Black Folk,W. E. B. Du Bois,1903,nonfiction,gutenberg,,,,,,
+183,A,351,Of Human Bondage,W. Somerset Maugham,1915,novel,gutenberg,2226,24,yes,Bildungsroman,new,g351
+184,A,82,Ivanhoe,Walter Scott,1819,novel,gutenberg,5342,51,yes,historical fiction,new,g82
+185,A,60976,Rip Van Winkle,Washington Irving,1818,short story,gutenberg,5521,35,yes,time-travel fiction,new,g60976
+186,A,155,The Moonstone,Wilkie Collins,1868,novel,gutenberg,50961,30,yes,fantasy;epistolary novel;crime fiction,have,g155
+187,A,583,The Woman in White,Wilkie Collins,1859,novel,gutenberg,51733,,no,,have,g583
+188,A,,Death Comes for the Archbishop,Willa Cather,1927,novel,us_pd,,,,,,
+189,A,242,My Ántonia,Willa Cather,1918,novel,gutenberg,,,,,,
+190,A,,As I Lay Dying,William Faulkner,1930,novel,us_pd,,,,,,
+191,A,,The Sound and the Fury,William Faulkner,1929,novel,us_pd,,,,,,
+192,A,599,Vanity Fair,William Makepeace Thackeray,1848,novel,gutenberg,21168,43,yes,satirical fiction,new,g599
+193,A,2266,As You Like It,William Shakespeare,1599,play,gutenberg,,,,,,
+194,A,2262,Henry V,William Shakespeare,1599,play,gutenberg,,,,,,
+195,A,1522,Much Ado About Nothing,William Shakespeare,1598,play,gutenberg,,,,,,
+196,A,2263,Richard III,William Shakespeare,1593,play,gutenberg,,,,,,
+197,A,1120,The Merchant of Venice,William Shakespeare,1596,play,gutenberg,,,,,,
+198,A,2264,The Taming of the Shrew,William Shakespeare,1593,play,gutenberg,,,,,,
+199,A,2235,Twelfth Night,William Shakespeare,1602,play,gutenberg,,,,,,
+200,B,1872,The Red House Mystery,A. A. Milne,1922,novel,gutenberg,,,,,,
+201,B,70114,The Big Four,Agatha Christie,1927,novel,gutenberg,,,,,,
+202,B,61168,The Man in the Brown Suit,Agatha Christie,1924,novel,gutenberg,47569,29,yes,thriller;detective fiction;crime fiction,new,g61168
+203,B,58866,The Murder on the Links,Agatha Christie,1923,novel,gutenberg,,,,,,
+204,B,,The Mystery of the Blue Train,Agatha Christie,1928,novel,us_pd,,,,,,
+205,B,65238,The Secret of Chimneys,Agatha Christie,1925,novel,gutenberg,,,,,,
+206,B,1999,Crome Yellow,Aldous Huxley,1921,novel,gutenberg,1138,7,yes,,new,g1999
+207,B,35155,The Betrothed,Alessandro Manzoni,1827,novel,gutenberg,,,,,,
+208,B,2759,The Man in the Iron Mask,Alexandre Dumas,1850,novel,gutenberg,,,,,,
+209,B,1259,Twenty Years After,Alexandre Dumas,1845,novel,gutenberg,,,,,,
+210,B,11438,The Willows,Algernon Blackwood,1907,novella,gutenberg,,,,,,
+211,B,503,The Blue Fairy Book,Andrew Lang,1889,fairy tales,gutenberg,,,,,,
+212,B,,Gentlemen Prefer Blondes,Anita Loos,1925,novel,us_pd,,,,,,
+213,B,3268,The Mysteries of Udolpho,Ann Radcliffe,1794,novel,gutenberg,84458,20,yes,Gothic fiction;fantasy;thriller;horror fiction;romantic fiction,have,g3268
+214,B,767,Agnes Grey,Anne Brontë,1847,novel,gutenberg,1999,29,yes,,new,g767
+215,B,5160,The Mabinogion,Anonymous,,myth,gutenberg,,,,,,
+216,B,3409,Barchester Towers,Anthony Trollope,1857,novel,gutenberg,,,,,,
+217,B,5231,The Way We Live Now,Anthony Trollope,1875,novel,gutenberg,,,,,,
+218,B,468,Manon Lescaut,Antoine François Prévost,1731,novel,gutenberg,49485,33,yes,memoir novel;romantic fiction;memoir,new,g468
+219,B,2350,His Last Bow,Arthur Conan Doyle,1917,short story collection,gutenberg,47063,36,yes,detective fiction,have,g2350
+220,B,69700,The Case-Book of Sherlock Holmes,Arthur Conan Doyle,1927,short story collection,gutenberg,48143,32,yes,detective fiction;crime fiction,new,g69700
+221,B,126,The Poison Belt,Arthur Conan Doyle,1913,novel,gutenberg,,,,,,
+222,B,3289,The Valley of Fear,Arthur Conan Doyle,1915,novel,gutenberg,47643,39,yes,detective fiction;crime fiction,have,g3289
+223,B,903,The White Company,Arthur Conan Doyle,1891,novel,gutenberg,,,,,,
+224,B,389,The Great God Pan,Arthur Machen,1894,novella,gutenberg,,,,,,
+225,B,,Swallows and Amazons,Arthur Ransome,1930,novel,us_pd,,,,,,
+226,B,3781,The Jewel of Seven Stars,Bram Stoker,1903,novel,gutenberg,1113,14,yes,horror fiction,new,g3781
+227,B,1188,The Lair of the White Worm,Bram Stoker,1911,novel,gutenberg,1060,8,yes,fantasy;horror fiction,have,g1188
+228,B,20657,Tales from Shakespeare,Charles and Mary Lamb,1807,short story collection,gutenberg,,,,,,
+229,B,786,Hard Times,Charles Dickens,1854,novel,gutenberg,7132,28,yes,serialized fiction;social fiction,new,g786
+230,B,963,Little Dorrit,Charles Dickens,1857,novel,gutenberg,3516,28,yes,,new,g963
+231,B,883,Our Mutual Friend,Charles Dickens,1864,novel,gutenberg,4745,23,yes,serialized fiction;mystery fiction,new,g883
+232,B,564,The Mystery of Edwin Drood,Charles Dickens,1870,novel,gutenberg,61536,,no,,have,g564
+233,B,700,The Old Curiosity Shop,Charles Dickens,1840,novel,gutenberg,3496,25,yes,social criticism,new,g700
+234,B,1018,The Water-Babies,Charles Kingsley,1863,novel,gutenberg,1005,16,yes,fantasy;children's fiction,new,g1018
+235,B,9182,Villette,Charlotte Brontë,1853,novel,gutenberg,3459,21,yes,Bildungsroman;Victorian literature,new,g9182
+236,B,32,Herland,Charlotte Perkins Gilman,1915,novel,gutenberg,3135,12,yes,science fiction;serialized fiction;feminist science fiction;utopian fiction,new,g32
+237,B,217,Sons and Lovers,D. H. Lawrence,1913,novel,gutenberg,2769,29,yes,autobiographical novel,new,g217
+238,B,28948,The Rainbow,D. H. Lawrence,1915,novel,gutenberg,,,,,,
+239,B,4240,Women in Love,D. H. Lawrence,1920,novel,gutenberg,,,,,,
+240,B,370,Moll Flanders,Daniel Defoe,1722,novel,gutenberg,1613,28,yes,picaresque novel,new,g370
+241,B,41085,La Vita Nuova,Dante Alighieri,1295,poem,gutenberg,,,,,,
+242,B,2604,The Longest Journey,E. M. Forster,1907,novel,gutenberg,,,,,,
+243,B,2948,Where Angels Fear to Tread,E. M. Forster,1905,novel,gutenberg,,,,,,
+244,B,778,Five Children and It,E. Nesbit,1902,novel,gutenberg,960,15,yes,fantasy;children's fiction,new,g778
+245,B,836,The Phoenix and the Carpet,E. Nesbit,1904,novel,gutenberg,,,,,,
+246,B,2147,The Mystery of Marie Rogêt,Edgar Allan Poe,1842,short story,gutenberg,54438,29,yes,crime fiction,new,g2147
+247,B,2149,The Narrative of Arthur Gordon Pym,Edgar Allan Poe,1838,novel,gutenberg,2064,29,yes,lost world fiction;nautical fiction;Gothic fiction,new,g2149
+248,B,62,A Princess of Mars,Edgar Rice Burroughs,1912,novel,gutenberg,11471,,no,,have,g62
+249,B,64,The Gods of Mars,Edgar Rice Burroughs,1913,novel,gutenberg,,,,,,
+250,B,81,The Return of Tarzan,Edgar Rice Burroughs,1913,novel,gutenberg,,,,,,
+251,B,11052,The Custom of the Country,Edith Wharton,1913,novel,gutenberg,,,,,,
+252,B,28961,Heart,Edmondo de Amicis,1886,novel,gutenberg,1750,32,yes,children's fiction,new,g28961
+253,B,624,Looking Backward,Edward Bellamy,1888,novel,gutenberg,2594,20,yes,political fiction;futuristic fiction;utopian literature,new,g624
+254,B,2153,Mary Barton,Elizabeth Gaskell,1848,novel,gutenberg,,,,,,
+255,B,2360,The Riddle of the Sands,Erskine Childers,1903,novel,gutenberg,,,,,,
+256,B,3431,The Gadfly,Ethel Lilian Voynich,1897,novel,gutenberg,1023,26,yes,romantic fiction,new,g3431
+257,B,,Vile Bodies,Evelyn Waugh,1930,novel,us_pd,,,,,,
+258,B,9830,The Beautiful and Damned,F. Scott Fitzgerald,1922,novel,gutenberg,,,,,,
+259,B,805,This Side of Paradise,F. Scott Fitzgerald,1920,novel,gutenberg,3638,19,yes,,new,g805
+260,B,6053,Evelina,Frances Burney,1778,novel,gutenberg,,,,,,
+261,B,479,Little Lord Fauntleroy,Frances Hodgson Burnett,1886,novel,gutenberg,,,,,,
+262,B,165,McTeague,Frank Norris,1899,novel,gutenberg,,,,,,
+263,B,268,The Octopus,Frank Norris,1901,novel,gutenberg,,,,,,
+264,B,,The Tower Treasure,Franklin W. Dixon,1927,novel,us_pd,,,,,,
+265,B,8117,Demons,Fyodor Dostoevsky,1872,novel,gutenberg,,,,,,
+266,B,2302,Poor Folk,Fyodor Dostoevsky,1846,novel,gutenberg,2426,47,yes,,new,g2302
+267,B,2197,The Gambler,Fyodor Dostoevsky,1867,novel,gutenberg,,,,,,
+268,B,37536,The House of the Dead,Fyodor Dostoevsky,1862,novel,gutenberg,,,,,,
+269,B,223,The Wisdom of Father Brown,G. K. Chesterton,1914,short story collection,gutenberg,50651,,no,,have,g223
+270,B,1685,The Mystery of the Yellow Room,Gaston Leroux,1907,novel,gutenberg,,,,,,
+271,B,39858,Trilby,George du Maurier,1894,novel,gutenberg,1263,7,yes,Gothic fiction,have,g39858
+272,B,7469,Daniel Deronda,George Eliot,1876,novel,gutenberg,,,,,,
+273,B,24020,Romola,George Eliot,1863,novel,gutenberg,,,,,,
+274,B,708,The Princess and the Goblin,George MacDonald,1872,novel,gutenberg,,,,,,
+275,B,38703,The Black Moth,Georgette Heyer,1921,novel,gutenberg,17597,4,yes,historical fiction;romantic fiction,new,g38703
+276,B,1290,Salammbô,Gustave Flaubert,1862,novel,gutenberg,,,,,,
+277,B,393,The Blue Lagoon,H. De Vere Stacpoole,1908,novel,gutenberg,49758,10,yes,romance,have,g393
+278,B,780,The War in the Air,H. G. Wells,1908,novel,gutenberg,,,,,,
+279,B,718,Tono-Bungay,H. G. Wells,1909,novel,gutenberg,,,,,,
+280,B,50133,The Dunwich Horror,H. P. Lovecraft,1929,short story,gutenberg,,,,,,
+281,B,3155,She,H. Rider Haggard,1887,novel,gutenberg,2317,28,yes,fantasy;lost world fiction;Gothic fiction;adventure fiction,new,g3155
+282,B,208,Daisy Miller,Henry James,1879,novella,gutenberg,3066,20,yes,,new,g208
+283,B,176,Roderick Hudson,Henry James,1875,novel,gutenberg,,,,,,
+284,B,432,The Ambassadors,Henry James,1903,novel,gutenberg,,,,,,
+285,B,211,The Aspern Papers,Henry James,1888,novella,gutenberg,,,,,,
+286,B,1093,The Beast in the Jungle,Henry James,1903,novella,gutenberg,,,,,,
+287,B,7118,What Maisie Knew,Henry James,1897,novel,gutenberg,,,,,,
+288,B,2853,Quo Vadis,Henryk Sienkiewicz,1896,novel,gutenberg,,,,,,
+289,B,8118,Redburn,Herman Melville,1849,novel,gutenberg,,,,,,
+290,B,1900,Typee,Herman Melville,1846,novel,gutenberg,,,,,,
+291,B,1749,Cousin Bette,Honoré de Balzac,1846,novel,gutenberg,,,,,,
+292,B,1715,Eugénie Grandet,Honoré de Balzac,1833,novel,gutenberg,,,,,,
+293,B,1307,La Peau de chagrin,Honoré de Balzac,1831,novel,gutenberg,,,,,,
+294,B,696,The Castle of Otranto,Horace Walpole,1764,novel,gutenberg,20422,33,yes,horror fiction;Gothic fiction,have,g696
+295,B,501,The Story of Doctor Dolittle,Hugh Lofting,1920,novel,gutenberg,2875,,no,,have,g501
+296,B,9911,First Love,Ivan Turgenev,1860,novella,gutenberg,32730,26,yes,short novel,new,g9911
+297,B,1056,Martin Eden,Jack London,1909,novel,gutenberg,4067,49,yes,Künstlerroman,new,g1056
+298,B,1164,The Iron Heel,Jack London,1908,novel,gutenberg,,,,,,
+299,B,21970,The Scarlet Plague,Jack London,1912,novel,gutenberg,,,,,,
+300,B,57669,The Problem of Cell 13,Jacques Futrelle,1905,short story,gutenberg,45768,3,yes,locked room mystery,new,g57669
+301,B,3285,The Deerslayer,James Fenimore Cooper,1841,novel,gutenberg,,,,,,
+302,B,2275,The Pioneers,James Fenimore Cooper,1823,novel,gutenberg,,,,,,
+303,B,2276,The Private Memoirs and Confessions of a Justified Sinner,James Hogg,1824,novel,gutenberg,1270,,no,,have,g2276
+304,B,36483,Wilhelm Meister's Apprenticeship,Johann Wolfgang von Goethe,1795,novel,gutenberg,,,,,,
+305,B,560,Mr. Standfast,John Buchan,1919,novel,gutenberg,47388,4,yes,military fiction,have,g560
+306,B,131,The Pilgrim's Progress,John Bunyan,1678,novel,gutenberg,6126,46,yes,allegory,new,g131
+307,B,6087,The Vampyre,John William Polidori,1819,novella,gutenberg,5666,,no,,have,g6087
+308,B,220,The Secret Sharer,Joseph Conrad,1910,novella,gutenberg,,,,,,
+309,B,1142,Typhoon,Joseph Conrad,1902,novella,gutenberg,,,,,,
+310,B,525,Youth,Joseph Conrad,1898,short story,gutenberg,,,,,,
+311,B,16457,Around the Moon,Jules Verne,1870,novel,gutenberg,945,37,yes,science fiction,new,g16457
+312,B,486,Ozma of Oz,L. Frank Baum,1907,novel,gutenberg,,,,,,
+313,B,54,The Marvelous Land of Oz,L. Frank Baum,1904,novel,gutenberg,,,,,,
+314,B,47,Anne of Avonlea,L. M. Montgomery,1909,novel,gutenberg,,,,,,
+315,B,1210,Kwaidan,Lafcadio Hearn,1904,short story collection,gutenberg,,,,,,
+316,B,804,A Sentimental Journey Through France and Italy,Laurence Sterne,1768,novel,gutenberg,1020,21,yes,imaginary voyage,new,g804
+317,B,1079,Tristram Shandy,Laurence Sterne,1759,novel,gutenberg,20499,34,yes,picaresque novel;metafiction;satirical fiction,new,g1079
+318,B,1938,Resurrection,Leo Tolstoy,1899,novel,gutenberg,,,,,,
+319,B,689,The Kreutzer Sonata,Leo Tolstoy,1889,novella,gutenberg,,,,,,
+320,B,601,The Monk,M. G. Lewis,1796,novel,gutenberg,54719,18,yes,fantasy;Gothic fiction,have,g601
+321,B,8486,Ghost Stories of an Antiquary,M. R. James,1904,short story collection,gutenberg,,,,,,
+322,B,467,La Princesse de Clèves,Madame de Lafayette,1678,novel,gutenberg,996,23,yes,historical fiction,new,g467
+323,B,102,Pudd'nhead Wilson,Mark Twain,1894,novel,gutenberg,3060,11,yes,comic novel;mystery fiction,new,g102
+324,B,8954,Lady Audley's Secret,Mary Elizabeth Braddon,1862,novel,gutenberg,47288,6,yes,sensation fiction,new,g8954
+325,B,434,The Circular Staircase,Mary Roberts Rinehart,1908,novel,gutenberg,,,,,,
+326,B,18247,The Last Man,Mary Shelley,1826,novel,gutenberg,2809,19,yes,science fiction;post-apocalyptic fiction;futuristic fiction,new,g18247
+327,B,1845,Zuleika Dobson,Max Beerbohm,1911,novel,gutenberg,1009,6,yes,satire,new,g1845
+328,B,913,A Hero of Our Time,Mikhail Lermontov,1840,novel,gutenberg,1515,36,yes,psychological fiction,new,g913
+329,B,70128,Max Havelaar,Multatuli,1860,novel,gutenberg,1093,32,yes,political fiction;double novel,new,g70128
+330,B,512,Mosses from an Old Manse,Nathaniel Hawthorne,1846,short story collection,gutenberg,,,,,,
+331,B,2081,The Blithedale Romance,Nathaniel Hawthorne,1852,novel,gutenberg,,,,,,
+332,B,13707,Twice-Told Tales,Nathaniel Hawthorne,1837,short story collection,gutenberg,,,,,,
+333,B,2667,The Vicar of Wakefield,Oliver Goldsmith,1766,novel,gutenberg,,,,,,
+334,B,873,A House of Pomegranates,Oscar Wilde,1891,short story collection,gutenberg,,,,,,
+335,B,921,De Profundis,Oscar Wilde,1905,letter,gutenberg,,,,,,
+336,B,301,The Ballad of Reading Gaol,Oscar Wilde,1898,poem,gutenberg,,,,,,
+337,B,2465,Carmen,Prosper Mérimée,1845,novella,gutenberg,,,,,,
+338,B,17460,Lorna Doone,R. D. Blackmore,1869,novel,gutenberg,36829,14,yes,romantic fiction,new,g17460
+339,B,,The Well of Loneliness,Radclyffe Hall,1928,novel,us_pd,,,,,,
+340,B,1965,Captain Blood,Rafael Sabatini,1922,novel,gutenberg,2188,17,yes,historical fiction;adventure fiction;pirate fiction,new,g1965
+341,B,1947,Scaramouche,Rafael Sabatini,1921,novel,gutenberg,,,,,,
+342,B,5164,The Beetle,Richard Marsh,1897,novel,gutenberg,1157,3,yes,fantasy;horror fiction,have,g5164
+343,B,589,Catriona,Robert Louis Stevenson,1893,novel,gutenberg,48695,10,yes,historical fiction;adventure fiction,have,g589
+344,B,3154,The Surprising Adventures of Baron Munchausen,Rudolf Erich Raspe,1785,novel,gutenberg,1172,,no,,have,g3154
+345,B,6124,Pamela,Samuel Richardson,1740,novel,gutenberg,,,,,,
+346,B,173,The Insidious Dr. Fu-Manchu,Sax Rohmer,1913,novel,gutenberg,,,,,,
+347,B,10935,The Wonderful Adventures of Nils,Selma Lagerlöf,1906,novel,gutenberg,1054,45,yes,fantasy,new,g10935
+348,B,416,"Winesburg, Ohio",Sherwood Anderson,1919,short story collection,gutenberg,2316,19,yes,short story cycle,new,g416
+349,B,,Arrowsmith,Sinclair Lewis,1925,novel,us_pd,,,,,,
+350,B,543,Main Street,Sinclair Lewis,1920,novel,gutenberg,,,,,,
+351,B,,An American Tragedy,Theodore Dreiser,1925,novel,us_pd,,,,,,
+352,B,2040,Confessions of an English Opium-Eater,Thomas De Quincey,1821,nonfiction,gutenberg,,,,,,
+353,B,122,The Return of the Native,Thomas Hardy,1878,novel,gutenberg,2621,10,yes,,new,g122
+354,B,2160,The Expedition of Humphry Clinker,Tobias Smollett,1771,novel,gutenberg,,,,,,
+355,B,5670,Jacob's Room,Virginia Woolf,1922,novel,gutenberg,,,,,,
+356,B,144,The Voyage Out,Virginia Woolf,1915,novel,gutenberg,,,,,,
+357,B,222,The Moon and Sixpence,W. Somerset Maugham,1919,novel,gutenberg,,,,,,
+358,B,64682,The Painted Veil,W. Somerset Maugham,1925,novel,gutenberg,1441,19,yes,,new,g64682
+359,B,5998,Waverley,Walter Scott,1814,novel,gutenberg,,,,,,
+360,B,24,O Pioneers!,Willa Cather,1913,novel,gutenberg,2234,9,yes,historical fiction,new,g24
+361,B,42401,Vathek,William Beckford,1786,novel,gutenberg,1175,15,yes,fiction;fantasy;Gothic fiction;Oriental fantasy,new,g42401
+362,B,10832,"Carnacki, the Ghost-Finder",William Hope Hodgson,1913,short story collection,gutenberg,1107,1,yes,detective fiction;weird fiction;supernatural fiction;occult detective fiction;horror fiction,new,g10832
+363,B,10002,The House on the Borderland,William Hope Hodgson,1908,novel,gutenberg,48309,9,yes,fantasy;weird fiction;horror fiction,new,g10002
+364,B,1540,Antony and Cleopatra,William Shakespeare,1606,play,gutenberg,,,,,,
+365,B,1112,The Comedy of Errors,William Shakespeare,1594,play,gutenberg,,,,,,
+366,B,2268,The Winter's Tale,William Shakespeare,1611,play,gutenberg,,,,,,
+367,B,1170,Anabasis,Xenophon,1859,nonfiction,gutenberg,11047,48,yes,travel book;historiography,new,g1170
+368,B,1300,Riders of the Purple Sage,Zane Grey,1912,novel,gutenberg,,,,,,
+369,B,6626,Thérèse Raquin,Émile Zola,1867,novel,gutenberg,1434,29,yes,psychological fiction,new,g6626

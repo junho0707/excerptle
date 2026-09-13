@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "g22452",
+    "book": "Howards End",
+    "kind": "bank",
+    "error": "gutenberg 22452: HTTP Error 404: Not Found"
+  },
+  {
+    "slug": "g15114",
+    "book": "The Laws of Thought",
+    "kind": "bank",
+    "error": "gutenberg 15114: HTTP Error 404: Not Found"
+  }
+]

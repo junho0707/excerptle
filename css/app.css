@@ -21,6 +21,15 @@
   --sp-2: 0.6rem;   /* between related lines */
   --sp-3: 1rem;     /* between blocks in a card */
   --sp-4: 1.5rem;   /* between sections, and the air on each side of a rule */
+
+  /* House promos. Cool greys against the warm paper, so the cards read as
+     something other than the game before a word of them is read. */
+  --promo: #e9edf3;
+  --promo-2: #dde4ee;
+  --promo-rule: #bcc6d4;
+  --promo-ink: #26303d;
+  --promo-soft: #566374;
+  --promo-accent: #2c5a86;
 }
 
 [data-theme="night"] {
@@ -33,6 +42,12 @@
   --wine-deep: #c45b66;
   --gold: #d4b36a;
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --promo: #191f27;
+  --promo-2: #212934;
+  --promo-rule: #3a4552;
+  --promo-ink: #e2e9f2;
+  --promo-soft: #9fb0c4;
+  --promo-accent: #8cbbe8;
 }
 
 * { box-sizing: border-box; }
@@ -181,6 +196,71 @@ a { color: var(--wine); }
   color: var(--wine);
   font-weight: 700;
 }
+/* A name swapped out for a pronoun so the opening does not name the book.
+   Underlined rather than highlighted: it should read as part of the sentence,
+   and only ask for attention when a player wonders about it. */
+.excerpt .redacted {
+  position: relative;
+  border-bottom: 1px dotted var(--wine);
+  color: var(--wine);
+  cursor: help;
+}
+/* Our own bubble rather than title=: the native one waits about a second
+   before it appears and never shows at all on a touch screen. This one is
+   instant on hover, and .open is the tap equivalent for phones. --tip-x is
+   the nudge app.js applies when the word sits near a screen edge. */
+.excerpt .redacted-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.5rem);
+  transform: translateX(calc(-50% + var(--tip-x, 0px)));
+  z-index: 5;
+  width: max-content;
+  max-width: min(18rem, 76vw);
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.35;
+  text-align: left;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.excerpt .redacted::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.16rem);
+  transform: translateX(-50%);
+  z-index: 6;
+  border: 0.34rem solid transparent;
+  border-top-color: var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.excerpt .redacted:hover .redacted-tip,
+.excerpt .redacted:hover::before,
+.excerpt .redacted:focus-visible .redacted-tip,
+.excerpt .redacted:focus-visible::before,
+.excerpt .redacted.open .redacted-tip,
+.excerpt .redacted.open::before {
+  opacity: 1;
+  visibility: visible;
+}
+.excerpt .redacted:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .excerpt.fade { animation: fade 0.45s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
@@ -241,6 +321,14 @@ a { color: var(--wine); }
   gap: 0.12rem;
   padding: 0.6rem 1rem;
   line-height: 1.15;
+}
+/* The hint button names what the next hint buys -- "Hint: Publication year" --
+   so it carries far more text than the button beside it. Let it take the room
+   it needs and wrap, rather than shoulder the guess button off a phone. */
+.actions .btn { flex: 1 1 auto; max-width: 14rem; text-align: center; }
+@media (max-width: 420px) {
+  .actions { gap: 0.35rem; }
+  .actions .btn { min-width: 0; font-size: 0.9rem; padding: 0.55rem 0.55rem; }
 }
 .pill {
   font-family: var(--mono);
@@ -319,14 +407,92 @@ a { color: var(--wine); }
 }
 .ad .adsbygoogle { display: block; min-height: 5.5rem; }
 .ad-label { display: block; }
-.ad .slot {
-  margin-top: 0.45rem;
-  height: 5.5rem;
-  background: color-mix(in srgb, var(--paper-2) 70%, var(--rule));
-  display: grid;
-  place-items: center;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+/* House ads. Our own two sites, under the AdSense slot on the post-game
+   screen. Two things this has to do: sit clearly apart from the game above it,
+   and read as TWO offers rather than one. No "advertisement" label — it would
+   only talk the reader out of reading the line. */
+.house {
+  margin: var(--sp-4) 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--rule);
+}
+.house-title {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.house a { text-decoration: none; color: inherit; }
+
+/* Each offer is its own bordered card with real air between them: a shared
+   box with a hairline made the second one look like a footnote to the first. */
+.house-ad {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border: 1px solid var(--promo-rule);
+  border-radius: 5px;
+  background: var(--promo);
+  color: var(--promo-ink);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.house-ad + .house-ad { margin-top: var(--sp-3); }
+.house-ad:hover,
+.house-ad:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
+
+.house-copy { flex: 1 1 auto; min-width: 0; }
+
+/* The site's name is the card's title; the line under it says what it does.
+   The whole card is the link, so the title carries the link's affordances —
+   an arrow that steps forward and an underline on hover. */
+.house-name {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: var(--promo-accent);
+  margin-bottom: 0.25rem;
+}
+.house-arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.house-ad:hover .house-name,
+.house-ad:focus-visible .house-name { text-decoration: underline; }
+.house-ad:hover .house-arrow,
+.house-ad:focus-visible .house-arrow { transform: translateX(0.2em); }
+.house-line {
+  display: block;
+  font-size: 0.87rem;
+  line-height: 1.4;
+  color: var(--promo-soft);
+}
+
+/* The second card carries no art, so it is set a notch smaller and quieter —
+   enough to rank the two without making it look like a caption. */
+.house-ad-alt { padding: 0.85rem var(--sp-3); }
+.house-ad-alt .house-name { font-size: 1rem; }
+.house-ad-alt .house-line { font-size: 0.83rem; }
+
+/* Both cards show a logo plate. The wordmarks are dark ink on white with no
+   alpha, so they keep their own white tile rather than being knocked out or
+   inverted for the night theme. */
+.house-logo {
+  flex: 0 0 auto;
+  width: 150px;
+  height: auto;
+  padding: 0.45rem 0.6rem;
+  border-radius: 4px;
+  background: #fff;
+}
+.house-ad-alt .house-logo { width: 130px; }
+
+@media (max-width: 30rem) {
+  .house-logo { width: 118px; }
+  .house-ad-alt .house-logo { width: 106px; }
 }
 
 .screen h1 {
@@ -386,7 +552,9 @@ a { color: var(--wine); }
 }
 
 footer {
-  margin-top: auto;
+  /* Deliberately not margin-top:auto. On the short playing screen that shoved
+     the footer to the bottom of the viewport and left a void under "want to
+     guess more"; the page background fills the rest either way. */
   padding: 2.75rem 0 1.75rem;
   border-top: 1px solid var(--rule);
   font-size: 0.75rem;
@@ -413,6 +581,39 @@ footer a { color: inherit; }
 .footer-note {
   margin: 1.5rem 0 0;
   opacity: 0.8;
+}
+
+/* Social row: the always-there home for the accounts. Icons inherit the
+   footer's ink so the night theme needs no second set of colours. */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem;
+  margin-top: 1.35rem;
+}
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: var(--ink-soft);
+  opacity: 0.72;
+  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.social a:hover,
+.social a:focus-visible {
+  opacity: 1;
+  color: var(--wine);
+  background: var(--paper-2);
+}
+.social svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
 .nav-right {
@@ -460,9 +661,17 @@ footer a { color: inherit; }
 .filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem 1rem;
   margin: 0.6rem 0 1rem;
   font-size: 0.85rem;
+}
+/* Each label is its own flex row, so a label sitting next to a tall select
+   lines up with one sitting next to a checkbox instead of riding above it. */
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 #screen-bank { text-align: center; }
 #screen-bank .filters { justify-content: center; align-items: center; }
@@ -471,14 +680,12 @@ footer a { color: inherit; }
   background: var(--paper);
   border: 1px solid var(--rule);
   padding: 0.35rem 0.5rem;
-  margin-left: 0.35rem;
   max-width: 8rem;
 }
 
 /* A tick box is not a text field: undo the .filters input framing for it. */
-.filter-check { display: flex; align-items: center; gap: 0.4rem; }
+.filter-check { gap: 0.4rem; }
 .filter-check input {
-  margin-left: 0;
   padding: 0;
   width: auto;
   max-width: none;
@@ -489,12 +696,15 @@ footer a { color: inherit; }
 
 .bank-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(4.2rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
   gap: 0.4rem;
 }
 .bank-cell {
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 0.15rem;
+  padding: 0.35rem 0.4rem;
   min-height: 3.1rem;
   border: 1px solid var(--rule);
   text-decoration: none;
@@ -504,6 +714,22 @@ footer a { color: inherit; }
   background: var(--paper-2);
 }
 .bank-cell.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+/* A guessed book shows its name: the grid doubles as a record of what you
+   have read. Two lines is enough for most titles and keeps the rows even. */
+.bank-cell .bank-n { font-size: 0.68rem; color: var(--ink-soft); letter-spacing: 0.06em; }
+.bank-cell .bank-t {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+/* Fallback marker for books guessed before the title was recorded. */
+.bank-cell .bank-tick { margin-left: 0.25rem; color: var(--hit); }
 .bank-cell.lost { opacity: 0.55; }
 .bank-cell.play { outline: 1px dashed var(--wine); }
 .pager { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
@@ -629,6 +855,17 @@ footer a { color: inherit; }
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
 }
+/* Battle results live only in this browser, and the heading says so without
+   competing with the section name. */
+.s-block h2 .s-note {
+  font-family: var(--sans);
+  font-size: var(--cap);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-left: 0.4rem;
+}
 .s-block .stat-grid { margin: 0.7rem 0 0.6rem; }
 .s-block .stat-grid b { font-size: var(--tile); line-height: 1.1; }
 .s-block .stat-grid span { font-size: var(--cap); }
@@ -637,6 +874,31 @@ footer a { color: inherit; }
 #screen-stats .pg-stats { margin-bottom: 0.2rem; }
 @media (max-width: 560px) {
   .s-block { --tile: 1.6rem; }
+  /* On phones, filter labels use one fixed column so each control starts at
+     the same edge instead of drifting after its differently sized label. */
+  #screen-bank .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+  }
+  #screen-bank .filters > label {
+    display: grid;
+    grid-template-columns: 7.4rem minmax(0, 1fr);
+    align-items: center;
+    text-align: left;
+  }
+  #screen-bank .filters input,
+  #screen-bank .filters select {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+}
+.form-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 .linkish {
   background: none;
@@ -811,10 +1073,15 @@ footer a { color: inherit; }
    the same hairline the header uses goes between them — with air on both
    sides. #more swaps sides when the round ends (below while playing, above
    once it's done), so the rule follows whichever one comes second. */
-.daily-card + #more,
-#more + .daily-card {
+/* Playing, the rule sits above #more; finished, below it. Either way #more
+   carries its own equal padding, and only the element under the rule adds the
+   matching air — otherwise one side gets double and the block looks dropped. */
+.daily-card + #more {
   border-top: 1px solid var(--rule);
   margin-top: var(--sp-4);
+}
+#more + .daily-card {
+  border-top: 1px solid var(--rule);
   padding-top: var(--sp-4);
 }
 
@@ -832,6 +1099,11 @@ footer a { color: inherit; }
   text-transform: uppercase;
   color: var(--ink-soft);
   white-space: nowrap;
+}
+.daily-card.done .story-id {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--wine);
 }
 .jump {
   display: flex;
@@ -854,21 +1126,31 @@ footer a { color: inherit; }
 
 /* "Want to guess more?" — the way off today's puzzle */
 .more {
-  margin: 0 0 var(--sp-4);
+  margin: 0;
+  padding: var(--sp-4) 0;
   text-align: center;
 }
+/* Finished, #more leads the screen and main's own top padding already supplies
+   the air above it — keeping its own as well would double the gap. */
+#game > #more:first-child { padding-top: 0; }
 /* Finished: the result card jumps above the excerpt, which stays visible
    at whatever hint tier the player had unlocked. */
 .daily-card.done .story-bar { order: -2; }
 .daily-card.done #result { order: -1; margin-top: 0; margin-bottom: var(--sp-3); }
 .more-q {
   margin: 0 0 var(--sp-2);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  line-height: 1;
+  font-size: 1.08rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--wine);
+  font-weight: 800;
 }
 .more .story-nav { margin: 0; justify-content: center; }
+.daily-card.done + #more .story-nav .btn,
+#more + .daily-card .story-nav .btn { font-size: 0.98rem; padding: 0.62rem 0.9rem; }
+.daily-card.done + #more .jump input,
+#more + .daily-card .jump input { font-size: 0.98rem; padding: 0.58rem 0.65rem; }
 .result .more-q { margin-top: var(--sp-2); }
 
 /* Post-game: verdict → the book → your round → your standing → actions.
@@ -952,12 +1234,30 @@ footer a { color: inherit; }
 }
 .sq.on { background: var(--wine); border-color: var(--wine); }
 
+
 .rank-line { margin: 0 0 0.55rem; }
 .rank-line b { font-family: var(--serif); font-size: 1.1rem; }
 .pg-actions {
   border-top: 1px solid var(--rule);
   padding-top: 0.9rem;
   margin-top: 1.1rem;
+}
+
+.hint-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.5rem;
+  margin: 0.8rem 0 0;
+}
+.hint-facts > div { padding: 0.5rem 0.6rem; background: var(--paper-2); border-left: 3px solid var(--gold); }
+.hint-facts dt { font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); }
+.hint-facts dd { margin: 0.16rem 0 0; font-family: var(--serif); }
+.excerpt.complete-reading { white-space: normal; }
+.excerpt.complete-reading p { margin: 0 0 1.1rem; }
+.excerpt.complete-reading p:last-child { margin-bottom: 0; }
+@media (max-width: 420px) {
+  .more-q { font-size: 1rem; }
+  .daily-card.done + #more .story-nav .btn, #more + .daily-card .story-nav .btn { font-size: 0.9rem; }
 }
 
 /* Top of the board, shown with the post-game panel */
@@ -1018,6 +1318,8 @@ footer a { color: inherit; }
 .how-notes li:last-child { margin-bottom: 0; }
 
 /* Hint 5: author reveal */
+/* Kept outside the reading surface so it stays visible once that surface
+   expands into the complete opening chapter. */
 .author-reveal {
   margin-top: 0.7rem;
   padding: 0.5rem 0.7rem;
@@ -1099,6 +1401,14 @@ footer a { color: inherit; }
 }
 #screen-settings .row:first-of-type { margin-top: 1.2rem; }
 #screen-settings #auth-status { margin: 0; }
+/* No rule of its own: the Theme row above already closes with one, and two
+   lines a rem apart read as a mistake. The gap is the separation. */
+#password-box:not(:empty) { margin-top: 2.2rem; }
+#password-box .pw-title { margin: 0 0 0.3rem; font-size: 1.05rem; }
+#password-box .lede { margin: 0 0 0.8rem; }
+#password-box .btn { justify-self: start; }
+.pw-note { font-size: 0.82rem; color: var(--ink-soft); }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
 .news-date {
   margin: 0.15rem 0 0.5rem;
   font-size: 0.72rem;
@@ -1120,40 +1430,15 @@ footer a { color: inherit; }
 .prose ul, .prose ol { padding-left: 1.2rem; }
 .prose li { margin-bottom: 0.35rem; }
 .prose .lede { font-size: 1.02rem; }
-.prose-cta { margin-top: 2rem; }
+/* One or two buttons: "play" plus, on the pages worth passing on, "share". */
+.prose-cta {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
 .prose-cta .btn { text-decoration: none; display: inline-block; }
-@media (max-width: 1024px) {
-  /* No hamburger on these pages, so the nav has to stay a visible row. */
-  .prose ~ * .tabs, body:not(:has(#game)) .tabs {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    min-width: 0;
-    margin-left: auto;
-    padding: 0;
-    gap: 0.1rem;
-    background: none;
-    border: 0;
-    box-shadow: none;
-  }
-  body:not(:has(#game)) .tab { border-top: 0; padding: 0.4rem 0.5rem; font-size: 0.85rem; }
-}
-@media (max-width: 640px) {
-  /* Too narrow to sit beside the brand — give the row its own line instead of
-     letting it wrap ragged against the right edge. */
-  body:not(:has(#game)) .top { flex-wrap: wrap; row-gap: 0.2rem; }
-  body:not(:has(#game)) .tabs {
-    width: 100%;
-    margin-left: 0;
-    justify-content: center;
-    padding-bottom: 0.25rem;
-  }
-}
-
-
 /* ---- New game modal: the battle half ---- */
 
 .modal-sep {

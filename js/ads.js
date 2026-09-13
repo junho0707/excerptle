@@ -16,20 +16,6 @@ window.ExcerptleAds = (() => {
   const cfg = () => window.EXCERPTLE_ADS || {};
   const host = () => document.getElementById("ad");
 
-  /* The dashed box is a layout aid, not something a visitor should ever meet.
-     "dev" keeps it on localhost and off everywhere else, so shipping during
-     the approval window doesn't need a flag flipped by hand. */
-  function wantPlaceholder() {
-    const v = cfg().placeholder;
-    if (v === true) return true;
-    if (v === "dev") {
-      const h = location.hostname;
-      return h === "localhost" || h === "0.0.0.0" || h === "::1" || h === "[::1]"
-        || /^127\.\d+\.\d+\.\d+$/.test(h) || h.endsWith(".local") || h === "";
-    }
-    return false;
-  }
-
   function configured() {
     const c = cfg();
     return !!(c.enabled && c.client && c.slot);
@@ -65,13 +51,7 @@ window.ExcerptleAds = (() => {
     if (!el) return;
     el.innerHTML = "";
     if (!active()) {
-      // Before approval there is no ad to draw. An empty dashed box just reads
-      // as a broken page, so show it only when explicitly asked for.
-      // Pro sees no box either — otherwise testing Pro locally still shows an ad frame.
-      if (configured() || !wantPlaceholder() || window.ExcerptlePro?.isPro?.()) return clear();
-      el.classList.remove("hidden");
-      el.innerHTML = '<span class="ad-label">Advertisement</span><div class="slot">Post-game only</div>';
-      return;
+      return clear();
     }
     loadScript();
     el.classList.remove("hidden");

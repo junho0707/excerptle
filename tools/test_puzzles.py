@@ -1,13 +1,36 @@
 #!/usr/bin/env python3
-"""Sanity-check Bookle puzzle JSON and title matching."""
+"""Sanity-check Excerptle puzzle JSON against the shipped index."""
 
 import json
 import re
+import sys
 import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUZ = ROOT / "puzzles"
+TIERS = 5
+
+# A handful of openings everybody knows. If the slicer drifts back into the
+# front matter, these are the first things to break.
+FAMOUS = {
+    "g1342": "It is a truth universally acknowledged",
+    "g2701": "Call me Ishmael",
+    "g98": "It was the best of times",
+    "g1399": "Happy families are all alike",
+    "g4300": "Stately, plump Buck Mulligan",
+    "g11": "Alice was beginning to get very tired",
+}
+
+
+# Gutenberg's licence sits after the text, so it only ever surfaced on the last
+# tier of a short work — where tier 5 is the whole book. A gate, not 15 hand
+# edits: strip_pg() is what must keep this empty.
+# Only markers no novel would contain: "redistribute" is a word Cather and
+# Gogol both use in ordinary prose.
+BOILERPLATE_RE = re.compile(
+    r"project gutenberg|gutenberg\.org|gutenberg-?tm|gutenberg\u2122|"
+    r"\bpglaf\b|updated editions will replace", re.I)
 
 
 def fold(s: str) -> str:
@@ -17,50 +40,70 @@ def fold(s: str) -> str:
     s = s.replace("&", " and ")
     s = re.sub(r"[^a-z0-9\s]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
-    s = re.sub(r"^(the|a|an)\s+", "", s)
-    s = re.sub(r"\s+by\s+.+$", "", s)
-    return s
+    return re.sub(r"^(the|a|an)\s+", "", s)
 
 
 def main() -> int:
     index = json.loads((PUZ / "index.json").read_text(encoding="utf-8"))
-    assert index["count"] == 50, index["count"]
-    assert not index.get("failed"), index.get("failed")
+    order = index["order"]
     bad = []
-    for slug in index["order"]:
-        d = json.loads((PUZ / f"{slug}.json").read_text(encoding="utf-8"))
-        assert d["id"] == slug
-        assert len(d["texts"]) == 6
-        sent = d["texts"][0].strip()
-        if len(sent) < 4:
-            bad.append((slug, "tiny sentence", sent))
+
+    if len(order) != index["count"] or len(set(order)) != len(order):
+        bad.append(("index", "order is not a unique list of count entries", len(order)))
+    if index["dailyStartIndex"] != index["presetCount"]:
+        bad.append(("index", "dailies must start where the bank ends",
+                    (index["presetCount"], index["dailyStartIndex"])))
+    if index.get("failed"):
+        bad.append(("index", "books failed to build", index["failed"]))
+
+    for slug in order:
+        f = PUZ / f"{slug}.json"
+        if not f.exists():
+            bad.append((slug, "no puzzle file", ""))
+            continue
+        d = json.loads(f.read_text(encoding="utf-8"))
+        if d["id"] != slug:
+            bad.append((slug, "id does not match its filename", d["id"]))
+        if len(d["texts"]) != TIERS or len(d["labels"]) != TIERS:
+            bad.append((slug, "wrong number of tiers", len(d["texts"])))
+            continue
+        if len(set(d["texts"])) != TIERS:
+            bad.append((slug, "two tiers are identical", ""))
         words = [len(t.split()) for t in d["texts"]]
-        if words[-1] < words[0]:
+        if words != sorted(words):
             bad.append((slug, "tiers shrink", words))
-        folded_title = fold(d["title"])
-        if folded_title not in {fold(a) for a in d["aliases"]} and folded_title not in d["aliases"]:
-            # title should match via aliases or itself
-            pass
-        # self-match
-        if fold(d["title"]) != fold(d["title"]):
-            bad.append((slug, "fold unstable", d["title"]))
-        for a in d["aliases"]:
+        if len(d["texts"][0].strip()) < 4:
+            bad.append((slug, "opening sentence is empty", d["texts"][0]))
+        if not fold(d["title"]):
+            bad.append((slug, "title folds to nothing", d["title"]))
+        for a in d.get("aliases") or []:
             if not fold(a):
                 bad.append((slug, "empty alias", a))
+        for i, t in enumerate(d["texts"]):
+            hit = BOILERPLATE_RE.search(t)
+            if hit:
+                bad.append((slug, f"etext boilerplate in tier {i + 1}", hit.group(0)))
+                break
+
+    for slug, opening in FAMOUS.items():
+        f = PUZ / f"{slug}.json"
+        if not f.exists():
+            bad.append((slug, "famous book missing from the catalogue", ""))
+            continue
+        got = json.loads(f.read_text(encoding="utf-8"))["texts"][0]
+        if opening not in got:
+            bad.append((slug, f"opening should contain {opening!r}", got[:80]))
+
     if bad:
         print("FAIL")
         for row in bad:
             print(" ", row)
         return 1
-    print(f"ok {index['count']} puzzles")
-    # spot-check famous first lines
-    pride = json.loads((PUZ / "b01.json").read_text())
-    assert pride["texts"][0].startswith("It is a truth universally acknowledged")
-    moby = json.loads((PUZ / "b04.json").read_text())
-    assert "Call me Ishmael" in moby["texts"][0]
-    print("ok famous openings")
+    print(f"ok {len(order)} puzzles, {index['presetCount']} bank + {index['dailyPoolCount']} dailies")
+    print(f"ok {len(FAMOUS)} famous openings")
+    print("ok no etext boilerplate in any tier")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

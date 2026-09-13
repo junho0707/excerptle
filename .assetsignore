@@ -3,15 +3,31 @@
 # not, so exclude these by hand there too.
 backend/
 tools/
+tests/
+test-results/
+playwright-report/
+playwright.config.js
 dist/
 node_modules/
 .git/
+.github/
 .codex/
 .agents/
 .wrangler/
 .gitignore
 .assetsignore
+wrangler.*
 .dev.vars*
 .env*
 *.md
 *:Zone.Identifier
+# Source images kept in the repo but never linked from the site. The shipped
+# sizes all live in assets/.
+/logo.png
+/icon.png
+/study_4.png
+/og-image.png
+/new_logo_provable.png
+/vh_logo.svg
+assets/logo.png
+assets/logo-1200.png

@@ -18,6 +18,11 @@ window.BookleAuth = (() => {
     else localStorage.setItem(SESSION, JSON.stringify(s));
     document.dispatchEvent(new CustomEvent("bookle-auth", { detail: s }));
   }
+  // localStorage is shared by tabs, but CustomEvents are not. Mirror an
+  // account change so a stale tab cannot continue saving under the prior user.
+  window.addEventListener?.("storage", (e) => {
+    if (e.key === SESSION) document.dispatchEvent(new CustomEvent("bookle-auth", { detail: session() }));
+  });
   function users() {
     try {
       return JSON.parse(localStorage.getItem(USERS) || "{}");
@@ -29,8 +34,83 @@ window.BookleAuth = (() => {
     localStorage.setItem(USERS, JSON.stringify(u));
   }
 
+  // Both names are set by js/config.js; reading only one of them is how
+  // sendCode used to fall through to the demo path on a live site.
+  function api() {
+    return String(window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
+  }
+  async function post(path, body, token) {
+    const res = await fetch(`${api()}${path}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw Object.assign(new Error(data.error || "Something went wrong. Try again."), { status: res.status });
+    return data;
+  }
+
   function validEmail(s) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
+  }
+
+  /* The password is stretched here, in the browser, and only the derived key
+     ever leaves. Not a flourish: a Workers free-plan request gets 10ms of CPU
+     and PBKDF2 at a defensible cost needs ~73ms, so stretching server-side
+     does not run at all. The work lands on a device with CPU to spare, and an
+     attacker holding a copy of the database still has to pay it per guess.
+     The server picks the iteration count and enforces a floor; a client that
+     asked for less would only be describing its own account. */
+  const KDF_FALLBACK = { iterations: 600000, saltBytes: 16 };
+  let kdfPromise = null;
+  // An API older than this file has no /auth/kdf, and its /me/password wants a
+  // field we no longer send — it would answer a derived key with a complaint
+  // about password length. Say what is actually wrong instead.
+  async function kdfParams() {
+    if (!api()) return KDF_FALLBACK;
+    // Only a real answer is remembered: caching a dropped connection would
+    // keep failing long after the connection came back.
+    if (!kdfPromise) {
+      kdfPromise = (async () => {
+        let res;
+        try {
+          res = await fetch(`${api()}/auth/kdf`);
+        } catch {
+          throw new Error("Could not reach the server. Check your connection and try again.");
+        }
+        if (res.status === 404) throw new Error("Passwords aren’t enabled on the server yet. Sign in with an email code for now.");
+        if (!res.ok) throw new Error("Could not reach the server. Check your connection and try again.");
+        return res.json();
+      })();
+      // A 404 is settled news; anything else is worth asking again.
+      kdfPromise.catch((e) => {
+        if (!/aren’t enabled/.test(e.message)) kdfPromise = null;
+      });
+    }
+    const p = await kdfPromise;
+    return {
+      iterations: Number(p?.iterations) || KDF_FALLBACK.iterations,
+      saltBytes: Number(p?.saltBytes) || KDF_FALLBACK.saltBytes,
+    };
+  }
+
+  const hex = (bytes) => [...new Uint8Array(bytes)].map((b) => b.toString(16).padStart(2, "0")).join("");
+
+  async function deriveKey(password, salt, iterations) {
+    if (!salt || !iterations) throw new Error("Could not read the password settings. Reload and try again.");
+    const material = await crypto.subtle.importKey(
+      "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]
+    );
+    // The email is not in here: the salt already makes this account-specific,
+    // and folding it in would break every stored password on an email change.
+    const bits = await crypto.subtle.deriveBits(
+      { name: "PBKDF2", salt: new TextEncoder().encode(salt), iterations, hash: "SHA-256" },
+      material, 256
+    );
+    return hex(bits);
   }
 
   async function sha256(s) {
@@ -38,17 +118,49 @@ window.BookleAuth = (() => {
     return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
   }
 
+  /* Which of the three doors this address goes through: a new account (code),
+     a returning one with a password (password), or a returning one without
+     (code again). Asked before any mail is sent. */
+  async function checkEmail(email) {
+    if (api()) {
+      try {
+        const data = await post("/auth/check", { email });
+        return { account: !!data.account, hasPassword: !!data.hasPassword, kdf: data.kdf || null };
+      } catch (e) {
+        // An API deployed before this frontend has no /auth/check. Sending a
+        // code still works, so fall back to it rather than locking the door.
+        if (e.status !== 404) throw e;
+        return { account: false, hasPassword: false };
+      }
+    }
+    const rec = users()[String(email).toLowerCase()];
+    return { account: !!rec, hasPassword: !!rec?.passwordHash, kdf: rec?.kdf || null };
+  }
+
+  async function signInWithPassword(email, password, kdf) {
+    if (!password) throw new Error("Enter your password.");
+    // Handed down from the checkEmail that sent us to the password screen;
+    // asked for again only if this was called cold.
+    const params = kdf || (await checkEmail(email)).kdf;
+    if (!params) throw new Error("Wrong email or password.");
+    const key = await deriveKey(password, params.salt, params.iterations);
+    if (api()) {
+      finish(await post("/auth/login", { email, key }));
+      return session();
+    }
+    const rec = users()[String(email).toLowerCase()];
+    if (!rec?.passwordHash || rec.passwordHash !== await sha256(`v2:${params.salt}:${key}`)) {
+      throw new Error("Wrong email or password.");
+    }
+    finish({ email, name: email.split("@")[0], provider: "password", uid: email.toLowerCase(), hasPassword: true });
+    return session();
+  }
+
   async function sendCode(email) {
-    const api = window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/email`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Could not send a code.");
-      const data = await res.json().catch(() => ({}));
-      return { hasPassword: !!data.hasPassword, demoCode: null };
+    if (api()) {
+      const data = await post("/auth/email", { email });
+      // devCode only ever arrives from a local Worker with no mail configured.
+      return { hasPassword: !!data.hasPassword, demoCode: data.devCode || null };
     }
     const code = String(Math.floor(100000 + Math.random() * 900000));
     sessionStorage.setItem(
@@ -59,16 +171,8 @@ window.BookleAuth = (() => {
   }
 
   async function verifyCode(email, code) {
-    const api = window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/verify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code }),
-      });
-      if (!res.ok) throw new Error("That code didn’t work.");
-      const data = await res.json();
-      finish(data);
+    if (api()) {
+      finish(await post("/auth/verify", { email, code }));
       return;
     }
     const pending = JSON.parse(sessionStorage.getItem(PENDING) || "null");
@@ -77,30 +181,71 @@ window.BookleAuth = (() => {
     }
     if (String(code).trim() !== String(pending.code)) throw new Error("That code didn’t work.");
     sessionStorage.removeItem(PENDING);
-    finish({ email, name: email.split("@")[0], provider: "email", uid: email.toLowerCase() });
+    const rec = users()[email.toLowerCase()];
+    finish({ email, name: email.split("@")[0], provider: "email", uid: email.toLowerCase(), hasPassword: !!rec?.passwordHash });
   }
 
-  async function setPassword(password) {
+  function hasPassword() {
+    return !!session()?.hasPassword;
+  }
+  // The session carries it, so Settings can tell "set" from "change" without
+  // another round trip.
+  function markPassword(has) {
+    const s = session();
+    if (s) setSession({ ...s, hasPassword: has });
+  }
+
+  // Replacing or removing a password means proving the current one, which
+  // means deriving it against the salt it was made with, not the new one.
+  async function currentKey(email, current) {
+    const params = (await checkEmail(email)).kdf;
+    if (!params) return null;
+    return deriveKey(current || "", params.salt, params.iterations);
+  }
+
+  async function setPassword(password, current) {
     if (!password || password.length < 8) throw new Error("Password must be at least 8 characters.");
-    const api = window.BOOKLE_API;
-    if (api) {
-      const s = session();
-      if (!s?.token) throw new Error("Verify your email first.");
-      const res = await fetch(`${api.replace(/\/$/, "")}/me/password`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${s.token}` },
-        body: JSON.stringify({ password }),
-      });
-      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Could not save password.");
+    const s = session();
+    if (!s) throw new Error("Verify your email first.");
+    const email = s.email.toLowerCase();
+    const { iterations, saltBytes } = await kdfParams();
+    const salt = hex(crypto.getRandomValues(new Uint8Array(saltBytes)));
+    const key = await deriveKey(password, salt, iterations);
+    const proof = await currentKey(email, current);
+    if (api()) {
+      await post("/me/password", { key, salt, iterations, ...(proof ? { currentKey: proof } : {}) }, s.token);
+      markPassword(true);
       return;
     }
-    const email = session()?.email;
-    if (!email) throw new Error("Verify your email first.");
-    const hash = await sha256(`${email.toLowerCase()}::${password}`);
     const all = users();
-    const rec = all[email.toLowerCase()];
-    all[email.toLowerCase()] = { passwordHash: hash, provider: "email" };
+    const rec = all[email];
+    if (rec?.passwordHash && rec.passwordHash !== await sha256(`v2:${rec.kdf?.salt}:${proof}`)) {
+      throw new Error("Current password is wrong.");
+    }
+    all[email] = { ...rec, passwordHash: await sha256(`v2:${salt}:${key}`), kdf: { salt, iterations }, provider: "email" };
     saveUsers(all);
+    markPassword(true);
+  }
+
+  async function removePassword(current) {
+    const s = session();
+    if (!s) throw new Error("Sign in first.");
+    const email = s.email.toLowerCase();
+    const proof = await currentKey(email, current);
+    if (api()) {
+      await post("/me/password", { remove: true, currentKey: proof }, s.token);
+      markPassword(false);
+      return;
+    }
+    const all = users();
+    const rec = all[email];
+    if (!rec?.passwordHash || rec.passwordHash !== await sha256(`v2:${rec.kdf.salt}:${proof}`)) {
+      throw new Error("Current password is wrong.");
+    }
+    delete all[email].passwordHash;
+    delete all[email].kdf;
+    saveUsers(all);
+    markPassword(false);
   }
 
   function finish(s) {
@@ -109,10 +254,26 @@ window.BookleAuth = (() => {
     if (s.name) localStorage.setItem("bookle.name", s.name.slice(0, 24));
   }
 
+  async function updateProfile(name) {
+    const s = session();
+    if (!s) throw new Error("Sign in first.");
+    const clean = String(name ?? "").trim().replace(/\s+/g, " ");
+    if ([...clean].length > 24 || /[\u0000-\u001f\u007f]/.test(clean)) throw new Error("Use up to 24 visible characters.");
+    if (api()) {
+      const saved = await post("/me/profile", { name: clean }, s.token);
+      setSession({ ...s, name: saved.name, uid: saved.uid || s.uid });
+      localStorage.setItem("bookle.name", saved.name);
+      return saved;
+    }
+    const saved = clean || "Anonymous";
+    setSession({ ...s, name: saved });
+    localStorage.setItem("bookle.name", saved);
+    return { uid: s.uid, name: saved };
+  }
+
   function signOut() {
     const s = session();
-    const api = window.EXCERPTLE_API || window.BOOKLE_API;
-    if (api && s?.token) fetch(`${api.replace(/\/$/, "")}/auth/logout`, {
+    if (api() && s?.token) fetch(`${api()}/auth/logout`, {
       method: "POST", headers: { Authorization: `Bearer ${s.token}` }, keepalive: true,
     }).catch(() => {});
     setSession(null);
@@ -193,15 +354,8 @@ window.BookleAuth = (() => {
   }
 
   async function googleProfile(token) {
-    const api = window.EXCERPTLE_API || window.BOOKLE_API;
-    if (api) {
-      const res = await fetch(`${api.replace(/\/$/, "")}/auth/google`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accessToken: token }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Google sign-in failed.");
-      finish(data);
+    if (api()) {
+      finish(await post("/auth/google", { accessToken: token }));
       return session();
     }
     const res = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
@@ -223,9 +377,14 @@ window.BookleAuth = (() => {
     session,
     signOut,
     validEmail,
+    checkEmail,
     sendCode,
     verifyCode,
+    signInWithPassword,
+    hasPassword,
     setPassword,
+    removePassword,
+    updateProfile,
     googleSignIn,
   };
 })();

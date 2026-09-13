@@ -1,0 +1,7 @@
+{
+  "name": "excerptle-sharing",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test share.test.js", "preview": "node preview.mjs" },
+  "dependencies": { "@resvg/resvg-wasm": "2.6.2" }
+}

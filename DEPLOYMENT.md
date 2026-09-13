@@ -57,6 +57,71 @@ They served a public duplicate of the site on a hostname nobody should be linkin
 
 ## Shipping an update
 
+### Three Workers, and the order matters
+
+| Script | Config | What it is |
+| --- | --- | --- |
+| `excerptle` | `wrangler.jsonc` | The front door: static assets + share-link meta rewrite. ~5 KB, deliberately |
+| `excerptle-og` | `tools/og-worker/wrangler.jsonc` | Share-card PNG renderer (resvg WASM + fonts). ~3.5 MB |
+| `excerptle-api` | `backend/wrangler.toml` | Accounts, scores, billing, Slack alerts |
+
+```bash
+npx wrangler deploy --config tools/og-worker/wrangler.jsonc   # renderer FIRST
+npm run deploy:site                                             # tests, then front door
+npx wrangler deploy --config backend/wrangler.toml             # api
+```
+
+The renderer goes first: the front door's `OG` service binding will not resolve
+against a script that does not exist yet.
+
+### Core gameplay release checks
+
+Install the browser once with `npx playwright install chromium`. `npm run
+deploy:site` runs the client checks and the Playwright gameplay suite before
+uploading; a failure stops the deployment. Direct `wrangler deploy` bypasses
+this gate. GitHub Actions runs the same checks on pushes and pull requests
+and keeps browser traces when they fail.
+
+Run `npm run test:e2e` independently to exercise daily wins/losses, reloads,
+random books, book #0, the New game picker, and All Books on desktop and
+mobile viewports. It covers guests, expired sessions, and signed-in users
+with unavailable account services, plus a successful sign-in after solving.
+It also holds back a puzzle response to check that loading cannot erase a guess.
+The logic sweep adds stale-response navigation, failed puzzle recovery, shared
+link validation, leaderboard routing, remote-progress restoration and sign-out
+isolation. `npm test` also checks progress retries, upload batching, battle
+message bounds, timestamp ordering, and derived daily streaks. `npm run
+test:data` checks the built catalogue and fails while fewer than 30 days of
+unused dailies remain — it runs in CI and inside `predeploy:site`, so the pool
+running dry is a build failure with runway left, not a morning of repeats.
+`npm run deploy:api` gates API uploads on the backend suite, including CORS,
+score ordering/concurrency, sessions, password flows, and billing webhooks.
+
+**Migrations go first.** Apply pending D1 migrations *before* `npm run
+deploy:api`, never after: the `scores` insert relies on the unique index from
+`0006_shared_leaderboard.sql`, so a Worker deployed ahead of it can write a
+second row for the same account and book under concurrent submissions.
+
+```bash
+cd backend
+npx wrangler d1 migrations apply DB --remote --config wrangler.toml
+```
+Account responses are mocked, so this checks browser behavior, not delivery
+of email codes or Google OAuth. No production accounts or scores are written.
+
+For a post-deployment check, use `PLAY_TEST_URL=https://excerptle.io npm run
+test:e2e`. To use an existing Chromium installation, set
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable.
+
+**Why they're split.** `run_worker_first` puts `excerptle` in front of `/`, so
+its whole bundle is loaded into an isolate before the first page load in a cold
+colo can be answered. While the card renderer lived in that bundle, every such
+load waited on 3.5 MB of WASM and fonts to serve HTML that used neither. If you
+ever add a dependency to the front door, run `npx wrangler deploy --dry-run`
+and check "Total Upload" is still single-digit KB.
+
+### History
+
 The site was deployed from the Cloudflare **dashboard** — there is no `wrangler.toml` in the repo and wrangler has never run on this machine. That leaves two possibilities, and they differ in what you have to do:
 
 **Check which one you're on:** Workers & Pages → `excerptle` → Settings. If a **Build** section shows a connected GitHub repo, it's Git-connected. If there's no build config, it's manual upload.
@@ -199,3 +264,48 @@ Console edits can take a few minutes to propagate.
 **Auth is a demo, not real auth.** With no API configured, `js/auth.js` stores users and sessions in `localStorage`, generates verification codes client-side, and trusts a Google access token read **entirely in the browser**. Anyone can forge a session from devtools. Fine for a static preview; it cannot back real accounts or trustworthy leaderboards. Both need the server before they mean anything.
 
 **Leftover `CNAME` file.** The repo root has a `CNAME` containing `excerptle.io` — a GitHub Pages artifact. Cloudflare ignores it. Safe to delete.
+
+## Checking sign-in locally
+
+Two switches, both refusing to work anywhere but localhost (see `js/config.js`):
+
+| URL | API | Good for |
+| --- | --- | --- |
+| `localhost:8765/?demo=1` | none | the whole flow with no backend; the sign-in code is printed on screen instead of mailed |
+| `localhost:8765/?api=local` | real Worker on `:8787` | the frontend and the API actually talking to each other |
+| `localhost:8765` | **deployed** API | what production does — and what a not-yet-deployed API does to it |
+
+The choice sticks to the browser tab, not the address bar: `js/app.js` rewrites
+the URL to drop the query string on some routes, so a page that read the flag
+from `location.search` every time would fall back to the deployed API on the
+next reload and start contradicting the Worker under test. A badge in the corner
+names the backend in use. `?api=off` leaves dev mode; so does closing the tab.
+
+The middle one is the one that matters before a release. `?demo=1` cannot catch
+a frontend and an API that disagree, because there is no API to disagree with:
+that is how a `/me/password` rewrite reached the browser while the deployed
+Worker still expected the old request shape, and answered a derived key with a
+complaint about password length.
+
+```bash
+cd backend
+npx wrangler d1 migrations apply DB --local --config wrangler.toml   # once
+npx wrangler dev --config wrangler.toml --port 8787
+```
+
+Copy `backend/.dev.vars.example` to `backend/.dev.vars` and email sign-in works
+locally without a mail provider: the code comes back in the response and the
+page prints it on screen. That path needs all three of no `RESEND_API_KEY`, the
+`DEV_ECHO_CODES` opt-in, and a caller on localhost — production has a Resend
+key, which on its own rules it out. `.dev.vars` is gitignored and `wrangler
+deploy` does not upload it. A test asserts each gate.
+
+To skip sign-in altogether, seed an account straight into the local D1 —
+`--local` touches a file on this machine, never production:
+
+```bash
+npx wrangler d1 execute DB --local --config wrangler.toml --command \
+  "INSERT INTO users(id,email,name,created_at) VALUES('dev1','dev@local.test','Dev',strftime('%s','now'))"
+```
+
+`http://localhost:8765` is already in `ALLOWED_ORIGINS`, so CORS works as-is.

@@ -1,0 +1,66 @@
+bank  #390    g66619  The Oxford Book of English Verse — starts mid-sentence; opening is 2 words
+                     'lhude] loud.'
+bank  #404     g2243  The Merchant of Venice — starts mid-sentence; no dialogue in the opening pages
+                     'came, in louing visitation, was with me a yong Doctor of Rome, his name is Balthasar: I acquainted h'
+bank  #17      g2160  The Expedition of Humphry Clinker — starts mid-sentence
+                     'of youth have formerly hindered me from observing those rotten parts of human nature, which now appe'
+bank  #43     g40580  A General History of the Pyrates — no dialogue in the opening pages
+                     'ROmantick Reports of his Greatness, 45, 46.'
+bank  #47      g5160  The Mabinogion — starts mid-sentence
+                     'he bore a heavy three-edged sword with a golden hilt, in a scabbard of black leather tipped with fin'
+bank  #49       g223  The Wisdom of Father Brown — starts mid-sentence
+                     'third thing isn’t so very heraldic, it would be more heraldic to suppose it a tower crowned with lau'
+bank  #87     g47935  Fathers and Sons (novel) — opening is 2 words
+                     '"Well, Peter?'
+bank  #140    g77900  Vile Bodies — starts mid-sentence
+                     'redeem it from banality.'
+bank  #193       g64  The Gods of Mars — no dialogue in the opening pages
+                     'As I stood upon the bluff before my cottage on that clear cold night in the early part of March, 188'
+bank  #204     g9404  The Story of the Malakand Field Force — starts mid-sentence
+                     'vast mass of expert evidence, which on this subject is so great that it baffles memory and exhausts '
+bank  #273    g39272  The Inventions, Researches, and Writings of Nikola Tesla — reads like front matter
+                     "As an introduction to the record contained in this volume of Mr. Tesla's investigations and discover"
+bank  #277      g512  Mosses from an Old Manse — reads like front matter
+                     'The Author makes the Reader acquainted with his Abode.'
+bank  #282      g513  The Snow-Image, and Other Twice-Told Tales — reads like front matter
+                     'MY DEAR BRIDGE:—Some of the more crabbed of my critics, I understand, have pronounced your friend eg'
+bank  #289    g50922  Perpetual Peace: A Philosophical Sketch — no dialogue in the opening pages
+                     'International Law; the development of, 20-24; its connection with the Reformation, 21, 24; in Greece'
+bank  #316      g968  Martin Chuzzlewit — starts mid-sentence
+                     'our profession; but he has the will to do well, which is the next thing to having the power; and, th'
+bank  #321    g20008  The Young Duke — no dialogue in the opening pages
+                     'GEORGE AUGUSTUS FREDERICK, DUKE OF ST. JAMES, completed his twenty-first year, an event which create'
+bank  #373    g15384  The Real Adventure — reads like front matter
+                     '"Indeed," continued the professor, glancing demurely down at his notes, "if one were the editor of a'
+bank  #495    g15396  Tender Buttons (book) — no dialogue in the opening pages
+                     'A kind in glass and a cousin, a spectacle and nothing strange a single hurt color and an arrangement'
+bank  #497    g15399  The Interesting Narrative of the Life of Olaudah Equiano — no dialogue in the opening pages
+                     "The author's account of his country, their manners and customs, &c."
+bank  #516    g46743  The Methods of Ethics — starts mid-sentence
+                     'edition; but here again the alteration has no material importance.'
+bank  #524     g1079  Tristram Shandy — reads like front matter
+                     'NEVER poor Wight of a Dedicator had less hopes from his Dedication, than I have from this of mine; f'
+bank  #525    g42401  Vathek — reads like front matter
+                     'WILLIAM BECKFORD, the author of the following celebrated Eastern tale, was born in 1760, and died in'
+bank  #540    g20411  The Witch-Cult in Western Europe — reads like front matter
+                     'Of the ancient religion of pre-Christian Britain there are few written records, but it is contrary t'
+bank  #560    g20179  Ship of Fools (satire) — reads like front matter
+                     'It is necessary to explain that in the present edition of the Ship of Fools, with a view to both phi'
+bank  #579       g81  The Return of Tarzan — opening is 1 words
+                     '“Magnifique!”'
+bank  #585    g61085  In Our Time — opening is 3 words
+                     'Everybody was drunk.'
+daily #601     g2701  Moby-Dick — opening is 3 words
+                     'Call me Ishmael.'
+daily #629       g74  The Adventures of Tom Sawyer — opening is 1 words
+                     '"TOM!"'
+daily #653      g829  Gulliver's Travels — reads like front matter
+                     'The author gives some account of himself and family.'
+daily #661     g1257  The Three Musketeers — reads like front matter
+                     'On the first Monday of the month of April, 1625, the market town of Meung, in which the author of Ro'
+daily #700     g6593  The History of Tom Jones, a Foundling — starts mid-sentence
+                     'incident that happened some years since; but which, trifling as it was, had some future consequences'
+daily #715      g580  The Pickwick Papers — reads like front matter
+                     'The first ray of light which illumines the gloom, and converts into a dazzling brilliancy that obscu'
+
+32 of 720 flagged

@@ -1,0 +1,5 @@
+# Local only. Gitignored, and `wrangler deploy` does not upload this file.
+OTP_SECRET = "local-development-only"
+# Returns the sign-in code in the response instead of mailing it. Only works
+# with no RESEND_API_KEY set and a caller on localhost. Never set in production.
+DEV_ECHO_CODES = "true"

@@ -91,6 +91,10 @@ window.ExcerptlePro = (() => {
     return h;
   }
 
+  // Long enough that returning to the tab is free, short enough that buying
+  // Pro in another tab shows up here without a reload.
+  const FRESH_MS = 5 * 60 * 1000;
+
   async function refresh({ force = false } = {}) {
     // Signing out drops the entitlement. A missing API does not: it only means
     // we can't re-check right now, and a cached "pro" is still the honest
@@ -101,6 +105,7 @@ window.ExcerptlePro = (() => {
     }
     if (!api()) return view();
     if (inflight) return inflight;
+    if (!force && cur && !cur.error && Date.now() - (cur.at || 0) < FRESH_MS) return view();
     const owner = session()?.uid;
     const ownerToken = session()?.token;
     inflight = (async () => {

@@ -1,0 +1,8707 @@
+[
+  {
+    "gutenberg": 2638,
+    "title": "The Idiot",
+    "author": "Fyodor Dostoevsky",
+    "year": "1869",
+    "downloads_30d": 12869,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 1
+  },
+  {
+    "gutenberg": 2814,
+    "title": "Dubliners",
+    "author": "James Joyce",
+    "year": "1914",
+    "downloads_30d": 12784,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "A",
+    "rank": 2
+  },
+  {
+    "gutenberg": 910,
+    "title": "White Fang",
+    "author": "Jack London",
+    "downloads_30d": 12571,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g910",
+    "form": "novel",
+    "genre": "adventure fiction;young adult fiction",
+    "year": "1906",
+    "tier": "A",
+    "rank": 3
+  },
+  {
+    "gutenberg": 26,
+    "tier": "A",
+    "title": "Paradise Lost",
+    "author": "John Milton",
+    "year": "1667",
+    "form": "poem",
+    "downloads_30d": 12344,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "rank": 4
+  },
+  {
+    "gutenberg": 61,
+    "title": "The Communist Manifesto",
+    "author": "Karl Marx and Friedrich Engels",
+    "year": "1848",
+    "downloads_30d": 12066,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "nonfiction",
+    "genre": "political manifesto",
+    "tier": "A",
+    "rank": 5
+  },
+  {
+    "gutenberg": 105,
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "downloads_30d": 11688,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "b50",
+    "form": "novel",
+    "genre": "romantic fiction",
+    "year": "1817",
+    "tier": "A",
+    "rank": 6
+  },
+  {
+    "gutenberg": 1874,
+    "title": "The Railway Children",
+    "author": "E. Nesbit",
+    "downloads_30d": 10995,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1874",
+    "tier": "A",
+    "year": "1906",
+    "form": "novel",
+    "rank": 7
+  },
+  {
+    "gutenberg": 421,
+    "title": "Kidnapped",
+    "author": "Robert Louis Stevenson",
+    "downloads_30d": 9755,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g421",
+    "tier": "A",
+    "year": "1886",
+    "form": "novel",
+    "rank": 8
+  },
+  {
+    "gutenberg": 1268,
+    "title": "The Mysterious Island",
+    "author": "Jules Verne",
+    "downloads_30d": 9741,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1268",
+    "tier": "A",
+    "year": "1874",
+    "form": "novel",
+    "rank": 9
+  },
+  {
+    "gutenberg": 940,
+    "title": "The Last of the Mohicans",
+    "author": "James Fenimore Cooper",
+    "downloads_30d": 9647,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g940",
+    "form": "novel",
+    "genre": "historical fiction",
+    "year": "1826",
+    "tier": "A",
+    "rank": 10
+  },
+  {
+    "gutenberg": 139,
+    "title": "The Lost World",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 9539,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g139",
+    "form": "novel",
+    "genre": "fiction;science fiction;lost world fiction;adventure fiction",
+    "year": "1912",
+    "tier": "A",
+    "rank": 11
+  },
+  {
+    "gutenberg": 2500,
+    "title": "Siddhartha",
+    "author": "Hermann Hesse",
+    "year": "1922",
+    "downloads_30d": 9381,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "developmental novel;philosophical novel",
+    "tier": "A",
+    "rank": 12
+  },
+  {
+    "gutenberg": 140,
+    "title": "The Jungle",
+    "author": "Upton Sinclair",
+    "downloads_30d": 8892,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g140",
+    "form": "novel",
+    "genre": "social fiction",
+    "year": "1905",
+    "tier": "A",
+    "rank": 13
+  },
+  {
+    "gutenberg": 4217,
+    "title": "A Portrait of the Artist as a Young Man",
+    "author": "James Joyce",
+    "year": "1916",
+    "downloads_30d": 8579,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman;Künstlerroman;autobiographical novel",
+    "tier": "A",
+    "rank": 14
+  },
+  {
+    "gutenberg": 308,
+    "title": "Three Men in a Boat",
+    "author": "Jerome K. Jerome",
+    "year": "1889",
+    "downloads_30d": 7984,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "humorous fiction",
+    "tier": "A",
+    "rank": 15
+  },
+  {
+    "gutenberg": 4517,
+    "title": "Ethan Frome",
+    "author": "Edith Wharton",
+    "year": "1911",
+    "downloads_30d": 7695,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "American realism",
+    "tier": "A",
+    "rank": 16
+  },
+  {
+    "gutenberg": 141,
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "year": "1814",
+    "downloads_30d": 7376,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "romantic fiction",
+    "tier": "A",
+    "rank": 17
+  },
+  {
+    "gutenberg": 5230,
+    "title": "The Invisible Man",
+    "author": "H. G. Wells",
+    "year": "1897",
+    "downloads_30d": 7093,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 18
+  },
+  {
+    "gutenberg": 11231,
+    "title": "Bartleby, the Scrivener",
+    "author": "Herman Melville",
+    "year": "1853",
+    "downloads_30d": 6200,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "social criticism",
+    "tier": "A",
+    "rank": 19
+  },
+  {
+    "gutenberg": 972,
+    "title": "The Devil's Dictionary",
+    "author": "Ambrose Bierce",
+    "year": "1911",
+    "downloads_30d": 6172,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "nonfiction",
+    "genre": "satire",
+    "tier": "A",
+    "rank": 20
+  },
+  {
+    "gutenberg": 4276,
+    "tier": "A",
+    "title": "North and South",
+    "author": "Elizabeth Gaskell",
+    "year": "1855",
+    "form": "novel",
+    "downloads_30d": 6162,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "rank": 21
+  },
+  {
+    "gutenberg": 60976,
+    "title": "Rip Van Winkle",
+    "author": "Washington Irving",
+    "year": "1818",
+    "downloads_30d": 5521,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "time-travel fiction",
+    "tier": "A",
+    "rank": 22
+  },
+  {
+    "gutenberg": 375,
+    "title": "An Occurrence at Owl Creek Bridge",
+    "author": "Ambrose Bierce",
+    "year": "1890",
+    "downloads_30d": 5510,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "horror fiction",
+    "tier": "A",
+    "rank": 23
+  },
+  {
+    "gutenberg": 159,
+    "title": "The Island of Doctor Moreau",
+    "author": "H. G. Wells",
+    "year": "1896",
+    "downloads_30d": 5465,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 24
+  },
+  {
+    "gutenberg": 541,
+    "title": "The Age of Innocence",
+    "author": "Edith Wharton",
+    "downloads_30d": 5356,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g541",
+    "tier": "A",
+    "year": "1920",
+    "form": "novel",
+    "rank": 25
+  },
+  {
+    "gutenberg": 82,
+    "title": "Ivanhoe",
+    "author": "Walter Scott",
+    "year": "1819",
+    "downloads_30d": 5342,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "A",
+    "rank": 26
+  },
+  {
+    "gutenberg": 60,
+    "title": "The Scarlet Pimpernel",
+    "author": "Baroness Orczy",
+    "downloads_30d": 5053,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g60",
+    "form": "novel",
+    "genre": "cloak and dagger novel",
+    "year": "1905",
+    "tier": "A",
+    "rank": 27
+  },
+  {
+    "gutenberg": 201,
+    "title": "Flatland",
+    "author": "Edwin A. Abbott",
+    "year": "1884",
+    "downloads_30d": 4122,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "science fiction;mathematical fiction;satirical fiction",
+    "tier": "A",
+    "rank": 28
+  },
+  {
+    "gutenberg": 107,
+    "title": "Far from the Madding Crowd",
+    "author": "Thomas Hardy",
+    "year": "1874",
+    "downloads_30d": 4112,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 29
+  },
+  {
+    "gutenberg": 284,
+    "title": "The House of Mirth",
+    "author": "Edith Wharton",
+    "downloads_30d": 4060,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g284",
+    "tier": "A",
+    "year": "1905",
+    "form": "novel",
+    "rank": 30
+  },
+  {
+    "gutenberg": 73144,
+    "title": "Lady Chatterley's Lover",
+    "author": "D. H. Lawrence",
+    "year": "1928",
+    "downloads_30d": 4026,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "erotic literature;erotic romance novel",
+    "tier": "A",
+    "rank": 31
+  },
+  {
+    "gutenberg": 148,
+    "title": "The Autobiography of Benjamin Franklin",
+    "author": "Benjamin Franklin",
+    "year": "1791",
+    "downloads_30d": 3999,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "nonfiction",
+    "rank": 32
+  },
+  {
+    "gutenberg": 1450,
+    "title": "Pollyanna",
+    "author": "Eleanor H. Porter",
+    "downloads_30d": 3895,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1450",
+    "form": "novel",
+    "genre": "children's fiction",
+    "year": "1913",
+    "tier": "A",
+    "rank": 33
+  },
+  {
+    "gutenberg": 1522,
+    "tier": "A",
+    "title": "Julius Caesar",
+    "author": "William Shakespeare",
+    "year": "1598",
+    "form": "play",
+    "downloads_30d": 3731,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "rank": 34
+  },
+  {
+    "gutenberg": 5658,
+    "title": "Lord Jim",
+    "author": "Joseph Conrad",
+    "downloads_30d": 3607,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g5658",
+    "form": "novel",
+    "genre": "psychological fiction",
+    "year": "1900",
+    "tier": "A",
+    "rank": 35
+  },
+  {
+    "gutenberg": 78,
+    "title": "Tarzan of the Apes",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 3571,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g78",
+    "form": "novel",
+    "genre": "fantasy;adventure fiction",
+    "year": "1912",
+    "tier": "A",
+    "rank": 36
+  },
+  {
+    "gutenberg": 6157,
+    "title": "How Much Land Does a Man Need?",
+    "author": "Leo Tolstoy",
+    "year": "1886",
+    "downloads_30d": 3512,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "",
+    "tier": "A",
+    "rank": 37
+  },
+  {
+    "gutenberg": 75170,
+    "title": "The Sound and the Fury",
+    "author": "William Faulkner",
+    "year": "1929",
+    "downloads_30d": 3479,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 38
+  },
+  {
+    "gutenberg": 2166,
+    "title": "King Solomon's Mines",
+    "author": "H. Rider Haggard",
+    "downloads_30d": 3424,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2166",
+    "tier": "A",
+    "year": "1885",
+    "form": "novel",
+    "rank": 39
+  },
+  {
+    "gutenberg": 550,
+    "title": "Silas Marner",
+    "author": "George Eliot",
+    "year": "1861",
+    "downloads_30d": 3410,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "novel of manners",
+    "tier": "A",
+    "rank": 40
+  },
+  {
+    "gutenberg": 969,
+    "title": "The Tenant of Wildfell Hall",
+    "author": "Anne Brontë",
+    "year": "1848",
+    "downloads_30d": 3377,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "epistolary fiction",
+    "tier": "A",
+    "rank": 41
+  },
+  {
+    "gutenberg": 44747,
+    "title": "The Red and the Black",
+    "author": "Stendhal",
+    "year": "1830",
+    "downloads_30d": 3271,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 42
+  },
+  {
+    "gutenberg": 153,
+    "title": "Jude the Obscure",
+    "author": "Thomas Hardy",
+    "year": "1895",
+    "downloads_30d": 3225,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 43
+  },
+  {
+    "gutenberg": 61221,
+    "title": "A Passage to India",
+    "author": "E. M. Forster",
+    "year": "1924",
+    "downloads_30d": 3136,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 44
+  },
+  {
+    "gutenberg": 242,
+    "title": "My Ántonia",
+    "author": "Willa Cather",
+    "year": "1918",
+    "downloads_30d": 3065,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 45
+  },
+  {
+    "gutenberg": 73011,
+    "tier": "A",
+    "title": "The House at Pooh Corner",
+    "author": "A. A. Milne",
+    "year": "1928",
+    "form": "children's book",
+    "downloads_30d": 2940,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "rank": 46
+  },
+  {
+    "gutenberg": 143,
+    "title": "The Mayor of Casterbridge",
+    "author": "Thomas Hardy",
+    "year": "1886",
+    "downloads_30d": 2713,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 47
+  },
+  {
+    "gutenberg": 507,
+    "title": "Adam Bede",
+    "author": "George Eliot",
+    "year": "1859",
+    "downloads_30d": 2681,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 48
+  },
+  {
+    "gutenberg": 1156,
+    "title": "Babbitt",
+    "author": "Sinclair Lewis",
+    "downloads_30d": 2599,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1156",
+    "form": "novel",
+    "genre": "satire",
+    "year": "1922",
+    "tier": "A",
+    "rank": 49
+  },
+  {
+    "gutenberg": 1074,
+    "title": "The Sea-Wolf",
+    "author": "Jack London",
+    "downloads_30d": 2597,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1074",
+    "form": "novel",
+    "genre": "adventure fiction",
+    "year": "1904",
+    "tier": "A",
+    "rank": 50
+  },
+  {
+    "gutenberg": 1237,
+    "title": "Père Goriot",
+    "author": "Honoré de Balzac",
+    "year": "1835",
+    "downloads_30d": 2421,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "A",
+    "rank": 51
+  },
+  {
+    "gutenberg": 75756,
+    "title": "Steppenwolf",
+    "author": "Hermann Hesse",
+    "year": "1929",
+    "downloads_30d": 2279,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 52
+  },
+  {
+    "gutenberg": 95,
+    "title": "The Prisoner of Zenda",
+    "author": "Anthony Hope",
+    "downloads_30d": 2255,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g95",
+    "form": "novel",
+    "genre": "cloak and dagger novel;romantic fiction;adventure fiction",
+    "year": "1894",
+    "tier": "A",
+    "rank": 53
+  },
+  {
+    "gutenberg": 351,
+    "title": "Of Human Bondage",
+    "author": "W. Somerset Maugham",
+    "year": "1915",
+    "downloads_30d": 2226,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "tier": "A",
+    "rank": 54
+  },
+  {
+    "gutenberg": 78220,
+    "title": "The Murder at the Vicarage",
+    "author": "Agatha Christie",
+    "year": "1930",
+    "downloads_30d": 1947,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 55
+  },
+  {
+    "gutenberg": 396,
+    "title": "The Lady, or the Tiger?",
+    "author": "Frank R. Stockton",
+    "year": "1882",
+    "downloads_30d": 1915,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "",
+    "tier": "A",
+    "rank": 56
+  },
+  {
+    "gutenberg": 964,
+    "title": "The Merry Adventures of Robin Hood",
+    "author": "Howard Pyle",
+    "downloads_30d": 1722,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g964",
+    "tier": "A",
+    "year": "1883",
+    "form": "novel",
+    "rank": 57
+  },
+  {
+    "gutenberg": 66073,
+    "title": "Death in Venice",
+    "author": "Thomas Mann",
+    "year": "1912",
+    "downloads_30d": 1679,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novella",
+    "rank": 58
+  },
+  {
+    "gutenberg": 61085,
+    "title": "In Our Time",
+    "author": "Ernest Hemingway",
+    "year": "1925",
+    "downloads_30d": 1611,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "fiction",
+    "tier": "A",
+    "rank": 59
+  },
+  {
+    "gutenberg": 2834,
+    "title": "The Portrait of a Lady",
+    "author": "Henry James",
+    "year": "1881",
+    "downloads_30d": 1450,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "A",
+    "rank": 60
+  },
+  {
+    "gutenberg": 77924,
+    "title": "The Secret of the Old Clock",
+    "author": "Carolyn Keene",
+    "year": "1930",
+    "downloads_30d": 1353,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 61
+  },
+  {
+    "gutenberg": 61620,
+    "title": "The Mark of Zorro",
+    "author": "Johnston McCulley",
+    "year": "1919",
+    "downloads_30d": 1210,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction;cloak and dagger novel;adventure fiction",
+    "tier": "A",
+    "rank": 62
+  },
+  {
+    "gutenberg": 69730,
+    "title": "Death Comes for the Archbishop",
+    "author": "Willa Cather",
+    "year": "1927",
+    "downloads_30d": 911,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 63
+  },
+  {
+    "gutenberg": 69768,
+    "title": "The Bridge of San Luis Rey",
+    "author": "Thornton Wilder",
+    "year": "1927",
+    "downloads_30d": 899,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 64
+  },
+  {
+    "gutenberg": 78157,
+    "title": "Strong Poison",
+    "author": "Dorothy L. Sayers",
+    "year": "1930",
+    "downloads_30d": 774,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "A",
+    "form": "novel",
+    "rank": 65
+  },
+  {
+    "gutenberg": 65238,
+    "title": "The Secret of Chimneys",
+    "author": "Agatha Christie",
+    "year": "1925",
+    "downloads_30d": 86601,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "thriller;detective fiction;crime fiction",
+    "tier": "B",
+    "rank": 66
+  },
+  {
+    "gutenberg": 3268,
+    "title": "The Mysteries of Udolpho",
+    "author": "Ann Radcliffe",
+    "downloads_30d": 84458,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g3268",
+    "form": "novel",
+    "genre": "Gothic fiction;fantasy;thriller;horror fiction;romantic fiction",
+    "year": "1794",
+    "tier": "B",
+    "rank": 67
+  },
+  {
+    "gutenberg": 2465,
+    "title": "Carmen",
+    "author": "Prosper Mérimée",
+    "downloads_30d": 77289,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2465",
+    "form": "novella",
+    "genre": "",
+    "year": "1845",
+    "tier": "B",
+    "rank": 68
+  },
+  {
+    "gutenberg": 564,
+    "title": "The Mystery of Edwin Drood",
+    "author": "Charles Dickens",
+    "downloads_30d": 61536,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g564",
+    "tier": "B",
+    "year": "1870",
+    "form": "novel",
+    "rank": 69
+  },
+  {
+    "gutenberg": 601,
+    "title": "The Monk",
+    "author": "M. G. Lewis",
+    "downloads_30d": 54719,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g601",
+    "form": "novel",
+    "genre": "fantasy;Gothic fiction",
+    "year": "1796",
+    "tier": "B",
+    "rank": 70
+  },
+  {
+    "gutenberg": 223,
+    "title": "The Wisdom of Father Brown",
+    "author": "G. K. Chesterton",
+    "downloads_30d": 50651,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g223",
+    "tier": "B",
+    "year": "1914",
+    "form": "short story collection",
+    "rank": 71
+  },
+  {
+    "gutenberg": 393,
+    "title": "The Blue Lagoon",
+    "author": "H. De Vere Stacpoole",
+    "downloads_30d": 49758,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g393",
+    "form": "novel",
+    "genre": "romance",
+    "year": "1908",
+    "tier": "B",
+    "rank": 72
+  },
+  {
+    "gutenberg": 468,
+    "title": "Manon Lescaut",
+    "author": "Antoine François Prévost",
+    "year": "1731",
+    "downloads_30d": 49485,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 73
+  },
+  {
+    "gutenberg": 589,
+    "title": "Catriona",
+    "author": "Robert Louis Stevenson",
+    "downloads_30d": 48695,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g589",
+    "form": "novel",
+    "genre": "historical fiction;adventure fiction",
+    "year": "1893",
+    "tier": "B",
+    "rank": 74
+  },
+  {
+    "gutenberg": 10002,
+    "title": "The House on the Borderland",
+    "author": "William Hope Hodgson",
+    "year": "1908",
+    "downloads_30d": 48309,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;weird fiction;horror fiction",
+    "tier": "B",
+    "rank": 75
+  },
+  {
+    "gutenberg": 69700,
+    "title": "The Case-Book of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "year": "1927",
+    "downloads_30d": 48143,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "detective fiction;crime fiction",
+    "tier": "B",
+    "rank": 76
+  },
+  {
+    "gutenberg": 58866,
+    "title": "The Murder on the Links",
+    "author": "Agatha Christie",
+    "year": "1923",
+    "downloads_30d": 48122,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "detective fiction;crime fiction",
+    "tier": "B",
+    "rank": 77
+  },
+  {
+    "gutenberg": 3289,
+    "title": "The Valley of Fear",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 47643,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g3289",
+    "form": "novel",
+    "genre": "detective fiction;crime fiction",
+    "year": "1915",
+    "tier": "B",
+    "rank": 78
+  },
+  {
+    "gutenberg": 61168,
+    "title": "The Man in the Brown Suit",
+    "author": "Agatha Christie",
+    "year": "1924",
+    "downloads_30d": 47569,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "thriller;detective fiction;crime fiction",
+    "tier": "B",
+    "rank": 79
+  },
+  {
+    "gutenberg": 560,
+    "title": "Mr. Standfast",
+    "author": "John Buchan",
+    "downloads_30d": 47388,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g560",
+    "form": "novel",
+    "genre": "military fiction",
+    "year": "1919",
+    "tier": "B",
+    "rank": 80
+  },
+  {
+    "gutenberg": 8954,
+    "title": "Lady Audley's Secret",
+    "author": "Mary Elizabeth Braddon",
+    "year": "1862",
+    "downloads_30d": 47288,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "sensation fiction",
+    "tier": "B",
+    "rank": 81
+  },
+  {
+    "gutenberg": 1259,
+    "title": "Twenty Years After",
+    "author": "Alexandre Dumas",
+    "downloads_30d": 47260,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1259",
+    "form": "novel",
+    "genre": "cloak and dagger novel;adventure fiction",
+    "year": "1845",
+    "tier": "B",
+    "rank": 82
+  },
+  {
+    "gutenberg": 70114,
+    "title": "The Big Four",
+    "author": "Agatha Christie",
+    "year": "1927",
+    "downloads_30d": 47170,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "detective fiction",
+    "tier": "B",
+    "rank": 83
+  },
+  {
+    "gutenberg": 2350,
+    "title": "His Last Bow",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 47063,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2350",
+    "form": "short story collection",
+    "genre": "detective fiction;crime fiction;spy fiction",
+    "year": "1917",
+    "tier": "B",
+    "rank": 84
+  },
+  {
+    "gutenberg": 2360,
+    "title": "The Riddle of the Sands",
+    "author": "Erskine Childers",
+    "downloads_30d": 46829,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2360",
+    "tier": "B",
+    "year": "1903",
+    "form": "novel",
+    "rank": 85
+  },
+  {
+    "gutenberg": 50133,
+    "title": "The Dunwich Horror",
+    "author": "H. P. Lovecraft",
+    "year": "1929",
+    "downloads_30d": 46777,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "science fiction;weird fiction;horror fiction",
+    "tier": "B",
+    "rank": 86
+  },
+  {
+    "gutenberg": 389,
+    "title": "The Great God Pan",
+    "author": "Arthur Machen",
+    "downloads_30d": 46720,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g389",
+    "form": "novella",
+    "genre": "weird fiction;horror fiction;folk horror",
+    "year": "1894",
+    "tier": "B",
+    "rank": 87
+  },
+  {
+    "gutenberg": 72824,
+    "title": "The Mystery of the Blue Train",
+    "author": "Agatha Christie",
+    "year": "1928",
+    "downloads_30d": 46665,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 88
+  },
+  {
+    "gutenberg": 8486,
+    "title": "Ghost Stories of an Antiquary",
+    "author": "M. R. James",
+    "year": "1904",
+    "downloads_30d": 46088,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "horror fiction",
+    "tier": "B",
+    "rank": 89
+  },
+  {
+    "gutenberg": 1685,
+    "title": "The Mystery of the Yellow Room",
+    "author": "Gaston Leroux",
+    "downloads_30d": 45788,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1685",
+    "tier": "B",
+    "year": "1907",
+    "form": "novel",
+    "rank": 90
+  },
+  {
+    "gutenberg": 57669,
+    "title": "The Problem of Cell 13",
+    "author": "Jacques Futrelle",
+    "year": "1905",
+    "downloads_30d": 45768,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story",
+    "genre": "locked room mystery",
+    "tier": "B",
+    "rank": 91
+  },
+  {
+    "gutenberg": 1872,
+    "title": "The Red House Mystery",
+    "author": "A. A. Milne",
+    "downloads_30d": 45473,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1872",
+    "form": "novel",
+    "genre": "mystery fiction",
+    "year": "1922",
+    "tier": "B",
+    "rank": 92
+  },
+  {
+    "gutenberg": 173,
+    "title": "The Insidious Dr. Fu-Manchu",
+    "author": "Sax Rohmer",
+    "downloads_30d": 45339,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g173",
+    "form": "novel",
+    "genre": "mystery fiction",
+    "year": "1913",
+    "tier": "B",
+    "rank": 93
+  },
+  {
+    "gutenberg": 2160,
+    "title": "The Expedition of Humphry Clinker",
+    "author": "Tobias Smollett",
+    "year": "1771",
+    "downloads_30d": 42801,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "epistolary novel",
+    "tier": "B",
+    "rank": 94
+  },
+  {
+    "gutenberg": 17460,
+    "title": "Lorna Doone",
+    "author": "R. D. Blackmore",
+    "year": "1869",
+    "downloads_30d": 36829,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "romantic fiction",
+    "tier": "B",
+    "rank": 95
+  },
+  {
+    "gutenberg": 1523,
+    "languages": [
+      "en"
+    ],
+    "source": "override",
+    "preferred": true,
+    "title": "As You Like It",
+    "author": "William Shakespeare",
+    "year": null,
+    "downloads_30d": 36175,
+    "form": "play",
+    "tier": "B",
+    "rank": 96
+  },
+  {
+    "gutenberg": 9911,
+    "title": "First Love",
+    "author": "Ivan Turgenev",
+    "year": "1860",
+    "downloads_30d": 32730,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "short novel",
+    "tier": "B",
+    "rank": 97
+  },
+  {
+    "gutenberg": 921,
+    "title": "De Profundis",
+    "author": "Oscar Wilde",
+    "year": "1905",
+    "downloads_30d": 27237,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "letter",
+    "genre": "epistle",
+    "tier": "B",
+    "rank": 98
+  },
+  {
+    "gutenberg": 1079,
+    "title": "Tristram Shandy",
+    "author": "Laurence Sterne",
+    "year": "1759",
+    "downloads_30d": 20499,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "picaresque novel;metafiction;satirical fiction",
+    "tier": "B",
+    "rank": 99
+  },
+  {
+    "gutenberg": 696,
+    "title": "The Castle of Otranto",
+    "author": "Horace Walpole",
+    "downloads_30d": 20422,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g696",
+    "form": "novel",
+    "genre": "horror fiction;Gothic fiction",
+    "year": "1764",
+    "tier": "B",
+    "rank": 100
+  },
+  {
+    "gutenberg": 2040,
+    "title": "Confessions of an English Opium-Eater",
+    "author": "Thomas De Quincey",
+    "downloads_30d": 19258,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2040",
+    "form": "nonfiction",
+    "genre": "autobiography",
+    "year": "1821",
+    "tier": "B",
+    "rank": 101
+  },
+  {
+    "gutenberg": 38703,
+    "title": "The Black Moth",
+    "author": "Georgette Heyer",
+    "year": "1921",
+    "downloads_30d": 17597,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction;romantic fiction",
+    "tier": "B",
+    "rank": 102
+  },
+  {
+    "gutenberg": 62,
+    "title": "A Princess of Mars",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 11471,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g62",
+    "tier": "B",
+    "year": "1912",
+    "form": "novel",
+    "rank": 103
+  },
+  {
+    "gutenberg": 1170,
+    "title": "Anabasis",
+    "author": "Xenophon",
+    "year": "1859",
+    "downloads_30d": 11047,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "nonfiction",
+    "genre": "travel book;historiography",
+    "tier": "B",
+    "rank": 104
+  },
+  {
+    "gutenberg": 64,
+    "title": "The Gods of Mars",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 7938,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g64",
+    "tier": "B",
+    "year": "1913",
+    "form": "novel",
+    "rank": 105
+  },
+  {
+    "gutenberg": 786,
+    "title": "Hard Times",
+    "author": "Charles Dickens",
+    "year": "1854",
+    "downloads_30d": 7132,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "serialized fiction;social fiction",
+    "tier": "B",
+    "rank": 106
+  },
+  {
+    "gutenberg": 131,
+    "title": "The Pilgrim's Progress",
+    "author": "John Bunyan",
+    "year": "1678",
+    "downloads_30d": 6126,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "allegory",
+    "tier": "B",
+    "rank": 107
+  },
+  {
+    "gutenberg": 8117,
+    "title": "Demons",
+    "author": "Fyodor Dostoevsky",
+    "year": "1872",
+    "downloads_30d": 5822,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "political fiction;psychological fiction",
+    "tier": "B",
+    "rank": 108
+  },
+  {
+    "gutenberg": 6087,
+    "title": "The Vampyre",
+    "author": "John William Polidori",
+    "downloads_30d": 5666,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g6087",
+    "tier": "B",
+    "year": "1819",
+    "form": "novella",
+    "rank": 109
+  },
+  {
+    "gutenberg": 47,
+    "title": "Anne of Avonlea",
+    "author": "L. M. Montgomery",
+    "year": "1909",
+    "downloads_30d": 5269,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "children's fiction",
+    "tier": "B",
+    "rank": 110
+  },
+  {
+    "gutenberg": 883,
+    "title": "Our Mutual Friend",
+    "author": "Charles Dickens",
+    "year": "1864",
+    "downloads_30d": 4745,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "serialized fiction;mystery fiction",
+    "tier": "B",
+    "rank": 111
+  },
+  {
+    "gutenberg": 503,
+    "title": "The Blue Fairy Book",
+    "author": "Andrew Lang",
+    "downloads_30d": 4731,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g503",
+    "tier": "B",
+    "year": "1889",
+    "form": "fairy tales",
+    "rank": 112
+  },
+  {
+    "gutenberg": 2853,
+    "title": "Quo Vadis",
+    "author": "Henryk Sienkiewicz",
+    "downloads_30d": 4567,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2853",
+    "form": "novel",
+    "genre": "historical fiction",
+    "year": "1896",
+    "tier": "B",
+    "rank": 113
+  },
+  {
+    "gutenberg": 512,
+    "title": "Mosses from an Old Manse",
+    "author": "Nathaniel Hawthorne",
+    "downloads_30d": 4530,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g512",
+    "form": "short story collection",
+    "genre": "speculative fiction",
+    "year": "1846",
+    "tier": "B",
+    "rank": 114
+  },
+  {
+    "gutenberg": 1056,
+    "title": "Martin Eden",
+    "author": "Jack London",
+    "year": "1909",
+    "downloads_30d": 4067,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Künstlerroman",
+    "tier": "B",
+    "rank": 115
+  },
+  {
+    "gutenberg": 1515,
+    "languages": [
+      "en"
+    ],
+    "source": "override",
+    "preferred": true,
+    "title": "The Merchant of Venice",
+    "author": "William Shakespeare",
+    "year": null,
+    "downloads_30d": 3823,
+    "form": "play",
+    "tier": "B",
+    "rank": 116
+  },
+  {
+    "gutenberg": 805,
+    "title": "This Side of Paradise",
+    "author": "F. Scott Fitzgerald",
+    "year": "1920",
+    "downloads_30d": 3638,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 117
+  },
+  {
+    "gutenberg": 963,
+    "title": "Little Dorrit",
+    "author": "Charles Dickens",
+    "year": "1857",
+    "downloads_30d": 3516,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 118
+  },
+  {
+    "gutenberg": 700,
+    "title": "The Old Curiosity Shop",
+    "author": "Charles Dickens",
+    "year": "1840",
+    "downloads_30d": 3496,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "social criticism",
+    "tier": "B",
+    "rank": 119
+  },
+  {
+    "gutenberg": 9182,
+    "title": "Villette",
+    "author": "Charlotte Brontë",
+    "year": "1853",
+    "downloads_30d": 3459,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman;Victorian literature",
+    "tier": "B",
+    "rank": 120
+  },
+  {
+    "gutenberg": 222,
+    "title": "The Moon and Sixpence",
+    "author": "W. Somerset Maugham",
+    "year": "1919",
+    "downloads_30d": 3211,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "biographical novel",
+    "tier": "B",
+    "rank": 121
+  },
+  {
+    "gutenberg": 2197,
+    "title": "The Gambler",
+    "author": "Fyodor Dostoevsky",
+    "year": "1867",
+    "downloads_30d": 3194,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 122
+  },
+  {
+    "gutenberg": 32,
+    "title": "Herland",
+    "author": "Charlotte Perkins Gilman",
+    "year": "1915",
+    "downloads_30d": 3135,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction;serialized fiction;feminist science fiction;utopian fiction",
+    "tier": "B",
+    "rank": 123
+  },
+  {
+    "gutenberg": 708,
+    "title": "The Princess and the Goblin",
+    "author": "George MacDonald",
+    "downloads_30d": 3108,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g708",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "year": "1872",
+    "tier": "B",
+    "rank": 124
+  },
+  {
+    "gutenberg": 11438,
+    "title": "The Willows",
+    "author": "Algernon Blackwood",
+    "year": "1907",
+    "downloads_30d": 3085,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "weird fiction;horror fiction",
+    "tier": "B",
+    "rank": 125
+  },
+  {
+    "gutenberg": 208,
+    "title": "Daisy Miller",
+    "author": "Henry James",
+    "year": "1879",
+    "downloads_30d": 3066,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "",
+    "tier": "B",
+    "rank": 126
+  },
+  {
+    "gutenberg": 102,
+    "title": "Pudd'nhead Wilson",
+    "author": "Mark Twain",
+    "year": "1894",
+    "downloads_30d": 3060,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "comic novel;mystery fiction",
+    "tier": "B",
+    "rank": 127
+  },
+  {
+    "gutenberg": 1210,
+    "title": "Kwaidan",
+    "author": "Lafcadio Hearn",
+    "year": "1904",
+    "downloads_30d": 3007,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "B",
+    "rank": 128
+  },
+  {
+    "gutenberg": 5160,
+    "title": "The Mabinogion",
+    "author": "Anonymous",
+    "downloads_30d": 2983,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g5160",
+    "tier": "B",
+    "year": null,
+    "form": "myth",
+    "rank": 129
+  },
+  {
+    "gutenberg": 9830,
+    "title": "The Beautiful and Damned",
+    "author": "F. Scott Fitzgerald",
+    "year": "1922",
+    "downloads_30d": 2934,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 130
+  },
+  {
+    "gutenberg": 501,
+    "title": "The Story of Doctor Dolittle",
+    "author": "Hugh Lofting",
+    "downloads_30d": 2875,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g501",
+    "tier": "B",
+    "year": "1920",
+    "form": "novel",
+    "rank": 131
+  },
+  {
+    "gutenberg": 54,
+    "title": "The Marvelous Land of Oz",
+    "author": "L. Frank Baum",
+    "year": "1904",
+    "downloads_30d": 2865,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "tier": "B",
+    "rank": 132
+  },
+  {
+    "gutenberg": 18247,
+    "title": "The Last Man",
+    "author": "Mary Shelley",
+    "year": "1826",
+    "downloads_30d": 2809,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction;post-apocalyptic fiction;futuristic fiction",
+    "tier": "B",
+    "rank": 133
+  },
+  {
+    "gutenberg": 217,
+    "title": "Sons and Lovers",
+    "author": "D. H. Lawrence",
+    "year": "1913",
+    "downloads_30d": 2769,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "autobiographical novel",
+    "tier": "B",
+    "rank": 134
+  },
+  {
+    "gutenberg": 2759,
+    "title": "The Man in the Iron Mask",
+    "author": "Alexandre Dumas",
+    "downloads_30d": 2761,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2759",
+    "tier": "B",
+    "year": "1850",
+    "form": "novel",
+    "rank": 135
+  },
+  {
+    "gutenberg": 122,
+    "title": "The Return of the Native",
+    "author": "Thomas Hardy",
+    "year": "1878",
+    "downloads_30d": 2621,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 136
+  },
+  {
+    "gutenberg": 13707,
+    "title": "Twice-Told Tales",
+    "author": "Nathaniel Hawthorne",
+    "year": "1837",
+    "downloads_30d": 2605,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "B",
+    "rank": 137
+  },
+  {
+    "gutenberg": 624,
+    "title": "Looking Backward",
+    "author": "Edward Bellamy",
+    "year": "1888",
+    "downloads_30d": 2594,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "political fiction;futuristic fiction;utopian literature",
+    "tier": "B",
+    "rank": 138
+  },
+  {
+    "gutenberg": 144,
+    "title": "The Voyage Out",
+    "author": "Virginia Woolf",
+    "year": "1915",
+    "downloads_30d": 2497,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 139
+  },
+  {
+    "gutenberg": 2302,
+    "title": "Poor Folk",
+    "author": "Fyodor Dostoevsky",
+    "year": "1846",
+    "downloads_30d": 2426,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 140
+  },
+  {
+    "gutenberg": 689,
+    "title": "The Kreutzer Sonata",
+    "author": "Leo Tolstoy",
+    "year": "1889",
+    "downloads_30d": 2328,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "historical fiction;romantic fiction",
+    "tier": "B",
+    "rank": 141
+  },
+  {
+    "gutenberg": 220,
+    "title": "The Secret Sharer",
+    "author": "Joseph Conrad",
+    "year": "1910",
+    "downloads_30d": 2322,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "nautical fiction",
+    "tier": "B",
+    "rank": 142
+  },
+  {
+    "gutenberg": 3155,
+    "title": "She",
+    "author": "H. Rider Haggard",
+    "year": "1887",
+    "downloads_30d": 2317,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;lost world fiction;Gothic fiction;adventure fiction",
+    "tier": "B",
+    "rank": 143
+  },
+  {
+    "gutenberg": 416,
+    "title": "Winesburg, Ohio",
+    "author": "Sherwood Anderson",
+    "year": "1919",
+    "downloads_30d": 2316,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "short story cycle",
+    "tier": "B",
+    "rank": 144
+  },
+  {
+    "gutenberg": 543,
+    "title": "Main Street",
+    "author": "Sinclair Lewis",
+    "downloads_30d": 2277,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g543",
+    "tier": "B",
+    "year": "1920",
+    "form": "novel",
+    "rank": 145
+  },
+  {
+    "gutenberg": 1093,
+    "title": "The Beast in the Jungle",
+    "author": "Henry James",
+    "year": "1903",
+    "downloads_30d": 2270,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "fiction literature",
+    "tier": "B",
+    "rank": 146
+  },
+  {
+    "gutenberg": 24,
+    "title": "O Pioneers!",
+    "author": "Willa Cather",
+    "year": "1913",
+    "downloads_30d": 2234,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "B",
+    "rank": 147
+  },
+  {
+    "gutenberg": 1938,
+    "title": "Resurrection",
+    "author": "Leo Tolstoy",
+    "year": "1899",
+    "downloads_30d": 2230,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "political fiction;philosophical fiction;social fiction",
+    "tier": "B",
+    "rank": 148
+  },
+  {
+    "gutenberg": 1900,
+    "title": "Typee",
+    "author": "Herman Melville",
+    "downloads_30d": 2227,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1900",
+    "form": "novel",
+    "genre": "travel literature",
+    "year": "1846",
+    "tier": "B",
+    "rank": 149
+  },
+  {
+    "gutenberg": 1965,
+    "title": "Captain Blood",
+    "author": "Rafael Sabatini",
+    "year": "1922",
+    "downloads_30d": 2188,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction;adventure fiction;pirate fiction",
+    "tier": "B",
+    "rank": 150
+  },
+  {
+    "gutenberg": 37536,
+    "title": "The House of the Dead",
+    "author": "Fyodor Dostoevsky",
+    "year": "1862",
+    "downloads_30d": 2182,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "serialized fiction",
+    "tier": "B",
+    "rank": 151
+  },
+  {
+    "gutenberg": 479,
+    "title": "Little Lord Fauntleroy",
+    "author": "Frances Hodgson Burnett",
+    "year": "1886",
+    "downloads_30d": 2180,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "children's fiction",
+    "tier": "B",
+    "rank": 152
+  },
+  {
+    "gutenberg": 6124,
+    "title": "Pamela",
+    "author": "Samuel Richardson",
+    "year": "1740",
+    "downloads_30d": 2143,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "epistolary novel;education novel",
+    "tier": "B",
+    "rank": 153
+  },
+  {
+    "gutenberg": 1164,
+    "title": "The Iron Heel",
+    "author": "Jack London",
+    "year": "1908",
+    "downloads_30d": 2136,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction;political fiction;dystopian fiction",
+    "tier": "B",
+    "rank": 154
+  },
+  {
+    "gutenberg": 1534,
+    "languages": [
+      "en"
+    ],
+    "source": "override",
+    "preferred": true,
+    "title": "Antony and Cleopatra",
+    "author": "William Shakespeare",
+    "year": null,
+    "downloads_30d": 2116,
+    "form": "play",
+    "tier": "B",
+    "rank": 155
+  },
+  {
+    "gutenberg": 7469,
+    "title": "Daniel Deronda",
+    "author": "George Eliot",
+    "year": "1876",
+    "downloads_30d": 2085,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "tier": "B",
+    "rank": 156
+  },
+  {
+    "gutenberg": 1300,
+    "title": "Riders of the Purple Sage",
+    "author": "Zane Grey",
+    "downloads_30d": 2019,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1300",
+    "tier": "B",
+    "year": "1912",
+    "form": "novel",
+    "rank": 157
+  },
+  {
+    "gutenberg": 4240,
+    "title": "Women in Love",
+    "author": "D. H. Lawrence",
+    "year": "1920",
+    "downloads_30d": 2014,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "modernist literature;LGBT-related literature;psychological fiction",
+    "tier": "B",
+    "rank": 158
+  },
+  {
+    "gutenberg": 903,
+    "title": "The White Company",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 2013,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g903",
+    "tier": "B",
+    "year": "1891",
+    "form": "novel",
+    "rank": 159
+  },
+  {
+    "gutenberg": 5231,
+    "title": "The Way We Live Now",
+    "author": "Anthony Trollope",
+    "year": "1875",
+    "downloads_30d": 2005,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "satire",
+    "tier": "B",
+    "rank": 160
+  },
+  {
+    "gutenberg": 767,
+    "title": "Agnes Grey",
+    "author": "Anne Brontë",
+    "year": "1847",
+    "downloads_30d": 1999,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 161
+  },
+  {
+    "gutenberg": 41085,
+    "title": "La Vita Nuova",
+    "author": "Dante Alighieri",
+    "year": "1295",
+    "downloads_30d": 1982,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "poem",
+    "genre": "autobiography;chivalric romance",
+    "tier": "B",
+    "rank": 162
+  },
+  {
+    "gutenberg": 432,
+    "title": "The Ambassadors",
+    "author": "Henry James",
+    "year": "1903",
+    "downloads_30d": 1914,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "social novel;psychological fiction",
+    "tier": "B",
+    "rank": 163
+  },
+  {
+    "gutenberg": 165,
+    "title": "McTeague",
+    "author": "Frank Norris",
+    "year": "1899",
+    "downloads_30d": 1907,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 164
+  },
+  {
+    "gutenberg": 2153,
+    "title": "Mary Barton",
+    "author": "Elizabeth Gaskell",
+    "year": "1848",
+    "downloads_30d": 1831,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 165
+  },
+  {
+    "gutenberg": 5998,
+    "title": "Waverley",
+    "author": "Walter Scott",
+    "year": "1814",
+    "downloads_30d": 1799,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "picaresque novel;historical fiction;Bildungsroman",
+    "tier": "B",
+    "rank": 166
+  },
+  {
+    "gutenberg": 81,
+    "title": "The Return of Tarzan",
+    "author": "Edgar Rice Burroughs",
+    "year": "1913",
+    "downloads_30d": 1794,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;adventure fiction",
+    "tier": "B",
+    "rank": 167
+  },
+  {
+    "gutenberg": 28948,
+    "title": "The Rainbow",
+    "author": "D. H. Lawrence",
+    "year": "1915",
+    "downloads_30d": 1794,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "family saga",
+    "tier": "B",
+    "rank": 168
+  },
+  {
+    "gutenberg": 28961,
+    "title": "Heart",
+    "author": "Edmondo de Amicis",
+    "year": "1886",
+    "downloads_30d": 1750,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "children's fiction",
+    "tier": "B",
+    "rank": 169
+  },
+  {
+    "gutenberg": 2667,
+    "title": "The Vicar of Wakefield",
+    "author": "Oliver Goldsmith",
+    "year": "1766",
+    "downloads_30d": 1664,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "sentimental novel",
+    "tier": "B",
+    "rank": 170
+  },
+  {
+    "gutenberg": 6053,
+    "title": "Evelina",
+    "author": "Frances Burney",
+    "year": "1778",
+    "downloads_30d": 1654,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "epistolary novel",
+    "tier": "B",
+    "rank": 171
+  },
+  {
+    "gutenberg": 370,
+    "title": "Moll Flanders",
+    "author": "Daniel Defoe",
+    "year": "1722",
+    "downloads_30d": 1613,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "picaresque novel",
+    "tier": "B",
+    "rank": 172
+  },
+  {
+    "gutenberg": 8118,
+    "title": "Redburn",
+    "author": "Herman Melville",
+    "year": "1849",
+    "downloads_30d": 1591,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 173
+  },
+  {
+    "gutenberg": 913,
+    "title": "A Hero of Our Time",
+    "author": "Mikhail Lermontov",
+    "year": "1840",
+    "downloads_30d": 1515,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "psychological fiction",
+    "tier": "B",
+    "rank": 174
+  },
+  {
+    "gutenberg": 36483,
+    "title": "Wilhelm Meister's Apprenticeship",
+    "author": "Johann Wolfgang von Goethe",
+    "year": "1795",
+    "downloads_30d": 1475,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman;developmental novel",
+    "tier": "B",
+    "rank": 175
+  },
+  {
+    "gutenberg": 525,
+    "title": "Youth",
+    "author": "Joseph Conrad",
+    "downloads_30d": 1463,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g525",
+    "form": "short story",
+    "genre": "frame story",
+    "year": "1898",
+    "tier": "B",
+    "rank": 176
+  },
+  {
+    "gutenberg": 5670,
+    "title": "Jacob's Room",
+    "author": "Virginia Woolf",
+    "year": "1922",
+    "downloads_30d": 1462,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 177
+  },
+  {
+    "gutenberg": 20657,
+    "title": "Tales from Shakespeare",
+    "author": "Charles and Mary Lamb",
+    "year": "1807",
+    "downloads_30d": 1452,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "B",
+    "rank": 178
+  },
+  {
+    "gutenberg": 836,
+    "title": "The Phoenix and the Carpet",
+    "author": "E. Nesbit",
+    "year": "1904",
+    "downloads_30d": 1447,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "B",
+    "rank": 179
+  },
+  {
+    "gutenberg": 64682,
+    "title": "The Painted Veil",
+    "author": "W. Somerset Maugham",
+    "year": "1925",
+    "downloads_30d": 1441,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 180
+  },
+  {
+    "gutenberg": 6626,
+    "title": "Thérèse Raquin",
+    "author": "Émile Zola",
+    "year": "1867",
+    "downloads_30d": 1434,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 181
+  },
+  {
+    "gutenberg": 3285,
+    "title": "The Deerslayer",
+    "author": "James Fenimore Cooper",
+    "downloads_30d": 1428,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g3285",
+    "form": "novel",
+    "genre": "historical fiction;adventure fiction",
+    "year": "1841",
+    "tier": "B",
+    "rank": 182
+  },
+  {
+    "gutenberg": 3409,
+    "title": "Barchester Towers",
+    "author": "Anthony Trollope",
+    "year": "1857",
+    "downloads_30d": 1384,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 183
+  },
+  {
+    "gutenberg": 1290,
+    "title": "Salammbô",
+    "author": "Gustave Flaubert",
+    "year": "1862",
+    "downloads_30d": 1369,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "B",
+    "rank": 184
+  },
+  {
+    "gutenberg": 268,
+    "title": "The Octopus",
+    "author": "Frank Norris",
+    "year": "1901",
+    "downloads_30d": 1341,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 185
+  },
+  {
+    "gutenberg": 873,
+    "title": "A House of Pomegranates",
+    "author": "Oscar Wilde",
+    "year": "1891",
+    "downloads_30d": 1337,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "literary fairy tale",
+    "tier": "B",
+    "rank": 186
+  },
+  {
+    "gutenberg": 1715,
+    "title": "Eugénie Grandet",
+    "author": "Honoré de Balzac",
+    "year": "1833",
+    "downloads_30d": 1284,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 187
+  },
+  {
+    "gutenberg": 2081,
+    "title": "The Blithedale Romance",
+    "author": "Nathaniel Hawthorne",
+    "year": "1852",
+    "downloads_30d": 1279,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;romantic fiction",
+    "tier": "B",
+    "rank": 188
+  },
+  {
+    "gutenberg": 2276,
+    "title": "The Private Memoirs and Confessions of a Justified Sinner",
+    "author": "James Hogg",
+    "downloads_30d": 1270,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g2276",
+    "tier": "B",
+    "year": "1824",
+    "form": "novel",
+    "rank": 189
+  },
+  {
+    "gutenberg": 39858,
+    "title": "Trilby",
+    "author": "George du Maurier",
+    "downloads_30d": 1263,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g39858",
+    "form": "novel",
+    "genre": "Gothic fiction",
+    "year": "1894",
+    "tier": "B",
+    "rank": 190
+  },
+  {
+    "gutenberg": 126,
+    "title": "The Poison Belt",
+    "author": "Arthur Conan Doyle",
+    "year": "1913",
+    "downloads_30d": 1250,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction",
+    "tier": "B",
+    "rank": 191
+  },
+  {
+    "gutenberg": 1947,
+    "title": "Scaramouche",
+    "author": "Rafael Sabatini",
+    "downloads_30d": 1227,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1947",
+    "tier": "B",
+    "year": "1921",
+    "form": "novel",
+    "rank": 192
+  },
+  {
+    "gutenberg": 42401,
+    "title": "Vathek",
+    "author": "William Beckford",
+    "year": "1786",
+    "downloads_30d": 1175,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 193
+  },
+  {
+    "gutenberg": 1142,
+    "title": "Typhoon",
+    "author": "Joseph Conrad",
+    "downloads_30d": 1173,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1142",
+    "tier": "B",
+    "year": "1902",
+    "form": "novella",
+    "rank": 194
+  },
+  {
+    "gutenberg": 35155,
+    "title": "The Betrothed",
+    "author": "Alessandro Manzoni",
+    "year": "1827",
+    "downloads_30d": 1173,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 195
+  },
+  {
+    "gutenberg": 3154,
+    "title": "The Surprising Adventures of Baron Munchausen",
+    "author": "Rudolf Erich Raspe",
+    "downloads_30d": 1172,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g3154",
+    "tier": "B",
+    "year": "1785",
+    "form": "novel",
+    "rank": 196
+  },
+  {
+    "gutenberg": 5164,
+    "title": "The Beetle",
+    "author": "Richard Marsh",
+    "downloads_30d": 1157,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g5164",
+    "form": "novel",
+    "genre": "fantasy;horror fiction",
+    "year": "1897",
+    "tier": "B",
+    "rank": 197
+  },
+  {
+    "gutenberg": 21970,
+    "title": "The Scarlet Plague",
+    "author": "Jack London",
+    "year": "1912",
+    "downloads_30d": 1146,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction",
+    "tier": "B",
+    "rank": 198
+  },
+  {
+    "gutenberg": 1999,
+    "title": "Crome Yellow",
+    "author": "Aldous Huxley",
+    "year": "1921",
+    "downloads_30d": 1138,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 199
+  },
+  {
+    "gutenberg": 2948,
+    "title": "Where Angels Fear to Tread",
+    "author": "E. M. Forster",
+    "year": "1905",
+    "downloads_30d": 1127,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 200
+  },
+  {
+    "gutenberg": 2275,
+    "title": "The Pioneers",
+    "author": "James Fenimore Cooper",
+    "year": "1823",
+    "downloads_30d": 1117,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "B",
+    "rank": 201
+  },
+  {
+    "gutenberg": 176,
+    "title": "Roderick Hudson",
+    "author": "Henry James",
+    "year": "1875",
+    "downloads_30d": 1117,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "tier": "B",
+    "rank": 202
+  },
+  {
+    "gutenberg": 3781,
+    "title": "The Jewel of Seven Stars",
+    "author": "Bram Stoker",
+    "year": "1903",
+    "downloads_30d": 1113,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "horror fiction",
+    "tier": "B",
+    "rank": 203
+  },
+  {
+    "gutenberg": 10832,
+    "title": "Carnacki, the Ghost-Finder",
+    "author": "William Hope Hodgson",
+    "year": "1913",
+    "downloads_30d": 1107,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "short story collection",
+    "genre": "detective fiction;weird fiction;supernatural fiction;occult detective fiction;horror fiction",
+    "tier": "B",
+    "rank": 204
+  },
+  {
+    "gutenberg": 11052,
+    "title": "The Custom of the Country",
+    "author": "Edith Wharton",
+    "year": "1913",
+    "downloads_30d": 1099,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 205
+  },
+  {
+    "gutenberg": 70128,
+    "title": "Max Havelaar",
+    "author": "Multatuli",
+    "year": "1860",
+    "downloads_30d": 1093,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 206
+  },
+  {
+    "gutenberg": 1307,
+    "title": "La Peau de chagrin",
+    "author": "Honoré de Balzac",
+    "year": "1831",
+    "downloads_30d": 1087,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantastique",
+    "tier": "B",
+    "rank": 207
+  },
+  {
+    "gutenberg": 780,
+    "title": "The War in the Air",
+    "author": "H. G. Wells",
+    "year": "1908",
+    "downloads_30d": 1074,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction;apocalyptic fiction",
+    "tier": "B",
+    "rank": 208
+  },
+  {
+    "gutenberg": 24020,
+    "title": "Romola",
+    "author": "George Eliot",
+    "year": "1863",
+    "downloads_30d": 1071,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "B",
+    "rank": 209
+  },
+  {
+    "gutenberg": 1188,
+    "title": "The Lair of the White Worm",
+    "author": "Bram Stoker",
+    "downloads_30d": 1060,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g1188",
+    "form": "novel",
+    "genre": "fantasy;horror fiction",
+    "year": "1911",
+    "tier": "B",
+    "rank": 210
+  },
+  {
+    "gutenberg": 10935,
+    "title": "The Wonderful Adventures of Nils",
+    "author": "Selma Lagerlöf",
+    "year": "1906",
+    "downloads_30d": 1054,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "B",
+    "rank": 211
+  },
+  {
+    "gutenberg": 73042,
+    "title": "The Well of Loneliness",
+    "author": "Radclyffe Hall",
+    "year": "1928",
+    "downloads_30d": 1034,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 212
+  },
+  {
+    "gutenberg": 211,
+    "title": "The Aspern Papers",
+    "author": "Henry James",
+    "year": "1888",
+    "downloads_30d": 1028,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novella",
+    "genre": "",
+    "tier": "B",
+    "rank": 213
+  },
+  {
+    "gutenberg": 3431,
+    "title": "The Gadfly",
+    "author": "Ethel Lilian Voynich",
+    "year": "1897",
+    "downloads_30d": 1023,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "romantic fiction",
+    "tier": "B",
+    "rank": 214
+  },
+  {
+    "gutenberg": 804,
+    "title": "A Sentimental Journey Through France and Italy",
+    "author": "Laurence Sterne",
+    "year": "1768",
+    "downloads_30d": 1020,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "imaginary voyage",
+    "tier": "B",
+    "rank": 215
+  },
+  {
+    "gutenberg": 1521,
+    "languages": [
+      "en"
+    ],
+    "source": "override",
+    "preferred": true,
+    "title": "Henry V",
+    "author": "William Shakespeare",
+    "year": null,
+    "downloads_30d": 1017,
+    "form": "play",
+    "tier": "B",
+    "rank": 216
+  },
+  {
+    "gutenberg": 1845,
+    "title": "Zuleika Dobson",
+    "author": "Max Beerbohm",
+    "year": "1911",
+    "downloads_30d": 1009,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "satire",
+    "tier": "B",
+    "rank": 217
+  },
+  {
+    "gutenberg": 1018,
+    "title": "The Water-Babies",
+    "author": "Charles Kingsley",
+    "year": "1863",
+    "downloads_30d": 1005,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "tier": "B",
+    "rank": 218
+  },
+  {
+    "gutenberg": 434,
+    "title": "The Circular Staircase",
+    "author": "Mary Roberts Rinehart",
+    "downloads_30d": 997,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g434",
+    "tier": "B",
+    "year": "1908",
+    "form": "novel",
+    "rank": 219
+  },
+  {
+    "gutenberg": 467,
+    "title": "La Princesse de Clèves",
+    "author": "Madame de Lafayette",
+    "year": "1678",
+    "downloads_30d": 996,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "B",
+    "rank": 220
+  },
+  {
+    "gutenberg": 2604,
+    "title": "The Longest Journey",
+    "author": "E. M. Forster",
+    "year": "1907",
+    "downloads_30d": 989,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 221
+  },
+  {
+    "gutenberg": 718,
+    "title": "Tono-Bungay",
+    "author": "H. G. Wells",
+    "year": "1909",
+    "downloads_30d": 979,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction",
+    "tier": "B",
+    "rank": 222
+  },
+  {
+    "gutenberg": 486,
+    "title": "Ozma of Oz",
+    "author": "L. Frank Baum",
+    "downloads_30d": 966,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "in_old_bank": true,
+    "old_slug": "g486",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "year": "1907",
+    "tier": "B",
+    "rank": 223
+  },
+  {
+    "gutenberg": 778,
+    "title": "Five Children and It",
+    "author": "E. Nesbit",
+    "year": "1902",
+    "downloads_30d": 960,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "tier": "B",
+    "rank": 224
+  },
+  {
+    "gutenberg": 16457,
+    "title": "Around the Moon",
+    "author": "Jules Verne",
+    "year": "1870",
+    "downloads_30d": 945,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "science fiction",
+    "tier": "B",
+    "rank": 225
+  },
+  {
+    "gutenberg": 7118,
+    "title": "What Maisie Knew",
+    "author": "Henry James",
+    "year": "1897",
+    "downloads_30d": 944,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 226
+  },
+  {
+    "gutenberg": 1749,
+    "title": "Cousin Bette",
+    "author": "Honoré de Balzac",
+    "year": "1846",
+    "downloads_30d": 935,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "realist novel",
+    "tier": "B",
+    "rank": 227
+  },
+  {
+    "gutenberg": 70083,
+    "tier": "B",
+    "title": "The Tower Treasure",
+    "author": "Franklin W. Dixon",
+    "year": "1927",
+    "form": "novel",
+    "downloads_30d": 868,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "rank": 228
+  },
+  {
+    "gutenberg": 70875,
+    "title": "Arrowsmith",
+    "author": "Sinclair Lewis",
+    "year": "1925",
+    "downloads_30d": 860,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "form": "novel",
+    "genre": "",
+    "tier": "B",
+    "rank": 229
+  },
+  {
+    "gutenberg": 66829,
+    "title": "Gentlemen Prefer Blondes",
+    "author": "Anita Loos",
+    "year": "1925",
+    "downloads_30d": 856,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 230
+  },
+  {
+    "gutenberg": 77900,
+    "title": "Vile Bodies",
+    "author": "Evelyn Waugh",
+    "year": "1930",
+    "downloads_30d": 508,
+    "languages": [
+      "en"
+    ],
+    "source": "curated-pool",
+    "tier": "B",
+    "form": "novel",
+    "rank": 231
+  },
+  {
+    "gutenberg": 8492,
+    "title": "The King in Yellow",
+    "author": "Robert W. Chambers",
+    "year": 1895,
+    "downloads_30d": 81466,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 232
+  },
+  {
+    "gutenberg": 59828,
+    "title": "The String of Pearls",
+    "author": "James Malcolm Rymer",
+    "year": 1846,
+    "downloads_30d": 66619,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 233
+  },
+  {
+    "gutenberg": 61262,
+    "title": "Poirot Investigates",
+    "author": "Agatha Christie",
+    "year": 1924,
+    "downloads_30d": 48520,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 234
+  },
+  {
+    "gutenberg": 70175,
+    "title": "The Secret of Father Brown",
+    "author": "G. K. Chesterton",
+    "year": 1926,
+    "downloads_30d": 47742,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 235
+  },
+  {
+    "gutenberg": 75288,
+    "title": "The Seven Dials Mystery",
+    "author": "Agatha Christie",
+    "year": 1929,
+    "downloads_30d": 46553,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 236
+  },
+  {
+    "gutenberg": 537,
+    "title": "Tales of Terror and Mystery",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 46136,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g537",
+    "tier": "",
+    "rank": 237
+  },
+  {
+    "gutenberg": 30340,
+    "title": "The Passionate Friends: A Novel",
+    "author": "H. G. Wells",
+    "year": 1913,
+    "downloads_30d": 45708,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 238
+  },
+  {
+    "gutenberg": 70008,
+    "title": "Unnatural Death (novel)",
+    "author": "Dorothy L. Sayers",
+    "year": 1927,
+    "downloads_30d": 45692,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 239
+  },
+  {
+    "gutenberg": 15384,
+    "title": "The Real Adventure",
+    "author": "Henry Kitchell Webster",
+    "downloads_30d": 45503,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g15384",
+    "tier": "",
+    "rank": 240
+  },
+  {
+    "gutenberg": 1686,
+    "title": "The Secret of the Night",
+    "author": "Gaston Leroux",
+    "downloads_30d": 44948,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1686",
+    "tier": "",
+    "rank": 241
+  },
+  {
+    "gutenberg": 3321,
+    "title": "Children of the Whirlwind",
+    "author": "Leroy Scott",
+    "downloads_30d": 44677,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g3321",
+    "tier": "",
+    "rank": 242
+  },
+  {
+    "gutenberg": 23172,
+    "title": "The Damned Thing",
+    "author": "Ambrose Bierce",
+    "year": 1893,
+    "downloads_30d": 44414,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 243
+  },
+  {
+    "gutenberg": 2813,
+    "title": "The Grand Babylon Hôtel",
+    "author": "Arnold Bennett",
+    "downloads_30d": 44318,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2813",
+    "tier": "",
+    "rank": 244
+  },
+  {
+    "gutenberg": 6761,
+    "title": "The Adventures of Ferdinand, Count Fathom",
+    "author": "Tobias Smollett",
+    "year": 1753,
+    "downloads_30d": 43408,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 245
+  },
+  {
+    "gutenberg": 4085,
+    "title": "The Adventures of Roderick Random",
+    "author": "Tobias Smollett",
+    "year": 1748,
+    "downloads_30d": 41938,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 246
+  },
+  {
+    "gutenberg": 42389,
+    "title": "The Pirate (novel)",
+    "author": "Walter Scott",
+    "year": 1822,
+    "downloads_30d": 36867,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "historical fiction;pirate fiction",
+    "tier": "",
+    "rank": 247
+  },
+  {
+    "gutenberg": 224,
+    "title": "A Pair of Blue Eyes",
+    "author": "Thomas Hardy",
+    "year": 1873,
+    "downloads_30d": 36459,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 248
+  },
+  {
+    "gutenberg": 3922,
+    "title": "The Red Lily (novel)",
+    "author": "Anatole France",
+    "year": 1894,
+    "downloads_30d": 35345,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 249
+  },
+  {
+    "gutenberg": 19771,
+    "title": "Henrietta Temple",
+    "author": "Benjamin Disraeli",
+    "year": 1837,
+    "downloads_30d": 34159,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 250
+  },
+  {
+    "gutenberg": 6768,
+    "title": "The Man Upstairs (short story collection)",
+    "author": "P. G. Wodehouse",
+    "year": 1914,
+    "downloads_30d": 33399,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "humor",
+    "tier": "",
+    "rank": 251
+  },
+  {
+    "gutenberg": 9473,
+    "title": "The Knights of the Cross",
+    "author": "Henryk Sienkiewicz",
+    "year": 1900,
+    "downloads_30d": 33186,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 252
+  },
+  {
+    "gutenberg": 3044,
+    "title": "Desperate Remedies",
+    "author": "Thomas Hardy",
+    "year": 1871,
+    "downloads_30d": 33129,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 253
+  },
+  {
+    "gutenberg": 3146,
+    "title": "Two on a Tower",
+    "author": "Thomas Hardy",
+    "year": 1882,
+    "downloads_30d": 32722,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 254
+  },
+  {
+    "gutenberg": 15399,
+    "title": "The Interesting Narrative of the Life of Olaudah Equiano",
+    "author": "Olaudah Equiano",
+    "year": 1789,
+    "downloads_30d": 32350,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "autobiography",
+    "tier": "",
+    "rank": 255
+  },
+  {
+    "gutenberg": 851,
+    "title": "A Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson",
+    "author": "Mary Rowlandson",
+    "year": 1682,
+    "downloads_30d": 27935,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 256
+  },
+  {
+    "gutenberg": 500,
+    "title": "The Adventures of Pinocchio",
+    "author": "Carlo Collodi",
+    "year": 1883,
+    "downloads_30d": 21102,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 257
+  },
+  {
+    "gutenberg": 36034,
+    "title": "White Nights (short story)",
+    "author": "Fyodor Dostoyevsky",
+    "year": 1848,
+    "downloads_30d": 20859,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 258
+  },
+  {
+    "gutenberg": 1200,
+    "title": "Gargantua",
+    "author": "François Rabelais",
+    "year": 1534,
+    "downloads_30d": 20832,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 259
+  },
+  {
+    "gutenberg": 45631,
+    "title": "Twelve Years a Slave",
+    "author": "Solomon Northup",
+    "year": 1853,
+    "downloads_30d": 20792,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 260
+  },
+  {
+    "gutenberg": 30201,
+    "title": "In Praise of Folly",
+    "author": "Erasmus",
+    "year": 1511,
+    "downloads_30d": 18068,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 261
+  },
+  {
+    "gutenberg": 78084,
+    "title": "The Mysterious Mr Quin",
+    "author": "Agatha Christie",
+    "year": 1930,
+    "downloads_30d": 17846,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 262
+  },
+  {
+    "gutenberg": 4599,
+    "title": "The Small House at Allington",
+    "author": "Anthony Trollope",
+    "year": 1862,
+    "downloads_30d": 17765,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 263
+  },
+  {
+    "gutenberg": 78016,
+    "title": "Herman Melville (book)",
+    "author": "Lewis Mumford",
+    "year": 1929,
+    "downloads_30d": 17311,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 264
+  },
+  {
+    "gutenberg": 78120,
+    "title": "The Marvellous Land of Snergs",
+    "author": "Edward Wyke-Smith",
+    "year": 1927,
+    "downloads_30d": 17285,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 265
+  },
+  {
+    "gutenberg": 27432,
+    "title": "The Fifth Queen",
+    "author": "Ford Madox Ford",
+    "year": 1906,
+    "downloads_30d": 17227,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 266
+  },
+  {
+    "gutenberg": 34181,
+    "title": "Irene Iddesleigh",
+    "author": "Amanda McKittrick Ros",
+    "year": 1897,
+    "downloads_30d": 17175,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 267
+  },
+  {
+    "gutenberg": 7895,
+    "title": "A Terrible Temptation",
+    "author": "Charles Reade",
+    "year": 1871,
+    "downloads_30d": 17054,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 268
+  },
+  {
+    "gutenberg": 3526,
+    "title": "Five Weeks in a Balloon",
+    "author": "Jules Verne",
+    "downloads_30d": 17036,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g3526",
+    "tier": "",
+    "rank": 269
+  },
+  {
+    "gutenberg": 75643,
+    "title": "The Black Abbot (novel)",
+    "author": "Edgar Wallace",
+    "year": 1926,
+    "downloads_30d": 16988,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 270
+  },
+  {
+    "gutenberg": 1680,
+    "title": "La Maison du chat-qui-pelote",
+    "author": "Honoré de Balzac",
+    "year": 1829,
+    "downloads_30d": 16967,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novella",
+    "genre": "literary realism",
+    "tier": "",
+    "rank": 271
+  },
+  {
+    "gutenberg": 78024,
+    "title": "The Woman of Andros",
+    "author": "Thornton Wilder",
+    "year": 1930,
+    "downloads_30d": 16792,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 272
+  },
+  {
+    "gutenberg": 59931,
+    "title": "The Love Story of Aliette Brunton (novel)",
+    "author": "Gilbert Frankau",
+    "year": 1922,
+    "downloads_30d": 16749,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 273
+  },
+  {
+    "gutenberg": 76352,
+    "title": "The World Below",
+    "author": "S. Fowler Wright",
+    "year": 1929,
+    "downloads_30d": 16066,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 274
+  },
+  {
+    "gutenberg": 76257,
+    "title": "The Crimson Circle (novel)",
+    "author": "Edgar Wallace",
+    "year": 1922,
+    "downloads_30d": 15841,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 275
+  },
+  {
+    "gutenberg": 75998,
+    "title": "Daredevil (novel)",
+    "author": "Leslie Charteris",
+    "year": 1929,
+    "downloads_30d": 15701,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 276
+  },
+  {
+    "gutenberg": 75949,
+    "title": "Terror Keep",
+    "author": "Edgar Wallace",
+    "year": 1927,
+    "downloads_30d": 15608,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 277
+  },
+  {
+    "gutenberg": 76212,
+    "title": "Kate Plus Ten (novel)",
+    "author": "Edgar Wallace",
+    "year": 1917,
+    "downloads_30d": 15540,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 278
+  },
+  {
+    "gutenberg": 75808,
+    "title": "Four Square Jane",
+    "author": "Edgar Wallace",
+    "year": 1929,
+    "downloads_30d": 15520,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 279
+  },
+  {
+    "gutenberg": 10007,
+    "title": "Carmilla",
+    "author": "Sheridan Le Fanu",
+    "year": 1872,
+    "downloads_30d": 13093,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 280
+  },
+  {
+    "gutenberg": 110,
+    "title": "Tess of the d'Urbervilles",
+    "author": "Thomas Hardy",
+    "year": 1891,
+    "downloads_30d": 8771,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 281
+  },
+  {
+    "gutenberg": 7256,
+    "title": "The Gift of the Magi",
+    "author": "O. Henry",
+    "year": 1906,
+    "downloads_30d": 8297,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 282
+  },
+  {
+    "gutenberg": 902,
+    "title": "The Devoted Friend",
+    "author": "Oscar Wilde",
+    "year": 1888,
+    "downloads_30d": 7685,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "parable",
+    "tier": "",
+    "rank": 283
+  },
+  {
+    "gutenberg": 3177,
+    "title": "Roughing It",
+    "author": "Mark Twain",
+    "year": 1872,
+    "downloads_30d": 7638,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "travel literature",
+    "tier": "",
+    "rank": 284
+  },
+  {
+    "gutenberg": 1153,
+    "title": "The Chessmen of Mars",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 6917,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1153",
+    "form": "novel",
+    "genre": "science fiction;fantasy;science fantasy",
+    "year": 1922,
+    "tier": "",
+    "rank": 285
+  },
+  {
+    "gutenberg": 146,
+    "title": "A Little Princess",
+    "author": "Frances Hodgson Burnett",
+    "year": 1905,
+    "downloads_30d": 6428,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 286
+  },
+  {
+    "gutenberg": 932,
+    "title": "The Fall of the House of Usher",
+    "author": "Edgar Allan Poe",
+    "year": 1839,
+    "downloads_30d": 6292,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 287
+  },
+  {
+    "gutenberg": 12122,
+    "title": "The Monkey's Paw",
+    "author": "W. W. Jacobs",
+    "year": 1902,
+    "downloads_30d": 6250,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 288
+  },
+  {
+    "gutenberg": 13415,
+    "title": "The Lady with the Dog",
+    "author": "Anton Chekhov",
+    "year": 1899,
+    "downloads_30d": 5925,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 289
+  },
+  {
+    "gutenberg": 553,
+    "title": "Out of Time's Abyss",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 5736,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g553",
+    "tier": "",
+    "rank": 290
+  },
+  {
+    "gutenberg": 16199,
+    "title": "Memoirs of the Author of A Vindication of the Rights of Woman",
+    "author": "William Godwin",
+    "year": 1798,
+    "downloads_30d": 5301,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 291
+  },
+  {
+    "gutenberg": 51,
+    "title": "Anne of the Island",
+    "author": "Lucy Maud Montgomery",
+    "year": 1915,
+    "downloads_30d": 5116,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's fiction",
+    "tier": "",
+    "rank": 292
+  },
+  {
+    "gutenberg": 3178,
+    "title": "The Gilded Age: A Tale of Today",
+    "author": "Charles Dudley Warner & Mark Twain",
+    "year": 1873,
+    "downloads_30d": 5038,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 293
+  },
+  {
+    "gutenberg": 74222,
+    "title": "Demian",
+    "author": "Hermann Hesse",
+    "year": 1919,
+    "downloads_30d": 4419,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 294
+  },
+  {
+    "gutenberg": 1064,
+    "title": "The Masque of the Red Death",
+    "author": "Edgar Allan Poe",
+    "year": 1842,
+    "downloads_30d": 4093,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 295
+  },
+  {
+    "gutenberg": 1081,
+    "title": "Dead Souls",
+    "author": "Nikolai Gogol",
+    "year": 1842,
+    "downloads_30d": 3968,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 296
+  },
+  {
+    "gutenberg": 14522,
+    "title": "The Canterville Ghost",
+    "author": "Oscar Wilde",
+    "year": 1887,
+    "downloads_30d": 3867,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 297
+  },
+  {
+    "gutenberg": 6852,
+    "title": "Venus in Furs",
+    "author": "Leopold von Sacher-Masoch",
+    "year": 1870,
+    "downloads_30d": 3730,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 298
+  },
+  {
+    "gutenberg": 11757,
+    "title": "The Velveteen Rabbit",
+    "author": "Margery Williams",
+    "year": 1922,
+    "downloads_30d": 3714,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 299
+  },
+  {
+    "gutenberg": 40580,
+    "title": "A General History of the Pyrates",
+    "author": "Charles Johnson",
+    "year": 1724,
+    "downloads_30d": 3600,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 300
+  },
+  {
+    "gutenberg": 6688,
+    "title": "The Mill on the Floss",
+    "author": "George Eliot",
+    "year": 1860,
+    "downloads_30d": 3590,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 301
+  },
+  {
+    "gutenberg": 3189,
+    "title": "Sketches New and Old",
+    "author": "Mark Twain",
+    "year": 1875,
+    "downloads_30d": 3575,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 302
+  },
+  {
+    "gutenberg": 1254,
+    "title": "Cyrano de Bergerac (play)",
+    "author": "Edmond Rostand",
+    "year": 1897,
+    "downloads_30d": 3517,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 303
+  },
+  {
+    "gutenberg": 1091,
+    "title": "On Heroes, Hero-Worship, & the Heroic in History",
+    "author": "Thomas Carlyle",
+    "year": 1841,
+    "downloads_30d": 3501,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 304
+  },
+  {
+    "gutenberg": 2232,
+    "title": "The Duchess of Malfi",
+    "author": "John Webster",
+    "year": 1623,
+    "downloads_30d": 3469,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "play",
+    "genre": "revenge tragedy",
+    "tier": "",
+    "rank": 305
+  },
+  {
+    "gutenberg": 11870,
+    "title": "The Country of the Blind",
+    "author": "H. G. Wells",
+    "year": 1904,
+    "downloads_30d": 3460,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 306
+  },
+  {
+    "gutenberg": 544,
+    "title": "Anne's House of Dreams",
+    "author": "Lucy Maud Montgomery",
+    "year": 1917,
+    "downloads_30d": 3359,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 307
+  },
+  {
+    "gutenberg": 2885,
+    "title": "The House of the Wolfings",
+    "author": "William Morris",
+    "year": 1889,
+    "downloads_30d": 3344,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 308
+  },
+  {
+    "gutenberg": 77,
+    "title": "The House of the Seven Gables",
+    "author": "Nathaniel Hawthorne",
+    "year": 1858,
+    "downloads_30d": 3285,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 309
+  },
+  {
+    "gutenberg": 119,
+    "title": "A Tramp Abroad",
+    "author": "Mark Twain",
+    "year": 1880,
+    "downloads_30d": 3217,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 310
+  },
+  {
+    "gutenberg": 12233,
+    "title": "Stonewall Jackson and the American Civil War",
+    "author": "George Francis Robert Henderson",
+    "year": 1898,
+    "downloads_30d": 3200,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 311
+  },
+  {
+    "gutenberg": 79401,
+    "title": "Pickman's Model",
+    "author": "H. P. Lovecraft",
+    "year": 1927,
+    "downloads_30d": 3159,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 312
+  },
+  {
+    "gutenberg": 821,
+    "title": "Dombey and Son",
+    "author": "Charles Dickens",
+    "year": 1848,
+    "downloads_30d": 3118,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "social criticism",
+    "tier": "",
+    "rank": 313
+  },
+  {
+    "gutenberg": 27365,
+    "title": "Tales of Space and Time",
+    "author": "H. G. Wells",
+    "year": 1899,
+    "downloads_30d": 3106,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 314
+  },
+  {
+    "gutenberg": 29021,
+    "title": "The Ridiculous Wishes",
+    "author": "Charles Perrault",
+    "year": 1693,
+    "downloads_30d": 3027,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "tale",
+    "tier": "",
+    "rank": 315
+  },
+  {
+    "gutenberg": 60333,
+    "title": "Selections from the Writings of Kierkegaard",
+    "author": "Lee M. Hollander",
+    "year": 1923,
+    "downloads_30d": 2949,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 316
+  },
+  {
+    "gutenberg": 2776,
+    "title": "The Four Million",
+    "author": "O. Henry",
+    "year": 1906,
+    "downloads_30d": 2943,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 317
+  },
+  {
+    "gutenberg": 2044,
+    "title": "The Education of Henry Adams",
+    "author": "Henry Adams",
+    "year": 1918,
+    "downloads_30d": 2926,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 318
+  },
+  {
+    "gutenberg": 72890,
+    "title": "The Eternal Moment",
+    "author": "E. M. Forster",
+    "year": 1928,
+    "downloads_30d": 2903,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 319
+  },
+  {
+    "gutenberg": 2434,
+    "title": "New Atlantis",
+    "author": "Francis Bacon",
+    "year": 1627,
+    "downloads_30d": 2866,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "science fiction;fantasy;utopian fiction;philosophical fiction",
+    "tier": "",
+    "rank": 320
+  },
+  {
+    "gutenberg": 45524,
+    "title": "The Open Boat",
+    "author": "Stephen Crane",
+    "year": 1897,
+    "downloads_30d": 2813,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 321
+  },
+  {
+    "gutenberg": 325,
+    "title": "Phantastes",
+    "author": "George MacDonald",
+    "year": 1858,
+    "downloads_30d": 2700,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 322
+  },
+  {
+    "gutenberg": 10897,
+    "title": "The Wendigo (novella)",
+    "author": "Algernon Blackwood",
+    "year": 1910,
+    "downloads_30d": 2658,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "weird fiction;horror fiction",
+    "tier": "",
+    "rank": 323
+  },
+  {
+    "gutenberg": 79360,
+    "title": "The Planet of Peril",
+    "author": "Otis Adelbert Kline",
+    "year": 1929,
+    "downloads_30d": 2631,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 324
+  },
+  {
+    "gutenberg": 14833,
+    "title": "Varney the Vampire",
+    "author": "James Malcolm Rymer",
+    "year": 1845,
+    "downloads_30d": 2621,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "Gothic fiction;vampire fiction",
+    "tier": "",
+    "rank": 325
+  },
+  {
+    "gutenberg": 3186,
+    "title": "The Mysterious Stranger",
+    "author": "Mark Twain",
+    "year": 1916,
+    "downloads_30d": 2621,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 326
+  },
+  {
+    "gutenberg": 1906,
+    "title": "Erewhon",
+    "author": "Samuel Butler",
+    "year": 1872,
+    "downloads_30d": 2595,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 327
+  },
+  {
+    "gutenberg": 55283,
+    "title": "The Bet (short story)",
+    "author": "Anton Chekhov",
+    "year": 1889,
+    "downloads_30d": 2579,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 328
+  },
+  {
+    "gutenberg": 79405,
+    "title": "The Picture in the House",
+    "author": "H. P. Lovecraft",
+    "year": 1920,
+    "downloads_30d": 2568,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 329
+  },
+  {
+    "gutenberg": 782,
+    "title": "The Travels of Sir John Mandeville",
+    "author": "John Mandeville",
+    "year": 1356,
+    "downloads_30d": 2482,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 330
+  },
+  {
+    "gutenberg": 15263,
+    "title": "The Underground Railroad (Still)",
+    "author": "William Still",
+    "year": 1872,
+    "downloads_30d": 2457,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 331
+  },
+  {
+    "gutenberg": 46853,
+    "title": "Le Morte d'Arthur",
+    "author": "Thomas Malory",
+    "year": 1485,
+    "downloads_30d": 2418,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 332
+  },
+  {
+    "gutenberg": 3796,
+    "title": "Rilla of Ingleside",
+    "author": "Lucy Maud Montgomery",
+    "year": 1921,
+    "downloads_30d": 2388,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "war novel",
+    "tier": "",
+    "rank": 333
+  },
+  {
+    "gutenberg": 26610,
+    "title": "The Trail of the Hawk",
+    "author": "Sinclair Lewis",
+    "year": 1915,
+    "downloads_30d": 2378,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 334
+  },
+  {
+    "gutenberg": 968,
+    "title": "Martin Chuzzlewit",
+    "author": "Charles Dickens",
+    "year": 1844,
+    "downloads_30d": 2361,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "social criticism",
+    "tier": "",
+    "rank": 335
+  },
+  {
+    "gutenberg": 26624,
+    "title": "The Road to Oz",
+    "author": "L. Frank Baum",
+    "year": 1909,
+    "downloads_30d": 2353,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "children's fiction;fantasy",
+    "tier": "",
+    "rank": 336
+  },
+  {
+    "gutenberg": 14872,
+    "title": "The Tale of Squirrel Nutkin",
+    "author": "Beatrix Potter",
+    "year": 1903,
+    "downloads_30d": 2324,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "fiction",
+    "tier": "",
+    "rank": 337
+  },
+  {
+    "gutenberg": 12750,
+    "title": "The Stolen Bacillus and Other Incidents",
+    "author": "H. G. Wells",
+    "year": 1895,
+    "downloads_30d": 2308,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 338
+  },
+  {
+    "gutenberg": 21816,
+    "title": "The Confidence-Man",
+    "author": "Herman Melville",
+    "year": 1857,
+    "downloads_30d": 2301,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "satire",
+    "tier": "",
+    "rank": 339
+  },
+  {
+    "gutenberg": 917,
+    "title": "Barnaby Rudge",
+    "author": "Charles Dickens",
+    "year": 1840,
+    "downloads_30d": 2281,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "",
+    "rank": 340
+  },
+  {
+    "gutenberg": 1937,
+    "title": "The Second Jungle Book",
+    "author": "Rudyard Kipling",
+    "downloads_30d": 2255,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1937",
+    "form": "",
+    "genre": "children's fiction",
+    "year": 1895,
+    "tier": "",
+    "rank": 341
+  },
+  {
+    "gutenberg": 47935,
+    "title": "Fathers and Sons (novel)",
+    "author": "Ivan Turgenev",
+    "year": 1862,
+    "downloads_30d": 2238,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 342
+  },
+  {
+    "gutenberg": 8525,
+    "title": "Eve's Diary",
+    "author": "Mark Twain",
+    "year": 1906,
+    "downloads_30d": 2233,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 343
+  },
+  {
+    "gutenberg": 5343,
+    "title": "Rainbow Valley",
+    "author": "Lucy Maud Montgomery",
+    "year": 1919,
+    "downloads_30d": 2175,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 344
+  },
+  {
+    "gutenberg": 61236,
+    "title": "Emily of New Moon",
+    "author": "Lucy Maud Montgomery",
+    "year": 1923,
+    "downloads_30d": 2145,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "children's fiction",
+    "tier": "",
+    "rank": 345
+  },
+  {
+    "gutenberg": 30486,
+    "title": "Shirley (novel)",
+    "author": "Charlotte Brontë",
+    "year": 1849,
+    "downloads_30d": 2132,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "social fiction",
+    "tier": "",
+    "rank": 346
+  },
+  {
+    "gutenberg": 14363,
+    "title": "The Worst Journey in the World",
+    "author": "Apsley Cherry-Garrard",
+    "year": 1922,
+    "downloads_30d": 2100,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "memoir",
+    "tier": "",
+    "rank": 347
+  },
+  {
+    "gutenberg": 773,
+    "title": "Lord Arthur Savile's Crime and Other Stories",
+    "author": "Oscar Wilde",
+    "year": 1891,
+    "downloads_30d": 2060,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "children's and young adult literature",
+    "tier": "",
+    "rank": 348
+  },
+  {
+    "gutenberg": 172,
+    "title": "The Haunted Bookshop",
+    "author": "Christopher Morley",
+    "year": 1919,
+    "downloads_30d": 2054,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "thriller",
+    "tier": "",
+    "rank": 349
+  },
+  {
+    "gutenberg": 2021,
+    "title": "Nostromo",
+    "author": "Joseph Conrad",
+    "year": 1904,
+    "downloads_30d": 2038,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 350
+  },
+  {
+    "gutenberg": 986,
+    "title": "Master and Man (short story)",
+    "author": "Leo Tolstoy",
+    "year": 1895,
+    "downloads_30d": 2012,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story;novella",
+    "genre": "",
+    "tier": "",
+    "rank": 351
+  },
+  {
+    "gutenberg": 22066,
+    "title": "The Long Roll",
+    "author": "Mary Johnston",
+    "downloads_30d": 2010,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g22066",
+    "tier": "",
+    "rank": 352
+  },
+  {
+    "gutenberg": 225,
+    "title": "At the Back of the North Wind",
+    "author": "George MacDonald",
+    "year": 1871,
+    "downloads_30d": 1985,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 353
+  },
+  {
+    "gutenberg": 26732,
+    "title": "Free Air",
+    "author": "Sinclair Lewis",
+    "year": 1919,
+    "downloads_30d": 1981,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 354
+  },
+  {
+    "gutenberg": 1245,
+    "title": "Night and Day (Woolf novel)",
+    "author": "Virginia Woolf",
+    "year": 1919,
+    "downloads_30d": 1980,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 355
+  },
+  {
+    "gutenberg": 29220,
+    "title": "Monday or Tuesday",
+    "author": "Virginia Woolf",
+    "year": 1921,
+    "downloads_30d": 1942,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 356
+  },
+  {
+    "gutenberg": 1640,
+    "title": "Lilith (novel)",
+    "author": "George MacDonald",
+    "year": 1895,
+    "downloads_30d": 1918,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy;vampire fiction",
+    "tier": "",
+    "rank": 357
+  },
+  {
+    "gutenberg": 56644,
+    "title": "Bulfinch's Mythology",
+    "author": "Thomas Bulfinch",
+    "year": 1855,
+    "downloads_30d": 1908,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 358
+  },
+  {
+    "gutenberg": 20008,
+    "title": "The Young Duke",
+    "author": "Benjamin Disraeli",
+    "year": 1831,
+    "downloads_30d": 1884,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 359
+  },
+  {
+    "gutenberg": 8164,
+    "title": "My Man Jeeves",
+    "author": "P. G. Wodehouse",
+    "year": 1919,
+    "downloads_30d": 1883,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "comedy",
+    "tier": "",
+    "rank": 360
+  },
+  {
+    "gutenberg": 1951,
+    "title": "The Coming Race",
+    "author": "Baron Edward Bulwer Lytton Lytton",
+    "downloads_30d": 1878,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1951",
+    "tier": "",
+    "rank": 361
+  },
+  {
+    "gutenberg": 42332,
+    "title": "The Sorrows of Satan",
+    "author": "Marie Corelli",
+    "year": 1895,
+    "downloads_30d": 1866,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 362
+  },
+  {
+    "gutenberg": 2609,
+    "title": "The Vicomte de Bragelonne",
+    "author": "Alexandre Dumas",
+    "downloads_30d": 1856,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2609",
+    "tier": "",
+    "rank": 363
+  },
+  {
+    "gutenberg": 2145,
+    "title": "Ben-Hur: A Tale of the Christ",
+    "author": "Lew Wallace",
+    "year": 1880,
+    "downloads_30d": 1849,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 364
+  },
+  {
+    "gutenberg": 1448,
+    "title": "Heidi",
+    "author": "Johanna Spyri",
+    "year": 1880,
+    "downloads_30d": 1840,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 365
+  },
+  {
+    "gutenberg": 32338,
+    "title": "Toilers of the Sea",
+    "author": "Q535",
+    "year": 1866,
+    "downloads_30d": 1838,
+    "languages": [
+      "en"
+    ],
+    "source": "translation",
+    "tier": "",
+    "rank": 366
+  },
+  {
+    "gutenberg": 882,
+    "title": "Sketches by Boz",
+    "author": "Charles Dickens",
+    "year": 1836,
+    "downloads_30d": 1826,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 367
+  },
+  {
+    "gutenberg": 535,
+    "title": "Travels with a Donkey in the Cévennes",
+    "author": "Robert Louis Stevenson",
+    "year": 1879,
+    "downloads_30d": 1781,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 368
+  },
+  {
+    "gutenberg": 2911,
+    "title": "Justice (play)",
+    "author": "John Galsworthy",
+    "year": 1922,
+    "downloads_30d": 1751,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 369
+  },
+  {
+    "gutenberg": 15859,
+    "title": "The Piazza Tales",
+    "author": "Herman Melville",
+    "year": 1856,
+    "downloads_30d": 1744,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 370
+  },
+  {
+    "gutenberg": 456,
+    "title": "The Door in the Wall (short story)",
+    "author": "H. G. Wells",
+    "year": 1911,
+    "downloads_30d": 1738,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 371
+  },
+  {
+    "gutenberg": 68236,
+    "title": "The Colour Out of Space",
+    "author": "H. P. Lovecraft",
+    "year": 1927,
+    "downloads_30d": 1731,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 372
+  },
+  {
+    "gutenberg": 4274,
+    "title": "Wives and Daughters",
+    "author": "Elizabeth Gaskell",
+    "year": 1864,
+    "downloads_30d": 1727,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 373
+  },
+  {
+    "gutenberg": 59254,
+    "title": "The Inimitable Jeeves",
+    "author": "P. G. Wodehouse",
+    "year": 1923,
+    "downloads_30d": 1723,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "comedy",
+    "tier": "",
+    "rank": 374
+  },
+  {
+    "gutenberg": 90,
+    "title": "The Son of Tarzan",
+    "author": "Edgar Rice Burroughs",
+    "year": 1915,
+    "downloads_30d": 1708,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 375
+  },
+  {
+    "gutenberg": 61077,
+    "title": "The King of Elfland's Daughter",
+    "author": "Edward Plunkett, 18th Baron of Dunsany",
+    "year": 1924,
+    "downloads_30d": 1706,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 376
+  },
+  {
+    "gutenberg": 2429,
+    "title": "Lost Face",
+    "author": "Jack London",
+    "year": 1910,
+    "downloads_30d": 1706,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 377
+  },
+  {
+    "gutenberg": 157,
+    "title": "Daddy-Long-Legs (novel)",
+    "author": "Jean Webster",
+    "year": 1912,
+    "downloads_30d": 1693,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 378
+  },
+  {
+    "gutenberg": 914,
+    "title": "The Uncommercial Traveller",
+    "author": "Charles Dickens",
+    "year": 1875,
+    "downloads_30d": 1690,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 379
+  },
+  {
+    "gutenberg": 79003,
+    "title": "Last and First Men",
+    "author": "Olaf Stapledon",
+    "year": 1930,
+    "downloads_30d": 1668,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 380
+  },
+  {
+    "gutenberg": 6523,
+    "title": "The Post Office (play)",
+    "author": "Rabindranath Tagore",
+    "year": 1912,
+    "downloads_30d": 1641,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 381
+  },
+  {
+    "gutenberg": 14323,
+    "title": "Là-bas (novel)",
+    "author": "Joris-Karl Huysmans",
+    "year": 1891,
+    "downloads_30d": 1638,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 382
+  },
+  {
+    "gutenberg": 243,
+    "title": "The Forged Coupon",
+    "author": "Leo Tolstoy",
+    "year": 1912,
+    "downloads_30d": 1637,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 383
+  },
+  {
+    "gutenberg": 67090,
+    "title": "The Worm Ouroboros",
+    "author": "E. R. Eddison",
+    "year": 1922,
+    "downloads_30d": 1627,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 384
+  },
+  {
+    "gutenberg": 559,
+    "title": "Greenmantle",
+    "author": "John Buchan",
+    "downloads_30d": 1626,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g559",
+    "form": "novel",
+    "genre": "adventure fiction;military fiction",
+    "year": 1916,
+    "tier": "",
+    "rank": 385
+  },
+  {
+    "gutenberg": 447,
+    "title": "Maggie: A Girl of the Streets",
+    "author": "Stephen Crane",
+    "year": 1893,
+    "downloads_30d": 1619,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 386
+  },
+  {
+    "gutenberg": 1840,
+    "title": "The Financier",
+    "author": "Theodore Dreiser",
+    "year": 1912,
+    "downloads_30d": 1613,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 387
+  },
+  {
+    "gutenberg": 1696,
+    "title": "The Club of Queer Trades",
+    "author": "G. K. Chesterton",
+    "year": 1905,
+    "downloads_30d": 1612,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "crime fiction",
+    "tier": "",
+    "rank": 388
+  },
+  {
+    "gutenberg": 106,
+    "title": "Jungle Tales of Tarzan",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 1607,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g106",
+    "tier": "",
+    "rank": 389
+  },
+  {
+    "gutenberg": 5342,
+    "title": "The Story Girl",
+    "author": "L. M. Montgomery",
+    "downloads_30d": 1599,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g5342",
+    "tier": "",
+    "rank": 390
+  },
+  {
+    "gutenberg": 15137,
+    "title": "The Tale of Mrs. Tiggy-Winkle",
+    "author": "Beatrix Potter",
+    "year": 1905,
+    "downloads_30d": 1593,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's literature",
+    "tier": "",
+    "rank": 391
+  },
+  {
+    "gutenberg": 62940,
+    "title": "Mrs. Spring Fragrance",
+    "author": "Sui Sin Far",
+    "year": 1912,
+    "downloads_30d": 1578,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 392
+  },
+  {
+    "gutenberg": 498,
+    "title": "Rebecca of Sunnybrook Farm",
+    "author": "Kate Douglas Smith Wiggin",
+    "downloads_30d": 1577,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g498",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "year": 1903,
+    "tier": "",
+    "rank": 393
+  },
+  {
+    "gutenberg": 60093,
+    "title": "Cane (novel)",
+    "author": "Jean Toomer",
+    "year": 1923,
+    "downloads_30d": 1575,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 394
+  },
+  {
+    "gutenberg": 1480,
+    "title": "Tom Brown's School Days",
+    "author": "Thomas Hughes",
+    "year": 1857,
+    "downloads_30d": 1575,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 395
+  },
+  {
+    "gutenberg": 13015,
+    "title": "Tales of Old Japan",
+    "author": "Algernon Freeman-Mitford, 1st Baron Redesdale",
+    "year": 1871,
+    "downloads_30d": 1571,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 396
+  },
+  {
+    "gutenberg": 27085,
+    "title": "Rootabaga Stories",
+    "author": "Carl Sandburg",
+    "year": 1922,
+    "downloads_30d": 1558,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 397
+  },
+  {
+    "gutenberg": 22354,
+    "title": "The Adventures of Maya the Bee",
+    "author": "Waldemar Bonsels",
+    "year": 1912,
+    "downloads_30d": 1553,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 398
+  },
+  {
+    "gutenberg": 91,
+    "title": "Tom Sawyer Abroad",
+    "author": "Mark Twain",
+    "downloads_30d": 1552,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g91",
+    "tier": "",
+    "rank": 399
+  },
+  {
+    "gutenberg": 1197,
+    "title": "Taras Bulba",
+    "author": "Nikolai Gogol",
+    "year": 1835,
+    "downloads_30d": 1545,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 400
+  },
+  {
+    "gutenberg": 3499,
+    "title": "Jo's Boys",
+    "author": "Louisa May Alcott",
+    "year": 1886,
+    "downloads_30d": 1542,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's fiction",
+    "tier": "",
+    "rank": 401
+  },
+  {
+    "gutenberg": 26526,
+    "title": "Stingaree (novel)",
+    "author": "Ernest William Hornung",
+    "year": 1905,
+    "downloads_30d": 1541,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 402
+  },
+  {
+    "gutenberg": 2892,
+    "title": "Irish Fairy Tales",
+    "author": "James Stephens",
+    "year": 1920,
+    "downloads_30d": 1539,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "folklore",
+    "tier": "",
+    "rank": 403
+  },
+  {
+    "gutenberg": 3031,
+    "title": "Lobo, the King of Currumpaw",
+    "author": "Ernest Thompson Seton",
+    "year": 1898,
+    "downloads_30d": 1528,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "",
+    "tier": "",
+    "rank": 404
+  },
+  {
+    "gutenberg": 3261,
+    "title": "News from Nowhere",
+    "author": "William Morris",
+    "year": 1890,
+    "downloads_30d": 1522,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "social science fiction;political fiction;futuristic fiction;time-travel fiction;utopian literature",
+    "tier": "",
+    "rank": 405
+  },
+  {
+    "gutenberg": 8395,
+    "title": "The Gods of Pegāna",
+    "author": "Edward Plunkett, 18th Baron of Dunsany",
+    "year": 1905,
+    "downloads_30d": 1499,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 406
+  },
+  {
+    "gutenberg": 56528,
+    "title": "Germinal (novel)",
+    "author": "Émile Zola",
+    "year": 1885,
+    "downloads_30d": 1496,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 407
+  },
+  {
+    "gutenberg": 17731,
+    "title": "The Nigger of the \"Narcissus\"",
+    "author": "Joseph Conrad",
+    "year": 1897,
+    "downloads_30d": 1485,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel;novella",
+    "genre": "",
+    "tier": "",
+    "rank": 408
+  },
+  {
+    "gutenberg": 14868,
+    "title": "The Tailor of Gloucester",
+    "author": "Beatrix Potter",
+    "year": 1903,
+    "downloads_30d": 1481,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "Christmas fiction",
+    "tier": "",
+    "rank": 409
+  },
+  {
+    "gutenberg": 6373,
+    "title": "The Luck of Roaring Camp",
+    "author": "Bret Harte",
+    "year": 1868,
+    "downloads_30d": 1457,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 410
+  },
+  {
+    "gutenberg": 770,
+    "title": "The Story of the Treasure Seekers",
+    "author": "E. Nesbit",
+    "downloads_30d": 1454,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g770",
+    "form": "novel",
+    "genre": "",
+    "year": 1899,
+    "tier": "",
+    "rank": 411
+  },
+  {
+    "gutenberg": 367,
+    "title": "The Country of the Pointed Firs",
+    "author": "Sarah Orne Jewett",
+    "year": 1896,
+    "downloads_30d": 1451,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 412
+  },
+  {
+    "gutenberg": 1028,
+    "title": "The Professor (novel)",
+    "author": "Charlotte Brontë",
+    "year": 1857,
+    "downloads_30d": 1448,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 413
+  },
+  {
+    "gutenberg": 620,
+    "title": "Sylvie and Bruno",
+    "author": "Lewis Carroll",
+    "year": 1889,
+    "downloads_30d": 1446,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 414
+  },
+  {
+    "gutenberg": 2710,
+    "title": "Louise de la Vallière",
+    "author": "Alexandre Dumas",
+    "downloads_30d": 1445,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2710",
+    "tier": "",
+    "rank": 415
+  },
+  {
+    "gutenberg": 1013,
+    "title": "The First Men in the Moon",
+    "author": "H. G. Wells",
+    "year": 1901,
+    "downloads_30d": 1441,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 416
+  },
+  {
+    "gutenberg": 1202,
+    "title": "Tales of Unrest",
+    "author": "Joseph Conrad",
+    "year": 1898,
+    "downloads_30d": 1437,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 417
+  },
+  {
+    "gutenberg": 5265,
+    "title": "The Ball and the Cross",
+    "author": "G. K. Chesterton",
+    "year": 1909,
+    "downloads_30d": 1437,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 418
+  },
+  {
+    "gutenberg": 6695,
+    "title": "Tales of the Jazz Age",
+    "author": "F. Scott Fitzgerald",
+    "year": 1922,
+    "downloads_30d": 1435,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 419
+  },
+  {
+    "gutenberg": 2804,
+    "title": "Rose in Bloom",
+    "author": "Louisa May Alcott",
+    "year": 1876,
+    "downloads_30d": 1433,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 420
+  },
+  {
+    "gutenberg": 517,
+    "title": "The Emerald City of Oz",
+    "author": "L. Frank Baum",
+    "year": 1910,
+    "downloads_30d": 1429,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "tier": "",
+    "rank": 421
+  },
+  {
+    "gutenberg": 8606,
+    "title": "The Blue Bird (play)",
+    "author": "Maurice Maeterlinck",
+    "year": 1908,
+    "downloads_30d": 1426,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 422
+  },
+  {
+    "gutenberg": 26977,
+    "title": "The Old Tobacco Shop",
+    "author": "William Bowen",
+    "year": 1921,
+    "downloads_30d": 1423,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 423
+  },
+  {
+    "gutenberg": 65974,
+    "title": "Carry On, Jeeves",
+    "author": "P. G. Wodehouse",
+    "year": 1925,
+    "downloads_30d": 1423,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 424
+  },
+  {
+    "gutenberg": 154,
+    "title": "The Rise of Silas Lapham",
+    "author": "William Dean Howells",
+    "year": 1885,
+    "downloads_30d": 1414,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 425
+  },
+  {
+    "gutenberg": 25519,
+    "title": "Little Wizard Stories of Oz",
+    "author": "L. Frank Baum",
+    "year": 1914,
+    "downloads_30d": 1413,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 426
+  },
+  {
+    "gutenberg": 27384,
+    "title": "The Regent's Daughter",
+    "author": "Alexandre Dumas",
+    "year": 1845,
+    "downloads_30d": 1411,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 427
+  },
+  {
+    "gutenberg": 2787,
+    "title": "An Old-Fashioned Girl",
+    "author": "Louisa May Alcott",
+    "year": 1869,
+    "downloads_30d": 1402,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 428
+  },
+  {
+    "gutenberg": 6406,
+    "title": "The Monastery: A Romance",
+    "author": "Walter Scott",
+    "year": 1820,
+    "downloads_30d": 1395,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "",
+    "rank": 429
+  },
+  {
+    "gutenberg": 1178,
+    "title": "Constitution of the Lacedaemonians",
+    "author": "Xenophon",
+    "year": -40,
+    "downloads_30d": 1394,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "prose",
+    "genre": "treatise",
+    "tier": "",
+    "rank": 430
+  },
+  {
+    "gutenberg": 1441,
+    "title": "The Story of an African Farm",
+    "author": "Olive Schreiner",
+    "year": 1883,
+    "downloads_30d": 1387,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 431
+  },
+  {
+    "gutenberg": 1438,
+    "title": "No Name (novel)",
+    "author": "Wilkie Collins",
+    "year": 1862,
+    "downloads_30d": 1385,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "sensation fiction;mystery fiction",
+    "tier": "",
+    "rank": 432
+  },
+  {
+    "gutenberg": 1026,
+    "title": "The Diary of a Nobody",
+    "author": "George Grossmith & Weedon Grossmith",
+    "year": 1892,
+    "downloads_30d": 1385,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 433
+  },
+  {
+    "gutenberg": 30123,
+    "title": "Micromégas",
+    "author": "Voltaire",
+    "year": 1752,
+    "downloads_30d": 1381,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 434
+  },
+  {
+    "gutenberg": 6782,
+    "title": "The Robbers",
+    "author": "Friedrich Schiller",
+    "year": 1782,
+    "downloads_30d": 1380,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 435
+  },
+  {
+    "gutenberg": 79424,
+    "title": "The Libertine (book)",
+    "author": "Charlotte Dacre",
+    "year": 1807,
+    "downloads_30d": 1379,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 436
+  },
+  {
+    "gutenberg": 4368,
+    "title": "Flappers and Philosophers",
+    "author": "F. Scott Fitzgerald",
+    "year": 1920,
+    "downloads_30d": 1369,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 437
+  },
+  {
+    "gutenberg": 3023,
+    "title": "Faust, Part One",
+    "author": "Johann Wolfgang von Goethe",
+    "year": 1808,
+    "downloads_30d": 1368,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 438
+  },
+  {
+    "gutenberg": 832,
+    "title": "Robin Hood",
+    "author": "J. Walker McSpadden",
+    "downloads_30d": 1367,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g832",
+    "tier": "",
+    "rank": 439
+  },
+  {
+    "gutenberg": 27884,
+    "title": "Niels Klim's Underground Travels",
+    "author": "Ludvig Holberg",
+    "year": 1741,
+    "downloads_30d": 1359,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "science fiction;fantasy;satirical fiction",
+    "tier": "",
+    "rank": 440
+  },
+  {
+    "gutenberg": 513,
+    "title": "The Snow-Image, and Other Twice-Told Tales",
+    "author": "Nathaniel Hawthorne",
+    "year": 1852,
+    "downloads_30d": 1355,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 441
+  },
+  {
+    "gutenberg": 13468,
+    "title": "The New Jerusalem (Chesterton book)",
+    "author": "G. K. Chesterton",
+    "year": 1920,
+    "downloads_30d": 1353,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 442
+  },
+  {
+    "gutenberg": 3608,
+    "title": "The Ragged-Trousered Philanthropists",
+    "author": "Robert Tressell",
+    "year": 1914,
+    "downloads_30d": 1348,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "autobiographical novel",
+    "tier": "",
+    "rank": 443
+  },
+  {
+    "gutenberg": 5348,
+    "title": "Ragged Dick",
+    "author": "Horatio Alger",
+    "year": 1868,
+    "downloads_30d": 1346,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 444
+  },
+  {
+    "gutenberg": 1162,
+    "title": "The Star Rover",
+    "author": "Jack London",
+    "year": 1915,
+    "downloads_30d": 1337,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 445
+  },
+  {
+    "gutenberg": 23489,
+    "title": "Godfrey Morgan",
+    "author": "Jules Verne",
+    "year": 1882,
+    "downloads_30d": 1333,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 446
+  },
+  {
+    "gutenberg": 20004,
+    "title": "Tancred (novel)",
+    "author": "Benjamin Disraeli",
+    "year": 1847,
+    "downloads_30d": 1328,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 447
+  },
+  {
+    "gutenberg": 85,
+    "title": "The Beasts of Tarzan",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 1327,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g85",
+    "tier": "",
+    "rank": 448
+  },
+  {
+    "gutenberg": 3836,
+    "title": "The Swiss Family Robinson",
+    "author": "Johann David Wyss",
+    "year": 1812,
+    "downloads_30d": 1306,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 449
+  },
+  {
+    "gutenberg": 837,
+    "title": "The Story of the Amulet",
+    "author": "E. Nesbit",
+    "downloads_30d": 1303,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g837",
+    "form": "novel",
+    "genre": "fantasy;children's fiction",
+    "year": 1906,
+    "tier": "",
+    "rank": 450
+  },
+  {
+    "gutenberg": 47356,
+    "title": "Studies on Homer and the Homeric Age",
+    "author": "William Ewart Gladstone",
+    "year": 1858,
+    "downloads_30d": 1298,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 451
+  },
+  {
+    "gutenberg": 21640,
+    "title": "A Bid for Fortune; Or, Doctor Nikola's Vendetta",
+    "author": "Guy Boothby",
+    "year": 1895,
+    "downloads_30d": 1297,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 452
+  },
+  {
+    "gutenberg": 1213,
+    "title": "The Man That Corrupted Hadleyburg",
+    "author": "Mark Twain",
+    "year": 1899,
+    "downloads_30d": 1297,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 453
+  },
+  {
+    "gutenberg": 54672,
+    "title": "The Indiscreet Jewels",
+    "author": "Denis Diderot",
+    "year": 1748,
+    "downloads_30d": 1293,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "roman à clef;erotic literature;libertine novel",
+    "tier": "",
+    "rank": 454
+  },
+  {
+    "gutenberg": 1860,
+    "title": "Westward Ho! (novel)",
+    "author": "Charles Kingsley",
+    "year": 1855,
+    "downloads_30d": 1288,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 455
+  },
+  {
+    "gutenberg": 1424,
+    "title": "Castle Rackrent",
+    "author": "Maria Edgeworth",
+    "year": 1800,
+    "downloads_30d": 1286,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "historical fiction;political fiction",
+    "tier": "",
+    "rank": 456
+  },
+  {
+    "gutenberg": 34970,
+    "title": "Pierre; or, The Ambiguities",
+    "author": "Herman Melville",
+    "year": 1852,
+    "downloads_30d": 1285,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 457
+  },
+  {
+    "gutenberg": 11323,
+    "title": "Things as They Are; or, The Adventures of Caleb Williams",
+    "author": "William Godwin",
+    "year": 1794,
+    "downloads_30d": 1282,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "Jacobin novel",
+    "tier": "",
+    "rank": 458
+  },
+  {
+    "gutenberg": 37775,
+    "title": "Etidorhpa",
+    "author": "John Uri Lloyd",
+    "year": 1895,
+    "downloads_30d": 1279,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 459
+  },
+  {
+    "gutenberg": 17034,
+    "title": "English Fairy Tales",
+    "author": "Flora Annie Steel",
+    "year": 1918,
+    "downloads_30d": 1270,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 460
+  },
+  {
+    "gutenberg": 2480,
+    "title": "Under Western Eyes (novel)",
+    "author": "Joseph Conrad",
+    "year": 1911,
+    "downloads_30d": 1265,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 461
+  },
+  {
+    "gutenberg": 92,
+    "title": "Tarzan and the Jewels of Opar",
+    "author": "Edgar Rice Burroughs",
+    "year": 1916,
+    "downloads_30d": 1265,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 462
+  },
+  {
+    "gutenberg": 30852,
+    "title": "The Tin Woodman of Oz",
+    "author": "L. Frank Baum",
+    "year": 1918,
+    "downloads_30d": 1264,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 463
+  },
+  {
+    "gutenberg": 35587,
+    "title": "The Headless Horseman (novel)",
+    "author": "Thomas Mayne Reid",
+    "year": 1865,
+    "downloads_30d": 1262,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 464
+  },
+  {
+    "gutenberg": 32242,
+    "title": "A Wonder-Book for Girls and Boys",
+    "author": "Nathaniel Hawthorne",
+    "year": 1851,
+    "downloads_30d": 1256,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 465
+  },
+  {
+    "gutenberg": 402,
+    "title": "Penrod",
+    "author": "Booth Tarkington",
+    "downloads_30d": 1252,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g402",
+    "form": "novel",
+    "genre": "",
+    "year": 1914,
+    "tier": "",
+    "rank": 466
+  },
+  {
+    "gutenberg": 25919,
+    "title": "Miss Mapp",
+    "author": "Edward Frederic Benson",
+    "year": 1922,
+    "downloads_30d": 1249,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 467
+  },
+  {
+    "gutenberg": 471,
+    "title": "The Bride of Lammermoor",
+    "author": "Walter Scott",
+    "year": 1819,
+    "downloads_30d": 1248,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 468
+  },
+  {
+    "gutenberg": 27690,
+    "title": "Nobody's Girl (novel)",
+    "author": "Hector Malot",
+    "year": 1893,
+    "downloads_30d": 1227,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "tier": "",
+    "rank": 469
+  },
+  {
+    "gutenberg": 20869,
+    "title": "The Skylark of Space",
+    "author": "Edward Elmer Smith & Lee Hawkins Garby",
+    "year": 1928,
+    "downloads_30d": 1226,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 470
+  },
+  {
+    "gutenberg": 3760,
+    "title": "Sybil (novel)",
+    "author": "Benjamin Disraeli",
+    "year": 1845,
+    "downloads_30d": 1223,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 471
+  },
+  {
+    "gutenberg": 4084,
+    "title": "The Adventures of Peregrine Pickle",
+    "author": "Tobias Smollett",
+    "year": 1751,
+    "downloads_30d": 1222,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 472
+  },
+  {
+    "gutenberg": 2084,
+    "title": "The Way of All Flesh",
+    "author": "Samuel Butler",
+    "year": 1903,
+    "downloads_30d": 1218,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 473
+  },
+  {
+    "gutenberg": 47312,
+    "title": "The Mysteries of London",
+    "author": "George W. M. Reynolds",
+    "year": 1845,
+    "downloads_30d": 1210,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 474
+  },
+  {
+    "gutenberg": 13514,
+    "title": "Tales of a Traveller",
+    "author": "Washington Irving",
+    "year": 1824,
+    "downloads_30d": 1206,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 475
+  },
+  {
+    "gutenberg": 711,
+    "title": "Allan Quatermain",
+    "author": "H. Rider Haggard",
+    "downloads_30d": 1205,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g711",
+    "tier": "",
+    "rank": 476
+  },
+  {
+    "gutenberg": 3045,
+    "title": "The Last Chronicle of Barset",
+    "author": "Anthony Trollope",
+    "year": 1866,
+    "downloads_30d": 1205,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 477
+  },
+  {
+    "gutenberg": 2870,
+    "title": "Washington Square (novel)",
+    "author": "Henry James",
+    "year": 1880,
+    "downloads_30d": 1204,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 478
+  },
+  {
+    "gutenberg": 14220,
+    "title": "The Tale of the Flopsy Bunnies",
+    "author": "Beatrix Potter",
+    "year": 1909,
+    "downloads_30d": 1202,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's literature",
+    "tier": "",
+    "rank": 479
+  },
+  {
+    "gutenberg": 38241,
+    "title": "Uncle's Dream",
+    "author": "Fyodor Dostoyevsky",
+    "year": 1859,
+    "downloads_30d": 1200,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 480
+  },
+  {
+    "gutenberg": 39402,
+    "title": "Jeremiah (play)",
+    "author": "Stefan Zweig",
+    "year": 1917,
+    "downloads_30d": 1200,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 481
+  },
+  {
+    "gutenberg": 27711,
+    "title": "Germinie Lacerteux",
+    "author": "Edmond de Goncourt & Jules de Goncourt",
+    "year": 1886,
+    "downloads_30d": 1194,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 482
+  },
+  {
+    "gutenberg": 76513,
+    "title": "Billy Budd",
+    "author": "Herman Melville",
+    "year": 1924,
+    "downloads_30d": 1191,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 483
+  },
+  {
+    "gutenberg": 19500,
+    "title": "Can You Forgive Her?",
+    "author": "Anthony Trollope",
+    "year": 1864,
+    "downloads_30d": 1190,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 484
+  },
+  {
+    "gutenberg": 45264,
+    "title": "The Tale of Two Bad Mice",
+    "author": "Beatrix Potter",
+    "year": 1904,
+    "downloads_30d": 1189,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 485
+  },
+  {
+    "gutenberg": 111,
+    "title": "Freckles (novel)",
+    "author": "Gene Stratton-Porter",
+    "year": 1904,
+    "downloads_30d": 1186,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 486
+  },
+  {
+    "gutenberg": 60067,
+    "title": "Leave It to Psmith",
+    "author": "P. G. Wodehouse",
+    "year": 1923,
+    "downloads_30d": 1184,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "comedy",
+    "tier": "",
+    "rank": 487
+  },
+  {
+    "gutenberg": 7381,
+    "title": "The Eustace Diamonds",
+    "author": "Anthony Trollope",
+    "year": 1872,
+    "downloads_30d": 1179,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 488
+  },
+  {
+    "gutenberg": 54700,
+    "title": "Oblomov",
+    "author": "Ivan Goncharov",
+    "year": 1859,
+    "downloads_30d": 1166,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 489
+  },
+  {
+    "gutenberg": 13159,
+    "title": "Illusions perdues",
+    "author": "Honoré de Balzac",
+    "year": 1837,
+    "downloads_30d": 1164,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "tier": "",
+    "rank": 490
+  },
+  {
+    "gutenberg": 1826,
+    "title": "Sarrasine",
+    "author": "Honoré de Balzac",
+    "year": 1831,
+    "downloads_30d": 1163,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 491
+  },
+  {
+    "gutenberg": 344,
+    "title": "The Merry Men and Other Tales and Fables",
+    "author": "Robert Louis Stevenson",
+    "year": 1887,
+    "downloads_30d": 1159,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 492
+  },
+  {
+    "gutenberg": 1944,
+    "title": "The Witch (short story)",
+    "author": "Anton Chekhov",
+    "year": 1886,
+    "downloads_30d": 1159,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 493
+  },
+  {
+    "gutenberg": 29257,
+    "title": "The Book of Khalid",
+    "author": "Ameen Fares Rihani",
+    "year": 1911,
+    "downloads_30d": 1158,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "Bildungsroman",
+    "tier": "",
+    "rank": 494
+  },
+  {
+    "gutenberg": 22246,
+    "title": "The Upper Berth",
+    "author": "Francis Marion Crawford",
+    "year": 1886,
+    "downloads_30d": 1158,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 495
+  },
+  {
+    "gutenberg": 15493,
+    "title": "The Lancashire Witches",
+    "author": "William Harrison Ainsworth",
+    "year": 1848,
+    "downloads_30d": 1157,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 496
+  },
+  {
+    "gutenberg": 26719,
+    "title": "An Anarchist Woman",
+    "author": "Hutchins Hapgood",
+    "year": 1909,
+    "downloads_30d": 1155,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 497
+  },
+  {
+    "gutenberg": 1154,
+    "title": "The Voyages of Doctor Dolittle",
+    "author": "Hugh Lofting",
+    "downloads_30d": 1153,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1154",
+    "form": "novel",
+    "genre": "fantasy",
+    "year": 1922,
+    "tier": "",
+    "rank": 498
+  },
+  {
+    "gutenberg": 24750,
+    "title": "Mizora",
+    "author": "Mary E. Bradley Lane",
+    "year": 1880,
+    "downloads_30d": 1150,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 499
+  },
+  {
+    "gutenberg": 13416,
+    "title": "The Darling (short story)",
+    "author": "Anton Chekhov",
+    "year": 1899,
+    "downloads_30d": 1149,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "",
+    "tier": "",
+    "rank": 500
+  },
+  {
+    "gutenberg": 30344,
+    "title": "Roxana: The Fortunate Mistress",
+    "author": "Daniel Defoe",
+    "year": 1724,
+    "downloads_30d": 1141,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 501
+  },
+  {
+    "gutenberg": 985,
+    "title": "Father Sergius",
+    "author": "Leo Tolstoy",
+    "year": 1911,
+    "downloads_30d": 1138,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 502
+  },
+  {
+    "gutenberg": 701,
+    "title": "The King of the Golden River",
+    "author": "John Ruskin",
+    "year": 1842,
+    "downloads_30d": 1136,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel;short story;novella",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 503
+  },
+  {
+    "gutenberg": 5340,
+    "title": "Further Chronicles of Avonlea",
+    "author": "Lucy Maud Montgomery",
+    "year": 1920,
+    "downloads_30d": 1134,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 504
+  },
+  {
+    "gutenberg": 93,
+    "title": "Tom Sawyer, Detective",
+    "author": "Mark Twain",
+    "downloads_30d": 1132,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g93",
+    "form": "novel",
+    "genre": "mystery fiction;children's fiction",
+    "year": 1896,
+    "tier": "",
+    "rank": 505
+  },
+  {
+    "gutenberg": 2845,
+    "title": "Sir Nigel",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 1132,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2845",
+    "tier": "",
+    "rank": 506
+  },
+  {
+    "gutenberg": 1565,
+    "title": "The Last Days of Pompeii",
+    "author": "Edward Bulwer-Lytton",
+    "year": 1834,
+    "downloads_30d": 1132,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "historical fiction",
+    "tier": "",
+    "rank": 507
+  },
+  {
+    "gutenberg": 4737,
+    "title": "A Tale of a Tub",
+    "author": "Jonathan Swift",
+    "year": 1704,
+    "downloads_30d": 1126,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "satire",
+    "tier": "",
+    "rank": 508
+  },
+  {
+    "gutenberg": 697,
+    "title": "The Light Princess",
+    "author": "George MacDonald",
+    "year": 1864,
+    "downloads_30d": 1123,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 509
+  },
+  {
+    "gutenberg": 5140,
+    "title": "He Knew He Was Right",
+    "author": "Anthony Trollope",
+    "year": 1869,
+    "downloads_30d": 1118,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 510
+  },
+  {
+    "gutenberg": 2726,
+    "title": "Eight Cousins",
+    "author": "Louisa May Alcott",
+    "year": 1875,
+    "downloads_30d": 1116,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 511
+  },
+  {
+    "gutenberg": 55307,
+    "title": "The Black Monk",
+    "author": "Anton Chekhov",
+    "year": 1894,
+    "downloads_30d": 1113,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 512
+  },
+  {
+    "gutenberg": 43092,
+    "title": "The Dead Secret",
+    "author": "Wilkie Collins",
+    "year": 1857,
+    "downloads_30d": 1104,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 513
+  },
+  {
+    "gutenberg": 18640,
+    "title": "Phineas Redux",
+    "author": "Anthony Trollope",
+    "year": 1874,
+    "downloads_30d": 1103,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 514
+  },
+  {
+    "gutenberg": 72961,
+    "title": "Buddenbrooks",
+    "author": "Thomas Mann",
+    "year": 1901,
+    "downloads_30d": 1103,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 515
+  },
+  {
+    "gutenberg": 5247,
+    "title": "The Old Wives' Tale",
+    "author": "Arnold Bennett",
+    "year": 1908,
+    "downloads_30d": 1097,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 516
+  },
+  {
+    "gutenberg": 4313,
+    "title": "The Odd Women",
+    "author": "George Gissing",
+    "year": 1893,
+    "downloads_30d": 1091,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 517
+  },
+  {
+    "gutenberg": 46597,
+    "title": "In Search of the Castaways",
+    "author": "Jules Verne",
+    "year": 1864,
+    "downloads_30d": 1083,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 518
+  },
+  {
+    "gutenberg": 765,
+    "title": "The Moon Pool",
+    "author": "Abraham Merritt",
+    "downloads_30d": 1082,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g765",
+    "tier": "",
+    "rank": 519
+  },
+  {
+    "gutenberg": 1449,
+    "title": "The Valley of the Moon (novel)",
+    "author": "Jack London",
+    "year": 1913,
+    "downloads_30d": 1081,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 520
+  },
+  {
+    "gutenberg": 395,
+    "title": "The Holy War",
+    "author": "John Bunyan",
+    "year": 1682,
+    "downloads_30d": 1081,
+    "languages": [
+      "en"
+    ],
+    "source": "translation",
+    "tier": "",
+    "rank": 521
+  },
+  {
+    "gutenberg": 482,
+    "title": "The Woodlanders",
+    "author": "Thomas Hardy",
+    "year": 1887,
+    "downloads_30d": 1081,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 522
+  },
+  {
+    "gutenberg": 29413,
+    "title": "The Adventures of Captain Hatteras",
+    "author": "Jules Verne",
+    "year": 1864,
+    "downloads_30d": 1079,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 523
+  },
+  {
+    "gutenberg": 9840,
+    "title": "Vivian Grey",
+    "author": "Benjamin Disraeli",
+    "year": 1826,
+    "downloads_30d": 1075,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 524
+  },
+  {
+    "gutenberg": 7477,
+    "title": "The Book of Wonder",
+    "author": "Edward Plunkett, 18th Baron of Dunsany",
+    "year": 1912,
+    "downloads_30d": 1072,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 525
+  },
+  {
+    "gutenberg": 1557,
+    "title": "Men of Iron",
+    "author": "Howard Pyle",
+    "downloads_30d": 1071,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1557",
+    "tier": "",
+    "rank": 526
+  },
+  {
+    "gutenberg": 520,
+    "title": "The Life and Adventures of Santa Claus",
+    "author": "L. Frank Baum",
+    "downloads_30d": 1067,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g520",
+    "form": "",
+    "genre": "origin story;children's fiction",
+    "year": 1912,
+    "tier": "",
+    "rank": 527
+  },
+  {
+    "gutenberg": 619,
+    "title": "The Warden",
+    "author": "Anthony Trollope",
+    "year": 1855,
+    "downloads_30d": 1067,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 528
+  },
+  {
+    "gutenberg": 42455,
+    "title": "The Mystery of the Sea",
+    "author": "Bram Stoker",
+    "year": 1902,
+    "downloads_30d": 1065,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "political thriller",
+    "tier": "",
+    "rank": 529
+  },
+  {
+    "gutenberg": 1709,
+    "title": "New Grub Street",
+    "author": "George Gissing",
+    "year": 1891,
+    "downloads_30d": 1063,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 530
+  },
+  {
+    "gutenberg": 40882,
+    "title": "Felix Holt, the Radical",
+    "author": "George Eliot",
+    "year": 1866,
+    "downloads_30d": 1060,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 531
+  },
+  {
+    "gutenberg": 96,
+    "title": "The Monster Men",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 1058,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g96",
+    "form": "novel",
+    "genre": "science fiction",
+    "year": 1929,
+    "tier": "",
+    "rank": 532
+  },
+  {
+    "gutenberg": 2346,
+    "title": "The Adventure of the Bruce-Partington Plans",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 1057,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2346",
+    "form": "novelette",
+    "genre": "detective fiction;crime fiction",
+    "year": 1908,
+    "tier": "",
+    "rank": 533
+  },
+  {
+    "gutenberg": 4047,
+    "title": "The Leavenworth Case",
+    "author": "Anna Katharine Green",
+    "downloads_30d": 1053,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g4047",
+    "tier": "",
+    "rank": 534
+  },
+  {
+    "gutenberg": 318,
+    "title": "John Barleycorn (novel)",
+    "author": "Jack London",
+    "year": 1913,
+    "downloads_30d": 1052,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 535
+  },
+  {
+    "gutenberg": 68229,
+    "title": "All the Sad Young Men",
+    "author": "F. Scott Fitzgerald",
+    "year": 1926,
+    "downloads_30d": 1050,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 536
+  },
+  {
+    "gutenberg": 1085,
+    "title": "The Life of John Sterling",
+    "author": "Thomas Carlyle",
+    "year": 1851,
+    "downloads_30d": 1049,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 537
+  },
+  {
+    "gutenberg": 2786,
+    "title": "Jack and Jill: A Village Story",
+    "author": "Louisa May Alcott",
+    "year": 1880,
+    "downloads_30d": 1046,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's fiction",
+    "tier": "",
+    "rank": 538
+  },
+  {
+    "gutenberg": 76911,
+    "title": "Good-Bye to All That",
+    "author": "Robert Graves",
+    "year": 1929,
+    "downloads_30d": 1044,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 539
+  },
+  {
+    "gutenberg": 25876,
+    "title": "The House with the Green Shutters",
+    "author": "George Douglas Brown",
+    "year": 1901,
+    "downloads_30d": 1042,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 540
+  },
+  {
+    "gutenberg": 4540,
+    "title": "In His Steps",
+    "author": "Charles Monroe Sheldon",
+    "year": 1896,
+    "downloads_30d": 1037,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 541
+  },
+  {
+    "gutenberg": 29756,
+    "title": "The Cat of Bubastes",
+    "author": "G. A. Henty",
+    "year": 1888,
+    "downloads_30d": 1034,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 542
+  },
+  {
+    "gutenberg": 52468,
+    "title": "The Lower Depths",
+    "author": "Maxim Gorky",
+    "year": 1903,
+    "downloads_30d": 1034,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 543
+  },
+  {
+    "gutenberg": 423,
+    "title": "Round the Red Lamp",
+    "author": "Arthur Conan Doyle",
+    "year": 1894,
+    "downloads_30d": 1030,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "medical fiction",
+    "tier": "",
+    "rank": 544
+  },
+  {
+    "gutenberg": 4090,
+    "title": "From Ritual to Romance",
+    "author": "Q3808161",
+    "year": 1920,
+    "downloads_30d": 1030,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "",
+    "tier": "",
+    "rank": 545
+  },
+  {
+    "gutenberg": 1842,
+    "title": "Michael Strogoff",
+    "author": "Jules Verne",
+    "year": 1876,
+    "downloads_30d": 1028,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 546
+  },
+  {
+    "gutenberg": 26854,
+    "title": "The Trembling of a Leaf",
+    "author": "William Somerset Maugham",
+    "year": 1921,
+    "downloads_30d": 1022,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 547
+  },
+  {
+    "gutenberg": 4761,
+    "title": "The Cossacks (novel)",
+    "author": "Leo Tolstoy",
+    "year": 1863,
+    "downloads_30d": 1021,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 548
+  },
+  {
+    "gutenberg": 76599,
+    "title": "My Past and Thoughts",
+    "author": "Alexander Herzen",
+    "year": 1861,
+    "downloads_30d": 1021,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 549
+  },
+  {
+    "gutenberg": 329,
+    "title": "Island Nights' Entertainments",
+    "author": "Robert Louis Stevenson",
+    "year": 1893,
+    "downloads_30d": 1019,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "",
+    "tier": "",
+    "rank": 550
+  },
+  {
+    "gutenberg": 6424,
+    "title": "A Modern Utopia",
+    "author": "H. G. Wells",
+    "year": 1905,
+    "downloads_30d": 1015,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 551
+  },
+  {
+    "gutenberg": 7371,
+    "title": "A Sicilian Romance",
+    "author": "Ann Radcliffe",
+    "year": 1790,
+    "downloads_30d": 1013,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "romance novel;horror fiction;Gothic fiction",
+    "tier": "",
+    "rank": 552
+  },
+  {
+    "gutenberg": 2860,
+    "title": "Framley Parsonage",
+    "author": "Anthony Trollope",
+    "year": 1861,
+    "downloads_30d": 1013,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 553
+  },
+  {
+    "gutenberg": 561,
+    "title": "The Further Adventures of Robinson Crusoe",
+    "author": "Daniel Defoe",
+    "downloads_30d": 1012,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g561",
+    "form": "",
+    "genre": "historical fiction;adventure fiction",
+    "year": 1719,
+    "tier": "",
+    "rank": 554
+  },
+  {
+    "gutenberg": 346,
+    "title": "The Troll Garden",
+    "author": "Willa Cather",
+    "year": 1905,
+    "downloads_30d": 1012,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 555
+  },
+  {
+    "gutenberg": 79489,
+    "title": "The Grandmothers",
+    "author": "Glenway Wescott",
+    "year": 1927,
+    "downloads_30d": 1008,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 556
+  },
+  {
+    "gutenberg": 17089,
+    "title": "The Tale of Mrs. Tittlemouse",
+    "author": "Beatrix Potter",
+    "year": 1910,
+    "downloads_30d": 1002,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's literature",
+    "tier": "",
+    "rank": 557
+  },
+  {
+    "gutenberg": 36028,
+    "title": "Royal Highness (novel)",
+    "author": "Thomas Mann",
+    "year": 1909,
+    "downloads_30d": 1000,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 558
+  },
+  {
+    "gutenberg": 37027,
+    "title": "With Fire and Sword",
+    "author": "Henryk Sienkiewicz",
+    "year": 1884,
+    "downloads_30d": 996,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 559
+  },
+  {
+    "gutenberg": 3457,
+    "title": "The Man of the Forest",
+    "author": "Zane Grey",
+    "downloads_30d": 995,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g3457",
+    "tier": "",
+    "rank": 560
+  },
+  {
+    "gutenberg": 2347,
+    "title": "The Adventure of the Dying Detective",
+    "author": "Arthur Conan Doyle",
+    "downloads_30d": 995,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2347",
+    "form": "short story",
+    "genre": "detective fiction;crime fiction",
+    "year": 1913,
+    "tier": "",
+    "rank": 561
+  },
+  {
+    "gutenberg": 15575,
+    "title": "The Tale of Samuel Whiskers or The Roly-Poly Pudding",
+    "author": "Beatrix Potter",
+    "year": 1908,
+    "downloads_30d": 995,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "",
+    "genre": "children's literature",
+    "tier": "",
+    "rank": 562
+  },
+  {
+    "gutenberg": 678,
+    "title": "The Cricket on the Hearth",
+    "author": "Charles Dickens",
+    "year": 1845,
+    "downloads_30d": 994,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novella",
+    "genre": "",
+    "tier": "",
+    "rank": 563
+  },
+  {
+    "gutenberg": 11696,
+    "title": "The Food of the Gods and How It Came to Earth",
+    "author": "H. G. Wells",
+    "year": 1904,
+    "downloads_30d": 992,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "science fiction;romantic fiction",
+    "tier": "",
+    "rank": 564
+  },
+  {
+    "gutenberg": 3166,
+    "title": "Doctor Thorne",
+    "author": "Anthony Trollope",
+    "year": 1858,
+    "downloads_30d": 992,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 565
+  },
+  {
+    "gutenberg": 419,
+    "title": "The Magic of Oz",
+    "author": "L. Frank Baum",
+    "downloads_30d": 991,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g419",
+    "form": "novel",
+    "genre": "fantasy",
+    "year": 1919,
+    "tier": "",
+    "rank": 566
+  },
+  {
+    "gutenberg": 285,
+    "title": "The Lost Continent: The Story of Atlantis",
+    "author": "C. J. Cutcliffe Hyne",
+    "year": 1900,
+    "downloads_30d": 990,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 567
+  },
+  {
+    "gutenberg": 653,
+    "title": "The Chimes",
+    "author": "Charles Dickens",
+    "year": 1844,
+    "downloads_30d": 990,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 568
+  },
+  {
+    "gutenberg": 1190,
+    "title": "The Jolly Corner",
+    "author": "Henry James",
+    "year": 1908,
+    "downloads_30d": 988,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story",
+    "genre": "horror fiction",
+    "tier": "",
+    "rank": 569
+  },
+  {
+    "gutenberg": 73727,
+    "title": "Metropolis (novel)",
+    "author": "Thea von Harbou",
+    "year": 1926,
+    "downloads_30d": 987,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 570
+  },
+  {
+    "gutenberg": 3179,
+    "title": "The American Claimant",
+    "author": "Mark Twain",
+    "year": 1892,
+    "downloads_30d": 986,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy;alternate history;satirical fiction",
+    "tier": "",
+    "rank": 571
+  },
+  {
+    "gutenberg": 29042,
+    "title": "A Tangled Tale",
+    "author": "Lewis Carroll",
+    "year": 1885,
+    "downloads_30d": 984,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 572
+  },
+  {
+    "gutenberg": 2502,
+    "title": "Chitra (play)",
+    "author": "Rabindranath Tagore",
+    "year": 1914,
+    "downloads_30d": 981,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 573
+  },
+  {
+    "gutenberg": 59239,
+    "title": "The Flying Inn",
+    "author": "G. K. Chesterton",
+    "year": 1914,
+    "downloads_30d": 978,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "science fiction;political fiction;speculative fiction",
+    "tier": "",
+    "rank": 574
+  },
+  {
+    "gutenberg": 179,
+    "title": "The Europeans",
+    "author": "Henry James",
+    "year": 1899,
+    "downloads_30d": 978,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 575
+  },
+  {
+    "gutenberg": 4770,
+    "title": "Work: A Story of Experience",
+    "author": "Louisa May Alcott",
+    "year": 1873,
+    "downloads_30d": 977,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "autobiography",
+    "tier": "",
+    "rank": 576
+  },
+  {
+    "gutenberg": 709,
+    "title": "The Princess and Curdie",
+    "author": "George MacDonald",
+    "year": 1883,
+    "downloads_30d": 977,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 577
+  },
+  {
+    "gutenberg": 1848,
+    "title": "Montezuma's Daughter",
+    "author": "H. Rider Haggard",
+    "downloads_30d": 976,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g1848",
+    "form": "novel",
+    "genre": "historical fiction;adventure fiction",
+    "year": 1893,
+    "tier": "",
+    "rank": 578
+  },
+  {
+    "gutenberg": 420,
+    "title": "Dorothy and the Wizard in Oz",
+    "author": "L. Frank Baum",
+    "downloads_30d": 975,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g420",
+    "form": "novel",
+    "genre": "fantasy",
+    "year": 1908,
+    "tier": "",
+    "rank": 579
+  },
+  {
+    "gutenberg": 5174,
+    "title": "The Holy Flower",
+    "author": "H. Rider Haggard",
+    "year": 1915,
+    "downloads_30d": 974,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 580
+  },
+  {
+    "gutenberg": 7166,
+    "title": "The Home and the World",
+    "author": "Rabindranath Tagore",
+    "year": 1916,
+    "downloads_30d": 974,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 581
+  },
+  {
+    "gutenberg": 17780,
+    "title": "Scenes of Clerical Life",
+    "author": "George Eliot",
+    "year": 1857,
+    "downloads_30d": 973,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 582
+  },
+  {
+    "gutenberg": 2662,
+    "title": "Under the Greenwood Tree",
+    "author": "Thomas Hardy",
+    "year": 1872,
+    "downloads_30d": 973,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 583
+  },
+  {
+    "gutenberg": 605,
+    "title": "Pellucidar",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 971,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g605",
+    "form": "novel",
+    "genre": "science fiction;fantasy;adventure fiction",
+    "year": 1915,
+    "tier": "",
+    "rank": 584
+  },
+  {
+    "gutenberg": 2158,
+    "title": "The Prime Minister (novel)",
+    "author": "Anthony Trollope",
+    "year": 1875,
+    "downloads_30d": 970,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 585
+  },
+  {
+    "gutenberg": 46709,
+    "title": "Memoirs of Joseph Grimaldi",
+    "author": "Charles Dickens",
+    "year": 1838,
+    "downloads_30d": 969,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "autobiography",
+    "tier": "",
+    "rank": 586
+  },
+  {
+    "gutenberg": 32596,
+    "title": "The Revolt of the Angels",
+    "author": "Anatole France",
+    "year": 1914,
+    "downloads_30d": 969,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 587
+  },
+  {
+    "gutenberg": 62254,
+    "title": "Fabiola (novel)",
+    "author": "Nicholas Patrick Stephen Wiseman",
+    "year": 1854,
+    "downloads_30d": 965,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 588
+  },
+  {
+    "gutenberg": 25014,
+    "title": "Bouvard and Pécuchet",
+    "author": "Gustave Flaubert",
+    "year": 1881,
+    "downloads_30d": 965,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 589
+  },
+  {
+    "gutenberg": 2020,
+    "title": "Tarzan the Terrible",
+    "author": "Edgar Rice Burroughs",
+    "downloads_30d": 961,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g2020",
+    "tier": "",
+    "rank": 590
+  },
+  {
+    "gutenberg": 50054,
+    "title": "The Female Quixote",
+    "author": "Charlotte Lennox",
+    "year": 1752,
+    "downloads_30d": 959,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 591
+  },
+  {
+    "gutenberg": 7079,
+    "title": "The Companions of Jehu",
+    "author": "Alexandre Dumas",
+    "downloads_30d": 957,
+    "languages": [
+      "en"
+    ],
+    "source": "old-bank",
+    "in_old_bank": true,
+    "old_slug": "g7079",
+    "tier": "",
+    "rank": 592
+  },
+  {
+    "gutenberg": 21659,
+    "title": "Some Everyday Folk and Dawn",
+    "author": "Miles Franklin",
+    "year": 1909,
+    "downloads_30d": 957,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 593
+  },
+  {
+    "gutenberg": 3629,
+    "title": "The Titan (novel)",
+    "author": "Theodore Dreiser",
+    "year": 1914,
+    "downloads_30d": 956,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 594
+  },
+  {
+    "gutenberg": 27537,
+    "title": "Sentimental Education",
+    "author": "Gustave Flaubert",
+    "year": 1869,
+    "downloads_30d": 954,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 595
+  },
+  {
+    "gutenberg": 1267,
+    "title": "Kai Lung's Golden Hours",
+    "author": "Ernest Bramah",
+    "year": 1922,
+    "downloads_30d": 952,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 596
+  },
+  {
+    "gutenberg": 23000,
+    "title": "Orley Farm (novel)",
+    "author": "Anthony Trollope",
+    "year": 1862,
+    "downloads_30d": 951,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "",
+    "tier": "",
+    "rank": 597
+  },
+  {
+    "gutenberg": 8123,
+    "title": "The Virginians",
+    "author": "William Makepeace Thackeray",
+    "year": 1857,
+    "downloads_30d": 950,
+    "languages": [
+      "en"
+    ],
+    "source": "catalogue-match",
+    "tier": "",
+    "rank": 598
+  },
+  {
+    "gutenberg": 2721,
+    "title": "Eric Brighteyes",
+    "author": "H. Rider Haggard",
+    "year": 1890,
+    "downloads_30d": 949,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "novel",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 599
+  },
+  {
+    "gutenberg": 8183,
+    "title": "Time and the Gods",
+    "author": "Edward Plunkett, 18th Baron of Dunsany",
+    "year": 1906,
+    "downloads_30d": 948,
+    "languages": [
+      "en"
+    ],
+    "source": "wikidata",
+    "form": "short story collection",
+    "genre": "fantasy",
+    "tier": "",
+    "rank": 600
+  }
+]

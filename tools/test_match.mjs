@@ -47,7 +47,11 @@ function isMatch(guess, puzzle) {
   return false;
 }
 
-const files = readdirSync(join(root, "puzzles")).filter((f) => /^b\d+\.json$/.test(f));
+// The curated b*.json puzzles are gone: every book is a Gutenberg id now, so
+// the test runs over whatever index.json actually ships. It used to filter for
+// b\d+ and silently passed on zero files.
+const index = JSON.parse(readFileSync(join(root, "puzzles", "index.json"), "utf8"));
+const files = index.order.map((slug) => `${slug}.json`);
 let fail = 0;
 for (const f of files) {
   const p = JSON.parse(readFileSync(join(root, "puzzles", f), "utf8"));

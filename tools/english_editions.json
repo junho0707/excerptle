@@ -1,0 +1,773 @@
+[
+  {
+    "status": "new",
+    "gutenberg": 17983,
+    "title": "Manon Lescaut",
+    "author": "Antoine François Prévost",
+    "year": 1731,
+    "downloads_30d": 375,
+    "sitelinks": 33,
+    "form": "novel",
+    "genre": "memoir novel;romantic fiction;memoir",
+    "wikipedia": "yes",
+    "slug": "g17983",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 468,
+    "en_title": "Manon Lescaut",
+    "en_author": "abbé Prévost",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 49485,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 46541,
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne",
+    "year": 1872,
+    "downloads_30d": 591,
+    "sitelinks": 79,
+    "form": "novel",
+    "genre": "serialized fiction;adventure fiction;children's fiction",
+    "wikipedia": "yes",
+    "slug": "g46541",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 103,
+    "en_title": "Around the World in Eighty Days",
+    "en_author": "Jules Verne",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 31322,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 7202,
+    "title": "Ecce Homo (book)",
+    "author": "Friedrich Nietzsche",
+    "year": 1888,
+    "downloads_30d": 1219,
+    "sitelinks": 40,
+    "form": "posthumous work",
+    "genre": "autobiography;essay",
+    "wikipedia": "yes",
+    "slug": "g7202",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 52190,
+    "en_title": "Ecce Homo",
+    "en_author": "Friedrich Wilhelm Nietzsche",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 27601,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 7204,
+    "title": "Beyond Good and Evil",
+    "author": "Friedrich Nietzsche",
+    "year": 1886,
+    "downloads_30d": 1983,
+    "sitelinks": 43,
+    "form": "",
+    "genre": "philosophy;essay",
+    "wikipedia": "yes",
+    "slug": "g7204",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 4363,
+    "en_title": "Beyond Good and Evil",
+    "en_author": "Friedrich Wilhelm Nietzsche",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 26522,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 54873,
+    "title": "Twenty Thousand Leagues Under the Seas",
+    "author": "Jules Verne",
+    "year": 1869,
+    "downloads_30d": 1066,
+    "sitelinks": 77,
+    "form": "novel",
+    "genre": "science fiction;travel literature;scientific romance;nautical fiction;adventure fiction;merveilleux scientifique",
+    "wikipedia": "yes",
+    "slug": "g54873",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 164,
+    "en_title": "Twenty Thousand Leagues under the Sea",
+    "en_author": "Jules Verne",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 15599,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 56586,
+    "title": "Oliver Twist",
+    "author": "Charles Dickens",
+    "year": 1838,
+    "downloads_30d": 460,
+    "sitelinks": 83,
+    "form": "novel",
+    "genre": "Bildungsroman",
+    "wikipedia": "yes",
+    "slug": "g56586",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 730,
+    "en_title": "Oliver Twist",
+    "en_author": "Charles Dickens",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 15405,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 13951,
+    "title": "The Three Musketeers",
+    "author": "Alexandre Dumas",
+    "year": 1844,
+    "downloads_30d": 23795,
+    "sitelinks": 89,
+    "form": "novel",
+    "genre": "serialized fiction;adventure fiction",
+    "wikipedia": "yes",
+    "slug": "g13951",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 1257,
+    "en_title": "The three musketeers",
+    "en_author": "Alexandre Dumas",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 14239,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 27805,
+    "title": "The Wind in the Willows",
+    "author": "Kenneth Grahame",
+    "year": 1908,
+    "downloads_30d": null,
+    "sitelinks": 45,
+    "form": "novel",
+    "genre": "children's fiction",
+    "wikipedia": "yes",
+    "slug": "g27805",
+    "languages": [],
+    "en_gutenberg": 289,
+    "en_title": "The Wind in the Willows",
+    "en_author": "Kenneth Grahame",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 9111,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 40739,
+    "title": "The Interpretation of Dreams",
+    "author": "Sigmund Freud",
+    "year": 1900,
+    "downloads_30d": 4422,
+    "sitelinks": 44,
+    "form": "",
+    "genre": "",
+    "wikipedia": "yes",
+    "slug": "g40739",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 66048,
+    "en_title": "The Interpretation of Dreams",
+    "en_author": "Sigmund Freud",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 8264,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 14155,
+    "title": "Madame Bovary",
+    "author": "Gustave Flaubert",
+    "year": 1857,
+    "downloads_30d": 2892,
+    "sitelinks": 74,
+    "form": "novel",
+    "genre": "realist novel",
+    "wikipedia": "yes",
+    "slug": "g14155",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 2413,
+    "en_title": "Madame Bovary",
+    "en_author": "Gustave Flaubert",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 8233,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 22016,
+    "title": "The Autobiography of Benjamin Franklin",
+    "author": "Benjamin Franklin",
+    "year": 1791,
+    "downloads_30d": 327,
+    "sitelinks": 12,
+    "form": "",
+    "genre": "memoir",
+    "wikipedia": "yes",
+    "slug": "g22016",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 148,
+    "en_title": "The Autobiography of Benjamin Franklin",
+    "en_author": "Benjamin Franklin",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 3999,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 798,
+    "title": "The Red and the Black",
+    "author": "Stendhal",
+    "year": 1830,
+    "downloads_30d": 2241,
+    "sitelinks": 51,
+    "form": "novel",
+    "genre": "Bildungsroman;historical fiction;psychological fiction",
+    "wikipedia": "yes",
+    "slug": "g798",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 44747,
+    "en_title": "The Red and the Black: A Chronicle of 1830",
+    "en_author": "Stendhal",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 3271,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 57895,
+    "title": "Toilers of the Sea",
+    "author": "Q535",
+    "year": 1866,
+    "downloads_30d": 435,
+    "sitelinks": 26,
+    "form": "novel",
+    "genre": "",
+    "wikipedia": "yes",
+    "slug": "g57895",
+    "languages": [
+      "pt"
+    ],
+    "en_gutenberg": 32338,
+    "en_title": "Toilers of the sea",
+    "en_author": "Victor Hugo",
+    "match": "title",
+    "match_score": 1.0,
+    "downloads30": 1838,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 3747,
+    "title": "Orlando Furioso",
+    "author": "Ludovico Ariosto",
+    "year": 1516,
+    "downloads_30d": 982,
+    "sitelinks": 44,
+    "form": "poem",
+    "genre": "chivalric romance",
+    "wikipedia": "yes",
+    "slug": "g3747",
+    "languages": [
+      "it"
+    ],
+    "en_gutenberg": 615,
+    "en_title": "Orlando Furioso",
+    "en_author": "Lodovico Ariosto",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 1827,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 12108,
+    "title": "Death in Venice",
+    "author": "Thomas Mann",
+    "year": 1912,
+    "downloads_30d": 1248,
+    "sitelinks": 46,
+    "form": "novella",
+    "genre": "",
+    "wikipedia": "yes",
+    "slug": "g12108",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 66073,
+    "en_title": "Death in Venice",
+    "en_author": "Thomas Mann",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 1679,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 7461,
+    "title": "Thérèse Raquin",
+    "author": "Émile Zola",
+    "year": 1869,
+    "downloads_30d": 552,
+    "sitelinks": 29,
+    "form": "novel",
+    "genre": "psychological fiction",
+    "wikipedia": "yes",
+    "slug": "g7461",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 6626,
+    "en_title": "Theresa Raquin",
+    "en_author": "Émile Zola",
+    "match": "author+fuzzy",
+    "match_score": 0.846,
+    "downloads30": 1434,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 11049,
+    "title": "Eugénie Grandet",
+    "author": "Honoré de Balzac",
+    "year": 1833,
+    "downloads_30d": 661,
+    "sitelinks": 30,
+    "form": "novel",
+    "genre": "realist novel",
+    "wikipedia": "yes",
+    "slug": "g11049",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 1715,
+    "en_title": "Eugenie Grandet",
+    "en_author": "Honoré de Balzac",
+    "match": "author+fuzzy",
+    "match_score": 0.966,
+    "downloads30": 1284,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 57832,
+    "title": "Vathek",
+    "author": "William Beckford",
+    "year": 1786,
+    "downloads_30d": 317,
+    "sitelinks": 15,
+    "form": "novel;narration",
+    "genre": "fiction;fantasy;Gothic fiction;Oriental fantasy",
+    "wikipedia": "yes",
+    "slug": "g57832",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 42401,
+    "en_title": "Vathek; An Arabian Tale",
+    "en_author": "William Beckford",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 1175,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 45334,
+    "title": "The Betrothed",
+    "author": "Alessandro Manzoni",
+    "year": 1827,
+    "downloads_30d": 1416,
+    "sitelinks": 38,
+    "form": "novel",
+    "genre": "historical fiction;romantic fiction",
+    "wikipedia": "yes",
+    "slug": "g45334",
+    "languages": [
+      "it"
+    ],
+    "en_gutenberg": 35155,
+    "en_title": "The Betrothed",
+    "en_author": "Alessandro Manzoni",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 1173,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 11024,
+    "title": "Max Havelaar",
+    "author": "Multatuli",
+    "year": 1860,
+    "downloads_30d": 779,
+    "sitelinks": 32,
+    "form": "novel",
+    "genre": "political fiction;double novel",
+    "wikipedia": "yes",
+    "slug": "g11024",
+    "languages": [
+      "nl"
+    ],
+    "en_gutenberg": 70128,
+    "en_title": "Max Havelaar;",
+    "en_author": "Multatuli",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 1093,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 56282,
+    "title": "The Holy War",
+    "author": "John Bunyan",
+    "year": 1682,
+    "downloads_30d": 267,
+    "sitelinks": 5,
+    "form": "novel",
+    "genre": "fantasy",
+    "wikipedia": "yes",
+    "slug": "g56282",
+    "languages": [
+      "nl"
+    ],
+    "en_gutenberg": 395,
+    "en_title": "The Holy War, Made by King Shaddai Upon Diabolus, for the Regaining of the Metropolis of the World; Or, The Losing and Taking Again of the Town of Mansoul",
+    "en_author": "John Bunyan",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 1081,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 52006,
+    "title": "Les Liaisons dangereuses",
+    "author": "Pierre Choderlos de Laclos",
+    "year": 1782,
+    "downloads_30d": 1921,
+    "sitelinks": 38,
+    "form": "novel;epistolary novel;narration",
+    "genre": "erotica;libertine novel;epistolary fiction;drama fiction;found manuscript;satirical fiction",
+    "wikipedia": "yes",
+    "slug": "g52006",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 69891,
+    "en_title": "Les liaisons dangereuses, volume 1 (of 2)",
+    "en_author": "Choderlos de Laclos",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 922,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 56548,
+    "title": "The Red One",
+    "author": "Jack London",
+    "year": 1918,
+    "downloads_30d": 174,
+    "sitelinks": 4,
+    "form": "short story",
+    "genre": "science fiction",
+    "wikipedia": "yes",
+    "slug": "g56548",
+    "languages": [
+      "fi"
+    ],
+    "en_gutenberg": 788,
+    "en_title": "The Red One",
+    "en_author": "Jack London",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 896,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 796,
+    "title": "The Charterhouse of Parma",
+    "author": "Stendhal",
+    "year": 1839,
+    "downloads_30d": 979,
+    "sitelinks": 33,
+    "form": "novel",
+    "genre": "Bildungsroman;literary realism;historical fiction",
+    "wikipedia": "yes",
+    "slug": "g796",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 66374,
+    "en_title": "The Charterhouse of Parma, Volume 1",
+    "en_author": "Stendhal",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 763,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 60810,
+    "title": "Corinne, or Italy",
+    "author": "Germaine de Staël",
+    "year": 1807,
+    "downloads_30d": 381,
+    "sitelinks": 9,
+    "form": "novel",
+    "genre": "",
+    "wikipedia": "yes",
+    "slug": "g60810",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 52077,
+    "en_title": "Corinne; or, Italy",
+    "en_author": "Madame de (Anne-Louise-Germaine) Staël",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 731,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 2054,
+    "title": "Iphigenia in Tauris (Goethe)",
+    "author": "Johann Wolfgang von Goethe",
+    "year": 1787,
+    "downloads_30d": 643,
+    "sitelinks": 17,
+    "form": "drama;play",
+    "genre": "tragedy",
+    "wikipedia": "yes",
+    "slug": "g2054",
+    "languages": [
+      "de"
+    ],
+    "en_gutenberg": 15850,
+    "en_title": "Iphigenia in Tauris",
+    "en_author": "Johann Wolfgang von Goethe",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 697,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 17796,
+    "title": "The Fur Country",
+    "author": "Jules Verne",
+    "year": 1873,
+    "downloads_30d": 303,
+    "sitelinks": 27,
+    "form": "novel",
+    "genre": "adventure fiction",
+    "wikipedia": "yes",
+    "slug": "g17796",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 8991,
+    "en_title": "The Fur Country: Or, Seventy Degrees North Latitude",
+    "en_author": "Jules Verne",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 636,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 17557,
+    "title": "Son Excellence Eugène Rougon",
+    "author": "Émile Zola",
+    "year": 1876,
+    "downloads_30d": 385,
+    "sitelinks": 11,
+    "form": "novel",
+    "genre": "naturalism",
+    "wikipedia": "yes",
+    "slug": "g17557",
+    "languages": [
+      "fr"
+    ],
+    "en_gutenberg": 56654,
+    "en_title": "His Excellency [Son Exc. Eugène Rougon]",
+    "en_author": "Émile Zola",
+    "match": "author+fuzzy",
+    "match_score": 0.806,
+    "downloads30": 561,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 57787,
+    "title": "Orlando Innamorato",
+    "author": "Matteo Maria Boiardo",
+    "year": 1483,
+    "downloads_30d": 338,
+    "sitelinks": 13,
+    "form": "",
+    "genre": "chivalric romance",
+    "wikipedia": "yes",
+    "slug": "g57787",
+    "languages": [
+      "it"
+    ],
+    "en_gutenberg": 57869,
+    "en_title": "The Orlando Innamorato",
+    "en_author": "Matteo Maria Boiardo",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 538,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 43226,
+    "title": "After the Divorce",
+    "author": "Grazia Deledda",
+    "year": 1902,
+    "downloads_30d": 347,
+    "sitelinks": 3,
+    "form": "novel",
+    "genre": "",
+    "wikipedia": "yes",
+    "slug": "g43226",
+    "languages": [
+      "it"
+    ],
+    "en_gutenberg": 39834,
+    "en_title": "After the Divorce: A Romance",
+    "en_author": "Grazia Deledda",
+    "match": "author+fuzzy",
+    "match_score": 1.0,
+    "downloads30": 396,
+    "pg_languages": [
+      "en"
+    ]
+  },
+  {
+    "status": "new",
+    "gutenberg": 61631,
+    "title": "Flaming Youth (novel)",
+    "author": "Samuel Hopkins Adams",
+    "year": 1923,
+    "downloads_30d": null,
+    "sitelinks": 3,
+    "form": "novel",
+    "genre": "social fiction",
+    "wikipedia": "yes",
+    "slug": "g61631",
+    "languages": [],
+    "en_gutenberg": 61582,
+    "en_title": "Flaming Youth",
+    "en_author": "Samuel Hopkins Adams",
+    "match": "title+author",
+    "match_score": 1.0,
+    "downloads30": 385,
+    "pg_languages": [
+      "en"
+    ]
+  }
+]

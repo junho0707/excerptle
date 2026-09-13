@@ -9,5 +9,5 @@
     "db:local": "wrangler d1 migrations apply DB --local --config wrangler.toml"
   },
   "dependencies": { "stripe": "^18.5.0" },
-  "devDependencies": { "wrangler": "^4.0.0", "miniflare": "^4.0.0" }
+  "devDependencies": { "wrangler": "^4.130.0", "miniflare": "^4.0.0" }
 }

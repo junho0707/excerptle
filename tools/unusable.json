@@ -1,0 +1,37 @@
+[
+  {
+    "gutenberg": 22452,
+    "title": "Howards End",
+    "reason": "no plain-text file on gutenberg.org (404 on every path)"
+  },
+  {
+    "gutenberg": 15114,
+    "title": "The Laws of Thought",
+    "reason": "no plain-text file on gutenberg.org (404 on every path)"
+  },
+  {
+    "gutenberg": 4099,
+    "title": "The Angel in the House",
+    "reason": "verse: only ~130 words parse as paragraphs, so tiers 2-5 are identical"
+  },
+  {
+    "gutenberg": 27424,
+    "title": "Cautionary Tales for Children",
+    "reason": "verse: only ~130 words parse as paragraphs, so tiers 2-5 are identical"
+  },
+  {
+    "gutenberg": 1041,
+    "title": "Shakespeare's sonnets",
+    "reason": "verse: only ~130 words parse as paragraphs, so tiers 2-5 are identical"
+  },
+  {
+    "gutenberg": 5131,
+    "title": "Childe Harold's Pilgrimage",
+    "reason": "verse: only ~130 words parse as paragraphs, so tiers 2-5 are identical"
+  },
+  {
+    "gutenberg": 301,
+    "title": "The Ballad of Reading Gaol",
+    "reason": "verse: only ~130 words parse as paragraphs, so tiers 2-5 are identical"
+  }
+]

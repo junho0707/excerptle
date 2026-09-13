@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { quotaCheck, dailyDigest, heartbeatCheck, signedUp, subscriptionChanged, slack } from './alerts.js';
 
 const now = () => Math.floor(Date.now() / 1000);
 const json = (value, status = 200) => Response.json(value, { status });
@@ -7,12 +8,43 @@ const hash = async value => Array.from(new Uint8Array(await crypto.subtle.digest
 const query = (env, sql, ...args) => env.DB.prepare(sql).bind(...args);
 const stripe = env => new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: '2025-08-27.basil', httpClient: Stripe.createFetchHttpClient(), maxNetworkRetries: 2 });
 const origins = env => (env.ALLOWED_ORIGINS || '').split(',');
-const passwordHash = async (password, salt) => {
-  const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: new TextEncoder().encode(salt), iterations: 310000, hash: 'SHA-256' }, material, 256);
-  return Array.from(new Uint8Array(bits), b => b.toString(16).padStart(2, '0')).join('');
+/* Passwords are stretched in the browser, not here.
+ *
+ * PBKDF2 at a defensible iteration count costs ~73ms of CPU; a Workers free
+ * plan invocation gets 10ms, so hashing server-side does not run at all — it
+ * blows the budget and the request dies as a 503. The client therefore does
+ * the stretching (its own CPU, free to us) and sends the derived key, which
+ * this Worker treats exactly as it would a password: never stored as sent,
+ * only as a fast digest of it. That last step is what stops a leaked database
+ * from being a pile of ready-to-use credentials.
+ *
+ * The floor below is enforced here rather than trusted from the client, or a
+ * caller would simply announce that one iteration was plenty. Salt and count
+ * are public — they travel back to the browser at sign-in — so the security
+ * rests on the iteration count, not on hiding either.
+ */
+const KDF = { iterations: 600000, minIterations: 600000, maxIterations: 5000000, saltBytes: 16 };
+const isHex = (value, chars) => typeof value === 'string' && value.length === chars && /^[0-9a-f]+$/.test(value);
+// Cheap by design: the derived key already carries the expensive work, and a
+// per-user salt is what keeps one rainbow table from covering everybody.
+const verifier = (key, salt) => hash(`excerptle-pwd-v2:${salt}:${key}`);
+const kdfParams = row => {
+  const [iterations, salt] = String(row?.password_salt || '').split(':');
+  return row?.password_hash && salt ? { salt, iterations: Number(iterations) } : null;
 };
-const safeName = value => String(value || '').trim().replace(/\s+/g, ' ').slice(0, 24) || 'Reader';
+// Hex digests only, so a character-wise compare is enough: no early return on
+// the first differing byte.
+const sameSecret = (a, b) => {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+};
+const safeName = value => {
+  const name = String(value ?? '').trim().replace(/\s+/g, ' ');
+  if (/[\u0000-\u001f\u007f]/.test(name) || [...name].length > 24) fail(400, 'Display names can use up to 24 visible characters.');
+  return name || 'Anonymous';
+};
 
 async function body(req) {
   const raw = await req.text();
@@ -33,18 +65,21 @@ async function user(req, env) {
   if (!u) fail(401, 'Please sign in again.');
   return u;
 }
-async function session(env, email, name, provider, sub = null) {
+async function session(env, email, name, provider, sub = null, ctx = null) {
   // Google emails must be verified before linking to an existing email-code account.
-  await query(env, 'INSERT INTO users(id,email,name,google_sub,created_at) VALUES(?,?,?,?,?) ON CONFLICT(email) DO NOTHING', crypto.randomUUID(), email, name, sub, now()).run();
+  const created = await query(env, 'INSERT INTO users(id,email,name,google_sub,created_at) VALUES(?,?,?,?,?) ON CONFLICT(email) DO NOTHING', crypto.randomUUID(), email, name, sub, now()).run();
+  // meta.changes distinguishes a new account from a returning one, so the
+  // Slack ping fires once per person rather than once per sign-in.
+  if (created.meta?.changes) signedUp(env, ctx, { email, provider });
   const u = await query(env, 'SELECT * FROM users WHERE email=?', email).first();
   if (sub && u.google_sub && sub !== u.google_sub) fail(401, 'Google account does not match.');
   if (sub && !u.google_sub) await query(env, 'UPDATE users SET google_sub=? WHERE id=?', sub, u.id).run();
   const token = Array.from(crypto.getRandomValues(new Uint8Array(32)), b => b.toString(16).padStart(2, '0')).join('');
   const expiresAt = now() + 30 * 86400;
   await query(env, 'INSERT INTO sessions VALUES(?,?,?)', await hash(token), u.id, expiresAt).run();
-  return json({ uid: u.id, email: u.email, name: u.name, provider, token, expiresAt });
+  return json({ uid: u.id, email: u.email, name: u.name, provider, token, expiresAt, hasPassword: !!u.password_hash });
 }
-async function auth(req, env, path) {
+async function auth(req, env, path, ctx) {
   const d = await body(req);
   await limit(env, `auth-ip:${req.headers.get('CF-Connecting-IP') || 'local'}`, 30, 600);
   if (path === '/auth/google') {
@@ -57,22 +92,52 @@ async function auth(req, env, path) {
     if (!res.ok) fail(401, 'Could not verify Google account.');
     const p = await res.json();
     if (!p.email_verified || !p.email || !p.sub || p.sub !== info.sub) fail(401, 'Verified Google email required.');
-    return session(env, p.email.toLowerCase(), p.name || p.email.split('@')[0], 'google', p.sub);
+    return session(env, p.email.toLowerCase(), p.name || p.email.split('@')[0], 'google', p.sub, ctx);
   }
   const email = String(d.email || '').trim().toLowerCase();
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fail(400, 'Enter a valid email.');
+  // Asked before anything is sent, so a returning account with a password is
+  // never made to wait on an email. It does tell a caller whether an address
+  // has an account here; the rate limit is what keeps that from being a list.
+  if (path === '/auth/check') {
+    await limit(env, `check:${req.headers.get('CF-Connecting-IP') || 'local'}`, 20, 600);
+    const account = await query(env, 'SELECT password_hash, password_salt, google_sub FROM users WHERE email=?', email).first();
+    const kdf = kdfParams(account);
+    return json({ account: !!account, hasPassword: !!kdf, google: !!account?.google_sub, ...(kdf ? { kdf } : {}) });
+  }
+  if (path === '/auth/login') {
+    await limit(env, `login:${await hash(email)}`, 10, 600);
+    const u = await query(env, 'SELECT * FROM users WHERE email=?', email).first();
+    const kdf = kdfParams(u);
+    // Computed even with no account to compare against, so a missing address
+    // and a wrong password cost the same and answer the same.
+    const candidate = await verifier(isHex(d.key, 64) ? d.key : 'x', kdf?.salt || 'no-such-account');
+    if (!kdf || !sameSecret(candidate, u.password_hash)) fail(401, 'Wrong email or password.');
+    return session(env, u.email, u.name, 'password', null, ctx);
+  }
   if (path === '/auth/email') {
-    if (!env.RESEND_API_KEY || !env.OTP_SECRET) fail(503, 'Email sign-in is temporarily unavailable. Please use Google.');
+    /* Handing a sign-in code back in the response is account takeover for
+       anyone who can name an address, so it takes three deliberate conditions
+       that do not co-occur in production: no mail provider configured, an
+       opt-in that lives only in backend/.dev.vars (gitignored, never uploaded
+       by `wrangler deploy`), and a caller on localhost. Production has a
+       RESEND_API_KEY, which alone is enough to rule this out. */
+    const echoCode = env.DEV_ECHO_CODES === 'true'
+      && !env.RESEND_API_KEY
+      && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.get('Origin') || '');
+    if (!env.OTP_SECRET || (!env.RESEND_API_KEY && !echoCode)) fail(503, 'Email sign-in is temporarily unavailable. Please use Google.');
     await limit(env, `mail:${await hash(email)}`, 3, 600);
     const n = crypto.getRandomValues(new Uint32Array(1))[0];
     const code = String(n % 1000000).padStart(6, '0');
     const digest = await hash(`${env.OTP_SECRET}:${email}:${code}`);
     await query(env, `INSERT INTO email_codes VALUES(?,?,?,0) ON CONFLICT(email)
       DO UPDATE SET code_hash=excluded.code_hash,expires_at=excluded.expires_at,attempts=0`, email, digest, now() + 600).run();
-    const res = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ from: env.MAIL_FROM, to: [email], subject: 'Your Excerptle sign-in code', text: `Your Excerptle code is ${code}. It expires in 10 minutes. If you did not request this, ignore this email.` }) });
-    if (!res.ok) fail(503, 'Could not send your code. Try again later.');
-    const account = await query(env, 'SELECT password_hash FROM users WHERE email=?', email).first();
-    return json({ hasPassword: !!account?.password_hash });
+    if (!echoCode) {
+      const res = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ from: env.MAIL_FROM, to: [email], subject: 'Your Excerptle sign-in code', text: `Your Excerptle code is ${code}. It expires in 10 minutes. If you did not request this, ignore this email.` }) });
+      if (!res.ok) fail(503, 'Could not send your code. Try again later.');
+    }
+    const account = await query(env, 'SELECT password_hash, password_salt FROM users WHERE email=?', email).first();
+    return json({ hasPassword: !!kdfParams(account), ...(echoCode ? { devCode: code } : {}) });
   }
   if (path === '/auth/verify') {
     if (!env.OTP_SECRET) fail(503, 'Email sign-in unavailable.');
@@ -81,44 +146,99 @@ async function auth(req, env, path) {
     if (!row || !/^\d{6}$/.test(String(d.code)) || row.code_hash !== await hash(`${env.OTP_SECRET}:${email}:${d.code}`)) fail(401, 'Code expired or incorrect. Request a new code.');
     const deleted = await query(env, 'DELETE FROM email_codes WHERE email=? AND code_hash=? RETURNING email', email, row.code_hash).first();
     if (!deleted) fail(401, 'Code already used.');
-    return session(env, email, email.split('@')[0], 'email');
+    return session(env, email, email.split('@')[0], 'email', null, ctx);
   }
   fail(400, 'Invalid sign-in method.');
 }
 async function setPassword(req, env) {
   const u = await user(req, env);
   const d = await body(req);
-  const password = String(d.password || '');
-  if (password.length < 8 || password.length > 256) fail(400, 'Password must be 8 to 256 characters.');
+  // "Someone has my account, so I changed my password" has to mean something.
+  // Tokens live thirty days in localStorage, so every other one goes.
+  const mine = await hash(req.headers.get('Authorization').slice(7));
+  const revokeOthers = () => query(env, 'DELETE FROM sessions WHERE user_id=? AND token_hash<>?', u.id, mine);
   await limit(env, `password:${u.id}`, 5, 600);
-  const salt = crypto.randomUUID();
-  await query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?', await passwordHash(password, salt), salt, u.id).run();
-  return json({ ok: true });
+  const existing = kdfParams(u);
+  // A session token lives in localStorage for thirty days; replacing a
+  // password that already exists has to cost more than holding one.
+  if (existing && !sameSecret(await verifier(isHex(d.currentKey, 64) ? d.currentKey : 'x', existing.salt), u.password_hash)) {
+    fail(401, 'Current password is wrong.');
+  }
+  if (d.remove === true) {
+    if (!existing) fail(400, 'No password to remove.');
+    await env.DB.batch([
+      query(env, 'UPDATE users SET password_hash=NULL,password_salt=NULL WHERE id=?', u.id),
+      revokeOthers(),
+    ]);
+    return json({ ok: true, hasPassword: false });
+  }
+  const iterations = Number(d.iterations);
+  if (!isHex(d.key, 64)) fail(400, 'Could not read that password. Please try again.');
+  if (!isHex(d.salt, KDF.saltBytes * 2)) fail(400, 'Could not read that password. Please try again.');
+  // The whole scheme rests on this number, and it arrives from the browser.
+  if (!Number.isInteger(iterations) || iterations < KDF.minIterations || iterations > KDF.maxIterations) {
+    fail(400, 'Unsupported password settings. Please reload the page.');
+  }
+  await env.DB.batch([
+    query(env, 'UPDATE users SET password_hash=?,password_salt=? WHERE id=?',
+      await verifier(d.key, d.salt), `${iterations}:${d.salt}`, u.id),
+    revokeOthers(),
+  ]);
+  return json({ ok: true, hasPassword: true });
 }
 async function scores(req, env) {
   if (req.method === 'GET') {
     const puzzleIndex = Number(new URL(req.url).searchParams.get('puzzleIndex'));
-    const hintParam = new URL(req.url).searchParams.get('hints');
+    const params = new URL(req.url).searchParams;
+    const hintParam = params.get('hints');
     const hints = hintParam === null ? null : Number(hintParam);
     if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || (hints !== null && (!Number.isInteger(hints) || hints < 0 || hints > 5))) fail(400, 'Invalid leaderboard filter.');
+    // Ranked on help taken, then guesses, then who got there first. Time spent
+    // reading is deliberately not part of it: this is a book game, not a race.
+    const select = `SELECT COALESCE(NULLIF(u.name,''),s.name) AS name,s.user_id AS playerId,s.guesses,s.hints,s.hint_version AS hintVersion,s.won_at AS at FROM scores s LEFT JOIN users u ON u.id=s.user_id`;
     const rows = hints === null
-      ? await query(env, `SELECT name,guesses,hints,time_ms AS timeMs,won_at AS at FROM scores WHERE puzzle_index=? ORDER BY hints,guesses,time_ms,won_at LIMIT 100`, puzzleIndex).all()
-      : await query(env, `SELECT name,guesses,hints,time_ms AS timeMs,won_at AS at FROM scores WHERE puzzle_index=? AND hints=? ORDER BY guesses,time_ms,won_at LIMIT 100`, puzzleIndex, hints).all();
+      ? await query(env, `${select} WHERE s.puzzle_index=? ORDER BY s.hints,s.guesses,s.won_at LIMIT 100`, puzzleIndex).all()
+      : await query(env, `${select} WHERE s.puzzle_index=? AND s.hints=? ORDER BY s.guesses,s.won_at LIMIT 100`, puzzleIndex, hints).all();
     return json({ scores: rows.results });
   }
   const u = await user(req, env);
   const d = await body(req);
-  const puzzleIndex = Number(d.puzzleIndex), guesses = Number(d.guesses), hints = Number(d.hints), timeMs = Number(d.timeMs);
-  if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || !Number.isInteger(guesses) || guesses < 1 || guesses > 6 || !Number.isInteger(hints) || hints < 0 || hints > 5 || !Number.isFinite(timeMs) || timeMs < 0 || timeMs > 86400000 || d.win !== true) fail(400, 'Invalid score.');
+  const puzzleIndex = Number(d.puzzleIndex), guesses = Number(d.guesses), hints = Number(d.hints), hintVersion = Number(d.hintVersion || 1);
+  // timeMs is no longer ranked on, but clients in the wild still send it and
+  // the column is NOT NULL, so it is accepted and stored, never compared.
+  const timeMs = Number.isFinite(Number(d.timeMs)) ? Math.min(Math.max(Number(d.timeMs), 0), 86400000) : 0;
+  if (!Number.isInteger(puzzleIndex) || puzzleIndex < 0 || puzzleIndex > 10000000 || ![1, 2].includes(hintVersion) || !Number.isInteger(guesses) || guesses < 1 || guesses > 6 || !Number.isInteger(hints) || hints < 0 || hints > 5 || d.win !== true) fail(400, 'Invalid score.');
   await limit(env, `score:${u.id}`, 30, 600);
-  const previous = await query(env, 'SELECT id,guesses,hints,time_ms FROM scores WHERE user_id=? AND puzzle_index=?', u.id, puzzleIndex).first();
-  const candidate = [hints, timeMs, guesses];
-  const old = previous && [previous.hints, previous.time_ms, previous.guesses];
-  if (old && old.every((v, i) => v <= candidate[i])) return json({ ok: true });
-  if (previous) await query(env, 'DELETE FROM scores WHERE id=?', previous.id).run();
-  await query(env, 'INSERT INTO scores VALUES(?,?,?,?,?,?,?,?)', crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now()).run();
+  // One shared board per book: clue-system versions are display metadata, not
+  // separate competitions. Keep each player's best score across every version.
+  await env.DB.batch([
+    query(env, `DELETE FROM scores WHERE user_id=? AND puzzle_index=?
+      AND (hints>? OR (hints=? AND guesses>?))`, u.id, puzzleIndex, hints, hints, guesses),
+    query(env, `INSERT INTO scores(id,user_id,puzzle_index,name,guesses,hints,time_ms,won_at,hint_version)
+      SELECT ?,?,?,?,?,?,?,?,?
+      WHERE NOT EXISTS (SELECT 1 FROM scores WHERE user_id=? AND puzzle_index=?)`,
+      crypto.randomUUID(), u.id, puzzleIndex, safeName(u.name), guesses, hints, Math.round(timeMs), now(), hintVersion, u.id, puzzleIndex),
+  ]);
   return json({ ok: true });
 }
+async function profile(req, env) {
+  const u = await user(req, env);
+  if (req.method === 'GET') return json({ uid: u.id, name: safeName(u.name) });
+  const d = await body(req);
+  const name = safeName(d.name);
+  await query(env, 'UPDATE users SET name=? WHERE id=?', name, u.id).run();
+  return json({ uid: u.id, name });
+}
+/* How far the stored round got: 2 = over, 1 = played, 0 = only opened. The same
+   three ranks as `progressRank()` in js/app.js, so the two sides of a merge
+   cannot disagree — a newer row that was merely opened must not erase guesses.
+   Nested CASE, not AND, because json_extract raises on a malformed legacy row
+   and the GET path deliberately tolerates one. */
+const STORED_RANK = `(CASE WHEN json_valid(progress.data) THEN (CASE
+    WHEN json_extract(progress.data,'$.status') IN ('won','lost') THEN 2
+    WHEN COALESCE(json_extract(progress.data,'$.hints'),0)>0
+      OR COALESCE(json_array_length(progress.data,'$.guesses'),0)>0 THEN 1
+    ELSE 0 END) ELSE 0 END)`;
 async function progress(req, env) {
   const u = await user(req, env);
   if (req.method === 'GET') {
@@ -135,8 +255,15 @@ async function progress(req, env) {
     if (!Number.isInteger(index) || index < 0 || index > 10000000 || !value || typeof value !== 'object' || Array.isArray(value)) fail(400, 'Invalid progress.');
     const encoded = JSON.stringify(value);
     if (encoded.length > 4096) fail(413, 'Progress entry too large.');
+    // How far a round got beats when it was saved, whatever the clocks say: a
+    // second device with the same book still open would otherwise push its
+    // unfinished copy over a win. Mirrors `beats()` in js/app.js.
+    const rank = value.status === 'won' || value.status === 'lost' ? 2
+      : Number(value.hints) > 0 || (Array.isArray(value.guesses) && value.guesses.length) ? 1 : 0;
     writes.push(query(env, `INSERT INTO progress VALUES(?,?,?,?) ON CONFLICT(user_id,puzzle_index)
-      DO UPDATE SET data=excluded.data,updated_at=excluded.updated_at WHERE excluded.updated_at>=progress.updated_at`, u.id, index, encoded, Number(value.at) || Date.now()));
+      DO UPDATE SET data=excluded.data,updated_at=excluded.updated_at
+      WHERE ?>${STORED_RANK} OR (?=${STORED_RANK} AND excluded.updated_at>=progress.updated_at)`,
+      u.id, index, encoded, Number(value.at) || Date.now(), rank, rank));
   }
   if (writes.length) await env.DB.batch(writes);
   return json({ ok: true });
@@ -193,15 +320,22 @@ async function billing(req, env, path) {
     const price = await s.prices.retrieve(priceId);
     const expected = plan === 'yearly' ? { amount: 2000, interval: 'year' } : { amount: 300, interval: 'month' };
     if (!price.active || price.currency !== 'usd' || price.unit_amount !== expected.amount || price.recurring?.interval !== expected.interval || price.recurring.interval_count !== 1 || price.livemode !== (env.STRIPE_LIVE === 'true')) fail(503, 'Subscription configuration needs attention.');
-    const checkout = await s.checkout.sessions.create({ mode: 'subscription', customer: u.stripe_customer,
+    const params = { mode: 'subscription', customer: u.stripe_customer,
       client_reference_id: u.id, line_items: [{ price: priceId, quantity: 1 }],
       metadata: { user_id: u.id, plan },
-      subscription_data: { metadata: { user_id: u.id, plan } }, success_url: back, cancel_url: back },
-      { idempotencyKey: `checkout:${u.id}:${plan}:${Math.floor(now() / 1800)}` });
+      subscription_data: { metadata: { user_id: u.id, plan } }, success_url: back, cancel_url: back };
+    const key = `checkout:${u.id}:${plan}:${Math.floor(now() / 1800)}`;
+    let checkout = await s.checkout.sessions.create(params, { idempotencyKey: key });
+    // monthly -> yearly -> monthly inside one bucket replays the key of the
+    // session the yearly request expired. The bucket still stops a double-click
+    // buying twice; only a dead replay asks for a new session.
+    if (checkout.status === 'expired' || checkout.status === 'complete') {
+      checkout = await s.checkout.sessions.create(params, { idempotencyKey: `${key}:${crypto.randomUUID()}` });
+    }
     return json({ url: checkout.url });
   } finally { await query(env, 'DELETE FROM checkout_locks WHERE user_id=?', u.id).run(); }
 }
-async function webhook(req, env) {
+async function webhook(req, env, ctx) {
   if (!env.STRIPE_SECRET_KEY || !env.STRIPE_WEBHOOK_SECRET) fail(503, 'Webhook not configured.');
   const s = stripe(env);
   let event;
@@ -229,10 +363,19 @@ async function webhook(req, env) {
       AND (subscriptions.status NOT IN ('canceled','incomplete_expired') OR excluded.status IN ('canceled','incomplete_expired'))`, sub.id, u.id, item ? sub.status : 'canceled', end, sub.cancel_at_period_end ? 1 : 0, item?.price.id || '', event.created, event.id),
     query(env, 'INSERT OR IGNORE INTO stripe_events VALUES(?,?)', event.id, now())
   ]);
+  // Money moving is worth a ping — but `customer.subscription.updated` also
+  // fires on every renewal and on changes nobody would notice. Stripe names
+  // the fields that actually moved, so ping only when one of the two a human
+  // cares about is among them.
+  const moved = event.data.previous_attributes || {};
+  if (event.type === 'customer.subscription.created' || event.type === 'customer.subscription.deleted'
+    || 'status' in moved || 'cancel_at_period_end' in moved) {
+    subscriptionChanged(env, ctx, { status: item ? sub.status : 'canceled', plan: sub.metadata?.plan, cancelAtEnd: !!sub.cancel_at_period_end });
+  }
   return json({ received: true });
 }
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const path = new URL(req.url).pathname;
     const origin = req.headers.get('Origin');
     let response;
@@ -240,8 +383,11 @@ export default {
       if (origin && !origins(env).includes(origin)) fail(403, 'Origin not allowed.');
       if (req.method === 'OPTIONS') response = new Response(null, { status: 204 });
       else if (path === '/health' && req.method === 'GET') response = json({ ok: true });
-      else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env);
-      else if (['/auth/email', '/auth/verify', '/auth/google'].includes(path) && req.method === 'POST') response = await auth(req, env, path);
+      // Read by the browser before deriving a new password, so the cost can be
+      // raised for everyone from here without shipping a new frontend.
+      else if (path === '/auth/kdf' && req.method === 'GET') response = json({ iterations: KDF.iterations, saltBytes: KDF.saltBytes });
+      else if (path === '/billing/webhook' && req.method === 'POST') response = await webhook(req, env, ctx);
+      else if (['/auth/email', '/auth/verify', '/auth/google', '/auth/check', '/auth/login'].includes(path) && req.method === 'POST') response = await auth(req, env, path, ctx);
       else if (path === '/auth/logout' && req.method === 'POST') {
         await user(req, env);
         await query(env, 'DELETE FROM sessions WHERE token_hash=?', await hash(req.headers.get('Authorization').slice(7))).run();
@@ -249,6 +395,7 @@ export default {
       } else if ((path === '/billing/status' && req.method === 'GET') || (['/billing/checkout', '/billing/portal'].includes(path) && req.method === 'POST')) response = await billing(req, env, path);
       else if (path === '/scores' && (req.method === 'GET' || req.method === 'POST')) response = await scores(req, env);
       else if (path === '/me/progress' && (req.method === 'GET' || req.method === 'PUT')) response = await progress(req, env);
+      else if (path === '/me/profile' && (req.method === 'GET' || req.method === 'POST')) response = await profile(req, env);
       else if (path === '/me/password' && req.method === 'POST') response = await setPassword(req, env);
       else response = json({ error: 'Not found.' }, 404);
     } catch (e) {
@@ -260,12 +407,32 @@ export default {
     response.headers.set('Vary', 'Origin');
     if (origin && origins(env).includes(origin)) {
       response.headers.set('Access-Control-Allow-Origin', origin);
-      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS');
       response.headers.set('Access-Control-Allow-Headers', 'Authorization, Content-Type');
     }
     return response;
   },
-  async scheduled(event, env) {
-    await env.DB.batch(['sessions', 'email_codes', 'rate_limits', 'checkout_locks'].map(table => query(env, `DELETE FROM ${table} WHERE expires_at<?`, now())));
+  /* Two schedules (see wrangler.toml [triggers]):
+       0 * * * *   hourly free-tier quota check — quiet unless something moved
+       7 12 * * *  nightly sweep + the daily Slack digest (08:07 New York)
+     Alerting is wrapped so a Slack or analytics outage can never stop the
+     expiry sweep, which is the part the service actually depends on. */
+  async scheduled(event, env, ctx) {
+    const nightly = event.cron !== '0 * * * *';
+    if (nightly) {
+      await env.DB.batch(['sessions', 'email_codes', 'rate_limits', 'checkout_locks'].map(table => query(env, `DELETE FROM ${table} WHERE expires_at<?`, now())));
+    }
+    try {
+      // Inside the try: alert_state only exists once migration 0003 is applied,
+      // and a missing table must not be able to abort the sweep above.
+      if (nightly) await query(env, 'DELETE FROM alert_state WHERE updated_at<?', now() - 7 * 86400).run();
+      if (nightly) await dailyDigest(env);
+      else {
+        await quotaCheck(env);
+        await heartbeatCheck(env);
+      }
+    } catch (err) {
+      ctx?.waitUntil?.(slack(env, { text: `:x: Excerptle cron \`${event.cron}\` failed: ${String(err.message).slice(0, 200)}` }));
+    }
   }
 };
