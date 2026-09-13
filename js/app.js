@@ -3,6 +3,7 @@
   const MAX_GUESSES = 6;
   const MAX_HINTS = 5;
   const START = "2026-09-08";
+
   const { fold, isMatch, partialMatch, stripEdition } = window.BookleMatch;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -753,7 +754,25 @@
       return;
     }
     box.innerHTML = escapeHtml(raw).replace(/\{\{([^{}]+)\}\}/g, (_, word) =>
-      `<span class="redacted" tabindex="0" role="note" title="${REDACTION_NOTE}" aria-label="${word}. ${REDACTION_NOTE}">(${word})</span>`);
+      `<span class="redacted" tabindex="0" role="note" aria-label="${word}. ${REDACTION_NOTE}">(${word})<span class="redacted-tip" aria-hidden="true">${REDACTION_NOTE}</span></span>`);
+  }
+
+  function placeNote(host) {
+    const tip = host?.querySelector(".redacted-tip");
+    if (!tip) return;
+    tip.style.setProperty("--tip-x", "0px");
+    const r = tip.getBoundingClientRect();
+    const pad = 8;
+    let dx = 0;
+    if (r.left < pad) dx = pad - r.left;
+    else if (r.right > window.innerWidth - pad) dx = window.innerWidth - pad - r.right;
+    tip.style.setProperty("--tip-x", `${Math.round(dx)}px`);
+  }
+  for (const ev of ["pointerenter", "focus"]) {
+    document.addEventListener(ev, (e) => {
+      const host = e.target instanceof Element ? e.target.closest(".redacted") : null;
+      if (host) placeNote(host);
+    }, true);
   }
 
   function renderCompletedExcerpt(box) {
@@ -971,9 +990,7 @@
       </section>` : ""}
 
       ${won && !window.BookleAuth?.session?.() ? `<section class="pg-sec pg-save">
-        <h3>Keep this result</h3>
-        <p>Your result is saved on this device. Sign in to add it to the leaderboard and sync your progress. You can keep playing without signing in.</p>
-        <button class="btn" type="button" data-act="open-auth">Sign in to save it</button>
+        <button class="btn" type="button" data-act="open-auth">Sign in to save your result</button>
       </section>` : ""}
 
       <div class="row pg-actions">
@@ -1010,6 +1027,7 @@
       if (more) more.classList.toggle("hidden", battle);
       placeMore(false);
       window.ExcerptleAds?.clear();
+      house(false);
       return;
     }
     form.classList.add("hidden");
@@ -1019,6 +1037,14 @@
     box.innerHTML = postGameHtml();
     // Fresh <ins> per finished game — see js/ads.js.
     if (refreshAd) window.ExcerptleAds?.render();
+    house(true);
+  }
+
+  /* House ads ride with the AdSense slot: shown once the round is over, gone
+     while a round is in play, and off for Pro, which is sold as ad-free. */
+  function house(show) {
+    const el = document.getElementById("house");
+    if (el) el.classList.toggle("hidden", !show || !!window.ExcerptlePro?.isPro?.());
   }
 
   /* Who named the book first, decided the same way in both browsers.
@@ -2392,6 +2418,7 @@
     }
   });
   document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") document.querySelectorAll(".redacted.open").forEach(el => el.classList.remove("open"));
     if (e.key === "Enter" && e.target?.id === "play-id-input") {
       e.preventDefault();
       playById(e.target.value);
@@ -2422,6 +2449,15 @@
     const pageBtn = e.target.closest("[data-page]");
     if (pageBtn) {
       location.hash = `#/bank?page=${pageBtn.dataset.page}`;
+      return;
+    }
+    const note = e.target.closest(".redacted");
+    document.querySelectorAll(".redacted.open").forEach(el => {
+      if (el !== note) el.classList.remove("open");
+    });
+    if (note) {
+      note.classList.toggle("open");
+      if (note.classList.contains("open")) placeNote(note);
       return;
     }
     const act = e.target.closest("[data-act]")?.dataset.act;

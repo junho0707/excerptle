@@ -21,6 +21,15 @@
   --sp-2: 0.6rem;   /* between related lines */
   --sp-3: 1rem;     /* between blocks in a card */
   --sp-4: 1.5rem;   /* between sections, and the air on each side of a rule */
+
+  /* House promos. Cool greys against the warm paper, so the cards read as
+     something other than the game before a word of them is read. */
+  --promo: #e9edf3;
+  --promo-2: #dde4ee;
+  --promo-rule: #bcc6d4;
+  --promo-ink: #26303d;
+  --promo-soft: #566374;
+  --promo-accent: #2c5a86;
 }
 
 [data-theme="night"] {
@@ -33,6 +42,12 @@
   --wine-deep: #c45b66;
   --gold: #d4b36a;
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --promo: #191f27;
+  --promo-2: #212934;
+  --promo-rule: #3a4552;
+  --promo-ink: #e2e9f2;
+  --promo-soft: #9fb0c4;
+  --promo-accent: #8cbbe8;
 }
 
 * { box-sizing: border-box; }
@@ -185,9 +200,61 @@ a { color: var(--wine); }
    Underlined rather than highlighted: it should read as part of the sentence,
    and only ask for attention when a player wonders about it. */
 .excerpt .redacted {
+  position: relative;
   border-bottom: 1px dotted var(--wine);
   color: var(--wine);
   cursor: help;
+}
+/* Our own bubble rather than title=: the native one waits about a second
+   before it appears and never shows at all on a touch screen. This one is
+   instant on hover, and .open is the tap equivalent for phones. --tip-x is
+   the nudge app.js applies when the word sits near a screen edge. */
+.excerpt .redacted-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.5rem);
+  transform: translateX(calc(-50% + var(--tip-x, 0px)));
+  z-index: 5;
+  width: max-content;
+  max-width: min(18rem, 76vw);
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.35;
+  text-align: left;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.excerpt .redacted::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.16rem);
+  transform: translateX(-50%);
+  z-index: 6;
+  border: 0.34rem solid transparent;
+  border-top-color: var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.excerpt .redacted:hover .redacted-tip,
+.excerpt .redacted:hover::before,
+.excerpt .redacted:focus-visible .redacted-tip,
+.excerpt .redacted:focus-visible::before,
+.excerpt .redacted.open .redacted-tip,
+.excerpt .redacted.open::before {
+  opacity: 1;
+  visibility: visible;
 }
 .excerpt .redacted:focus-visible {
   outline: 2px solid var(--wine);
@@ -340,6 +407,94 @@ a { color: var(--wine); }
 }
 .ad .adsbygoogle { display: block; min-height: 5.5rem; }
 .ad-label { display: block; }
+/* House ads. Our own two sites, under the AdSense slot on the post-game
+   screen. Two things this has to do: sit clearly apart from the game above it,
+   and read as TWO offers rather than one. No "advertisement" label — it would
+   only talk the reader out of reading the line. */
+.house {
+  margin: var(--sp-4) 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--rule);
+}
+.house-title {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.house a { text-decoration: none; color: inherit; }
+
+/* Each offer is its own bordered card with real air between them: a shared
+   box with a hairline made the second one look like a footnote to the first. */
+.house-ad {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border: 1px solid var(--promo-rule);
+  border-radius: 5px;
+  background: var(--promo);
+  color: var(--promo-ink);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.house-ad + .house-ad { margin-top: var(--sp-3); }
+.house-ad:hover,
+.house-ad:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
+
+.house-copy { flex: 1 1 auto; min-width: 0; }
+
+/* The site's name is the card's title; the line under it says what it does.
+   The whole card is the link, so the title carries the link's affordances —
+   an arrow that steps forward and an underline on hover. */
+.house-name {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: var(--promo-accent);
+  margin-bottom: 0.25rem;
+}
+.house-arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.house-ad:hover .house-name,
+.house-ad:focus-visible .house-name { text-decoration: underline; }
+.house-ad:hover .house-arrow,
+.house-ad:focus-visible .house-arrow { transform: translateX(0.2em); }
+.house-line {
+  display: block;
+  font-size: 0.87rem;
+  line-height: 1.4;
+  color: var(--promo-soft);
+}
+
+/* The second card carries no art, so it is set a notch smaller and quieter —
+   enough to rank the two without making it look like a caption. */
+.house-ad-alt { padding: 0.85rem var(--sp-3); }
+.house-ad-alt .house-name { font-size: 1rem; }
+.house-ad-alt .house-line { font-size: 0.83rem; }
+
+/* Both cards show a logo plate. The wordmarks are dark ink on white with no
+   alpha, so they keep their own white tile rather than being knocked out or
+   inverted for the night theme. */
+.house-logo {
+  flex: 0 0 auto;
+  width: 150px;
+  height: auto;
+  padding: 0.45rem 0.6rem;
+  border-radius: 4px;
+  background: #fff;
+}
+.house-ad-alt .house-logo { width: 130px; }
+
+@media (max-width: 30rem) {
+  .house-logo { width: 118px; }
+  .house-ad-alt .house-logo { width: 106px; }
+}
+
 .screen h1 {
   font-family: var(--serif);
   font-size: 1.7rem;
@@ -397,7 +552,9 @@ a { color: var(--wine); }
 }
 
 footer {
-  margin-top: auto;
+  /* Deliberately not margin-top:auto. On the short playing screen that shoved
+     the footer to the bottom of the viewport and left a void under "want to
+     guess more"; the page background fills the rest either way. */
   padding: 2.75rem 0 1.75rem;
   border-top: 1px solid var(--rule);
   font-size: 0.75rem;
@@ -424,6 +581,39 @@ footer a { color: inherit; }
 .footer-note {
   margin: 1.5rem 0 0;
   opacity: 0.8;
+}
+
+/* Social row: the always-there home for the accounts. Icons inherit the
+   footer's ink so the night theme needs no second set of colours. */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem;
+  margin-top: 1.35rem;
+}
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: var(--ink-soft);
+  opacity: 0.72;
+  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.social a:hover,
+.social a:focus-visible {
+  opacity: 1;
+  color: var(--wine);
+  background: var(--paper-2);
+}
+.social svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
 .nav-right {
@@ -883,10 +1073,15 @@ footer a { color: inherit; }
    the same hairline the header uses goes between them — with air on both
    sides. #more swaps sides when the round ends (below while playing, above
    once it's done), so the rule follows whichever one comes second. */
-.daily-card + #more,
-#more + .daily-card {
+/* Playing, the rule sits above #more; finished, below it. Either way #more
+   carries its own equal padding, and only the element under the rule adds the
+   matching air — otherwise one side gets double and the block looks dropped. */
+.daily-card + #more {
   border-top: 1px solid var(--rule);
   margin-top: var(--sp-4);
+}
+#more + .daily-card {
+  border-top: 1px solid var(--rule);
   padding-top: var(--sp-4);
 }
 
@@ -931,15 +1126,20 @@ footer a { color: inherit; }
 
 /* "Want to guess more?" — the way off today's puzzle */
 .more {
-  margin: 0 0 var(--sp-4);
+  margin: 0;
+  padding: var(--sp-4) 0;
   text-align: center;
 }
+/* Finished, #more leads the screen and main's own top padding already supplies
+   the air above it — keeping its own as well would double the gap. */
+#game > #more:first-child { padding-top: 0; }
 /* Finished: the result card jumps above the excerpt, which stays visible
    at whatever hint tier the player had unlocked. */
 .daily-card.done .story-bar { order: -2; }
 .daily-card.done #result { order: -1; margin-top: 0; margin-bottom: var(--sp-3); }
 .more-q {
   margin: 0 0 var(--sp-2);
+  line-height: 1;
   font-size: 1.08rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -1034,13 +1234,6 @@ footer a { color: inherit; }
 }
 .sq.on { background: var(--wine); border-color: var(--wine); }
 
-/* Shown only to a signed-out winner: the one moment the offer is concrete,
-   because there is now a result on the table to lose. */
-.pg-save p {
-  margin: 0 0 0.7rem;
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-}
 
 .rank-line { margin: 0 0 0.55rem; }
 .rank-line b { font-family: var(--serif); font-size: 1.1rem; }

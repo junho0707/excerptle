@@ -25,5 +25,9 @@ wrangler.*
 # sizes all live in assets/.
 /logo.png
 /icon.png
+/study_4.png
+/og-image.png
+/new_logo_provable.png
+/vh_logo.svg
 assets/logo.png
 assets/logo-1200.png
