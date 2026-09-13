@@ -83,7 +83,7 @@ Official references: [Checkout](https://docs.stripe.com/api/checkout/sessions/cr
 | When | What |
 | --- | --- |
 | Hourly cron | Free-tier quota check — **silent** unless a metric crosses 50 / 75 / 90 / 100 % of its daily allowance |
-| 03:17 UTC cron | Daily digest: players, solves, accounts, Pro, plus yesterday's platform usage against the free limits |
+| 12:07 UTC cron | Daily digest: players, solves, accounts, Pro, plus yesterday's platform usage against the free limits |
 | Live | A new account signs up; a Pro subscription starts, cancels, or is set to cancel |
 
 Everything is optional and fails soft. With no `SLACK_WEBHOOK_URL` nothing is
@@ -134,7 +134,7 @@ runs before any alerting and is never blocked by it.
 
    ```sh
    npx wrangler dev --test-scheduled
-   curl 'http://localhost:8787/__scheduled?cron=17+3+*+*+*'   # digest
+   curl 'http://localhost:8787/__scheduled?cron=7+12+*+*+*'   # digest
    curl 'http://localhost:8787/__scheduled?cron=0+*+*+*+*'    # quota check
    ```
 
@@ -156,3 +156,17 @@ reason the front-door Worker was put on a diet — see `tools/og-worker/README.m
 Counters reset at 00:00 UTC and so does the alert memory: `alert_state` is
 keyed by metric + UTC day, so an hourly check that keeps seeing 78 % stays
 quiet after the first message, and a genuine climb to 90 % still speaks up.
+
+### Watchdogs
+
+Two things guard the "silence means healthy" design:
+
+- `heartbeatCheck()` runs on the hourly cron and posts once a day if the digest
+  has not stamped `alert_state['digest:last']` in over 26 hours — a daily
+  message that stops arriving is otherwise indistinguishable from a quiet day.
+- `.github/workflows/uptime.yml` probes the site and `/health` from GitHub
+  Actions twice an hour. It lives outside Cloudflare on purpose: every other
+  alert here is sent *by* the thing being watched. It needs a repo secret named
+  `SLACK_WEBHOOK_URL`.
+
+Full picture: `MONITORING.md` at the repo root.

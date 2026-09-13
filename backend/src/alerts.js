@@ -183,6 +183,9 @@ export async function quotaCheck(env) {
 }
 
 const DAY = 86400;
+const DIGEST_KEY = 'digest:last';
+/* 26h, not 24: a digest that runs a little late must not read as a failure. */
+const STALE_AFTER = 26 * 3600;
 
 /* Daily. The product picture — who showed up, who paid — plus yesterday's
    platform usage as a percentage of what the free plan allows. */
@@ -239,7 +242,31 @@ export async function dailyDigest(env) {
   if (env.ALERT_DASH_URL) blocks.push({ type: 'context', elements: [{ type: 'mrkdwn', text: `<${env.ALERT_DASH_URL}|Cloudflare dashboard>` }] });
 
   await slack(env, { text: `Excerptle daily — ${num(s.n || 0)} solves, ${num(first(subs).n || 0)} Pro`, blocks });
+  // The digest is the heartbeat: this stamp is what heartbeatCheck watches.
+  await writeState(env, DIGEST_KEY, String(Math.floor(Date.now() / 1000)));
   return { platform };
+}
+
+/* Hourly. "Silence means healthy" only works if somebody notices the silence,
+   and nobody notices a daily message that stops arriving. So the hourly run —
+   the schedule most likely to still be firing — checks the digest's own
+   heartbeat and speaks up when it goes stale. Needs no Cloudflare token.
+   It cannot catch Cloudflare dropping *every* cron; that is what the external
+   uptime workflow in .github/workflows/uptime.yml is for. */
+export async function heartbeatCheck(env) {
+  if (!env.SLACK_WEBHOOK_URL) return { skipped: true };
+  const last = Number(await readState(env, DIGEST_KEY) || 0);
+  // No stamp at all means the digest has not run since this shipped, not that
+  // it is broken — stay quiet until one has been recorded.
+  if (!last) return { unknown: true };
+  const age = Math.floor(Date.now() / 1000) - last;
+  if (age < STALE_AFTER) return { age };
+  const key = `digest:stale:${utcDay()}`;
+  if (await readState(env, key)) return { age, alerted: false };
+  await writeState(env, key, '1');
+  const hours = Math.floor(age / 3600);
+  await slack(env, { text: `:warning: Excerptle daily digest has not run for ${hours}h — the 12:07 UTC cron may have stopped firing.` });
+  return { age, alerted: true };
 }
 
 /* Events worth interrupting someone for, sent from the request path. */

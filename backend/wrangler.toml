@@ -4,6 +4,11 @@ compatibility_date = "2026-05-01"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
+# Workers Logs, as on the site and OG Workers. This is the Worker holding auth,
+# billing and D1; it is the last one that should be running blind.
+[observability]
+enabled = true
+
 [vars]
 SITE_URL = "https://excerptle.io"
 ALLOWED_ORIGINS = "https://excerptle.io,https://www.excerptle.io,http://localhost:8765,http://127.0.0.1:8765"
@@ -21,5 +26,6 @@ migrations_dir = "migrations"
 
 [triggers]
 # Hourly: free-tier quota check (silent unless a threshold band is crossed).
-# 03:17 UTC: expiry sweep + the daily Slack digest.
-crons = ["0 * * * *", "17 3 * * *"]
+# 12:07 UTC: expiry sweep + the daily Slack digest. Cloudflare crons are UTC and
+# do not follow DST, so this lands 08:07 in New York in summer, 07:07 in winter.
+crons = ["0 * * * *", "7 12 * * *"]

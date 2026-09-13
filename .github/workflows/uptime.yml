@@ -1,0 +1,58 @@
+name: Uptime
+
+# The deadman switch. Every other alert Excerptle has is sent *by* Cloudflare,
+# so a Cloudflare outage takes the alerting down with the site and the silence
+# reads as health. This runs somewhere else and says so when the site stops
+# answering.
+on:
+  schedule:
+    - cron: '13,43 * * * *'   # twice an hour, off the :00/:30 rush
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe the site and the API
+        id: probe
+        run: |
+          set -uo pipefail
+          check() {
+            local name="$1" url="$2" want="$3"
+            # Three tries, spaced: one dropped request is not an outage.
+            for attempt in 1 2 3; do
+              code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$url" || echo 000)
+              [ "$code" = "$want" ] && { echo "$name OK ($code)"; return 0; }
+              [ "$attempt" -lt 3 ] && sleep 20
+            done
+            echo "$name FAILED (last status $code, expected $want)"
+            printf '\u2022 *%s* \u2014 `%s` returned `%s`, expected `%s`\n' "$name" "$url" "$code" "$want" >> failures.txt
+            return 0
+          }
+          : > failures.txt
+          check "Site"        "https://excerptle.io/"                                              200
+          check "Puzzle feed" "https://excerptle.io/sitemap.xml"                                   200
+          check "API health"  "https://excerptle-api.winter-glade-cbab.workers.dev/health"         200
+          if [ -s failures.txt ]; then echo "down=true" >> "$GITHUB_OUTPUT"; else echo "down=false" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Tell Slack
+        if: steps.probe.outputs.down == 'true'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # No webhook configured is not a build failure — same fail-soft rule
+          # as backend/src/alerts.js.
+          [ -n "${SLACK_WEBHOOK_URL:-}" ] || { echo "No SLACK_WEBHOOK_URL secret; nothing sent."; exit 0; }
+          jq -n --rawfile d failures.txt --arg r "$RUN_URL" '{
+            text: "🚨 Excerptle is not answering",
+            blocks: [
+              { type: "header", text: { type: "plain_text", text: "🚨 Excerptle is not answering" } },
+              { type: "section", text: { type: "mrkdwn", text: $d } },
+              { type: "context", elements: [ { type: "mrkdwn", text: ("Checked from GitHub Actions, outside Cloudflare · <" + $r + "|run log>") } ] }
+            ] }' | curl -sS -X POST -H 'Content-Type: application/json' -d @- "$SLACK_WEBHOOK_URL" > /dev/null
+          echo "Alert sent."
+
+      - name: Fail the run so it shows red
+        if: steps.probe.outputs.down == 'true'
+        run: exit 1

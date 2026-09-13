@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { quotaCheck, dailyDigest, signedUp, subscriptionChanged, slack } from './alerts.js';
+import { quotaCheck, dailyDigest, heartbeatCheck, signedUp, subscriptionChanged, slack } from './alerts.js';
 
 const now = () => Math.floor(Date.now() / 1000);
 const json = (value, status = 200) => Response.json(value, { status });
@@ -414,7 +414,7 @@ export default {
   },
   /* Two schedules (see wrangler.toml [triggers]):
        0 * * * *   hourly free-tier quota check — quiet unless something moved
-       17 3 * * *  nightly sweep + the daily Slack digest
+       7 12 * * *  nightly sweep + the daily Slack digest (08:07 New York)
      Alerting is wrapped so a Slack or analytics outage can never stop the
      expiry sweep, which is the part the service actually depends on. */
   async scheduled(event, env, ctx) {
@@ -426,7 +426,11 @@ export default {
       // Inside the try: alert_state only exists once migration 0003 is applied,
       // and a missing table must not be able to abort the sweep above.
       if (nightly) await query(env, 'DELETE FROM alert_state WHERE updated_at<?', now() - 7 * 86400).run();
-      await (nightly ? dailyDigest(env) : quotaCheck(env));
+      if (nightly) await dailyDigest(env);
+      else {
+        await quotaCheck(env);
+        await heartbeatCheck(env);
+      }
     } catch (err) {
       ctx?.waitUntil?.(slack(env, { text: `:x: Excerptle cron \`${event.cron}\` failed: ${String(err.message).slice(0, 200)}` }));
     }
