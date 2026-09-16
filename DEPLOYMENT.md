@@ -2,11 +2,20 @@
 
 How excerptle.io is hosted, how to ship an update, and what still needs doing.
 
-Last verified: 2026-09-08.
+Last verified: 2026-09-16.
 
 ## Architecture
 
-Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. There is no backend. No build step: the repo root *is* the deployed site.
+Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. No build step: the repo root *is* the deployed site.
+
+**Gameplay has no backend.** A round — excerpt, hints, title matching, win or
+lose — runs entirely in the browser against static JSON. Zero API calls.
+
+There *is* a backend, added in `a380561`, for the things a player cannot be
+trusted to judge alone: accounts, leaderboards, cross-device progress and Pro
+billing. It is a separate Worker over D1 (`excerptle-api`, routes `/auth/*`,
+`/billing/*`, `/scores`, `/me/*`) and nothing in the puzzle path touches it.
+See the three-Worker table under *Shipping an update*.
 
 | Thing | Value |
 | --- | --- |

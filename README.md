@@ -1,6 +1,6 @@
 # Excerptle (`excerptle.io`)
 
-**Next agent: read [`PROGRESS.md`](PROGRESS.md) first** (frontend done, backend next).
+**Next agent: read [`PROGRESS.md`](PROGRESS.md) first.** Frontend and backend both ship; `DEPLOYMENT.md` is the operational truth and `MONITORING.md` the alerting map. Sections below marked ~~struck~~ or *Not what shipped* are kept as history — trust the code over this file.
 
 Guess the book from a public-domain excerpt. Six tries. Hints expand the text.
 
@@ -53,7 +53,7 @@ An abandoned application is not a live federal registration. It does not give Ba
 | Game | Status | Mechanic |
 |---|---|---|
 | **Yeardle** | Exists (do not rebuild here) | Guess the year in 6. Each miss reveals a more obvious historical clue. Higher/lower. |
-| **Bookle** (was Excerptle) | **This repo** | Guess the book title in 6. Each miss expands the excerpt. |
+| **Excerptle** | **This repo** | Guess the book title in 6. Each miss expands the excerpt. |
 
 Shared chrome (nav, stats, ads, leaderboard contract) is specified below so Yeardle and Bookle can feel like one studio later.
 
@@ -99,10 +99,10 @@ https://excerptle.io/?p=1001
 ### Content rules
 
 - **Public domain in the United States only.** As of 2026 that means works published 1930 or earlier (95-year term), plus US government works and older expired copyrights.
-- Canon only: titles an educated adult has heard of. MVP pool: **50** books.
+- Canon only: titles an educated adult has heard of. The MVP target was **50** books; the shipped bank is **720** (600 presets + a 120-book daily tail).
 - Do **not** host the full book. Stop at three chapters (or equivalent parts).
 - Each puzzle file is attributed to Project Gutenberg (id + license note).
-- Filenames are opaque (`b14.json`) so the Network panel does not shout the answer. The JSON body still contains the title — same class of spoiler as classic Wordle. No backend for gameplay.
+- Filenames were meant to be opaque (`b14.json`) so the Network panel does not shout the answer. **This no longer holds:** the dataset rebuild in `688e23f` renamed every puzzle to `g<gutenberg-id>.json`, so the filename *is* the answer (`g345` = *Dracula*), and `puzzles/index.json` ships the full slug order. The JSON body also still contains the title — that part was always accepted, same class of spoiler as classic Wordle. No backend for gameplay. See `ANSWER-PRIVACY.md`.
 
 ---
 
@@ -110,13 +110,13 @@ https://excerptle.io/?p=1001
 
 | Feature | Spec |
 |---|---|
-| Hosting | Static. GitHub Pages / Cloudflare Pages / Vercel. Apex `excerptle.io`. |
-| Backend | **None for gameplay.** Pre-generated JSON puzzles. |
-| Auth | None. `localStorage` for anonymous id, streak, stats, guess distribution, current board. |
-| Puzzles | **Gamebank presets #1–#1000.** **Dailies start at #1001** on launch day (UTC). Same daily worldwide. Grow the preset cap when DAU justifies it. |
+| Hosting | Static, on Cloudflare Workers static assets. Apex `excerptle.io`. |
+| Backend | **None for gameplay** — pre-generated JSON puzzles. A separate `excerptle-api` Worker over D1 carries accounts, scores, progress and Pro billing. |
+| Auth | Real, server-side: Google and email sign-in through `excerptle-api`. `localStorage` still holds the anonymous id, streak, stats, guess distribution and current board for signed-out play. |
+| Puzzles | **Gamebank presets #0–#599.** **Dailies start at #600** (`startDate` 2026-09-09), drawn from a 120-book tail the bank never offers. Same daily worldwide. Grow the preset cap when DAU justifies it. |
 | Navigation | **New** (modal: today / random / bank / battle), **Info** (how-to modal), **Bank**, **Ranks**, Settings. |
 | Stats bar | Per-puzzle fun fact until a live aggregator exists. |
-| Leaderboard | **Per puzzle index** (preset and daily). Sort: win, then fewer hints, then faster, then fewer guesses. Filter by hints used. Local store + optional `BOOKLE_API`. |
+| Leaderboard | **Per puzzle index** (preset and daily). Sort: win, then fewer hints, then faster, then fewer guesses. Filter by hints used. Local store, synced through `excerptle-api` when signed in. The config global is `EXCERPTLE_API`; `BOOKLE_API` is kept as an alias (`js/config.js:6`). |
 | Battle | Same index. First correct title wins. A hint either player takes is shown to both. Share `?b=CODE&p=INDEX`. |
 | Ads | From day 1. **Post-game only.** Never during deduction. |
 | Mobile | Mobile-first. Shell (HTML+CSS+JS, no puzzle JSON) **&lt;50KB gzip**. System fonts. Puzzle JSON lazy-loaded. |
@@ -168,30 +168,54 @@ Yeardle content (not in this repo): Google Sheet, 30 days, six clues ranked by o
 
 ### Routes (hash, no server)
 
+As shipped (router at `js/app.js` ~2305). Puzzles are addressed by **index**,
+not date; `#/random`, `#/archive`, `#/news` and `#/more` were never built, and
+how-to-play and support became real pages rather than hash routes.
+
 | Hash | Screen |
 |---|---|
 | `#/` | Today’s daily |
-| `#/random` | New Game — random archive puzzle, no streak |
-| `#/archive` | Date list |
-| `#/play/YYYY-MM-DD` | That day’s puzzle (future dates locked) |
+| `#/play/N` | Puzzle #N — bank #0–#599, dailies #600+ (future dailies locked) |
+| `#/bank` | All Books grid |
+| `#/ranks` | Leaderboard (`?i=N` for one index) |
 | `#/stats` | Stats |
 | `#/settings` | Theme, motion, share prefs |
-| `#/news` | Editorial / changelog |
-| `#/how-to-play` | Rules |
-| `#/support` | Contact / coffee |
-| `#/more` | Yeardle + future games |
+| `#/pro` | Pro modal — also Stripe's return URL |
+| `#/battle` / `#/battle/CODE` | Host or join a battle |
+
+Static pages, not routes: `how-to-play.html`, `about.html`, `faq.html`,
+`support.html`, `privacy.html`.
 
 ### `localStorage` keys (`bookle.*`)
 
+As shipped (`K` at `js/app.js:11`). The `.v4` suffix is deliberate: the
+720-book rebuild changed every puzzle id, so new keys leave pre-launch progress
+behind rather than misread it.
+
 - `bookle.playerId` — UUID
-- `bookle.stats` — `{played, wins, currentStreak, maxStreak, dist[1..6], fails, lastDaily}`
-- `bookle.board.<puzzleId>` — in-progress or finished guesses
+- `bookle.name`
+- `bookle.stats` — `{played, wins, currentStreak, maxStreak, dist[1..6], fails, lastDaily}`, plus a `battle` block
+- `bookle.progress.v4` — per-index rounds, in progress or finished (replaces the spec's `bookle.board.<puzzleId>`)
+- `bookle.lb.v4` — local leaderboard rows
 - `bookle.settings`
 - `bookle.seenHowTo`
 
-Daily streak increments only when the UTC daily is won, and only once per date. Random games write to a separate `practice` counter, not the streak.
+The keys stay `bookle.*` after the rename to Excerptle; changing them would drop
+every existing player's streak.
+
+Daily streak increments only when the daily is won, once per date, on the
+**midnight-Pacific** day boundary (`c34eda8`) — not UTC. Bank games write to a
+separate counter, not the streak.
 
 ### Share copy
+
+The Wordle-style emoji block below was the spec. **Not what shipped.** Sharing
+calls `navigator.share` and falls back to copying a plain result URL
+(`js/app.js` ~2640); the emoji grid survives only as the 🟩/🟨 marks beside each
+guess in the result list. The rich preview a shared link unfurls to is a PNG
+rendered by the `excerptle-og` Worker, not text the player pastes.
+
+Original spec, kept for reference:
 
 ```
 Bookle 2026-09-08 3/6
@@ -199,25 +223,21 @@ Bookle 2026-09-08 3/6
 https://bookle.fyi
 ```
 
-Loss:
-
-```
-Bookle 2026-09-08 X/6
-🟨🟨🟨🟨🟨🟨
-https://bookle.fyi
-```
-
 ### File map
+
+Roughly current; `backend/` and `tools/og-worker/` came later.
 
 ```
 /
-  README.md                 ← this plan
-  CNAME                     ← bookle.fyi
+  README.md                 ← this plan, part history (see the struck items below)
+  CNAME                     ← excerptle.io
   index.html
   css/app.css
-  js/app.js
+  js/app.js                 ← game; js/match.js is the title matcher
   puzzles/index.json
-  puzzles/bXX.json
+  puzzles/gXX.json          ← XX is the Gutenberg id; see Content rules
+  backend/                  ← excerptle-api: accounts, scores, billing
+  tools/og-worker/          ← excerptle-og: share-card PNGs
   tools/books.json
   tools/build_puzzles.py
 ```
@@ -232,10 +252,10 @@ Literary, not Wordle-green. Paper `#f4efe4`, ink `#1c140c`, wine `#7a1f2b`, rule
 
 ## Key decisions
 
-1. **Name is Bookle, domain `bookle.fyi`.** Excerptle was a working title. Dead USPTO serial 86569860 is not a live registration.
+1. ~~**Name is Bookle, domain `bookle.fyi`.**~~ Reversed before launch: the game shipped as **Excerptle** on **`excerptle.io`**. The trademark note above is kept for the reasoning, not as a live plan. `localStorage` keys are still `bookle.*` — renaming them would drop every existing player's streak, so they stay.
 2. **Do not rebuild Yeardle in this repo.** Link it from More Games.
-3. **UTC daily.** “Same for everyone” beats local-midnight fairness.
-4. **Opaque puzzle filenames, public-domain JSON, no gameplay backend.** Matches the static-hosting constraint; title is still in the payload.
+3. ~~**UTC daily.**~~ Superseded by `c34eda8`: the daily rolls at **midnight Pacific** (3am Eastern). Still one book for everyone — a fixed zone, just not UTC, so a day's leaderboard does not span two calendar dates in the Americas.
+4. **Opaque puzzle filenames, public-domain JSON, no gameplay backend.** The last two hold; the title is still in the payload by design. The opaque filenames were lost in `688e23f` — see *Content rules* above.
 5. **Practice ≠ daily streak.** “New Game” must not nuke Wordle-style streaks.
 6. **Post-game ads only.** Deduction is the product; ads after the reveal.
 7. **Three-chapter cap + 12k word cap per chapter.** Legal/hosting hygiene, not a teaser paywall.
