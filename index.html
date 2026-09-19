@@ -160,26 +160,28 @@
         <div id="result" class="result hidden"></div>
       </section>
       <div id="ad" class="ad hidden" aria-label="Advertisement"></div>
-      <!-- House ads: our own properties, under the AdSense slot once a round
-           is over. Two separate cards under one labelled heading, so neither
-           reads as a continuation of the game or of the other. Static markup
-           so the copy is editable without touching app.js; app.js only flips
-           .hidden alongside the ad slot. -->
-      <aside id="house" class="house hidden" aria-label="More from Provable Learning">
-        <h2 class="house-title">Also check out</h2>
-        <a class="house-ad house-ad-main" href="https://vocabhelp.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
-          <span class="house-copy">
-            <span class="house-name">VocabHelp <span class="house-arrow" aria-hidden="true">&rarr;</span></span>
-            <span class="house-line">Learn vocabulary in context. Reviews scheduled for you.</span>
+      <!-- Our own other sites, under the game card during a round and under
+           the AdSense slot once it is over. Two separate cards under one
+           labelled heading, so neither reads as a continuation of the game or
+           of the other. Static markup so the copy is editable without touching
+           app.js; app.js only flips .hidden (off for Pro).
+           Never name these classes "house-ad"/"promo-ad" or similar: EasyList
+           hides .house-ad outright, which left only the heading showing. -->
+      <aside id="elsewhere" class="elsewhere hidden" aria-label="More from Provable Learning">
+        <h2 class="elsewhere-title">Also check out</h2>
+        <a class="elsewhere-card elsewhere-card-main" href="https://vocabhelp.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
+          <span class="elsewhere-copy">
+            <span class="elsewhere-name">VocabHelp <span class="elsewhere-arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="elsewhere-line">Learn vocabulary in context. Reviews scheduled for you.</span>
           </span>
-          <img class="house-logo" src="assets/promo-vocabhelp.webp" alt="" width="400" height="103" loading="lazy" decoding="async">
+          <img class="elsewhere-logo" src="assets/promo-vocabhelp.webp" alt="" width="400" height="103" loading="lazy" decoding="async">
         </a>
-        <a class="house-ad house-ad-alt" href="https://provablelearning.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
-          <span class="house-copy">
-            <span class="house-name">Provable Learning <span class="house-arrow" aria-hidden="true">&rarr;</span></span>
-            <span class="house-line">Personalized math tutoring.</span>
+        <a class="elsewhere-card elsewhere-card-alt" href="https://provablelearning.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
+          <span class="elsewhere-copy">
+            <span class="elsewhere-name">Provable Learning <span class="elsewhere-arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="elsewhere-line">Personalized math tutoring.</span>
           </span>
-          <img class="house-logo" src="assets/promo-provable.webp" alt="" width="400" height="63" loading="lazy" decoding="async">
+          <img class="elsewhere-logo" src="assets/promo-provable.webp" alt="" width="400" height="63" loading="lazy" decoding="async">
         </a>
       </aside>
     </main>

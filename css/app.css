@@ -407,27 +407,28 @@ a { color: var(--wine); }
 }
 .ad .adsbygoogle { display: block; min-height: 5.5rem; }
 .ad-label { display: block; }
-/* House ads. Our own two sites, under the AdSense slot on the post-game
-   screen. Two things this has to do: sit clearly apart from the game above it,
+/* Our own two sites, under the game card (and the AdSense slot once a round
+   is over). Class names avoid "house-ad" and friends: ad blockers hide those
+   by name. Two things this has to do: sit clearly apart from the game above it,
    and read as TWO offers rather than one. No "advertisement" label — it would
    only talk the reader out of reading the line. */
-.house {
+.elsewhere {
   margin: var(--sp-4) 0;
   padding-top: var(--sp-3);
   border-top: 1px solid var(--rule);
 }
-.house-title {
+.elsewhere-title {
   margin: 0 0 var(--sp-2);
   font-family: var(--serif);
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink-soft);
 }
-.house a { text-decoration: none; color: inherit; }
+.elsewhere a { text-decoration: none; color: inherit; }
 
 /* Each offer is its own bordered card with real air between them: a shared
    box with a hairline made the second one look like a footnote to the first. */
-.house-ad {
+.elsewhere-card {
   display: flex;
   align-items: center;
   gap: var(--sp-3);
@@ -439,16 +440,16 @@ a { color: var(--wine); }
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.house-ad + .house-ad { margin-top: var(--sp-3); }
-.house-ad:hover,
-.house-ad:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
+.elsewhere-card + .elsewhere-card { margin-top: var(--sp-3); }
+.elsewhere-card:hover,
+.elsewhere-card:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
 
-.house-copy { flex: 1 1 auto; min-width: 0; }
+.elsewhere-copy { flex: 1 1 auto; min-width: 0; }
 
 /* The site's name is the card's title; the line under it says what it does.
    The whole card is the link, so the title carries the link's affordances —
    an arrow that steps forward and an underline on hover. */
-.house-name {
+.elsewhere-name {
   display: block;
   font-family: var(--serif);
   font-weight: 700;
@@ -456,15 +457,15 @@ a { color: var(--wine); }
   color: var(--promo-accent);
   margin-bottom: 0.25rem;
 }
-.house-arrow {
+.elsewhere-arrow {
   display: inline-block;
   transition: transform 0.15s ease;
 }
-.house-ad:hover .house-name,
-.house-ad:focus-visible .house-name { text-decoration: underline; }
-.house-ad:hover .house-arrow,
-.house-ad:focus-visible .house-arrow { transform: translateX(0.2em); }
-.house-line {
+.elsewhere-card:hover .elsewhere-name,
+.elsewhere-card:focus-visible .elsewhere-name { text-decoration: underline; }
+.elsewhere-card:hover .elsewhere-arrow,
+.elsewhere-card:focus-visible .elsewhere-arrow { transform: translateX(0.2em); }
+.elsewhere-line {
   display: block;
   font-size: 0.87rem;
   line-height: 1.4;
@@ -473,14 +474,14 @@ a { color: var(--wine); }
 
 /* The second card carries no art, so it is set a notch smaller and quieter —
    enough to rank the two without making it look like a caption. */
-.house-ad-alt { padding: 0.85rem var(--sp-3); }
-.house-ad-alt .house-name { font-size: 1rem; }
-.house-ad-alt .house-line { font-size: 0.83rem; }
+.elsewhere-card-alt { padding: 0.85rem var(--sp-3); }
+.elsewhere-card-alt .elsewhere-name { font-size: 1rem; }
+.elsewhere-card-alt .elsewhere-line { font-size: 0.83rem; }
 
 /* Both cards show a logo plate. The wordmarks are dark ink on white with no
    alpha, so they keep their own white tile rather than being knocked out or
    inverted for the night theme. */
-.house-logo {
+.elsewhere-logo {
   flex: 0 0 auto;
   width: 150px;
   height: auto;
@@ -488,11 +489,11 @@ a { color: var(--wine); }
   border-radius: 4px;
   background: #fff;
 }
-.house-ad-alt .house-logo { width: 130px; }
+.elsewhere-card-alt .elsewhere-logo { width: 130px; }
 
 @media (max-width: 30rem) {
-  .house-logo { width: 118px; }
-  .house-ad-alt .house-logo { width: 106px; }
+  .elsewhere-logo { width: 118px; }
+  .elsewhere-card-alt .elsewhere-logo { width: 106px; }
 }
 
 .screen h1 {

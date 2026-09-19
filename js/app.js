@@ -1027,7 +1027,7 @@
       if (more) more.classList.toggle("hidden", battle);
       placeMore(false);
       window.ExcerptleAds?.clear();
-      house(false);
+      elsewhere();
       return;
     }
     form.classList.add("hidden");
@@ -1037,14 +1037,14 @@
     box.innerHTML = postGameHtml();
     // Fresh <ins> per finished game — see js/ads.js.
     if (refreshAd) window.ExcerptleAds?.render();
-    house(true);
+    elsewhere();
   }
 
-  /* House ads ride with the AdSense slot: shown once the round is over, gone
-     while a round is in play, and off for Pro, which is sold as ad-free. */
-  function house(show) {
-    const el = document.getElementById("house");
-    if (el) el.classList.toggle("hidden", !show || !!window.ExcerptlePro?.isPro?.());
+  /* Links to our other sites: shown both during and after a round, and off
+     for Pro, which is sold as ad-free. */
+  function elsewhere() {
+    const el = document.getElementById("elsewhere");
+    if (el) el.classList.toggle("hidden", !!window.ExcerptlePro?.isPro?.());
   }
 
   /* Who named the book first, decided the same way in both browsers.
