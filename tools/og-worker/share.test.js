@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readShare, shareFromUrl, unfurl } from "./share.js";
+import { openingSentenceFor, readShare, shareFromUrl, unfurl } from "./share.js";
 import { cardSvg } from "./card.js";
 const encode = d => Buffer.from(JSON.stringify(d)).toString("base64url");
 test("unfinished shares invite; completed losses show X/6; old links still work", () => {
@@ -63,4 +63,21 @@ test("Worker serves pages, personalized metadata and actual PNGs", {skip:!proces
   assert.match(await (await fetch(base+"/")).text(),/Excerptle — guess the book/);
   assert.equal((await fetch(base+"/og.png?p=bad")).status,400);
   assert.equal((await fetch(base+"/missing-page")).status,404);
+});
+
+test("the opening sentence follows the daily rotation and drops its redaction braces", async () => {
+  const files = {
+    "/puzzles/index.json": { order: ["p0","p1","d0","d1"], presetCount: 2, dailyStartIndex: 600 },
+    "/puzzles/d1.json": { texts: ["To {{him}} she is\n  always the woman."] },
+    "/puzzles/p1.json": { texts: ["Call me Ishmael."] },
+  };
+  const read = async (path) => {
+    if (!(path in files)) throw new Error(`${path} 404`);
+    return files[path];
+  };
+  assert.equal(await openingSentenceFor(read, {m:"daily",c:0}, 603), "To (him) she is always the woman.");
+  assert.equal(await openingSentenceFor(read, {m:"preset",c:0}, 3), "Call me Ishmael.");
+  // Nothing is looked up once the round is over, or for an invitation.
+  assert.equal(await openingSentenceFor(read, {m:"daily",c:1}, 603), "");
+  assert.equal(await openingSentenceFor(read, {m:"battle",invite:true}, 603), "");
 });
