@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <title>Excerptle | Privacy &amp; Terms</title><meta name="description" content="Excerptle privacy policy and terms of use.">
   <link rel="canonical" href="https://excerptle.io/privacy"><link rel="stylesheet" href="/css/app.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -79,7 +82,6 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/archive">Archive</a>
         <a class="tab" href="/#/stats">Stats</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
@@ -117,7 +119,6 @@
         <a href="/">Play</a>
         <a href="/how-to-play">How to play</a>
         <a href="/faq">FAQ</a>
-        <a href="/archive">Archive</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
         <a href="/privacy">Privacy &amp; terms</a>

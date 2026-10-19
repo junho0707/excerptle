@@ -419,25 +419,6 @@ a { color: var(--wine); }
   font-weight: 700;
   color: var(--ink-soft);
 }
-
-/* Crawlable description of the game under the cards. Quiet on purpose: it is
-   for people who scroll past the game and for search engines, not the round. */
-.about-strip {
-  margin: var(--sp-4) 0;
-  padding-top: var(--sp-3);
-  border-top: 1px solid var(--rule);
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-  line-height: 1.6;
-}
-.about-strip h2 {
-  margin: 0 0 var(--sp-2);
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--ink-soft);
-}
-.about-strip p { margin: 0 0 var(--sp-2); }
-.about-strip a { color: var(--wine); }
 .elsewhere a { text-decoration: none; color: inherit; }
 
 /* Each offer is its own bordered card with real air between them: a shared
@@ -506,14 +487,9 @@ a { color: var(--wine); }
    straight on the card with no tile. The page's own theme picks the ink — the
    site follows its Night setting, not the OS, so a media query would pair the
    wrong logo with the page. */
-.elsewhere-logo-btz { padding: 0; background: none; border-radius: 0; width: 160px; }
-.elsewhere-logo-dark,
-[data-theme="night"] .elsewhere-logo-light { display: none; }
-[data-theme="night"] .elsewhere-logo-dark { display: block; }
 
 @media (max-width: 30rem) {
   .elsewhere-logo { width: 118px; }
-  .elsewhere-logo-btz { width: 130px; }
 }
 
 .screen h1 {
@@ -884,6 +860,18 @@ footer a { color: inherit; }
 .s-block .stat-grid div { padding: 0.7rem 0.2rem; }
 
 #screen-stats .pg-stats { margin-bottom: 0.2rem; }
+/* The whole Stats page reads centred: title, section heads, tiles, the
+   average rows and the calendar all sit on the same middle line. */
+#screen-stats { text-align: center; }
+#screen-stats .pg-stats { justify-content: center; }
+/* Rows of three tiles would hug the left of a four-column grid; flex keeps
+   every row's tiles the same width and centred under the heading. */
+#screen-stats .stat-grid { display: flex; flex-wrap: wrap; justify-content: center; }
+#screen-stats .stat-grid div { flex: 0 1 calc((100% - 1.5rem) / 4); }
+@media (max-width: 420px) {
+  #screen-stats .stat-grid div { flex-basis: calc((100% - 0.5rem) / 2); }
+}
+#screen-stats .cal-nav, #screen-stats .cal-grid { margin-left: auto; margin-right: auto; }
 
 /* Daily calendar: a month of dailies, coloured by how each one went. Won and
    lost carry a mark as well as a colour, so neither relies on hue alone. */

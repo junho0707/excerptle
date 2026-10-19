@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | About</title>
   <meta name="description" content="Excerptle is a daily guessing game built on the opening lines of public-domain literature. Where the books come from, how the game is built, and who makes it.">
@@ -80,7 +83,6 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/archive">Archive</a>
         <a class="tab" href="/#/stats">Stats</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
@@ -109,7 +111,8 @@
       serials and forgotten bestsellers that were enormous in their day.</p>
       <p>Gutenberg publishes the same work many times over &mdash; different editions, multi-part
       splits, alternate transcriptions. Excerptle collapses those into one entry per book, so you
-      will never be handed the same novel twice under two different numbers. At most one chapter of
+      will never be handed the same novel twice under two different numbers. Each opening is checked
+      so the game starts where the story starts, not on a preface, a table of contents or a glossary. At most one chapter of
       any book is hosted here; for the rest of it, go to Gutenberg, where it is free.</p>
 
       <h2>How the game is built</h2>
@@ -140,7 +143,6 @@
         <a href="/">Play</a>
         <a href="/how-to-play">How to play</a>
         <a href="/faq">FAQ</a>
-        <a href="/archive">Archive</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
         <a href="/privacy">Privacy &amp; terms</a>

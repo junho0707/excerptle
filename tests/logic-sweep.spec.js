@@ -153,17 +153,24 @@ test('the post-game card offers Share and the full book, with no chapter-size or
   await expect(page.locator('#result .pg-stats')).not.toContainText('words');
 });
 
-test('the studio cards are VocabHelp and By the Zeitgeist, and the wordmark follows the Night setting', async ({ page }) => {
+test('the studio cards are VocabHelp and By the Zeitgeist, both black ink on a white chip in either theme', async ({ page }) => {
   await page.goto('/#/play/4');
   const card = page.locator('#elsewhere a[href^="https://bythezeitgeist.com/"]');
   await expect(page.locator('#elsewhere a')).toHaveCount(2);
   await expect(page.locator('#elsewhere a[href*="provablelearning.com"]')).toHaveCount(0);
   await expect(card).toContainText('By the Zeitgeist');
-  await expect(card.locator('.elsewhere-logo-light')).toBeVisible();
-  await expect(card.locator('.elsewhere-logo-dark')).toBeHidden();
+  const logo = card.locator('img.elsewhere-logo');
+  await expect(logo).toHaveCount(1);
   await page.evaluate(() => { document.documentElement.dataset.theme = 'night'; });
-  await expect(card.locator('.elsewhere-logo-dark')).toBeVisible();
-  await expect(card.locator('.elsewhere-logo-light')).toBeHidden();
+  await expect(logo).toBeVisible();
+  await expect(logo).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+});
+
+test('no page links the archive from its header or footer, since it names past dailies', async ({ page }) => {
+  for (const path of ['/', '/about.html', '/faq.html', '/how-to-play.html', '/privacy.html']) {
+    await page.goto(path);
+    await expect(page.locator('header a[href="/archive"], footer a[href="/archive"]')).toHaveCount(0);
+  }
 });
 
 test('there is no Support tab or link to the old Support page', async ({ page }) => {

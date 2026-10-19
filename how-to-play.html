@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | How to play</title>
   <meta name="description" content="How to play Excerptle: you get the first sentence of a book and six guesses. Hints don't name the answer — they show you more of the book. Full rules, scoring and spelling tolerance.">
@@ -103,7 +106,6 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/archive">Archive</a>
         <a class="tab" href="/#/stats">Stats</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
@@ -179,7 +181,6 @@
         <a href="/">Play</a>
         <a href="/how-to-play">How to play</a>
         <a href="/faq">FAQ</a>
-        <a href="/archive">Archive</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
         <a href="/privacy">Privacy &amp; terms</a>

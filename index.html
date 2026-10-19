@@ -108,7 +108,6 @@
         <button type="button" class="tab" data-act="open-play">New game</button>
         <button type="button" class="tab" data-act="open-how">How to play</button>
         <a class="tab" href="#/bank">All books</a>
-        <a class="tab" href="/archive">Archive</a>
         <a class="tab" href="#/stats">Stats</a>
         <a class="tab" href="#/settings">Settings</a>
       </nav>
@@ -132,7 +131,7 @@
         </div>
         <div class="excerpt-wrap">
           <div id="tier-label" class="tier-label">First sentence</div>
-          <div class="reader-hint" aria-hidden="true">&#10530; Read full screen</div>
+          <div class="reader-hint" aria-hidden="true">&#10530; Click to read full screen</div>
           <article id="excerpt" class="excerpt drop" role="button" tabindex="0">Loading…</article>
         </div>
         <div id="author-reveal" class="author-reveal" hidden></div>
@@ -179,30 +178,9 @@
             <span class="elsewhere-name">By the Zeitgeist <span class="elsewhere-arrow" aria-hidden="true">&rarr;</span></span>
             <span class="elsewhere-line">A newspaper of what people are actually paying attention to &mdash; with numbers.</span>
           </span>
-          <!-- Two inks, swapped by the page's own theme (see css/app.css). -->
-          <img class="elsewhere-logo elsewhere-logo-btz elsewhere-logo-light" src="assets/promo-btz.png" alt="" width="557" height="111" loading="lazy" decoding="async">
-          <img class="elsewhere-logo elsewhere-logo-btz elsewhere-logo-dark" src="assets/promo-btz-dark.png" alt="" width="557" height="111" loading="lazy" decoding="async">
+          <img class="elsewhere-logo" src="assets/promo-btz.png" alt="" width="557" height="111" loading="lazy" decoding="async">
         </a>
       </aside>
-      <!-- Plain text in the HTML, not built by app.js: without it a crawler
-           reading "/" sees an empty card that says "Loading…". -->
-      <section class="about-strip" aria-labelledby="about-strip-title">
-        <h2 id="about-strip-title">About Excerptle</h2>
-        <p>Excerptle is a daily reading game. Each day you get the first sentence of a
-        book and six guesses to name it. Every hint widens the view: the opening
-        paragraphs, then the genre, the date it was first published, where it is set,
-        and finally the author. A new book arrives at midnight Pacific time, and it is
-        the same book for everyone.</p>
-        <p>Every book is in the public domain and comes from
-        <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a>.
-        Each one is chosen by hand, and each opening is checked so the game starts where
-        the story starts, not on a preface, a table of contents or a glossary. When the
-        round ends you can read the whole first chapter here, or open the full book.</p>
-        <p>Past puzzles live in the <a href="/archive">archive</a>, each with a short note on
-        what its opening is doing and why it is worth reading in full. There are also
-        hundreds of earlier books to play under <a href="#/bank">All books</a>. New here?
-        Start with <a href="/how-to-play">How to play</a> or the <a href="/faq">FAQ</a>.</p>
-      </section>
     </main>
 
     <section id="screen-bank" class="screen hidden">
@@ -293,7 +271,6 @@
         <a href="/">Play</a>
         <a href="/how-to-play">How to play</a>
         <a href="/faq">FAQ</a>
-        <a href="/archive">Archive</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
         <a href="/privacy">Privacy &amp; terms</a>

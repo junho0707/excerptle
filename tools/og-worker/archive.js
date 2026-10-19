@@ -81,6 +81,9 @@ const LAYOUT_HEAD = (title, desc, canonical, extraHead) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}">
@@ -139,7 +142,6 @@ const LAYOUT_HEAD = (title, desc, canonical, extraHead) => `<!DOCTYPE html>
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/archive">Archive</a>
         <a class="tab" href="/#/stats">Stats</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
@@ -152,7 +154,6 @@ const LAYOUT_FOOT = `
         <a href="/">Play</a>
         <a href="/how-to-play">How to play</a>
         <a href="/faq">FAQ</a>
-        <a href="/archive">Archive</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
         <a href="/privacy">Privacy &amp; terms</a>
