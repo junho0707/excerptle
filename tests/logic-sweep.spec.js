@@ -225,3 +225,14 @@ test('the All books screen: one-line lede, a key, titled missed books, numbered 
   await expect(page.locator('#bank-pager [aria-current="page"]')).toHaveText('2');
   await expect(page).toHaveURL(/#\/bank\?page=2$/);
 });
+
+test('"Want to guess more?" sits evenly between the rules above and below it while playing', async ({ page }) => {
+  await page.goto('/#/play/4');
+  await expect(page.locator('#elsewhere')).toBeVisible();
+  const gaps = await page.evaluate(() => {
+    const r = (s) => document.querySelector(s).getBoundingClientRect();
+    const more = r('#more'), q = r('.more-q'), nav = r('#story-nav'), els = r('#elsewhere');
+    return { above: q.top - more.top, below: els.top - nav.bottom };
+  });
+  expect(Math.abs(gaps.above - gaps.below)).toBeLessThanOrEqual(6);
+});

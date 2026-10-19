@@ -1121,7 +1121,11 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
 .daily-card + #more {
   border-top: 1px solid var(--rule);
   margin-top: var(--sp-4);
+  /* The studio cards below bring their own rule and top margin, so the block
+     is centred between two rules only if it gives up its bottom padding. */
+  padding-bottom: 0;
 }
+.more > :last-child { margin-bottom: 0; }
 #more + .daily-card {
   border-top: 1px solid var(--rule);
   padding-top: var(--sp-4);
