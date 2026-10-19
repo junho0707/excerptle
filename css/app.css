@@ -1434,3 +1434,25 @@ body.reader-open { overflow: hidden; }
   font-size: 1.15rem;
   line-height: 1.7;
 }
+
+/* ---- "Link copied" toast ---- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 70;
+  max-width: min(90vw, 28rem);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.9rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.5rem);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; user-select: text; }

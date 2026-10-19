@@ -1,44 +1,16 @@
 /* Header + share buttons on the static pages (about, FAQ, how to play,
    privacy). Those pages don't load js/app.js, so this stands in for
    the two things the shared header needs from it — the hamburger menu and the
-   sign-in tab's label — plus the share buttons: the native share sheet where
-   the browser has one, a clipboard copy elsewhere.
+   sign-in tab's label — plus the share buttons: a clipboard copy and a
+   "Link copied" toast (js/toast.js).
 
    These buttons share the site root, not the page they sit on. The Worker
    renders the brand card for "/", and someone handed this link should land
    on the puzzle rather than on the rules. */
 (function () {
-  const RESET_MS = 2000;
-
-  document.addEventListener("click", async (e) => {
+  document.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-share]");
-    if (!btn) return;
-
-    const url = btn.dataset.shareUrl || location.href;
-    const label = btn.textContent;
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: btn.dataset.shareTitle || document.title,
-          text: btn.dataset.shareText || "",
-          url,
-        });
-        return;
-      } catch (err) {
-        // Dismissing the sheet is a decision, not a failure — don't then
-        // quietly copy something the person just declined to send.
-        if (err && err.name === "AbortError") return;
-      }
-    }
-
-    try {
-      await navigator.clipboard.writeText(url);
-      btn.textContent = "Link copied ✓";
-    } catch {
-      btn.textContent = "Copy failed";
-    }
-    setTimeout(() => { btn.textContent = label; }, RESET_MS);
+    if (btn) window.ExcerptleToast.copyLink(btn.dataset.shareUrl || location.href);
   });
 })();
 

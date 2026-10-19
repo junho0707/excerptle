@@ -1793,30 +1793,9 @@
     if (act === "play-random") playRandom();
     if (act === "pick-random") pickIndex(randomPresetIndex(state.playIndex));
     if (act === "pick-id") playById($("#play-id-input")?.value);
-    if (act === "share") {
-      const btn = e.target.closest("[data-act]");
-      const url = shareUrl();
-      // Just the link, never a pasted summary — the card is what the link
-      // previews as, and the Worker builds that from the link itself.
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: "Excerptle", url });
-          return;
-        } catch (err) {
-          // Dismissing the sheet is a decision; don't then copy it anyway.
-          if (err && err.name === "AbortError") return;
-        }
-      }
-      try {
-        await navigator.clipboard.writeText(url);
-        if (btn) {
-          btn.textContent = "Copied ✓";
-          setTimeout(() => { btn.textContent = "Share"; }, 2000);
-        }
-      } catch {
-        setMsg("Could not copy.");
-      }
-    }
+    // Just the link, never a pasted summary — the card is what the link
+    // previews as, and the Worker builds that from the link itself.
+    if (act === "share") window.ExcerptleToast.copyLink(shareUrl());
   });
 
   document.addEventListener("change", (e) => {
