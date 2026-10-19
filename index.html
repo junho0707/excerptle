@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | Guess The Book</title>
-  <meta name="description" content="Excerptle is a daily literary guessing game. Read a public-domain opening, take hints, and name the book. Play the book bank, climb per-puzzle leaderboards, or battle a friend.">
+  <meta name="description" content="Excerptle is a daily literary guessing game. Read a public-domain opening, take hints, and name the book. Play a new book every day, or work through the book bank.">
   <link rel="canonical" href="https://excerptle.io/">
   <meta name="theme-color" content="#f4efe4">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Excerptle">
   <meta property="og:title" content="Excerptle — guess the book">
-  <meta property="og:description" content="Six guesses. Hints on demand. Public-domain canon. Challenge a friend.">
+  <meta property="og:description" content="Six guesses. Hints on demand. Public-domain canon.">
   <meta property="og:url" content="https://excerptle.io/">
   <meta property="og:image" content="https://excerptle.io/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://excerptle.io/assets/og.png">
   <meta name="twitter:title" content="Excerptle — guess the book">
-  <meta name="twitter:description" content="Guess the public-domain book. Hints on demand. Battle a friend on the same puzzle.">
+  <meta name="twitter:description" content="Guess the public-domain book. Hints on demand.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16.png">
@@ -66,7 +66,7 @@
         "image": "https://excerptle.io/assets/og.png",
         "applicationCategory": "GameApplication",
         "genre": "Word game",
-        "description": "Guess the public-domain book from its opening. Take hints, play a book bank, or battle a friend.",
+        "description": "Guess the public-domain book from its opening. Take hints, or work through a book bank.",
         "isPartOf": {
           "@id": "https://excerptle.io/#website"
         },
@@ -110,7 +110,6 @@
         <button type="button" class="tab" data-act="open-play">New game</button>
         <button type="button" class="tab" data-act="open-how">How to play</button>
         <a class="tab" href="#/bank">All books</a>
-        <a class="tab" href="#/ranks">Leaderboard</a>
         <a class="tab" href="#/stats">Stats</a>
         <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support me</a>
         <a class="tab" href="#/settings">Settings</a>
@@ -213,32 +212,6 @@
       <p id="bank-pager" class="pager"></p>
     </section>
 
-    <section id="screen-ranks" class="screen hidden">
-      <h1>Leaderboard</h1>
-      <div class="filters">
-        <label>Book #
-          <input id="lb-index" type="number" min="0">
-          <select id="lb-pick" class="hidden"></select>
-        </label>
-        <label class="filter-check">
-          <input id="lb-mine" type="checkbox">
-          Only books I&rsquo;ve finished
-        </label>
-        <label>Hints used
-          <select id="lb-hints">
-            <option value="any">Any</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </label>
-      </div>
-      <div id="lb-body"></div>
-    </section>
-
     <section id="screen-stats" class="screen hidden">
       <h1 class="screen-title">Stats</h1>
       <div id="stats-body"></div>
@@ -265,7 +238,7 @@
       <article class="card">
         <strong>Excerptle launches</strong>
         <p class="news-date">9 September 2026</p>
-        <p>Official launch. A daily puzzle, a bank of 600 books to work through, five hints when you need them, and battle mode for racing a friend to the same title.</p>
+        <p>Official launch. A daily puzzle, a bank of 600 books to work through and five hints when you need them.</p>
       </article>
     </section>
 
@@ -282,29 +255,23 @@
       <p>Texts from <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a>. At most one chapter hosted per puzzle. Excerptle is not affiliated with Project Gutenberg.</p>
     </section>
 
-    <section id="screen-battle" class="screen hidden">
-      <h1>Battle</h1>
-      <div id="battle-body"></div>
-    </section>
-
     <section id="screen-legal" class="screen hidden">
       <h1>Privacy &amp; terms</h1>
       <p class="lede">Excerptle · last updated 8 September 2026</p>
 
       <h2>Privacy</h2>
-      <p><strong>What stays on your device.</strong> Your progress, guesses, hint counts, scores and settings are kept in your browser’s <code>localStorage</code>. Clearing site data erases them. Nothing here is sent anywhere unless you sign in.</p>
-      <p><strong>If you sign in.</strong> Signing in with Google gives us the name and email address in your Google account, so your streaks and scores can follow you between devices. Signing in with email gives us that address and a sign-in code or password. We do not receive your Google password.</p>
+      <p><strong>What stays on your device.</strong> Your progress, guesses, hint counts and settings are kept in your browser’s <code>localStorage</code>. Clearing site data erases them. Nothing here is sent anywhere unless you sign in.</p>
+      <p><strong>If you sign in.</strong> Signing in with Google gives us the name and email address in your Google account, so your streaks and progress can follow you between devices. Signing in with email gives us that address and a sign-in code or password. We do not receive your Google password.</p>
       <p><strong>What we don’t do.</strong> We don’t sell your data, and we don’t use it to build advertising profiles.</p>
       <p><strong>Ads.</strong> A single ad slot sits on the post-game screen, and there are no ads anywhere else in the game. It is filled by <strong>Google AdSense</strong>, which may set cookies or read a device identifier to choose and measure ads; Google&rsquo;s use of that data is described in its <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">partner sites policy</a>. In the EEA, UK and Switzerland you are asked for consent first, and you can change that answer at any time from the consent link in the ad. Google&rsquo;s script is loaded on every page of the site so the slot can be filled when you reach it. <strong>With Excerptle Pro, no ad is ever requested or shown.</strong></p>
       <p><strong>Payments.</strong> Excerptle Pro is billed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a>. Card details go to Stripe and never reach us or your browser&rsquo;s storage &mdash; we keep only a customer reference and whether your subscription is active. Tips go through <a href="https://more.ko-fi.com/privacy" target="_blank" rel="noopener noreferrer">Ko-fi</a>, which is entirely off this site.</p>
       <p><strong>Book texts.</strong> Excerpts are public-domain works from <a href="https://www.gutenberg.org/">Project Gutenberg</a>, served as static files from this site. Reading a puzzle sends nothing to Gutenberg.</p>
-      <p><strong>Battles.</strong> Battle mode connects the two browsers directly (WebRTC, via PeerJS for signalling). Your display name, guesses and hint count go to your opponent for the length of the match, and are not stored on our side.</p>
-      <p><strong>Your choices.</strong> To delete a signed-in account and its scores, or to ask what we hold, email <a href="mailto:privacy@excerptle.io">privacy@excerptle.io</a>. To wipe local data, clear site data for excerptle.io in your browser.</p>
+      <p><strong>Your choices.</strong> To delete a signed-in account and its saved progress, or to ask what we hold, email <a href="mailto:privacy@excerptle.io">privacy@excerptle.io</a>. To wipe local data, clear site data for excerptle.io in your browser.</p>
 
       <h2>Terms</h2>
       <p>Excerptle is free to play, provided as is, with no warranty and no guarantee that it stays available or bug-free.</p>
       <p>The book excerpts are in the public domain. The site’s own design, code and puzzle selection are ours; don’t scrape or republish them wholesale.</p>
-      <p>Play fair: no automating guesses, no faking leaderboard entries, no abusing other players in battle mode or in display names. We can remove scores or accounts that do.</p>
+      <p>Play fair: no automating guesses and no abusing the service or other people through display names. We can remove accounts that do.</p>
       <p>These terms may change. Continuing to play after a change means you accept it.</p>
       <p>Excerptle is not affiliated with Project Gutenberg, Google, or Wordle.</p>
     </section>

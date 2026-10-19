@@ -37,6 +37,7 @@ Hard-refresh after JS/HTML changes.
 | Leaderboard UI | One board per puzzle. Filters: Puzzle # and Hints used (0–5). No scope selector, and an empty board renders nothing rather than a placeholder. Sort win → fewer hints → faster → fewer guesses. **Local `localStorage` only** until API exists. |
 | Auth UI | Google + email-first, then **code or password**. **No passkeys.** |
 | Removed | Motion setting, coffee/give-up stats bar, More games. |
+| Removed 2026-10-19 | **Leaderboard and Battle mode**, in the UI and the code. The frontend no longer reads or writes `/scores`; the API route and the stored `stats.battle` / `bookle.lb.v4` data are left in place, unread. Old `#/ranks`, `#/battle/X` and `?b=X` links land on the daily (or on `?p=N` when the link names a book). The Nav, New game modal, Post-game, Stats, Leaderboard UI and Battle rows above describe the old behaviour. |
 
 Gameplay JSON stays static. Backend is for **identity, mail, scores, synced progress** — not for serving the book text.
 

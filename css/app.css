@@ -684,17 +684,6 @@ footer a { color: inherit; }
   max-width: 8rem;
 }
 
-/* A tick box is not a text field: undo the .filters input framing for it. */
-.filter-check { gap: 0.4rem; }
-.filter-check input {
-  padding: 0;
-  width: auto;
-  max-width: none;
-  border: 0;
-  background: none;
-}
-#lb-pick { max-width: 10rem; }
-
 .bank-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
@@ -739,10 +728,6 @@ footer a { color: inherit; }
 .pager-at { min-width: 6.5rem; text-align: center; color: var(--ink-soft); }
 .pager-gap { display: block; min-width: 4.4rem; }
 #screen-bank .pager { margin-top: 1.4rem; }
-
-.lb table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-.lb th, .lb td { text-align: left; padding: 0.4rem 0.3rem; border-bottom: 1px solid var(--rule); }
-.lb .you { background: color-mix(in srgb, var(--gold) 18%, transparent); }
 
 .modal-back {
   position: fixed;
@@ -801,7 +786,6 @@ footer a { color: inherit; }
 .choice.off { opacity: 0.5; }
 .choice.off .btn { cursor: not-allowed; }
 
-/* Battle mode is a mode, not a fourth thing to pick — so it's a switch. */
 /* The card a shared link opens on — and the layout the OG image mirrors. */
 .share-card {
   border: 1px solid var(--rule);
@@ -825,21 +809,9 @@ footer a { color: inherit; }
   margin: 0 auto;
 }
 .sc-stats .stat-row:last-child { margin-bottom: 0; }
-.sc-rank {
-  font-size: 0.8rem;
-  margin: 0.5rem 0 0;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-soft);
-}
-.sc-rank b { color: var(--ink); font-size: 0.95rem; }
 .sc-cta { text-align: center; margin: 0 0 0.7rem; }
 .btn.full { width: 100%; }
-/* Both standings sit side by side under the result. */
-.rank-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
-.rank-line span { white-space: nowrap; }
-
-/* Stats — Daily, Book bank and Battle mode are peers, so they share one scale.
+/* Stats — Daily and Book bank are peers, so they share one scale.
    The page title is the only level above them. */
 .s-block {
   --tile: 2rem;
@@ -855,17 +827,6 @@ footer a { color: inherit; }
   margin: 0 0 0.55rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
-}
-/* Battle results live only in this browser, and the heading says so without
-   competing with the section name. */
-.s-block h2 .s-note {
-  font-family: var(--sans);
-  font-size: var(--cap);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-left: 0.4rem;
 }
 .s-block .stat-grid { margin: 0.7rem 0 0.6rem; }
 .s-block .stat-grid b { font-size: var(--tile); line-height: 1.1; }
@@ -972,15 +933,6 @@ footer a { color: inherit; }
   border: 0;
   font-size: 1.2rem;
   line-height: 1;
-}
-
-.battle-code {
-  font-family: var(--mono);
-  font-size: 1.4rem;
-  letter-spacing: 0.12em;
-  padding: 0.5rem;
-  background: var(--paper-2);
-  text-align: center;
 }
 
 @media (max-width: 720px) {
@@ -1236,8 +1188,6 @@ footer a { color: inherit; }
 .sq.on { background: var(--wine); border-color: var(--wine); }
 
 
-.rank-line { margin: 0 0 0.55rem; }
-.rank-line b { font-family: var(--serif); font-size: 1.1rem; }
 .pg-actions {
   border-top: 1px solid var(--rule);
   padding-top: 0.9rem;
@@ -1260,30 +1210,6 @@ footer a { color: inherit; }
   .more-q { font-size: 1rem; }
   .daily-card.done + #more .story-nav .btn, #more + .daily-card .story-nav .btn { font-size: 0.9rem; }
 }
-
-/* Top of the board, shown with the post-game panel */
-.mini-lb {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.2rem 0 0.9rem;
-  font-size: 0.85rem;
-}
-.mini-lb th {
-  padding: 0.2rem 0.4rem;
-  text-align: left;
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  border-bottom: 1px solid var(--rule);
-}
-.mini-lb td {
-  padding: 0.3rem 0.4rem;
-  border-bottom: 1px solid var(--rule);
-}
-.mini-lb tr:last-child td { border-bottom: 0; }
-.mini-lb tr.you td { color: var(--wine); font-weight: 700; }
 
 /* How to play */
 .how-intro { margin: 0 0 0.5rem; }
@@ -1440,73 +1366,3 @@ footer a { color: inherit; }
   align-items: center;
 }
 .prose-cta .btn { text-decoration: none; display: inline-block; }
-/* ---- New game modal: the battle half ---- */
-
-.modal-sep {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 1.1rem 0 0.6rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.modal-sep::before, .modal-sep::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-}
-
-/* ---- Battle lobby ---- */
-
-.b-sec {
-  border-top: 1px solid var(--rule);
-  padding: 1rem 0 0.2rem;
-  margin: 0 0 0.6rem;
-}
-.b-sec:first-child { border-top: 0; padding-top: 0.2rem; }
-.b-sec h2 {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  margin: 0 0 0.6rem;
-}
-.b-sec .story-bar { margin-bottom: 0.5rem; }
-.b-rules { font-size: 0.82rem; margin-bottom: 0.2rem; }
-.b-actions { text-align: center; }
-
-.who { list-style: none; padding: 0; margin: 0 0 0.9rem; }
-.who-row {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.who-row.waiting { color: var(--ink-soft); }
-.who-dot {
-  flex: none;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  border: 1px solid var(--rule);
-  background: transparent;
-}
-.who-dot.on { background: var(--hit); border-color: var(--hit); }
-.who-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.who-input {
-  flex: 1;
-  min-width: 0;
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  padding: 0.3rem 0.45rem;
-  font-size: 0.9rem;
-}
-.who-tag {
-  flex: none;
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}

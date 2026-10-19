@@ -46,20 +46,16 @@ test('failed puzzle loads explain recovery and another book still works', async 
   expect(errors).toEqual([]);
 });
 
-test('shared standings are numbers, never executable markup', async ({ page }) => {
-  const payload = Buffer.from(JSON.stringify({ v: 2, c: 1, w: 1, g: 1, n: 'Reader',
+test('a shared result is text, never executable markup, and old standings fields are ignored', async ({ page }) => {
+  // Links made while the leaderboard existed carry br/bn/or/on, and m=battle.
+  const payload = Buffer.from(JSON.stringify({ v: 2, c: 1, w: 1, g: 1, m: 'battle', n: '<img src=x onerror="window.injected=1">',
     br: '<img src=x onerror="window.injected=1">', bn: '<b id="injected">100</b>' })).toString('base64url');
   await page.goto(`/?p=0&s=${payload}`);
   await expect(page.locator('#modal')).toBeVisible();
   await expect(page.locator('#modal img, #injected')).toHaveCount(0);
+  await expect(page.locator('#modal .sc-who')).toContainText('Book #0');
+  await expect(page.locator('#modal .sc-rank')).toHaveCount(0);
   expect(await page.evaluate(() => window.injected)).toBeUndefined();
-});
-
-test('leaderboard links select the requested book on every visit', async ({ page }) => {
-  await page.goto('/#/ranks?i=0');
-  await expect(page.locator('#lb-index')).toHaveValue('0');
-  await page.evaluate(() => { location.hash = '#/ranks?i=42'; });
-  await expect(page.locator('#lb-index')).toHaveValue('42');
 });
 
 test('a returning account restores remote guesses and sign-out clears the active round', async ({ page }) => {
@@ -89,76 +85,12 @@ test('a returning account restores remote guesses and sign-out clears the active
   await expect(page.locator('#guesses li')).toHaveText('1🟨guest guess');
 });
 
-test('a score the server took is stamped, so the next load does not resend it', async ({ page, baseURL }) => {
-  const API = 'https://excerptle-api.winter-glade-cbab.workers.dev';
-  const posts = [];
-  await page.route(`${API}/**`, route => {
-    const path = new URL(route.request().url()).pathname;
-    if (path === '/scores' && route.request().method() === 'POST') {
-      posts.push(JSON.parse(route.request().postData()));
-      return route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
-    }
-    const body = path === '/scores' ? '{"scores":[]}' : path === '/me/progress' ? '{"progress":{}}' : '{}';
-    return route.fulfill({ status: 200, contentType: 'application/json', body });
-  });
-  await page.addInitScript(() => localStorage.setItem('bookle.auth.session', JSON.stringify({
-    uid: 'sweep', email: 'sweep@example.test', name: 'Sweep', token: 'tok', expiresAt: 4102444800,
-  })));
-  const puzzleResponse = page.waitForResponse(r => /\/puzzles\/[^/]+\.json$/.test(new URL(r.url()).pathname) && !r.url().endsWith('/index.json'));
-  await page.goto('/#/play/9');
-  const puzzle = await (await puzzleResponse).json();
-  await page.locator('#guess-input').fill(puzzle.title);
-  await page.locator('#form button[type="submit"]').click();
-  await expect(page.locator('#result .verdict')).toContainText('Correct');
-  await expect.poll(() => posts.length).toBe(1);
-  expect(posts[0]).toMatchObject({ puzzleIndex: 9, guesses: 1, hints: 0, win: true });
-  // Stamped, which is what keeps the sign-in backfill from replaying the same
-  // twenty rows forever while a longer backlog never reaches a board.
-  // Signed in, so the board lives under the account's own key — a guest's
-  // rounds and this account's must never share a bucket on a shared browser.
-  await expect.poll(() => page.evaluate(() =>
-    ((JSON.parse(localStorage.getItem('bookle.lb.v4.account:sweep') || 'null') || {})['9'] || [])
-      .filter(r => r.sent === 1).length)).toBe(1);
-  await page.reload();
-  await expect(page.locator('#result .verdict')).toContainText('Correct');
-  await page.waitForTimeout(500);
-  expect(posts).toHaveLength(1);
-});
-
-test('a better result from another device does not list the player twice', async ({ page }) => {
-  const API = 'https://excerptle-api.winter-glade-cbab.workers.dev';
-  await page.route(`${API}/**`, route => {
-    const path = new URL(route.request().url()).pathname;
-    // What the server holds: this account's best row, earned elsewhere.
-    const body = path === '/scores'
-      ? '{"scores":[{"name":"Sweep","playerId":"dupe","hints":0,"guesses":2,"at":1757000000000}]}'
-      : path === '/me/progress' ? '{"progress":{}}' : '{}';
-    return route.fulfill({ status: 200, contentType: 'application/json', body });
-  });
-  await page.addInitScript(() => {
-    localStorage.setItem('bookle.auth.session', JSON.stringify({
-      uid: 'dupe', email: 'dupe@example.test', name: 'Sweep', token: 'tok', expiresAt: 4102444800,
-    }));
-    localStorage.setItem('bookle.playerId', 'local-player');
-    // The same person's earlier, worse solve — already uploaded from here.
-    localStorage.setItem('bookle.lb.v4.account:dupe', JSON.stringify({
-      9: [{ id: 'local-player', playerId: 'dupe', name: 'Sweep', hints: 3, guesses: 4, win: true, sent: 1, at: 1756000000000 }],
-    }));
-  });
-  await page.goto('/#/ranks?i=9');
-  await expect(page.locator('#lb-body tbody tr')).toHaveCount(1);
-  await expect(page.locator('#lb-body tbody tr.you td').nth(2)).toHaveText('0');
-});
-
-test('an account already signed in keeps its unscoped board and streak', async ({ page }) => {
+test('an account already signed in keeps its unscoped progress and streak', async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('bookle.auth.session', JSON.stringify({
       uid: 'legacy', email: 'legacy@example.test', name: 'Legacy', token: 'tok', expiresAt: 4102444800,
     }));
     // Written by the build that shipped before play data was namespaced.
-    localStorage.setItem('bookle.lb.v4', JSON.stringify({
-      9: [{ id: 'legacy-player', name: 'Legacy', hints: 1, guesses: 2, win: true, at: 1756000000000 }],
-    }));
     // The first two dailies, 2026-09-09 and 2026-09-10 — a live streak of two.
     localStorage.setItem('bookle.progress.v4', JSON.stringify({
       600: { puzzleId: 'x', mode: 'daily', status: 'won', guesses: ['a'], hints: 1, at: 1756000000000 },
@@ -169,8 +101,6 @@ test('an account already signed in keeps its unscoped board and streak', async (
   const daily = page.locator('.s-block', { has: page.locator('h2:text-is("Daily")') });
   await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
   await expect(daily.locator('.stat-grid div').nth(2)).toContainText('2');
-  expect(await page.evaluate(() =>
-    JSON.parse(localStorage.getItem('bookle.lb.v4.account:legacy'))['9'][0].hints)).toBe(1);
   expect(await page.evaluate(() =>
     JSON.parse(localStorage.getItem('bookle.progress.v4.account:legacy'))['601'].status)).toBe('won');
 });
@@ -194,4 +124,16 @@ test('a streak that arrives from the server repaints the stats screen', async ({
   // Landing straight on Stats, with nothing local: the numbers must arrive.
   await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
   await expect(daily.locator('.stat-grid div').nth(0)).toContainText('2');
+});
+
+test('retired routes land on a working daily instead of a blank screen', async ({ page }) => {
+  for (const url of ['/#/ranks?i=3', '/#/battle/abc123', '/?b=abc123']) {
+    await page.goto(url);
+    await expect(page.locator('#guess-input')).toBeVisible();
+    await expect(page.locator('#meta-left')).toHaveText('Daily #601');
+    expect(new URL(page.url()).hash).toBe(url.startsWith('/#') ? '#/' : '');
+  }
+  // An old invite that names a book plays that book.
+  await page.goto('/?b=abc123&p=7');
+  await expect(page.locator('#meta-left')).toHaveText('Book bank #7');
 });
