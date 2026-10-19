@@ -264,6 +264,14 @@ a { color: var(--wine); }
   border-radius: 2px;
 }
 .excerpt.fade { animation: fade 0.45s ease; }
+/* Tapping the story opens it full screen (see the reader at the end). */
+.reader-hint {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin: -0.35rem 0 0.65rem;
+}
+#excerpt[role="button"] { cursor: zoom-in; }
+#excerpt[role="button"]:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* A counter or tier label that just changed rolls in — this is the hint
@@ -1426,3 +1434,41 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
   align-items: center;
 }
 .prose-cta .btn { text-decoration: none; display: inline-block; }
+
+/* ---- Full-screen reader ---- */
+body.reader-open { overflow: hidden; }
+.reader {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+}
+.reader-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.reader-bar .tier-label { margin: 0; }
+.reader-x {
+  background: transparent;
+  border: 0;
+  font-size: 1.7rem;
+  line-height: 1;
+  padding: 0.2rem 0.6rem;
+  color: var(--ink);
+}
+.reader-x:hover, .reader-x:focus-visible { color: var(--wine); }
+.reader-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; }
+.reader-body {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}

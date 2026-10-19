@@ -134,7 +134,8 @@
         </div>
         <div class="excerpt-wrap">
           <div id="tier-label" class="tier-label">First sentence</div>
-          <article id="excerpt" class="excerpt drop">Loading…</article>
+          <div class="reader-hint" aria-hidden="true">&#10530; Read full screen</div>
+          <article id="excerpt" class="excerpt drop" role="button" tabindex="0">Loading…</article>
         </div>
         <div id="author-reveal" class="author-reveal" hidden></div>
         <dl id="hint-facts" class="hint-facts" hidden aria-live="polite"></dl>
@@ -296,6 +297,16 @@
       </nav>
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
+  </div>
+
+  <!-- Full-screen reader: a copy of whatever #excerpt shows right now, so it
+       can never show more than the player has unlocked. Opened by app.js. -->
+  <div id="reader" class="reader hidden" role="dialog" aria-modal="true" aria-labelledby="reader-label">
+    <div class="reader-bar">
+      <span id="reader-label" class="tier-label"></span>
+      <button type="button" id="reader-close" class="reader-x" data-act="close-reader" aria-label="Close full screen">&times;</button>
+    </div>
+    <div class="reader-scroll"><div id="reader-body" class="excerpt reader-body"></div></div>
   </div>
 
   <div id="modal" class="modal-back hidden" role="dialog" aria-modal="true">

@@ -608,6 +608,7 @@
     box.classList.remove("fade");
     void box.offsetWidth;
     box.classList.add("fade");
+    syncReader();
     const kind = state.mode === "daily" ? `Daily #${state.playIndex}` : `Book bank #${state.playIndex}`;
     $("#meta-left").textContent = kind;
     const cg = $("#count-guesses");
@@ -635,6 +636,43 @@
         `<div><dt>${label}</dt><dd>${escapeHtml(String(values[i + 1] || ""))}</dd></div>`).join("") : "";
       facts.hidden = !facts.innerHTML;
     }
+  }
+
+  /* Full-screen reader. It is a copy of what #excerpt shows at this moment —
+     the hint tier reached during play, the whole reading once the round is
+     over — so it can never reveal more than the player has unlocked. A
+     history entry is pushed while it is open so the browser's Back button
+     closes it, the way it would close any sheet on a phone. */
+  let readerOpen = false;
+  function syncReader() {
+    if (!readerOpen) return;
+    const src = $("#excerpt");
+    const body = $("#reader-body");
+    $("#reader-label").textContent = $("#tier-label").textContent;
+    body.innerHTML = src.innerHTML;
+    body.classList.toggle("complete-reading", src.classList.contains("complete-reading"));
+  }
+  function openReader() {
+    if (readerOpen || !state.puzzle || state.loading) return;
+    readerOpen = true;
+    $("#reader").classList.remove("hidden");
+    document.body.classList.add("reader-open");
+    // Everything behind the overlay is out of reach of Tab and screen readers.
+    $(".app").inert = true;
+    history.pushState({ reader: 1 }, "");
+    syncReader();
+    $(".reader-scroll").scrollTop = 0;
+    $("#reader-close").focus();
+  }
+  function closeReader({ fromHistory = false } = {}) {
+    if (!readerOpen) return;
+    readerOpen = false;
+    $("#reader").classList.add("hidden");
+    document.body.classList.remove("reader-open");
+    $(".app").inert = false;
+    // Closing with the button or Esc spends the entry that opening pushed.
+    if (!fromHistory && history.state?.reader) history.back();
+    $("#excerpt").focus({ preventScroll: true });
   }
 
   // Some openings name the detective, the hero, the narrator — and the name
@@ -1677,6 +1715,13 @@
       if (note.classList.contains("open")) placeNote(note);
       return;
     }
+    // The excerpt is itself the "read full screen" control. A drag that ended
+    // as a click is a text selection, and a button or link inside it (the
+    // retry after a failed chapter load) keeps its own job.
+    if ((e.target.closest("#excerpt") || e.target.closest(".reader-hint")) && !e.target.closest("button, a")) {
+      if (!String(getSelection() || "")) openReader();
+      return;
+    }
     const act = e.target.closest("[data-act]")?.dataset.act;
     if (!act) {
       if (!e.target.closest("#main-nav")) setNav(false);
@@ -1689,6 +1734,7 @@
     // Any other action is a navigation — close the menu behind it.
     setNav(false);
     if (act === "close-modal") closeModal();
+    if (act === "close-reader") closeReader();
     if (act === "open-play") openPlay();
     if (act === "open-how") openHow();
     if (act === "open-auth") openAuth();
@@ -1883,9 +1929,17 @@
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
+      closeReader();
       closeModal();
       setNav(false);
     }
+    if ((e.key === "Enter" || e.key === " ") && e.target?.id === "excerpt") {
+      e.preventDefault();
+      openReader();
+    }
+  });
+  window.addEventListener("popstate", () => {
+    if (readerOpen && !history.state?.reader) closeReader({ fromHistory: true });
   });
   $("#bank-jump")?.addEventListener("change", () => renderBank());
   $("#modal").addEventListener("click", (e) => {
