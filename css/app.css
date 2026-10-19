@@ -1272,7 +1272,6 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
 
 /* How to play */
 .how-intro { margin: 0 0 0.5rem; }
-.how-sub { margin: 0 0 0.55rem; color: var(--ink-soft); }
 .how-table {
   width: 100%;
   border-collapse: collapse;

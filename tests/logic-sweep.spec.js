@@ -190,3 +190,12 @@ test('Excerptle Pro is gone: no badge, no script, no Pro row, and the studio car
   await expect(page.locator('#modal h2')).toHaveText('Account');
   await expect(page.locator('#modal')).not.toContainText('Pro');
 });
+
+test('the How to play modal is the hint table plus three notes', async ({ page }) => {
+  await page.goto('/');
+  if (await page.locator('#nav-toggle').isVisible()) await page.locator('#nav-toggle').click();
+  await page.locator('#main-nav [data-act="open-how"]').click();
+  await expect(page.locator('#modal .how-table tr')).toHaveCount(6);
+  await expect(page.locator('#modal .how-notes li')).toHaveCount(3);
+  await expect(page.locator('#modal .how-notes')).toContainText('Wrong guesses don’t reveal anything');
+});

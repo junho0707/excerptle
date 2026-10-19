@@ -1166,8 +1166,7 @@
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>How to play</h2>
-      <p class="how-intro">You see the <strong>first sentence</strong> of a book. Name the book in <strong>six guesses</strong>.</p>
-      <p class="how-sub">Stuck? Take a hint. Each one stays visible and gives you another way into the book:</p>
+      <p class="how-intro">You see the <strong>first sentence</strong> of a book. Name it in <strong>six guesses</strong>. Stuck? Each hint stays visible:</p>
       <table class="how-table">
         <tbody>
           <tr><th>Start</th><td>The first sentence</td></tr>
@@ -1179,12 +1178,9 @@
         </tbody>
       </table>
       <ul class="how-notes">
-        <li>Wrong guesses use a guess but never reveal a hint. Using every hint does not end the round.</li>
-        <li>If a guess includes a distinctive word from the title, you’ll be told how many key title words remain — never which words they are.</li>
-        <li><strong>Close spelling counts.</strong> “Pride and Predjudice” is fine, and you can drop a leading “The”. A vague one-word guess such as “great” does not solve the book or earn a title-word nudge; try more of the title.</li>
-        <li>The fewer hints and guesses you use, the better you score.</li>
-        <li><strong>Give up</strong> ends the round and names the book. Two taps, and it counts as a miss.</li>
-        <li>After solving, using all six guesses, or giving up, you can read the complete first chapter (or first section) here.</li>
+        <li>Wrong guesses don’t reveal anything. <strong>Close spelling counts</strong>; “The” is optional.</li>
+        <li>Fewer hints and guesses means a better score.</li>
+        <li><strong>Give up</strong> names the book and counts as a miss. After the round you can read the opening chapter.</li>
       </ul>
       <p><button class="btn" type="button" data-act="close-modal">Close</button></p>
     `);
