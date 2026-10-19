@@ -35,7 +35,7 @@ test("names cannot inject SVG markup", () => {
 // Optional full-stack smoke test against wrangler dev.
 test("Worker serves pages, personalized metadata and actual PNGs", {skip:!process.env.SHARE_TEST_URL}, async () => {
   const base = process.env.SHARE_TEST_URL;
-  for (const path of ["/", "/privacy", "/support", "/js/app.js", "/assets/og.png", "/puzzles/index.json"]) {
+  for (const path of ["/", "/privacy", "/archive", "/js/app.js", "/assets/og.png", "/puzzles/index.json"]) {
     assert.equal((await fetch(base+path)).status,200,path);
   }
   const cases = [

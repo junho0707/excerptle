@@ -7,6 +7,7 @@
    reached through the OG service binding — a separate isolate that only
    crawlers ever wake. */
 import notes from "../../content/archive-notes.json";
+import archiveIndex from "../../content/archive-index.json";
 import { handleArchive, handleSitemap } from "./archive.js";
 import { openingSentenceFor, shareFromUrl, unfurl } from "./share.js";
 
@@ -54,7 +55,7 @@ export default {
 
     if (url.pathname === "/sitemap.xml") return handleSitemap(request, env, notes);
     if (url.pathname === "/archive" || url.pathname.startsWith("/archive/")) {
-      const archived = await handleArchive(request, env, notes);
+      const archived = await handleArchive(request, env, notes, new Date(), archiveIndex);
       if (archived) return archived;
     }
 

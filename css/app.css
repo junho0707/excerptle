@@ -419,6 +419,25 @@ a { color: var(--wine); }
   font-weight: 700;
   color: var(--ink-soft);
 }
+
+/* Crawlable description of the game under the cards. Quiet on purpose: it is
+   for people who scroll past the game and for search engines, not the round. */
+.about-strip {
+  margin: var(--sp-4) 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.about-strip h2 {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+.about-strip p { margin: 0 0 var(--sp-2); }
+.about-strip a { color: var(--wine); }
 .elsewhere a { text-decoration: none; color: inherit; }
 
 /* Each offer is its own bordered card with real air between them: a shared

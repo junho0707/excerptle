@@ -279,8 +279,10 @@ const SOCIAL = `<nav class="social" aria-label="Excerptle on social media">
       </nav>`;
 
 /* Returns a Response for /archive and /archive/<n>, or null if the path is not
-   ours. */
-export async function handleArchive(request, env, notes, now = new Date()) {
+   ours. `meta` is content/archive-index.json (title/author/year per entry):
+   with it the list costs no subrequests; without it each row fetches its
+   puzzle, which only the tests rely on. */
+export async function handleArchive(request, env, notes, now = new Date(), meta = null) {
   const url = new URL(request.url);
   const m = url.pathname.match(/^\/archive(?:\/([^/]*))?\/?$/);
   if (!m) return null;
@@ -294,7 +296,7 @@ export async function handleArchive(request, env, notes, now = new Date()) {
   if (m[1] === undefined || m[1] === "") {
     const rows = (await Promise.all(published.map(async (n) => {
       try {
-        const p = await puzzleFor(env, dailySlug(index, n));
+        const p = meta?.[String(n)] || await puzzleFor(env, dailySlug(index, n));
         return { n, date: addDays(index.startDate, n - base), title: p.title, author: p.author, year: p.year };
       } catch { return null; }
     }))).filter(Boolean).reverse();

@@ -97,3 +97,21 @@ test("sitemap keeps the static entries and adds only published archive pages", a
   assert.ok(xml.trimEnd().endsWith("</urlset>"));
   assert.match(res.headers.get("content-type"), /xml/);
 });
+
+// The /archive list renders from content/archive-index.json, so a rebuilt
+// puzzle or a new note must be followed by `node tools/build_archive_index.mjs`.
+test("content/archive-index.json matches the puzzles and notes", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { buildArchiveIndex } = await import("../build_archive_index.mjs");
+  const onDisk = JSON.parse(readFileSync(new URL("../../content/archive-index.json", import.meta.url), "utf8"));
+  assert.deepEqual(onDisk, JSON.parse(JSON.stringify(buildArchiveIndex())));
+});
+
+test("the list uses the bundled index instead of fetching each puzzle", async () => {
+  let fetches = 0;
+  const counting = { ASSETS: { fetch: (r) => { fetches++; return env.ASSETS.fetch(r); } } };
+  const meta = { 600: { title: "Zero", author: "A", year: 1 }, 602: { title: "Two", author: "A", year: 1 } };
+  const res = await handleArchive(new Request("https://excerptle.io/archive"), counting, notes, now, meta);
+  assert.equal(res.status, 200);
+  assert.equal(fetches, 1); // puzzles/index.json only
+});
