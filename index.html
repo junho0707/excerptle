@@ -164,10 +164,10 @@
            the AdSense slot once it is over. Two separate cards under one
            labelled heading, so neither reads as a continuation of the game or
            of the other. Static markup so the copy is editable without touching
-           app.js; app.js only flips .hidden (off for Pro).
+           app.js; app.js only flips .hidden.
            Never name these classes "house-ad"/"promo-ad" or similar: EasyList
            hides .house-ad outright, which left only the heading showing. -->
-      <aside id="elsewhere" class="elsewhere hidden" aria-label="More from Provable Learning">
+      <aside id="elsewhere" class="elsewhere hidden" aria-label="More from our studio">
         <h2 class="elsewhere-title">Also check out</h2>
         <a class="elsewhere-card elsewhere-card-main" href="https://vocabhelp.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
           <span class="elsewhere-copy">
@@ -176,12 +176,14 @@
           </span>
           <img class="elsewhere-logo" src="assets/promo-vocabhelp.webp" alt="" width="400" height="103" loading="lazy" decoding="async">
         </a>
-        <a class="elsewhere-card elsewhere-card-alt" href="https://provablelearning.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
+        <a class="elsewhere-card elsewhere-card-alt" href="https://bythezeitgeist.com/?utm_source=excerptle&amp;utm_medium=house&amp;utm_campaign=postgame" target="_blank" rel="noopener noreferrer">
           <span class="elsewhere-copy">
-            <span class="elsewhere-name">Provable Learning <span class="elsewhere-arrow" aria-hidden="true">&rarr;</span></span>
-            <span class="elsewhere-line">Personalized math tutoring.</span>
+            <span class="elsewhere-name">By the Zeitgeist <span class="elsewhere-arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="elsewhere-line">A newspaper of what people are actually paying attention to &mdash; with numbers.</span>
           </span>
-          <img class="elsewhere-logo" src="assets/promo-provable.webp" alt="" width="400" height="63" loading="lazy" decoding="async">
+          <!-- Two inks, swapped by the page's own theme (see css/app.css). -->
+          <img class="elsewhere-logo elsewhere-logo-btz elsewhere-logo-light" src="assets/promo-btz.png" alt="" width="557" height="111" loading="lazy" decoding="async">
+          <img class="elsewhere-logo elsewhere-logo-btz elsewhere-logo-dark" src="assets/promo-btz-dark.png" alt="" width="557" height="111" loading="lazy" decoding="async">
         </a>
       </aside>
     </main>

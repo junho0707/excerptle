@@ -22,15 +22,6 @@
   --sp-2: 0.6rem;   /* between related lines */
   --sp-3: 1rem;     /* between blocks in a card */
   --sp-4: 1.5rem;   /* between sections, and the air on each side of a rule */
-
-  /* House promos. Cool greys against the warm paper, so the cards read as
-     something other than the game before a word of them is read. */
-  --promo: #e9edf3;
-  --promo-2: #dde4ee;
-  --promo-rule: #bcc6d4;
-  --promo-ink: #26303d;
-  --promo-soft: #566374;
-  --promo-accent: #2c5a86;
 }
 
 [data-theme="night"] {
@@ -44,12 +35,6 @@
   --gold: #d4b36a;
   --lost: #e0736a;
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-  --promo: #191f27;
-  --promo-2: #212934;
-  --promo-rule: #3a4552;
-  --promo-ink: #e2e9f2;
-  --promo-soft: #9fb0c4;
-  --promo-accent: #8cbbe8;
 }
 
 * { box-sizing: border-box; }
@@ -443,16 +428,16 @@ a { color: var(--wine); }
   align-items: center;
   gap: var(--sp-3);
   padding: var(--sp-3);
-  border: 1px solid var(--promo-rule);
+  border: 1px solid var(--rule);
   border-radius: 5px;
-  background: var(--promo);
-  color: var(--promo-ink);
+  background: color-mix(in srgb, var(--gold) 8%, var(--paper));
+  color: var(--ink);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 .elsewhere-card + .elsewhere-card { margin-top: var(--sp-3); }
 .elsewhere-card:hover,
-.elsewhere-card:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
+.elsewhere-card:focus-visible { border-color: var(--wine); }
 
 .elsewhere-copy { flex: 1 1 auto; min-width: 0; }
 
@@ -464,7 +449,7 @@ a { color: var(--wine); }
   font-family: var(--serif);
   font-weight: 700;
   font-size: 1.08rem;
-  color: var(--promo-accent);
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 .elsewhere-arrow {
@@ -479,7 +464,7 @@ a { color: var(--wine); }
   display: block;
   font-size: 0.87rem;
   line-height: 1.4;
-  color: var(--promo-soft);
+  color: var(--ink-soft);
 }
 
 /* The second card carries no art, so it is set a notch smaller and quieter —
@@ -488,9 +473,8 @@ a { color: var(--wine); }
 .elsewhere-card-alt .elsewhere-name { font-size: 1rem; }
 .elsewhere-card-alt .elsewhere-line { font-size: 0.83rem; }
 
-/* Both cards show a logo plate. The wordmarks are dark ink on white with no
-   alpha, so they keep their own white tile rather than being knocked out or
-   inverted for the night theme. */
+/* VocabHelp's wordmark is dark ink on white with no alpha, so it keeps its own
+   white tile rather than being knocked out or inverted for the night theme. */
 .elsewhere-logo {
   flex: 0 0 auto;
   width: 150px;
@@ -499,11 +483,18 @@ a { color: var(--wine); }
   border-radius: 4px;
   background: #fff;
 }
-.elsewhere-card-alt .elsewhere-logo { width: 130px; }
+/* By the Zeitgeist's wordmark is a transparent PNG in two inks, so it sits
+   straight on the card with no tile. The page's own theme picks the ink — the
+   site follows its Night setting, not the OS, so a media query would pair the
+   wrong logo with the page. */
+.elsewhere-logo-btz { padding: 0; background: none; border-radius: 0; width: 160px; }
+.elsewhere-logo-dark,
+[data-theme="night"] .elsewhere-logo-light { display: none; }
+[data-theme="night"] .elsewhere-logo-dark { display: block; }
 
 @media (max-width: 30rem) {
   .elsewhere-logo { width: 118px; }
-  .elsewhere-card-alt .elsewhere-logo { width: 106px; }
+  .elsewhere-logo-btz { width: 130px; }
 }
 
 .screen h1 {

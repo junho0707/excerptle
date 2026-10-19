@@ -152,3 +152,16 @@ test('the post-game card offers Share and the full book, with no chapter-size or
   await expect(page.locator('#result .pg-stats dt')).not.toContainText(['Gutenberg']);
   await expect(page.locator('#result .pg-stats')).not.toContainText('words');
 });
+
+test('the studio cards are VocabHelp and By the Zeitgeist, and the wordmark follows the Night setting', async ({ page }) => {
+  await page.goto('/#/play/4');
+  const card = page.locator('#elsewhere a[href^="https://bythezeitgeist.com/"]');
+  await expect(page.locator('#elsewhere a')).toHaveCount(2);
+  await expect(page.locator('#elsewhere a[href*="provablelearning.com"]')).toHaveCount(0);
+  await expect(card).toContainText('By the Zeitgeist');
+  await expect(card.locator('.elsewhere-logo-light')).toBeVisible();
+  await expect(card.locator('.elsewhere-logo-dark')).toBeHidden();
+  await page.evaluate(() => { document.documentElement.dataset.theme = 'night'; });
+  await expect(card.locator('.elsewhere-logo-dark')).toBeVisible();
+  await expect(card.locator('.elsewhere-logo-light')).toBeHidden();
+});
