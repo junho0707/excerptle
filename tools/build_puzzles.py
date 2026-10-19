@@ -945,9 +945,14 @@ def main() -> None:
     # fetchers against gutenberg.org at once is exactly what not to do.
     cached_only = "--cached-only" in sys.argv
     only = None
+    # --slugs=g1,g2 rebuilds just those books from the cache, anchors and all,
+    # and leaves every other puzzle as it is.
+    rebuild = set()
     for a in sys.argv[1:]:
         if a.startswith("--limit="):
             only = int(a.split("=", 1)[1])
+        if a.startswith("--slugs="):
+            rebuild = {x.strip() for x in a.split("=", 1)[1].split(",") if x.strip()}
     OUT.mkdir(parents=True, exist_ok=True)
     READING_OUT.mkdir(parents=True, exist_ok=True)
     # A run that builds nothing -- --limit=0, an empty cache -- must not be able
@@ -957,7 +962,7 @@ def main() -> None:
     fresh = 0
     for i, book in enumerate(BOOKS):
         dest = OUT / f"{book['slug']}.json"
-        if not force and dest.exists() and dest.stat().st_size > 400:
+        if not force and book["slug"] not in rebuild and dest.exists() and dest.stat().st_size > 400:
             built.add(book["slug"])
             continue
         if only is not None and fresh >= only:
