@@ -199,3 +199,29 @@ test('the How to play modal is the hint table plus three notes', async ({ page }
   await expect(page.locator('#modal .how-notes li')).toHaveCount(3);
   await expect(page.locator('#modal .how-notes')).toContainText('Wrong guesses don’t reveal anything');
 });
+
+test('the All books screen: one-line lede, a key, titled missed books, numbered pages', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bookle.progress.v4', JSON.stringify({
+    3: { status: 'won', title: 'Emma', guesses: ['emma'], hints: 0 },
+    5: { status: 'lost', title: 'Dracula', guesses: ['a'], hints: 1 },
+    6: { status: 'lost', guesses: ['a'], hints: 1 },
+    8: { status: 'playing', guesses: ['x'], hints: 0 },
+  })));
+  await page.goto('/#/bank');
+  await expect(page.locator('#screen-bank .lede')).toHaveText('Pick a book by number.');
+  await expect(page.locator('.bank-legend li')).toHaveText(['Solved', 'Missed', 'Started', 'New']);
+  await expect(page.locator('.bank-legend li').first()).toHaveAttribute('title', /Solved/);
+  await expect(page.locator('#bank-filter')).toHaveAttribute('title', /#0–#599/);
+  const missed = page.locator('#bank-grid a[href="#/play/5"]');
+  await expect(missed).toHaveClass(/lost/);
+  await expect(missed).toContainText('Dracula');
+  await expect(missed).toHaveAttribute('aria-label', '#5, Dracula, missed');
+  await expect(page.locator('#bank-grid a[href="#/play/6"]')).toContainText('✕');
+  expect(await missed.evaluate(el => getComputedStyle(el).opacity)).toBe('1');
+  await expect(page.locator('#bank-grid a[href="#/play/8"]')).toHaveClass(/play/);
+  // 641 books at 100 a page: seven numbered pages, the first one current.
+  await expect(page.locator('#bank-pager [data-page][aria-current="page"]')).toHaveText('1');
+  await page.locator('#bank-pager [data-page="2"]').first().click();
+  await expect(page.locator('#bank-pager [aria-current="page"]')).toHaveText('2');
+  await expect(page).toHaveURL(/#\/bank\?page=2$/);
+});

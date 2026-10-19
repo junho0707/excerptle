@@ -721,13 +721,43 @@ footer a { color: inherit; }
 }
 /* Fallback marker for books guessed before the title was recorded. */
 .bank-cell .bank-tick { margin-left: 0.25rem; color: var(--hit); }
-.bank-cell.lost { opacity: 0.55; }
+/* Missed books name themselves like solved ones, in red, so the grid reads as
+   a record of what you have been through rather than a faded gap. */
+.bank-cell.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.bank-cell.lost .bank-tick { color: var(--lost); }
 .bank-cell.play { outline: 1px dashed var(--wine); }
-.pager { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-/* Prev and Next sit either side of the position, and hold their place when
-   one end runs out so "Page 3 / 6" doesn't slide about between pages. */
-.pager-at { min-width: 6.5rem; text-align: center; color: var(--ink-soft); }
+
+/* The key to the grid. Each swatch is drawn the way its cell is, so the dashed
+   outline of a started book is explained by looking at it. */
+.bank-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  list-style: none;
+  margin: 0 0 var(--sp-3);
+  padding: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.bank-legend li { display: inline-flex; align-items: center; gap: 0.4rem; cursor: help; }
+.sw {
+  display: inline-block;
+  width: 1.15rem;
+  height: 0.85rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.sw.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+.sw.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.sw.play { outline: 1px dashed var(--wine); outline-offset: -1px; }
+.pager { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+/* Prev and Next sit either side of the numbers, and hold their place when one
+   end runs out so the row doesn't slide about between pages. */
+.pager-n { min-width: 2.4rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+.pager-dots { color: var(--ink-soft); padding: 0 0.15rem; }
 .pager-gap { display: block; min-width: 4.4rem; }
+@media (max-width: 560px) { .pager-gap { display: none; } }
 #screen-bank .pager { margin-top: 1.4rem; }
 
 .modal-back {

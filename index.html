@@ -187,10 +187,16 @@
 
     <section id="screen-bank" class="screen hidden">
       <h1>All books</h1>
-      <p class="lede">Choose by ID. Titles stay hidden until you finish. Book bank is #0–#599; #600 and up are past daily puzzles.</p>
+      <p class="lede">Pick a book by number.</p>
+      <ul class="bank-legend" aria-label="Key">
+        <li title="Solved: you named it, so its title is shown."><i class="sw won" aria-hidden="true"></i>Solved</li>
+        <li title="Missed: you gave up or ran out of guesses, so its title is shown."><i class="sw lost" aria-hidden="true"></i>Missed</li>
+        <li title="Started: you have begun this one but not finished it."><i class="sw play" aria-hidden="true"></i>Started</li>
+        <li title="New: not played yet. Its title stays hidden."><i class="sw" aria-hidden="true"></i>New</li>
+      </ul>
       <div class="filters">
         <label>Show
-          <select id="bank-filter">
+          <select id="bank-filter" title="The book bank is #0–#599; #600 and up are past dailies.">
             <option value="all">All</option>
             <option value="preset">Book bank</option>
             <option value="daily">Past dailies (#600+)</option>

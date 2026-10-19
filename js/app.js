@@ -1186,6 +1186,22 @@
     `);
   }
 
+  /* "1 … 4 5 6 … 12": the first and last page, the current one and its
+     neighbours, with an ellipsis only where it hides two pages or more (one
+     hidden page is shown instead — "…" would be no shorter). */
+  function pageList(page, max) {
+    if (max <= 7) return Array.from({ length: max }, (_, i) => i + 1);
+    const keep = [...new Set([1, page - 1, page, page + 1, max])].filter((n) => n >= 1 && n <= max).sort((a, b) => a - b);
+    const out = [];
+    for (const n of keep) {
+      const prev = out[out.length - 1];
+      if (prev && n - prev === 2) out.push(prev + 1);
+      else if (prev && n - prev > 2) out.push("…");
+      out.push(n);
+    }
+    return out;
+  }
+
   function renderBank() {
     show("screen-bank");
     const presets = state.index.presetCount || state.index.order.length;
@@ -1233,20 +1249,21 @@
         const row = prog[String(n)];
         const st = row?.status;
         const cls = st === "won" ? "won" : st === "lost" ? "lost" : st === "playing" ? "play" : "";
-        // Naming a book you have already guessed spoils nothing and turns the
-        // grid into a record of what you have read. Rounds finished before the
-        // title was recorded fall back to a plain tick.
-        const done = st === "won";
+        // Naming a book you have already finished spoils nothing and turns the
+        // grid into a record of what you have read — missed ones included.
+        // Rounds finished before the title was recorded fall back to a mark.
+        const done = st === "won" || st === "lost";
         const label = done && row.title
           ? `<span class="bank-n">#${n}</span><span class="bank-t">${escapeHtml(row.title)}</span>`
-          : `#${n}${done ? '<span class="bank-tick" aria-hidden="true">\u2713</span>' : ""}`;
-        const aria = done ? ` aria-label="#${n}${row.title ? `, ${escapeHtml(row.title)}` : ""}, guessed"` : "";
+          : `#${n}${done ? `<span class="bank-tick" aria-hidden="true">${st === "won" ? "\u2713" : "\u2715"}</span>` : ""}`;
+        const aria = done ? ` aria-label="#${n}${row.title ? `, ${escapeHtml(row.title)}` : ""}, ${st === "won" ? "guessed" : "missed"}"` : "";
         return `<a class="bank-cell ${cls}"${aria} href="#/play/${n}">${label}</a>`;
       })
       .join("");
     $("#bank-pager").innerHTML = `
       ${page > 1 ? `<button class="btn ghost" type="button" data-page="${page - 1}">Prev</button>` : `<span class="pager-gap"></span>`}
-      <span class="pager-at">Page ${page} / ${maxPage}</span>
+      ${pageList(page, maxPage).map((n) => n === "…" ? `<span class="pager-dots" aria-hidden="true">…</span>`
+        : `<button class="btn pager-n${n === page ? "" : " ghost"}" type="button" data-page="${n}"${n === page ? ' aria-current="page"' : ""} aria-label="Page ${n}">${n}</button>`).join("")}
       ${page < maxPage ? `<button class="btn ghost" type="button" data-page="${page + 1}">Next</button>` : `<span class="pager-gap"></span>`}`;
   }
 

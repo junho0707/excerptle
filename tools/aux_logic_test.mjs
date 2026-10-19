@@ -32,3 +32,17 @@ test('daily streaks are derived from the dailies actually solved', () => {
   context.gameDate = () => '2026-09-14';
   assert.deepEqual(streaks(), { current: 2, best: 3 });
 });
+
+test('the bank pager shows first, last and the current page with its neighbours', () => {
+  const context = vm.createContext({});
+  const start = source.indexOf('  function pageList(');
+  vm.runInContext(source.slice(start, source.indexOf('  function renderBank()', start)) + '\nglobalThis.pageList = pageList;', context);
+  const pages = (page, max) => [...context.pageList(page, max)];
+  assert.deepEqual(pages(1, 1), [1]);
+  assert.deepEqual(pages(3, 7), [1, 2, 3, 4, 5, 6, 7]);
+  assert.deepEqual(pages(1, 12), [1, 2, '…', 12]);
+  assert.deepEqual(pages(6, 12), [1, '…', 5, 6, 7, '…', 12]);
+  // A single hidden page is shown, not hidden behind an ellipsis.
+  assert.deepEqual(pages(4, 12), [1, 2, 3, 4, 5, '…', 12]);
+  assert.deepEqual(pages(12, 12), [1, '…', 11, 12]);
+});
