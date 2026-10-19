@@ -1,5 +1,5 @@
 /* Header + share buttons on the static pages (about, FAQ, how to play,
-   privacy, support). Those pages don't load js/app.js, so this stands in for
+   privacy). Those pages don't load js/app.js, so this stands in for
    the two things the shared header needs from it — the hamburger menu and the
    sign-in tab's label — plus the share buttons: the native share sheet where
    the browser has one, a clipboard copy elsewhere.

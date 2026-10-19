@@ -1365,19 +1365,6 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
   color: var(--ink-soft);
 }
 
-/* ---- Support ---- */
-
-.support-cta { margin: 1.1rem 0 0.9rem; }
-.btn.kofi {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--wine);
-  color: var(--paper);
-}
-.btn.kofi:hover { background: var(--wine-deep); }
-.support-alt { font-size: 0.9rem; color: var(--ink-soft); }
-
-
 /* A page title is a level above what follows it, so give it room to say so.
    Matches the specificity of `.screen h1`, which sets a tighter margin. */
 .screen h1.screen-title, h1.screen-title {
@@ -1404,7 +1391,7 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
 }
 
 
-/* Static trust pages (/about, /support, /privacy). They share the app shell
+/* Static trust pages (/about, /faq, /privacy). They share the app shell
    but have no JS behind them, so the nav is plain links and always inline. */
 .prose { padding-bottom: 2rem; }
 .prose h2 {

@@ -127,7 +127,7 @@ test('a streak that arrives from the server repaints the stats screen', async ({
 });
 
 test('retired routes land on a working daily instead of a blank screen', async ({ page }) => {
-  for (const url of ['/#/ranks?i=3', '/#/battle/abc123', '/?b=abc123']) {
+  for (const url of ['/#/ranks?i=3', '/#/battle/abc123', '/#/support', '/?b=abc123']) {
     await page.goto(url);
     await expect(page.locator('#guess-input')).toBeVisible();
     await expect(page.locator('#meta-left')).toHaveText('Daily #601');
@@ -164,4 +164,15 @@ test('the studio cards are VocabHelp and By the Zeitgeist, and the wordmark foll
   await page.evaluate(() => { document.documentElement.dataset.theme = 'night'; });
   await expect(card.locator('.elsewhere-logo-dark')).toBeVisible();
   await expect(card.locator('.elsewhere-logo-light')).toBeHidden();
+});
+
+test('there is no Support tab or link to the old Support page', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#main-nav')).not.toContainText('Support');
+  await expect(page.locator('footer')).not.toContainText('Support');
+  await expect(page.locator('a[href*="ko-fi"], a[href="/support"]')).toHaveCount(0);
+  for (const path of ['/about.html', '/faq.html', '/how-to-play.html', '/privacy.html']) {
+    await page.goto(path);
+    await expect(page.locator('a[href*="ko-fi"], a[href="/support"]')).toHaveCount(0);
+  }
 });

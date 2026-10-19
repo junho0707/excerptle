@@ -160,7 +160,6 @@
       <p class="lede" id="pro-lede"${pro ? " hidden" : ""}>${PRO_COPY().blurb || "Excerptle Pro removes ads."}</p>
       <div id="pro-body">${proBodyHtml()}</div>
       <p id="pro-err" class="auth-err" role="alert"></p>
-      <p class="pro-note">Want a bigger book bank? Leave a tip on <a href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Ko-fi</a>.</p>
     `;
   }
 
@@ -1584,7 +1583,6 @@
     stats: "Stats",
     settings: "Settings",
     legal: "Privacy & Terms",
-    support: "Support me",
     news: "News",
   };
   function setTitle(page, playIndex) {
@@ -1601,7 +1599,7 @@
     return new URLSearchParams(location.search);
   }
 
-  const KNOWN_PAGES = new Set(["home", "bank", "stats", "settings", "legal", "support", "news", "play", "pro", "new", "signin", "account"]);
+  const KNOWN_PAGES = new Set(["home", "bank", "stats", "settings", "legal", "news", "play", "pro", "new", "signin", "account"]);
 
   async function go() {
     ++playRequest; // Invalidate requests even when leaving for a non-game screen.
@@ -1629,7 +1627,7 @@
       history.replaceState(null, "", location.pathname + "#/");
       return startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
     }
-    const screens = { news: "screen-news", support: "screen-support", settings: "screen-settings", legal: "screen-legal" };
+    const screens = { news: "screen-news", settings: "screen-settings", legal: "screen-legal" };
     if (r.page === "bank") return renderBank();
     if (r.page === "stats") return renderStats();
     if (r.page === "settings") return renderSettings();

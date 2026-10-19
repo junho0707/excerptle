@@ -1,0 +1,4 @@
+# Cloudflare Workers static-assets redirects. The Support page is gone, and the
+# site has no other home for it, so old links land on the game.
+/support / 301
+/support.html / 301
