@@ -6,6 +6,8 @@
    renderer needs all three, so it lives in its own Worker (render-worker.js)
    reached through the OG service binding — a separate isolate that only
    crawlers ever wake. */
+import notes from "../../content/archive-notes.json";
+import { handleArchive, handleSitemap } from "./archive.js";
 import { openingSentenceFor, shareFromUrl, unfurl } from "./share.js";
 
 /* Per-isolate, and cleared on failure so one bad parse can't poison the
@@ -48,6 +50,12 @@ export default {
       if (sentence) headers.set("X-Opening-Sentence", encodeURIComponent(sentence));
       else headers.delete("X-Opening-Sentence");
       return env.OG.fetch(new Request(url, { method: request.method, headers }));
+    }
+
+    if (url.pathname === "/sitemap.xml") return handleSitemap(request, env, notes);
+    if (url.pathname === "/archive" || url.pathname.startsWith("/archive/")) {
+      const archived = await handleArchive(request, env, notes);
+      if (archived) return archived;
     }
 
     const res = await env.ASSETS.fetch(request);

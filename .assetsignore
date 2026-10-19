@@ -20,6 +20,7 @@ wrangler.*
 .dev.vars*
 .env*
 *.md
+content/
 *:Zone.Identifier
 # Source images kept in the repo but never linked from the site. The shipped
 # sizes all live in assets/.
