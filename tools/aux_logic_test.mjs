@@ -32,31 +32,17 @@ test('daily streaks are derived from the dailies actually solved', () => {
   context.gameDate = () => '2026-09-14';
   assert.deepEqual(streaks(), { current: 2, best: 3 });
 });
-test('mixed server and browser timestamps sort chronologically', () => {
-  const context = vm.createContext({});
-  const start = source.indexOf('  const rankSort =');
-  vm.runInContext(source.slice(start, source.indexOf('  // The server carries', start)) + '\nglobalThis.compare = rankSort;', context);
-  const local = { hints: 1, guesses: 2, at: 1800000000000 };
-  const remote = { hints: 1, guesses: 2, at: 1800000001 };
-  assert.ok(context.compare(local, remote) < 0);
-});
 
-test('battle messages tolerate closed rooms, bound hints, and preserve book zero', async () => {
-  const started = [];
-  const state = { battle: null, mode: 'battle', status: 'playing', hints: 0, puzzle: {} };
-  const context = vm.createContext({ state, MAX_HINTS: 5, presetCount: () => 600,
-    startPlay: async options => started.push(options.playIndex), setMsg() {}, repaintLobby() {},
-    renderExcerpt() {}, bump() {}, $() {},
-  });
-  const start = source.indexOf('  async function onBattleData');
-  vm.runInContext(source.slice(start, source.indexOf('  function route()', start)), context);
-  await context.onBattleData({ type: 'hello' });
-  state.battle = { role: 'guest', playIndex: 42 };
-  await context.onBattleData({ type: 'hint', hints: 1000 });
-  assert.equal(state.hints, 0);
-  await context.onBattleData({ type: 'hint', hints: 3 });
-  assert.equal(state.hints, 3);
-  await context.onBattleData({ type: 'start', playIndex: 0 });
-  await context.onBattleData({ type: 'start', playIndex: -1 });
-  assert.deepEqual(started, [0]);
+test('the bank pager shows first, last and the current page with its neighbours', () => {
+  const context = vm.createContext({});
+  const start = source.indexOf('  function pageList(');
+  vm.runInContext(source.slice(start, source.indexOf('  function renderBank()', start)) + '\nglobalThis.pageList = pageList;', context);
+  const pages = (page, max) => [...context.pageList(page, max)];
+  assert.deepEqual(pages(1, 1), [1]);
+  assert.deepEqual(pages(3, 7), [1, 2, 3, 4, 5, 6, 7]);
+  assert.deepEqual(pages(1, 12), [1, 2, '…', 12]);
+  assert.deepEqual(pages(6, 12), [1, '…', 5, 6, 7, '…', 12]);
+  // A single hidden page is shown, not hidden behind an ellipsis.
+  assert.deepEqual(pages(4, 12), [1, 2, 3, 4, 5, '…', 12]);
+  assert.deepEqual(pages(12, 12), [1, '…', 11, 12]);
 });

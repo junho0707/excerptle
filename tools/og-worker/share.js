@@ -58,6 +58,29 @@ export function unfurl(d, idx) {
   return { title, description: parts.join("  ·  ") };
 }
 
+/* The opening sentence behind a share link, through whatever JSON reader the
+   caller has. The render Worker cannot do this lookup itself: a subrequest
+   from it to excerptle.io/puzzles is a Worker reaching another Worker on the
+   same zone, which Cloudflare refuses — so the front door, which holds the
+   ASSETS binding, resolves it and passes the sentence along. */
+export async function openingSentenceFor(readJson, d, idx) {
+  if (d.c || d.invite) return "";
+  const { order, presetCount, dailyStartIndex } = await readJson("/puzzles/index.json");
+  const presets = Math.min(presetCount || order.length, order.length);
+  const day = idx - (dailyStartIndex ?? 600);
+  const pool = order.length - presets;
+  const slug = d.m === "daily"
+    ? (pool > 0 ? order[presets + ((day % pool + pool) % pool)] : order[((day % order.length) + order.length) % order.length])
+    : order[idx % presets];
+  const puzzle = await readJson(`/puzzles/${slug}.json`);
+  // A name the puzzle redacts is written {{him}}; the card shows it the way
+  // the game does rather than printing the braces.
+  return String(puzzle.texts?.[0] || "")
+    .replace(/\{\{([^{}]+)\}\}/g, "($1)")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function shareFromUrl(url) {
   const raw = url.searchParams.get("p");
   if (raw === null || !/^\d{1,8}$/.test(raw)) return null;

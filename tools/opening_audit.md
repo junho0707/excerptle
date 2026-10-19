@@ -166,3 +166,39 @@ All 21 the prior report listed are correct to keep. Adding: g536-class cases —
 g620 Sylvie and Bruno genuinely opens `--and then all the people cheered again`;
 g15384 The Real Adventure genuinely opens in medias res; g844, g2542, g1254, g8606,
 g2911 open on stage directions, which is the real first text of a printed play.
+
+---
+
+## Round 2 — `tools/audit_openings.py` (2026-10-19)
+
+`python3 tools/audit_openings.py [--min=3] [--all]` scores `texts[0]`, `openingExcerpt`
+and `openingSentence` of every puzzle (play order) for front matter: front-matter words,
+Title-Case runs, term/gloss pairs, `--` definitions, low verb and sentence-stop density,
+bracketed notes and cast lines, "previous chapter" openers, scripture epigraphs. It is
+a triage list; every hit below was read against the Gutenberg source. Score > 3 flagged
+20 of 720; the rest are narrative that merely trips the verb-density rule (long
+periodic first sentences).
+
+Fixed with an anchor (all bank books, #0-599; no daily was touched):
+
+| # | id | title | was | now |
+|---|---|---|---|---|
+| 333 | g21659 | Some Everyday Folk and Dawn | slang glossary ("Billy A tin pail A camp-kettle...") | "The summer sun streamed meltingly down..." |
+| 191 | g2502 | Chitra | cast list + stage note ("VILLAGERS from an outlying district...") | "ART thou the god with the five darts..." |
+| 523 | g4540 | In His Steps | chapter-1 scripture epigraph | "It was Friday morning and the Rev. Henry Maxwell..." |
+| 517 | g4090 | From Ritual to Romance | opened at ch. IV ("In the previous chapter we considered...") | ch. I "In view of the extensive literature..." |
+| 337 | g13514 | Tales of a Traveller | bracketed author's headnote | "I was once at a hunting dinner..." |
+| 543 | g93 | Tom Sawyer, Detective | bracketed author's note | "Well, it was the next spring after me and Tom Sawyer..." |
+
+False positives, kept: g18247 The Last Man, g3189 Sketches New and Old, g58866 Murder on
+the Links, g35155 The Betrothed, g26 Paradise Lost (verse), g7079 Companions of Jehu,
+g37536 House of the Dead, g11438 The Willows, g2383 Canterbury Tales (verse),
+g700 Old Curiosity Shop, g20008 Young Duke, g32596 Revolt of the Angels,
+g2044 Education of Henry Adams: real first chapters with long periodic sentences or
+capitalised names. g40580 Pyrates opens on the book's Introduction by design (anchored,
+the Preface and title page skipped). g47312 Mysteries of London opens on its Prologue,
+an essay but the book's own first text. g6761 Fathom, g148 Franklin, g6424 Modern
+Utopia, g42455 Mystery of the Sea open on a real chapter 1 that happens to be
+expository or epistolary.
+
+Not fixed here: `author` on g4090 is the Wikidata id "Q3808161", not a name.

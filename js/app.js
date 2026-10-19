@@ -11,27 +11,23 @@
   const K = {
     id: "bookle.playerId",
     name: "bookle.name",
-    stats: "bookle.stats",
     settings: "bookle.settings",
     seen: "bookle.seenHowTo",
     // The public catalogue was rebuilt on the 720-book lists (bank #0–#599,
-    // dailies #600+) and every puzzle id changed with it. New keys
-    // intentionally leave pre-launch progress and local boards behind.
+    // dailies #600+) and every puzzle id changed with it. A new key
+    // intentionally leaves pre-launch progress behind.
     progress: "bookle.progress.v4",
-    lb: "bookle.lb.v4",
   };
 
   const state = {
     index: null,
     puzzle: null,
     playIndex: 600,
-    mode: "daily", // daily | preset | battle
+    mode: "daily", // daily | preset
     guesses: [],
     hints: 0,
     status: "playing",
-    beatenBy: null, // opponent's name, when a battle ended on their guess
     settings: loadSettings(),
-    battle: null,
     reader: { loading: false, data: null, error: "" },
 
   };
@@ -39,8 +35,7 @@
 
   /* The daily rolls over at midnight Pacific for everyone, not in whatever
      zone the browser happens to sit in — otherwise "today's puzzle" means a
-     different book either side of a time zone, and the leaderboards for one
-     index fill up over two calendar days. en-CA formats as YYYY-MM-DD, which
+     different book either side of a time zone. en-CA formats as YYYY-MM-DD, which
      is what daysBetween() and the derived daily dates expect. */
   const DAY_ZONE = "America/Los_Angeles";
   const dayFormatter = new Intl.DateTimeFormat("en-CA", {
@@ -95,96 +90,9 @@
       tab.textContent = s ? (s.email.split("@")[0] || "Account") : "Sign in";
       tab.dataset.act = s ? "open-account" : "open-auth";
     }
-    paintPro();
     const st = $("#auth-status");
     if (st) st.textContent = s ? `Signed in as ${s.email}` : "Not signed in. Progress stays on this device until you sign in.";
     renderPasswordBox();
-  }
-
-  // The Pro badge only means something next to a name, so it rides with the
-  // account tab: hidden signed out, outlined when free, filled when paying.
-  function paintPro() {
-    const el = $("#pro-badge");
-    if (!el) return;
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const signedIn = !!window.BookleAuth?.session?.();
-    el.classList.toggle("hidden", !signedIn && !v.pro);
-    el.classList.toggle("on", !!v.pro);
-    el.classList.toggle("warn", v.phase === "past_due");
-    el.title = v.pro ? "Excerptle Pro — active" : "Excerptle Pro — ad-free";
-    el.setAttribute("aria-label", el.title);
-  }
-
-  const PRO_COPY = () => window.EXCERPTLE_PRO || {};
-
-  function proBodyHtml() {
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const ends = v.currentPeriodEnd
-      ? new Date(typeof v.currentPeriodEnd === "number" ? v.currentPeriodEnd * 1000 : v.currentPeriodEnd)
-      : null;
-    // Stripe states the period end in UTC; rendering it in local time slides it
-    // a day for anyone west of Greenwich, so the receipt and the modal disagree.
-    const on = ends ? ends.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }) : "";
-    const manage = `<button class="btn ghost full" type="button" data-act="pro-portal">Manage billing</button>`;
-    switch (v.phase) {
-      case "loading":
-        return `<p class="pro-status">Checking your subscription…</p>`;
-      case "active":
-        return `<p class="pro-status ok">PRO</p>
-          ${on ? `<p class="pro-note">Renews ${on}.</p>` : ""}
-          ${v.dev ? `<p class="pro-note">Local override (<code>bookle.pro.dev</code>) — not a real subscription.</p>` : manage}`;
-      case "canceling":
-        return `<p class="pro-status ok">PRO</p>
-          <p class="pro-note">Ends${on ? ` ${on}` : " at the end of this period"}. Renewal can go back on in the billing portal.</p>${manage}`;
-      case "past_due":
-        return `<p class="pro-status warn">Your last payment didn’t go through. Stripe will retry, but updating the card is faster.</p>${manage}`;
-      case "none":
-        return `<button class="btn ghost full" type="button" data-act="pro-checkout-monthly">Monthly — ${PRO_COPY().priceLabel || "$3/month"}</button>
-          <button class="btn full" type="button" data-act="pro-checkout-yearly">Yearly — $20/year</button>
-          <p class="pro-note">Save $16/year with yearly.<br>Checkout and receipts are handled by Stripe.<br>Cancel any time.</p>`;
-      case "error":
-        return `<p class="pro-status warn">${escapeHtml(v.message || "Couldn’t reach billing just now.")}</p>
-          <button class="btn ghost full" type="button" data-act="open-auth">Sign in again</button>
-          <button class="btn ghost full" type="button" data-act="pro-refresh">Try again</button>`;
-      default:
-        if (v.reason === "signed-out") {
-          return `<button class="btn full" type="button" data-act="open-auth">Sign in to subscribe</button>
-            <p class="pro-note">A subscription belongs to an account, so it follows you between devices.</p>`;
-        }
-        return `<p class="pro-status">Stripe checkout isn’t connected yet.</p>`;
-    }
-  }
-
-  function proModalHtml() {
-    // Someone already paying doesn't need the sales line — they get the state,
-    // the date and the billing link.
-    const pro = !!window.ExcerptlePro?.isPro?.();
-    return `
-      <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
-      <h2>Excerptle Pro</h2>
-      <p class="lede" id="pro-lede"${pro ? " hidden" : ""}>${PRO_COPY().blurb || "Excerptle Pro removes ads."}</p>
-      <div id="pro-body">${proBodyHtml()}</div>
-      <p id="pro-err" class="auth-err" role="alert"></p>
-      <p class="pro-note">Want a bigger book bank? Leave a tip on <a href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Ko-fi</a>.</p>
-    `;
-  }
-
-  function repaintProModal() {
-    const body = $("#pro-body");
-    if (body) body.innerHTML = proBodyHtml();
-    // The modal usually opens before entitlement lands, so the pitch line has
-    // to retract once the answer comes back as "already paying".
-    const lede = $("#pro-lede");
-    if (lede) lede.hidden = !!window.ExcerptlePro?.isPro?.();
-    paintPro();
-  }
-  function openPro() {
-    openModal(proModalHtml());
-    window.ExcerptlePro?.refresh?.({ force: true }).then(repaintProModal);
-  }
-  function proErr(msg) {
-    const el = $("#pro-err");
-    if (el) el.textContent = msg || "";
   }
 
   function loadJSON(key, fallback) {
@@ -221,9 +129,7 @@
     return loadPlayJSON(K.progress, {});
   }
   function saveProgress({ remote = true } = {}) {
-    // Battles are deliberately casual: they have their own local win/loss
-    // tally and never overwrite a solo book record or enter its leaderboard.
-    if (!state.puzzle || state.loading || state.mode === "battle") return;
+    if (!state.puzzle || state.loading) return;
     const all = progressMap();
     const key = String(state.playIndex);
     const row = {
@@ -327,10 +233,9 @@
         if (!$("#screen-stats")?.classList.contains("hidden")) renderStats();
         const active = String(state.playIndex);
         if (merged[active] && merged[active] !== local[active] && state.status === "playing"
-          && !state.loading && state.mode !== "battle" && !$("#game").classList.contains("hidden")) {
+          && !state.loading && !$("#game").classList.contains("hidden")) {
           await startPlay({ playIndex: state.playIndex, mode: state.mode, showHow: false });
         }
-        await backfillScores(connection);
       } catch { /* Sync is opportunistic; local progress remains intact. */ }
       finally {
         progressSyncing = null;
@@ -338,54 +243,6 @@
       }
     })();
     return progressSyncing;
-  }
-
-  // A puzzle solved before signing in never reached /scores: that POST needs a
-  // token, and sign-in only back-fills `progress`. The board row would stay
-  // lost for good, since a finished puzzle can't be replayed to re-send it.
-  // So walk the local board on sign-in and submit whatever of ours never went
-  // up. Rows are stamped once accepted; the server keeps the better score, so
-  // re-sending one that is already there is harmless.
-  const BACKFILL_MAX = 20; // /scores allows 30 writes per 10 minutes.
-  async function backfillScores(connection) {
-    if (!connection) return;
-    const all = loadPlayJSON(K.lb, {});
-    const me = playerId();
-    let sent = 0;
-    for (const [index, list] of Object.entries(all)) {
-      if (!ownsProgress(connection) || sent >= BACKFILL_MAX) break;
-      const mine = (list || []).filter((r) => r.win && r.id === me && !r.sent);
-      if (!mine.length) continue;
-      // Only our best row per puzzle is worth a request — the server would
-      // discard the rest on arrival anyway.
-      const best = [...mine].sort((a, b) => a.hints - b.hints || a.guesses - b.guesses || (a.at || 0) - (b.at || 0))[0];
-      try {
-        sent += 1;
-        const res = await fetch(`${connection.api}/scores`, {
-          method: "POST",
-          headers: connection.headers,
-          body: JSON.stringify({ puzzleIndex: Number(index), guesses: best.guesses, hints: best.hints, hintVersion: best.hintVersion || 1, win: true }),
-        });
-        // A 429 or a rejected row stays unstamped, to be retried next sign-in.
-        if (!ownsProgress(connection)) return;
-        if (!res.ok) break;
-        for (const r of mine) { r.sent = 1; r.playerId = connection.uid; }
-      } catch { break; /* Offline. Nothing is stamped, so nothing is lost. */ }
-    }
-    if (sent && ownsProgress(connection)) {
-      const latest = loadPlayJSON(K.lb, {});
-      for (const [index, list] of Object.entries(all)) {
-        for (const row of latest[index] || []) {
-          if (list.some(old => old.sent && old.id === row.id && old.at === row.at)) {
-            row.sent = 1;
-            // The account id has to survive this re-read, or the board cannot
-            // tell the player's own uploaded row from another player's.
-            row.playerId = connection.uid;
-          }
-        }
-      }
-      savePlayJSON(K.lb, latest);
-    }
   }
 
   /* Carry unscoped local play into an account namespace, once per
@@ -408,47 +265,17 @@
     }
     if (Object.keys(guestProgress).length) savePlayJSON(K.progress, mergedProgress, account);
 
-    const guestBoard = loadPlayJSON(K.lb, {}, guest);
-    const accountBoard = loadPlayJSON(K.lb, {}, account);
-    const mergedBoard = { ...accountBoard };
-    for (const [index, rows] of Object.entries(guestBoard)) {
-      const byId = new Map((mergedBoard[index] || []).map(row => [row.id, row]));
-      for (const row of rows || []) byId.set(row.id, betterRow(byId.get(row.id), row));
-      mergedBoard[index] = [...byId.values()];
-    }
-    if (Object.keys(guestBoard).length) savePlayJSON(K.lb, mergedBoard, account);
-
-    const accountStats = loadPlayJSON(K.stats, {}, account);
-    const guestStats = loadPlayJSON(K.stats, {}, guest);
-    if (!Object.keys(accountStats).length && Object.keys(guestStats).length) savePlayJSON(K.stats, guestStats, account);
     localStorage.setItem(marker, "1");
   }
 
   function resetRoundForIdentityChange() {
     stopRoundTimers();
-    leaveBattle();
     pendingProgress = {};
     state.puzzle = null;
     state.guesses = [];
     state.hints = 0;
     state.status = "playing";
     state.reader = { loading: false, data: null, error: "" };
-  }
-
-  /* Solo play is not tallied here: everything the Stats screen shows about it
-     is derived from the progress map, which syncs. A local counter could not
-     follow a player to a second device, and a derived number self-heals
-     instead of drifting. Battles write no progress row, so they still need a
-     tally of their own — device-local, and labelled as such. */
-  function loadStats() {
-    return {
-      ...loadPlayJSON(K.stats, {}),
-      battle: {
-        played: 0, wins: 0, losses: 0, streak: 0, maxStreak: 0,
-        hints: 0, guesses: 0, lastAt: null,
-        ...(loadPlayJSON(K.stats, {}).battle || {}),
-      },
-    };
   }
 
   function dailyIndexNow() {
@@ -543,20 +370,7 @@
 
   // The Worker renders the shared result as both metadata and a PNG card.
   function kindOf(mode) {
-    return mode === "daily" ? "Daily" : mode === "battle" ? "Battle" : "Book";
-  }
-
-  /* Standing in this browser's cached board, overall and by equal help. */
-  function ranksFor(idx, hints) {
-    const board = lbFor(idx);
-    const me = playerId();
-    const bracket = board.filter((r) => r.hints === hints);
-    return {
-      overall: board.findIndex((r) => r.id === me) + 1,
-      overallOf: board.length,
-      bracket: bracket.findIndex((r) => r.id === me) + 1,
-      bracketOf: bracket.length,
-    };
+    return mode === "daily" ? "Daily" : "Book";
   }
 
   /* The share link carries the whole result, so the page the recipient opens
@@ -577,7 +391,6 @@
   };
 
   function sharePayload() {
-    const r = ranksFor(state.playIndex, state.hints);
     const finished = state.status === "won" || state.status === "lost";
     return b64u.enc(JSON.stringify({
       v: 2,
@@ -587,8 +400,6 @@
       w: state.status === "won" ? 1 : 0,
       g: state.guesses.length,
       h: state.hints,
-      br: r.bracket, bn: r.bracketOf,
-      or: r.overall, on: r.overallOf,
     }));
   }
 
@@ -602,8 +413,8 @@
       d.h = Math.min(Math.max(0, d.h | 0), MAX_HINTS);
       d.n = String(d.n || "A player").slice(0, 24);
       d.w = d.w ? 1 : 0;
-      d.m = d.m === "daily" || d.m === "battle" ? d.m : "preset";
-      for (const key of ["br", "bn", "or", "on"]) d[key] = Math.max(0, d[key] | 0);
+      // Links made by older builds can carry other modes; they read as a book.
+      d.m = d.m === "daily" ? "daily" : "preset";
       return d;
     } catch {
       return null;
@@ -710,10 +521,8 @@
     box.classList.remove("fade");
     void box.offsetWidth;
     box.classList.add("fade");
-    const kind =
-      state.mode === "daily" ? `Daily #${state.playIndex}` :
-      state.mode === "battle" ? `Battle #${state.playIndex}` :
-      `Book bank #${state.playIndex}`;
+    syncReader();
+    const kind = state.mode === "daily" ? `Daily #${state.playIndex}` : `Book bank #${state.playIndex}`;
     $("#meta-left").textContent = kind;
     const cg = $("#count-guesses");
     const chn = $("#count-hints");
@@ -740,6 +549,43 @@
         `<div><dt>${label}</dt><dd>${escapeHtml(String(values[i + 1] || ""))}</dd></div>`).join("") : "";
       facts.hidden = !facts.innerHTML;
     }
+  }
+
+  /* Full-screen reader. It is a copy of what #excerpt shows at this moment —
+     the hint tier reached during play, the whole reading once the round is
+     over — so it can never reveal more than the player has unlocked. A
+     history entry is pushed while it is open so the browser's Back button
+     closes it, the way it would close any sheet on a phone. */
+  let readerOpen = false;
+  function syncReader() {
+    if (!readerOpen) return;
+    const src = $("#excerpt");
+    const body = $("#reader-body");
+    $("#reader-label").textContent = $("#tier-label").textContent;
+    body.innerHTML = src.innerHTML;
+    body.classList.toggle("complete-reading", src.classList.contains("complete-reading"));
+  }
+  function openReader() {
+    if (readerOpen || !state.puzzle || state.loading) return;
+    readerOpen = true;
+    $("#reader").classList.remove("hidden");
+    document.body.classList.add("reader-open");
+    // Everything behind the overlay is out of reach of Tab and screen readers.
+    $(".app").inert = true;
+    history.pushState({ reader: 1 }, "");
+    syncReader();
+    $(".reader-scroll").scrollTop = 0;
+    $("#reader-close").focus();
+  }
+  function closeReader({ fromHistory = false } = {}) {
+    if (!readerOpen) return;
+    readerOpen = false;
+    $("#reader").classList.add("hidden");
+    document.body.classList.remove("reader-open");
+    $(".app").inert = false;
+    // Closing with the button or Esc spends the entry that opening pushed.
+    if (!fromHistory && history.state?.reader) history.back();
+    $("#excerpt").focus({ preventScroll: true });
   }
 
   // Some openings name the detective, the hero, the narrator — and the name
@@ -839,91 +685,6 @@
       .join("");
   }
 
-  function lbFor(idx) {
-    const all = loadPlayJSON(K.lb, {});
-    // Losses are not ranked — filtered here too, so older saved rows drop out.
-    return (all[String(idx)] || []).filter((r) => r.win);
-  }
-  // Your own row is kept on the board's own ordering, the same comparison the
-  // server makes — replaying a book you already solved must not downgrade the
-  // result locally while the server keeps the better one.
-  const betterRow = (a, b) => {
-    if (!a) return b;
-    if (!b) return a;
-    if (a.win !== b.win) return a.win ? a : b;
-    if (a.hints !== b.hints) return a.hints < b.hints ? a : b;
-    if (a.guesses !== b.guesses) return a.guesses < b.guesses ? a : b;
-    return (a.at || 0) <= (b.at || 0) ? a : b;
-  };
-  function pushLb(entry) {
-    const all = loadPlayJSON(K.lb, {});
-    const k = String(state.playIndex);
-    const list = all[k] || [];
-    const me = playerId();
-    const mine = list.filter((r) => r.id !== me);
-    const kept = betterRow(list.find((r) => r.id === me), entry);
-    mine.push(kept);
-    mine.sort((a, b) => {
-      if (a.win !== b.win) return a.win ? -1 : 1;
-      if (a.hints !== b.hints) return a.hints - b.hints;
-      if (a.guesses !== b.guesses) return a.guesses - b.guesses;
-      return (a.at || 0) - (b.at || 0);
-    });
-    all[k] = mine.slice(0, 100);
-    savePlayJSON(K.lb, all);
-    sendScore(k, kept);
-  }
-
-  // A row the server has taken is stamped `sent`. Without the stamp every
-  // sign-in replayed the same first twenty rows (see BACKFILL_MAX) and a
-  // backlog beyond that never reached a board at all.
-  async function sendScore(key, entry) {
-    const connection = progressConnection();
-    if (!connection || !entry?.win || entry.sent) return;
-    try {
-      const res = await fetch(`${connection.api}/scores`, {
-        method: "POST",
-        headers: connection.headers,
-        keepalive: true,
-        body: JSON.stringify({ puzzleIndex: Number(key), guesses: entry.guesses, hints: entry.hints, hintVersion: entry.hintVersion || 1, win: true }),
-      });
-      if (!res.ok || !ownsProgress(connection)) return;
-    } catch { return; /* Unstamped, so the next sign-in retries it. */ }
-    const all = loadPlayJSON(K.lb, {});
-    for (const row of all[key] || []) {
-      if (row.id === entry.id && row.hints === entry.hints && row.guesses === entry.guesses) {
-        row.sent = 1;
-        row.playerId = connection.uid;
-      }
-    }
-    savePlayJSON(K.lb, all);
-  }
-
-  // Boards are ordered by who got there first, so the moment of solving is the
-  // tiebreak made visible -- to the second, because on a quiet board two people
-  // can share a day and the order still has to read as earned.
-  // Epoch seconds from the API, milliseconds from local rows.
-  function fmtWhen(at) {
-    if (!at) return "—";
-    const ms = at < 1e12 ? at * 1000 : at;
-    return new Date(ms).toLocaleString(undefined, {
-      month: "short", day: "numeric",
-      hour: "2-digit", minute: "2-digit", second: "2-digit",
-    });
-  }
-
-  // Longest tier we hold for this book — the first chapter — gives an honest size.
-  function chapterWords(p) {
-    if (p?.reading?.wordCount) {
-      const n = Number(p.reading.wordCount);
-      return n < 1000 ? `${n}` : `${(Math.round(n / 100) / 10).toFixed(1)}k`;
-    }
-    const t = (p.texts || []).reduce((a, b) => (b.length > a.length ? b : a), "");
-    const n = t.trim().split(/\s+/).filter(Boolean).length;
-    if (!n) return null;
-    return n < 1000 ? `${n}` : `${(Math.round(n / 100) / 10).toFixed(1)}k`;
-  }
-
   // Spent squares in wine, unspent left empty — the same story the share grid tells.
   function blocks(used, total, label) {
     let out = `<span class="sq-row" role="img" aria-label="${label}">`;
@@ -933,28 +694,8 @@
 
   function postGameHtml() {
     const p = state.puzzle;
-    const me = playerId();
-    const board = lbFor(state.playIndex);
-    const rank = board.findIndex((r) => r.id === me) + 1;
-    // Same-hint bracket: the fair comparison is against players who took as much help.
-    const bracket = board.filter((r) => r.hints === state.hints);
-    const bRank = bracket.findIndex((r) => r.id === me) + 1;
-    const top = (bracket.length > 1 ? bracket.slice(0, 5) : [])
-      .map((r, i) => `<tr class="${r.id === me ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.guesses}</td><td>${fmtWhen(r.at)}</td></tr>`)
-      .join("");
     const won = state.status === "won";
-    const lostLine = state.beatenBy ? `${escapeHtml(state.beatenBy)} got there first`
-      : state.gaveUp ? "Gave up" : "Out of guesses";
-    const words = chapterWords(p);
-    const gut = p.source?.gutenberg;
-    const hintWord = `${state.hints} hint${state.hints === 1 ? "" : "s"}`;
-    const r = ranksFor(state.playIndex, state.hints);
-    const rankLine = won && (r.bracket || r.overall)
-      ? `<p class="rank-line">
-           ${r.bracket ? `<span>#<b>${r.bracket}</b> of ${r.bracketOf} at ${hintWord}</span>` : ""}
-           ${r.overall ? `<span>#<b>${r.overall}</b> of ${r.overallOf} on this device</span>` : ""}
-         </p>`
-      : "";
+    const lostLine = state.gaveUp ? "Gave up" : "Out of guesses";
     return `
       <div class="verdict ${won ? "ok" : "no"}">
         <span class="verdict-mark" aria-hidden="true">${won ? "✓" : "✕"}</span>
@@ -967,8 +708,6 @@
         <dl class="pg-stats">
           ${p.year ? `<div><dt>Published</dt><dd>${escapeHtml(String(p.year))}</dd></div>` : ""}
           <div><dt>Book</dt><dd>#${state.playIndex}</dd></div>
-          ${words ? `<div><dt>${escapeHtml(p.reading?.label || "Chapter 1")}</dt><dd>${words} words</dd></div>` : ""}
-          ${gut ? `<div><dt>Gutenberg</dt><dd>#${escapeHtml(String(gut))}</dd></div>` : ""}
         </dl>
       </section>
 
@@ -984,19 +723,13 @@
         </div>
       </section>
 
-      ${rankLine || top ? `<section class="pg-sec pg-rank">
-        ${rankLine}
-        ${top ? `<table class="mini-lb"><thead><tr><th>#</th><th>Player</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${top}</tbody></table>` : ""}
-      </section>` : ""}
-
       ${won && !window.BookleAuth?.session?.() ? `<section class="pg-sec pg-save">
         <button class="btn" type="button" data-act="open-auth">Sign in to save your result</button>
       </section>` : ""}
 
       <div class="row pg-actions">
         <button class="btn" type="button" data-act="share">Share</button>
-        <a class="btn ghost" href="#/ranks?i=${state.playIndex}">Full leaderboard</a>
-        <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Gutenberg</a>
+        <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Read the full book →</a>
       </div>
     `;
   }
@@ -1018,102 +751,34 @@
     const box = $("#result");
     const form = $("#form");
     const more = $("#more");
-    const battle = state.mode === "battle";
-    $("#share-playing")?.classList.toggle("hidden", battle);
-    $("#give-up")?.classList.toggle("hidden", battle);
     if (state.status === "playing") {
       box.classList.add("hidden");
       form.classList.remove("hidden");
-      if (more) more.classList.toggle("hidden", battle);
+      if (more) more.classList.remove("hidden");
       placeMore(false);
       window.ExcerptleAds?.clear();
-      house(false);
+      elsewhere();
       return;
     }
     form.classList.add("hidden");
-    if (more) more.classList.toggle("hidden", battle);
-    placeMore(!battle);
+    if (more) more.classList.remove("hidden");
+    placeMore(true);
     box.classList.remove("hidden");
     box.innerHTML = postGameHtml();
     // Fresh <ins> per finished game — see js/ads.js.
     if (refreshAd) window.ExcerptleAds?.render();
-    house(true);
+    elsewhere();
   }
 
-  /* House ads ride with the AdSense slot: shown once the round is over, gone
-     while a round is in play, and off for Pro, which is sold as ad-free. */
-  function house(show) {
-    const el = document.getElementById("house");
-    if (el) el.classList.toggle("hidden", !show || !!window.ExcerptlePro?.isPro?.());
-  }
-
-  /* Who named the book first, decided the same way in both browsers.
-     Not wall clocks: two phones can disagree by minutes, and the loser of
-     that comparison would be whoever's clock ran slow. Both rounds start
-     from the same message, so the honest measure is how long each player
-     took from their own starting gun. A dead heat goes to the host, so the
-     two browsers can never each pick themselves. */
-  const BATTLE_SETTLE_MS = 1500;
-  let battleCommitTimer = null;
-  function roundElapsed() {
-    return Math.max(0, Date.now() - (state.roundStart || Date.now()));
-  }
-  function theyWereFirst(theirs) {
-    const mine = state.winAt;
-    if (mine == null) return true;
-    if (!Number.isFinite(theirs)) return false;
-    return theirs < mine || (theirs === mine && state.battle?.role === "guest");
-  }
-
-  // The battle tally is written once per match, when the result has settled.
-  function commitBattleResult() {
-    clearTimeout(battleCommitTimer);
-    battleCommitTimer = null;
-    const b_ = state.battle;
-    if (!b_ || b_.committed || state.status === "playing") return;
-    b_.committed = true;
-    const s = loadStats();
-    const b = s.battle;
-    b.played += 1;
-    b.hints += state.hints;
-    b.guesses += state.guesses.length;
-    b.lastAt = Date.now();
-    if (state.status === "won") {
-      b.wins += 1;
-      b.streak += 1;
-      b.maxStreak = Math.max(b.maxStreak, b.streak);
-    } else {
-      b.losses += 1;
-      b.streak = 0;
-    }
-    savePlayJSON(K.stats, s);
+  /* Links to our other sites: shown both during and after a round. The
+     markup starts hidden so it can't flash before the first puzzle is up. */
+  function elsewhere() {
+    document.getElementById("elsewhere")?.classList.remove("hidden");
   }
 
   function recordFinish() {
     stopRoundTimers();
-    if (state.mode !== "battle") saveProgress();
-    if (state.status === "won" && state.mode !== "battle") {
-      pushLb({
-        id: playerId(),
-        name: displayName(),
-        guesses: state.guesses.length,
-        hints: state.hints,
-        hintVersion: Number(state.puzzle?.hintVersion) === 2 ? 2 : 1,
-        win: true,
-        at: Date.now(),
-      });
-    }
-    if (state.mode === "battle") {
-      // A win is provisional for a moment: the other browser may be about to
-      // say it named the book first, and the tally must not count a win that
-      // is then handed over. A loss is final the instant it happens.
-      if (state.status === "won" && state.battle?.conn?.open) {
-        clearTimeout(battleCommitTimer);
-        battleCommitTimer = setTimeout(commitBattleResult, BATTLE_SETTLE_MS);
-      } else {
-        commitBattleResult();
-      }
-    }
+    saveProgress();
   }
 
   function onHint() {
@@ -1130,7 +795,6 @@
     renderExcerpt();
     bump($("#count-hints"));
     bump($("#tier-label"));
-    if (state.mode === "battle" && state.battle) battleSend({ type: "hint", hints: state.hints });
   }
 
   // Two taps, because one stray tap must not be able to end a round. The arm
@@ -1144,10 +808,6 @@
   function onGiveUp() {
     if (state.loading || !state.puzzle) return;
     if (state.status !== "playing") return;
-    if (state.mode === "battle") {
-      setMsg("A battle ends when one of you names the book.");
-      return;
-    }
     if (!giveUpArmed) {
       armGiveUp(true);
       setMsg("Give up and see the answer? Tap again to confirm.");
@@ -1180,14 +840,11 @@
     if (isMatch(guess, state.puzzle)) {
       state.status = "won";
       setMsg("");
-      if (state.mode === "battle") state.winAt = roundElapsed();
       recordFinish();
-      if (state.mode === "battle" && state.battle) battleSend({ type: "win", name: displayName(), guesses: state.guesses.length, hints: state.hints, at: state.winAt });
     } else if (state.guesses.length >= MAX_GUESSES) {
       state.status = "lost";
       setMsg("No more guesses.");
       recordFinish();
-      if (state.mode === "battle" && state.battle) battleSend({ type: "lose", name: displayName() });
     } else {
       const partial = partialMatch(guess, state.puzzle);
       setMsg(partial
@@ -1263,10 +920,6 @@
       state.status = "playing";
       state.gaveUp = false;
     }
-    state.beatenBy = null;
-    state.winAt = null;
-    state.roundStart = Date.now();
-    if (state.mode === "battle" && state.battle) state.battle.committed = false;
     armGiveUp(false);
     setMsg("");
     const input = $("#guess-input");
@@ -1298,7 +951,6 @@
 
   function playRandom() {
     closeModal();
-    leaveBattle();
     const n = randomPresetIndex(state.playIndex);
     location.hash = `#/play/${n}`;
   }
@@ -1354,31 +1006,11 @@
         </span>
       </div>
       <p class="auth-err" id="choice-err"></p>
-
-      <!-- Battle is its own way in, not a modifier on the picks above, so it
-           sits at the end with the only two ways to enter one. -->
-      <div class="modal-sep"><span>Or play a friend</span></div>
-
-      <div class="choice">
-        <span class="choice-text"><b>Battle mode</b><span>Same book, head to head. First correct title wins.</span></span>
-        <span class="choice-go">
-          <button class="btn" type="button" data-act="battle-create">Create room</button>
-        </span>
-      </div>
-
-      <div class="choice">
-        <span class="choice-text"><b>Join a room</b><span>Paste a friend’s code</span></span>
-        <span class="choice-go">
-          <input id="join-code" type="text" maxlength="8" placeholder="abc123" autocapitalize="off" spellcheck="false">
-          <button class="btn ghost" type="button" data-act="battle-join">Join</button>
-        </span>
-      </div>
     `;
   }
 
   function pickIndex(n) {
     closeModal();
-    leaveBattle();
     const target = `#/play/${n}`;
     // Setting the hash routes for us; if we're already there it won't fire.
     if (location.hash === target) startPlay({ playIndex: n, mode: "preset" });
@@ -1389,11 +1021,6 @@
      detail — so opening a friend's link never spoils the book. */
   function sharedResultHtml(d, idx) {
     const score = d.w ? `${d.g}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`;
-    const hintWord = `${d.h} hint${d.h === 1 ? "" : "s"}`;
-    const stand = [
-      d.br ? `#<b>${d.br}</b> of ${d.bn} at ${hintWord}` : "",
-      d.or ? `#<b>${d.or}</b> of ${d.on} on this device` : "",
-    ].filter(Boolean);
     // Same spent-squares readout as the post-game panel, so a result looks
     // the same whether you earned it or were sent it.
     return `
@@ -1411,7 +1038,6 @@
             ${blocks(d.h, MAX_HINTS, `${d.h} of ${MAX_HINTS} hints used`)}
           </div>
         </div>
-        ${stand.length ? `<p class="sc-rank">${stand.join(" · ")}</p>` : ""}
       </div>
       <p class="lede sc-cta">Check out this book.</p>
       <button class="btn full" type="button" data-act="close-modal">Play #${idx}</button>
@@ -1512,7 +1138,7 @@
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>Sign in or sign up</h2>
-      <p class="lede">Sign in with Google, a password, or an email code to manage your account and Excerptle Pro.</p>
+      <p class="lede">Sign in with Google, a password, or an email code to manage your account.</p>
       <button class="btn google" type="button" data-act="auth-google">${gSvg} Continue with Google</button>
       <div class="or-line">or</div>
       <div class="auth-stack">
@@ -1527,19 +1153,12 @@
   function openAccount() {
     const s = window.BookleAuth.session();
     if (!s) return openAuth();
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const proStatus = v.phase === "active" ? "Active" :
-      v.phase === "canceling" ? "Active — ending at period end" :
-      v.phase === "past_due" ? "Payment issue" :
-      v.phase === "loading" ? "Checking…" :
-      v.phase === "error" ? "Status unavailable" : "Free";
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>Account</h2>
       <p><strong>Email</strong><br>${escapeHtml(s.email)}</p>
       <p><strong>Sign-in method</strong><br>${s.provider === "google" ? "Google" : s.provider === "password" ? "Password" : "Email code"}</p>
       <p><strong>Password</strong><br>${window.BookleAuth.hasPassword() ? "Set" : "Not set — add one in Settings"}</p>
-      <p><strong>Excerptle Pro</strong><br><span id="account-pro">${proStatus}</span></p>
       <p><button class="btn ghost" type="button" data-act="sign-out">Sign out</button></p>
     `);
   }
@@ -1547,8 +1166,7 @@
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>How to play</h2>
-      <p class="how-intro">You see the <strong>first sentence</strong> of a book. Name the book in <strong>six guesses</strong>.</p>
-      <p class="how-sub">Stuck? Take a hint. Each one stays visible and gives you another way into the book:</p>
+      <p class="how-intro">You see the <strong>first sentence</strong> of a book. Name it in <strong>six guesses</strong>. Stuck? Each hint stays visible:</p>
       <table class="how-table">
         <tbody>
           <tr><th>Start</th><td>The first sentence</td></tr>
@@ -1560,15 +1178,28 @@
         </tbody>
       </table>
       <ul class="how-notes">
-        <li>Wrong guesses use a guess but never reveal a hint. Using every hint does not end the round.</li>
-        <li>If a guess includes a distinctive word from the title, you’ll be told how many key title words remain — never which words they are.</li>
-        <li><strong>Close spelling counts.</strong> “Pride and Predjudice” is fine, and you can drop a leading “The”. A vague one-word guess such as “great” does not solve the book or earn a title-word nudge; try more of the title.</li>
-        <li>The fewer hints and guesses you use, the better you score.</li>
-        <li><strong>Give up</strong> ends the round and names the book. Two taps, and it counts as a miss.</li>
-        <li>After solving, using all six guesses, or giving up, you can read the complete first chapter (or first section) here.</li>
+        <li>Wrong guesses don’t reveal anything. <strong>Close spelling counts</strong>; “The” is optional.</li>
+        <li>Fewer hints and guesses means a better score.</li>
+        <li><strong>Give up</strong> names the book and counts as a miss. After the round you can read the opening chapter.</li>
       </ul>
       <p><button class="btn" type="button" data-act="close-modal">Close</button></p>
     `);
+  }
+
+  /* "1 … 4 5 6 … 12": the first and last page, the current one and its
+     neighbours, with an ellipsis only where it hides two pages or more (one
+     hidden page is shown instead — "…" would be no shorter). */
+  function pageList(page, max) {
+    if (max <= 7) return Array.from({ length: max }, (_, i) => i + 1);
+    const keep = [...new Set([1, page - 1, page, page + 1, max])].filter((n) => n >= 1 && n <= max).sort((a, b) => a - b);
+    const out = [];
+    for (const n of keep) {
+      const prev = out[out.length - 1];
+      if (prev && n - prev === 2) out.push(prev + 1);
+      else if (prev && n - prev > 2) out.push("…");
+      out.push(n);
+    }
+    return out;
   }
 
   function renderBank() {
@@ -1588,8 +1219,8 @@
     if (filter !== "preset") {
       for (let i = state.index.dailyStartIndex; i <= today; i++) items.push(i);
     }
-    // The same narrowing the leaderboard offers, read out of the progress map:
-    // what this browser has actually played.
+    // Narrowed by what this browser has actually played, read out of the
+    // progress map.
     if (status !== "all") {
       items = items.filter((n) => {
         const st = prog[String(n)]?.status;
@@ -1618,126 +1249,26 @@
         const row = prog[String(n)];
         const st = row?.status;
         const cls = st === "won" ? "won" : st === "lost" ? "lost" : st === "playing" ? "play" : "";
-        // Naming a book you have already guessed spoils nothing and turns the
-        // grid into a record of what you have read. Rounds finished before the
-        // title was recorded fall back to a plain tick.
-        const done = st === "won";
+        // Naming a book you have already finished spoils nothing and turns the
+        // grid into a record of what you have read — missed ones included.
+        // Rounds finished before the title was recorded fall back to a mark.
+        const done = st === "won" || st === "lost";
         const label = done && row.title
           ? `<span class="bank-n">#${n}</span><span class="bank-t">${escapeHtml(row.title)}</span>`
-          : `#${n}${done ? '<span class="bank-tick" aria-hidden="true">\u2713</span>' : ""}`;
-        const aria = done ? ` aria-label="#${n}${row.title ? `, ${escapeHtml(row.title)}` : ""}, guessed"` : "";
+          : `#${n}${done ? `<span class="bank-tick" aria-hidden="true">${st === "won" ? "\u2713" : "\u2715"}</span>` : ""}`;
+        const aria = done ? ` aria-label="#${n}${row.title ? `, ${escapeHtml(row.title)}` : ""}, ${st === "won" ? "guessed" : "missed"}"` : "";
         return `<a class="bank-cell ${cls}"${aria} href="#/play/${n}">${label}</a>`;
       })
       .join("");
     $("#bank-pager").innerHTML = `
       ${page > 1 ? `<button class="btn ghost" type="button" data-page="${page - 1}">Prev</button>` : `<span class="pager-gap"></span>`}
-      <span class="pager-at">Page ${page} / ${maxPage}</span>
+      ${pageList(page, maxPage).map((n) => n === "…" ? `<span class="pager-dots" aria-hidden="true">…</span>`
+        : `<button class="btn pager-n${n === page ? "" : " ghost"}" type="button" data-page="${n}"${n === page ? ' aria-current="page"' : ""} aria-label="Page ${n}">${n}</button>`).join("")}
       ${page < maxPage ? `<button class="btn ghost" type="button" data-page="${page + 1}">Next</button>` : `<span class="pager-gap"></span>`}`;
   }
 
-  function labelFor(n) {
-    return n >= (state.index?.dailyStartIndex ?? 600) ? `Daily #${n}` : `Book #${n}`;
-  }
-
-  // Help taken, then guesses, then who solved it first.
-  const rankSort = (a, b) => {
-    if (a.hints !== b.hints) return a.hints - b.hints;
-    if (a.guesses !== b.guesses) return a.guesses - b.guesses;
-    const milliseconds = value => value < 1e12 ? value * 1000 : value;
-    return milliseconds(a.at || 0) - milliseconds(b.at || 0);
-  };
-  // The server carries no row id, so your own remote row is recognised by the
-  // values you played it with.
-  const rankKey = (r) => `${r.playerId || r.id || r.name}|${r.hints}|${r.guesses}`;
-  function lbTable(rows) {
-    if (!rows.length) return "";
-    return `<div class="lb"><table><thead><tr><th>#</th><th>Player</th><th>Hints</th><th>Guesses</th><th>Solved</th></tr></thead><tbody>${rows
-      .slice(0, 50)
-      .map((r, i) => `<tr class="${r.mine ? "you" : ""}"><td>${i + 1}</td><td>${escapeHtml(r.name)}</td><td>${r.hints}</td><td>${r.guesses}</td><td>${fmtWhen(r.at)}</td></tr>`)
-      .join("")}</tbody></table></div>`;
-  }
-
-  function renderRanks({ fromRoute = false } = {}) {
-    show("screen-ranks");
-    const params = new URLSearchParams((location.hash.split("?")[1] || "") + "&" + location.search.slice(1));
-    const fallback = dailyIndexNow();
-    if (fromRoute || !$("#lb-index").value) $("#lb-index").value = params.get("i") || fallback;
-    // The number field takes any book; the tick narrows it to the ones this
-    // browser has actually finished, so you can find a board worth reading.
-    const finished = Object.entries(progressMap())
-      .filter(([, r]) => r && r.status !== "playing")
-      .map(([k]) => parseInt(k, 10))
-      .filter(Number.isInteger)
-      .sort((a, b) => a - b);
-    if ($("#lb-mine")?.checked && !finished.length) {
-      $("#lb-pick")?.classList.add("hidden");
-      $("#lb-index").classList.remove("hidden");
-      $("#lb-body").innerHTML = `<p class="lede">Finish a book and its board shows up here.</p>`;
-      return;
-    }
-    const onlyMine = !!$("#lb-mine")?.checked && finished.length > 0;
-    const pick = $("#lb-pick");
-    if (pick) {
-      pick.classList.toggle("hidden", !onlyMine);
-      $("#lb-index").classList.toggle("hidden", onlyMine);
-      if (onlyMine) {
-        const want = parseInt($("#lb-index").value, 10);
-        const chosen = finished.includes(want) ? want : finished[0];
-        pick.innerHTML = finished
-          .map((n) => `<option value="${n}"${n === chosen ? " selected" : ""}>${labelFor(n)}</option>`)
-          .join("");
-        $("#lb-index").value = chosen;
-      }
-    }
-    // Book #0 is a real book, so a plain || would send it to today's daily.
-    const typed = parseInt($("#lb-index").value, 10);
-    const idx = Number.isInteger(typed) && typed >= 0 ? typed : fallback;
-    const hintF = $("#lb-hints").value;
-    const all = loadPlayJSON(K.lb, {});
-    const me = playerId();
-    // Every puzzle has one public board across clue-system updates.
-    let local = (all[String(idx)] || [])
-      .filter((r) => r.win)
-      .map((r) => ({ ...r, mine: r.id === me }));
-    if (hintF !== "any") local = local.filter((r) => r.hints === parseInt(hintF, 10));
-    local.sort(rankSort);
-    $("#lb-body").innerHTML = lbTable(local);
-    const api = (window.EXCERPTLE_API || window.BOOKLE_API || "").replace(/\/$/, "");
-    if (!api) return;
-    const query = new URLSearchParams({ puzzleIndex: idx });
-    if (hintF !== "any") query.set("hints", hintF);
-    fetch(`${api}/scores?${query}`).then((r) => (r.ok ? r.json() : null)).then((data) => {
-      if (!data?.scores || parseInt($("#lb-index").value, 10) !== idx || $("#lb-hints").value !== hintF) return;
-      // The remote board is merged, never substituted: a signed-out player's
-      // score never reaches the server, and replacing the table would blank
-      // the row they just earned.
-      const accountId = window.BookleAuth?.session?.()?.uid;
-      const remote = data.scores.map((r) => ({ ...r, mine: r.playerId === accountId }));
-      const seen = new Set(remote.map(rankKey));
-      // A solve made as a guest is uploaded after sign-in. At that point it
-      // has a new account id, so match the player's local copy by the actual
-      // score fields too; otherwise one solve appears twice.
-      const accountScores = new Set(remote.filter(r => r.playerId === accountId)
-        .map(r => `${r.hints}|${r.guesses}`));
-      // The server keeps one row per account per book, so once it has answered
-      // with ours, a local copy we already uploaded is this player twice — with
-      // different numbers, if the better result was earned on another device.
-      // An un-uploaded row stays: a failed upload must not hide a result.
-      const accountHasRemote = remote.some((r) => r.playerId === accountId);
-      const merged = remote.concat(local.filter((r) => {
-        if (seen.has(rankKey(r))) return false;
-        if (!r.mine) return true;
-        if (r.sent && accountHasRemote) return false;
-        return !accountScores.has(`${r.hints}|${r.guesses}`);
-      }));
-      merged.sort(rankSort);
-      $("#lb-body").innerHTML = lbTable(merged);
-    }).catch(() => {});
-  }
-
   /* Everything the player has actually done, read back out of the progress
-     map. The leaderboard only ever shows one puzzle, so this is the only
-     place a total lives. */
+     map. */
   function summarize() {
     const base = state.index?.dailyStartIndex ?? 600;
     const blank = () => ({ played: 0, wins: 0, losses: 0, hints: 0, guesses: 0 });
@@ -1765,76 +1296,104 @@
       all.played += b.played; all.wins += b.wins; all.losses += b.losses;
       all.hints += b.hints; all.guesses += b.guesses;
     }
-    return { all, books, daily, authors: authors.size, stats: loadStats() };
+    return { all, books, daily, authors: authors.size };
   }
 
-  function pct(n, d) {
-    return d ? `${Math.round((n / d) * 100)}%` : "—";
-  }
-  function avg(n, d) {
-    return d ? (n / d).toFixed(1) : "—";
-  }
   function tile(value, label) {
     return `<div><b>${value}</b><span>${label}</span></div>`;
   }
 
+  /* The month the calendar is showing, as "YYYY-MM". Kept for the tab so a
+     trip into a day and back lands where you were; sessionStorage can throw
+     (private windows, blocked storage), and the calendar works without it. */
+  const CAL_KEY = "excerptle.calMonth";
+  let calShown = null;
+  function calMonth() {
+    const start = (state.index?.startDate || START).slice(0, 7);
+    const now = gameDate().slice(0, 7);
+    let m = calShown;
+    if (!m) {
+      try { m = sessionStorage.getItem(CAL_KEY); } catch { /* default below */ }
+    }
+    if (!/^\d{4}-\d{2}$/.test(m || "")) m = now;
+    return m < start ? start : m > now ? now : m;
+  }
+  function stepCalendar(by) {
+    const [y, mo] = calMonth().split("-").map(Number);
+    const d = new Date(Date.UTC(y, mo - 1 + by, 1));
+    calShown = d.toISOString().slice(0, 7);
+    try { sessionStorage.setItem(CAL_KEY, calMonth()); } catch { /* not remembered */ }
+    calShown = calMonth(); // clamped to the first daily and the current month
+    renderStats();
+  }
+
+  /* One month of dailies. A day's index is its date (dateForDailyIndex's
+     inverse), so each cell can be coloured from the same progress map the
+     rest of Stats reads. Days are plain cells, not links. */
+  function calendarHtml() {
+    const start = state.index?.startDate || START;
+    const base = state.index?.dailyStartIndex ?? 600;
+    const today = gameDate();
+    const month = calMonth();
+    const [y, mo] = month.split("-").map(Number);
+    const lead = new Date(Date.UTC(y, mo - 1, 1)).getUTCDay();
+    const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+    const prog = progressMap();
+    const label = new Date(Date.UTC(y, mo - 1, 1)).toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" });
+    const first = month <= start.slice(0, 7);
+    const last = month >= today.slice(0, 7);
+    let cells = "";
+    for (let i = 0; i < lead; i++) cells += `<span class="cal-pad"></span>`;
+    for (let d = 1; d <= days; d++) {
+      const iso = `${month}-${String(d).padStart(2, "0")}`;
+      const name = new Date(Date.UTC(y, mo - 1, d)).toLocaleDateString(undefined, { month: "long", day: "numeric", timeZone: "UTC" });
+      if (iso < start || iso > today) {
+        cells += `<span class="cal-day off" aria-label="${name}, ${iso < start ? "before the first daily" : "not out yet"}">${d}</span>`;
+        continue;
+      }
+      const index = base + daysBetween(start, iso);
+      const row = prog[String(index)];
+      const st = row?.status === "won" ? "won" : row?.status === "lost" ? "lost"
+        : row && (row.guesses?.length || row.hints) ? "play" : "";
+      const word = { won: "solved", lost: "missed", play: "in progress", "": "not played" }[st];
+      const mark = st === "won" ? `<i aria-hidden="true">\u2713</i>` : st === "lost" ? `<i aria-hidden="true">\u2715</i>` : "";
+      cells += `<span class="cal-day ${st}${iso === today ? " today" : ""}" aria-label="${name}, ${word}"${iso === today ? ' aria-current="date"' : ""}>${d}${mark}</span>`;
+    }
+    const dow = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((n) => `<span aria-hidden="true">${n}</span>`).join("");
+    return `
+      <section class="s-block" id="cal">
+        <h2>Daily calendar</h2>
+        <div class="cal-nav">
+          <button type="button" class="btn ghost sm" data-act="cal-prev" aria-label="Previous month"${first ? " disabled" : ""}>\u2039</button>
+          <span class="cal-month" aria-live="polite">${label}</span>
+          <button type="button" class="btn ghost sm" data-act="cal-next" aria-label="Next month"${last ? " disabled" : ""}>\u203a</button>
+        </div>
+        <div class="cal-grid">${dow}${cells}</div>
+      </section>`;
+  }
+
   function renderStats() {
     show("screen-stats");
-    const { all, books, daily, authors, stats } = summarize();
-    const b = stats.battle;
-    const streaks = dailyStreaks();
-    const rows = (...pairs) =>
-      `<dl class="pg-stats">${pairs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>`;
+    const { all } = summarize();
+    const streak = dailyStreaks().current;
 
-    /* Daily, Book bank and Battle mode are three ways of playing the same game,
-       not a ranking of them, so they share one type scale. The page title is
-       the only level above them. */
     $("#stats-body").innerHTML = `
+      ${calendarHtml()}
+
       <section class="s-block">
-        <h2>Books discovered</h2>
+        <h2>Overall progress</h2>
         <div class="stat-grid">
-          ${tile(all.wins, "Books")}
-          ${tile(authors || "—", "Authors")}
-          ${tile(all.played, "Openings read")}
+          ${tile(all.played, "Books discovered")}
+          ${tile(all.wins, "Right")}
+          ${tile(all.losses, "Wrong")}
         </div>
       </section>
 
       <section class="s-block">
-        <h2>Daily</h2>
+        <h2>Streak</h2>
         <div class="stat-grid">
-          ${tile(daily.wins, "Completed")}
-          ${tile(streaks.current, "Streak")}
-          ${tile(streaks.best, "Best streak")}
-          ${tile(pct(daily.wins, daily.played), "Win rate")}
+          ${tile(streak, streak === 1 ? "Day in a row" : "Days in a row")}
         </div>
-        ${rows(["Avg guesses", avg(daily.guesses, daily.played)],
-               ["Avg hints", avg(daily.hints, daily.played)])}
-      </section>
-
-      <section class="s-block">
-        <h2>Book bank</h2>
-        <div class="stat-grid">
-          ${tile(books.wins, "Completed")}
-          ${tile(books.played, "Played")}
-          ${tile(pct(books.wins, books.played), "Win rate")}
-        </div>
-        ${rows(["Avg guesses", avg(books.guesses, books.played)],
-               ["Avg hints", avg(books.hints, books.played)])}
-      </section>
-
-      <section class="s-block">
-        <h2>Battle mode <span class="s-note">on this device</span></h2>
-        ${b.played ? `
-          <div class="stat-grid">
-            ${tile(b.wins, "Won")}
-            ${tile(b.played, "Battles")}
-            ${tile(pct(b.wins, b.played), "Win rate")}
-            ${tile(b.streak, "Streak")}
-          </div>
-          ${rows(["Best streak", b.maxStreak],
-                 ["Avg guesses", avg(b.guesses, b.played)],
-                 ["Avg hints", avg(b.hints, b.played)])}`
-          : `<p class="lede">No battles yet. Create a room from <button class="linkish" type="button" data-act="open-play">New game</button> and send a friend the link.</p>`}
       </section>
     `;
   }
@@ -1869,14 +1428,6 @@
     renderPasswordBox();
   }
 
-  function updateOwnedNames(name) {
-    const all = loadPlayJSON(K.lb, {});
-    const me = playerId();
-    for (const rows of Object.values(all)) {
-      for (const row of rows || []) if (row.id === me) row.name = name;
-    }
-    savePlayJSON(K.lb, all);
-  }
   async function saveDisplayName() {
     const field = $("#display-name");
     const status = $("#name-status");
@@ -1892,14 +1443,12 @@
       const auth = window.BookleAuth?.session?.();
       const name = auth ? (await window.BookleAuth.updateProfile(draft)).name : (draft || "Anonymous");
       if (!auth) localStorage.setItem(K.name, name);
-      updateOwnedNames(name);
       if (field) field.value = name === "Anonymous" ? "" : name;
       if (status) status.textContent = auth ? "Saved to your account." : "Saved on this device.";
       paintAuth();
       if (state.status !== "playing") {
         renderResult({ refreshAd: false });
       }
-      battleSend({ type: "name", name });
     } catch (err) {
       if (status) status.textContent = err.message || "Could not save your name.";
     } finally {
@@ -1907,413 +1456,15 @@
     }
   }
 
-  /* —— Battle (PeerJS) —— */
-  function battleSend(msg) {
-    try {
-      state.battle?.conn?.send(msg);
-    } catch { /* */ }
-  }
-
-  async function loadPeer() {
-    if (window.Peer) return window.Peer;
-    await new Promise((resolve, reject) => {
-      const s = document.createElement("script");
-      s.src = "https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js";
-      s.onload = resolve;
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-    return window.Peer;
-  }
-
-  function battleCode() {
-    const a = "abcdefghjkmnpqrstuvwxyz23456789";
-    let s = "";
-    for (let i = 0; i < 6; i++) s += a[Math.floor(Math.random() * a.length)];
-    return s;
-  }
-
-  /* Nobody is dropped into a puzzle by surprise: the room fills up, both
-     players are listed, and the host decides when it starts. */
-  function renderBattleLobby(code, status, link) {
-    show("screen-battle");
-    const b = state.battle || {};
-    const idx = state.battlePending;
-    const shareLink = link || b.link;
-    const host = b.role !== "guest";
-    const signedIn = !!window.BookleAuth?.session?.();
-    const them = b.peerName;
-    const ready = host ? !!them : !!b.settled;
-    const startable = host && ready;
-
-    const who = `
-      <li class="who-row">
-        <span class="who-dot on" aria-hidden="true"></span>
-        ${signedIn
-          ? `<span class="who-name">${escapeHtml(displayName())}</span>`
-          : `<input id="battle-name" class="who-input" type="text" maxlength="24"
-                    value="${escapeHtml(displayName() === "Anonymous" ? "" : displayName())}"
-                    placeholder="Your name" aria-label="Your display name">`}
-        <span class="who-tag">You${host ? " · host" : ""}</span>
-      </li>
-      <li class="who-row${ready ? "" : " waiting"}">
-        <span class="who-dot${ready ? " on" : ""}" aria-hidden="true"></span>
-        <span class="who-name">${ready ? escapeHtml(them || (host ? "Guest" : "Host")) : "Waiting…"}</span>
-        <span class="who-tag">${host ? "Guest" : "Host"}</span>
-      </li>`;
-
-    $("#battle-body").innerHTML = `
-      <section class="b-sec">
-        ${Number.isInteger(idx) ? `<div class="story-bar"><span class="story-id">Book bank #${idx}</span></div>` : ""}
-        <p class="lede">${escapeHtml(status)}</p>
-        <p class="pro-note">Casual battle: it does not change solo progress or leaderboard scores.</p>
-        <div class="battle-code">${escapeHtml(code || "……")}</div>
-        <p class="b-actions">
-          ${shareLink ? `<button class="btn ghost" type="button" data-act="copy-battle">Copy link</button>` : ""}
-          ${b.failed ? `<button class="btn ghost" type="button" data-act="battle-retry">Try again</button>` : ""}
-        </p>
-      </section>
-
-      <section class="b-sec">
-        <h2>In the lobby</h2>
-        <ul class="who">${who}</ul>
-        ${host
-          ? `<p><button class="btn full" type="button" data-act="battle-start" ${startable ? "" : "disabled"}>
-               ${startable ? "Start battle" : "Waiting for a friend to join…"}</button></p>`
-          : `<p class="lede">${ready ? "Waiting for the host to start…" : ""}</p>`}
-        <p class="lede b-rules">Same book. First correct title wins. A hint either of you takes is shown to both.</p>
-      </section>
-
-      <section class="b-sec">
-        <p class="b-actions"><button class="btn ghost" type="button" data-act="battle-leave">Leave battle</button></p>
-      </section>
-    `;
-    state.battle = state.battle || {};
-    if (link) state.battle.link = link;
-  }
-
-  function repaintLobby() {
-    const b = state.battle;
-    if (!b || !$("#battle-body") || $("#screen-battle").classList.contains("hidden")) return;
-    renderBattleLobby(b.code, b.status || "", b.link);
-  }
-
-  /* The signalling server forgets a peer id the instant its socket closes, and
-     a phone that leaves the browser to paste the link into a chat app is
-     exactly that: the host's lobby still shows a code, the guest gets
-     "could not connect to peer". So watch the socket, re-register on the way
-     back, and let a guest keep knocking instead of failing once. */
-  const BATTLE_TRIES = 20;
-  const FATAL_PEER = new Set([
-    "invalid-id", "invalid-key", "ssl-unavailable", "server-error",
-    "socket-error", "socket-closed", "browser-incompatible",
-  ]);
-
-  function peerErrorText(e) {
-    switch (e?.type) {
-      case "peer-unavailable": return "That room isn’t open.";
-      case "unavailable-id": return "That room code is already in use.";
-      case "browser-incompatible": return "This browser can’t run battles.";
-      case "network": case "socket-error": case "socket-closed": case "server-error":
-        return "Lost the battle server. Check your connection.";
-      default: return String(e?.message || e || "Battle error.");
-    }
-  }
-
-  function current(b, peer) {
-    return state.battle === b && (!peer || b.peer === peer);
-  }
-
-  function battleStatus(text, failed) {
-    const b = state.battle;
-    if (!b) return;
-    b.status = text;
-    b.failed = !!failed;
-    repaintLobby();
-  }
-
-  function leaveBattle() {
-    // Walking out does not forfeit a result already on screen: settle it now
-    // rather than losing it with the connection.
-    if (state.battle && !state.battle.committed && state.mode === "battle" && state.status !== "playing") commitBattleResult();
-    clearTimeout(battleCommitTimer);
-    battleCommitTimer = null;
-    clearTimeout(state.battle?.knockTimer);
-    clearInterval(state.battle?.watchdog);
-    try { state.battle?.conn?.close(); } catch { /* */ }
-    try { state.battle?.peer?.destroy(); } catch { /* */ }
-    state.battle = null;
-  }
-
-  async function battleHost(index) {
-    await loadIndex();
-    const playIndex = Number.isInteger(index) ? index : randomPresetIndex();
-    const code = battleCode();
-    const link = `${origin()}?b=${code}&p=${playIndex}&n=${encodeURIComponent(displayName().slice(0, 24))}`;
-    state.battlePending = playIndex;
-    state.battle = { role: "host", code, playIndex, link, status: "Starting room…" };
-    renderBattleLobby(code, state.battle.status, link);
-    try {
-      await loadPeer();
-    } catch {
-      battleStatus("Could not load the battle network. Try again on Wi‑Fi.", true);
-      return;
-    }
-    if (state.battle?.role !== "host" || state.battle.code !== code) return;
-    hostPeer();
-  }
-
-  function hostPeer() {
-    const b = state.battle;
-    const peer = new window.Peer("bk-" + b.code);
-    b.peer = peer;
-    peer.on("open", () => {
-      if (!current(b, peer)) return;
-      b.hostTries = 0;
-      battleStatus(b.peerName
-        ? "Your friend is here. Start when you’re ready."
-        : "Waiting for your friend… share the link.");
-    });
-    peer.on("connection", (conn) => {
-      if (!current(b, peer)) { try { conn.close(); } catch { /* */ } return; }
-      try { b.conn?.close(); } catch { /* */ }
-      b.conn = conn;
-      conn.on("open", () => {
-        if (!current(b, peer) || b.conn !== conn) return;
-        // Presence only. The host still has to press Start.
-        conn.send({ type: "hello", playIndex: b.playIndex, name: displayName() });
-        battleStatus("Your friend is here. Start when you’re ready.");
-      });
-      conn.on("data", msg => { if (current(b, peer) && b.conn === conn) onBattleData(msg); });
-      conn.on("close", () => {
-        if (!current(b, peer) || b.conn !== conn) return;
-        b.peerName = null;
-        if (state.status === "playing") { setMsg("Your opponent disconnected."); return; }
-        battleStatus("Your friend left the room.");
-      });
-      conn.on("error", () => { /* the close handler does the talking */ });
-    });
-    clearInterval(b.watchdog);
-    b.watchdog = setInterval(() => {
-      if (!current(b, peer) || peer.destroyed) return clearInterval(b.watchdog);
-      if (peer.disconnected) { try { peer.reconnect(); } catch { /* */ } }
-    }, 10000);
-    // A background tab loses the socket; the id goes with it. Re-register.
-    peer.on("disconnected", () => {
-      if (!current(b, peer) || peer.destroyed) return;
-      battleStatus("Reconnecting to the battle server…");
-      try { peer.reconnect(); } catch { /* */ }
-    });
-    peer.on("error", (e) => {
-      if (!current(b, peer)) return;
-      // The server can still be holding our old socket. Take the code back.
-      if (e?.type === "unavailable-id" && (b.hostTries = (b.hostTries || 0) + 1) <= 3) {
-        battleStatus("Reopening the room…");
-        clearTimeout(b.knockTimer);
-        b.knockTimer = setTimeout(() => { if (current(b, peer)) hostPeer(); }, 1500 * b.hostTries);
-        return;
-      }
-      if (e?.type === "network") {
-        battleStatus("Reconnecting to the battle server…");
-        try { peer.reconnect(); } catch { /* */ }
-        return;
-      }
-      battleStatus(peerErrorText(e), FATAL_PEER.has(e?.type) || e?.type === "unavailable-id");
-    });
-  }
-
-  async function battleJoin(code, linkIndex, hostName) {
-    code = (code || "").trim().toLowerCase();
-    if (!code) return;
-    await loadIndex();
-    const fromLink = parseInt(linkIndex, 10);
-    const playIndex = fromLink >= 0 && fromLink < presetCount() ? fromLink : 0;
-    state.battle = { role: "guest", code, playIndex, tries: 0, status: `Joining ${code}…` };
-    if (hostName) state.battle.peerName = hostName.slice(0, 24);
-    state.battlePending = playIndex;
-    renderBattleLobby(code, state.battle.status, null);
-    try {
-      await loadPeer();
-    } catch {
-      battleStatus("Could not load the battle network. Try again on Wi‑Fi.", true);
-      return;
-    }
-    if (state.battle?.role !== "guest" || state.battle.code !== code) return;
-    guestPeer();
-  }
-
-  function guestPeer() {
-    const b = state.battle;
-    const peer = new window.Peer();
-    b.peer = peer;
-    // Fires again after a reconnect, which is exactly when to knock again.
-    peer.on("open", () => { if (current(b, peer)) guestConnect(); });
-    peer.on("disconnected", () => {
-      if (!current(b, peer) || peer.destroyed) return;
-      battleStatus("Reconnecting to the battle server…");
-      try { peer.reconnect(); } catch { /* */ }
-    });
-    peer.on("error", (e) => {
-      if (!current(b, peer)) return;
-      // The host's tab is asleep or still coming back. Keep knocking.
-      if (e?.type === "peer-unavailable") return rejoin();
-      if (e?.type === "network") {
-        battleStatus("Reconnecting to the battle server…");
-        try { peer.reconnect(); } catch { /* */ }
-        return;
-      }
-      battleStatus(peerErrorText(e), FATAL_PEER.has(e?.type));
-    });
-  }
-
-  function guestConnect() {
-    const b = state.battle;
-    if (!b || b.role !== "guest" || !b.peer || b.peer.destroyed) return;
-    if (b.conn?.open) return;
-    const peer = b.peer;
-    clearTimeout(b.knockTimer);
-    try { b.conn?.close(); } catch { /* */ }
-    const conn = peer.connect("bk-" + b.code, { reliable: true });
-    b.conn = conn;
-    b.settled = false;
-    let opened = false;
-    const mine = () => current(b, peer) && b.conn === conn;
-    // A silent connect — no error, no open — is as dead as a refused one.
-    b.knockTimer = setTimeout(() => { if (mine() && !b.settled) rejoin(); }, 8000);
-    conn.on("open", () => {
-      if (!mine()) return;
-      opened = true;
-      b.settled = true;
-      b.tries = 0;
-      clearTimeout(b.knockTimer);
-      conn.send({ type: "hello", name: displayName() });
-      battleStatus("In the room. Waiting for the host to start.");
-    });
-    conn.on("data", msg => { if (mine()) onBattleData(msg); });
-    conn.on("error", () => { if (mine() && !b.settled) rejoin(); });
-    conn.on("close", () => {
-      // A knock that never opened is rejoin's business, not a lost opponent.
-      if (!opened || !mine()) return;
-      b.peerName = null;
-      b.settled = false;
-      if (state.status === "playing") { setMsg("Your opponent disconnected."); return; }
-      battleStatus("The host left the room.", true);
-    });
-  }
-
-  function rejoin() {
-    const b = state.battle;
-    if (!b || b.role !== "guest" || b.settled) return;
-    clearTimeout(b.knockTimer);
-    try { b.conn?.close(); } catch { /* */ }
-    b.conn = null;
-    b.tries = (b.tries || 0) + 1;
-    if (b.tries > BATTLE_TRIES) {
-      battleStatus("No answer from the room. Ask your friend to reopen it and send a fresh link.", true);
-      return;
-    }
-    battleStatus("No answer yet — still knocking. The host’s tab has to be open on their screen.");
-    b.knockTimer = setTimeout(() => { if (state.battle === b) guestConnect(); }, Math.min(1200 * b.tries, 5000));
-  }
-
-  /* Coming back to the tab is the moment to repair a socket the browser
-     suspended while it was in the background. */
-  function wakeBattle() {
-    const b = state.battle;
-    if (!b || !b.peer || b.peer.destroyed || b.failed) return;
-    if (b.peer.disconnected) {
-      try { b.peer.reconnect(); } catch { /* */ }
-      return;
-    }
-    if (b.role === "guest" && !b.settled) guestConnect();
-  }
-
-  /* The host's Start, as a guard rather than a button state. The button is
-     disabled until a guest is in and hidden once the round begins, but disabled
-     markup is not a protocol: a double tap, a repainted lobby or a held key
-     would send a second "start", restart the host's own round from scratch, and
-     desync the two sides — the guest ignores duplicates. */
-  async function startBattleAsHost() {
-    const b = state.battle;
-    if (!b || b.role !== "host" || b.started || !b.conn?.open) return false;
-    b.started = true;
-    battleSend({ type: "start", playIndex: b.playIndex });
-    await startPlay({ playIndex: b.playIndex, mode: "battle", fresh: true });
-    setMsg("Battle on. First title wins.");
-    return true;
-  }
-
-  async function onBattleData(msg) {
-    const battle = state.battle;
-    if (!battle || !msg || typeof msg !== "object") return;
-    if (msg.type === "hello") {
-      state.battle.peerName = msg.name || (state.battle.role === "guest" ? "Host" : "Guest");
-      if (Number.isInteger(msg.playIndex) && msg.playIndex >= 0 && msg.playIndex < presetCount() && state.battle.role === "guest") {
-        state.battle.playIndex = msg.playIndex;
-        state.battlePending = msg.playIndex;
-        state.battle.status = "In the room. Waiting for the host to start.";
-      }
-      if (state.battle.role === "host") state.battle.status = "Your friend is here. Start when you’re ready.";
-      repaintLobby();
-    }
-    if (msg.type === "name") {
-      state.battle.peerName = msg.name || state.battle.peerName;
-      repaintLobby();
-    }
-    if (msg.type === "start" && state.battle.role === "guest") {
-      const idx = msg.playIndex ?? state.battle.playIndex;
-      if (!Number.isInteger(idx) || idx < 0 || idx >= presetCount()) return;
-      // A second "start" is a duplicate, not a rematch: replaying it would
-      // wipe a round the guest is in the middle of.
-      if (state.battle.started && state.mode === "battle" && state.puzzle) return;
-      state.battle.started = true;
-      await startPlay({ playIndex: idx, mode: "battle", fresh: true });
-      if (state.battle !== battle || !state.puzzle) return;
-      setMsg(`${state.battle.peerName || "Host"} started the battle. First title wins.`);
-    }
-    if (msg.type === "hint" && state.mode === "battle" && Number.isInteger(msg.hints) && msg.hints >= 0 && msg.hints <= MAX_HINTS) {
-      if (msg.hints > state.hints && state.status === "playing") {
-        state.hints = msg.hints;
-        setMsg("Your opponent took a hint — you see it too.");
-        renderExcerpt();
-        bump($("#count-hints"));
-        bump($("#tier-label"));
-      }
-    }
-    if (msg.type === "lose" && state.mode === "battle") {
-      state.battle.peerOut = true;
-      if (state.status === "playing") setMsg(`${msg.name || "Your opponent"} is out of guesses. Name the book to win it.`);
-    }
-    if (msg.type === "win" && state.mode === "battle" && !state.loading) {
-      const theirs = Number(msg.at);
-      // Either we were still playing, or we both named it and they got there
-      // first. Both browsers run this comparison and reach the same answer.
-      if (state.status !== "playing" && !(state.status === "won" && theyWereFirst(theirs))) return;
-      state.status = "lost";
-      state.winAt = null;
-      state.beatenBy = msg.name || "Your opponent";
-      setMsg(`${state.beatenBy} guessed first.`);
-      recordFinish();
-      renderExcerpt();
-      renderGuesses();
-      renderResult();
-    }
-  }
-
   function route() {
     const params = new URLSearchParams(location.search);
     const hash = (location.hash || "#/").replace(/^#/, "");
     const parts = hash.split("?")[0].split("/").filter(Boolean);
-    const qBattle = params.get("b");
     const qPlay = params.get("p");
     const qShare = params.get("s");
-    if (qBattle && !parts.length) {
-      return { page: "battle-join", code: qBattle, playIndex: qPlay, hostName: params.get("n") };
-    }
     if (qPlay && !parts.length) return { page: "play", playIndex: parseInt(qPlay, 10), share: qShare };
     const page = parts[0] || "home";
     if (page === "play" && parts[1]) return { page: "play", playIndex: parseInt(parts[1], 10) };
-    if (page === "battle" && parts[1]) return { page: "battle-join", code: parts[1] };
     return { page, playIndex: qPlay ? parseInt(qPlay, 10) : undefined };
   }
 
@@ -2322,14 +1473,10 @@
   const TITLES = {
     home: "Guess The Book",
     bank: "All Books",
-    ranks: "Leaderboard",
     stats: "Stats",
     settings: "Settings",
     legal: "Privacy & Terms",
-    support: "Support me",
     news: "News",
-    battle: "Battle Mode",
-    "battle-join": "Battle Mode",
   };
   function setTitle(page, playIndex) {
     let name = TITLES[page] || TITLES.home;
@@ -2345,6 +1492,8 @@
     return new URLSearchParams(location.search);
   }
 
+  const KNOWN_PAGES = new Set(["home", "bank", "stats", "settings", "legal", "news", "play", "new", "signin", "account"]);
+
   async function go() {
     ++playRequest; // Invalidate requests even when leaving for a non-game screen.
     stopRoundTimers();
@@ -2359,27 +1508,27 @@
       return;
     }
     const r = route();
-    // A battle connection belongs only to battle routes. Leaving through the
-    // back button, a shared link, or direct navigation closes it just as the
-    // visible battle controls do.
-    if (state.battle && r.page !== "battle" && r.page !== "battle-join") leaveBattle();
-    // Consume ?b= / ?p= / ?s= once. Left in place they hijack every later
-    // navigation back to "#/".
+    // Consume ?b= (old invite links) / ?p= / ?s= once. Left in place they
+    // hijack every later navigation back to "#/".
     if (location.search && (params0().get("b") || params0().get("p") || params0().get("s"))) {
       history.replaceState(null, "", location.pathname + location.hash);
     }
     setTitle(r.page, r.playIndex);
-    const screens = { news: "screen-news", support: "screen-support", settings: "screen-settings", legal: "screen-legal" };
+    // Screens that no longer exist (the old standings and head-to-head routes)
+    // land on the daily, with the dead hash spent, rather than a blank screen.
+    if (!KNOWN_PAGES.has(r.page)) {
+      history.replaceState(null, "", location.pathname + "#/");
+      return startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
+    }
+    const screens = { news: "screen-news", settings: "screen-settings", legal: "screen-legal" };
     if (r.page === "bank") return renderBank();
-    if (r.page === "ranks") return renderRanks({ fromRoute: true });
     if (r.page === "stats") return renderStats();
     if (r.page === "settings") return renderSettings();
-    /* One-shot modal routes: #/pro is how the nav and Stripe's return URL ask
-       for the Pro modal, and the rest are how the static pages' header — which
-       carries the same tabs but no js/app.js — asks for a modal only the game
-       can open. Left in the URL any of them would reopen on every reload, so
-       spend the hash and land on the daily behind the modal. */
-    const oneShot = { pro: openPro, new: openPlay, signin: openAuth, account: openAccount };
+    /* One-shot modal routes: how the static pages' header — which carries the
+       same tabs but no js/app.js — asks for a modal only the game can open.
+       Left in the URL any of them would reopen on every reload, so spend the
+       hash and land on the daily behind the modal. */
+    const oneShot = { new: openPlay, signin: openAuth, account: openAccount };
     if (oneShot[r.page]) {
       history.replaceState(null, "", location.pathname + "#/");
       await startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
@@ -2387,10 +1536,6 @@
       return;
     }
     if (screens[r.page]) return show(screens[r.page]);
-    // go() has already stripped the query string, so hand the link's own
-    // play index and host name down rather than re-reading location.search.
-    if (r.page === "battle-join") return battleJoin(r.code, r.playIndex, r.hostName);
-    if (r.page === "battle") return battleHost();
     if (r.page === "play" && Number.isInteger(r.playIndex) && r.playIndex >= 0) {
       const mode = r.playIndex >= (state.index.dailyStartIndex ?? 600) ? "daily" : "preset";
       const shared = r.share ? readShare(r.share) : null;
@@ -2460,6 +1605,13 @@
       if (note.classList.contains("open")) placeNote(note);
       return;
     }
+    // The excerpt is itself the "read full screen" control. A drag that ended
+    // as a click is a text selection, and a button or link inside it (the
+    // retry after a failed chapter load) keeps its own job.
+    if ((e.target.closest("#excerpt") || e.target.closest(".reader-hint")) && !e.target.closest("button, a")) {
+      if (!String(getSelection() || "")) openReader();
+      return;
+    }
     const act = e.target.closest("[data-act]")?.dataset.act;
     if (!act) {
       if (!e.target.closest("#main-nav")) setNav(false);
@@ -2472,27 +1624,11 @@
     // Any other action is a navigation — close the menu behind it.
     setNav(false);
     if (act === "close-modal") closeModal();
+    if (act === "close-reader") closeReader();
     if (act === "open-play") openPlay();
     if (act === "open-how") openHow();
     if (act === "open-auth") openAuth();
     if (act === "open-account") openAccount();
-    if (act === "open-pro") openPro();
-    if (act === "pro-refresh") {
-      proErr("");
-      await window.ExcerptlePro?.refresh?.({ force: true });
-      repaintProModal();
-    }
-    if (act === "pro-checkout-monthly" || act === "pro-checkout-yearly" || act === "pro-portal") {
-      const btn = e.target.closest("[data-act]");
-      proErr("");
-      if (btn) { btn.disabled = true; btn.textContent = "Opening Stripe…"; }
-      try {
-        await (act === "pro-checkout-monthly" ? window.ExcerptlePro.checkout("monthly") : act === "pro-checkout-yearly" ? window.ExcerptlePro.checkout("yearly") : window.ExcerptlePro.portal());
-      } catch (err) {
-        proErr(err.message || String(err));
-        repaintProModal();
-      }
-    }
     if (act === "sign-out") {
       window.BookleAuth.signOut();
       closeModal();
@@ -2620,80 +1756,20 @@
     if (act === "hint") onHint();
     if (act === "give-up") onGiveUp();
     if (act === "retry-reading") retryCompletedExcerpt();
+    if (act === "cal-prev") stepCalendar(-1);
+    if (act === "cal-next") stepCalendar(1);
     if (act === "save-name") saveDisplayName();
     if (act === "play-today" || act === "pick-today") {
       closeModal();
-      leaveBattle();
       location.hash = "#/";
       startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
     }
     if (act === "play-random") playRandom();
     if (act === "pick-random") pickIndex(randomPresetIndex(state.playIndex));
     if (act === "pick-id") playById($("#play-id-input")?.value);
-    if (act === "share") {
-      const btn = e.target.closest("[data-act]");
-      const url = shareUrl();
-      // Just the link, never a pasted summary — the card is what the link
-      // previews as, and the Worker builds that from the link itself.
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: "Excerptle", url });
-          return;
-        } catch (err) {
-          // Dismissing the sheet is a decision; don't then copy it anyway.
-          if (err && err.name === "AbortError") return;
-        }
-      }
-      try {
-        await navigator.clipboard.writeText(url);
-        if (btn) {
-          btn.textContent = "Copied ✓";
-          setTimeout(() => { btn.textContent = "Share"; }, 2000);
-        }
-      } catch {
-        setMsg("Could not copy.");
-      }
-    }
-    if (act === "battle-leave") {
-      leaveBattle();
-      state.battlePending = null;
-      location.hash = "#/";
-      startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
-    }
-    if (act === "battle-create") {
-      closeModal();
-      battleHost();
-    }
-    if (act === "battle-join") {
-      const code = ($("#battle-join-code")?.value || $("#join-code")?.value || "").trim();
-      if (!code) return;
-      closeModal();
-      battleJoin(code);
-    }
-    if (act === "battle-start") await startBattleAsHost();
-    if (act === "battle-retry") {
-      const b = state.battle;
-      if (!b) return;
-      if (b.role !== "guest") {
-        const idx = b.playIndex;
-        leaveBattle();
-        return battleHost(idx);
-      }
-      b.tries = 0;
-      b.settled = false;
-      battleStatus(`Joining ${b.code}…`);
-      if (!b.peer || b.peer.destroyed) guestPeer();
-      else if (b.peer.disconnected) { try { b.peer.reconnect(); } catch { /* */ } }
-      else guestConnect();
-    }
-    if (act === "copy-battle" && state.battle?.link) {
-      await navigator.clipboard.writeText(state.battle.link);
-      const btn = e.target.closest("[data-act]");
-      if (btn) {
-        btn.textContent = "Copied ✓";
-        setTimeout(() => { btn.textContent = "Copy link"; }, 2000);
-      }
-    }
+    // Just the link, never a pasted summary — the card is what the link
+    // previews as, and the Worker builds that from the link itself.
+    if (act === "share") window.ExcerptleToast.copyLink(shareUrl());
   });
 
   document.addEventListener("change", (e) => {
@@ -2701,26 +1777,23 @@
       state.settings.theme = e.target.value;
       saveSettings();
     }
-    if (e.target.id === "battle-name") {
-      localStorage.setItem(K.name, e.target.value.trim().slice(0, 24));
-      battleSend({ type: "name", name: displayName() });
-    }
     if (e.target.id === "bank-filter" || e.target.id === "bank-status") renderBank();
-    if (e.target.id === "lb-hints") renderRanks();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
+      closeReader();
       closeModal();
       setNav(false);
     }
+    if ((e.key === "Enter" || e.key === " ") && e.target?.id === "excerpt") {
+      e.preventDefault();
+      openReader();
+    }
+  });
+  window.addEventListener("popstate", () => {
+    if (readerOpen && !history.state?.reader) closeReader({ fromHistory: true });
   });
   $("#bank-jump")?.addEventListener("change", () => renderBank());
-  $("#lb-index")?.addEventListener("change", () => renderRanks());
-  $("#lb-mine")?.addEventListener("change", () => renderRanks());
-  $("#lb-pick")?.addEventListener("change", () => {
-    $("#lb-index").value = $("#lb-pick").value;
-    renderRanks();
-  });
   $("#modal").addEventListener("click", (e) => {
     if (e.target.id === "modal") closeModal();
   });
@@ -2748,11 +1821,9 @@
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden" && state.puzzle && state.status === "playing") saveProgress();
     if (document.visibilityState === "visible") {
-      wakeBattle();
       rollDaily();
     }
   });
-  window.addEventListener("online", wakeBattle);
   window.addEventListener("online", flushProgressEntries);
   window.addEventListener("pagehide", () => {
     if (state.puzzle && state.status === "playing") saveProgress();
@@ -2774,22 +1845,6 @@
       if (token && token === window.BookleAuth?.session?.()?.token) syncProgress();
     });
   });
-  // Entitlement arriving late must repaint the badge, the open modal, and the
-  // ad slot — someone who just paid shouldn't have to reload to lose the ad.
-  document.addEventListener("excerptle-pro", () => {
-    paintPro();
-    if ($("#pro-body")) repaintProModal();
-    if ($("#account-pro")) openAccount();
-  });
-  // Returning with the browser Back button restores the page from its cache;
-  // reset the temporary “Opening Stripe…” button state and refresh billing.
-  window.addEventListener("pageshow", () => {
-    if (!$("#pro-body")) return;
-    proErr("");
-    repaintProModal();
-    window.ExcerptlePro?.refresh?.({ force: true }).then(repaintProModal);
-  });
-  window.ExcerptlePro?.refresh?.();
   applyTheme();
   paintAuth();
   if (activeAccountUid) importGuestPlay(activeAccountUid);

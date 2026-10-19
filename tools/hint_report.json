@@ -1,6 +1,6 @@
 {
   "built": 720,
-  "flagged": 225,
+  "flagged": 227,
   "rows": [
     {
       "id": "g10002",
@@ -369,7 +369,9 @@
       "readingKind": "chapter",
       "readingWords": 2181,
       "readingParagraphs": 30,
-      "flags": []
+      "flags": [
+        "reader-does-not-start-at-the-opening"
+      ]
     },
     {
       "id": "g110",
@@ -1146,12 +1148,12 @@
       "title": "Tales of a Traveller",
       "genre": "Short story collection",
       "setting": "Europe and America, early 19th century",
-      "excerptWords": 426,
-      "excerptParagraphs": 5,
+      "excerptWords": 432,
+      "excerptParagraphs": 4,
       "readingLabel": "Opening section",
       "readingKind": "section",
-      "readingWords": 426,
-      "readingParagraphs": 5,
+      "readingWords": 1635,
+      "readingParagraphs": 31,
       "flags": [
         "no-section-boundary"
       ]
@@ -1994,13 +1996,15 @@
       "title": "The Adventures of Sherlock Holmes",
       "genre": "Detective fiction",
       "setting": "London and England, 1880s-1890s",
-      "excerptWords": 428,
+      "excerptWords": 427,
       "excerptParagraphs": 2,
       "readingLabel": "First story",
       "readingKind": "story",
       "readingWords": 8518,
       "readingParagraphs": 259,
-      "flags": []
+      "flags": [
+        "reader-does-not-start-at-the-opening"
+      ]
     },
     {
       "id": "g1680",
@@ -2939,12 +2943,12 @@
       "title": "Some Everyday Folk and Dawn",
       "genre": "Social comedy",
       "setting": "A New South Wales town, 1900s",
-      "excerptWords": 391,
-      "excerptParagraphs": 9,
+      "excerptWords": 375,
+      "excerptParagraphs": 8,
       "readingLabel": "Opening section",
       "readingKind": "section",
-      "readingWords": 2181,
-      "readingParagraphs": 35,
+      "readingWords": 2018,
+      "readingParagraphs": 32,
       "flags": [
         "no-section-boundary"
       ]
@@ -3526,12 +3530,12 @@
       "title": "Chitra (play)",
       "genre": "Verse drama",
       "setting": "The India of the Mahabharata",
-      "excerptWords": 346,
-      "excerptParagraphs": 23,
+      "excerptWords": 451,
+      "excerptParagraphs": 21,
       "readingLabel": "Chapter 1",
       "readingKind": "chapter",
-      "readingWords": 1242,
-      "readingParagraphs": 34,
+      "readingWords": 1187,
+      "readingParagraphs": 32,
       "flags": []
     },
     {
@@ -4948,7 +4952,7 @@
       "title": "Dracula",
       "genre": "Gothic horror",
       "setting": "Transylvania and England, 1890s",
-      "excerptWords": 393,
+      "excerptWords": 392,
       "excerptParagraphs": 3,
       "readingLabel": "Chapter 1",
       "readingKind": "chapter",
@@ -5533,12 +5537,12 @@
       "title": "From Ritual to Romance",
       "genre": "Literary scholarship",
       "setting": "The Grail legend and its ritual origins",
-      "excerptWords": 371,
-      "excerptParagraphs": 3,
+      "excerptWords": 403,
+      "excerptParagraphs": 6,
       "readingLabel": "Chapter 1",
       "readingKind": "chapter",
-      "readingWords": 2019,
-      "readingParagraphs": 33,
+      "readingWords": 3226,
+      "readingParagraphs": 26,
       "flags": []
     },
     {
@@ -5898,12 +5902,12 @@
       "title": "In His Steps",
       "genre": "Religious fiction",
       "setting": "An American railroad town, 1890s",
-      "excerptWords": 397,
-      "excerptParagraphs": 8,
+      "excerptWords": 375,
+      "excerptParagraphs": 7,
       "readingLabel": "Chapter 1",
       "readingKind": "chapter",
-      "readingWords": 3365,
-      "readingParagraphs": 54,
+      "readingWords": 3343,
+      "readingParagraphs": 53,
       "flags": []
     },
     {
@@ -9548,12 +9552,12 @@
       "title": "Tom Sawyer, Detective",
       "genre": "Children's mystery",
       "setting": "Arkansas, 1840s",
-      "excerptWords": 421,
-      "excerptParagraphs": 3,
+      "excerptWords": 364,
+      "excerptParagraphs": 2,
       "readingLabel": "Chapter 1",
       "readingKind": "chapter",
-      "readingWords": 1779,
-      "readingParagraphs": 33,
+      "readingWords": 1722,
+      "readingParagraphs": 32,
       "flags": []
     },
     {

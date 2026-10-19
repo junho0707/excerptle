@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | How to play</title>
   <meta name="description" content="How to play Excerptle: you get the first sentence of a book and six guesses. Hints don't name the answer — they show you more of the book. Full rules, scoring and spelling tolerance.">
@@ -29,6 +32,7 @@
     "name": "How to play Excerptle",
     "description": "Excerptle gives you the first sentence of a public-domain book. Name it in six guesses, using an opening excerpt, genre, year, setting, and author as optional hints.",
     "url": "https://excerptle.io/how-to-play",
+    "isPartOf": { "@id": "https://excerptle.io/#website" },
     "totalTime": "PT5M",
     "step": [
       {
@@ -52,8 +56,28 @@
       {
         "@type": "HowToStep",
         "name": "Finish with as little help as possible",
-        "text": "Your score improves the fewer guesses and hints you spend, and solving with zero hints is ranked separately from solving with help.",
+        "text": "Your score improves the fewer guesses and hints you spend, so a clean solve with no hints is the best result.",
         "url": "https://excerptle.io/how-to-play#scoring"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Excerptle",
+        "item": "https://excerptle.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "How to play",
+        "item": "https://excerptle.io/how-to-play"
       }
     ]
   }
@@ -82,9 +106,7 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/#/ranks">Leaderboard</a>
         <a class="tab" href="/#/stats">Stats</a>
-        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support me</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
     </header>
@@ -93,19 +115,18 @@
       <h1 class="screen-title">How to play Excerptle</h1>
 
       <p class="lede">You see the <strong>first sentence</strong> of a book. Name the book in
-      <strong>six guesses</strong>. Everything else on this page is detail.</p>
+      <strong>six guesses</strong>. The rest of this page is detail.</p>
 
       <h2 id="read">The sentence</h2>
       <p>Each puzzle opens with a single sentence and nothing around it &mdash; no author, no year, no
-      cover, no genre. That is deliberate. A first line is the most rewritten sentence in a novel,
-      and it is usually the only part of the book you can recognise cold.</p>
-      <p>Everyone in the world gets the same daily puzzle, and it rolls over at midnight Pacific time. If you
-      would rather not wait, the book bank holds 600 more you can play in any order.</p>
+      cover, no genre. A first line is the most rewritten sentence in a novel, and usually the only
+      part of the book you can recognise cold.</p>
+      <p>Everyone gets the same daily puzzle, which rolls over at midnight Pacific time. The book
+      bank holds 600 more to play whenever you like.</p>
 
       <h2 id="guess">Guessing</h2>
-      <p>Type a title and press Guess. You get six. A wrong guess costs you one of the six and
-      nothing else &mdash; it never reveals more text, so there is no penalty for thinking out loud
-      early.</p>
+      <p>Type a title and press Guess. You get six. A wrong guess costs one of the six and nothing
+      else &mdash; it never reveals more text, so there is no penalty for trying an idea early.</p>
       <ul>
         <li><strong>Close spelling counts.</strong> &ldquo;Pride and Predjudice&rdquo; is accepted.
         So is dropping a leading &ldquo;The&rdquo;.</li>
@@ -116,12 +137,11 @@
         not solve the book or earn you that nudge. Commit to more of the title.</li>
       </ul>
 
-      <p><strong>Giving up.</strong> If a book is not coming, <em>Give up</em> under the guess box
-      ends the round and names it. It takes two taps, so a stray one cannot end a game for you. A
-      round you gave up counts as a miss, the same as running out of guesses.</p>
+      <p><strong>Giving up.</strong> <em>Give up</em> under the guess box ends the round and names the
+      book. It takes two taps, so a stray one cannot end a game, and it counts as a miss.</p>
 
       <h2 id="hints">Hints</h2>
-      <p>Stuck is normal. Each hint gives you another way into the book and stays visible:</p>
+      <p>Each hint is another way into the book, and stays visible once taken:</p>
       <table class="how-table">
         <tbody>
           <tr><th>Start</th><td>The first sentence</td></tr>
@@ -132,22 +152,20 @@
           <tr><th>Hint 5</th><td>Author</td></tr>
         </tbody>
       </table>
-      <p>Wrong guesses use a guess but do not reveal a hint. Using every hint does not end the
-      round. After you solve, run out of guesses, or give up, you can read the complete first
-      chapter (or first section) here and continue to the full book on Project Gutenberg.</p>
+      <p>Using every hint does not end the round. Once it is over &mdash; solved, out of guesses, or
+      given up &mdash; you can read the opening chapter on the page and continue to the full book
+      on Project Gutenberg.</p>
 
       <h2 id="scoring">Scoring and streaks</h2>
-      <p>The fewer hints and guesses you spend, the better you place. The leaderboard brackets
-      players by how many hints they used, so a clean solve is never beaten by someone who read the
-      whole chapter first. Winning the daily puzzle extends your streak; missing a day resets it.</p>
-      <p>Progress, streaks and settings live in your own browser. Signing in is optional and exists
-      only so those numbers can follow you to another device.</p>
+      <p>The fewer hints and guesses you spend, the better you score. Winning the daily puzzle
+      extends your streak; missing a day resets it.</p>
+      <p>Progress lives in your own browser; signing in is optional and only lets it follow you to
+      another device.</p>
 
-      <h2 id="modes">The three ways to play</h2>
+      <h2 id="modes">The two ways to play</h2>
       <ul>
         <li><strong>Daily puzzle</strong> &mdash; one book, everyone, midnight Pacific.</li>
         <li><strong>Book bank</strong> &mdash; 600 books at your own pace, in any order.</li>
-        <li><strong>Battle</strong> &mdash; two browsers, the same book, first correct title wins.</li>
       </ul>
 
       <p class="prose-cta"><a class="btn" href="/">Play today&rsquo;s puzzle</a>
@@ -165,7 +183,6 @@
         <a href="/faq">FAQ</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
-        <a href="/support">Support me</a>
         <a href="/privacy">Privacy &amp; terms</a>
       </nav>
       <nav class="social" aria-label="Excerptle on social media">
@@ -179,6 +196,7 @@
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
   </div>
+  <script src="/js/toast.js" defer></script>
   <script src="/js/share-page.js" defer></script>
 </body>
 </html>

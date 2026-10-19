@@ -12,14 +12,16 @@ PUZ = ROOT / "puzzles"
 TIERS = 5
 
 # A handful of openings everybody knows. If the slicer drifts back into the
-# front matter, these are the first things to break.
+# front matter, these are the first things to break. Each fragment has to
+# avoid any name the puzzle hides behind a pronoun -- that word is not in the
+# shipped text to find.
 FAMOUS = {
     "g1342": "It is a truth universally acknowledged",
     "g2701": "Call me Ishmael",
     "g98": "It was the best of times",
     "g1399": "Happy families are all alike",
     "g4300": "Stately, plump Buck Mulligan",
-    "g11": "Alice was beginning to get very tired",
+    "g11": "beginning to get very tired of sitting by her sister",
 }
 
 

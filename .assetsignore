@@ -20,6 +20,7 @@ wrangler.*
 .dev.vars*
 .env*
 *.md
+content/
 *:Zone.Identifier
 # Source images kept in the repo but never linked from the site. The shipped
 # sizes all live in assets/.
@@ -29,5 +30,6 @@ wrangler.*
 /og-image.png
 /new_logo_provable.png
 /vh_logo.svg
+assets/promo-btz.source.html
 assets/logo.png
 assets/logo-1200.png

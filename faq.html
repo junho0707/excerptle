@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | FAQ</title>
-  <meta name="description" content="Answers about Excerptle: where the books come from, how the daily puzzle is chosen, why spelling is forgiving, what Excerptle Pro removes, and how accounts and data work.">
+  <meta name="description" content="Answers about Excerptle: where the books come from, how the daily puzzle is chosen, why spelling is forgiving, and how accounts and data work.">
   <link rel="canonical" href="https://excerptle.io/faq">
   <meta name="theme-color" content="#f4efe4">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Excerptle">
   <meta property="og:title" content="Excerptle FAQ">
-  <meta property="og:description" content="Where the books come from, how the daily puzzle is chosen, and how accounts, scores and Excerptle Pro work.">
+  <meta property="og:description" content="Where the books come from, how the daily puzzle is chosen, and how accounts and data work.">
   <meta property="og:url" content="https://excerptle.io/faq">
   <meta property="og:image" content="https://excerptle.io/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -27,13 +30,14 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "url": "https://excerptle.io/faq",
+    "isPartOf": { "@id": "https://excerptle.io/#website" },
     "mainEntity": [
       {
         "@type": "Question",
         "name": "Is Excerptle free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, and all of it. No book, hint, mode or statistic is behind a payment. The game is supported by a single advertisement after a finished game, by optional tips, and by Excerptle Pro, which removes that advertisement."
+          "text": "Yes, and all of it. No book, hint, mode or statistic is behind a payment. The game is supported by a single advertisement after a finished game."
         }
       },
       {
@@ -62,6 +66,14 @@
       },
       {
         "@type": "Question",
+        "name": "What is the \"key title words\" message?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If a guess contains a distinctive word from the title, the game tells you how many key title words are still missing, never which ones. A single vague word such as \"great\" does not earn that message; commit to more of the title."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Does a wrong guess reveal more of the book?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -73,23 +85,7 @@
         "name": "Do I need an account?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Progress, streaks and settings are stored in your own browser and the game works fully signed out. Signing in exists so those numbers can follow you to another device and appear on the leaderboard."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does Excerptle Pro do?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It removes the single post-game advertisement. That is its only privilege — it unlocks no books, hints or modes. Payments are handled by Stripe; card details never reach Excerptle, and you can cancel any time from the billing portal in the game."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Battle mode work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Battle connects two browsers and hands both players the same book at the same time. The first correct title wins."
+          "text": "No. Progress, streaks and settings are stored in your own browser and the game works fully signed out. Signing in exists so those numbers can follow you to another device."
         }
       },
       {
@@ -107,6 +103,26 @@
           "@type": "Answer",
           "text": "Email the puzzle number and what went wrong to privacy@excerptle.io and it will be looked at. Gutenberg publishes some works several times over, so duplicate or mis-titled entries are the likeliest bug."
         }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Excerptle",
+        "item": "https://excerptle.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "FAQ",
+        "item": "https://excerptle.io/faq"
       }
     ]
   }
@@ -135,9 +151,7 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/#/ranks">Leaderboard</a>
         <a class="tab" href="/#/stats">Stats</a>
-        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support me</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
     </header>
@@ -149,9 +163,7 @@
 
       <h2>Is Excerptle free?</h2>
       <p>Yes, and all of it. No book, hint, mode or statistic sits behind a payment. The game is paid
-      for by a single advertisement after a finished game, by <a href="/support">tips</a>, and by
-      Excerptle Pro, which removes that advertisement for people who would rather pay than look
-      at it.</p>
+      for by a single advertisement after a finished game.</p>
 
       <h2>Where do the books come from?</h2>
       <p>Every text comes from <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg</a>,
@@ -171,25 +183,18 @@
       a leading &ldquo;The&rdquo; is optional. What does not work is one vague word: a guess like
       &ldquo;great&rdquo; will neither solve the book nor earn you a title-word nudge.</p>
 
+      <h2>What is the &ldquo;key title words&rdquo; message?</h2>
+      <p>If a guess contains a distinctive word from the title, the game tells you how many key title
+      words are still missing &mdash; never which ones. A single vague word such as
+      &ldquo;great&rdquo; does not earn that message; commit to more of the title.</p>
+
       <h2>Does a wrong guess reveal more of the book?</h2>
       <p>No. A wrong guess costs one of your six and reveals nothing. Hints reveal the opening
       excerpt, then genre, year, setting, and author in order.</p>
 
       <h2>Do I need an account?</h2>
       <p>No, and the game is complete without one. Progress, streaks and settings are stored in your
-      own browser. Signing in exists so those numbers can follow you to another device and so you can
-      appear on the leaderboard.</p>
-
-      <h2>What does Excerptle Pro do?</h2>
-      <p>It removes the single post-game advertisement. That is its only privilege &mdash; it unlocks
-      no books, hints or modes, and it never will. Payments run through
-      <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a>, so
-      card details never reach Excerptle, and you can cancel any time from the billing portal inside
-      the game. Current prices are shown when you open Pro.</p>
-
-      <h2>How does Battle mode work?</h2>
-      <p>Battle connects two browsers and hands both players the same book at the same moment. First
-      correct title wins.</p>
+      own browser. Signing in exists so those numbers can follow you to another device.</p>
 
       <h2>I lost my streak. Can it be restored?</h2>
       <p>If you were signed out, your statistics lived only in that browser&rsquo;s storage, so
@@ -220,7 +225,6 @@
         <a href="/faq">FAQ</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
-        <a href="/support">Support me</a>
         <a href="/privacy">Privacy &amp; terms</a>
       </nav>
       <nav class="social" aria-label="Excerptle on social media">
@@ -234,6 +238,7 @@
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
   </div>
+  <script src="/js/toast.js" defer></script>
   <script src="/js/share-page.js" defer></script>
 </body>
 </html>

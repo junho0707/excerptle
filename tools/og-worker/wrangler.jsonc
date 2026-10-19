@@ -10,9 +10,9 @@
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": false,
   "preview_urls": false,
-  "rules": [{ "type": "Data", "globs": ["**/*.ttf"], "fallthrough": true }],
-  "vars": {
-    "SITE_URL": "https://excerptle.io"
-  },
+  // Fonts and the brand icon ride in the bundle: this Worker cannot fetch
+  // them from excerptle.io, because that would be one Worker reaching another
+  // on the same zone.
+  "rules": [{ "type": "Data", "globs": ["**/*.ttf", "**/*.png"], "fallthrough": true }],
   "observability": { "enabled": true }
 }

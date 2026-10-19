@@ -9,6 +9,7 @@
   --gold: #b0893a;
   --miss: #c9a227;
   --hit: #2f6b3a;
+  --lost: #a3332b;
   --shadow: 0 10px 40px rgba(28, 20, 12, 0.08);
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -21,15 +22,6 @@
   --sp-2: 0.6rem;   /* between related lines */
   --sp-3: 1rem;     /* between blocks in a card */
   --sp-4: 1.5rem;   /* between sections, and the air on each side of a rule */
-
-  /* House promos. Cool greys against the warm paper, so the cards read as
-     something other than the game before a word of them is read. */
-  --promo: #e9edf3;
-  --promo-2: #dde4ee;
-  --promo-rule: #bcc6d4;
-  --promo-ink: #26303d;
-  --promo-soft: #566374;
-  --promo-accent: #2c5a86;
 }
 
 [data-theme="night"] {
@@ -41,13 +33,8 @@
   --wine: #e07a84;
   --wine-deep: #c45b66;
   --gold: #d4b36a;
+  --lost: #e0736a;
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-  --promo: #191f27;
-  --promo-2: #212934;
-  --promo-rule: #3a4552;
-  --promo-ink: #e2e9f2;
-  --promo-soft: #9fb0c4;
-  --promo-accent: #8cbbe8;
 }
 
 * { box-sizing: border-box; }
@@ -262,6 +249,14 @@ a { color: var(--wine); }
   border-radius: 2px;
 }
 .excerpt.fade { animation: fade 0.45s ease; }
+/* Tapping the story opens it full screen (see the reader at the end). */
+.reader-hint {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin: -0.35rem 0 0.65rem;
+}
+#excerpt[role="button"] { cursor: zoom-in; }
+#excerpt[role="button"]:focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* A counter or tier label that just changed rolls in — this is the hint
@@ -407,80 +402,80 @@ a { color: var(--wine); }
 }
 .ad .adsbygoogle { display: block; min-height: 5.5rem; }
 .ad-label { display: block; }
-/* House ads. Our own two sites, under the AdSense slot on the post-game
-   screen. Two things this has to do: sit clearly apart from the game above it,
+/* Our own two sites, under the game card (and the AdSense slot once a round
+   is over). Class names avoid "house-ad" and friends: ad blockers hide those
+   by name. Two things this has to do: sit clearly apart from the game above it,
    and read as TWO offers rather than one. No "advertisement" label — it would
    only talk the reader out of reading the line. */
-.house {
+.elsewhere {
   margin: var(--sp-4) 0;
   padding-top: var(--sp-3);
   border-top: 1px solid var(--rule);
 }
-.house-title {
+.elsewhere-title {
   margin: 0 0 var(--sp-2);
   font-family: var(--serif);
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink-soft);
 }
-.house a { text-decoration: none; color: inherit; }
+.elsewhere a { text-decoration: none; color: inherit; }
 
 /* Each offer is its own bordered card with real air between them: a shared
    box with a hairline made the second one look like a footnote to the first. */
-.house-ad {
+.elsewhere-card {
   display: flex;
   align-items: center;
   gap: var(--sp-3);
   padding: var(--sp-3);
-  border: 1px solid var(--promo-rule);
+  border: 1px solid var(--rule);
   border-radius: 5px;
-  background: var(--promo);
-  color: var(--promo-ink);
+  background: color-mix(in srgb, var(--gold) 8%, var(--paper));
+  color: var(--ink);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.house-ad + .house-ad { margin-top: var(--sp-3); }
-.house-ad:hover,
-.house-ad:focus-visible { background: var(--promo-2); border-color: var(--promo-accent); }
+.elsewhere-card + .elsewhere-card { margin-top: var(--sp-3); }
+.elsewhere-card:hover,
+.elsewhere-card:focus-visible { border-color: var(--wine); }
 
-.house-copy { flex: 1 1 auto; min-width: 0; }
+.elsewhere-copy { flex: 1 1 auto; min-width: 0; }
 
 /* The site's name is the card's title; the line under it says what it does.
    The whole card is the link, so the title carries the link's affordances —
    an arrow that steps forward and an underline on hover. */
-.house-name {
+.elsewhere-name {
   display: block;
   font-family: var(--serif);
   font-weight: 700;
   font-size: 1.08rem;
-  color: var(--promo-accent);
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
-.house-arrow {
+.elsewhere-arrow {
   display: inline-block;
   transition: transform 0.15s ease;
 }
-.house-ad:hover .house-name,
-.house-ad:focus-visible .house-name { text-decoration: underline; }
-.house-ad:hover .house-arrow,
-.house-ad:focus-visible .house-arrow { transform: translateX(0.2em); }
-.house-line {
+.elsewhere-card:hover .elsewhere-name,
+.elsewhere-card:focus-visible .elsewhere-name { text-decoration: underline; }
+.elsewhere-card:hover .elsewhere-arrow,
+.elsewhere-card:focus-visible .elsewhere-arrow { transform: translateX(0.2em); }
+.elsewhere-line {
   display: block;
   font-size: 0.87rem;
   line-height: 1.4;
-  color: var(--promo-soft);
+  color: var(--ink-soft);
 }
 
 /* The second card carries no art, so it is set a notch smaller and quieter —
    enough to rank the two without making it look like a caption. */
-.house-ad-alt { padding: 0.85rem var(--sp-3); }
-.house-ad-alt .house-name { font-size: 1rem; }
-.house-ad-alt .house-line { font-size: 0.83rem; }
+.elsewhere-card-alt { padding: 0.85rem var(--sp-3); }
+.elsewhere-card-alt .elsewhere-name { font-size: 1rem; }
+.elsewhere-card-alt .elsewhere-line { font-size: 0.83rem; }
 
-/* Both cards show a logo plate. The wordmarks are dark ink on white with no
-   alpha, so they keep their own white tile rather than being knocked out or
-   inverted for the night theme. */
-.house-logo {
+/* VocabHelp's wordmark is dark ink on white with no alpha, so it keeps its own
+   white tile rather than being knocked out or inverted for the night theme. */
+.elsewhere-logo {
   flex: 0 0 auto;
   width: 150px;
   height: auto;
@@ -488,11 +483,13 @@ a { color: var(--wine); }
   border-radius: 4px;
   background: #fff;
 }
-.house-ad-alt .house-logo { width: 130px; }
+/* By the Zeitgeist's wordmark is a transparent PNG in two inks, so it sits
+   straight on the card with no tile. The page's own theme picks the ink — the
+   site follows its Night setting, not the OS, so a media query would pair the
+   wrong logo with the page. */
 
 @media (max-width: 30rem) {
-  .house-logo { width: 118px; }
-  .house-ad-alt .house-logo { width: 106px; }
+  .elsewhere-logo { width: 118px; }
 }
 
 .screen h1 {
@@ -683,17 +680,6 @@ footer a { color: inherit; }
   max-width: 8rem;
 }
 
-/* A tick box is not a text field: undo the .filters input framing for it. */
-.filter-check { gap: 0.4rem; }
-.filter-check input {
-  padding: 0;
-  width: auto;
-  max-width: none;
-  border: 0;
-  background: none;
-}
-#lb-pick { max-width: 10rem; }
-
 .bank-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
@@ -730,18 +716,44 @@ footer a { color: inherit; }
 }
 /* Fallback marker for books guessed before the title was recorded. */
 .bank-cell .bank-tick { margin-left: 0.25rem; color: var(--hit); }
-.bank-cell.lost { opacity: 0.55; }
+/* Missed books name themselves like solved ones, in red, so the grid reads as
+   a record of what you have been through rather than a faded gap. */
+.bank-cell.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.bank-cell.lost .bank-tick { color: var(--lost); }
 .bank-cell.play { outline: 1px dashed var(--wine); }
-.pager { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-/* Prev and Next sit either side of the position, and hold their place when
-   one end runs out so "Page 3 / 6" doesn't slide about between pages. */
-.pager-at { min-width: 6.5rem; text-align: center; color: var(--ink-soft); }
-.pager-gap { display: block; min-width: 4.4rem; }
-#screen-bank .pager { margin-top: 1.4rem; }
 
-.lb table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-.lb th, .lb td { text-align: left; padding: 0.4rem 0.3rem; border-bottom: 1px solid var(--rule); }
-.lb .you { background: color-mix(in srgb, var(--gold) 18%, transparent); }
+/* The key to the grid. Each swatch is drawn the way its cell is, so the dashed
+   outline of a started book is explained by looking at it. */
+.bank-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  list-style: none;
+  margin: 0 0 var(--sp-3);
+  padding: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.bank-legend li { display: inline-flex; align-items: center; gap: 0.4rem; cursor: help; }
+.sw {
+  display: inline-block;
+  width: 1.15rem;
+  height: 0.85rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.sw.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+.sw.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.sw.play { outline: 1px dashed var(--wine); outline-offset: -1px; }
+.pager { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+/* Prev and Next sit either side of the numbers, and hold their place when one
+   end runs out so the row doesn't slide about between pages. */
+.pager-n { min-width: 2.4rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+.pager-dots { color: var(--ink-soft); padding: 0 0.15rem; }
+.pager-gap { display: block; min-width: 4.4rem; }
+@media (max-width: 560px) { .pager-gap { display: none; } }
+#screen-bank .pager { margin-top: 1.4rem; }
 
 .modal-back {
   position: fixed;
@@ -800,7 +812,6 @@ footer a { color: inherit; }
 .choice.off { opacity: 0.5; }
 .choice.off .btn { cursor: not-allowed; }
 
-/* Battle mode is a mode, not a fourth thing to pick — so it's a switch. */
 /* The card a shared link opens on — and the layout the OG image mirrors. */
 .share-card {
   border: 1px solid var(--rule);
@@ -824,21 +835,9 @@ footer a { color: inherit; }
   margin: 0 auto;
 }
 .sc-stats .stat-row:last-child { margin-bottom: 0; }
-.sc-rank {
-  font-size: 0.8rem;
-  margin: 0.5rem 0 0;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-soft);
-}
-.sc-rank b { color: var(--ink); font-size: 0.95rem; }
 .sc-cta { text-align: center; margin: 0 0 0.7rem; }
 .btn.full { width: 100%; }
-/* Both standings sit side by side under the result. */
-.rank-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
-.rank-line span { white-space: nowrap; }
-
-/* Stats — Daily, Book bank and Battle mode are peers, so they share one scale.
+/* Stats — Daily and Book bank are peers, so they share one scale.
    The page title is the only level above them. */
 .s-block {
   --tile: 2rem;
@@ -855,23 +854,78 @@ footer a { color: inherit; }
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--rule);
 }
-/* Battle results live only in this browser, and the heading says so without
-   competing with the section name. */
-.s-block h2 .s-note {
-  font-family: var(--sans);
-  font-size: var(--cap);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-left: 0.4rem;
-}
 .s-block .stat-grid { margin: 0.7rem 0 0.6rem; }
 .s-block .stat-grid b { font-size: var(--tile); line-height: 1.1; }
 .s-block .stat-grid span { font-size: var(--cap); }
 .s-block .stat-grid div { padding: 0.7rem 0.2rem; }
 
 #screen-stats .pg-stats { margin-bottom: 0.2rem; }
+/* The whole Stats page reads centred: title, section heads, tiles, the
+   average rows and the calendar all sit on the same middle line. */
+#screen-stats { text-align: center; }
+#screen-stats .pg-stats { justify-content: center; }
+/* Three tiles to a row at every width; flex keeps a lone tile (Streak) the
+   same width and centred under its heading. */
+#screen-stats .stat-grid { display: flex; justify-content: center; }
+#screen-stats .stat-grid div { flex: 0 1 calc((100% - 1rem) / 3); }
+#screen-stats .cal-nav, #screen-stats .cal-grid { margin-left: auto; margin-right: auto; }
+
+/* Daily calendar: a month of dailies, coloured by how each one went. Won and
+   lost carry a mark as well as a colour, so neither relies on hue alone. */
+.cal-nav, .cal-grid { max-width: 26rem; }
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin: 0.7rem 0 var(--sp-2);
+}
+.cal-nav .btn { min-width: 2.4rem; font-size: 1.2rem; line-height: 1; padding: 0.3rem 0.6rem; }
+.cal-nav .btn:disabled { opacity: 0.35; cursor: default; }
+.cal-month { font-family: var(--serif); font-size: 1.05rem; }
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+.cal-grid > span:not(.cal-day):not(.cal-pad) {
+  text-align: center;
+  font-size: var(--cap, 0.68rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+}
+.cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.cal-day i {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+.cal-day.off { color: var(--ink-soft); opacity: 0.4; background: transparent; border-style: dotted; }
+.cal-day.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+.cal-day.won i { color: var(--hit); }
+.cal-day.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.cal-day.lost i { color: var(--lost); }
+.cal-day.play { border-style: dashed; border-color: var(--wine); }
+.cal-day.today { font-weight: 700; box-shadow: 0 0 0 2px var(--ink); }
 @media (max-width: 560px) {
   .s-block { --tile: 1.6rem; }
   /* On phones, filter labels use one fixed column so each control starts at
@@ -973,15 +1027,6 @@ footer a { color: inherit; }
   line-height: 1;
 }
 
-.battle-code {
-  font-family: var(--mono);
-  font-size: 1.4rem;
-  letter-spacing: 0.12em;
-  padding: 0.5rem;
-  background: var(--paper-2);
-  text-align: center;
-}
-
 @media (max-width: 720px) {
   .story-bar { flex-wrap: wrap; }
   .jump-input, .jump input { width: 4.2rem; }
@@ -1079,7 +1124,11 @@ footer a { color: inherit; }
 .daily-card + #more {
   border-top: 1px solid var(--rule);
   margin-top: var(--sp-4);
+  /* The studio cards below bring their own rule and top margin, so the block
+     is centred between two rules only if it gives up its bottom padding. */
+  padding-bottom: 0;
 }
+.more > :last-child { margin-bottom: 0; }
 #more + .daily-card {
   border-top: 1px solid var(--rule);
   padding-top: var(--sp-4);
@@ -1235,8 +1284,6 @@ footer a { color: inherit; }
 .sq.on { background: var(--wine); border-color: var(--wine); }
 
 
-.rank-line { margin: 0 0 0.55rem; }
-.rank-line b { font-family: var(--serif); font-size: 1.1rem; }
 .pg-actions {
   border-top: 1px solid var(--rule);
   padding-top: 0.9rem;
@@ -1260,33 +1307,8 @@ footer a { color: inherit; }
   .daily-card.done + #more .story-nav .btn, #more + .daily-card .story-nav .btn { font-size: 0.9rem; }
 }
 
-/* Top of the board, shown with the post-game panel */
-.mini-lb {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.2rem 0 0.9rem;
-  font-size: 0.85rem;
-}
-.mini-lb th {
-  padding: 0.2rem 0.4rem;
-  text-align: left;
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  border-bottom: 1px solid var(--rule);
-}
-.mini-lb td {
-  padding: 0.3rem 0.4rem;
-  border-bottom: 1px solid var(--rule);
-}
-.mini-lb tr:last-child td { border-bottom: 0; }
-.mini-lb tr.you td { color: var(--wine); font-weight: 700; }
-
 /* How to play */
 .how-intro { margin: 0 0 0.5rem; }
-.how-sub { margin: 0 0 0.55rem; color: var(--ink-soft); }
 .how-table {
   width: 100%;
   border-collapse: collapse;
@@ -1330,68 +1352,6 @@ footer a { color: inherit; }
 }
 
 
-/* ---- Excerptle Pro ---- */
-
-.pro-badge {
-  background: transparent;
-  border: 1px solid var(--wine);
-  border-radius: 999px;
-  color: var(--wine);
-  width: 1.85rem;
-  height: 1.85rem;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  font-size: 0.85rem;
-  line-height: 1;
-  flex: 0 0 auto;
-}
-.pro-badge:hover, .pro-badge:focus-visible { background: var(--paper-2); color: var(--wine); }
-.pro-badge.on {
-  background: var(--wine);
-  border-color: var(--wine);
-  color: var(--paper);
-}
-.pro-badge.warn { border-color: var(--wine); color: var(--wine); }
-.pro-badge.hidden { display: none; }
-/* On a 375px screen the badge crowds the wordmark. Pro is still one tap away
-   inside the account modal, so drop it from the header instead. */
-@media (max-width: 420px) {
-  .pro-badge { display: none; }
-}
-
-.pro-list {
-  margin: 0 0 1rem;
-  padding-left: 1.1rem;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-.pro-list li + li { margin-top: 0.35rem; }
-.pro-status {
-  margin: 0 0 0.6rem;
-  font-size: 0.92rem;
-}
-.pro-status.ok { color: var(--hit); }
-.pro-status.warn { color: var(--wine); }
-.pro-note {
-  margin: 0.6rem 0 0;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-}
-
-/* ---- Support ---- */
-
-.support-cta { margin: 1.1rem 0 0.9rem; }
-.btn.kofi {
-  display: inline-block;
-  text-decoration: none;
-  background: var(--wine);
-  color: var(--paper);
-}
-.btn.kofi:hover { background: var(--wine-deep); }
-.support-alt { font-size: 0.9rem; color: var(--ink-soft); }
-
-
 /* A page title is a level above what follows it, so give it room to say so.
    Matches the specificity of `.screen h1`, which sets a tighter margin. */
 .screen h1.screen-title, h1.screen-title {
@@ -1418,7 +1378,7 @@ footer a { color: inherit; }
 }
 
 
-/* Static trust pages (/about, /support, /privacy). They share the app shell
+/* Static trust pages (/about, /faq, /privacy). They share the app shell
    but have no JS behind them, so the nav is plain links and always inline. */
 .prose { padding-bottom: 2rem; }
 .prose h2 {
@@ -1439,73 +1399,63 @@ footer a { color: inherit; }
   align-items: center;
 }
 .prose-cta .btn { text-decoration: none; display: inline-block; }
-/* ---- New game modal: the battle half ---- */
 
-.modal-sep {
+/* ---- Full-screen reader ---- */
+body.reader-open { overflow: hidden; }
+.reader {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+}
+.reader-bar {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin: 1.1rem 0 0.6rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.modal-sep::before, .modal-sep::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-}
-
-/* ---- Battle lobby ---- */
-
-.b-sec {
-  border-top: 1px solid var(--rule);
-  padding: 1rem 0 0.2rem;
-  margin: 0 0 0.6rem;
-}
-.b-sec:first-child { border-top: 0; padding-top: 0.2rem; }
-.b-sec h2 {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  margin: 0 0 0.6rem;
-}
-.b-sec .story-bar { margin-bottom: 0.5rem; }
-.b-rules { font-size: 0.82rem; margin-bottom: 0.2rem; }
-.b-actions { text-align: center; }
-
-.who { list-style: none; padding: 0; margin: 0 0 0.9rem; }
-.who-row {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.5rem 0;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: 0.6rem 1rem;
   border-bottom: 1px solid var(--rule);
 }
-.who-row.waiting { color: var(--ink-soft); }
-.who-dot {
-  flex: none;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  border: 1px solid var(--rule);
+.reader-bar .tier-label { margin: 0; }
+.reader-x {
   background: transparent;
+  border: 0;
+  font-size: 1.7rem;
+  line-height: 1;
+  padding: 0.2rem 0.6rem;
+  color: var(--ink);
 }
-.who-dot.on { background: var(--hit); border-color: var(--hit); }
-.who-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.who-input {
-  flex: 1;
-  min-width: 0;
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  padding: 0.3rem 0.45rem;
+.reader-x:hover, .reader-x:focus-visible { color: var(--wine); }
+.reader-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; }
+.reader-body {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ---- "Link copied" toast ---- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 70;
+  max-width: min(90vw, 28rem);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
   font-size: 0.9rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.5rem);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.who-tag {
-  flex: none;
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
+.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; user-select: text; }

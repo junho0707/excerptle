@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- The Night setting lives in the game's localStorage; apply it before
+       first paint so this page matches the one you came from. -->
+  <script>try{if(JSON.parse(localStorage.getItem("bookle.settings")||"{}").theme==="night")document.documentElement.dataset.theme="night"}catch{}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Excerptle | About</title>
   <meta name="description" content="Excerptle is a daily guessing game built on the opening lines of public-domain literature. Where the books come from, how the game is built, and who makes it.">
@@ -24,6 +27,40 @@
   <link rel="stylesheet" href="/css/app.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2005015845685746"
           crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://excerptle.io/about",
+        "url": "https://excerptle.io/about",
+        "name": "Excerptle | About",
+        "description": "Where Excerptle's books come from, how the game is built, and who makes it.",
+        "isPartOf": {
+          "@id": "https://excerptle.io/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Excerptle",
+            "item": "https://excerptle.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://excerptle.io/about"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="app">
@@ -46,9 +83,7 @@
         <a class="tab" href="/#/new">New game</a>
         <a class="tab" href="/how-to-play">How to play</a>
         <a class="tab" href="/#/bank">All books</a>
-        <a class="tab" href="/#/ranks">Leaderboard</a>
         <a class="tab" href="/#/stats">Stats</a>
-        <a class="tab" href="https://ko-fi.com/provablelearningllc" target="_blank" rel="noopener noreferrer">Support me</a>
         <a class="tab" href="/#/settings">Settings</a>
       </nav>
     </header>
@@ -76,14 +111,14 @@
       serials and forgotten bestsellers that were enormous in their day.</p>
       <p>Gutenberg publishes the same work many times over &mdash; different editions, multi-part
       splits, alternate transcriptions. Excerptle collapses those into one entry per book, so you
-      will never be handed the same novel twice under two different numbers. At most one chapter of
+      will never be handed the same novel twice under two different numbers. Each opening is checked
+      so the game starts where the story starts, not on a preface, a table of contents or a glossary. At most one chapter of
       any book is hosted here; for the rest of it, go to Gutenberg, where it is free.</p>
 
       <h2>How the game is built</h2>
-      <p>There are three ways to play. The <strong>daily puzzle</strong> is the same book for
+      <p>There are two ways to play. The <strong>daily puzzle</strong> is the same book for
       everyone in the world, rolling over at midnight Pacific time. The <strong>book bank</strong> is 600
-      books you can work through at your own pace, in any order. <strong>Battle mode</strong> connects
-      two browsers directly and hands both players the same book &mdash; first correct title wins.</p>
+      books you can work through at your own pace, in any order.</p>
       <p>Your progress, streaks and settings live in your own browser. Signing in is optional, and
       exists so those numbers can follow you to another device.</p>
 
@@ -92,8 +127,7 @@
       an independent education studio. We also make <a href="https://vocabhelp.com" target="_blank" rel="noopener noreferrer">VocabHelp</a>,
       a vocabulary-learning tool for students and families.</p>
       <p>Excerptle is free to play and intends to stay that way. It is supported by a single
-      advertisement after a finished game, by <a href="/support">tips</a>, and by <a href="/#/pro">Excerptle Pro</a>,
-      which removes that advertisement for anyone who would rather pay than look at it.</p>
+      advertisement after a finished game.</p>
       <p>Excerptle is not affiliated with Project Gutenberg, Google, or Wordle.</p>
 
       <p class="prose-cta"><a class="btn" href="/">Play today&rsquo;s puzzle</a>
@@ -111,7 +145,6 @@
         <a href="/faq">FAQ</a>
         <a href="/about">About</a>
         <a href="/#/news">News</a>
-        <a href="/support">Support me</a>
         <a href="/privacy">Privacy &amp; terms</a>
       </nav>
       <nav class="social" aria-label="Excerptle on social media">
@@ -125,6 +158,7 @@
       <p class="footer-note">Public-domain excerpts &middot; not affiliated with Project Gutenberg</p>
     </footer>
   </div>
+  <script src="/js/toast.js" defer></script>
   <script src="/js/share-page.js" defer></script>
 </body>
 </html>

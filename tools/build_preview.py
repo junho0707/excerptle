@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import datetime
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -62,6 +63,12 @@ def collect() -> tuple[list[dict], str]:
             "flags": suspects(p) if daily else [],
         })
     return rows, idx["startDate"]
+
+
+def shown(t: str) -> str:
+    """A name the puzzle keeps back is written {{she}} in the text; the game
+    prints it parenthesised, so the preview shows it that way too."""
+    return re.sub(r"\{\{([^{}]+)\}\}", r"(\1)", str(t))
 
 
 def esc(t: str) -> str:
@@ -103,7 +110,7 @@ def entry(row: dict, today: datetime.date) -> str:
         f'<p class="byline">{esc(row["author"] or "unattributed")}'
         + (f' &middot; {esc(row["year"])}' if row["year"] else "")
         + f' &middot; {words} words per tier</p>',
-        f'<p class="excerpt">{esc(row["texts"][0])}</p>',
+        f'<p class="excerpt">{esc(shown(row["texts"][0]))}</p>',
     ]
     if row["flags"]:
         parts.append('<p class="flagged">qa_puzzles: '
@@ -113,7 +120,7 @@ def entry(row: dict, today: datetime.date) -> str:
             "<details class=\"hint\">",
             f'<summary>Hint {i} &middot; {esc(row["labels"][i])} &middot; '
             f'{row["words"][i]} words</summary>',
-            f'<p class="excerpt tier">{esc(row["texts"][i])}</p>',
+            f'<p class="excerpt tier">{esc(shown(row["texts"][i]))}</p>',
             "</details>",
         ]
     parts += [
@@ -136,7 +143,11 @@ def section(title: str, note: str, rows: list[dict], today: datetime.date, sid: 
             + "".join(entry(r, today) for r in rows) + "</section>")
 
 
-PAGE = """<title>Excerptle Openings</title>
+# The charset matters: this page is read straight off disk as often as it is
+# published, and without it a browser falls back to windows-1252 and turns
+# every curly quote in an opening into mojibake.
+PAGE = """<meta charset="utf-8">
+<title>Excerptle Openings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">

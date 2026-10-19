@@ -6,7 +6,27 @@
    renderer needs all three, so it lives in its own Worker (render-worker.js)
    reached through the OG service binding — a separate isolate that only
    crawlers ever wake. */
-import { shareFromUrl, unfurl } from "./share.js";
+import notes from "../../content/archive-notes.json";
+import archiveIndex from "../../content/archive-index.json";
+import { handleArchive, handleSitemap } from "./archive.js";
+import { openingSentenceFor, shareFromUrl, unfurl } from "./share.js";
+
+/* Per-isolate, and cleared on failure so one bad parse can't poison the
+   isolate for its whole life. Only /og.png ever touches it. */
+let puzzleIndex;
+
+function jsonReader(env, origin) {
+  const get = async (path) => {
+    const res = await env.ASSETS.fetch(new Request(new URL(path, origin)));
+    if (!res.ok) throw new Error(`${path} ${res.status}`);
+    return res.json();
+  };
+  return async (path) => {
+    if (!path.endsWith("/index.json")) return get(path);
+    try { return await (puzzleIndex ||= get(path)); }
+    catch (err) { puzzleIndex = undefined; throw err; }
+  };
+}
 
 class Meta {
   constructor(content) { this.content = content; }
@@ -16,7 +36,28 @@ class Meta {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname === "/og.png") return env.OG.fetch(request);
+    // The card renderer has no ASSETS binding and cannot fetch this zone, so
+    // the sentence it prints is looked up here and handed over on the request.
+    if (url.pathname === "/og.png") {
+      const share = shareFromUrl(url);
+      let sentence = "";
+      try {
+        if (share) sentence = await openingSentenceFor(jsonReader(env, url.origin), share.d, share.idx);
+      } catch {
+        // A card without its sentence still renders; the fallback line covers it.
+      }
+      const headers = new Headers(request.headers);
+      // Headers are latin-1; openings are not.
+      if (sentence) headers.set("X-Opening-Sentence", encodeURIComponent(sentence));
+      else headers.delete("X-Opening-Sentence");
+      return env.OG.fetch(new Request(url, { method: request.method, headers }));
+    }
+
+    if (url.pathname === "/sitemap.xml") return handleSitemap(request, env, notes);
+    if (url.pathname === "/archive" || url.pathname.startsWith("/archive/")) {
+      const archived = await handleArchive(request, env, notes, new Date(), archiveIndex);
+      if (archived) return archived;
+    }
 
     const res = await env.ASSETS.fetch(request);
     // The overwhelmingly common case: a person opening the site. Nothing to

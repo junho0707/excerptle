@@ -11,11 +11,11 @@ function setup(fetch, local = {}) {
     window: { EXCERPTLE_API: 'https://api.test', BookleAuth: { session: () => state } },
     fetch, localStorage: { setItem: (...args) => writes.push(args) },
     AbortSignal,
-    K: { progress: 'progress' }, progressMap: () => local, backfillScores: async () => {},
+    K: { progress: 'progress' }, progressMap: () => local,
     savePlayJSON: (key, value) => writes.push([key, value]),
     $: () => null, renderStats: () => {},
   });
-  vm.runInContext(source.slice(source.indexOf('  let progressSyncing'), source.indexOf('  // A puzzle solved before signing in')) +
+  vm.runInContext(source.slice(source.indexOf('  let progressSyncing'), source.indexOf('  /* Carry unscoped local play')) +
     '\nglobalThis.api = { syncProgress, syncProgressEntry, flushProgressEntries, pending: () => pendingProgress };', context);
   return { api: context.api, state, writes };
 }

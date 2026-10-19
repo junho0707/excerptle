@@ -7,48 +7,41 @@
    so the weight lives here and the front door (worker.js) stays tiny and
    reaches it over a service binding.
 
-   Assets come over HTTP from SITE_URL rather than an ASSETS binding: a
-   service-bound Worker has no access to the front door's bindings, and
-   /puzzles/* and /assets/* are not run_worker_first, so the subrequest goes
-   straight to the static asset server. */
+   It fetches nothing at runtime: a subrequest from here to excerptle.io is a
+   Worker reaching another Worker on the same zone, which Cloudflare refuses,
+   so the brand icon is bundled and the opening sentence arrives on the
+   request from the front door, which does hold the ASSETS binding. */
 import { shareFromUrl } from "./share.js";
 import { cardSvg } from "./card.js";
 import { Resvg, initWasm } from "@resvg/resvg-wasm";
 import wasm from "@resvg/resvg-wasm/index_bg.wasm";
 import serif from "./fonts/DejaVuSerif.ttf";
 import sans from "./fonts/DejaVuSans.ttf";
+import icon from "../../assets/icon-192.png";
 
-/* Per-isolate caches. Each one clears its own slot on failure, so a single
-   bad fetch can't leave a rejected promise cached for the isolate's life. */
+/* Per-isolate. `ready` clears its own slot on failure so a single bad init
+   can't leave a rejected promise cached for the isolate's life. */
 let ready;
-let brandIcon;
-let indexJson;
+let iconHref;
 
-const siteUrl = (env, path) => new URL(path, env.SITE_URL || "https://excerptle.io").href;
+/* Bumped whenever the card's rendering changes, so a fix is not hidden behind
+   a day of images cached from the version before it. */
+const CARD_VERSION = "2";
 
-async function toDataUri(response) {
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  let binary = "";
-  for (const byte of bytes) binary += String.fromCharCode(byte);
-  return `data:${response.headers.get("content-type") || "image/png"};base64,${btoa(binary)}`;
+function brandIcon() {
+  if (iconHref === undefined) {
+    const bytes = new Uint8Array(icon);
+    let binary = "";
+    for (const byte of bytes) binary += String.fromCharCode(byte);
+    iconHref = `data:image/png;base64,${btoa(binary)}`;
+  }
+  return iconHref;
 }
 
-async function openingSentence(env, d, idx) {
-  if (d.c || d.invite) return "";
+function sentenceFrom(request) {
   try {
-    const { order, presetCount, dailyStartIndex } = await (indexJson ||=
-      fetch(siteUrl(env, "/puzzles/index.json")).then((r) => r.json()));
-    const presets = Math.min(presetCount || order.length, order.length);
-    const day = idx - (dailyStartIndex ?? 600);
-    const pool = order.length - presets;
-    const slug = d.m === "daily"
-      ? (pool > 0 ? order[presets + ((day % pool + pool) % pool)] : order[((day % order.length) + order.length) % order.length])
-      : order[idx % presets];
-    const puzzle = await (await fetch(siteUrl(env, `/puzzles/${slug}.json`))).json();
-    return String(puzzle.texts?.[0] || "").replace(/\s+/g, " ").trim();
+    return decodeURIComponent(request.headers.get("X-Opening-Sentence") || "");
   } catch {
-    // A cached index that failed to parse must not poison every later render.
-    indexJson = undefined;
     return "";
   }
 }
@@ -61,17 +54,16 @@ export default {
     if (!share) return new Response("Invalid share", { status: 400 });
 
     const cache = caches.default;
-    const cacheKey = new Request(url, { method: "GET" });
+    const cacheUrl = new URL(url);
+    cacheUrl.searchParams.set("cv", CARD_VERSION);
+    const cacheKey = new Request(cacheUrl, { method: "GET" });
     const cached = await cache.match(cacheKey);
     if (cached) return request.method === "HEAD" ? new Response(null, cached) : cached;
 
     try { await (ready ||= initWasm(wasm)); } catch (err) { ready = undefined; throw err; }
-    const [sentence, iconHref] = await Promise.all([
-      openingSentence(env, share.d, share.idx),
-      (brandIcon ||= fetch(siteUrl(env, "/assets/icon-192.png")).then(toDataUri))
-        .catch(() => { brandIcon = undefined; return ""; }),
-    ]);
-    const renderer = new Resvg(cardSvg(share.d, share.idx, { openingSentence: sentence, iconHref }), {
+    const renderer = new Resvg(cardSvg(share.d, share.idx, {
+      openingSentence: sentenceFrom(request), iconHref: brandIcon(),
+    }), {
       font: { fontBuffers: [new Uint8Array(serif), new Uint8Array(sans)], defaultFontFamily: "DejaVu Sans" },
     });
     let rendered;
