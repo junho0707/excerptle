@@ -1299,12 +1299,6 @@
     return { all, books, daily, authors: authors.size };
   }
 
-  function pct(n, d) {
-    return d ? `${Math.round((n / d) * 100)}%` : "—";
-  }
-  function avg(n, d) {
-    return d ? (n / d).toFixed(1) : "—";
-  }
   function tile(value, label) {
     return `<div><b>${value}</b><span>${label}</span></div>`;
   }
@@ -1335,7 +1329,7 @@
 
   /* One month of dailies. A day's index is its date (dateForDailyIndex's
      inverse), so each cell can be coloured from the same progress map the
-     rest of Stats reads, and links straight to that book. */
+     rest of Stats reads. Days are plain cells, not links. */
   function calendarHtml() {
     const start = state.index?.startDate || START;
     const base = state.index?.dailyStartIndex ?? 600;
@@ -1363,7 +1357,7 @@
         : row && (row.guesses?.length || row.hints) ? "play" : "";
       const word = { won: "solved", lost: "missed", play: "in progress", "": "not played" }[st];
       const mark = st === "won" ? `<i aria-hidden="true">\u2713</i>` : st === "lost" ? `<i aria-hidden="true">\u2715</i>` : "";
-      cells += `<a class="cal-day ${st}${iso === today ? " today" : ""}" href="#/play/${index}" aria-label="${name}, ${word}"${iso === today ? ' aria-current="date"' : ""}>${d}${mark}</a>`;
+      cells += `<span class="cal-day ${st}${iso === today ? " today" : ""}" aria-label="${name}, ${word}"${iso === today ? ' aria-current="date"' : ""}>${d}${mark}</span>`;
     }
     const dow = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((n) => `<span aria-hidden="true">${n}</span>`).join("");
     return `
@@ -1380,46 +1374,26 @@
 
   function renderStats() {
     show("screen-stats");
-    const { all, books, daily, authors } = summarize();
-    const streaks = dailyStreaks();
-    const rows = (...pairs) =>
-      `<dl class="pg-stats">${pairs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>`;
+    const { all } = summarize();
+    const streak = dailyStreaks().current;
 
-    /* Daily and Book bank are two ways of playing the same game, so they share
-       one type scale. The page title is the only level above them. */
     $("#stats-body").innerHTML = `
       ${calendarHtml()}
 
       <section class="s-block">
-        <h2>Books discovered</h2>
+        <h2>Overall progress</h2>
         <div class="stat-grid">
-          ${tile(all.wins, "Books")}
-          ${tile(authors || "—", "Authors")}
-          ${tile(all.played, "Openings read")}
+          ${tile(all.played, "Books discovered")}
+          ${tile(all.wins, "Right")}
+          ${tile(all.losses, "Wrong")}
         </div>
       </section>
 
       <section class="s-block">
-        <h2>Daily</h2>
+        <h2>Streak</h2>
         <div class="stat-grid">
-          ${tile(daily.wins, "Completed")}
-          ${tile(streaks.current, "Streak")}
-          ${tile(streaks.best, "Best streak")}
-          ${tile(pct(daily.wins, daily.played), "Win rate")}
+          ${tile(streak, streak === 1 ? "Day in a row" : "Days in a row")}
         </div>
-        ${rows(["Avg guesses", avg(daily.guesses, daily.played)],
-               ["Avg hints", avg(daily.hints, daily.played)])}
-      </section>
-
-      <section class="s-block">
-        <h2>Book bank</h2>
-        <div class="stat-grid">
-          ${tile(books.wins, "Completed")}
-          ${tile(books.played, "Played")}
-          ${tile(pct(books.wins, books.played), "Win rate")}
-        </div>
-        ${rows(["Avg guesses", avg(books.guesses, books.played)],
-               ["Avg hints", avg(books.hints, books.played)])}
       </section>
     `;
   }

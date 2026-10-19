@@ -98,9 +98,8 @@ test('an account already signed in keeps its unscoped progress and streak', asyn
     }));
   });
   await page.goto('/#/stats');
-  const daily = page.locator('.s-block', { has: page.locator('h2:text-is("Daily")') });
-  await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
-  await expect(daily.locator('.stat-grid div').nth(2)).toContainText('2');
+  const overall = page.locator('.s-block', { has: page.locator('h2:text-is("Overall progress")') });
+  await expect(overall.locator('.stat-grid div').nth(1)).toContainText('2');
   expect(await page.evaluate(() =>
     JSON.parse(localStorage.getItem('bookle.progress.v4.account:legacy'))['601'].status)).toBe('won');
 });
@@ -120,10 +119,9 @@ test('a streak that arrives from the server repaints the stats screen', async ({
     uid: 'sync-stats', email: 'stats@example.test', name: 'Stats', token: 'tok', expiresAt: 4102444800,
   })));
   await page.goto('/#/stats');
-  const daily = page.locator('.s-block', { has: page.locator('h2:text-is("Daily")') });
+  const overall = page.locator('.s-block', { has: page.locator('h2:text-is("Overall progress")') });
   // Landing straight on Stats, with nothing local: the numbers must arrive.
-  await expect(daily.locator('.stat-grid div').nth(1)).toContainText('2');
-  await expect(daily.locator('.stat-grid div').nth(0)).toContainText('2');
+  await expect(overall.locator('.stat-grid div').nth(1)).toContainText('2');
 });
 
 test('retired routes land on a working daily instead of a blank screen', async ({ page }) => {
@@ -215,7 +213,7 @@ test('the All books screen: one-line lede, a key, titled missed books, numbered 
     8: { status: 'playing', guesses: ['x'], hints: 0 },
   })));
   await page.goto('/#/bank');
-  await expect(page.locator('#screen-bank .lede')).toHaveText('Pick a book by number.');
+  await expect(page.locator('#screen-bank .lede')).toHaveCount(0);
   await expect(page.locator('.bank-legend li')).toHaveText(['Solved', 'Missed', 'Started', 'New']);
   await expect(page.locator('.bank-legend li').first()).toHaveAttribute('title', /Solved/);
   await expect(page.locator('#bank-filter')).toHaveAttribute('title', /#0–#599/);

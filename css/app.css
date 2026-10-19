@@ -864,13 +864,10 @@ footer a { color: inherit; }
    average rows and the calendar all sit on the same middle line. */
 #screen-stats { text-align: center; }
 #screen-stats .pg-stats { justify-content: center; }
-/* Rows of three tiles would hug the left of a four-column grid; flex keeps
-   every row's tiles the same width and centred under the heading. */
-#screen-stats .stat-grid { display: flex; flex-wrap: wrap; justify-content: center; }
-#screen-stats .stat-grid div { flex: 0 1 calc((100% - 1.5rem) / 4); }
-@media (max-width: 420px) {
-  #screen-stats .stat-grid div { flex-basis: calc((100% - 0.5rem) / 2); }
-}
+/* Three tiles to a row at every width; flex keeps a lone tile (Streak) the
+   same width and centred under its heading. */
+#screen-stats .stat-grid { display: flex; justify-content: center; }
+#screen-stats .stat-grid div { flex: 0 1 calc((100% - 1rem) / 3); }
 #screen-stats .cal-nav, #screen-stats .cal-grid { margin-left: auto; margin-right: auto; }
 
 /* Daily calendar: a month of dailies, coloured by how each one went. Won and
@@ -922,7 +919,6 @@ footer a { color: inherit; }
   font-size: 0.75rem;
   line-height: 1;
 }
-a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
 .cal-day.off { color: var(--ink-soft); opacity: 0.4; background: transparent; border-style: dotted; }
 .cal-day.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
 .cal-day.won i { color: var(--hit); }

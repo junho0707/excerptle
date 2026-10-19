@@ -15,7 +15,7 @@ test.beforeEach(async ({ page, baseURL }) => {
     ? route.continue() : route.fulfill({ status: 503, body: '{}' }));
 });
 
-test('the stats calendar colours solved and missed dailies and links each day to its book', async ({ page }) => {
+test('the stats calendar colours solved and missed dailies, and days are not links', async ({ page }) => {
   await page.goto('/#/stats');
   await expect(page.locator('.cal-month')).toHaveText('October 2026');
   await expect(page.locator('.cal-day.won')).toHaveCount(1);
@@ -26,10 +26,7 @@ test('the stats calendar colours solved and missed dailies and links each day to
   await expect(page.locator('.cal-day.lost')).toHaveAttribute('aria-label', 'October 4, missed');
   // Days after today are muted and are not links.
   await expect(page.locator('.cal-day.off').last()).toHaveText('31');
-  await expect(page.locator('a.cal-day[href="#/play/641"]')).toHaveCount(0);
-  await page.locator('.cal-day.won').click();
-  await expect(page).toHaveURL(/#\/play\/622$/);
-  await expect(page.locator('#meta-left')).toHaveText('Daily #622');
+  await expect(page.locator('a.cal-day')).toHaveCount(0);
 });
 
 test('the calendar steps between the first daily month and this one, and no further', async ({ page }) => {
@@ -42,7 +39,7 @@ test('the calendar steps between the first daily month and this one, and no furt
   await expect(prev).toBeDisabled();
   // Before the 9th there was no daily; from the 9th on every day is playable.
   await expect(page.locator('.cal-day.off')).toHaveCount(8);
-  await expect(page.locator('a.cal-day')).toHaveCount(22);
+  await expect(page.locator('.cal-day:not(.off)')).toHaveCount(22);
   await next.click();
   await expect(page.locator('.cal-month')).toHaveText('October 2026');
 });
