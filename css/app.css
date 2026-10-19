@@ -9,6 +9,7 @@
   --gold: #b0893a;
   --miss: #c9a227;
   --hit: #2f6b3a;
+  --lost: #a3332b;
   --shadow: 0 10px 40px rgba(28, 20, 12, 0.08);
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -41,6 +42,7 @@
   --wine: #e07a84;
   --wine-deep: #c45b66;
   --gold: #d4b36a;
+  --lost: #e0736a;
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
   --promo: #191f27;
   --promo-2: #212934;
@@ -834,6 +836,64 @@ footer a { color: inherit; }
 .s-block .stat-grid div { padding: 0.7rem 0.2rem; }
 
 #screen-stats .pg-stats { margin-bottom: 0.2rem; }
+
+/* Daily calendar: a month of dailies, coloured by how each one went. Won and
+   lost carry a mark as well as a colour, so neither relies on hue alone. */
+.cal-nav, .cal-grid { max-width: 26rem; }
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin: 0.7rem 0 var(--sp-2);
+}
+.cal-nav .btn { min-width: 2.4rem; font-size: 1.2rem; line-height: 1; padding: 0.3rem 0.6rem; }
+.cal-nav .btn:disabled { opacity: 0.35; cursor: default; }
+.cal-month { font-family: var(--serif); font-size: 1.05rem; }
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+.cal-grid > span:not(.cal-day):not(.cal-pad) {
+  text-align: center;
+  font-size: var(--cap, 0.68rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+}
+.cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.cal-day i {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
+.cal-day.off { color: var(--ink-soft); opacity: 0.4; background: transparent; border-style: dotted; }
+.cal-day.won { border-color: var(--hit); background: color-mix(in srgb, var(--hit) 18%, var(--paper)); }
+.cal-day.won i { color: var(--hit); }
+.cal-day.lost { border-color: var(--lost); background: color-mix(in srgb, var(--lost) 14%, var(--paper)); }
+.cal-day.lost i { color: var(--lost); }
+.cal-day.play { border-style: dashed; border-color: var(--wine); }
+.cal-day.today { font-weight: 700; box-shadow: 0 0 0 2px var(--ink); }
 @media (max-width: 560px) {
   .s-block { --tile: 1.6rem; }
   /* On phones, filter labels use one fixed column so each control starts at

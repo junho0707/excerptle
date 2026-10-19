@@ -1369,6 +1369,75 @@
     return `<div><b>${value}</b><span>${label}</span></div>`;
   }
 
+  /* The month the calendar is showing, as "YYYY-MM". Kept for the tab so a
+     trip into a day and back lands where you were; sessionStorage can throw
+     (private windows, blocked storage), and the calendar works without it. */
+  const CAL_KEY = "excerptle.calMonth";
+  let calShown = null;
+  function calMonth() {
+    const start = (state.index?.startDate || START).slice(0, 7);
+    const now = gameDate().slice(0, 7);
+    let m = calShown;
+    if (!m) {
+      try { m = sessionStorage.getItem(CAL_KEY); } catch { /* default below */ }
+    }
+    if (!/^\d{4}-\d{2}$/.test(m || "")) m = now;
+    return m < start ? start : m > now ? now : m;
+  }
+  function stepCalendar(by) {
+    const [y, mo] = calMonth().split("-").map(Number);
+    const d = new Date(Date.UTC(y, mo - 1 + by, 1));
+    calShown = d.toISOString().slice(0, 7);
+    try { sessionStorage.setItem(CAL_KEY, calMonth()); } catch { /* not remembered */ }
+    calShown = calMonth(); // clamped to the first daily and the current month
+    renderStats();
+  }
+
+  /* One month of dailies. A day's index is its date (dateForDailyIndex's
+     inverse), so each cell can be coloured from the same progress map the
+     rest of Stats reads, and links straight to that book. */
+  function calendarHtml() {
+    const start = state.index?.startDate || START;
+    const base = state.index?.dailyStartIndex ?? 600;
+    const today = gameDate();
+    const month = calMonth();
+    const [y, mo] = month.split("-").map(Number);
+    const lead = new Date(Date.UTC(y, mo - 1, 1)).getUTCDay();
+    const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+    const prog = progressMap();
+    const label = new Date(Date.UTC(y, mo - 1, 1)).toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" });
+    const first = month <= start.slice(0, 7);
+    const last = month >= today.slice(0, 7);
+    let cells = "";
+    for (let i = 0; i < lead; i++) cells += `<span class="cal-pad"></span>`;
+    for (let d = 1; d <= days; d++) {
+      const iso = `${month}-${String(d).padStart(2, "0")}`;
+      const name = new Date(Date.UTC(y, mo - 1, d)).toLocaleDateString(undefined, { month: "long", day: "numeric", timeZone: "UTC" });
+      if (iso < start || iso > today) {
+        cells += `<span class="cal-day off" aria-label="${name}, ${iso < start ? "before the first daily" : "not out yet"}">${d}</span>`;
+        continue;
+      }
+      const index = base + daysBetween(start, iso);
+      const row = prog[String(index)];
+      const st = row?.status === "won" ? "won" : row?.status === "lost" ? "lost"
+        : row && (row.guesses?.length || row.hints) ? "play" : "";
+      const word = { won: "solved", lost: "missed", play: "in progress", "": "not played" }[st];
+      const mark = st === "won" ? `<i aria-hidden="true">\u2713</i>` : st === "lost" ? `<i aria-hidden="true">\u2715</i>` : "";
+      cells += `<a class="cal-day ${st}${iso === today ? " today" : ""}" href="#/play/${index}" aria-label="${name}, ${word}"${iso === today ? ' aria-current="date"' : ""}>${d}${mark}</a>`;
+    }
+    const dow = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((n) => `<span aria-hidden="true">${n}</span>`).join("");
+    return `
+      <section class="s-block" id="cal">
+        <h2>Daily calendar</h2>
+        <div class="cal-nav">
+          <button type="button" class="btn ghost sm" data-act="cal-prev" aria-label="Previous month"${first ? " disabled" : ""}>\u2039</button>
+          <span class="cal-month" aria-live="polite">${label}</span>
+          <button type="button" class="btn ghost sm" data-act="cal-next" aria-label="Next month"${last ? " disabled" : ""}>\u203a</button>
+        </div>
+        <div class="cal-grid">${dow}${cells}</div>
+      </section>`;
+  }
+
   function renderStats() {
     show("screen-stats");
     const { all, books, daily, authors } = summarize();
@@ -1379,6 +1448,8 @@
     /* Daily and Book bank are two ways of playing the same game, so they share
        one type scale. The page title is the only level above them. */
     $("#stats-body").innerHTML = `
+      ${calendarHtml()}
+
       <section class="s-block">
         <h2>Books discovered</h2>
         <div class="stat-grid">
@@ -1782,6 +1853,8 @@
     if (act === "hint") onHint();
     if (act === "give-up") onGiveUp();
     if (act === "retry-reading") retryCompletedExcerpt();
+    if (act === "cal-prev") stepCalendar(-1);
+    if (act === "cal-next") stepCalendar(1);
     if (act === "save-name") saveDisplayName();
     if (act === "play-today" || act === "pick-today") {
       closeModal();
