@@ -2,7 +2,6 @@
 
    Rules this file exists to keep:
    - Nothing loads unless EXCERPTLE_ADS is enabled *and* both IDs are set.
-   - Pro is ad-free, checked at render time, not just at boot.
    - Excerptle is a single page with hash routing, so there is no page load per
      game. AdSense wants one request per genuine content view, which means a
      *fresh* <ins> node each time — pushing twice against the same node throws,
@@ -21,7 +20,7 @@ window.ExcerptleAds = (() => {
     return !!(c.enabled && c.client && c.slot);
   }
   function active() {
-    return configured() && !window.ExcerptlePro?.isPro?.();
+    return configured();
   }
 
   /* index.html carries the loader in <head> — AdSense needs it there before
@@ -75,11 +74,6 @@ window.ExcerptleAds = (() => {
       clear();
     }
   }
-
-  // Buying Pro mid-session should take the ad away without a reload.
-  document.addEventListener("excerptle-pro", () => {
-    if (host() && !host().classList.contains("hidden") && !active()) clear();
-  });
 
   return { render, clear, active, configured };
 })();

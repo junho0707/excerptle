@@ -38,6 +38,7 @@ Hard-refresh after JS/HTML changes.
 | Auth UI | Google + email-first, then **code or password**. **No passkeys.** |
 | Removed | Motion setting, coffee/give-up stats bar, More games. |
 | Removed 2026-10-19 | **Leaderboard and Battle mode**, in the UI and the code. The frontend no longer reads or writes `/scores`; the API route and the stored `stats.battle` / `bookle.lb.v4` data are left in place, unread. Old `#/ranks`, `#/battle/X` and `?b=X` links land on the daily (or on `?p=N` when the link names a book). The Nav, New game modal, Post-game, Stats, Leaderboard UI and Battle rows above describe the old behaviour. |
+| Removed 2026-10-19 | **Support page / Ko-fi** (`/support` and `/support.html` redirect to `/` via the root `_redirects` file) and **Excerptle Pro**: `js/pro.js`, the Pro badge and modal, the account-modal row and `EXCERPTLE_PRO` are gone, and the post-game ad and the studio cards now always show. The backend `/billing/*` routes, the Stripe product and any subscriber rows are **left deployed and unused** — check the Stripe dashboard for live subscribers before ever deleting them; that is a separate decision. |
 
 Gameplay JSON stays static. Backend is for **identity, mail, scores, synced progress** — not for serving the book text.
 

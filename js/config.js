@@ -58,15 +58,3 @@ window.EXCERPTLE_ADS = {
   slot: "",             // from the Display unit you create AFTER approval
                         // (NOT the 7855100651 customer ID — different number)
 };
-
-/* Stripe. Keys never touch the frontend — the browser only ever calls our own
-   API, which talks to Stripe server-side:
-     GET  /billing/status    -> { pro, status, currentPeriodEnd, cancelAtPeriodEnd, price }
-     POST /billing/checkout  -> { url }   (Stripe Checkout session)
-     POST /billing/portal    -> { url }   (Stripe Billing Portal session)
-   Until EXCERPTLE_API is set, the Pro modal says billing isn't connected yet
-   rather than pretending anyone is subscribed. */
-window.EXCERPTLE_PRO = {
-  priceLabel: "$3/month",
-  blurb: "Excerptle Pro removes ads.",
-};

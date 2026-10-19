@@ -90,95 +90,9 @@
       tab.textContent = s ? (s.email.split("@")[0] || "Account") : "Sign in";
       tab.dataset.act = s ? "open-account" : "open-auth";
     }
-    paintPro();
     const st = $("#auth-status");
     if (st) st.textContent = s ? `Signed in as ${s.email}` : "Not signed in. Progress stays on this device until you sign in.";
     renderPasswordBox();
-  }
-
-  // The Pro badge only means something next to a name, so it rides with the
-  // account tab: hidden signed out, outlined when free, filled when paying.
-  function paintPro() {
-    const el = $("#pro-badge");
-    if (!el) return;
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const signedIn = !!window.BookleAuth?.session?.();
-    el.classList.toggle("hidden", !signedIn && !v.pro);
-    el.classList.toggle("on", !!v.pro);
-    el.classList.toggle("warn", v.phase === "past_due");
-    el.title = v.pro ? "Excerptle Pro — active" : "Excerptle Pro — ad-free";
-    el.setAttribute("aria-label", el.title);
-  }
-
-  const PRO_COPY = () => window.EXCERPTLE_PRO || {};
-
-  function proBodyHtml() {
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const ends = v.currentPeriodEnd
-      ? new Date(typeof v.currentPeriodEnd === "number" ? v.currentPeriodEnd * 1000 : v.currentPeriodEnd)
-      : null;
-    // Stripe states the period end in UTC; rendering it in local time slides it
-    // a day for anyone west of Greenwich, so the receipt and the modal disagree.
-    const on = ends ? ends.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }) : "";
-    const manage = `<button class="btn ghost full" type="button" data-act="pro-portal">Manage billing</button>`;
-    switch (v.phase) {
-      case "loading":
-        return `<p class="pro-status">Checking your subscription…</p>`;
-      case "active":
-        return `<p class="pro-status ok">PRO</p>
-          ${on ? `<p class="pro-note">Renews ${on}.</p>` : ""}
-          ${v.dev ? `<p class="pro-note">Local override (<code>bookle.pro.dev</code>) — not a real subscription.</p>` : manage}`;
-      case "canceling":
-        return `<p class="pro-status ok">PRO</p>
-          <p class="pro-note">Ends${on ? ` ${on}` : " at the end of this period"}. Renewal can go back on in the billing portal.</p>${manage}`;
-      case "past_due":
-        return `<p class="pro-status warn">Your last payment didn’t go through. Stripe will retry, but updating the card is faster.</p>${manage}`;
-      case "none":
-        return `<button class="btn ghost full" type="button" data-act="pro-checkout-monthly">Monthly — ${PRO_COPY().priceLabel || "$3/month"}</button>
-          <button class="btn full" type="button" data-act="pro-checkout-yearly">Yearly — $20/year</button>
-          <p class="pro-note">Save $16/year with yearly.<br>Checkout and receipts are handled by Stripe.<br>Cancel any time.</p>`;
-      case "error":
-        return `<p class="pro-status warn">${escapeHtml(v.message || "Couldn’t reach billing just now.")}</p>
-          <button class="btn ghost full" type="button" data-act="open-auth">Sign in again</button>
-          <button class="btn ghost full" type="button" data-act="pro-refresh">Try again</button>`;
-      default:
-        if (v.reason === "signed-out") {
-          return `<button class="btn full" type="button" data-act="open-auth">Sign in to subscribe</button>
-            <p class="pro-note">A subscription belongs to an account, so it follows you between devices.</p>`;
-        }
-        return `<p class="pro-status">Stripe checkout isn’t connected yet.</p>`;
-    }
-  }
-
-  function proModalHtml() {
-    // Someone already paying doesn't need the sales line — they get the state,
-    // the date and the billing link.
-    const pro = !!window.ExcerptlePro?.isPro?.();
-    return `
-      <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
-      <h2>Excerptle Pro</h2>
-      <p class="lede" id="pro-lede"${pro ? " hidden" : ""}>${PRO_COPY().blurb || "Excerptle Pro removes ads."}</p>
-      <div id="pro-body">${proBodyHtml()}</div>
-      <p id="pro-err" class="auth-err" role="alert"></p>
-    `;
-  }
-
-  function repaintProModal() {
-    const body = $("#pro-body");
-    if (body) body.innerHTML = proBodyHtml();
-    // The modal usually opens before entitlement lands, so the pitch line has
-    // to retract once the answer comes back as "already paying".
-    const lede = $("#pro-lede");
-    if (lede) lede.hidden = !!window.ExcerptlePro?.isPro?.();
-    paintPro();
-  }
-  function openPro() {
-    openModal(proModalHtml());
-    window.ExcerptlePro?.refresh?.({ force: true }).then(repaintProModal);
-  }
-  function proErr(msg) {
-    const el = $("#pro-err");
-    if (el) el.textContent = msg || "";
   }
 
   function loadJSON(key, fallback) {
@@ -856,11 +770,10 @@
     elsewhere();
   }
 
-  /* Links to our other sites: shown both during and after a round, and off
-     for Pro, which is sold as ad-free. */
+  /* Links to our other sites: shown both during and after a round. The
+     markup starts hidden so it can't flash before the first puzzle is up. */
   function elsewhere() {
-    const el = document.getElementById("elsewhere");
-    if (el) el.classList.toggle("hidden", !!window.ExcerptlePro?.isPro?.());
+    document.getElementById("elsewhere")?.classList.remove("hidden");
   }
 
   function recordFinish() {
@@ -1225,7 +1138,7 @@
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>Sign in or sign up</h2>
-      <p class="lede">Sign in with Google, a password, or an email code to manage your account and Excerptle Pro.</p>
+      <p class="lede">Sign in with Google, a password, or an email code to manage your account.</p>
       <button class="btn google" type="button" data-act="auth-google">${gSvg} Continue with Google</button>
       <div class="or-line">or</div>
       <div class="auth-stack">
@@ -1240,19 +1153,12 @@
   function openAccount() {
     const s = window.BookleAuth.session();
     if (!s) return openAuth();
-    const v = window.ExcerptlePro?.view?.() || { phase: "off", pro: false };
-    const proStatus = v.phase === "active" ? "Active" :
-      v.phase === "canceling" ? "Active — ending at period end" :
-      v.phase === "past_due" ? "Payment issue" :
-      v.phase === "loading" ? "Checking…" :
-      v.phase === "error" ? "Status unavailable" : "Free";
     openModal(`
       <button class="modal-x" type="button" data-act="close-modal" aria-label="Close">×</button>
       <h2>Account</h2>
       <p><strong>Email</strong><br>${escapeHtml(s.email)}</p>
       <p><strong>Sign-in method</strong><br>${s.provider === "google" ? "Google" : s.provider === "password" ? "Password" : "Email code"}</p>
       <p><strong>Password</strong><br>${window.BookleAuth.hasPassword() ? "Set" : "Not set — add one in Settings"}</p>
-      <p><strong>Excerptle Pro</strong><br><span id="account-pro">${proStatus}</span></p>
       <p><button class="btn ghost" type="button" data-act="sign-out">Sign out</button></p>
     `);
   }
@@ -1599,7 +1505,7 @@
     return new URLSearchParams(location.search);
   }
 
-  const KNOWN_PAGES = new Set(["home", "bank", "stats", "settings", "legal", "news", "play", "pro", "new", "signin", "account"]);
+  const KNOWN_PAGES = new Set(["home", "bank", "stats", "settings", "legal", "news", "play", "new", "signin", "account"]);
 
   async function go() {
     ++playRequest; // Invalidate requests even when leaving for a non-game screen.
@@ -1631,12 +1537,11 @@
     if (r.page === "bank") return renderBank();
     if (r.page === "stats") return renderStats();
     if (r.page === "settings") return renderSettings();
-    /* One-shot modal routes: #/pro is how the nav and Stripe's return URL ask
-       for the Pro modal, and the rest are how the static pages' header — which
-       carries the same tabs but no js/app.js — asks for a modal only the game
-       can open. Left in the URL any of them would reopen on every reload, so
-       spend the hash and land on the daily behind the modal. */
-    const oneShot = { pro: openPro, new: openPlay, signin: openAuth, account: openAccount };
+    /* One-shot modal routes: how the static pages' header — which carries the
+       same tabs but no js/app.js — asks for a modal only the game can open.
+       Left in the URL any of them would reopen on every reload, so spend the
+       hash and land on the daily behind the modal. */
+    const oneShot = { new: openPlay, signin: openAuth, account: openAccount };
     if (oneShot[r.page]) {
       history.replaceState(null, "", location.pathname + "#/");
       await startPlay({ playIndex: dailyIndexNow(), mode: "daily" });
@@ -1737,23 +1642,6 @@
     if (act === "open-how") openHow();
     if (act === "open-auth") openAuth();
     if (act === "open-account") openAccount();
-    if (act === "open-pro") openPro();
-    if (act === "pro-refresh") {
-      proErr("");
-      await window.ExcerptlePro?.refresh?.({ force: true });
-      repaintProModal();
-    }
-    if (act === "pro-checkout-monthly" || act === "pro-checkout-yearly" || act === "pro-portal") {
-      const btn = e.target.closest("[data-act]");
-      proErr("");
-      if (btn) { btn.disabled = true; btn.textContent = "Opening Stripe…"; }
-      try {
-        await (act === "pro-checkout-monthly" ? window.ExcerptlePro.checkout("monthly") : act === "pro-checkout-yearly" ? window.ExcerptlePro.checkout("yearly") : window.ExcerptlePro.portal());
-      } catch (err) {
-        proErr(err.message || String(err));
-        repaintProModal();
-      }
-    }
     if (act === "sign-out") {
       window.BookleAuth.signOut();
       closeModal();
@@ -1991,22 +1879,6 @@
       if (token && token === window.BookleAuth?.session?.()?.token) syncProgress();
     });
   });
-  // Entitlement arriving late must repaint the badge, the open modal, and the
-  // ad slot — someone who just paid shouldn't have to reload to lose the ad.
-  document.addEventListener("excerptle-pro", () => {
-    paintPro();
-    if ($("#pro-body")) repaintProModal();
-    if ($("#account-pro")) openAccount();
-  });
-  // Returning with the browser Back button restores the page from its cache;
-  // reset the temporary “Opening Stripe…” button state and refresh billing.
-  window.addEventListener("pageshow", () => {
-    if (!$("#pro-body")) return;
-    proErr("");
-    repaintProModal();
-    window.ExcerptlePro?.refresh?.({ force: true }).then(repaintProModal);
-  });
-  window.ExcerptlePro?.refresh?.();
   applyTheme();
   paintAuth();
   if (activeAccountUid) importGuestPlay(activeAccountUid);

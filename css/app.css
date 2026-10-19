@@ -1316,55 +1316,6 @@ a.cal-day:hover, a.cal-day:focus-visible { border-color: var(--wine); }
 }
 
 
-/* ---- Excerptle Pro ---- */
-
-.pro-badge {
-  background: transparent;
-  border: 1px solid var(--wine);
-  border-radius: 999px;
-  color: var(--wine);
-  width: 1.85rem;
-  height: 1.85rem;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  font-size: 0.85rem;
-  line-height: 1;
-  flex: 0 0 auto;
-}
-.pro-badge:hover, .pro-badge:focus-visible { background: var(--paper-2); color: var(--wine); }
-.pro-badge.on {
-  background: var(--wine);
-  border-color: var(--wine);
-  color: var(--paper);
-}
-.pro-badge.warn { border-color: var(--wine); color: var(--wine); }
-.pro-badge.hidden { display: none; }
-/* On a 375px screen the badge crowds the wordmark. Pro is still one tap away
-   inside the account modal, so drop it from the header instead. */
-@media (max-width: 420px) {
-  .pro-badge { display: none; }
-}
-
-.pro-list {
-  margin: 0 0 1rem;
-  padding-left: 1.1rem;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-}
-.pro-list li + li { margin-top: 0.35rem; }
-.pro-status {
-  margin: 0 0 0.6rem;
-  font-size: 0.92rem;
-}
-.pro-status.ok { color: var(--hit); }
-.pro-status.warn { color: var(--wine); }
-.pro-note {
-  margin: 0.6rem 0 0;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-}
-
 /* A page title is a level above what follows it, so give it room to say so.
    Matches the specificity of `.screen h1`, which sets a tighter margin. */
 .screen h1.screen-title, h1.screen-title {

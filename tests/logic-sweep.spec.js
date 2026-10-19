@@ -127,7 +127,7 @@ test('a streak that arrives from the server repaints the stats screen', async ({
 });
 
 test('retired routes land on a working daily instead of a blank screen', async ({ page }) => {
-  for (const url of ['/#/ranks?i=3', '/#/battle/abc123', '/#/support', '/?b=abc123']) {
+  for (const url of ['/#/ranks?i=3', '/#/battle/abc123', '/#/support', '/#/pro', '/?b=abc123']) {
     await page.goto(url);
     await expect(page.locator('#guess-input')).toBeVisible();
     await expect(page.locator('#meta-left')).toHaveText('Daily #601');
@@ -175,4 +175,18 @@ test('there is no Support tab or link to the old Support page', async ({ page })
     await page.goto(path);
     await expect(page.locator('a[href*="ko-fi"], a[href="/support"]')).toHaveCount(0);
   }
+});
+
+test('Excerptle Pro is gone: no badge, no script, no Pro row, and the studio cards always show', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('bookle.auth.session', JSON.stringify({
+    uid: 'pro-gone', email: 'pro@example.test', token: 'tok', expiresAt: 4102444800,
+  })));
+  await page.route('**/billing/**', route => route.fulfill({ json: { pro: true, status: 'active' } }));
+  await page.goto('/');
+  await expect(page.locator('#pro-badge, script[src*="pro.js"]')).toHaveCount(0);
+  expect(await page.evaluate(() => typeof window.ExcerptlePro)).toBe('undefined');
+  await expect(page.locator('#elsewhere')).toBeVisible();
+  await page.locator('#auth-tab').click();
+  await expect(page.locator('#modal h2')).toHaveText('Account');
+  await expect(page.locator('#modal')).not.toContainText('Pro');
 });
