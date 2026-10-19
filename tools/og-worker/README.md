@@ -4,8 +4,8 @@
 
 | Script | Config | Contents |
 | --- | --- | --- |
-| `excerptle` (front door) | root `wrangler.jsonc` → `worker.js` | ~5 KB: static assets plus the OG meta-tag rewrite |
-| `excerptle-og` (renderer) | `tools/og-worker/wrangler.jsonc` → `render-worker.js` | ~3.5 MB: resvg WASM, two TTFs, the card SVG |
+| `excerptle` (front door) | root `wrangler.jsonc` → `worker.ts` | ~5 KB: static assets plus the OG meta-tag rewrite |
+| `excerptle-og` (renderer) | `tools/og-worker/wrangler.jsonc` → `render-worker.ts` | ~3.5 MB: resvg WASM, two TTFs, the card SVG |
 
 They were one script until the weight showed up in the wrong place.
 `run_worker_first` puts the front door in front of `/`, so Cloudflare loads

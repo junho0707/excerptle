@@ -22,19 +22,19 @@ Battle mode stays competitive — it is the one opt-in head-to-head surface.
 ### The redesign, already implemented
 | change | where |
 |---|---|
-| Timer removed entirely | `js/app.js` (`startRoundTimers`/`stopRoundTimers` replaced the elapsed clock; `state.startedAt` deleted), `index.html`, `css/app.css` |
-| Leaderboard ranks hints → guesses → earliest solve | `backend/src/worker.js` `scores()`, `js/app.js` `rankSort`/`pushLb` |
+| Timer removed entirely | `src/app.ts` (`startRoundTimers`/`stopRoundTimers` replaced the elapsed clock; `state.startedAt` deleted), `index.html`, `css/app.css` |
+| Leaderboard ranks hints → guesses → earliest solve | `backend/src/worker.ts` `scores()`, `src/app.ts` `rankSort`/`pushLb` |
 | `time_ms` no longer ranked on | still accepted and stored (column is NOT NULL); never compared |
 | New index | `backend/migrations/0004_rank_without_time.sql` |
-| Share copy | `tools/og-worker/share.js`, `card.js` — "Check out this book." |
+| Share copy | `tools/og-worker/share.ts`, `card.js` — "Check out this book." |
 | Old share links with a `t` field | still parse, value simply not displayed (covered by a test) |
 | Stats page | "Books discovered / Authors / Openings read" block added; every "Fastest" row removed |
-| Solved books show their title in the bank grid | `js/app.js` `renderBank`, `.bank-t`/`.bank-n`/`.bank-tick` in CSS. Progress rows now store `title` + `author` on finish |
+| Solved books show their title in the bank grid | `src/app.ts` `renderBank`, `.bank-t`/`.bank-n`/`.bank-tick` in CSS. Progress rows now store `title` + `author` on finish |
 | Fabricated puzzle stats deleted | `tools/build_puzzles.py` `fun_for()` used to emit a give-up rate and median solve time derived from `gid % 17`. Nothing ever rendered them. The `coffees` rating and the whole `fun` block are gone too |
 
 Tests pass: `backend` 11/11, `tools/og-worker` 3 pass + 1 skipped (needs wrangler dev).
 
-**Gotcha for future migrations:** `backend/test/billing.test.js` splits migration
+**Gotcha for future migrations:** `backend/test/billing.test.ts` splits migration
 files on `;`. A semicolon *inside a SQL comment* leaves a comment-only chunk and
 fails the whole run. Keep semicolons out of comments.
 
@@ -77,7 +77,7 @@ Verification, all clean:
 python3 tools/verify_ids.py        # 0 wrong ids (46 edition-title drifts left alone)
 python3 tools/verify_titles.py     # every id vs the title inside its own text
 python3 tools/test_puzzles.py      # 720 puzzles, 600 bank + 120 dailies
-node    tools/test_match.mjs       # 720 titles match their own aliases
+node    tools/test_match.ts       # 720 titles match their own aliases
 python3 tools/qa_puzzles.py        # 16 of 720 flagged, all read as false alarms
 ```
 
@@ -175,7 +175,7 @@ python3 tools/qa_puzzles.py                    # openings worth a human eye
 ```
 
 `index.json`: bank #0–#599 scrambled by slug hash, dailies #600–#719 in
-most-famous-first order (Pride and Prejudice is #600). `js/app.js` reads
+most-famous-first order (Pride and Prejudice is #600). `src/app.ts` reads
 `dailyStartIndex` / `presetCount`, so nothing there needed changing beyond the
 localStorage keys, now `.v3`.
 
@@ -231,7 +231,7 @@ stage direction or a dramatis personae, which may be fine or may not.
 - Six books the owner wanted have no Gutenberg text at all: To the Lighthouse,
   Orlando, Red Harvest, As I Lay Dying, Swallows and Amazons, An American
   Tragedy. They need an external source or they stay out.
-- `js/auth.js` only fires the `bookle-auth` event on explicit sign-in/out, so
+- `src/auth.ts` only fires the `bookle-auth` event on explicit sign-in/out, so
   the score backfill never retries on a later page load. A guest with more than
   20 solves has to sign out and back in to push the rest. Unrelated to the
   redesign, still worth fixing.

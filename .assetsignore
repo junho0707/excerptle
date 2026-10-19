@@ -4,9 +4,12 @@
 backend/
 tools/
 tests/
+# TypeScript sources; the site serves the built js/*.js.
+src/
+tsconfig*.json
 test-results/
 playwright-report/
-playwright.config.js
+playwright.config.*
 dist/
 node_modules/
 .git/

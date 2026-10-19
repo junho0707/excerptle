@@ -23,7 +23,7 @@ Hard-refresh after JS/HTML changes.
 |---|---|
 | Name / domain | Excerptle, `CNAME` = `excerptle.io`. Share URLs `https://excerptle.io/?p=N`. |
 | Core game | 6 guesses. **Hints** expand text (sentence → opening paragraphs → a page → a few pages → chapter 1). Each tier must clear a word target *and* grow ~1.4-2x over the one before, so no two hints ever show the same screen. Guesses do **not** reveal text. |
-| Matching | Generous typos / “The…” / `by Author`. Not one-word stabs (`great`). Distinctive last tokens (`gatsby`) OK. **Titles are expanded into variants at match time** (`variants()` in `js/match.js`), so Gutenberg packaging is optional to type — “Richard Carvel” solves *Richard Carvel — Complete*, “The Adventures of Tom Sawyer” solves *…, Part 4.*, “Moby Dick” solves *Moby-Dick; or, The Whale*. Fragments still lose: “The Adventures”, “The Red Badge”, “Tom Swift”, “tom sawyer” are all rejected, because every variant is matched **whole**. Edition words (`complete`, `volume`, `romance`, …) are barred from the one-word shortcut. `by <author>` is stripped from the **guess only** — stripping it from titles used to reduce “Won By the Sword” to `won`. |
+| Matching | Generous typos / “The…” / `by Author`. Not one-word stabs (`great`). Distinctive last tokens (`gatsby`) OK. **Titles are expanded into variants at match time** (`variants()` in `src/match.ts`), so Gutenberg packaging is optional to type — “Richard Carvel” solves *Richard Carvel — Complete*, “The Adventures of Tom Sawyer” solves *…, Part 4.*, “Moby Dick” solves *Moby-Dick; or, The Whale*. Fragments still lose: “The Adventures”, “The Red Badge”, “Tom Swift”, “tom sawyer” are all rejected, because every variant is matched **whole**. Edition words (`complete`, `volume`, `romance`, …) are barred from the one-word shortcut. `by <author>` is stripped from the **guess only** — stripping it from titles used to reduce “Won By the Sword” to `won`. |
 | Nav | New game (modal) · How to play (modal) · All books · Leaderboard · Sign in · Settings. Tabs sit inline in the header at ≥1025px; the hamburger takes over from iPad width (≤1024px) down. |
 | New game modal | One modal, no second step. A **Battle mode switch** at the top changes what the picks below it do: off, they start a solo round; on, the pick opens a battle room directly. Three rows — Today’s daily, Random book, Choose by ID — each with its **Guess** button on the right. Today’s daily is disabled while battle is on (battle needs a book both players can be handed). Bad IDs report inside the modal (`#choice-err`), not on the covered game screen. Acts are `pick-today` / `pick-random` / `pick-id`, distinct from the `#more` row's `play-random` so the switch can't leak out of the modal. |
 | After a game | Next random book, choose by ID, share, leaderboard CTA, post-game ad **slot** (no network). The reveal prints `stripEdition(title)`, so the answer reads “Richard Carvel”, not “Richard Carvel — Complete”. Standings show **both** — `#n of N at h hints` and `#n of N overall`. |
@@ -48,16 +48,16 @@ Gameplay JSON stays static. Backend is for **identity, mail, scores, synced prog
 
 ### Google
 
-- **Client ID** (public, already in `js/config.js`):  
+- **Client ID** (public, already in `src/config.ts`):  
   `1041895139600-l1k1okdmncr1kjsgknt0n5tt1oqm3nfc.apps.googleusercontent.com`
-- Frontend uses **Google Identity Services** (`js/auth.js` → `google.accounts.id.initialize`). JWT comes to the browser; we parse email/name. We do **not** use the client secret here.
+- Frontend uses **Google Identity Services** (`src/auth.ts` → `google.accounts.id.initialize`). JWT comes to the browser; we parse email/name. We do **not** use the client secret here.
 - **Client secret** → server `.env` only, gitignored. Needed if you verify Google ID tokens server-side (recommended) or add a code-exchange flow.
 - Cloud Console **JavaScript origins**: `http://127.0.0.1:8765`, `http://localhost:8765`, `https://excerptle.io`, `https://www.excerptle.io`.
 - **Redirect URIs** (same four, no trailing slash). GIS callback does not redirect; URIs exist so the Web client can be saved.
 
 ### Email (no passkeys)
 
-Frontend already calls these when `window.EXCERPTLE_API` / `BOOKLE_API` is set (same value; see `js/config.js`):
+Frontend already calls these when `window.EXCERPTLE_API` / `BOOKLE_API` is set (same value; see `src/config.ts`):
 
 | Method | Path | Body | Response |
 |---|---|---|---|
@@ -75,9 +75,9 @@ Suggested session: httpOnly cookie or JWT returned from `/auth/verify` and `/aut
 
 ## Other API the client already expects
 
-Set `window.EXCERPTLE_API = "https://api.excerptle.io"` (or local API) in `js/config.js`.
+Set `window.EXCERPTLE_API = "https://api.excerptle.io"` (or local API) in `src/config.ts`.
 
-**Scores** — `js/app.js` `pushLb()`:
+**Scores** — `src/app.ts` `pushLb()`:
 
 ```
 POST {API}/   (sendBeacon JSON)
@@ -137,10 +137,10 @@ Hash routes are deliberately **not** in the sitemap — search engines drop frag
 ```
 index.html          shell, nav, modals
 css/app.css
-js/config.js        Google client ID + API origin (no secrets)
-js/auth.js          GIS + email API client + demo fallback
-js/match.js         title matching
-js/app.js           game, bank, ranks, battle, share
+src/config.ts        Google client ID + API origin (no secrets)
+src/auth.ts          GIS + email API client + demo fallback
+src/match.ts         title matching
+src/app.ts           game, bank, ranks, battle, share
 puzzles/index.json  startDate 2026-09-09, dailyStartIndex 600, order[] (720: bank #0-599 scrambled, dailies #600-719 by fame), presetCount 600, dailyPoolCount 120
 puzzles/g{id}.json  one per book, slug = Gutenberg id
 tools/build_puzzles.py

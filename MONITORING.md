@@ -11,8 +11,8 @@ observability product; it is one Worker module plus a Slack webhook.
 
 | Piece | Where | What it does |
 | --- | --- | --- |
-| Alerting module | `backend/src/alerts.js` (253 LOC) | Quota watch, daily digest, live events. All of it fails soft. |
-| Cron entry point | `backend/src/worker.js` → `scheduled()` | Routes the two cron schedules; alerting is inside a `try` so it can never abort the nightly expiry sweep. |
+| Alerting module | `backend/src/alerts.ts` (253 LOC) | Quota watch, daily digest, live events. All of it fails soft. |
+| Cron entry point | `backend/src/worker.ts` → `scheduled()` | Routes the two cron schedules; alerting is inside a `try` so it can never abort the nightly expiry sweep. |
 | Schedules | `backend/wrangler.toml` `[triggers]` | `0 * * * *` hourly quota check + digest heartbeat · `7 12 * * *` nightly sweep + digest (**08:07 New York**, 07:07 in winter — Cloudflare crons are UTC and ignore DST) |
 | Alert memory | D1 table `alert_state` (migration `0003_alerts.sql`) | One row per metric per UTC day, so an hourly check does not repeat itself. |
 | Usage source | Cloudflare GraphQL Analytics API | `workersInvocationsAdaptive`, `d1AnalyticsAdaptiveGroups`, `d1StorageAdaptiveGroups` |
@@ -37,7 +37,7 @@ somebody's sign-in.
 
 ## Limits being watched
 
-Cloudflare free plan, defined in `LIMITS` at the top of `backend/src/alerts.js`.
+Cloudflare free plan, defined in `LIMITS` at the top of `backend/src/alerts.ts`.
 Edit there if a plan changes.
 
 | Metric | Free limit | Note |

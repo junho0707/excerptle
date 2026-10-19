@@ -16,3 +16,6 @@ playwright-report/
 tools/.pg-meta-cache/
 *:Zone.Identifier
 tools/openings-preview.html
+
+# Built by `npm run build` (esbuild) from src/*.ts; wrangler deploy runs it.
+js/*.js

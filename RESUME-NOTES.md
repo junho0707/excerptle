@@ -24,10 +24,10 @@ commit `c34eda8` (branch `adsense-content-pages`), 2026-09-10.
 
 | Layer | What it actually is |
 |---|---|
-| Frontend | Vanilla JS SPA (no framework, no build step). ~2,280 LOC `js/app.js` + 5 modules; hash routing; `localStorage` for guest play. ~5.8k LOC of HTML/CSS/JS total. |
+| Frontend | Vanilla JS SPA (no framework, no build step). ~2,280 LOC `src/app.ts` + 5 modules; hash routing; `localStorage` for guest play. ~5.8k LOC of HTML/CSS/JS total. |
 | Hosting | Cloudflare Workers static assets. Repo root *is* the deployed site. Apex bound as a Custom Domain; `www` 301s via an edge Redirect Rule; `workers.dev` deliberately disabled to avoid a duplicate-content host. |
 | Edge Workers | **Three**, deployed in a fixed order: `excerptle-og` (share-card renderer), `excerptle` (front door), `excerptle-api` (backend). |
-| Backend | Cloudflare Worker, `backend/src/worker.js` (383 LOC), 11 JSON endpoints. |
+| Backend | Cloudflare Worker, `backend/src/worker.ts` (383 LOC), 11 JSON endpoints. |
 | Database | Cloudflare **D1** (SQLite at the edge), 4 SQL migrations, 8 tables. |
 | Payments | Stripe subscriptions (Checkout + Billing Portal + webhooks), monthly/yearly. |
 | Auth | Google OAuth, email one-time codes, and passwords — all three into one account. |
@@ -42,7 +42,7 @@ commit `c34eda8` (branch `adsense-content-pages`), 2026-09-10.
 ## The genuinely interesting engineering (ranked — lead with the top few)
 
 ### 1. Client-side PBKDF2 because the edge CPU budget forbids server-side hashing
-`backend/src/worker.js` top-of-file comment. A Workers free-plan invocation gets ~10ms
+`backend/src/worker.ts` top-of-file comment. A Workers free-plan invocation gets ~10ms
 CPU; PBKDF2 at a defensible iteration count costs ~73ms — so server-side stretching
 doesn't merely cost money, it *fails* (503). The browser therefore derives the key
 (600k iterations, per-user 16-byte salt) and the Worker treats the derived key exactly
@@ -112,7 +112,7 @@ same screen. Bank play order is scrambled by `sha256(salt + slug)` so book #1 is
 top of the catalogue and the sequence doesn't track Gutenberg ids.
 
 ### 5. A matching algorithm that's mostly about what it *refuses*
-`js/match.js` (201 LOC). Case/diacritic/punctuation folding, optional leading article,
+`src/match.ts` (201 LOC). Case/diacritic/punctuation folding, optional leading article,
 `&` → `and`, per-puzzle aliases, `by <author>` stripped from the guess only (stripping it
 from *titles* turned "Won By the Sword" into "won"), Levenshtein typo budget scaled to
 word length, and title *variant expansion* so Gutenberg packaging is optional to type
@@ -151,7 +151,7 @@ returns (it was previously read only at route time), leaving a game with guesses
 alone.
 
 ### 9. Self-monitoring on a free plan
-`backend/src/alerts.js` (253 LOC) queries the Cloudflare GraphQL Analytics API hourly and
+`backend/src/alerts.ts` (253 LOC) queries the Cloudflare GraphQL Analytics API hourly and
 compares usage to documented free-tier limits (100k Worker requests/day, 5M D1 rows
 read, 100k written, 5 GB storage). Alerts fire on **bands** (50/75/90/100%) with the last
 band fired remembered per metric per UTC day, so an hourly check that keeps seeing 78%
@@ -185,7 +185,7 @@ at all."
 
 ## Testing story
 
-- **Worker suite** (`backend/test/billing.test.js`, 226 LOC): runs the real Worker against
+- **Worker suite** (`backend/test/billing.test.ts`, 226 LOC): runs the real Worker against
   **Miniflare** with a real D1 instance built by replaying the actual migration files, and
   a stubbed Stripe. Covers forged/expired sessions, CORS rejection, webhook replay and
   out-of-order delivery, double-checkout, and the PBKDF2 handshake end to end.

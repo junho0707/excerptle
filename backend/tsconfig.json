@@ -1,0 +1,13 @@
+{
+  // One project for the whole API package, so `tsc -p backend` from the repo
+  // root checks the Worker, its tests and the owner's Stripe tools together.
+  // The Worker runs on workerd (wrangler bundles src/worker.ts); the tests and
+  // tools run on Node, which strips the types. Both sets of globals are loaded:
+  // src/ only uses Web-standard APIs that exist in both.
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": ["@cloudflare/workers-types", "node"]
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "tools/**/*.ts"]
+}

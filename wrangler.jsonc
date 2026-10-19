@@ -1,10 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "excerptle",
-  "main": "tools/og-worker/worker.js",
+  "main": "tools/og-worker/worker.ts",
   "workers_dev": false,
   "preview_urls": false,
   "compatibility_date": "2026-09-09",
+  // js/*.js is esbuild output from src/*.ts and isn't committed, so every
+  // deploy (local or Workers Builds) has to make it first.
+  "build": {
+    "command": "npm run build"
+  },
   "observability": {
     "enabled": true
   },

@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tools/test_match.mjs && node tools/auth_flow_test.cjs && node tools/dev_api_switch_test.cjs && node tools/progress_sync_test.mjs && node tools/aux_logic_test.mjs && npm test --prefix tools/og-worker",
+    "build": "esbuild src/*.ts --outdir=js --target=es2020 --log-level=warning",
+    "typecheck": "tsc -p src && tsc -p backend && tsc -p tools/og-worker && tsc -p tests && tsc -p tools",
+    "test": "npm run typecheck && node tools/test_match.ts && node tools/auth_flow_test.ts && node tools/dev_api_switch_test.ts && node tools/progress_sync_test.ts && node tools/aux_logic_test.ts && npm test --prefix tools/og-worker",
     "test:e2e": "playwright test",
     "test:data": "python3 tools/test_puzzles.py && python3 tools/qa_puzzles.py && python3 tools/check_hint_metadata.py",
     "predeploy:site": "npm test && npm run test:data && npm run test:e2e",
@@ -13,10 +15,15 @@
     "deploy:api": "wrangler deploy --config backend/wrangler.toml",
     "deploy": "npm run deploy:og && npm run deploy:site && npm run deploy:api",
     "dev": "wrangler dev",
-    "dev:og": "wrangler dev --config tools/og-worker/wrangler.jsonc --port 8792"
+    "dev:og": "wrangler dev --config tools/og-worker/wrangler.jsonc --port 8792",
+    "pretest:e2e": "npm run build"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261019.1",
     "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.28.2",
+    "typescript": "5.9",
     "wrangler": "^4.130.0"
   }
 }

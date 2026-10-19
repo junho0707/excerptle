@@ -5,7 +5,7 @@
   // Deploy this one FIRST: the site Worker's OG service binding needs it to exist.
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "name": "excerptle-og",
-  "main": "render-worker.js",
+  "main": "render-worker.ts",
   "compatibility_date": "2026-09-09",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": false,
