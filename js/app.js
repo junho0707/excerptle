@@ -734,18 +734,6 @@
       .join("");
   }
 
-  // Longest tier we hold for this book — the first chapter — gives an honest size.
-  function chapterWords(p) {
-    if (p?.reading?.wordCount) {
-      const n = Number(p.reading.wordCount);
-      return n < 1000 ? `${n}` : `${(Math.round(n / 100) / 10).toFixed(1)}k`;
-    }
-    const t = (p.texts || []).reduce((a, b) => (b.length > a.length ? b : a), "");
-    const n = t.trim().split(/\s+/).filter(Boolean).length;
-    if (!n) return null;
-    return n < 1000 ? `${n}` : `${(Math.round(n / 100) / 10).toFixed(1)}k`;
-  }
-
   // Spent squares in wine, unspent left empty — the same story the share grid tells.
   function blocks(used, total, label) {
     let out = `<span class="sq-row" role="img" aria-label="${label}">`;
@@ -757,8 +745,6 @@
     const p = state.puzzle;
     const won = state.status === "won";
     const lostLine = state.gaveUp ? "Gave up" : "Out of guesses";
-    const words = chapterWords(p);
-    const gut = p.source?.gutenberg;
     return `
       <div class="verdict ${won ? "ok" : "no"}">
         <span class="verdict-mark" aria-hidden="true">${won ? "✓" : "✕"}</span>
@@ -771,8 +757,6 @@
         <dl class="pg-stats">
           ${p.year ? `<div><dt>Published</dt><dd>${escapeHtml(String(p.year))}</dd></div>` : ""}
           <div><dt>Book</dt><dd>#${state.playIndex}</dd></div>
-          ${words ? `<div><dt>${escapeHtml(p.reading?.label || "Chapter 1")}</dt><dd>${words} words</dd></div>` : ""}
-          ${gut ? `<div><dt>Gutenberg</dt><dd>#${escapeHtml(String(gut))}</dd></div>` : ""}
         </dl>
       </section>
 
@@ -794,7 +778,7 @@
 
       <div class="row pg-actions">
         <button class="btn" type="button" data-act="share">Share</button>
-        <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Gutenberg</a>
+        <a class="btn ghost" href="${p.source?.url || "https://www.gutenberg.org/"}" target="_blank" rel="noopener">Read the full book →</a>
       </div>
     `;
   }

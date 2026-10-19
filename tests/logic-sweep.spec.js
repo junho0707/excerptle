@@ -137,3 +137,18 @@ test('retired routes land on a working daily instead of a blank screen', async (
   await page.goto('/?b=abc123&p=7');
   await expect(page.locator('#meta-left')).toHaveText('Book bank #7');
 });
+
+test('the post-game card offers Share and the full book, with no chapter-size or Gutenberg rows', async ({ page }) => {
+  const puzzleResponse = page.waitForResponse(r => /\/puzzles\/[^/]+\.json$/.test(new URL(r.url()).pathname) && !r.url().endsWith('/index.json'));
+  await page.goto('/#/play/4');
+  const puzzle = await (await puzzleResponse).json();
+  await page.locator('#guess-input').fill(puzzle.title);
+  await page.locator('#form button[type="submit"]').click();
+  await expect(page.locator('#result .verdict')).toContainText('Correct');
+  const actions = page.locator('#result .pg-actions .btn');
+  await expect(actions).toHaveText(['Share', 'Read the full book →']);
+  await expect(actions.nth(1)).toHaveAttribute('href', puzzle.source.url);
+  await expect(actions.nth(1)).toHaveAttribute('target', '_blank');
+  await expect(page.locator('#result .pg-stats dt')).not.toContainText(['Gutenberg']);
+  await expect(page.locator('#result .pg-stats')).not.toContainText('words');
+});
