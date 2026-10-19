@@ -38,11 +38,11 @@ npm run deploy
 
 Enter secrets directly at the terminal prompts. `OTP_SECRET` should be a random 32-byte-or-longer secret. API keys/webhook signing secrets live in Worker secrets, never source or frontend configuration. Do not copy any existing Stripe key from another project into the frontend.
 
-The API is a separate Worker, `excerptle-api`; deployment does not replace the existing `excerptle` static site. Use the actual URL printed by Wrangler for `EXCERPTLE_API` in `js/config.js`; do not guess the account subdomain. Keep `BOOKLE_API` as its alias. Deploy the frontend through its verified existing deployment workflow. `.assetsignore` excludes backend/source/private files from Wrangler asset uploads; dashboard uploads must also exclude them explicitly.
+The API is a separate Worker, `excerptle-api`; deployment does not replace the existing `excerptle` static site. Use the actual URL printed by Wrangler for `EXCERPTLE_API` in `src/config.ts`; do not guess the account subdomain. Keep `BOOKLE_API` as its alias. Deploy the frontend through its verified existing deployment workflow. `.assetsignore` excludes backend/source/private files from Wrangler asset uploads; dashboard uploads must also exclude them explicitly.
 
 ## Stripe Dashboard
 
-Start in a Stripe sandbox/test environment. The owner can run `node backend/tools/setup-stripe.mjs` from the repo root, enter a sandbox secret key at the hidden prompt, and the script creates the $3/month product/price, Portal configuration and webhook, storing credentials directly in Cloudflare. Then run `node backend/tools/add-yearly-plan.mjs` with the same sandbox key to add the $20/year price. No keys are saved to disk or printed. Both scripts refuse live keys.
+Start in a Stripe sandbox/test environment. The owner can run `node backend/tools/setup-stripe.ts` from the repo root, enter a sandbox secret key at the hidden prompt, and the script creates the $3/month product/price, Portal configuration and webhook, storing credentials directly in Cloudflare. Then run `node backend/tools/add-yearly-plan.ts` with the same sandbox key to add the $20/year price. No keys are saved to disk or printed. Both scripts refuse live keys.
 
 For manual setup, create Excerptle Pro with USD 3.00 recurring monthly and USD 20.00 recurring yearly prices. Store their IDs as `STRIPE_PRICE_ID` and `STRIPE_YEARLY_PRICE_ID` using `wrangler secret put` (the IDs themselves are public). `STRIPE_LIVE=false` for test mode. Configure Billing Portal with payment-method updates and cancellation at period end; do not enable price/quantity changes. Store that configuration ID as `STRIPE_PORTAL_CONFIGURATION`.
 
@@ -78,7 +78,7 @@ Official references: [Checkout](https://docs.stripe.com/api/checkout/sessions/cr
 
 ## Slack alerting
 
-`src/alerts.js` posts to a Slack Incoming Webhook. Three things reach it:
+`src/alerts.ts` posts to a Slack Incoming Webhook. Three things reach it:
 
 | When | What |
 | --- | --- |
@@ -141,7 +141,7 @@ runs before any alerting and is never blocked by it.
 ### Limits being watched
 
 Cloudflare's free plan, as of the last check. They live in `LIMITS` at the top
-of `src/alerts.js` — edit there if a plan changes.
+of `src/alerts.ts` — edit there if a plan changes.
 
 | Metric | Free limit | Notes |
 | --- | --- | --- |

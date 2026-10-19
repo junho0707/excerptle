@@ -116,7 +116,7 @@ https://excerptle.io/?p=1001
 | Puzzles | **Gamebank presets #0–#599.** **Dailies start at #600** (`startDate` 2026-09-09), drawn from a 120-book tail the bank never offers. Same daily worldwide. Grow the preset cap when DAU justifies it. |
 | Navigation | **New** (modal: today / random / bank / battle), **Info** (how-to modal), **Bank**, **Ranks**, Settings. |
 | Stats bar | Per-puzzle fun fact until a live aggregator exists. |
-| Leaderboard | **Per puzzle index** (preset and daily). Sort: win, then fewer hints, then faster, then fewer guesses. Filter by hints used. Local store, synced through `excerptle-api` when signed in. The config global is `EXCERPTLE_API`; `BOOKLE_API` is kept as an alias (`js/config.js:6`). |
+| Leaderboard | **Per puzzle index** (preset and daily). Sort: win, then fewer hints, then faster, then fewer guesses. Filter by hints used. Local store, synced through `excerptle-api` when signed in. The config global is `EXCERPTLE_API`; `BOOKLE_API` is kept as an alias (`src/config.ts:6`). |
 | Battle | Same index. First correct title wins. A hint either player takes is shown to both. Share `?b=CODE&p=INDEX`. |
 | Ads | From day 1. **Post-game only.** Never during deduction. |
 | Mobile | Mobile-first. Shell (HTML+CSS+JS, no puzzle JSON) **&lt;50KB gzip**. System fonts. Puzzle JSON lazy-loaded. |
@@ -168,7 +168,7 @@ Yeardle content (not in this repo): Google Sheet, 30 days, six clues ranked by o
 
 ### Routes (hash, no server)
 
-As shipped (router at `js/app.js` ~2305). Puzzles are addressed by **index**,
+As shipped (router at `src/app.ts` ~2305). Puzzles are addressed by **index**,
 not date; `#/random`, `#/archive`, `#/news` and `#/more` were never built, and
 how-to-play and support became real pages rather than hash routes.
 
@@ -188,7 +188,7 @@ Static pages, not routes: `how-to-play.html`, `about.html`, `faq.html`,
 
 ### `localStorage` keys (`bookle.*`)
 
-As shipped (`K` at `js/app.js:11`). The `.v4` suffix is deliberate: the
+As shipped (`K` at `src/app.ts:11`). The `.v4` suffix is deliberate: the
 720-book rebuild changed every puzzle id, so new keys leave pre-launch progress
 behind rather than misread it.
 
@@ -211,7 +211,7 @@ separate counter, not the streak.
 
 The Wordle-style emoji block below was the spec. **Not what shipped.** Sharing
 calls `navigator.share` and falls back to copying a plain result URL
-(`js/app.js` ~2640); the emoji grid survives only as the 🟩/🟨 marks beside each
+(`src/app.ts` ~2640); the emoji grid survives only as the 🟩/🟨 marks beside each
 guess in the result list. The rich preview a shared link unfurls to is a PNG
 rendered by the `excerptle-og` Worker, not text the player pastes.
 
@@ -233,7 +233,7 @@ Roughly current; `backend/` and `tools/og-worker/` came later.
   CNAME                     ← excerptle.io
   index.html
   css/app.css
-  js/app.js                 ← game; js/match.js is the title matcher
+  src/app.ts                 ← game; src/match.ts is the title matcher
   puzzles/index.json
   puzzles/gXX.json          ← XX is the Gutenberg id; see Content rules
   backend/                  ← excerptle-api: accounts, scores, billing
@@ -274,7 +274,7 @@ Literary, not Wordle-green. Paper `#f4efe4`, ink `#1c140c`, wine `#7a1f2b`, rule
 
 ## PR / implementation slices
 
-1. **Shell + daily engine + matching** — `index.html`, `css/app.css`, `js/app.js`, empty puzzle slot.
+1. **Shell + daily engine + matching** — `index.html`, `css/app.css`, `src/app.ts`, empty puzzle slot.
 2. **50-title corpus** — `tools/build_puzzles.py` + `puzzles/`.
 3. **Stats, share, settings, how-to, news, support, more games.**
 4. **Archive + random.**

@@ -9,7 +9,7 @@ proves it, and the risk. Numbers match LOGIC-AUDIT.md.
 
 > **Done 2026-09-11.** Implemented by reusing `importGuestPlay` at boot, which already falls back to the unscoped keys for a guest owner.
 
-`js/app.js`, after `activeAccountUid` is initialised: if a session is already
+`src/app.ts`, after `activeAccountUid` is initialised: if a session is already
 present and the account namespace is empty, adopt the legacy unscoped
 `bookle.progress.v4` / `bookle.lb.v4` / `bookle.stats` into it, merging with the
 same `beats()` rule as #1, then write the `bookle.guest-imported.*` marker so it
@@ -42,14 +42,14 @@ const beats = (a, b) =>
     : Number(a?.at || 0) >= Number(b?.at || 0);
 ```
 
-- `js/app.js:299` (`syncProgress`) → `if (!merged[index] || beats(row, merged[index])) …`
-- `js/app.js:382` (`importGuestPlay`) → same, replacing the `oldEmpty` logic.
+- `src/app.ts:299` (`syncProgress`) → `if (!merged[index] || beats(row, merged[index])) …`
+- `src/app.ts:382` (`importGuestPlay`) → same, replacing the `oldEmpty` logic.
 
 Declare `progressRank`/`beats` **inside** the region
-`tools/progress_sync_test.mjs` slices (between `let progressSyncing` and the
+`tools/progress_sync_test.ts` slices (between `let progressSyncing` and the
 backfill comment) so the existing harness can see them.
 
-**Server.** `backend/src/worker.js`, `progress` PUT. The handler already has
+**Server.** `backend/src/worker.ts`, `progress` PUT. The handler already has
 the parsed `value`, so bind a finished flag rather than adding a column:
 
 ```js
@@ -64,7 +64,7 @@ WHERE ? > (json_extract(progress.data,'$.status') IN ('won','lost'))
 
 (`done` bound twice; D1 ships SQLite's JSON1, so no migration is needed.)
 
-**Tests.** New case in `tools/progress_sync_test.mjs`: a remote `won` row and a
+**Tests.** New case in `tools/progress_sync_test.ts`: a remote `won` row and a
 newer local `playing` row must merge to `won`. New case in
 `backend/test/` : PUT `won`, then PUT `playing` with a later `at`, then GET must
 still read `won`.
@@ -78,7 +78,7 @@ sticky, which is the intent everywhere else in the app.
 
 > **Done 2026-09-11.** Batch is 3; the bulk test now expects 7 requests for 20 entries.
 
-`js/app.js:296-304`, in `syncProgress`:
+`src/app.ts:296-304`, in `syncProgress`:
 
 ```js
 const merged = { ...remote };
@@ -90,11 +90,11 @@ savePlayJSON(K.progress, merged);
 if (Object.keys(changed).length) pendingProgress = { ...pendingProgress, ...changed };
 ```
 
-Then raise the batch slice at `js/app.js:270` from 2 to 3 — the server caps a
+Then raise the batch slice at `src/app.ts:270` from 2 to 3 — the server caps a
 single entry at 4096 bytes, so 3 entries plus wrapper stays under the 16 KB
 body limit with room to spare.
 
-**Tests.** Update `tools/progress_sync_test.mjs` "bulk progress is split"
+**Tests.** Update `tools/progress_sync_test.ts` "bulk progress is split"
 (20 entries → 7 requests, still asserting `< 16384` bytes) and add: a sync whose
 remote copy wins every row must issue **zero** PUTs.
 
@@ -109,13 +109,13 @@ with #1 since both turn on `beats()`.
 
 Worth checking first: of the solo half of `loadStats()`, only
 `currentStreak`, `maxStreak`, `lastWinDate` and `lastDaily` are ever read
-(`js/app.js:1695-1696`). `played`, `wins`, `fails`, `dist` and
+(`src/app.ts:1695-1696`). `played`, `wins`, `fails`, `dist` and
 `practicePlayed` are written by `recordFinish` and read by nothing — the Stats
 screen already recomputes those from `summarize()`.
 
 So the streak does not need syncing; it needs deriving. A daily's index maps
 back to its date through `dateForDailyIndex` (currently dead code,
-`js/app.js:451`), and the progress map already syncs:
+`src/app.ts:451`), and the progress map already syncs:
 
 ```js
 function dailyStreaks() {
@@ -128,7 +128,7 @@ function dailyStreaks() {
 }
 ```
 
-Then: delete the solo-stat block in `recordFinish` (`js/app.js:997-1013`), drop
+Then: delete the solo-stat block in `recordFinish` (`src/app.ts:997-1013`), drop
 those fields from `loadStats()`, and point the two Stats tiles at
 `dailyStreaks()`. `loadStats()` shrinks to the battle tally.
 
@@ -160,7 +160,7 @@ local counter drifted to). Worth a line in the release note.
 Two sizes. I'd do the minimal one now and the full one only if battles get
 used.
 
-**Minimal (~25 lines, `js/app.js:2115`).**
+**Minimal (~25 lines, `src/app.ts:2115`).**
 - Handle `{type:"lose"}`: if the opponent is out of guesses and you are still
   playing, you win — finish the round with `state.beatenBy = null`.
 - Tie rule: on `{type:"win"}` arriving when you are *already* `won`, the host's
@@ -188,7 +188,7 @@ players need the same build — acceptable for a P2P feature with no persistence
 
 > **Done 2026-09-11.**
 
-`backend/src/worker.js:153`, `setPassword`. The caller's token hash is already
+`backend/src/worker.ts:153`, `setPassword`. The caller's token hash is already
 derivable the way `/auth/logout` does it:
 
 ```js
@@ -210,7 +210,7 @@ the other's next authenticated call is 401 and the caller's still works.
 
 > **Done 2026-09-11.** The second create fires only on a session that comes back `expired` or `complete`, so a stub or an older API version that omits `status` changes nothing. Its key carries a UUID, not a timestamp.
 
-`backend/src/worker.js:288-300`. Keep the bucket idempotency key (it is what
+`backend/src/worker.ts:288-300`. Keep the bucket idempotency key (it is what
 stops a double-click buying twice) and verify what comes back:
 
 ```js
@@ -223,7 +223,7 @@ if (checkout.status !== 'open') {
 A replayed-but-expired session is the only case that trips the second call, so
 the double-click guard is untouched.
 
-**Test.** Extend `backend/test/billing.test.js` with the
+**Test.** Extend `backend/test/billing.test.ts` with the
 monthly → yearly → monthly sequence inside one bucket and assert the returned
 URL belongs to an open session.
 
@@ -237,12 +237,12 @@ URL belongs to an open session.
 
 Two small changes:
 
-1. `js/app.js:352-358` (`backfillScores` reconciliation) — carry `playerId`
+1. `src/app.ts:352-358` (`backfillScores` reconciliation) — carry `playerId`
    across, not just `sent`:
    ```js
    if (match) { row.sent = 1; row.playerId = connection.uid; }
    ```
-2. `js/app.js:1557` (`renderRanks`) — the server keeps exactly one row per
+2. `src/app.ts:1557` (`renderRanks`) — the server keeps exactly one row per
    account per book, so a local row of the player's own that has already been
    sent is always a duplicate identity once *any* remote row for this account
    exists:
@@ -283,7 +283,7 @@ later on this one, and the Stripe return URL already forces a refresh.
 
 > **Done 2026-09-11.**
 
-`js/app.js:1103-1140`. Replace the three bare `return`s with a helper:
+`src/app.ts:1103-1140`. Replace the three bare `return`s with a helper:
 
 ```js
 const bail = (text) => { state.loading = false; $("#excerpt").textContent = text; };
@@ -316,7 +316,7 @@ remain, so this can't arrive by surprise.
 
 > **Done 2026-09-11.**
 
-`js/app.js:1452` and `how-to-play.html:128`: replace
+`src/app.ts:1452` and `how-to-play.html:128`: replace
 "Opening excerpt (2–4 paragraphs)" with "Opening excerpt (the book's opening
 paragraphs)". Two strings; the underlying behaviour is correct and deliberate.
 
@@ -328,12 +328,12 @@ paragraphs)". Two strings; the underlying behaviour is correct and deliberate.
   production D1 **before** the next `npm run deploy:api`, and note the ordering
   in `DEPLOYMENT.md`. The `INSERT … WHERE NOT EXISTS` in `scores` relies on the
   unique index it creates.
-- Delete `clearLocalPlayData` (`js/app.js:364`); `dateForDailyIndex`
-  (`js/app.js:451`) stops being dead once #3 lands.
-- Collapse `pickById` (`js/app.js:1278`) into `playById` — one validation path.
+- Delete `clearLocalPlayData` (`src/app.ts:364`); `dateForDailyIndex`
+  (`src/app.ts:451`) stops being dead once #3 lands.
+- Collapse `pickById` (`src/app.ts:1278`) into `playById` — one validation path.
 - Remove the untracked `backend/backend/` build artifact and add it to
   `.gitignore`.
-- Align `js/share-page.js`'s session check with `js/auth.js:session()` (treat a
+- Align `src/share-page.ts`'s session check with `src/auth.ts:session()` (treat a
   missing `expiresAt` as expired).
 
 ---

@@ -1,8 +1,8 @@
 # Excerptle logic audit — 2026-09-11
 
-Scope: `js/app.js`, `js/auth.js`, `js/pro.js`, `js/ads.js`, `js/match.js`,
-`js/config.js`, `js/share-page.js`, `backend/src/worker.js`,
-`backend/src/alerts.js`, plus the 720 puzzle records and their reading files.
+Scope: `src/app.ts`, `src/auth.ts`, `js/pro.js`, `src/ads.ts`, `src/match.ts`,
+`src/config.ts`, `src/share-page.ts`, `backend/src/worker.ts`,
+`backend/src/alerts.ts`, plus the 720 puzzle records and their reading files.
 
 Method: full read of every source file above; data integrity checked with a
 script over all 720 puzzles and 720 reading files; `npm test` (6 suites),
@@ -53,10 +53,10 @@ would have passed on no rows at all).
 > both client merge sites, and the server's `ON CONFLICT` now ranks the same
 > three ways — over > played > only opened (`STORED_RANK`, nested CASE so a
 > malformed legacy row cannot throw) — so a newer *empty* round cannot erase
-> guesses either. Covered by `tools/progress_sync_test.mjs` and
-> `backend/test/billing.test.js` ("a finished round is never overwritten…").
+> guesses either. Covered by `tools/progress_sync_test.ts` and
+> `backend/test/billing.test.ts` ("a finished round is never overwritten…").
 
-`js/app.js:299` (sync merge) and `js/app.js:382` (guest import) both resolve a
+`src/app.ts:299` (sync merge) and `src/app.ts:382` (guest import) both resolve a
 conflict on `at` alone:
 
 ```js
@@ -66,7 +66,7 @@ if (!merged[index] || (!empty && Number(row?.at || 0) >= Number(merged[index]?.a
 `empty` only rejects a row that is *untouched* (`playing`, no hints, no
 guesses). A round that is `playing` with two guesses and a newer timestamp
 therefore replaces a `won` row. The server applies the same rule
-(`backend/src/worker.js`, `progress` PUT: `WHERE excluded.updated_at >=
+(`backend/src/worker.ts`, `progress` PUT: `WHERE excluded.updated_at >=
 progress.updated_at`), so the completed result is lost on both sides.
 
 Reproduction shape: finish a book on the phone; the laptop still has the same
@@ -81,9 +81,9 @@ client merge and the server's `ON CONFLICT` clause.
 
 > **[FIXED 2026-09-11]** Only rows the local copy won are queued, and the batch
 > is 3 entries per PUT. A sync the server already holds now issues no writes at
-> all — asserted in `tools/progress_sync_test.mjs`.
+> all — asserted in `tools/progress_sync_test.ts`.
 
-`js/app.js:303`:
+`src/app.ts:303`:
 
 ```js
 pendingProgress = { ...pendingProgress, ...merged };
@@ -91,13 +91,13 @@ pendingProgress = { ...pendingProgress, ...merged };
 
 `merged` is the union of local *and* remote progress. Everything the server
 just sent is queued straight back to it, and `flushProgressEntries` ships it
-two entries per request (`js/app.js:270`). A player with 300 finished books
+two entries per request (`src/app.ts:270`). A player with 300 finished books
 issues ~150 sequential `PUT /me/progress` calls on every sign-in, every
 account-change event, and every `syncProgress()` at boot.
 
-On a 100k-request/day free tier (see `LIMITS` in `backend/src/alerts.js`) a few
+On a 100k-request/day free tier (see `LIMITS` in `backend/src/alerts.ts`) a few
 hundred active accounts is enough to matter, and the existing test
-(`tools/progress_sync_test.mjs`, "bulk progress is split") locks the behaviour
+(`tools/progress_sync_test.ts`, "bulk progress is split") locks the behaviour
 in rather than catching it.
 
 **Fix:** queue only rows where the local copy actually won the merge. Raising
@@ -110,14 +110,14 @@ server already rejects any single entry over 4096 bytes.
 > dailies out of the progress map (which syncs) and the Stats tiles use it;
 > `recordFinish` no longer keeps a solo tally and `loadStats()` is down to the
 > battle numbers, which stay device-local and are now labelled "on this device".
-> Covered by `tools/aux_logic_test.mjs`.
+> Covered by `tools/aux_logic_test.ts`.
 
-`loadStats()` (`js/app.js:414`) reads `bookle.stats.<owner>` from localStorage
+`loadStats()` (`src/app.ts:414`) reads `bookle.stats.<owner>` from localStorage
 and nothing writes it to the API. Puzzle progress syncs; `currentStreak`,
 `maxStreak`, `lastDaily`, `lastWinDate` and the whole `battle` tally do not.
 
 Signing in on a second device restores the completed dailies but shows a zero
-streak and zero battles, and `recordFinish` (`js/app.js:999`) cannot rebuild
+streak and zero battles, and `recordFinish` (`src/app.ts:999`) cannot rebuild
 them — `if (s.lastDaily === gameDate()) return;` guards against double counting,
 but there is no history to replay from.
 
@@ -138,13 +138,13 @@ one source of truth, and it self-heals.
 > handed over never counts. `lose` is handled and a duplicate `start` cannot
 > restart a guest. Covered by `tools/battle_sim.cjs` T5–T9.
 
-Three related gaps in `onBattleData` (`js/app.js:2115`):
+Three related gaps in `onBattleData` (`src/app.ts:2115`):
 
 - **Both players can win.** Each browser awards itself the win locally and then
   sends `{type:"win"}`. The receiver only demotes itself `if (state.status ===
-  "playing")` (`js/app.js:2148`), so two near-simultaneous correct guesses leave
+  "playing")` (`src/app.ts:2148`), so two near-simultaneous correct guesses leave
   two winners and two recorded wins.
-- **`lose` is sent and never handled.** `js/app.js:1086` sends
+- **`lose` is sent and never handled.** `src/app.ts:1086` sends
   `{type:"lose"}` when a player runs out of guesses; no branch in
   `onBattleData` reads it. The opponent keeps playing a race nobody can lose.
 - **`start` is unguarded.** A repeated `{type:"start"}` restarts the guest's
@@ -162,9 +162,9 @@ leaderboard scores") and that separation is correctly enforced —
 
 > **[FIXED 2026-09-11]** Both the set and remove paths batch a `DELETE FROM
 > sessions … AND token_hash<>?` with the update, keeping the caller signed in.
-> Covered by `backend/test/billing.test.js`.
+> Covered by `backend/test/billing.test.ts`.
 
-`setPassword` in `backend/src/worker.js:153` proves the current password
+`setPassword` in `backend/src/worker.ts:153` proves the current password
 (good) and writes the new verifier, but the only `DELETE FROM sessions` in the
 file is `/auth/logout` (`:359`). Sessions live 30 days in localStorage, so
 "someone has my account, I changed my password" does not actually end their
@@ -179,9 +179,9 @@ keeping the caller signed in.
 > `complete` is re-created under a per-attempt key — `crypto.randomUUID()`, not a
 > timestamp, so two retries inside one second cannot collide on it either. The
 > 30-minute bucket still stops a double-click buying twice. Covered by
-> `backend/test/billing.test.js`.
+> `backend/test/billing.test.ts`.
 
-`backend/src/worker.js:292-300`. Open sessions for the *other* plan are
+`backend/src/worker.ts:292-300`. Open sessions for the *other* plan are
 expired, then a new session is created with
 `idempotencyKey: checkout:<uid>:<plan>:<30-min bucket>`.
 
@@ -202,7 +202,7 @@ before returning its URL.
 > answered for that account. An un-uploaded row still shows. Covered by
 > `tests/logic-sweep.spec.js`.
 
-`renderRanks` (`js/app.js:1557`) dedupes a local row against the server by
+`renderRanks` (`src/app.ts:1557`) dedupes a local row against the server by
 `rankKey` (`playerId|hints|guesses`) and, for the player's own rows, by an
 `accountScores` set of `hints|guesses`. Both compare *scores*, not identity.
 
@@ -212,7 +212,7 @@ hints/guesses, matches neither check, and is rendered as a second entry for
 the same person.
 
 Contributing: `backfillScores` stamps `r.playerId = connection.uid` on the rows
-in `all`, then saves the separately re-read `latest` (`js/app.js:358`), so the
+in `all`, then saves the separately re-read `latest` (`src/app.ts:358`), so the
 `playerId` stamp is thrown away and only `sent` survives.
 
 **Fix:** persist `playerId` in that reconciliation, then drop any local row
@@ -238,7 +238,7 @@ minutes and `force` is false.
 > **[FIXED 2026-09-11]** All three early exits go through a `bail()` helper that
 > clears the flag.
 
-`startPlay` sets `state.loading = true` at `js/app.js:1103` and clears it only
+`startPlay` sets `state.loading = true` at `src/app.ts:1103` and clears it only
 after the puzzle arrives (`:1146`). The three early returns — index out of
 range, "that daily isn't out yet", fetch failure — leave it `true`. Nothing
 visible breaks today (each of those paths also leaves `state.puzzle` null,
@@ -253,7 +253,7 @@ that reads `state.loading` alone.
 > `predeploy:site` as `npm run test:data` (today: 117 days; the last new daily
 > falls on 2027-01-06).
 
-`slugForIndex` (`js/app.js:436`) picks dailies with `order[presets + (day %
+`slugForIndex` (`src/app.ts:436`) picks dailies with `order[presets + (day %
 pool)]`, and `puzzles/index.json` has `presetCount: 600`, `order` of 720 →
 `pool = 120`. Day 121 (2027-01-07, from `startDate: 2026-09-09`) serves the
 same book as day 1 under a new daily number and a new leaderboard. Predictable,
@@ -263,7 +263,7 @@ but it needs a product decision before it happens.
 
 > **[FIXED 2026-09-11]** Both places now read "The book's opening paragraphs".
 
-`js/app.js:1452` and `how-to-play.html:128` both promise "Opening excerpt (2–4
+`src/app.ts:1452` and `how-to-play.html:128` both promise "Opening excerpt (2–4
 paragraphs)". Measured across the bank: 410 puzzles fall outside 2–4
 paragraphs (1 paragraph ×71, 5 ×79, 6 ×66, 7+ ×63…), 98 are under 350 words,
 14 over 500, and the longest is 5,945 words (`puzzles/g26.json`). The builder
@@ -287,14 +287,14 @@ Named here so they are decisions rather than oversights:
   not committed or deployed. It creates `scores_user_puzzle_global`, the unique
   index that makes the `INSERT … WHERE NOT EXISTS` in `scores` safe under
   concurrent writes. Commit and apply it before the next API deploy.
-- `clearLocalPlayData` (`js/app.js:364`) and `dateForDailyIndex`
-  (`js/app.js:451`) are defined and never called.
-- `pickById` (`js/app.js:1278`) computes `n` and `max`, validates `n`, then
+- `clearLocalPlayData` (`src/app.ts:364`) and `dateForDailyIndex`
+  (`src/app.ts:451`) are defined and never called.
+- `pickById` (`src/app.ts:1278`) computes `n` and `max`, validates `n`, then
   delegates to `playById(raw)`, which re-parses and re-validates. One of the two
   checks is redundant.
 - `backend/backend/dist/` (788 KB, untracked) is a stray build artifact.
-- `js/share-page.js` paints a signed-in name when `expiresAt` is absent;
-  `js/auth.js:session()` treats the same session as expired. A session with no
+- `src/share-page.ts` paints a signed-in name when `expiresAt` is absent;
+  `src/auth.ts:session()` treats the same session as expired. A session with no
   `expiresAt` shows a name in the header and "Sign in" in the game.
 
 ---
@@ -332,7 +332,7 @@ Verified working, not merely unexamined:
 - **Ownership guards.** `ownsProgress()` is checked before and after every await
   in the sync and backfill paths, so a response for a signed-out account cannot
   write into the next one — covered by a test.
-- **Cross-tab identity.** The `storage` listener in `js/auth.js:23` mirrors a
+- **Cross-tab identity.** The `storage` listener in `src/auth.ts:23` mirrors a
   session change into other tabs, and `playOwner()` namespaces progress, board
   and stats per account, closing the shared-browser leak the previous audit
   described.

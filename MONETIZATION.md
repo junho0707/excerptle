@@ -58,15 +58,15 @@ one-line config change the day Google says yes.
    into `<head>` of `index.html` and deploy. That is the ownership + review trigger.
 3. Wait. Check the AdSense home page for "Getting ready…" → "Ready".
 4. On approval: create an ad unit (Display, responsive), get `data-ad-slot`, drop it in
-   `js/config.js`, flip `enabled: true`, enable the GDPR + US-states messages.
+   `src/config.ts`, flip `enabled: true`, enable the GDPR + US-states messages.
 
 ### The IDs, and which is which
 
 | Value | Where it goes | Ours |
 | --- | --- | --- |
-| Publisher ID, `ca-pub-…` | `<meta>` + loader `?client=` in `index.html`, `client` in `js/config.js` | `ca-pub-2005015845685746` |
+| Publisher ID, `ca-pub-…` | `<meta>` + loader `?client=` in `index.html`, `client` in `src/config.ts` | `ca-pub-2005015845685746` |
 | Same ID as `pub-…` | `ads.txt` — **no `ca-` prefix**, a common way to get zero fill | `pub-2005015845685746` |
-| Ad slot, `data-ad-slot` | `slot` in `js/config.js` | *doesn't exist yet — created with the ad unit after approval* |
+| Ad slot, `data-ad-slot` | `slot` in `src/config.ts` | *doesn't exist yet — created with the ad unit after approval* |
 | Customer ID | Nowhere in the code. It identifies the AdSense account for support/billing. | `7855100651` |
 
 Customer ID and ad slot are both ~10 digits, which is exactly why they get swapped. If the
@@ -148,9 +148,9 @@ Shipped in the frontend:
 - [x] Support page (`#/support`) &rarr; Ko-fi button, plus a **Support** tab in the main nav
 - [x] Pro badge beside the account name &rarr; Pro modal (`#/pro` is linkable; Stripe returns to it)
 - [x] `js/pro.js` — `/billing/status`, Checkout and Billing Portal hand-offs, 24h entitlement cache
-- [x] `js/ads.js` — one post-game slot, fresh `<ins>` per finished game, skipped for Pro
+- [x] `src/ads.ts` — one post-game slot, fresh `<ins>` per finished game, skipped for Pro
 - [x] Privacy page names Google AdSense, Stripe and Ko-fi
-- [x] `js/config.js` — `EXCERPTLE_ADS` / `EXCERPTLE_PRO` are the only things to edit
+- [x] `src/config.ts` — `EXCERPTLE_ADS` / `EXCERPTLE_PRO` are the only things to edit
 
 Still yours to do:
 
@@ -158,7 +158,7 @@ Still yours to do:
       `enabled: true` (the pub ID and `/ads.txt` are already in place)
 - [ ] On approval, **delete the `adsbygoogle.js` `<script>` from `<head>`**. It is there so the
       reviewer's crawler finds the tag, but it loads Google's ad library on every page view for
-      every visitor &mdash; Pro subscribers included, and today for no revenue at all. `js/ads.js`
+      every visitor &mdash; Pro subscribers included, and today for no revenue at all. `src/ads.ts`
       already injects the same loader on demand, only for a non-Pro player who has actually
       finished a game, which is the placement that should survive. Leave the
       `google-adsense-account` meta tag; that one is inert.

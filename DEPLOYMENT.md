@@ -6,7 +6,7 @@ Last verified: 2026-09-16.
 
 ## Architecture
 
-Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. No build step: the repo root *is* the deployed site.
+Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. The repo root *is* the deployed site, with one build step: the browser scripts are TypeScript in `src/`, and `npm run build` (esbuild) writes them to `js/*.js`, which is not committed. `wrangler deploy` runs that build itself (the `build` command in `wrangler.jsonc`), locally and in Workers Builds.
 
 **Gameplay has no backend.** A round — excerpt, hints, title matching, win or
 lose — runs entirely in the browser against static JSON. Zero API calls.
@@ -193,7 +193,7 @@ Confirm the site is genuinely up by loading it on a phone over cellular, which b
 
 **There are none, and none are needed right now.** Nothing in this repo reads an env var, and the Worker has no bindings.
 
-`js/config.js` holds the Google **client ID**:
+`src/config.ts` holds the Google **client ID**:
 
 ```
 1084292631320-lat25fml3s4n627i4c9aur7a4752cmrm.apps.googleusercontent.com
@@ -201,9 +201,9 @@ Confirm the site is genuinely up by loading it on a phone over cellular, which b
 
 That is public by design. OAuth client IDs are meant to ship in frontend code — they identify the app, they don't authenticate it. Committing it is correct.
 
-The Google **client secret** does not belong anywhere in this repo, and has no use yet. It's only needed to verify ID tokens server-side or run a code-exchange flow, and there is no server: `window.EXCERPTLE_API` is `""`, so `js/auth.js` falls back to a localStorage demo mode.
+The Google **client secret** does not belong anywhere in this repo, and has no use yet. It's only needed to verify ID tokens server-side or run a code-exchange flow, and there is no server: `window.EXCERPTLE_API` is `""`, so `src/auth.ts` falls back to a localStorage demo mode.
 
-When a backend does exist, the secret goes in **Worker secrets** — Settings → Variables and Secrets → add as *Secret* (encrypted, write-only), or `npx wrangler secret put GOOGLE_CLIENT_SECRET`. Never in `js/config.js`, never in any file the browser downloads. `.env` is already gitignored for local use.
+When a backend does exist, the secret goes in **Worker secrets** — Settings → Variables and Secrets → add as *Secret* (encrypted, write-only), or `npx wrangler secret put GOOGLE_CLIENT_SECRET`. Never in `src/config.ts`, never in any file the browser downloads. `.env` is already gitignored for local use.
 
 ## Google OAuth client (from scratch)
 
@@ -248,7 +248,7 @@ http://localhost:8765/oauth.html
 http://127.0.0.1:8765/oauth.html
 ```
 
-**6. Take the client ID only.** Copy the `…apps.googleusercontent.com` string into `js/config.js`:
+**6. Take the client ID only.** Copy the `…apps.googleusercontent.com` string into `src/config.ts`:
 
 ```js
 window.EXCERPTLE_GOOGLE_CLIENT_ID = "NEW-ID.apps.googleusercontent.com";
@@ -268,15 +268,15 @@ Console edits can take a few minutes to propagate.
 
 ## Known gaps
 
-**Google sign-in redirect URI — do this before promoting the site.** `js/auth.js` opens the account chooser itself (a centred popup running the OAuth implicit flow) and Google sends the token back to `/oauth.html`. In Google Cloud Console → Credentials → your OAuth client, add **`https://excerptle.io/oauth.html`** under *Authorized redirect URIs* — exact string, no trailing slash — plus a `http://localhost:PORT/oauth.html` entry for local testing. Keep `https://excerptle.io` under *Authorized JavaScript origins* and drop stale `workers.dev` entries. Until the redirect URI is registered, Google answers "Continue with Google" with `redirect_uri_mismatch`.
+**Google sign-in redirect URI — do this before promoting the site.** `src/auth.ts` opens the account chooser itself (a centred popup running the OAuth implicit flow) and Google sends the token back to `/oauth.html`. In Google Cloud Console → Credentials → your OAuth client, add **`https://excerptle.io/oauth.html`** under *Authorized redirect URIs* — exact string, no trailing slash — plus a `http://localhost:PORT/oauth.html` entry for local testing. Keep `https://excerptle.io` under *Authorized JavaScript origins* and drop stale `workers.dev` entries. Until the redirect URI is registered, Google answers "Continue with Google" with `redirect_uri_mismatch`.
 
-**Auth is a demo, not real auth.** With no API configured, `js/auth.js` stores users and sessions in `localStorage`, generates verification codes client-side, and trusts a Google access token read **entirely in the browser**. Anyone can forge a session from devtools. Fine for a static preview; it cannot back real accounts or trustworthy leaderboards. Both need the server before they mean anything.
+**Auth is a demo, not real auth.** With no API configured, `src/auth.ts` stores users and sessions in `localStorage`, generates verification codes client-side, and trusts a Google access token read **entirely in the browser**. Anyone can forge a session from devtools. Fine for a static preview; it cannot back real accounts or trustworthy leaderboards. Both need the server before they mean anything.
 
 **Leftover `CNAME` file.** The repo root has a `CNAME` containing `excerptle.io` — a GitHub Pages artifact. Cloudflare ignores it. Safe to delete.
 
 ## Checking sign-in locally
 
-Two switches, both refusing to work anywhere but localhost (see `js/config.js`):
+Two switches, both refusing to work anywhere but localhost (see `src/config.ts`):
 
 | URL | API | Good for |
 | --- | --- | --- |
@@ -284,7 +284,7 @@ Two switches, both refusing to work anywhere but localhost (see `js/config.js`):
 | `localhost:8765/?api=local` | real Worker on `:8787` | the frontend and the API actually talking to each other |
 | `localhost:8765` | **deployed** API | what production does — and what a not-yet-deployed API does to it |
 
-The choice sticks to the browser tab, not the address bar: `js/app.js` rewrites
+The choice sticks to the browser tab, not the address bar: `src/app.ts` rewrites
 the URL to drop the query string on some routes, so a page that read the flag
 from `location.search` every time would fall back to the deployed API on the
 next reload and start contradicting the Worker under test. A badge in the corner
