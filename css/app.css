@@ -517,7 +517,7 @@ a { color: var(--wine); }
   margin: 0.6rem 0;
   background: var(--paper-2);
 }
-.screen label.row, .screen .theme-row {
+.screen label.row, .screen .theme-row, .screen .name-row {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -1374,6 +1374,11 @@ footer a { color: inherit; }
 }
 #screen-settings .row:first-of-type { margin-top: 1.2rem; }
 #screen-settings #auth-status { margin: 0; }
+.name-field { display: flex; align-items: center; gap: 0.5rem; min-width: 0; }
+.name-field input { min-width: 0; width: 12rem; }
+.name-row { flex-wrap: wrap; row-gap: 0.3rem; }
+.name-row #name-status { flex-basis: 100%; text-align: right; font-size: 0.85rem; margin: 0; }
+.name-row #name-status:empty { display: none; }
 /* No rule of its own: the Theme row above already closes with one, and two
    lines a rem apart read as a mistake. The gap is the separation. */
 #password-box:not(:empty) { margin-top: 2.2rem; }
