@@ -1441,8 +1441,7 @@
     }
     const dow = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((n) => `<span aria-hidden="true">${n}</span>`).join("");
     return `
-      <section class="s-block" id="cal">
-        <h2>Daily calendar</h2>
+      <section class="s-block" id="cal" aria-label="Daily calendar">
         <div class="cal-nav">
           <button type="button" class="btn ghost sm" data-act="cal-prev" aria-label="Previous month"${first ? " disabled" : ""}>\u2039</button>
           <span class="cal-month" aria-live="polite">${label}</span>
@@ -1460,6 +1459,7 @@
     $("#stats-body")!.innerHTML = `
       ${calendarHtml()}
 
+      <div class="s-side">
       <section class="s-block">
         <h2>Overall progress</h2>
         <div class="stat-grid">
@@ -1475,6 +1475,7 @@
           ${tile(streak, streak === 1 ? "Day in a row" : "Days in a row")}
         </div>
       </section>
+      </div>
     `;
   }
 
@@ -1502,7 +1503,7 @@
 
   function renderSettings(): void {
     show("screen-settings");
-    $<HTMLSelectElement>("#theme")!.value = state.settings.theme;
+    for (const r of document.querySelectorAll<HTMLInputElement>('input[name="theme"]')) r.checked = r.value === state.settings.theme;
     $<HTMLInputElement>("#display-name")!.value = displayName() === "Anonymous" ? "" : displayName();
     paintAuth();
     renderPasswordBox();
@@ -1858,8 +1859,8 @@
   });
 
   document.addEventListener("change", (e) => {
-    const target = e.target as HTMLSelectElement;
-    if (target.id === "theme") {
+    const target = e.target as HTMLInputElement;
+    if (target.name === "theme") {
       state.settings.theme = target.value;
       saveSettings();
     }
