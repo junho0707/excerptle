@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "puzzles"
+OUT = ROOT / "public" / "puzzles"
 
 # Words that only turn up at the front of a book. Each is worth 3 at most once.
 FRONT_WORDS_RE = re.compile(

@@ -17,7 +17,7 @@ import { Resvg, initWasm } from "@resvg/resvg-wasm";
 import wasm from "@resvg/resvg-wasm/index_bg.wasm";
 import serif from "./fonts/DejaVuSerif.ttf";
 import sans from "./fonts/DejaVuSans.ttf";
-import icon from "../../assets/icon-192.png";
+import icon from "../../public/assets/icon-192.png";
 
 /* Per-isolate. `ready` clears its own slot on failure so a single bad init
    can't leave a rejected promise cached for the isolate's life. */

@@ -20,12 +20,12 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = <T>(p: string): T => JSON.parse(readFileSync(join(root, p), "utf8"));
 
 export function buildArchiveIndex(): Record<number, ArchiveEntry> {
-  const index = read<Parameters<typeof dailySlug>[0]>("puzzles/index.json");
+  const index = read<Parameters<typeof dailySlug>[0]>("public/puzzles/index.json");
   const notes = read<Record<string, string>>("content/archive-notes.json");
   const out: Record<number, ArchiveEntry> = {};
   for (const n of Object.keys(notes).map(Number).sort((a, b) => a - b)) {
     if (!String(notes[n] || "").trim()) continue;
-    const p = read<ArchiveEntry>(`puzzles/${dailySlug(index, n)}.json`);
+    const p = read<ArchiveEntry>(`public/puzzles/${dailySlug(index, n)}.json`);
     out[n] = { title: p.title, author: p.author, year: p.year };
   }
   return out;

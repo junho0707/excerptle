@@ -19,7 +19,7 @@ from pathlib import Path
 RUNWAY_DAYS = 30
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "puzzles"
+OUT = ROOT / "public" / "puzzles"
 
 APPARATUS = re.compile(
     r"gutenberg|transcrib|proofread|this (?:e-?text|edition|volume|translation)|"
