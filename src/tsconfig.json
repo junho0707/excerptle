@@ -1,0 +1,11 @@
+{
+  // Browser code. Each file is a classic <script defer> that talks to the
+  // others through window globals (declared in types/globals.d.ts), so none of
+  // them import or export; esbuild turns each into js/<name>.js.
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": []
+  },
+  "include": ["*.ts", "types/*.d.ts"]
+}

@@ -1,0 +1,19 @@
+{
+  // Shared by every tsconfig in the repo. Type-check only: browser code is
+  // bundled by esbuild (npm run build), Workers by wrangler, and Node runs
+  // .ts tests and tools directly by stripping types — so nothing here may
+  // need emitting (no enums, namespaces or parameter properties).
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "erasableSyntaxOnly": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  // The Node scripts in tools/ (not og-worker/, which has its own). Node runs
+  // them directly by stripping types: `node tools/<name>.ts`.
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    // workers-types only because build_archive_index imports og-worker/archive.ts.
+    "types": ["node", "@cloudflare/workers-types"]
+  },
+  // globals.d.ts: auth_flow_test checks the real BookleAuth against its type.
+  "include": ["*.ts", "../src/types/globals.d.ts"]
+}

@@ -25,11 +25,11 @@ For collections and works without chapters, use the complete first story or firs
 
 ## 2. Findings that explain the work
 
-- `js/app.js`: `tiers()`, `TIER_LABELS`, and `renderExcerpt()` currently use five progressively longer text strings plus an author hint. Only `status === "won"` reveals the longest text automatically. Losses retain the current tier.
+- `src/app.ts`: `tiers()`, `TIER_LABELS`, and `renderExcerpt()` currently use five progressively longer text strings plus an author hint. Only `status === "won"` reveals the longest text automatically. Losses retain the current tier.
 - `tools/build_puzzles.py`: `build_ladder()` targets word counts, and `build_one()` builds from a continuous narrative stream. The longest tier can cross chapter boundaries or stop before the chapter ends. Do not reuse `texts[4]` as a verified full chapter.
 - `puzzles/index.json` contains 720 puzzles: 600 bank books and 120 daily books. `tools/final_bank.json` and `tools/final_dailies.json` are builder inputs. Genre fields can be empty; setting is not currently emitted into puzzle JSON.
-- `js/app.js`: Settings writes only `bookle.name`; `displayName()` prefers the signed-in session name. Local leaderboard entries store names at solve time.
-- `backend/src/worker.js`: `/scores` returns stored `scores.name`; submissions copy `users.name`. There is no profile-name update route. Fixing the input alone cannot update existing public results.
+- `src/app.ts`: Settings writes only `bookle.name`; `displayName()` prefers the signed-in session name. Local leaderboard entries store names at solve time.
+- `backend/src/worker.ts`: `/scores` returns stored `scores.name`; submissions copy `users.name`. There is no profile-name update route. Fixing the input alone cannot update existing public results.
 - `renderRanks()` identifies and deduplicates rows using name, hint count, and guess count. Renaming can create duplicates or misidentify another player with the same name and score.
 - Instructions are duplicated in the in-game modal, static pages, and structured metadata. The existing prose-only hint explanations must all change.
 
@@ -77,7 +77,7 @@ Acceptance: every indexed puzzle has all five meaningful hints and a complete, a
 
 ## 4. Work package B: gameplay and chapter reader
 
-Primary files: `js/app.js`, `index.html`, `css/app.css`; optionally extract a small reader module if it simplifies lifecycle handling.
+Primary files: `src/app.ts`, `index.html`, `css/app.css`; optionally extract a small reader module if it simplifies lifecycle handling.
 
 ### Hint UI
 
@@ -113,8 +113,8 @@ The hint meaning changes even though the maximum remains five. Preserve progress
 2. Resume an in-progress legacy round using its old hint rules so previously revealed prose is not retracted or converted to different clues. New rounds use version 2. Both versions gain the post-game reader once completed.
 3. Partition leaderboard comparisons by hint version. Add a D1 migration with a version column defaulting existing scores to 1, and update relevant uniqueness/index assumptions, best-score comparisons, queries, filters, and local/server merge logic to include the version. Validate supported versions; old requests without a version remain version 1.
 4. Default a result's leaderboard link and rank calculation to that result's version. For a standalone board default to current rules and offer a clearly labeled legacy view. Do not combine old prose-help scores with new factual-help scores without disclosure.
-5. Audit progress merging in `js/app.js` and the backend: version travels with the chosen complete round record, never merged separately from its hints/guesses/status. Keep completed books completed; this change does not create replay scores automatically.
-6. Update share generation, parsing, and OG code in `js/app.js` and `tools/og-worker/` wherever rankings or hint explanations depend on version. Existing links remain readable; missing version is legacy. Shared incoming results must not unlock the recipient's unsolved book or expose the answer/chapter.
+5. Audit progress merging in `src/app.ts` and the backend: version travels with the chosen complete round record, never merged separately from its hints/guesses/status. Keep completed books completed; this change does not create replay scores automatically.
+6. Update share generation, parsing, and OG code in `src/app.ts` and `tools/og-worker/` wherever rankings or hint explanations depend on version. Existing links remain readable; missing version is legacy. Shared incoming results must not unlock the recipient's unsolved book or expose the answer/chapter.
 7. Preserve shared hints in battle mode. Include hint version in the handshake, and require mismatched clients to reload before starting. Both players see the same cumulative hints. Validate incoming hint bounds and version.
 8. Audit every battle end path, including opponent win and exhausted guesses. The reader unlocks only when the shared match is over; one participant must not receive extra chapter information while still able to compete. Persist a local terminal state if needed to prevent stalled matches, and test that the winner cannot be overwritten by late messages. Keep give-up unavailable in battle unless deliberately implementing a complete forfeit protocol.
 
@@ -122,7 +122,7 @@ Acceptance: no progress reset, no score resubmission triggered by opening the re
 
 ## 6. Work package C: display-name persistence and propagation
 
-Primary files: `js/auth.js`, `js/app.js`, `index.html`, `backend/src/worker.js`, backend migrations/tests, and auth/progress test helpers.
+Primary files: `src/auth.ts`, `src/app.ts`, `index.html`, `backend/src/worker.ts`, backend migrations/tests, and auth/progress test helpers.
 
 ### Server contract
 
@@ -148,7 +148,7 @@ Acceptance: rename, reload, sign out/in, and open another device/tab; the saved 
 
 ## 7. Work package D: all instructions and Support label
 
-Primary files: in-game How to Play in `js/app.js`, `how-to-play.html`, `about.html`, `faq.html`, `index.html`, `support.html`, and every static page containing shared navigation.
+Primary files: in-game How to Play in `src/app.ts`, `how-to-play.html`, `about.html`, `faq.html`, `index.html`, `support.html`, and every static page containing shared navigation.
 
 Use this core explanation, adjusted only for page length:
 
@@ -158,7 +158,7 @@ Use this core explanation, adjusted only for page length:
 2. Update the in-game modal and static How to Play together. Update FAQ answers, About descriptions, metadata descriptions, and HowTo/FAQ JSON-LD so they agree with the new behavior. Remove current claims that every hint expands the text or that the full chapter is Hint 4.
 3. Show existing users a dismissible “Hints have changed” notice keyed to version 2. Do not force-open instructions on every return or during an active legacy round. Do not reset onboarding/progress indiscriminately.
 4. Change the shared navigation/tab label **Support** to **Support me** across game and static pages. Preserve the current Ko-fi destination and link behavior. Match any accessible label/title to the visible wording. Use **Support me** for corresponding navigation/footer links for consistency; retain contextual headings such as “Support Excerptle” where they are prose rather than navigation.
-5. Inspect `about.html`, `faq.html`, `how-to-play.html`, `privacy.html`, `support.html`, `404.html`, and any other matching source pages. Update the `support` route title in `js/app.js` when it represents that navigation destination.
+5. Inspect `about.html`, `faq.html`, `how-to-play.html`, `privacy.html`, `support.html`, `404.html`, and any other matching source pages. Update the `support` route title in `src/app.ts` when it represents that navigation destination.
 6. Keep source code and generated/public copies straight: edit tracked source files, not `dist/` output. Search all maintained HTML/JS/docs for outdated hint instructions; preserve explicitly historical release notes as history.
 
 Acceptance: instructions, structured metadata, counters, actual reveal order, end-state reader behavior, and navigation labels agree on desktop and mobile. No broken Support destination or duplicate onboarding interruption.
@@ -169,7 +169,7 @@ Suggested assignment order for implementation agents:
 
 1. Agree on the fields, versioning, profile API, and public identity contract above. Capture index order and representative old saved rounds as regression fixtures.
 2. Implement data generation and review content (A). In parallel workstreams, implement backend version/profile contracts (C and section 5). These have the longest lead times.
-3. Implement gameplay/reader (B) and frontend name propagation (C) against those contracts. These both touch `js/app.js`; use sequential edits or isolated branches and an integration owner.
+3. Implement gameplay/reader (B) and frontend name propagation (C) against those contracts. These both touch `src/app.ts`; use sequential edits or isolated branches and an integration owner.
 4. Update instructions/navigation (D) once behavior is fixed. Integrate all work, run checks, and resolve regressions before release.
 
 Required verification commands:

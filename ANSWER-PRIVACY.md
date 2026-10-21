@@ -26,7 +26,7 @@ one.
 
 ## The crux
 
-Matching is client-side and forgiving. `js/match.js` (`window.BookleMatch`)
+Matching is client-side and forgiving. `src/match.ts` (`window.BookleMatch`)
 folds case and accents, strips a trailing "by <author>", drops stop words,
 accepts a token-subset match, and accepts near-misses by edit distance —
 `close()`. That is what makes "moby dick" and "Moby-Dick; or, The Whale" the
@@ -62,19 +62,19 @@ the whole table is brute-forced in seconds. Strictly worse than doing nothing.
 
 2. **Make the address opaque.** Publish each daily under an unguessable name
    (`/puzzles/d/<hmac(index, secret)>.json`) so the filename stops being the
-   answer. `slugForIndex()` in `js/app.js` goes away for dailies; the client
+   answer. `slugForIndex()` in `src/app.ts` goes away for dailies; the client
    asks the API what today's id is. The bank (indices 0–599) can keep readable
    slugs — nothing is secret there.
 
 3. **Stop shipping the tail of `order`.** `index.json` keeps the preset order
    it needs and drops the 120-entry daily pool.
 
-4. **Move matching.** `js/match.js` becomes `backend/src/match.js`, imported by
+4. **Move matching.** `src/match.ts` becomes `backend/src/match.js`, imported by
    the Worker. The site keeps its copy for bank and battle modes, where there
    is nothing to protect. One file, two callers — do not fork it.
 
 5. **Add the endpoints**, in the `path === '/x'` chain in
-   `backend/src/worker.js` (~line 379), reusing the CORS and session handling
+   `backend/src/worker.ts` (~line 379), reusing the CORS and session handling
    already there.
 
    ```
@@ -95,7 +95,7 @@ free plan gives 100,000 requests/day **account-wide**, shared by `excerptle`,
 calls. After this, a full round is up to 6 guesses + 1 author fact + 1 id
 lookup ≈ 8 calls. At 1,000 daily players that is ~8,000 requests/day on a bucket
 the whole account shares. Workable now; model it against the quota alerts in
-`backend/src/alerts.js` before shipping, because it turns a free static game
+`backend/src/alerts.ts` before shipping, because it turns a free static game
 into something with a per-player marginal cost.
 
 **Offline and latency.** Guesses stop being instant and stop working offline.

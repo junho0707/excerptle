@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    // Workers globals for the two Workers; node for the tests and preview.ts.
+    "types": ["@cloudflare/workers-types", "node"]
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", ".wrangler"]
+}
