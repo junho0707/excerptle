@@ -51,7 +51,7 @@ if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
    On approval: paste the pub ID + the display unit's slot ID, flip `enabled`,
    deploy, and add /ads.txt. Auto ads stay OFF in the AdSense console — the only
    placement is the post-game slot, which is the one spot that can't cause an
-   accidental click on a live game. See MONETIZATION.md. */
+   accidental click on a live game. */
 window.EXCERPTLE_ADS = {
   enabled: false,
   client: "ca-pub-2005015845685746",

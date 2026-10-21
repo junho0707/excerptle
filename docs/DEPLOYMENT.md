@@ -12,9 +12,10 @@ Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Clo
 lose — runs entirely in the browser against static JSON. Zero API calls.
 
 There *is* a backend, added in `a380561`, for the things a player cannot be
-trusted to judge alone: accounts, leaderboards, cross-device progress and Pro
-billing. It is a separate Worker over D1 (`excerptle-api`, routes `/auth/*`,
-`/billing/*`, `/scores`, `/me/*`) and nothing in the puzzle path touches it.
+trusted to judge alone: accounts and cross-device progress. It is a separate
+Worker over D1 (`excerptle-api`, routes `/auth/*`, `/me/*`) and nothing in the
+puzzle path touches it. Its `/billing/*` and `/scores` routes are still deployed
+but the site no longer calls them since Pro and the leaderboard were removed.
 See the three-Worker table under *Shipping an update*.
 
 | Thing | Value |
@@ -97,9 +98,9 @@ mobile viewports. It covers guests, expired sessions, and signed-in users
 with unavailable account services, plus a successful sign-in after solving.
 It also holds back a puzzle response to check that loading cannot erase a guess.
 The logic sweep adds stale-response navigation, failed puzzle recovery, shared
-link validation, leaderboard routing, remote-progress restoration and sign-out
-isolation. `npm test` also checks progress retries, upload batching, battle
-message bounds, timestamp ordering, and derived daily streaks. `npm run
+link validation, remote-progress restoration and sign-out isolation.
+`npm test` also checks progress retries, upload batching, timestamp ordering,
+and derived daily streaks. `npm run
 test:data` checks the built catalogue and fails while fewer than 30 days of
 unused dailies remain — it runs in CI and inside `predeploy:site`, so the pool
 running dry is a build failure with runway left, not a morning of repeats.

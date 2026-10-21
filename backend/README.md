@@ -1,4 +1,6 @@
-# Excerptle Pro API
+# excerptle-api
+
+Accounts and cross-device progress for excerptle.io. The billing (Excerptle Pro) and `/scores` routes below are still deployed, but the site stopped calling them when Pro and the leaderboard were removed.
 
 Worker + D1; Stripe-hosted Checkout and Portal. Only verified Stripe webhooks write subscription entitlement. No card data is collected by Excerptle. Frontend changes do not enable billing until the API URL is configured and the frontend is deployed.
 
@@ -169,4 +171,4 @@ Two things guard the "silence means healthy" design:
   alert here is sent *by* the thing being watched. It needs a repo secret named
   `SLACK_WEBHOOK_URL`.
 
-Full picture: `MONITORING.md` at the repo root.
+Full picture: [`docs/MONITORING.md`](../docs/MONITORING.md).
