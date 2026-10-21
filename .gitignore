@@ -19,3 +19,6 @@ tools/openings-preview.html
 
 # Built by `npm run build` (esbuild) from src/*.ts; wrangler deploy runs it.
 js/*.js
+
+# Private working notes (plans, handoffs); kept locally, never published.
+notes/
