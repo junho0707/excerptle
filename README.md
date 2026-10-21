@@ -6,11 +6,12 @@
 
 Each day everyone gets the same public-domain book. You see its first sentence and have
 **6 guesses** to name it. If you're stuck, take a hint. Each hint reveals more:
-
-```mermaid
-flowchart LR
-  S[First sentence] --> H1[Opening paragraphs] --> H2[Genre] --> H3[Publication date] --> H4[Setting] --> H5[Author]
-```
+1. First Sentence
+2. Opening Paragraph
+3. Genre
+4. Publication Date
+5. Setting
+6. Author
 
 There are 720 books in all: a daily that resets at midnight Pacific, plus a bank of 600
 you can play any time. When a round ends you can read the opening chapter.
@@ -43,17 +44,6 @@ flowchart LR
   G[Project Gutenberg] --> P[Python tools<br/>check public domain, strip boilerplate,<br/>find the true first sentence] --> J[public/puzzles/*.json] --> W[Site]
   K[Wikipedia] -->|cross-check hints| P
 ```
-
-## Run it
-
-```sh
-npm ci
-npm run build                                   # src/*.ts → public/js/
-python3 -m http.server 8765 --directory public  # http://localhost:8765
-```
-
-`npm test` runs the type check and unit tests, `npm run test:e2e` the Playwright suite,
-and `npm run test:data` checks all 720 puzzles. CI runs every suite on each push.
 
 ## Layout
 
