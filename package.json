@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "esbuild src/*.ts --outdir=js --target=es2020 --log-level=warning",
+    "build": "esbuild src/*.ts --outdir=public/js --target=es2020 --log-level=warning",
     "typecheck": "tsc -p src && tsc -p backend && tsc -p tools/og-worker && tsc -p tests && tsc -p tools",
     "test": "npm run typecheck && node tools/test_match.ts && node tools/auth_flow_test.ts && node tools/dev_api_switch_test.ts && node tools/progress_sync_test.ts && node tools/aux_logic_test.ts && npm test --prefix tools/og-worker",
     "test:e2e": "playwright test",

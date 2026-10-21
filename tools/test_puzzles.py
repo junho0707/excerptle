@@ -8,7 +8,7 @@ import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PUZ = ROOT / "puzzles"
+PUZ = ROOT / "public" / "puzzles"
 TIERS = 5
 
 # A handful of openings everybody knows. If the slicer drifts back into the

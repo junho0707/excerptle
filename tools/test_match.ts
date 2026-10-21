@@ -57,11 +57,11 @@ function isMatch(guess: string, puzzle: Book): boolean {
 // The curated b*.json puzzles are gone: every book is a Gutenberg id now, so
 // the test runs over whatever index.json actually ships. It used to filter for
 // b\d+ and silently passed on zero files.
-const index: { order: string[] } = JSON.parse(readFileSync(join(root, "puzzles", "index.json"), "utf8"));
+const index: { order: string[] } = JSON.parse(readFileSync(join(root, "public", "puzzles", "index.json"), "utf8"));
 const files = index.order.map((slug: string) => `${slug}.json`);
 let fail = 0;
 for (const f of files) {
-  const p: Book = JSON.parse(readFileSync(join(root, "puzzles", f), "utf8"));
+  const p: Book = JSON.parse(readFileSync(join(root, "public", "puzzles", f), "utf8"));
   const tries = [
     p.title,
     p.title.toUpperCase(),

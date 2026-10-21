@@ -7,7 +7,7 @@ import type { Invite, ShareResult, Share } from "./share.ts";
 const root = new URL("./", import.meta.url);
 await initWasm(await readFile(new URL("node_modules/@resvg/resvg-wasm/index_bg.wasm", root)));
 const fonts = await Promise.all(["DejaVuSerif", "DejaVuSans"].map(n => readFile(new URL(`fonts/${n}.ttf`, root))));
-const iconHref = `data:image/png;base64,${(await readFile(new URL("../../assets/icon-192.png", root))).toString("base64")}`;
+const iconHref = `data:image/png;base64,${(await readFile(new URL("../../public/assets/icon-192.png", root))).toString("base64")}`;
 const output = new URL("../../dist/share-previews/", root);
 await mkdir(output, { recursive: true });
 const base: ShareResult = {n:"Junho",m:"daily",c:0,w:0,g:0,h:0,t:0};

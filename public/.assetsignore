@@ -1,0 +1,9 @@
+# Files under public/ that must not be served. Wrangler reads this at deploy
+# time; a manual dashboard upload does not.
+.assetsignore
+*:Zone.Identifier
+# Source images: the shipped sizes are the other files in assets/.
+assets/source/
+assets/promo-btz.source.html
+assets/logo.png
+assets/logo-1200.png

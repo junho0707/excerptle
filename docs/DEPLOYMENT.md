@@ -6,7 +6,7 @@ Last verified: 2026-09-16.
 
 ## Architecture
 
-Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. The repo root *is* the deployed site, with one build step: the browser scripts are TypeScript in `src/`, and `npm run build` (esbuild) writes them to `js/*.js`, which is not committed. `wrangler deploy` runs that build itself (the `build` command in `wrangler.jsonc`), locally and in Workers Builds.
+Static frontend — HTML, CSS, JS, and pre-built puzzle JSON — served by **Cloudflare Workers static assets**. `public/` *is* the deployed site (`assets.directory` in `wrangler.jsonc`), with one build step: the browser scripts are TypeScript in `src/`, and `npm run build` (esbuild) writes them to `public/js/*.js`, which is not committed. `public/.assetsignore` lists the files under it that are never served. `wrangler deploy` runs that build itself (the `build` command in `wrangler.jsonc`), locally and in Workers Builds.
 
 **Gameplay has no backend.** A round — excerpt, hints, title matching, win or
 lose — runs entirely in the browser against static JSON. Zero API calls.
@@ -271,9 +271,7 @@ Console edits can take a few minutes to propagate.
 
 **Google sign-in redirect URI — do this before promoting the site.** `src/auth.ts` opens the account chooser itself (a centred popup running the OAuth implicit flow) and Google sends the token back to `/oauth.html`. In Google Cloud Console → Credentials → your OAuth client, add **`https://excerptle.io/oauth.html`** under *Authorized redirect URIs* — exact string, no trailing slash — plus a `http://localhost:PORT/oauth.html` entry for local testing. Keep `https://excerptle.io` under *Authorized JavaScript origins* and drop stale `workers.dev` entries. Until the redirect URI is registered, Google answers "Continue with Google" with `redirect_uri_mismatch`.
 
-**Auth is a demo, not real auth.** With no API configured, `src/auth.ts` stores users and sessions in `localStorage`, generates verification codes client-side, and trusts a Google access token read **entirely in the browser**. Anyone can forge a session from devtools. Fine for a static preview; it cannot back real accounts or trustworthy leaderboards. Both need the server before they mean anything.
-
-**Leftover `CNAME` file.** The repo root has a `CNAME` containing `excerptle.io` — a GitHub Pages artifact. Cloudflare ignores it. Safe to delete.
+**Without the API, sign-in is local only.** If no API is configured, `src/auth.ts` keeps users and sessions in `localStorage` and trusts a Google token read in the browser, so a session can be forged from devtools. That mode exists for static previews; production always points at `excerptle-api`, which issues and checks sessions server-side.
 
 ## Checking sign-in locally
 

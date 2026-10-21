@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 HERE = Path(__file__).parent
-OUT = ROOT / "puzzles"
+OUT = ROOT / "public" / "puzzles"
 READING_OUT = OUT / "reading"
 CACHE = HERE / ".gutenberg-cache"
 HINT_METADATA_PATH = HERE / "hint_metadata.json"

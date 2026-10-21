@@ -33,7 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from qa_puzzles import suspects  # noqa: E402
-SITE = ROOT.parent
+SITE = ROOT.parent / "public"
 OUT = ROOT / "openings-preview.html"
 
 

@@ -14,7 +14,7 @@
     "enabled": true
   },
   "assets": {
-    "directory": ".",
+    "directory": "public",
     "binding": "ASSETS",
     // "/" is worker-first only so share links get their unfurl metadata
     // rewritten, so whatever runs here is on the critical path of every cold
